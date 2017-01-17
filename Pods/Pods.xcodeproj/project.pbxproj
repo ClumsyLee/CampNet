@@ -7,100 +7,128 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		10A595C1638A66366C393ECA0EE56670 /* YAMLOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F737369EC1A0E96208DC95F67385A6 /* YAMLOperators.swift */; };
-		2740261AC51B32E08168F7696697F6D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		3302DDBD048FB49EC36E4DCE26E58EE6 /* YAMLTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A033B8BD61DE67C4D035046E0633DDC1 /* YAMLTokenizer.swift */; };
-		49D5FA702E373EA6EA7A263F9240DFEB /* Yaml.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872AA089ED0629B5EFCB98960A1D8575 /* Yaml.swift */; };
-		4B03E2BD513E4FB2BFA96E4FABE61577 /* Pods-CampNet iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E85DE32639C11BC7092D26CE28666EF /* Pods-CampNet iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6DFE6FA62A8C019650363DB9F6DD38FD /* Pods-CampNet iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 885CDD8E1828D0FB21AC5A74A81A8BDA /* Pods-CampNet iOS-dummy.m */; };
-		74D15B82087AABC08D2D0BF7EBB4AB35 /* YAMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EC0616D271A6984210812CDB0E3925 /* YAMLParser.swift */; };
-		8F123638EBDB98076CB6E0BA7F93476C /* YAMLResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5436C82CF8DB48A4FAE954E24163546E /* YAMLResult.swift */; };
-		BD3EBBA45E9D21C6D17B017438CBFDCE /* YAMLRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88CE09CB76B3BFF89ED3251143BF3B7 /* YAMLRegex.swift */; };
-		DE948357153A13710802E3F13E22A034 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		F229868A84512BA0A132F259A6037289 /* Yaml-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CACD6C4C5BD61310FE2A5EC03B4ED42 /* Yaml-dummy.m */; };
-		FC140F207FCFDC04EAFAA0C4F40FC9C5 /* Yaml-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 121FC76BD294BF51C36DCF34EC28E0CB /* Yaml-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A7D5557A3D4C10ABEE37AD889C5AE03 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		0BEFA697E75FFB1B7D13CC4388661D30 /* Pods-CampNet iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 885CDD8E1828D0FB21AC5A74A81A8BDA /* Pods-CampNet iOS-dummy.m */; };
+		3CBBE816A27D61234A965D7A3ADF431F /* YAMLOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64766041EF6BD67A1E8C1555BC3750A /* YAMLOperators.swift */; };
+		4BE03D74AA9496AA2B76668A79AEA46F /* Pods-CampNet iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E85DE32639C11BC7092D26CE28666EF /* Pods-CampNet iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		649777C6B530D61FCD718606EBB085DF /* YAMLResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F1F2DD2FCE5B45C3C002E7983AC939 /* YAMLResult.swift */; };
+		80C6CBC64985F4A462CBBFFA80CC3661 /* YAMLTokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBF8C5155B64859CF94DF060C23498B /* YAMLTokenizer.swift */; };
+		824E2301B7A76D5BF79338A58102373E /* YAMLRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C34A2F90CFD444A716BE76C95640BD2 /* YAMLRegex.swift */; };
+		8CBA78FBC45DC8FBC1FEC9F5EA1B2DDD /* Yaml-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EA5D5BCACBAD541BB3BF9BE41840AB9 /* Yaml-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A03A8E5510B97B71B054299CD3DAC9AE /* YAMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB4E3E4E74BD101A1D0D4960507094E /* YAMLParser.swift */; };
+		A0871062341BF6C6B1FC9156D0056D14 /* Yaml.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BF9286B02E26CFD8AAB0DDC2397FA8 /* Yaml.swift */; };
+		A967960EE4C1C1AF8A3FC3555BABDC58 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B54D8D6EE0B995FE1C5C5AB45BAE59E /* Keychain.swift */; };
+		BDA750A5542A5D826A35B1BE6A69574A /* KeychainAccess-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F905F63E3E89E457CE719E55A19872D9 /* KeychainAccess-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA16C86A817415C6000945DCAA109C4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		D823270043210DD356225D7700FAF3E4 /* KeychainAccess-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E9D8A47AD811024897F11B9A464CF02 /* KeychainAccess-dummy.m */; };
+		E82071B6E10804644D26DF13219634A4 /* Yaml-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F6FF2FF32A21BE50E2FE501E9B5ECFA5 /* Yaml-dummy.m */; };
+		E8EACF383D5FC840CC04A183FAD043EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		AE0BBE345858B209CF8C86AB02449427 /* PBXContainerItemProxy */ = {
+		611D28B8F6DE31E272A2425ABF716DC5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0BC5D951970D914DD3EA20E36C2ECBE7;
+			remoteGlobalIDString = 79F133B8DD1EFC03AF4A4A07737D7B9C;
 			remoteInfo = Yaml;
+		};
+		ACA7EBF59B2BE9582B827DF5873CABD5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8905DB6521F8FDC34752B69DEE3FDEB7;
+			remoteInfo = KeychainAccess;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00BF9286B02E26CFD8AAB0DDC2397FA8 /* Yaml.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Yaml.swift; path = Yaml/Yaml.swift; sourceTree = "<group>"; };
 		0F3E7FAC95A4B0231E9B6A12F17CB33D /* Pods-CampNet iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CampNet iOS.modulemap"; sourceTree = "<group>"; };
-		0FE4BF5B0879E7D7C3437F122991A238 /* Yaml.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Yaml.xcconfig; sourceTree = "<group>"; };
-		121FC76BD294BF51C36DCF34EC28E0CB /* Yaml-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Yaml-umbrella.h"; sourceTree = "<group>"; };
-		5436C82CF8DB48A4FAE954E24163546E /* YAMLResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAMLResult.swift; path = Yaml/YAMLResult.swift; sourceTree = "<group>"; };
+		1EA5D5BCACBAD541BB3BF9BE41840AB9 /* Yaml-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Yaml-umbrella.h"; sourceTree = "<group>"; };
+		24F1F2DD2FCE5B45C3C002E7983AC939 /* YAMLResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAMLResult.swift; path = Yaml/YAMLResult.swift; sourceTree = "<group>"; };
+		2C21ECE7ECB2B06C4567F9D68B68BB1B /* KeychainAccess-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KeychainAccess-prefix.pch"; sourceTree = "<group>"; };
+		32BFDF1460430FDD52018BFCC801D5A9 /* KeychainAccess.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = KeychainAccess.modulemap; sourceTree = "<group>"; };
+		38C351B5A8E20F160EA833B748B8D93A /* Pods_CampNet_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CampNet_iOS.framework; path = "Pods-CampNet iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A1DCB0E4CBD1748AC380EC6F9B2C8FA /* KeychainAccess.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KeychainAccess.xcconfig; sourceTree = "<group>"; };
+		3CBF8C5155B64859CF94DF060C23498B /* YAMLTokenizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAMLTokenizer.swift; path = Yaml/YAMLTokenizer.swift; sourceTree = "<group>"; };
 		57547DF23A79CD41F4E9AEF033629355 /* Pods-CampNet iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CampNet iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		597BF98D8A194880B3ADA5EC239ECBB7 /* Pods-CampNet iOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CampNet iOS-frameworks.sh"; sourceTree = "<group>"; };
-		684AB632EB6DE8F1969D538586E60414 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6CACD6C4C5BD61310FE2A5EC03B4ED42 /* Yaml-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Yaml-dummy.m"; sourceTree = "<group>"; };
+		5E9D8A47AD811024897F11B9A464CF02 /* KeychainAccess-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KeychainAccess-dummy.m"; sourceTree = "<group>"; };
+		66132539A966431DC1268ECAB11DF34A /* Yaml.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Yaml.modulemap; sourceTree = "<group>"; };
+		6C34A2F90CFD444A716BE76C95640BD2 /* YAMLRegex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAMLRegex.swift; path = Yaml/YAMLRegex.swift; sourceTree = "<group>"; };
+		6D00CEE73B97CC18EB594C1D1C925ACB /* KeychainAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KeychainAccess.framework; path = KeychainAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E85DE32639C11BC7092D26CE28666EF /* Pods-CampNet iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CampNet iOS-umbrella.h"; sourceTree = "<group>"; };
-		7602AA00FD80273218B1D06334C28C8C /* Pods_CampNet_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CampNet_iOS.framework; path = "Pods-CampNet iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		872AA089ED0629B5EFCB98960A1D8575 /* Yaml.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Yaml.swift; path = Yaml/Yaml.swift; sourceTree = "<group>"; };
+		785EFA35FA9CCCCBC6373046C4CD2FFB /* Yaml.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Yaml.framework; path = Yaml.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		861FD8F45F7A23AC90EB078772E7200D /* Yaml.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Yaml.xcconfig; sourceTree = "<group>"; };
+		87F8766B59664435041B6EBBFD14F7B4 /* Yaml-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Yaml-prefix.pch"; sourceTree = "<group>"; };
 		885CDD8E1828D0FB21AC5A74A81A8BDA /* Pods-CampNet iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CampNet iOS-dummy.m"; sourceTree = "<group>"; };
+		8DB4E3E4E74BD101A1D0D4960507094E /* YAMLParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAMLParser.swift; path = Yaml/YAMLParser.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		97EC0616D271A6984210812CDB0E3925 /* YAMLParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAMLParser.swift; path = Yaml/YAMLParser.swift; sourceTree = "<group>"; };
 		9878CD5F3C2613DB138D032AF3A7A02E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		997026C604C7F76A595FD2CA7FE87A8D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B54D8D6EE0B995FE1C5C5AB45BAE59E /* Keychain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Keychain.swift; path = Lib/KeychainAccess/Keychain.swift; sourceTree = "<group>"; };
 		9C348E17097C2E643AC28BBAB94EA17E /* Pods-CampNet iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CampNet iOS.release.xcconfig"; sourceTree = "<group>"; };
-		A033B8BD61DE67C4D035046E0633DDC1 /* YAMLTokenizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAMLTokenizer.swift; path = Yaml/YAMLTokenizer.swift; sourceTree = "<group>"; };
-		A8F737369EC1A0E96208DC95F67385A6 /* YAMLOperators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAMLOperators.swift; path = Yaml/YAMLOperators.swift; sourceTree = "<group>"; };
 		AC2F20D5F4B528E9282B34FAA36E61E4 /* Pods-CampNet iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CampNet iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B630DF9C40E855535F7B574451A7325F /* Yaml-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Yaml-prefix.pch"; sourceTree = "<group>"; };
-		BFF4FC14B47C63A2F313CF1A5A0FEBF1 /* Yaml.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Yaml.modulemap; sourceTree = "<group>"; };
 		CA082ECE48E491A6D53A8D1E3FC52CD4 /* Pods-CampNet iOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CampNet iOS-resources.sh"; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D88CE09CB76B3BFF89ED3251143BF3B7 /* YAMLRegex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAMLRegex.swift; path = Yaml/YAMLRegex.swift; sourceTree = "<group>"; };
-		EB49300ED2C213C1EDD382F0A9EE59D1 /* Yaml.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Yaml.framework; path = Yaml.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D64766041EF6BD67A1E8C1555BC3750A /* YAMLOperators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAMLOperators.swift; path = Yaml/YAMLOperators.swift; sourceTree = "<group>"; };
+		E86FEB2E99161ED41BC246F438396E04 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2A0367FD8D87DABF1DBB7ABCC3FA65F /* Pods-CampNet iOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CampNet iOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		F6FF2FF32A21BE50E2FE501E9B5ECFA5 /* Yaml-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Yaml-dummy.m"; sourceTree = "<group>"; };
+		F905F63E3E89E457CE719E55A19872D9 /* KeychainAccess-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KeychainAccess-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		466DC9B0488C93EFA7015256A918D569 /* Frameworks */ = {
+		038B7DA70233EE1890AE69D35ABC8A93 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2740261AC51B32E08168F7696697F6D5 /* Foundation.framework in Frameworks */,
+				0A7D5557A3D4C10ABEE37AD889C5AE03 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D5434292719CEC754A8F11B2AA4B9666 /* Frameworks */ = {
+		2DDC844C06D46A3907C42C9964BC7434 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE948357153A13710802E3F13E22A034 /* Foundation.framework in Frameworks */,
+				E8EACF383D5FC840CC04A183FAD043EC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3E580AA7D461989BE61CED3817B24034 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA16C86A817415C6000945DCAA109C4B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2CDB778688802CBA0D22FCA66228D26E /* Support Files */ = {
+		3113E7FE3FC03ABF135D20A9C51742AD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				684AB632EB6DE8F1969D538586E60414 /* Info.plist */,
-				BFF4FC14B47C63A2F313CF1A5A0FEBF1 /* Yaml.modulemap */,
-				0FE4BF5B0879E7D7C3437F122991A238 /* Yaml.xcconfig */,
-				6CACD6C4C5BD61310FE2A5EC03B4ED42 /* Yaml-dummy.m */,
-				B630DF9C40E855535F7B574451A7325F /* Yaml-prefix.pch */,
-				121FC76BD294BF51C36DCF34EC28E0CB /* Yaml-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Yaml";
-			sourceTree = "<group>";
-		};
-		6C329102EC9F0D7ADF00E495D58798A2 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7602AA00FD80273218B1D06334C28C8C /* Pods_CampNet_iOS.framework */,
-				EB49300ED2C213C1EDD382F0A9EE59D1 /* Yaml.framework */,
+				6D00CEE73B97CC18EB594C1D1C925ACB /* KeychainAccess.framework */,
+				38C351B5A8E20F160EA833B748B8D93A /* Pods_CampNet_iOS.framework */,
+				785EFA35FA9CCCCBC6373046C4CD2FFB /* Yaml.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6A4F3C99C1C88B2B7AE6B52F0F855462 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				997026C604C7F76A595FD2CA7FE87A8D /* Info.plist */,
+				32BFDF1460430FDD52018BFCC801D5A9 /* KeychainAccess.modulemap */,
+				3A1DCB0E4CBD1748AC380EC6F9B2C8FA /* KeychainAccess.xcconfig */,
+				5E9D8A47AD811024897F11B9A464CF02 /* KeychainAccess-dummy.m */,
+				2C21ECE7ECB2B06C4567F9D68B68BB1B /* KeychainAccess-prefix.pch */,
+				F905F63E3E89E457CE719E55A19872D9 /* KeychainAccess-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/KeychainAccess";
 			sourceTree = "<group>";
 		};
 		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
@@ -116,10 +144,34 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				E47E24784DA64C9971FE827BE00EA286 /* Pods */,
-				6C329102EC9F0D7ADF00E495D58798A2 /* Products */,
+				A7E67865F302CBA014172DC40AA756CF /* Pods */,
+				3113E7FE3FC03ABF135D20A9C51742AD /* Products */,
 				A2323B40D3ADE0809456439C3D89D808 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		8565F50C0F7275552A3EE33835DA5C23 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E86FEB2E99161ED41BC246F438396E04 /* Info.plist */,
+				66132539A966431DC1268ECAB11DF34A /* Yaml.modulemap */,
+				861FD8F45F7A23AC90EB078772E7200D /* Yaml.xcconfig */,
+				F6FF2FF32A21BE50E2FE501E9B5ECFA5 /* Yaml-dummy.m */,
+				87F8766B59664435041B6EBBFD14F7B4 /* Yaml-prefix.pch */,
+				1EA5D5BCACBAD541BB3BF9BE41840AB9 /* Yaml-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Yaml";
+			sourceTree = "<group>";
+		};
+		9576CEDCB0CD128B1339150501E228AA /* KeychainAccess */ = {
+			isa = PBXGroup;
+			children = (
+				9B54D8D6EE0B995FE1C5C5AB45BAE59E /* Keychain.swift */,
+				6A4F3C99C1C88B2B7AE6B52F0F855462 /* Support Files */,
+			);
+			name = KeychainAccess;
+			path = KeychainAccess;
 			sourceTree = "<group>";
 		};
 		A2323B40D3ADE0809456439C3D89D808 /* Targets Support Files */ = {
@@ -130,19 +182,28 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		BA3E8E7D12338B4A5CFB4DD20BFF8651 /* Yaml */ = {
+		A374A6A7D309CA9152D43B07AEB789B9 /* Yaml */ = {
 			isa = PBXGroup;
 			children = (
-				872AA089ED0629B5EFCB98960A1D8575 /* Yaml.swift */,
-				A8F737369EC1A0E96208DC95F67385A6 /* YAMLOperators.swift */,
-				97EC0616D271A6984210812CDB0E3925 /* YAMLParser.swift */,
-				D88CE09CB76B3BFF89ED3251143BF3B7 /* YAMLRegex.swift */,
-				5436C82CF8DB48A4FAE954E24163546E /* YAMLResult.swift */,
-				A033B8BD61DE67C4D035046E0633DDC1 /* YAMLTokenizer.swift */,
-				2CDB778688802CBA0D22FCA66228D26E /* Support Files */,
+				00BF9286B02E26CFD8AAB0DDC2397FA8 /* Yaml.swift */,
+				D64766041EF6BD67A1E8C1555BC3750A /* YAMLOperators.swift */,
+				8DB4E3E4E74BD101A1D0D4960507094E /* YAMLParser.swift */,
+				6C34A2F90CFD444A716BE76C95640BD2 /* YAMLRegex.swift */,
+				24F1F2DD2FCE5B45C3C002E7983AC939 /* YAMLResult.swift */,
+				3CBF8C5155B64859CF94DF060C23498B /* YAMLTokenizer.swift */,
+				8565F50C0F7275552A3EE33835DA5C23 /* Support Files */,
 			);
 			name = Yaml;
 			path = Yaml;
+			sourceTree = "<group>";
+		};
+		A7E67865F302CBA014172DC40AA756CF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9576CEDCB0CD128B1339150501E228AA /* KeychainAccess */,
+				A374A6A7D309CA9152D43B07AEB789B9 /* Yaml */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -171,43 +232,43 @@
 			path = "Target Support Files/Pods-CampNet iOS";
 			sourceTree = "<group>";
 		};
-		E47E24784DA64C9971FE827BE00EA286 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				BA3E8E7D12338B4A5CFB4DD20BFF8651 /* Yaml */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		C14223F35E3FC2ACA0266E664607F695 /* Headers */ = {
+		93DE0E803396B824DE9F75CA3683CEC3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B03E2BD513E4FB2BFA96E4FABE61577 /* Pods-CampNet iOS-umbrella.h in Headers */,
+				BDA750A5542A5D826A35B1BE6A69574A /* KeychainAccess-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F62F06B2FCC7D4E4472F3579BD45BE39 /* Headers */ = {
+		ADF088AF437D1E8E6297C1F5527A5F16 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC140F207FCFDC04EAFAA0C4F40FC9C5 /* Yaml-umbrella.h in Headers */,
+				8CBA78FBC45DC8FBC1FEC9F5EA1B2DDD /* Yaml-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8194E7D40879905AA148533053667A6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BE03D74AA9496AA2B76668A79AEA46F /* Pods-CampNet iOS-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0BC5D951970D914DD3EA20E36C2ECBE7 /* Yaml */ = {
+		79F133B8DD1EFC03AF4A4A07737D7B9C /* Yaml */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5F44155502365179632EA50D8D3BE035 /* Build configuration list for PBXNativeTarget "Yaml" */;
+			buildConfigurationList = D3B10C73253A659889701614FD50EC46 /* Build configuration list for PBXNativeTarget "Yaml" */;
 			buildPhases = (
-				4CC4A4D4BF9F5776F52CFE6D59967F20 /* Sources */,
-				466DC9B0488C93EFA7015256A918D569 /* Frameworks */,
-				F62F06B2FCC7D4E4472F3579BD45BE39 /* Headers */,
+				F71B65A3A997B23A7E897DD06AC55998 /* Sources */,
+				3E580AA7D461989BE61CED3817B24034 /* Frameworks */,
+				ADF088AF437D1E8E6297C1F5527A5F16 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -215,25 +276,43 @@
 			);
 			name = Yaml;
 			productName = Yaml;
-			productReference = EB49300ED2C213C1EDD382F0A9EE59D1 /* Yaml.framework */;
+			productReference = 785EFA35FA9CCCCBC6373046C4CD2FFB /* Yaml.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		4298995CBC2D5AE052469013F529B8B0 /* Pods-CampNet iOS */ = {
+		8905DB6521F8FDC34752B69DEE3FDEB7 /* KeychainAccess */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B8D081033AB7DDDBDB8F7CB0A2A1B808 /* Build configuration list for PBXNativeTarget "Pods-CampNet iOS" */;
+			buildConfigurationList = 9FA048BBEA093CDB3F69C5B36929A5AF /* Build configuration list for PBXNativeTarget "KeychainAccess" */;
 			buildPhases = (
-				D153E56547B2CC34AB9CBD54B7A7396E /* Sources */,
-				D5434292719CEC754A8F11B2AA4B9666 /* Frameworks */,
-				C14223F35E3FC2ACA0266E664607F695 /* Headers */,
+				D26A24617ECAE11F29337DC26BE0E14F /* Sources */,
+				2DDC844C06D46A3907C42C9964BC7434 /* Frameworks */,
+				93DE0E803396B824DE9F75CA3683CEC3 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0B2E4DF09775538E76A59A6EC3CCD3D0 /* PBXTargetDependency */,
+			);
+			name = KeychainAccess;
+			productName = KeychainAccess;
+			productReference = 6D00CEE73B97CC18EB594C1D1C925ACB /* KeychainAccess.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C94B8BD7F94AB4806B8455E1244B5ED1 /* Pods-CampNet iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F78A2C6DA721418A257380554DE51D8 /* Build configuration list for PBXNativeTarget "Pods-CampNet iOS" */;
+			buildPhases = (
+				0656B30F41F82779EDCC6A7DEDDD9497 /* Sources */,
+				038B7DA70233EE1890AE69D35ABC8A93 /* Frameworks */,
+				D8194E7D40879905AA148533053667A6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2BC814B3502740B227D2932522F0D96E /* PBXTargetDependency */,
+				1EB9C20E93317E780F8C2681CE0B03DA /* PBXTargetDependency */,
 			);
 			name = "Pods-CampNet iOS";
 			productName = "Pods-CampNet iOS";
-			productReference = 7602AA00FD80273218B1D06334C28C8C /* Pods_CampNet_iOS.framework */;
+			productReference = 38C351B5A8E20F160EA833B748B8D93A /* Pods_CampNet_iOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -253,60 +332,109 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 6C329102EC9F0D7ADF00E495D58798A2 /* Products */;
+			productRefGroup = 3113E7FE3FC03ABF135D20A9C51742AD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4298995CBC2D5AE052469013F529B8B0 /* Pods-CampNet iOS */,
-				0BC5D951970D914DD3EA20E36C2ECBE7 /* Yaml */,
+				8905DB6521F8FDC34752B69DEE3FDEB7 /* KeychainAccess */,
+				C94B8BD7F94AB4806B8455E1244B5ED1 /* Pods-CampNet iOS */,
+				79F133B8DD1EFC03AF4A4A07737D7B9C /* Yaml */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4CC4A4D4BF9F5776F52CFE6D59967F20 /* Sources */ = {
+		0656B30F41F82779EDCC6A7DEDDD9497 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F229868A84512BA0A132F259A6037289 /* Yaml-dummy.m in Sources */,
-				49D5FA702E373EA6EA7A263F9240DFEB /* Yaml.swift in Sources */,
-				10A595C1638A66366C393ECA0EE56670 /* YAMLOperators.swift in Sources */,
-				74D15B82087AABC08D2D0BF7EBB4AB35 /* YAMLParser.swift in Sources */,
-				BD3EBBA45E9D21C6D17B017438CBFDCE /* YAMLRegex.swift in Sources */,
-				8F123638EBDB98076CB6E0BA7F93476C /* YAMLResult.swift in Sources */,
-				3302DDBD048FB49EC36E4DCE26E58EE6 /* YAMLTokenizer.swift in Sources */,
+				0BEFA697E75FFB1B7D13CC4388661D30 /* Pods-CampNet iOS-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D153E56547B2CC34AB9CBD54B7A7396E /* Sources */ = {
+		D26A24617ECAE11F29337DC26BE0E14F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DFE6FA62A8C019650363DB9F6DD38FD /* Pods-CampNet iOS-dummy.m in Sources */,
+				A967960EE4C1C1AF8A3FC3555BABDC58 /* Keychain.swift in Sources */,
+				D823270043210DD356225D7700FAF3E4 /* KeychainAccess-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F71B65A3A997B23A7E897DD06AC55998 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E82071B6E10804644D26DF13219634A4 /* Yaml-dummy.m in Sources */,
+				A0871062341BF6C6B1FC9156D0056D14 /* Yaml.swift in Sources */,
+				3CBBE816A27D61234A965D7A3ADF431F /* YAMLOperators.swift in Sources */,
+				A03A8E5510B97B71B054299CD3DAC9AE /* YAMLParser.swift in Sources */,
+				824E2301B7A76D5BF79338A58102373E /* YAMLRegex.swift in Sources */,
+				649777C6B530D61FCD718606EBB085DF /* YAMLResult.swift in Sources */,
+				80C6CBC64985F4A462CBBFFA80CC3661 /* YAMLTokenizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0B2E4DF09775538E76A59A6EC3CCD3D0 /* PBXTargetDependency */ = {
+		1EB9C20E93317E780F8C2681CE0B03DA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Yaml;
-			target = 0BC5D951970D914DD3EA20E36C2ECBE7 /* Yaml */;
-			targetProxy = AE0BBE345858B209CF8C86AB02449427 /* PBXContainerItemProxy */;
+			target = 79F133B8DD1EFC03AF4A4A07737D7B9C /* Yaml */;
+			targetProxy = 611D28B8F6DE31E272A2425ABF716DC5 /* PBXContainerItemProxy */;
+		};
+		2BC814B3502740B227D2932522F0D96E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KeychainAccess;
+			target = 8905DB6521F8FDC34752B69DEE3FDEB7 /* KeychainAccess */;
+			targetProxy = ACA7EBF59B2BE9582B827DF5873CABD5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		3817B0EB08EADAB6E6ADC7B357B49D2C /* Release */ = {
+		192C9D61C46CEB7E9E786772104FE7EC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C348E17097C2E643AC28BBAB94EA17E /* Pods-CampNet iOS.release.xcconfig */;
+			baseConfigurationReference = 861FD8F45F7A23AC90EB078772E7200D /* Yaml.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Yaml/Yaml-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Yaml/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Yaml/Yaml.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Yaml;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		29BB675B40D178E135FD6C03901FB06E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57547DF23A79CD41F4E9AEF033629355 /* Pods-CampNet iOS.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -319,7 +447,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -327,11 +455,45 @@
 				PRODUCT_NAME = Pods_CampNet_iOS;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
+		};
+		3DF179FB9FD49558E5A05DDE95B2AD94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A1DCB0E4CBD1748AC380EC6F9B2C8FA /* KeychainAccess.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KeychainAccess/KeychainAccess-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KeychainAccess/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/KeychainAccess/KeychainAccess.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = KeychainAccess;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		673254EEAF0B5BF4596080C749645884 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -373,9 +535,76 @@
 			};
 			name = Release;
 		};
-		A443385B54CAC00BEAADF537AC8D0CF8 /* Release */ = {
+		83A2742AC32BC2E3AEB154627E10AF73 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0FE4BF5B0879E7D7C3437F122991A238 /* Yaml.xcconfig */;
+			baseConfigurationReference = 3A1DCB0E4CBD1748AC380EC6F9B2C8FA /* KeychainAccess.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KeychainAccess/KeychainAccess-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KeychainAccess/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/KeychainAccess/KeychainAccess.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = KeychainAccess;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A15A401FCA100C202065627C4D336CC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C348E17097C2E643AC28BBAB94EA17E /* Pods-CampNet iOS.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CampNet iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CampNet_iOS;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		BF5C938EBDE0571B4CEEE80281467C1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 861FD8F45F7A23AC90EB078772E7200D /* Yaml.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -404,39 +633,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		D2BC388BD37ED5C0CFD73660EE593605 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0FE4BF5B0879E7D7C3437F122991A238 /* Yaml.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Yaml/Yaml-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Yaml/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Yaml/Yaml.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Yaml;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		E4F26E6EB105713A6A7E7E2E283AC2DF /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -482,42 +678,6 @@
 			};
 			name = Debug;
 		};
-		EBDBA61B967765AACF5665D41C017DB6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57547DF23A79CD41F4E9AEF033629355 /* Pods-CampNet iOS.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-CampNet iOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_CampNet_iOS;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -530,20 +690,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5F44155502365179632EA50D8D3BE035 /* Build configuration list for PBXNativeTarget "Yaml" */ = {
+		8F78A2C6DA721418A257380554DE51D8 /* Build configuration list for PBXNativeTarget "Pods-CampNet iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D2BC388BD37ED5C0CFD73660EE593605 /* Debug */,
-				A443385B54CAC00BEAADF537AC8D0CF8 /* Release */,
+				29BB675B40D178E135FD6C03901FB06E /* Debug */,
+				A15A401FCA100C202065627C4D336CC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B8D081033AB7DDDBDB8F7CB0A2A1B808 /* Build configuration list for PBXNativeTarget "Pods-CampNet iOS" */ = {
+		9FA048BBEA093CDB3F69C5B36929A5AF /* Build configuration list for PBXNativeTarget "KeychainAccess" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EBDBA61B967765AACF5665D41C017DB6 /* Debug */,
-				3817B0EB08EADAB6E6ADC7B357B49D2C /* Release */,
+				3DF179FB9FD49558E5A05DDE95B2AD94 /* Debug */,
+				83A2742AC32BC2E3AEB154627E10AF73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3B10C73253A659889701614FD50EC46 /* Build configuration list for PBXNativeTarget "Yaml" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				192C9D61C46CEB7E9E786772104FE7EC /* Debug */,
+				BF5C938EBDE0571B4CEEE80281467C1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

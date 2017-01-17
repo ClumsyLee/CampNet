@@ -7,4 +7,5 @@ target 'CampNet iOS' do
 
   # Pods for CampNet iOS
   pod 'Yaml'
+  pod 'KeychainAccess'
 end

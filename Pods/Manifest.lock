@@ -1,12 +1,15 @@
 PODS:
+  - KeychainAccess (3.0.1)
   - Yaml (3.3.1)
 
 DEPENDENCIES:
+  - KeychainAccess
   - Yaml
 
 SPEC CHECKSUMS:
+  KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
   Yaml: 18b2cf7301c4132e2bbb508a6921d2637ed3046c
 
-PODFILE CHECKSUM: b5a5e65ad20c5245dfb0c1ae38aa1476b4ad07b7
+PODFILE CHECKSUM: b26c744f4e24bd017887617f4afc90ec4e3bc188
 
 COCOAPODS: 1.1.1
