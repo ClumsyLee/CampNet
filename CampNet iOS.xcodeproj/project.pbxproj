@@ -14,7 +14,7 @@
 		0F14E77E1E2E3AAC0092494B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77D1E2E3AAC0092494B /* Assets.xcassets */; };
 		0F14E7811E2E3AAC0092494B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */; };
 		0FE597F11E2E90370013D222 /* Configs in Resources */ = {isa = PBXBuildFile; fileRef = 0FE597F01E2E90370013D222 /* Configs */; };
-		0FE597F51E2E94880013D222 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE597F41E2E94880013D222 /* Configuration.swift */; };
+		0FE597F51E2E94880013D222 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE597F41E2E94880013D222 /* Preference.swift */; };
 		C5C57DD9E74CCF5F63F8CE40 /* Pods_CampNet_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948334C8EC7C552ABC3C5BC9 /* Pods_CampNet_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +28,7 @@
 		0F14E7801E2E3AAC0092494B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F14E7821E2E3AAC0092494B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FE597F01E2E90370013D222 /* Configs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Configs; sourceTree = "<group>"; };
-		0FE597F41E2E94880013D222 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		0FE597F41E2E94880013D222 /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		6A23F4D7FAA0339315ACE5AF /* Pods-CampNet iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNet iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS.release.xcconfig"; sourceTree = "<group>"; };
 		948334C8EC7C552ABC3C5BC9 /* Pods_CampNet_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNet_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A43B4E09007B67A3955CB8B2 /* Pods-CampNet iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNet iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 				0F14E77D1E2E3AAC0092494B /* Assets.xcassets */,
 				0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */,
 				0F14E7821E2E3AAC0092494B /* Info.plist */,
-				0FE597F41E2E94880013D222 /* Configuration.swift */,
+				0FE597F41E2E94880013D222 /* Preference.swift */,
 			);
 			path = "CampNet iOS";
 			sourceTree = "<group>";
@@ -224,7 +224,7 @@
 			files = (
 				0F14E7791E2E3AAC0092494B /* SecondViewController.swift in Sources */,
 				0F14E7751E2E3AAC0092494B /* AppDelegate.swift in Sources */,
-				0FE597F51E2E94880013D222 /* Configuration.swift in Sources */,
+				0FE597F51E2E94880013D222 /* Preference.swift in Sources */,
 				0F14E7771E2E3AAC0092494B /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

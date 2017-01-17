@@ -9,7 +9,7 @@
 import Foundation
 import KeychainAccess
 
-class Configuration {
+class Preference {
     static let configIdentifierUserDefaultsKey = "configIdentifier"
     static let usernameUserDefaultsKey = "username"
     static let keychain = Keychain(service: Bundle.main.bundleIdentifier!)
