@@ -100,7 +100,7 @@
 					0F14E7701E2E3AAC0092494B = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 7494335NRW;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -270,6 +270,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0aaa0a46-2bf8-454a-b630-a0e4a110d66e";
+				PROVISIONING_PROFILE_SPECIFIER = "CampNet iOS";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -283,6 +285,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0aaa0a46-2bf8-454a-b630-a0e4a110d66e";
+				PROVISIONING_PROFILE_SPECIFIER = "CampNet iOS";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
