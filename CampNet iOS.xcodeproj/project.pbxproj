@@ -13,6 +13,8 @@
 		0F14E77C1E2E3AAC0092494B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77A1E2E3AAC0092494B /* Main.storyboard */; };
 		0F14E77E1E2E3AAC0092494B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77D1E2E3AAC0092494B /* Assets.xcassets */; };
 		0F14E7811E2E3AAC0092494B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */; };
+		0FE597F11E2E90370013D222 /* Configs in Resources */ = {isa = PBXBuildFile; fileRef = 0FE597F01E2E90370013D222 /* Configs */; };
+		C5C57DD9E74CCF5F63F8CE40 /* Pods_CampNet_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948334C8EC7C552ABC3C5BC9 /* Pods_CampNet_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,10 @@
 		0F14E77D1E2E3AAC0092494B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F14E7801E2E3AAC0092494B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F14E7821E2E3AAC0092494B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FE597F01E2E90370013D222 /* Configs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Configs; sourceTree = "<group>"; };
+		6A23F4D7FAA0339315ACE5AF /* Pods-CampNet iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNet iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS.release.xcconfig"; sourceTree = "<group>"; };
+		948334C8EC7C552ABC3C5BC9 /* Pods_CampNet_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNet_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A43B4E09007B67A3955CB8B2 /* Pods-CampNet iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNet iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5C57DD9E74CCF5F63F8CE40 /* Pods_CampNet_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +49,8 @@
 			children = (
 				0F14E7731E2E3AAC0092494B /* CampNet iOS */,
 				0F14E7721E2E3AAC0092494B /* Products */,
+				6B3B143E2E1BADB0BC4CDEFC /* Pods */,
+				8AB7AE96F2624D9FC641BB98 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +65,7 @@
 		0F14E7731E2E3AAC0092494B /* CampNet iOS */ = {
 			isa = PBXGroup;
 			children = (
+				0FE597F01E2E90370013D222 /* Configs */,
 				0F14E7741E2E3AAC0092494B /* AppDelegate.swift */,
 				0F14E7761E2E3AAC0092494B /* FirstViewController.swift */,
 				0F14E7781E2E3AAC0092494B /* SecondViewController.swift */,
@@ -67,6 +77,23 @@
 			path = "CampNet iOS";
 			sourceTree = "<group>";
 		};
+		6B3B143E2E1BADB0BC4CDEFC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A43B4E09007B67A3955CB8B2 /* Pods-CampNet iOS.debug.xcconfig */,
+				6A23F4D7FAA0339315ACE5AF /* Pods-CampNet iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8AB7AE96F2624D9FC641BB98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				948334C8EC7C552ABC3C5BC9 /* Pods_CampNet_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +101,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F14E7851E2E3AAC0092494B /* Build configuration list for PBXNativeTarget "CampNet iOS" */;
 			buildPhases = (
+				7D053606AA60EC11BE519219 /* [CP] Check Pods Manifest.lock */,
 				0F14E76D1E2E3AAC0092494B /* Sources */,
 				0F14E76E1E2E3AAC0092494B /* Frameworks */,
 				0F14E76F1E2E3AAC0092494B /* Resources */,
+				E0DFAEFC43BB3E3DE8F84787 /* [CP] Embed Pods Frameworks */,
+				613FC08E124A3078018C58EA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -127,6 +157,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FE597F11E2E90370013D222 /* Configs in Resources */,
 				0F14E7811E2E3AAC0092494B /* LaunchScreen.storyboard in Resources */,
 				0F14E77E1E2E3AAC0092494B /* Assets.xcassets in Resources */,
 				0F14E77C1E2E3AAC0092494B /* Main.storyboard in Resources */,
@@ -134,6 +165,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		613FC08E124A3078018C58EA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D053606AA60EC11BE519219 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E0DFAEFC43BB3E3DE8F84787 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0F14E76D1E2E3AAC0092494B /* Sources */ = {
@@ -263,6 +342,7 @@
 		};
 		0F14E7861E2E3AAC0092494B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A43B4E09007B67A3955CB8B2 /* Pods-CampNet iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7494335NRW;
@@ -278,6 +358,7 @@
 		};
 		0F14E7871E2E3AAC0092494B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A23F4D7FAA0339315ACE5AF /* Pods-CampNet iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7494335NRW;
@@ -310,6 +391,7 @@
 				0F14E7871E2E3AAC0092494B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

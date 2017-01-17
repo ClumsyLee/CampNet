@@ -1,0 +1,37 @@
+name: Tsinghua University
+
+ssids:
+  - Tsinghua
+  - Tsinghua-5G
+
+login:
+  method: POST
+  url: http://net.tsinghua.edu.cn/do_login.php
+  params:
+    action: login
+    username: "{username}"
+    password: "{MD5_HEX}{password_md5}"
+    ac_id: "1"
+  results:
+    ok: Login is successful.
+    already_online: IP has been online, please logout.
+    invalid_username: E2531
+    invalid_password: E2553
+
+check_status:
+  method: POST
+  url: http://net.tsinghua.edu.cn/do_login.php
+  params:
+    action: check_online
+  results:
+    online: online
+    offline: not_online
+
+logout:
+  method: POST
+  url: http://net.tsinghua.edu.cn/do_login.php
+  params:
+    action: logout
+  results:
+    ok: Logout is successful.
+    already_offline: You are not online.
