@@ -1,0 +1,6 @@
+framework module Pods_CampNet_iOS {
+  umbrella header "Pods-CampNet iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
