@@ -31,6 +31,8 @@ struct NetworkAction {
                 requestBinder: ((NSMutableURLRequest) -> Void)? = nil,
                 session: URLSession,
                 completionHandler: @escaping (Result) -> Void) {
+        print("Commiting action.")
+
         // Replace placeholders in url and param values.
         var urlString = self.url
         var params = self.params
@@ -90,6 +92,8 @@ struct NetworkAction {
             completionHandler(.error)
         }
         task.resume()
+        
+        print("Action commited.")
     }
 }
 
