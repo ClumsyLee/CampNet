@@ -10,6 +10,7 @@ import Foundation
 import Yaml
 
 class Configuration {
+    let identifier: String
     var ssids: [String]
     var loginAction: NetworkAction
     var statusAction: NetworkAction
@@ -17,6 +18,8 @@ class Configuration {
     
     init?(identifier: String) {
         print("Loading configuration (\(identifier)).")
+
+        self.identifier = identifier
 
         guard let url = Bundle.main.url(forResource: identifier, withExtension: "yaml", subdirectory: "Configs") else {
             print("Failed to find configuration (\(identifier)).")
