@@ -37,20 +37,7 @@ class Account: CustomStringConvertible {
         set { Account.keychain[identifier] = newValue }
     }
     var identifier: String { return "\(configurationIdentifier).\(username)" }
-    var placeholders: [String: String] {
-        return [
-            "username": username,
-            "password": password,
-            "password.md5": password.md5
-        ]
-    }
     var description: String { return "Account(\(identifier))" }
-    
-    init?(configurationIdentifier: String, username: String) {
-        self.configurationIdentifier = configurationIdentifier
-        guard let configuration = Configuration(identifier: self.configurationIdentifier) else {
-            return nil
-        }
 
     init(configuration: Configuration, username: String) {
         self.configuration = configuration
@@ -66,16 +53,21 @@ class Account: CustomStringConvertible {
     
     func login(requestBinder: ((NSMutableURLRequest) -> Void)? = nil, session: URLSession, completionHandler: @escaping (NetworkAction.Result) -> Void) {
         print("Login for \(self).")
+        let placeholders = [
+            "username": username,
+            "password": password,
+            "password.md5": password.md5
+        ]
         configuration.loginAction.commit(placeholders: placeholders, requestBinder: requestBinder, session: session, completionHandler: completionHandler)
     }
     
     func status(requestBinder: ((NSMutableURLRequest) -> Void)? = nil, session: URLSession, completionHandler: @escaping (NetworkAction.Result) -> Void) {
         print("Check status for \(self).")
-        configuration.statusAction.commit(placeholders: placeholders, requestBinder: requestBinder, session: session, completionHandler: completionHandler)
+        configuration.statusAction.commit(requestBinder: requestBinder, session: session, completionHandler: completionHandler)
     }
     
     func logout(requestBinder: ((NSMutableURLRequest) -> Void)? = nil, session: URLSession, completionHandler: @escaping (NetworkAction.Result) -> Void) {
         print("Logout for \(self).")
-        configuration.logoutAction.commit(placeholders: placeholders, requestBinder: requestBinder, session: session, completionHandler: completionHandler)
+        configuration.logoutAction.commit(requestBinder: requestBinder, session: session, completionHandler: completionHandler)
     }
 }
