@@ -19,6 +19,7 @@ struct NetworkAction {
         case online
         case offline
         case unauthorized
+        case arrears
         case error
     }
     
