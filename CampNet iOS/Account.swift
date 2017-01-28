@@ -55,18 +55,18 @@ class Account: CustomStringConvertible {
         self.username = username
     }
     
-    func login(session: URLSession, completionHandler: @escaping (NetworkAction.Result) -> Void) {
+    func login(requestBinder: ((NSMutableURLRequest) -> Void)? = nil, session: URLSession, completionHandler: @escaping (NetworkAction.Result) -> Void) {
         print("Login for \(self).")
-        configuration.loginAction.commit(placeholders: placeholders, session: session, completionHandler: completionHandler)
+        configuration.loginAction.commit(placeholders: placeholders, requestBinder: requestBinder, session: session, completionHandler: completionHandler)
     }
     
-    func status(session: URLSession, completionHandler: @escaping (NetworkAction.Result) -> Void) {
+    func status(requestBinder: ((NSMutableURLRequest) -> Void)? = nil, session: URLSession, completionHandler: @escaping (NetworkAction.Result) -> Void) {
         print("Check status for \(self).")
-        configuration.statusAction.commit(placeholders: placeholders, session: session, completionHandler: completionHandler)
+        configuration.statusAction.commit(placeholders: placeholders, requestBinder: requestBinder, session: session, completionHandler: completionHandler)
     }
     
-    func logout(session: URLSession, completionHandler: @escaping (NetworkAction.Result) -> Void) {
+    func logout(requestBinder: ((NSMutableURLRequest) -> Void)? = nil, session: URLSession, completionHandler: @escaping (NetworkAction.Result) -> Void) {
         print("Logout for \(self).")
-        configuration.logoutAction.commit(placeholders: placeholders, session: session, completionHandler: completionHandler)
+        configuration.logoutAction.commit(placeholders: placeholders, requestBinder: requestBinder, session: session, completionHandler: completionHandler)
     }
 }
