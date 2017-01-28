@@ -1,15 +1,24 @@
 PODS:
+  - Alamofire (4.2.0)
+  - hpple (0.2.0)
   - KeychainAccess (3.0.1)
+  - WKZombie (1.0.6):
+    - hpple (= 0.2.0)
   - Yaml (3.3.1)
 
 DEPENDENCIES:
+  - Alamofire
   - KeychainAccess
+  - WKZombie
   - Yaml
 
 SPEC CHECKSUMS:
+  Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  hpple: 3b765f96fc2cd56ad1a49aef6f7be5cb2aa64b57
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
+  WKZombie: c449302cf3b272d6aeeaa60547f0bd0eb847cef6
   Yaml: 18b2cf7301c4132e2bbb508a6921d2637ed3046c
 
-PODFILE CHECKSUM: b26c744f4e24bd017887617f4afc90ec4e3bc188
+PODFILE CHECKSUM: 5745cbf9675c5f4d2d2616d537f359ad4c7e7cec
 
 COCOAPODS: 1.1.1

@@ -1,0 +1,6 @@
+framework module WKZombie {
+  umbrella header "WKZombie-umbrella.h"
+
+  export *
+  module * { export * }
+}
