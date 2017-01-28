@@ -51,8 +51,17 @@ class Account: CustomStringConvertible {
         guard let configuration = Configuration(identifier: self.configurationIdentifier) else {
             return nil
         }
+
+    init(configuration: Configuration, username: String) {
         self.configuration = configuration
         self.username = username
+    }
+
+    convenience init?(configurationIdentifier: String, username: String) {
+        guard let configuration = Configuration(identifier: configurationIdentifier) else {
+            return nil
+        }
+        self.init(configuration: configuration, username: username)
     }
     
     func login(requestBinder: ((NSMutableURLRequest) -> Void)? = nil, session: URLSession, completionHandler: @escaping (NetworkAction.Result) -> Void) {
