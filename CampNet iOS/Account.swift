@@ -40,6 +40,7 @@ class Account: CustomStringConvertible {
     var description: String { return "Account(\(identifier))" }
 
     init(configuration: Configuration, username: String) {
+        self.configurationIdentifier = configuration.identifier
         self.configuration = configuration
         self.username = username
     }
