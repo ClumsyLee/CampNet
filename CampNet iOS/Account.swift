@@ -52,6 +52,17 @@ class Account: CustomStringConvertible {
         self.init(configuration: configuration, username: username)
     }
     
+    convenience init?(identifier: String) {
+        guard let range = identifier.range(of: ".", options: .backwards) else {
+            print("Invalid account identifier: ", identifier)
+            return nil
+        }
+
+        let configId = identifier.substring(to: range.lowerBound)
+        let username = identifier.substring(from: range.upperBound)
+        self.init(configurationIdentifier: configId, username: username)
+    }
+    
     func login(requestBinder: ((NSMutableURLRequest) -> Void)? = nil, session: URLSession, completionHandler: @escaping (NetworkAction.Result) -> Void) {
         print("Login for \(self).")
         let placeholders = [

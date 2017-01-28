@@ -59,7 +59,6 @@ struct NetworkAction {
 
         var request = oldRequest as URLRequest
         request.httpMethod = method
-        request.allowsCellularAccess = false
         
         do {
             request = try URLEncoding.queryString.encode(request, with: params)

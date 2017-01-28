@@ -15,6 +15,7 @@
 		0F14E7811E2E3AAC0092494B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */; };
 		0F4290FE1E3CB4B500336874 /* NetworkAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4290FD1E3CB4B500336874 /* NetworkAction.swift */; };
 		0F4291001E3D086500336874 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4290FF1E3D086500336874 /* Account.swift */; };
+		0F4291051E3D181900336874 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4291041E3D181900336874 /* Manager.swift */; };
 		0FE597F11E2E90370013D222 /* Configs in Resources */ = {isa = PBXBuildFile; fileRef = 0FE597F01E2E90370013D222 /* Configs */; };
 		0FE597F51E2E94880013D222 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE597F41E2E94880013D222 /* Preference.swift */; };
 		0FE597F71E2EAA610013D222 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE597F61E2EAA610013D222 /* Configuration.swift */; };
@@ -33,6 +34,7 @@
 		0F4290FD1E3CB4B500336874 /* NetworkAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAction.swift; sourceTree = "<group>"; };
 		0F4290FF1E3D086500336874 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		0F4291011E3D108600336874 /* CampNet iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CampNet iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		0F4291041E3D181900336874 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		0FE597F01E2E90370013D222 /* Configs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Configs; sourceTree = "<group>"; };
 		0FE597F41E2E94880013D222 /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		0FE597F61E2EAA610013D222 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				0FE597F61E2EAA610013D222 /* Configuration.swift */,
 				0F4290FD1E3CB4B500336874 /* NetworkAction.swift */,
 				0F4290FF1E3D086500336874 /* Account.swift */,
+				0F4291041E3D181900336874 /* Manager.swift */,
 				0F4291011E3D108600336874 /* CampNet iOS-Bridging-Header.h */,
 			);
 			path = "CampNet iOS";
@@ -237,6 +240,7 @@
 				0F14E7791E2E3AAC0092494B /* SecondViewController.swift in Sources */,
 				0FE597F71E2EAA610013D222 /* Configuration.swift in Sources */,
 				0F14E7751E2E3AAC0092494B /* AppDelegate.swift in Sources */,
+				0F4291051E3D181900336874 /* Manager.swift in Sources */,
 				0FE597F51E2E94880013D222 /* Preference.swift in Sources */,
 				0F4290FE1E3CB4B500336874 /* NetworkAction.swift in Sources */,
 				0F14E7771E2E3AAC0092494B /* FirstViewController.swift in Sources */,
