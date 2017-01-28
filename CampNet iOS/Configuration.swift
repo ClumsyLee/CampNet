@@ -9,12 +9,29 @@
 import Foundation
 import Yaml
 
-class Configuration {
+class Configuration: CustomStringConvertible {
+    static var pool: [String: Configuration] = [:]
+    static func load(identifier: String) -> Configuration? {
+        if let config = pool[identifier] {
+            print("Cached configuration (\(identifier)) found.")
+            return config
+        }
+
+        if let config = Configuration(identifier: identifier) {
+            Configuration.pool[identifier] = config  // Cache it.
+            return config
+        } else {
+            return nil
+        }
+    }
+    
     let identifier: String
     var ssids: [String]
     var loginAction: NetworkAction
     var statusAction: NetworkAction
     var logoutAction: NetworkAction
+    
+    var description: String { return "Configuration(\(identifier))" }
     
     init?(identifier: String) {
         print("Loading configuration (\(identifier)).")
@@ -47,7 +64,7 @@ class Configuration {
         self.loginAction = loginAction
         self.statusAction = statusAction
         self.logoutAction = logoutAction
-        
+
         print("Configuration (\(identifier)) loaded.")
     }
 }
