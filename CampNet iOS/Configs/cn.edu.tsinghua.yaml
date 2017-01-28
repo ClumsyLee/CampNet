@@ -10,15 +10,14 @@ login:
   params:
     action: login
     username: "{username}"
-    password: "{MD5_HEX}{password_md5}"
+    password: "{MD5_HEX}{password.md5}"
     ac_id: "1"
   results:
-    ok: Login is successful.
-    already_online: IP has been online, please logout.
-    invalid_username: E2531
-    invalid_password: E2553
+    online: Login is successful|IP has been online, please logout
+    unauthorized: E2531|E2553
+    arrears: E2616|E3001|E3004
 
-check_status:
+status:
   method: POST
   url: http://net.tsinghua.edu.cn/do_login.php
   params:
@@ -33,5 +32,4 @@ logout:
   params:
     action: logout
   results:
-    ok: Logout is successful.
-    already_offline: You are not online.
+    offline: Logout is successful|You are not online
