@@ -14,6 +14,7 @@
 		0F14E77E1E2E3AAC0092494B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77D1E2E3AAC0092494B /* Assets.xcassets */; };
 		0F14E7811E2E3AAC0092494B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */; };
 		0F4290FE1E3CB4B500336874 /* NetworkAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4290FD1E3CB4B500336874 /* NetworkAction.swift */; };
+		0F4291001E3D086500336874 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4290FF1E3D086500336874 /* Account.swift */; };
 		0FE597F11E2E90370013D222 /* Configs in Resources */ = {isa = PBXBuildFile; fileRef = 0FE597F01E2E90370013D222 /* Configs */; };
 		0FE597F51E2E94880013D222 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE597F41E2E94880013D222 /* Preference.swift */; };
 		0FE597F71E2EAA610013D222 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE597F61E2EAA610013D222 /* Configuration.swift */; };
@@ -30,6 +31,8 @@
 		0F14E7801E2E3AAC0092494B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F14E7821E2E3AAC0092494B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F4290FD1E3CB4B500336874 /* NetworkAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAction.swift; sourceTree = "<group>"; };
+		0F4290FF1E3D086500336874 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		0F4291011E3D108600336874 /* CampNet iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CampNet iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		0FE597F01E2E90370013D222 /* Configs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Configs; sourceTree = "<group>"; };
 		0FE597F41E2E94880013D222 /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		0FE597F61E2EAA610013D222 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
@@ -82,6 +85,8 @@
 				0FE597F41E2E94880013D222 /* Preference.swift */,
 				0FE597F61E2EAA610013D222 /* Configuration.swift */,
 				0F4290FD1E3CB4B500336874 /* NetworkAction.swift */,
+				0F4290FF1E3D086500336874 /* Account.swift */,
+				0F4291011E3D108600336874 /* CampNet iOS-Bridging-Header.h */,
 			);
 			path = "CampNet iOS";
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 					0F14E7701E2E3AAC0092494B = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 7494335NRW;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -234,6 +240,7 @@
 				0FE597F51E2E94880013D222 /* Preference.swift in Sources */,
 				0F4290FE1E3CB4B500336874 /* NetworkAction.swift in Sources */,
 				0F14E7771E2E3AAC0092494B /* FirstViewController.swift in Sources */,
+				0F4291001E3D086500336874 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +364,7 @@
 			baseConfigurationReference = A43B4E09007B67A3955CB8B2 /* Pods-CampNet iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 7494335NRW;
 				INFOPLIST_FILE = "CampNet iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -364,6 +372,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0aaa0a46-2bf8-454a-b630-a0e4a110d66e";
 				PROVISIONING_PROFILE_SPECIFIER = "CampNet iOS";
+				SWIFT_OBJC_BRIDGING_HEADER = "CampNet iOS/CampNet iOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -373,6 +383,7 @@
 			baseConfigurationReference = 6A23F4D7FAA0339315ACE5AF /* Pods-CampNet iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 7494335NRW;
 				INFOPLIST_FILE = "CampNet iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -380,6 +391,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0aaa0a46-2bf8-454a-b630-a0e4a110d66e";
 				PROVISIONING_PROFILE_SPECIFIER = "CampNet iOS";
+				SWIFT_OBJC_BRIDGING_HEADER = "CampNet iOS/CampNet iOS-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
