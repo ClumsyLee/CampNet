@@ -9,17 +9,25 @@
 import Foundation
 import NetworkExtension
 
-extension Configuration: Hashable {
+extension Configuration: Hashable, Comparable {
     var hashValue: Int { return identifier.hashValue }
+
     static func ==(lhs: Configuration, rhs: Configuration) -> Bool {
         return lhs.identifier == rhs.identifier
     }
+    static func <(lhs: Configuration, rhs: Configuration) -> Bool {
+        return lhs.identifier < rhs.identifier
+    }
 }
 
-extension Account: Hashable {
+extension Account: Hashable, Comparable {
     var hashValue: Int { return identifier.hashValue }
+
     static func ==(lhs: Account, rhs: Account) -> Bool {
         return lhs.identifier == rhs.identifier
+    }
+    static func <(lhs: Account, rhs: Account) -> Bool {
+        return lhs.identifier < rhs.identifier
     }
 }
 
@@ -209,6 +217,7 @@ class Manager {
 
         if accounts[account.configuration] != nil {
             accounts[account.configuration]?.append(account)
+            accounts[account.configuration]?.sort()
         } else {
             accounts[account.configuration] = [account]
         }
