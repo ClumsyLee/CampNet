@@ -68,3 +68,14 @@ class Configuration: CustomStringConvertible {
         print("Configuration (\(identifier)) loaded.")
     }
 }
+
+extension Configuration: Hashable, Comparable {
+    var hashValue: Int { return identifier.hashValue }
+    
+    static func ==(lhs: Configuration, rhs: Configuration) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
+    static func <(lhs: Configuration, rhs: Configuration) -> Bool {
+        return lhs.identifier < rhs.identifier
+    }
+}

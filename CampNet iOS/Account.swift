@@ -8,6 +8,7 @@
 
 import Foundation
 import KeychainAccess
+import NetworkExtension
 
 extension String  {
     var md5: String {
@@ -63,6 +64,14 @@ class Account: CustomStringConvertible {
         self.init(configurationIdentifier: configId, username: username)
     }
     
+    func canManage(ssid: String, isSecure: Bool) -> Bool {
+        return configuration.ssids.contains(ssid) && !isSecure
+    }
+    
+    func canManage(_ network: NEHotspotNetwork) -> Bool {
+        return canManage(ssid: network.ssid, isSecure: network.isSecure)
+    }
+    
     func login(requestBinder: ((NSMutableURLRequest) -> Void)? = nil, session: URLSession, completionHandler: @escaping (NetworkAction.Result) -> Void) {
         print("Login for \(self).")
         let placeholders = [
@@ -81,5 +90,16 @@ class Account: CustomStringConvertible {
     func logout(requestBinder: ((NSMutableURLRequest) -> Void)? = nil, session: URLSession, completionHandler: @escaping (NetworkAction.Result) -> Void) {
         print("Logout for \(self).")
         configuration.logoutAction.commit(requestBinder: requestBinder, session: session, completionHandler: completionHandler)
+    }
+}
+
+extension Account: Hashable, Comparable {
+    var hashValue: Int { return identifier.hashValue }
+    
+    static func ==(lhs: Account, rhs: Account) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
+    static func <(lhs: Account, rhs: Account) -> Bool {
+        return lhs.identifier < rhs.identifier
     }
 }

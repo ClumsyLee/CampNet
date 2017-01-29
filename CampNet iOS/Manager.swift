@@ -9,28 +9,6 @@
 import Foundation
 import NetworkExtension
 
-extension Configuration: Hashable, Comparable {
-    var hashValue: Int { return identifier.hashValue }
-
-    static func ==(lhs: Configuration, rhs: Configuration) -> Bool {
-        return lhs.identifier == rhs.identifier
-    }
-    static func <(lhs: Configuration, rhs: Configuration) -> Bool {
-        return lhs.identifier < rhs.identifier
-    }
-}
-
-extension Account: Hashable, Comparable {
-    var hashValue: Int { return identifier.hashValue }
-
-    static func ==(lhs: Account, rhs: Account) -> Bool {
-        return lhs.identifier == rhs.identifier
-    }
-    static func <(lhs: Account, rhs: Account) -> Bool {
-        return lhs.identifier < rhs.identifier
-    }
-}
-
 class Manager {
     enum Status {
         case online(Account)
@@ -40,20 +18,12 @@ class Manager {
     
     static let shared = Manager()
     
+    var account: Account?
+
     var session: URLSession
     var timeoutIntervalForRequest = 30.0
-    var accounts: [Configuration: [Account]] = [:]
-    var userDefaultKeyAccounts = "accounts"
-    
-    func selectedAccount(ssid: String) -> Account? {
-        for (configuration, accounts) in self.accounts {
-            if configuration.ssids.contains(ssid) && !accounts.isEmpty {
-                return accounts.first
-            }
-        }
-        return nil
-    }
-    
+    var userDefaultKeyAccount = "account"
+
     func register() -> Bool {
         print("Registering manager.")
 
@@ -68,10 +38,16 @@ class Manager {
                 guard let networkList = command.networkList else {
                     return
                 }
+                guard let account = self.account else {
+                    let response = command.createResponse(.success)
+                    response.setNetworkList([])
+                    response.deliver()
+                    return
+                }
 
                 var knownList: [NEHotspotNetwork] = []
                 for network in networkList {
-                    if let _ = self.selectedAccount(ssid: network.ssid) {
+                    if account.canManage(network) {
                         network.setConfidence(.low)
                         knownList.append(network)
                     }
@@ -86,22 +62,22 @@ class Manager {
                 guard let network = command.network else {
                     return
                 }
-                
-                if let account = self.selectedAccount(ssid: network.ssid) {
-                    account.status(requestBinder: requestBinder, session: self.session) { result in
-                        switch result {
-                        case .online, .offline:
-                            network.setConfidence(.high)
-                        default:
-                            network.setConfidence(.low)
-                        }
-
-                        let response = command.createResponse(.success)
-                        response.setNetwork(network)
-                        response.deliver()
-                    }
-                } else {
+                guard let account = self.account, account.canManage(network) else {
                     network.setConfidence(.none)
+                    let response = command.createResponse(.success)
+                    response.setNetwork(network)
+                    response.deliver()
+                    return
+                }
+                
+                account.status(requestBinder: requestBinder, session: self.session) { result in
+                    switch result {
+                    case .online, .offline:
+                        network.setConfidence(.high)
+                    default:
+                        network.setConfidence(.low)
+                    }
+
                     let response = command.createResponse(.success)
                     response.setNetwork(network)
                     response.deliver()
@@ -111,68 +87,69 @@ class Manager {
                 guard let network = command.network else {
                     return
                 }
-                
-                if let account = self.selectedAccount(ssid: network.ssid) {
-                    account.login(requestBinder: requestBinder, session: self.session) { result in
-                        let response: NEHotspotHelperResponse
-                        switch result {
-                        case .online:
-                            response = command.createResponse(.success)
-                        case .unauthorized:
-                            response = command.createResponse(.temporaryFailure)
-                        case .arrears:
-                            response = command.createResponse(.failure)
-                        default:
-                            response = command.createResponse(.temporaryFailure)
-                        }
-                        response.deliver()
-                    }
-                } else {
+                guard let account = self.account, account.canManage(network) else {
                     let response = command.createResponse(.unsupportedNetwork)
                     response.deliver()
+                    return
+                }
+
+                account.login(requestBinder: requestBinder, session: self.session) { result in
+                    let response: NEHotspotHelperResponse
+                    switch result {
+                    case .online:
+                        response = command.createResponse(.success)
+                    case .unauthorized:
+                        response = command.createResponse(.temporaryFailure)
+                    case .arrears:
+                        response = command.createResponse(.failure)
+                    default:
+                        response = command.createResponse(.temporaryFailure)
+                    }
+                    response.deliver()
+
                 }
                 
             case .maintain:
                 guard let network = command.network else {
                     return
                 }
-                
-                if let account = self.selectedAccount(ssid: network.ssid) {
-                    account.status(requestBinder: requestBinder, session: self.session) { result in
-                        let response: NEHotspotHelperResponse
-                        switch result {
-                        case .online:
-                            response = command.createResponse(.success)
-                        case .offline:
-                            response = command.createResponse(.authenticationRequired)
-                        default:
-                            response = command.createResponse(.failure)
-                        }
-                        response.deliver()
-                    }
-                } else {
+                guard let account = self.account, account.canManage(network) else {
                     let response = command.createResponse(.failure)
                     response.deliver()
+                    return
                 }
                 
+                account.status(requestBinder: requestBinder, session: self.session) { result in
+                    let response: NEHotspotHelperResponse
+                    switch result {
+                    case .online:
+                        response = command.createResponse(.success)
+                    case .offline:
+                        response = command.createResponse(.authenticationRequired)
+                    default:
+                        response = command.createResponse(.failure)
+                    }
+                    response.deliver()
+                }
+
             case .logoff:
                 guard let network = command.network else {
                     return
                 }
-                
-                if let account = self.selectedAccount(ssid: network.ssid) {
-                    account.logout(requestBinder: requestBinder, session: self.session) { result in
-                        let response: NEHotspotHelperResponse
-                        switch result {
-                        case .offline:
-                            response = command.createResponse(.success)
-                        default:
-                            response = command.createResponse(.failure)
-                        }
-                        response.deliver()
-                    }
-                } else {
+                guard let account = self.account, account.canManage(network) else {
                     let response = command.createResponse(.failure)
+                    response.deliver()
+                    return
+                }
+                
+                account.logout(requestBinder: requestBinder, session: self.session) { result in
+                    let response: NEHotspotHelperResponse
+                    switch result {
+                    case .offline:
+                        response = command.createResponse(.success)
+                    default:
+                        response = command.createResponse(.failure)
+                    }
                     response.deliver()
                 }
 
@@ -186,53 +163,20 @@ class Manager {
     }
 
     init() {
+        if let accountId = UserDefaults.standard.string(forKey: userDefaultKeyAccount) {
+            account = Account(identifier: accountId)
+        } else {
+            account = nil
+        }
+
         let config = URLSessionConfiguration.default
         config.allowsCellularAccess = false
         config.timeoutIntervalForRequest = timeoutIntervalForRequest
         session = URLSession(configuration: config)
-
-        // Load accounts.
-        let accountIds = UserDefaults.standard.stringArray(forKey: userDefaultKeyAccounts) ?? []
-        for accountId in accountIds  {
-            if let account = Account(identifier: accountId) {
-                add(account: account)
-            }
-        }
-        print("Accounts loaded:", accounts)
     }
     
     func save() {
-        var idArray: [String] = []
-        for (_, accounts) in self.accounts {
-            for account in accounts {
-                idArray.append(account.identifier)
-            }
-        }
-        UserDefaults.standard.set(idArray, forKey: userDefaultKeyAccounts)
-        print("Accounts saved:", accounts)
-    }
-    
-    func add(account: Account) {
-        print("Adding \(account).")
-
-        if accounts[account.configuration] != nil {
-            accounts[account.configuration]?.append(account)
-            accounts[account.configuration]?.sort()
-        } else {
-            accounts[account.configuration] = [account]
-        }
-    }
-    
-    func remove(account: Account) {
-        print("Removing \(account).")
-
-        if let index = accounts[account.configuration]?.index(of: account) {
-            accounts[account.configuration]?.remove(at: index)
-            
-            // Remove the configuration from accounts if needed.
-            if let accounts = self.accounts[account.configuration], accounts.isEmpty {
-                self.accounts[account.configuration] = nil
-            }
-        }
+        UserDefaults.standard.set(account?.identifier, forKey: userDefaultKeyAccount)
+        print("\(account) saved.")
     }
 }
