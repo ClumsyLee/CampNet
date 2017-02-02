@@ -28,20 +28,6 @@ billing:
     steps:
       - [2, 5]
 
-devices:
-  Android: android
-  IOS-Client: ios
-  iPad: ios.ipad
-  iPhone: ios.iphone
-  Linux: linux
-  Mac OS: macos
-  Unknown: unknown
-  Windows 7: windows.7
-  Windows 8: windows.8
-  Windows NT: windows
-  Windows XP: windows.xp
-  Windows-Client: windows.client
-
 sessions:
   usereg:
     - method: POST
