@@ -4,6 +4,7 @@ ssids:
 
 billing:
   student:
+    max_online_num: 3
     base: 0
     cycle: month
     steps:
@@ -12,6 +13,7 @@ billing:
       - [40, 3]
       - [50, 5]
   staff:
+    max_online_num: 3
     base: 12
     cycle: month
     steps:
@@ -20,6 +22,7 @@ billing:
       - [40, 3]
       - [50, 5]
   temporary:
+    max_online_num: 1
     base: 10
     cycle: day
     steps:
@@ -39,6 +42,19 @@ devices:
   Windows XP: windows.xp
   Windows-Client: windows.client
 
+sessions:
+  usereg:
+    - method: POST
+      url: http://usereg.tsinghua.edu.cn/do.php
+      params:
+        action: login
+        user_login_name: "{username}"
+        user_password: "{password.md5}"
+      expect: \Aok\Z
+      errors:
+        unauthorized.username: \A用户不存在\Z
+        unauthorized.password: \A密码错误\Z
+
 actions:
   login:
     - method: POST
@@ -48,183 +64,121 @@ actions:
         username: "{username}"
         password: "{MD5_HEX}{password.md5}"
         ac_id: "1"
-      result:
-        ok: Login is successful|IP has been online, please logout
-        unauthorized.username: E2531
-        unauthorized.password: E2553
-        arrears: E2616|E3001|E3004
+      expect: \A(Login is successful.|IP has been online, please logout.)\Z
+      errors:
+        unauthorized.username: \AE2531
+        unauthorized.password: \AE2553
+        arrears: \AE(2616|3001|3004)
+
+  status:
+    - url: http://net.tsinghua.edu.cn/rad_user_info.php
+      expect: \A\Z|\A([^,]*,){12}[^,]*\Z
+      post_hook: |
+        (resp) => {
+            if (!resp)
+                return {status: "offline"};
+
+            let info = resp.split(",");
+            return {
+                username: info[0],
+                start_time: new Date(Number(info[1]) * 1000),
+                usage: Number(info[3]),
+                total_usage: Number(info[6]),
+                ip: info[8],
+                balance: Number(info[11])
+            };
+        }
+
+  profile:
+    - session: usereg
+      url: http://usereg.tsinghua.edu.cn/user_info.php
+      errors:
+        session_timeout: \A请登录先\Z
+      vars:
+        billing: (//td[@class="maintd"])[4]
+        name: (//td[@class="maintd"])[6]
+        usage: number(substring-before((//td[@class="maintd"])[26], "("))
+        balance: number(substring-before((//td[@class="maintd"])[34], "元"))
+
+    - session: usereg
+      url: http://usereg.tsinghua.edu.cn/modify_online_num.php
+      errors:
+        session_timeout: \A请登录\Z
+      vars:
+        custom_max_online_num: number(//option[@selected]/@value)
+
+    - session: usereg
+      url: http://usereg.tsinghua.edu.cn/online_user_ipv4.php
+      errors:
+        session_timeout: \A请登录先\Z
+      vars:
+        id: //tr[position()>=2]//input/@value
+        ip: //tr[position()>=2]/td[2]
+        start_time: //tr[position()>=2]/td[3]
+        usage: //tr[position()>=2]/td[4]
+        mac: //tr[position()>=2]/td[8]
+        device: //tr[position()>=2]/td[12]
+      date_formatter: yyyy-MM-dd HH:mm:ss
+
+  modify_custom_max_online_num:
+    - session: usereg
+      method: POST
+      url: http://usereg.tsinghua.edu.cn/modify_online_num.php
+      params:
+        action: mod
+        user_max_online_num: "{new_custom_max_online_num}"
+      expect: 联网数已修改
+      errors:
+        session_timeout: \A请登录\Z
 
   login_ip:
-    - login_usereg
-    - method: POST
+    - session: usereg
+      method: POST
       url: http://usereg.tsinghua.edu.cn/ip_login.php
       params:
         n: "100"
         is_pad: "1"
         type: "10"
         action: do_login
-        user_ip: "{ip}"
+        user_ip: "{new_ip}"
         drop: "0"
-      result:
-        ok: 上线请求已发送
-
-  status:
-    - url: http://net.tsinghua.edu.cn/rad_user_info.php
-      result: |
-        let resp = $("body").text().trim();
-        let vars = resp.split(",");
-
-        let COLS = 13;
-        if (vars.length != COLS)
-            throw Error(`Expect: ${COLS} column(s), got ${vars.length}.`);
-
-        result = {
-            "username": vars[0],
-            "start_time": new Date(Number(vars[1]) * 1000),
-            "usage": Number(vars[3]),
-            "total_usage": Number(vars[6]),
-            "ip": vars[8],
-            "balance": Number(vars[11])
-        };
-
-        if (!result.username ||
-            isNaN(result.start_time.getTime()) ||
-            isNaN(result.usage) ||
-            isNaN(result.total_usage) ||
-            !result.ip ||
-            isNaN(result.balance))
-            throw Error(`Failed to parse the status (${resp})`);
-
-  profile:
-    - login_usereg
-    - url: http://usereg.tsinghua.edu.cn/user_info.php
-      result: |
-        let info = {};
-        let tds = $('.maintd').map(function() { return $(this).text().trim(); });
-
-        for (let i = 1; i < tds.length; i += 2)
-            info[tds[i - 1]] = tds[i];
-
-        let billing = info["用户组"];
-        if (!billing)
-            throw Error("Failed to get the billing group.");
-        switch (billing) {
-        case "在校生": billing = "student"; break;
-        // TODO: Add case for teacher group.
-        default:
-            throw Error("unsupported");
-        }
-
-        result = {
-            "name": info["姓名"],
-            "billing": billing,
-            "usage": parseFloat(info["使用流量(IPV4)"]),
-            "balance": parseFloat(info["可用余额"])
-        };
-
-        if (Number.isNaN(result.usage) ||
-            Number.isNaN(result.balance))
-            throw Error(`Failed to parse the profile page.`);
-
-    - url: http://usereg.tsinghua.edu.cn/modify_online_num.php
-      result: |
-        result = {
-            "max_online_num": Number($("option[selected]").val())
-        };
-
-        if (isNaN(result.max_online_num))
-            throw Error("Failed to get max_online_num.");
-
-    - url: http://usereg.tsinghua.edu.cn/online_user_ipv4.php
-      result: |
-        result = $("tr ~ tr").map(function() {
-            let row = $(this);
-            let texts = row.children().map(function() { return $(this).text().trim(); });
-            let COLS = 14;
-            if (texts.length != COLS)
-                throw Error(`Expect ${COLS} column(s), got ${texts.length}.`);
-
-            let id = row.find("input").val();
-            if (!id)
-                throw Error("Failed to get session id.");
-
-            let ip = texts[1];
-            if (!ip)
-                throw Error("Failed to get ip.");
-
-            let start_time_str = texts[2].replace(" ", "T") + "+08:00";
-            let start_time = new Date(start_time_str);
-            if (isNaN(start_time.getTime()))
-                throw Error(`Invalid start_time_str: ${start_time_str}.`);
-
-            let usage_str = texts[3];
-            if (!usage_str)
-                throw Error(`usage_str is empty.`);
-            let num = Number(usage_str.substr(0, usage_str.length - 1));
-            let unit = usage_str[usage_str.length - 1].toUpperCase();
-
-            let ratio = 1;
-            switch (unit) {
-              case 'B': ratio = 1;   break;
-              case 'K': ratio = 1e3; break;  // TODO: Check the ratio.
-              case 'M': ratio = 1e6; break;
-              case 'G': ratio = 1e9; break;
-            }
-            let usage = Math.round(num * ratio);
-
-            let mac = texts[7];
-            if (!mac)
-                mac = null;
-
-            let device = texts[11];
-            if (!device)
-                device = null
-
-            return {
-                "id": id,
-                "ip": ip,
-                "start_time": start_time,
-                "usage": usage,
-                "mac": mac,
-                "device": device
-            };
-        });
+      expect: 上线请求已发送
+      errors:
+        offcampus: \Aip地址非校内网段\Z
+        session_timeout: \A请登录先\Z
 
   logout_session:
-    - login_usereg
-    - method: POST
+    - session: usereg
+      method: POST
       url: http://usereg.tsinghua.edu.cn/online_user_ipv4.php
       params:
         action: drops
-        user_ip: "{session_id},"
-      result:
-        ok: 下线请求已发送
+        user_ip: "{session.id},"
+      expect: \A下线请求已发送\Z
+      errors:
+        session_timeout: \A请登录先\Z
 
-  # history:
-  #   - url: http://usereg.tsinghua.edu.cn/user_detail_list.php
-  #     params:
-  #       action: query
-  #       start_time: 2013-02-01
-  #       end_time: 2017-02-01
-  #       offset: 65536
+  history:
+    - session: usereg
+      url: http://usereg.tsinghua.edu.cn/user_detail_list.php
+      params:
+        action: query
+        start_time: "{start_time:yyyy-MM-dd}"
+        end_time: "{end_time:yyyy-MM-dd}"
+        offset: "1000000000"
+      vars:
+        ip: //tr[position()>=2]/td[2]
+        start_time: //tr[position()>=2]/td[3]
+        end_time: //tr[position()>=2]/td[4]
+        usage: //tr[position()>=2]/td[6]
+        cost: //tr[position()>=2]/td[8]
+        mac: //tr[position()>=2]/td[10]
+        device: //tr[position()>=2]/comment()[last()]
+      date_formatter: yyyy-MM-dd HH:mm:ss
 
   logout:
     method: POST
     url: http://net.tsinghua.edu.cn/do_login.php
     params:
       action: logout
-    result:
-      ok: Logout is successful|You are not online
-
-  customs:
-    login_usereg:
-      - method: POST
-        url: http://usereg.tsinghua.edu.cn/do.php
-        params:
-          action: login
-          user_login_name: "{username}"
-          user_password: "{password.md5}"
-        result:
-          ok: ok
-          unauthorized.username: 用户不存在
-          unauthorized.password: 密码错误
+    expect: \A(Logout is successful.|You are not online.)\Z  # TODO: Confirm.
