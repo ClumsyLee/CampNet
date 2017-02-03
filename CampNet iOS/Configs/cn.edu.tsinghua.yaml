@@ -85,6 +85,14 @@ actions:
         name: (//td[@class="maintd"])[6]
         usage: number(substring-before((//td[@class="maintd"])[26], "("))
         balance: number(substring-before((//td[@class="maintd"])[34], "元"))
+      post_hook: |
+        (resp, vars) => {
+            switch (vars.billing) {
+            case "在校生": vars.billing = "student"; break
+            default: throw Error("unauthorized.billing");
+            }
+            return vars;
+        }
 
     - session: usereg
       url: http://usereg.tsinghua.edu.cn/modify_online_num.php
