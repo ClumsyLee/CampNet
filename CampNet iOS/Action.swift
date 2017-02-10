@@ -312,10 +312,7 @@ class Action {
         }
     }
 
-    func commit(extraVars: [String: String] = [:], on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<[String: ActionResult]> {
-        // To ensure username & password are consistant across action entries.
-        let username = Defaults[.username]
-        let password = Defaults[.password]
+    func commit(username: String, password: String, extraVars: [String: String] = [:], on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<[String: ActionResult]> {
 
         var placeholders: [String: String] = [
             "username": username,

@@ -116,20 +116,20 @@ class Configuration {
         return ssids.contains(network.ssid) && !network.isSecure
     }
     
-    func login(on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<Void> {
+    func login(username: String, password: String, on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<Void> {
         guard let action = actions[.login] else {
             return Promise(error: CampNetError.invalidConfiguration)
         }
 
-        return action.commit(on: queue, requestBinder: requestBinder).then { _ in Promise(value: ()) }
+        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then { _ in Promise(value: ()) }
     }
     
-    func status(on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<Status> {
+    func status(username: String, password: String, on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<Status> {
         guard let action = actions[.status] else {
             return Promise(error: CampNetError.invalidConfiguration)
         }
 
-        return action.commit(on: queue, requestBinder: requestBinder).then(on: queue) { vars in
+        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { vars in
             guard let statusString = vars["status"]?.string else {
                 print("No status in vars.")
                 throw CampNetError.invalidConfiguration
@@ -159,12 +159,12 @@ class Configuration {
         }
     }
         
-    func profile(on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<Profile> {
+    func profile(username: String, password: String, on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<Profile> {
         guard let action = actions[.profile] else {
             return Promise(error: CampNetError.invalidConfiguration)
         }
         
-        return action.commit(on: queue, requestBinder: requestBinder).then(on: queue) { vars in
+        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { vars in
             guard let balance = vars["balance"]?.double else {
                 print("No balance in vars.")
                 throw CampNetError.invalidConfiguration
@@ -196,31 +196,31 @@ class Configuration {
         }
     }
     
-    func modifyCustomMaxOnlineNumber(newValue: Int, on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<Void> {
+    func modifyCustomMaxOnlineNumber(username: String, password: String, newValue: Int, on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<Void> {
         guard let action = actions[.modifyCustomMaxOnlineNum] else {
             return Promise(error: CampNetError.invalidConfiguration)
         }
         
-        return action.commit(extraVars: ["new_value": newValue.string], on: queue, requestBinder: requestBinder).then { _ in Promise(value: ()) }
+        return action.commit(username: username, password: password, extraVars: ["new_value": newValue.string], on: queue, requestBinder: requestBinder).then { _ in Promise(value: ()) }
     }
 
-    func login(ip: String, on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<Void> {
+    func login(username: String, password: String, ip: String, on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<Void> {
         guard let action = actions[.loginIp] else {
             return Promise(error: CampNetError.invalidConfiguration)
         }
         
-        return action.commit(extraVars: ["ip": ip], on: queue, requestBinder: requestBinder).then { _ in Promise(value: ()) }
+        return action.commit(username: username, password: password, extraVars: ["ip": ip], on: queue, requestBinder: requestBinder).then { _ in Promise(value: ()) }
     }
     
-    func logoutSession(ip: String, id: String?, on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<Void> {
+    func logoutSession(username: String, password: String, ip: String, id: String?, on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<Void> {
         guard let action = actions[.logoutSession] else {
             return Promise(error: CampNetError.invalidConfiguration)
         }
         
-        return action.commit(extraVars: ["ip": ip, "id": id ?? ""], on: queue, requestBinder: requestBinder).then { _ in Promise(value: ()) }
+        return action.commit(username: username, password: password, extraVars: ["ip": ip, "id": id ?? ""], on: queue, requestBinder: requestBinder).then { _ in Promise(value: ()) }
     }
 
-    func history(from: Date, to: Date, on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<[HistorySession]> {
+    func history(username: String, password: String, from: Date, to: Date, on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<[HistorySession]> {
         guard let action = actions[.history] else {
             return Promise(error: CampNetError.invalidConfiguration)
         }
@@ -236,7 +236,7 @@ class Configuration {
             "end_time.day": String(format: "%02d", to.day!)
         ]
 
-        return action.commit(extraVars: extraVars, on: queue, requestBinder: requestBinder).then(on: queue) { vars in
+        return action.commit(username: username, password: password, extraVars: extraVars, on: queue, requestBinder: requestBinder).then(on: queue) { vars in
             var sessions: [HistorySession] = []
             
             if let ips = vars["[ip]"]?.ipArray,
@@ -258,11 +258,11 @@ class Configuration {
         }
     }
     
-    func logout(on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<Void> {
+    func logout(username: String, password: String, on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<Void> {
         guard let action = actions[.logout] else {
             return Promise(error: CampNetError.invalidConfiguration)
         }
         
-        return action.commit(on: queue, requestBinder: requestBinder).then { _ in Promise(value: ()) }
+        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then { _ in Promise(value: ()) }
     }
 }
