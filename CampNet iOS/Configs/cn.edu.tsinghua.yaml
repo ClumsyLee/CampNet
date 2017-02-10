@@ -1,8 +1,9 @@
+
 ssids:
   - Tsinghua
   - Tsinghua-5G
 
-billing:
+billings:
   student:
     max_online_num: 3
     base: 0
@@ -28,19 +29,10 @@ billing:
     steps:
       - [2, 5]
 
-sessions:
-  usereg:
-    - method: POST
-      url: http://usereg.tsinghua.edu.cn/do.php
-      params:
-        action: login
-        user_login_name: "{username}"
-        user_password: "{password.md5}"
-      expect: \Aok\Z
-      errors:
-        unauthorized.username: \A用户不存在\Z
-        unauthorized.password: \A密码错误\Z
-
+# Default placeholders:
+# - username
+# - password
+# - password.md5
 actions:
   login:
     - method: POST
@@ -56,123 +48,190 @@ actions:
         unauthorized.password: \AE2553
         arrears: \AE(2616|3001|3004)
 
+  # Expected vars:
+  # - status (online | offline | offcampus) (*)
+  # - start_time
+  # - usage
   status:
     - url: http://net.tsinghua.edu.cn/rad_user_info.php
       expect: \A\Z|\A([^,]*,){12}[^,]*\Z
       post_hook: |
-        (resp) => {
-            if (!resp)
-                return {status: "offline"};
-
+        if (!resp) {
+            vars.status = "offline"
+        } else {
             let info = resp.split(",");
-            return {
-                username: info[0],
-                start_time: new Date(Number(info[1]) * 1000),
-                usage: Number(info[3]),
-                total_usage: Number(info[6]),
-                ip: info[8],
-                balance: Number(info[11])
-            };
+
+            vars.status = "online"
+            vars.username = info[0];
+            vars.start_time = info[1];
+            vars.usage = info[3]
         }
 
+  # Expected vars:
+  #   balance (*)
+  #   billing
+  #   name
+  #   usage
+  #   custom_max_online_num
+  #   [ip (*)]
+  #   [id]
+  #   [start_time]
+  #   [usage]
+  #   [mac]
+  #   [device]
   profile:
-    - session: usereg
-      url: http://usereg.tsinghua.edu.cn/user_info.php
+    - method: POST
+      url: http://usereg.tsinghua.edu.cn/do.php
+      params:
+        action: login
+        user_login_name: "{username}"
+        user_password: "{password.md5}"
+      expect: \Aok\Z
       errors:
-        session_timeout: \A请登录先\Z
+        unauthorized.username: \A用户不存在\Z
+        unauthorized.password: \A密码错误\Z
+
+    - url: http://usereg.tsinghua.edu.cn/user_info.php
       vars:
+        balance: (//td[@class="maintd"])[34]
         billing: (//td[@class="maintd"])[4]
         name: (//td[@class="maintd"])[6]
-        usage: number(substring-before((//td[@class="maintd"])[26], "("))
-        balance: number(substring-before((//td[@class="maintd"])[34], "元"))
+        usage: (//td[@class="maintd"])[26]
       post_hook: |
-        (resp, vars) => {
-            switch (vars.billing) {
-            case "在校生": vars.billing = "student"; break
-            default: throw Error("unauthorized.billing");
-            }
-            return vars;
+        switch (vars.billing) {
+        case "在校生": vars.billing = "student"; break
+        default: throw Error("unauthorized.billing");
         }
 
-    - session: usereg
-      url: http://usereg.tsinghua.edu.cn/modify_online_num.php
-      errors:
-        session_timeout: \A请登录\Z
+    - url: http://usereg.tsinghua.edu.cn/modify_online_num.php
       vars:
         custom_max_online_num: number(//option[@selected]/@value)
 
-    - session: usereg
-      url: http://usereg.tsinghua.edu.cn/online_user_ipv4.php
-      errors:
-        session_timeout: \A请登录先\Z
+    - url: http://usereg.tsinghua.edu.cn/online_user_ipv4.php
       vars:
-        id: //tr[position()>=2]//input/@value
-        ip: //tr[position()>=2]/td[2]
-        start_time: //tr[position()>=2]/td[3]
-        usage: //tr[position()>=2]/td[4]
-        mac: //tr[position()>=2]/td[8]
-        device: //tr[position()>=2]/td[12]
-      date_formatter: yyyy-MM-dd HH:mm:ss
+        "[ip]": //tr[position()>=2]/td[2]
+        "[id]": //tr[position()>=2]//input/@value
+        "[start_time]": //tr[position()>=2]/td[3]
+        "[usage]": //tr[position()>=2]/td[4]
+        "[mac]": //tr[position()>=2]/td[8]
+        "[device]": //tr[position()>=2]/td[12]
 
+  # Extra placeholders:
+  #   new_value
   modify_custom_max_online_num:
-    - session: usereg
-      method: POST
+    - method: POST
+      url: http://usereg.tsinghua.edu.cn/do.php
+      params:
+        action: login
+        user_login_name: "{username}"
+        user_password: "{password.md5}"
+      expect: \Aok\Z
+      errors:
+        unauthorized.username: \A用户不存在\Z
+        unauthorized.password: \A密码错误\Z
+
+    - method: POST
       url: http://usereg.tsinghua.edu.cn/modify_online_num.php
       params:
         action: mod
-        user_max_online_num: "{new_custom_max_online_num}"
+        user_max_online_num: "{new_value}"
       expect: 联网数已修改
-      errors:
-        session_timeout: \A请登录\Z
 
+  # Extra placeholders:
+  #   ip
   login_ip:
-    - session: usereg
-      method: POST
+    - method: POST
+      url: http://usereg.tsinghua.edu.cn/do.php
+      params:
+        action: login
+        user_login_name: "{username}"
+        user_password: "{password.md5}"
+      expect: \Aok\Z
+      errors:
+        unauthorized.username: \A用户不存在\Z
+        unauthorized.password: \A密码错误\Z
+
+    - method: POST
       url: http://usereg.tsinghua.edu.cn/ip_login.php
       params:
         n: "100"
         is_pad: "1"
         type: "10"
         action: do_login
-        user_ip: "{new_ip}"
+        user_ip: "{ip}"
         drop: "0"
       expect: 上线请求已发送
       errors:
         offcampus: \Aip地址非校内网段\Z
-        session_timeout: \A请登录先\Z
 
+  # Extra placeholders:
+  #   ip
+  #   id
   logout_session:
-    - session: usereg
-      method: POST
+    - method: POST
+      url: http://usereg.tsinghua.edu.cn/do.php
+      params:
+        action: login
+        user_login_name: "{username}"
+        user_password: "{password.md5}"
+      expect: \Aok\Z
+      errors:
+        unauthorized.username: \A用户不存在\Z
+        unauthorized.password: \A密码错误\Z
+
+    - method: POST
       url: http://usereg.tsinghua.edu.cn/online_user_ipv4.php
       params:
         action: drops
-        user_ip: "{session.id},"
+        user_ip: "{id},"
       expect: \A下线请求已发送\Z
-      errors:
-        session_timeout: \A请登录先\Z
 
+  # Extra placeholders:
+  #   start_time.year
+  #   start_time.month
+  #   start_time.day
+  #   end_time.year
+  #   end_time.month
+  #   end_time.day
+  #
+  # Expected vars:
+  #   [ip] (*)
+  #   [start_time] (*)
+  #   [end_time] (*)
+  #   [usage]
+  #   [cost]
+  #   [mac]
+  #   [device]
   history:
-    - session: usereg
-      url: http://usereg.tsinghua.edu.cn/user_detail_list.php
+    - method: POST
+      url: http://usereg.tsinghua.edu.cn/do.php
+      params:
+        action: login
+        user_login_name: "{username}"
+        user_password: "{password.md5}"
+      expect: \Aok\Z
+      errors:
+        unauthorized.username: \A用户不存在\Z
+        unauthorized.password: \A密码错误\Z
+
+    - url: http://usereg.tsinghua.edu.cn/user_detail_list.php
       params:
         action: query
-        start_time: "{start_time:yyyy-MM-dd}"
-        end_time: "{end_time:yyyy-MM-dd}"
+        start_time: "{start_time.year}-{start_time.month}-{start_time.day}"
+        end_time: "{end_time.year}-{start_time.month}-{start_time.day}"
         offset: "1000000000"
       vars:
-        ip: //tr[position()>=2]/td[2]
-        start_time: //tr[position()>=2]/td[3]
-        end_time: //tr[position()>=2]/td[4]
-        usage: //tr[position()>=2]/td[6]
-        cost: //tr[position()>=2]/td[8]
-        mac: //tr[position()>=2]/td[10]
-        device: //tr[position()>=2]/comment()[last()]
-      date_formatter: yyyy-MM-dd HH:mm:ss
+        "[ip]": //tr[position()>=2]/td[2]
+        "[start_time]": //tr[position()>=2]/td[3]
+        "[end_time]": //tr[position()>=2]/td[4]
+        "[usage]": //tr[position()>=2]/td[6]
+        "[cost]": //tr[position()>=2]/td[8]
+        "[mac]": //tr[position()>=2]/td[10]
+        "[device]": //tr[position()>=2]/comment()[last()]
 
   logout:
-    method: POST
-    url: http://net.tsinghua.edu.cn/do_login.php
-    params:
-      action: logout
-    expect: \A(Logout is successful.|You are not online.)\Z  # TODO: Confirm.
+    - method: POST
+      url: http://net.tsinghua.edu.cn/do_login.php
+      params:
+        action: logout
+      expect: \A(Logout is successful.|You are not online.)\Z  # TODO: Confirm.

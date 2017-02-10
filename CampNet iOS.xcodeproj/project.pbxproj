@@ -13,11 +13,14 @@
 		0F14E77C1E2E3AAC0092494B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77A1E2E3AAC0092494B /* Main.storyboard */; };
 		0F14E77E1E2E3AAC0092494B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77D1E2E3AAC0092494B /* Assets.xcassets */; };
 		0F14E7811E2E3AAC0092494B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */; };
-		0F4290FE1E3CB4B500336874 /* NetworkAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4290FD1E3CB4B500336874 /* NetworkAction.swift */; };
-		0F4291001E3D086500336874 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4290FF1E3D086500336874 /* Account.swift */; };
+		0F2934681E4B6ABE0094B5A3 /* ActionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2934671E4B6ABE0094B5A3 /* ActionResult.swift */; };
+		0F4290FE1E3CB4B500336874 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4290FD1E3CB4B500336874 /* Action.swift */; };
 		0F4291051E3D181900336874 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4291041E3D181900336874 /* Manager.swift */; };
+		0FE1BBEC1E43D3B300039D20 /* Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1BBEB1E43D3B300039D20 /* Billing.swift */; };
+		0FE1BBF51E44586400039D20 /* Configs.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FE1BBF71E44586400039D20 /* Configs.strings */; };
+		0FE1BBFB1E446B1B00039D20 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1BBFA1E446B1B00039D20 /* Utilities.swift */; };
 		0FE597F11E2E90370013D222 /* Configs in Resources */ = {isa = PBXBuildFile; fileRef = 0FE597F01E2E90370013D222 /* Configs */; };
-		0FE597F51E2E94880013D222 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE597F41E2E94880013D222 /* Preference.swift */; };
+		0FE597F51E2E94880013D222 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE597F41E2E94880013D222 /* UserDefaults.swift */; };
 		0FE597F71E2EAA610013D222 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE597F61E2EAA610013D222 /* Configuration.swift */; };
 		C5C57DD9E74CCF5F63F8CE40 /* Pods_CampNet_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948334C8EC7C552ABC3C5BC9 /* Pods_CampNet_iOS.framework */; };
 /* End PBXBuildFile section */
@@ -31,12 +34,18 @@
 		0F14E77D1E2E3AAC0092494B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F14E7801E2E3AAC0092494B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F14E7821E2E3AAC0092494B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0F4290FD1E3CB4B500336874 /* NetworkAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAction.swift; sourceTree = "<group>"; };
-		0F4290FF1E3D086500336874 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		0F2934671E4B6ABE0094B5A3 /* ActionResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionResult.swift; sourceTree = "<group>"; };
+		0F4290FD1E3CB4B500336874 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		0F4291011E3D108600336874 /* CampNet iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CampNet iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		0F4291041E3D181900336874 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		0FE1BBEB1E43D3B300039D20 /* Billing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Billing.swift; sourceTree = "<group>"; };
+		0FE1BBEF1E43D70A00039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		0FE1BBF01E43D70A00039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		0FE1BBF61E44586400039D20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Configs.strings; sourceTree = "<group>"; };
+		0FE1BBF91E445BA200039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Configs.strings"; sourceTree = "<group>"; };
+		0FE1BBFA1E446B1B00039D20 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		0FE597F01E2E90370013D222 /* Configs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Configs; sourceTree = "<group>"; };
-		0FE597F41E2E94880013D222 /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
+		0FE597F41E2E94880013D222 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		0FE597F61E2EAA610013D222 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		6A23F4D7FAA0339315ACE5AF /* Pods-CampNet iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNet iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS.release.xcconfig"; sourceTree = "<group>"; };
 		948334C8EC7C552ABC3C5BC9 /* Pods_CampNet_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNet_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,12 +93,15 @@
 				0F14E77D1E2E3AAC0092494B /* Assets.xcassets */,
 				0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */,
 				0F14E7821E2E3AAC0092494B /* Info.plist */,
-				0FE597F41E2E94880013D222 /* Preference.swift */,
+				0FE1BBEB1E43D3B300039D20 /* Billing.swift */,
+				0F4290FD1E3CB4B500336874 /* Action.swift */,
+				0F2934671E4B6ABE0094B5A3 /* ActionResult.swift */,
 				0FE597F61E2EAA610013D222 /* Configuration.swift */,
-				0F4290FD1E3CB4B500336874 /* NetworkAction.swift */,
-				0F4290FF1E3D086500336874 /* Account.swift */,
+				0FE597F41E2E94880013D222 /* UserDefaults.swift */,
 				0F4291041E3D181900336874 /* Manager.swift */,
 				0F4291011E3D108600336874 /* CampNet iOS-Bridging-Header.h */,
+				0FE1BBFA1E446B1B00039D20 /* Utilities.swift */,
+				0FE1BBF71E44586400039D20 /* Configs.strings */,
 			);
 			path = "CampNet iOS";
 			sourceTree = "<group>";
@@ -159,6 +171,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 0F14E7681E2E3AAC0092494B;
 			productRefGroup = 0F14E7721E2E3AAC0092494B /* Products */;
@@ -177,6 +190,7 @@
 			files = (
 				0FE597F11E2E90370013D222 /* Configs in Resources */,
 				0F14E7811E2E3AAC0092494B /* LaunchScreen.storyboard in Resources */,
+				0FE1BBF51E44586400039D20 /* Configs.strings in Resources */,
 				0F14E77E1E2E3AAC0092494B /* Assets.xcassets in Resources */,
 				0F14E77C1E2E3AAC0092494B /* Main.storyboard in Resources */,
 			);
@@ -241,10 +255,12 @@
 				0FE597F71E2EAA610013D222 /* Configuration.swift in Sources */,
 				0F14E7751E2E3AAC0092494B /* AppDelegate.swift in Sources */,
 				0F4291051E3D181900336874 /* Manager.swift in Sources */,
-				0FE597F51E2E94880013D222 /* Preference.swift in Sources */,
-				0F4290FE1E3CB4B500336874 /* NetworkAction.swift in Sources */,
+				0FE597F51E2E94880013D222 /* UserDefaults.swift in Sources */,
+				0F4290FE1E3CB4B500336874 /* Action.swift in Sources */,
 				0F14E7771E2E3AAC0092494B /* FirstViewController.swift in Sources */,
-				0F4291001E3D086500336874 /* Account.swift in Sources */,
+				0F2934681E4B6ABE0094B5A3 /* ActionResult.swift in Sources */,
+				0FE1BBEC1E43D3B300039D20 /* Billing.swift in Sources */,
+				0FE1BBFB1E446B1B00039D20 /* Utilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +271,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0F14E77B1E2E3AAC0092494B /* Base */,
+				0FE1BBEF1E43D70A00039D20 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -263,8 +280,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				0F14E7801E2E3AAC0092494B /* Base */,
+				0FE1BBF01E43D70A00039D20 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		0FE1BBF71E44586400039D20 /* Configs.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0FE1BBF61E44586400039D20 /* Base */,
+				0FE1BBF91E445BA200039D20 /* zh-Hans */,
+			);
+			name = Configs.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -274,6 +301,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -324,6 +352,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

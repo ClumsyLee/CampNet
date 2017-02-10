@@ -1,0 +1,16 @@
+/* 
+  Configs.strings
+  CampNet iOS
+
+  Created by Thomas Lee on 2017/2/3.
+  Copyright © 2017年 Sihan Li. All rights reserved.
+*/
+
+/* Configuration name */
+"cn.edu.tsinghua" = "清华大学";
+
+/* Billing group name */
+"cn.edu.tsinghua.billing.student" = "在校生";
+
+/* Billing group name */
+"cn.edu.tsinghua.billing.staff" = "在职教工";

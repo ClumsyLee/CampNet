@@ -6,6 +6,10 @@ target 'CampNet iOS' do
   use_frameworks!
 
   # Pods for CampNet iOS
+  pod 'Alamofire'
+  pod 'Kanna'
   pod 'KeychainAccess'
+  pod 'PromiseKit'
+  pod 'SwiftyUserDefaults'
   pod 'Yaml'
 end
