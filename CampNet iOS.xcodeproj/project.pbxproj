@@ -16,6 +16,7 @@
 		0F2934681E4B6ABE0094B5A3 /* ActionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2934671E4B6ABE0094B5A3 /* ActionResult.swift */; };
 		0F4290FE1E3CB4B500336874 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4290FD1E3CB4B500336874 /* Action.swift */; };
 		0F4291051E3D181900336874 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4291041E3D181900336874 /* Manager.swift */; };
+		0FDD55791E503C7C0003C4EA /* ObjectiveGit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FDD55781E503C7C0003C4EA /* ObjectiveGit.framework */; };
 		0FE1BBEC1E43D3B300039D20 /* Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1BBEB1E43D3B300039D20 /* Billing.swift */; };
 		0FE1BBF51E44586400039D20 /* Configurations.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FE1BBF71E44586400039D20 /* Configurations.strings */; };
 		0FE1BBFB1E446B1B00039D20 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1BBFA1E446B1B00039D20 /* Utilities.swift */; };
@@ -38,6 +39,7 @@
 		0F4290FD1E3CB4B500336874 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		0F4291011E3D108600336874 /* CampNet iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CampNet iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		0F4291041E3D181900336874 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		0FDD55781E503C7C0003C4EA /* ObjectiveGit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectiveGit.framework; path = Carthage/Build/iOS/ObjectiveGit.framework; sourceTree = "<group>"; };
 		0FE1BBEB1E43D3B300039D20 /* Billing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Billing.swift; sourceTree = "<group>"; };
 		0FE1BBEF1E43D70A00039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		0FE1BBF01E43D70A00039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5C57DD9E74CCF5F63F8CE40 /* Pods_CampNet_iOS.framework in Frameworks */,
+				0FDD55791E503C7C0003C4EA /* ObjectiveGit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +121,7 @@
 		8AB7AE96F2624D9FC641BB98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0FDD55781E503C7C0003C4EA /* ObjectiveGit.framework */,
 				948334C8EC7C552ABC3C5BC9 /* Pods_CampNet_iOS.framework */,
 			);
 			name = Frameworks;
@@ -136,6 +140,7 @@
 				0F14E76F1E2E3AAC0092494B /* Resources */,
 				E0DFAEFC43BB3E3DE8F84787 /* [CP] Embed Pods Frameworks */,
 				613FC08E124A3078018C58EA /* [CP] Copy Pods Resources */,
+				0FDD557A1E503CE10003C4EA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -199,6 +204,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0FDD557A1E503CE10003C4EA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ObjectiveGit.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		613FC08E124A3078018C58EA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -399,6 +418,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 7494335NRW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"$(SRCROOT)/Carthage/Build/iOS/ObjectiveGit.framework/Headers/",
+				);
 				INFOPLIST_FILE = "CampNet iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS";
@@ -418,6 +445,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 7494335NRW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(SDKROOT)/usr/include/libxml2",
+					"$(SRCROOT)/Carthage/Build/iOS/ObjectiveGit.framework/Headers/",
+				);
 				INFOPLIST_FILE = "CampNet iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS";
