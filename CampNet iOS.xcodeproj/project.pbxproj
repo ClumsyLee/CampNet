@@ -17,9 +17,9 @@
 		0F4290FE1E3CB4B500336874 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4290FD1E3CB4B500336874 /* Action.swift */; };
 		0F4291051E3D181900336874 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4291041E3D181900336874 /* Manager.swift */; };
 		0FE1BBEC1E43D3B300039D20 /* Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1BBEB1E43D3B300039D20 /* Billing.swift */; };
-		0FE1BBF51E44586400039D20 /* Configs.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FE1BBF71E44586400039D20 /* Configs.strings */; };
+		0FE1BBF51E44586400039D20 /* Configurations.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FE1BBF71E44586400039D20 /* Configurations.strings */; };
 		0FE1BBFB1E446B1B00039D20 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1BBFA1E446B1B00039D20 /* Utilities.swift */; };
-		0FE597F11E2E90370013D222 /* Configs in Resources */ = {isa = PBXBuildFile; fileRef = 0FE597F01E2E90370013D222 /* Configs */; };
+		0FE597F11E2E90370013D222 /* Configurations in Resources */ = {isa = PBXBuildFile; fileRef = 0FE597F01E2E90370013D222 /* Configurations */; };
 		0FE597F51E2E94880013D222 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE597F41E2E94880013D222 /* UserDefaults.swift */; };
 		0FE597F71E2EAA610013D222 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE597F61E2EAA610013D222 /* Configuration.swift */; };
 		C5C57DD9E74CCF5F63F8CE40 /* Pods_CampNet_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948334C8EC7C552ABC3C5BC9 /* Pods_CampNet_iOS.framework */; };
@@ -41,10 +41,10 @@
 		0FE1BBEB1E43D3B300039D20 /* Billing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Billing.swift; sourceTree = "<group>"; };
 		0FE1BBEF1E43D70A00039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		0FE1BBF01E43D70A00039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		0FE1BBF61E44586400039D20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Configs.strings; sourceTree = "<group>"; };
-		0FE1BBF91E445BA200039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Configs.strings"; sourceTree = "<group>"; };
+		0FE1BBF61E44586400039D20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Configurations.strings; sourceTree = "<group>"; };
+		0FE1BBF91E445BA200039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Configurations.strings"; sourceTree = "<group>"; };
 		0FE1BBFA1E446B1B00039D20 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		0FE597F01E2E90370013D222 /* Configs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Configs; sourceTree = "<group>"; };
+		0FE597F01E2E90370013D222 /* Configurations */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Configurations; sourceTree = "<group>"; };
 		0FE597F41E2E94880013D222 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		0FE597F61E2EAA610013D222 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		6A23F4D7FAA0339315ACE5AF /* Pods-CampNet iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNet iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 		0F14E7731E2E3AAC0092494B /* CampNet iOS */ = {
 			isa = PBXGroup;
 			children = (
-				0FE597F01E2E90370013D222 /* Configs */,
+				0FE597F01E2E90370013D222 /* Configurations */,
 				0F14E7741E2E3AAC0092494B /* AppDelegate.swift */,
 				0F14E7761E2E3AAC0092494B /* FirstViewController.swift */,
 				0F14E7781E2E3AAC0092494B /* SecondViewController.swift */,
@@ -101,7 +101,7 @@
 				0F4291041E3D181900336874 /* Manager.swift */,
 				0F4291011E3D108600336874 /* CampNet iOS-Bridging-Header.h */,
 				0FE1BBFA1E446B1B00039D20 /* Utilities.swift */,
-				0FE1BBF71E44586400039D20 /* Configs.strings */,
+				0FE1BBF71E44586400039D20 /* Configurations.strings */,
 			);
 			path = "CampNet iOS";
 			sourceTree = "<group>";
@@ -188,9 +188,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FE597F11E2E90370013D222 /* Configs in Resources */,
+				0FE597F11E2E90370013D222 /* Configurations in Resources */,
 				0F14E7811E2E3AAC0092494B /* LaunchScreen.storyboard in Resources */,
-				0FE1BBF51E44586400039D20 /* Configs.strings in Resources */,
+				0FE1BBF51E44586400039D20 /* Configurations.strings in Resources */,
 				0F14E77E1E2E3AAC0092494B /* Assets.xcassets in Resources */,
 				0F14E77C1E2E3AAC0092494B /* Main.storyboard in Resources */,
 			);
@@ -285,13 +285,13 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		0FE1BBF71E44586400039D20 /* Configs.strings */ = {
+		0FE1BBF71E44586400039D20 /* Configurations.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				0FE1BBF61E44586400039D20 /* Base */,
 				0FE1BBF91E445BA200039D20 /* zh-Hans */,
 			);
-			name = Configs.strings;
+			name = Configurations.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
