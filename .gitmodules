@@ -1,0 +1,3 @@
+[submodule "CampNet iOS/Configurations"]
+	path = CampNet iOS/Configurations
+	url = git@github.com:ThomasLee969/CampNet-Configurations.git
