@@ -8,22 +8,33 @@
 
 import Foundation
 import NetworkExtension
+
+//import PromiseKit
 //
 //class Manager {
 //    static let shared = Manager()
-//    
+//
+//    var queue: DispatchQueue
 //    var configuration: Configuration
+//
+//    init() {
+//
+//    }
+//
+//    func login(requestBinder: RequestBinder? = nil) -> Promise<Void> {
+//
+//    }
 //}
 
 //
 //    static let shared = Manager()
-//    
+//
 //    var account: Account?
 //
 //    var session: URLSession
 //    var timeoutIntervalForRequest = 30.0
 //    var userDefaultKeyAccount = "account"
-//    
+//
 //    var webView: UIWebView? = nil
 //
 //    func register() -> Bool {
@@ -56,7 +67,7 @@ import NetworkExtension
 //                    }
 //                }
 //                print("Known networks: \(knownList).")
-//                
+//
 //                let response = command.createResponse(.success)
 //                response.setNetworkList(knownList)
 //                response.deliver()
@@ -72,7 +83,7 @@ import NetworkExtension
 //                    response.deliver()
 //                    return
 //                }
-//                
+//
 //                account.status(requestBinder: requestBinder, session: self.session) { result in
 //                    switch result {
 ////                    case .online, .offline:
@@ -85,7 +96,7 @@ import NetworkExtension
 //                    response.setNetwork(network)
 //                    response.deliver()
 //                }
-//                
+//
 //            case .authenticate:
 //                guard let network = command.network else {
 //                    return
@@ -95,7 +106,7 @@ import NetworkExtension
 //                    response.deliver()
 //                    return
 //                }
-//                
+//
 //                if let webView = self.webView {
 //                    let url = URL(string: "http://www.ip138.com")!
 //                    let request = NSMutableURLRequest(url: url)
@@ -119,7 +130,7 @@ import NetworkExtension
 ////                    response.deliver()
 //
 //                }
-//                
+//
 //            case .maintain:
 //                guard let network = command.network else {
 //                    return
@@ -129,7 +140,7 @@ import NetworkExtension
 //                    response.deliver()
 //                    return
 //                }
-//                
+//
 //                account.status(requestBinder: requestBinder, session: self.session) { result in
 //                    let response: NEHotspotHelperResponse
 //                    switch result {
@@ -152,7 +163,7 @@ import NetworkExtension
 //                    response.deliver()
 //                    return
 //                }
-//                
+//
 //                account.logout(requestBinder: requestBinder, session: self.session) { result in
 //                    let response: NEHotspotHelperResponse
 //                    switch result {
@@ -168,7 +179,7 @@ import NetworkExtension
 //                print("Command \(command.commandType) is unsupported.")
 //            }
 //        }
-//        
+//
 //        print("Manager registration result: \(result)")
 //        return result
 //    }
@@ -185,7 +196,7 @@ import NetworkExtension
 //        config.timeoutIntervalForRequest = timeoutIntervalForRequest
 //        session = URLSession(configuration: config)
 //    }
-//    
+//
 //    func save() {
 //        UserDefaults.standard.set(account?.identifier, forKey: userDefaultKeyAccount)
 //        print("\(account) saved.")

@@ -6,8 +6,11 @@
 //  Copyright © 2017年 Sihan Li. All rights reserved.
 //
 
+import NetworkExtension
 import UIKit
 import UserNotifications
+
+import CampNetKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,13 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            if granted {
-                print("User notifications are allowed.")
-            } else {
-                print("User notifications are not allowed. Error:", error as Any)
-            }
-        }
+
+        requestNotificationAuthorization(options: [.alert, .sound])
+//        registerHotspotHelper(displayName: "hehe")
 
         return true
     }
@@ -49,7 +48,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func requestNotificationAuthorization(options: UNAuthorizationOptions) {
+        UNUserNotificationCenter.current().requestAuthorization(options: options) { (granted, error) in
+            if granted {
+                print("User notifications are allowed.")
+            } else {
+                print("User notifications are not allowed. Error: ", error as Any)
+            }
+        }
+    }
 
+    func registerHotspotHelper(displayName: String) -> Bool {
+        print("Registering HotspotHelper.")
+        
+        let options = [kNEHotspotHelperOptionDisplayName: displayName as NSObject]
+        let queue = DispatchQueue.global(qos: .utility)
 
+        return NEHotspotHelper.register(options: options, queue: queue) { (command) in
+            print("\(command) received.")
+        }
+    }
 }
 

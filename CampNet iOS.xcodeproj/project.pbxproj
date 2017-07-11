@@ -13,17 +13,48 @@
 		0F14E77C1E2E3AAC0092494B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77A1E2E3AAC0092494B /* Main.storyboard */; };
 		0F14E77E1E2E3AAC0092494B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77D1E2E3AAC0092494B /* Assets.xcassets */; };
 		0F14E7811E2E3AAC0092494B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */; };
-		0F2934681E4B6ABE0094B5A3 /* ActionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2934671E4B6ABE0094B5A3 /* ActionResult.swift */; };
-		0F4290FE1E3CB4B500336874 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4290FD1E3CB4B500336874 /* Action.swift */; };
+		0F1ED5D01F138832004A6C1F /* CampNetKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1ED5CE1F138832004A6C1F /* CampNetKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F1ED5D31F138832004A6C1F /* CampNetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; };
+		0F1ED5D41F138832004A6C1F /* CampNetKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0F4291051E3D181900336874 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4291041E3D181900336874 /* Manager.swift */; };
-		0FE1BBEC1E43D3B300039D20 /* Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1BBEB1E43D3B300039D20 /* Billing.swift */; };
+		0F464C581F13AD7900C2F58B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C571F13AD7900C2F58B /* Configuration.swift */; };
+		0F464C5A1F13C50500C2F58B /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C591F13C50500C2F58B /* Account.swift */; };
+		0F464C5C1F13CB1100C2F58B /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C5B1F13CB1100C2F58B /* Action.swift */; };
+		0F464C601F13D1E800C2F58B /* CampNetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C5F1F13D1E800C2F58B /* CampNetError.swift */; };
+		0F464C631F13DB6E00C2F58B /* YamlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C621F13DB6E00C2F58B /* YamlExtensions.swift */; };
+		0F464C651F13ED0F00C2F58B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C641F13ED0F00C2F58B /* StringExtensions.swift */; };
+		0F464C721F14093E00C2F58B /* BillingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C711F14093E00C2F58B /* BillingType.swift */; };
+		0F464C741F1415A000C2F58B /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C731F1415A000C2F58B /* CollectionExtensions.swift */; };
+		0F464C791F14A61600C2F58B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C781F14A61600C2F58B /* UserDefaults.swift */; };
+		0FD3A40D1F14D366006DA497 /* Configurations in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A40C1F14D366006DA497 /* Configurations */; };
 		0FE1BBF51E44586400039D20 /* Configurations.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FE1BBF71E44586400039D20 /* Configurations.strings */; };
-		0FE1BBFB1E446B1B00039D20 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1BBFA1E446B1B00039D20 /* Utilities.swift */; };
-		0FE597F11E2E90370013D222 /* Configurations in Resources */ = {isa = PBXBuildFile; fileRef = 0FE597F01E2E90370013D222 /* Configurations */; };
-		0FE597F51E2E94880013D222 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE597F41E2E94880013D222 /* UserDefaults.swift */; };
-		0FE597F71E2EAA610013D222 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE597F61E2EAA610013D222 /* Configuration.swift */; };
-		C5C57DD9E74CCF5F63F8CE40 /* Pods_CampNet_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 948334C8EC7C552ABC3C5BC9 /* Pods_CampNet_iOS.framework */; };
+		16E227AF3C8464E80AF23B00 /* Pods_CampNet_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D25E877A75F9FA989338AE4 /* Pods_CampNet_iOS.framework */; };
+		AC25B888FA44525C7982F1C6 /* Pods_CampNetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36CFD9B9674447CBF3A4A4FC /* Pods_CampNetKit.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0F1ED5D11F138832004A6C1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F14E7691E2E3AAC0092494B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F1ED5CB1F138832004A6C1F;
+			remoteInfo = CampNetKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0F1ED5D81F138832004A6C1F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0F1ED5D41F138832004A6C1F /* CampNetKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0F14E7711E2E3AAC0092494B /* CampNet iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CampNet iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,22 +65,31 @@
 		0F14E77D1E2E3AAC0092494B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F14E7801E2E3AAC0092494B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F14E7821E2E3AAC0092494B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0F2934671E4B6ABE0094B5A3 /* ActionResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionResult.swift; sourceTree = "<group>"; };
-		0F4290FD1E3CB4B500336874 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
-		0F4291011E3D108600336874 /* CampNet iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CampNet iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		0F1ED5C61F138618004A6C1F /* CampNet iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CampNet iOS.entitlements"; sourceTree = "<group>"; };
+		0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CampNetKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F1ED5CE1F138832004A6C1F /* CampNetKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CampNetKit.h; sourceTree = "<group>"; };
+		0F1ED5CF1F138832004A6C1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F4291041E3D181900336874 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
-		0FE1BBEB1E43D3B300039D20 /* Billing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Billing.swift; sourceTree = "<group>"; };
+		0F464C571F13AD7900C2F58B /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Models/Configuration.swift; sourceTree = "<group>"; };
+		0F464C591F13C50500C2F58B /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Models/Account.swift; sourceTree = "<group>"; };
+		0F464C5B1F13CB1100C2F58B /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = Models/Action.swift; sourceTree = "<group>"; };
+		0F464C5F1F13D1E800C2F58B /* CampNetError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CampNetError.swift; path = Models/CampNetError.swift; sourceTree = "<group>"; };
+		0F464C621F13DB6E00C2F58B /* YamlExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YamlExtensions.swift; path = Extensions/YamlExtensions.swift; sourceTree = "<group>"; };
+		0F464C641F13ED0F00C2F58B /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
+		0F464C711F14093E00C2F58B /* BillingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillingType.swift; path = Models/BillingType.swift; sourceTree = "<group>"; };
+		0F464C731F1415A000C2F58B /* CollectionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionExtensions.swift; path = Extensions/CollectionExtensions.swift; sourceTree = "<group>"; };
+		0F464C781F14A61600C2F58B /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaults.swift; path = Helpers/UserDefaults.swift; sourceTree = "<group>"; };
+		0FD3A40C1F14D366006DA497 /* Configurations */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Configurations; sourceTree = "<group>"; };
 		0FE1BBEF1E43D70A00039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		0FE1BBF01E43D70A00039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		0FE1BBF61E44586400039D20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Configurations.strings; sourceTree = "<group>"; };
 		0FE1BBF91E445BA200039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Configurations.strings"; sourceTree = "<group>"; };
-		0FE1BBFA1E446B1B00039D20 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		0FE597F01E2E90370013D222 /* Configurations */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Configurations; sourceTree = "<group>"; };
-		0FE597F41E2E94880013D222 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
-		0FE597F61E2EAA610013D222 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		6A23F4D7FAA0339315ACE5AF /* Pods-CampNet iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNet iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS.release.xcconfig"; sourceTree = "<group>"; };
-		948334C8EC7C552ABC3C5BC9 /* Pods_CampNet_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNet_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A43B4E09007B67A3955CB8B2 /* Pods-CampNet iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNet iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		2D25E877A75F9FA989338AE4 /* Pods_CampNet_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNet_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		36CFD9B9674447CBF3A4A4FC /* Pods_CampNetKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNetKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5FA1A929F334CF87D69CA2E /* Pods-CampNetKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNetKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-CampNetKit/Pods-CampNetKit.release.xcconfig"; sourceTree = "<group>"; };
+		A992B7C0FF903D2939677538 /* Pods-CampNetKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNetKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CampNetKit/Pods-CampNetKit.debug.xcconfig"; sourceTree = "<group>"; };
+		D66D9B6E4664D85FE0D4E186 /* Pods-CampNet iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNet iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS.release.xcconfig"; sourceTree = "<group>"; };
+		D7393035E9B354CD1D7D6FDF /* Pods-CampNet iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNet iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +97,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5C57DD9E74CCF5F63F8CE40 /* Pods_CampNet_iOS.framework in Frameworks */,
+				0F1ED5D31F138832004A6C1F /* CampNetKit.framework in Frameworks */,
+				16E227AF3C8464E80AF23B00 /* Pods_CampNet_iOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F1ED5C81F138832004A6C1F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC25B888FA44525C7982F1C6 /* Pods_CampNetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,9 +117,10 @@
 			isa = PBXGroup;
 			children = (
 				0F14E7731E2E3AAC0092494B /* CampNet iOS */,
+				0F1ED5CD1F138832004A6C1F /* CampNetKit */,
 				0F14E7721E2E3AAC0092494B /* Products */,
-				6B3B143E2E1BADB0BC4CDEFC /* Pods */,
-				8AB7AE96F2624D9FC641BB98 /* Frameworks */,
+				2EF32BE92DEB0316C46ED2BF /* Pods */,
+				298ED8C6D2DAD1B93F321972 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				0F14E7711E2E3AAC0092494B /* CampNet iOS.app */,
+				0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,7 +136,7 @@
 		0F14E7731E2E3AAC0092494B /* CampNet iOS */ = {
 			isa = PBXGroup;
 			children = (
-				0FE597F01E2E90370013D222 /* Configurations */,
+				0F1ED5C61F138618004A6C1F /* CampNet iOS.entitlements */,
 				0F14E7741E2E3AAC0092494B /* AppDelegate.swift */,
 				0F14E7761E2E3AAC0092494B /* FirstViewController.swift */,
 				0F14E7781E2E3AAC0092494B /* SecondViewController.swift */,
@@ -93,58 +144,130 @@
 				0F14E77D1E2E3AAC0092494B /* Assets.xcassets */,
 				0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */,
 				0F14E7821E2E3AAC0092494B /* Info.plist */,
-				0FE1BBEB1E43D3B300039D20 /* Billing.swift */,
-				0F4290FD1E3CB4B500336874 /* Action.swift */,
-				0F2934671E4B6ABE0094B5A3 /* ActionResult.swift */,
-				0FE597F61E2EAA610013D222 /* Configuration.swift */,
-				0FE597F41E2E94880013D222 /* UserDefaults.swift */,
 				0F4291041E3D181900336874 /* Manager.swift */,
-				0F4291011E3D108600336874 /* CampNet iOS-Bridging-Header.h */,
-				0FE1BBFA1E446B1B00039D20 /* Utilities.swift */,
 				0FE1BBF71E44586400039D20 /* Configurations.strings */,
 			);
 			path = "CampNet iOS";
 			sourceTree = "<group>";
 		};
-		6B3B143E2E1BADB0BC4CDEFC /* Pods */ = {
+		0F1ED5CD1F138832004A6C1F /* CampNetKit */ = {
 			isa = PBXGroup;
 			children = (
-				A43B4E09007B67A3955CB8B2 /* Pods-CampNet iOS.debug.xcconfig */,
-				6A23F4D7FAA0339315ACE5AF /* Pods-CampNet iOS.release.xcconfig */,
+				0FD3A40C1F14D366006DA497 /* Configurations */,
+				0F464C751F14A5DA00C2F58B /* Helpers */,
+				0F464C611F13DB2F00C2F58B /* Extensions */,
+				0F464C561F13AD4900C2F58B /* Models */,
+				0F1ED5CE1F138832004A6C1F /* CampNetKit.h */,
+				0F1ED5CF1F138832004A6C1F /* Info.plist */,
 			);
-			name = Pods;
+			path = CampNetKit;
 			sourceTree = "<group>";
 		};
-		8AB7AE96F2624D9FC641BB98 /* Frameworks */ = {
+		0F464C561F13AD4900C2F58B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				948334C8EC7C552ABC3C5BC9 /* Pods_CampNet_iOS.framework */,
+				0F464C571F13AD7900C2F58B /* Configuration.swift */,
+				0F464C591F13C50500C2F58B /* Account.swift */,
+				0F464C5B1F13CB1100C2F58B /* Action.swift */,
+				0F464C5F1F13D1E800C2F58B /* CampNetError.swift */,
+				0F464C711F14093E00C2F58B /* BillingType.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		0F464C611F13DB2F00C2F58B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0F464C621F13DB6E00C2F58B /* YamlExtensions.swift */,
+				0F464C641F13ED0F00C2F58B /* StringExtensions.swift */,
+				0F464C731F1415A000C2F58B /* CollectionExtensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		0F464C751F14A5DA00C2F58B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0F464C781F14A61600C2F58B /* UserDefaults.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		298ED8C6D2DAD1B93F321972 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D25E877A75F9FA989338AE4 /* Pods_CampNet_iOS.framework */,
+				36CFD9B9674447CBF3A4A4FC /* Pods_CampNetKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2EF32BE92DEB0316C46ED2BF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A992B7C0FF903D2939677538 /* Pods-CampNetKit.debug.xcconfig */,
+				A5FA1A929F334CF87D69CA2E /* Pods-CampNetKit.release.xcconfig */,
+				D7393035E9B354CD1D7D6FDF /* Pods-CampNet iOS.debug.xcconfig */,
+				D66D9B6E4664D85FE0D4E186 /* Pods-CampNet iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0F1ED5C91F138832004A6C1F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F1ED5D01F138832004A6C1F /* CampNetKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		0F14E7701E2E3AAC0092494B /* CampNet iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F14E7851E2E3AAC0092494B /* Build configuration list for PBXNativeTarget "CampNet iOS" */;
 			buildPhases = (
-				7D053606AA60EC11BE519219 /* [CP] Check Pods Manifest.lock */,
+				03FFD0CE134C2AEB943CD620 /* [CP] Check Pods Manifest.lock */,
 				0F14E76D1E2E3AAC0092494B /* Sources */,
 				0F14E76E1E2E3AAC0092494B /* Frameworks */,
 				0F14E76F1E2E3AAC0092494B /* Resources */,
-				E0DFAEFC43BB3E3DE8F84787 /* [CP] Embed Pods Frameworks */,
-				613FC08E124A3078018C58EA /* [CP] Copy Pods Resources */,
+				0F1ED5D81F138832004A6C1F /* Embed Frameworks */,
+				2DA83DAA5E79752AB0E1FD18 /* [CP] Embed Pods Frameworks */,
+				886F5222D79146E6C50FD39A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0F1ED5D21F138832004A6C1F /* PBXTargetDependency */,
 			);
 			name = "CampNet iOS";
 			productName = "CampNet iOS";
 			productReference = 0F14E7711E2E3AAC0092494B /* CampNet iOS.app */;
 			productType = "com.apple.product-type.application";
+		};
+		0F1ED5CB1F138832004A6C1F /* CampNetKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F1ED5D51F138832004A6C1F /* Build configuration list for PBXNativeTarget "CampNetKit" */;
+			buildPhases = (
+				54801E17F5B64F0518D9E195 /* [CP] Check Pods Manifest.lock */,
+				0F1ED5C71F138832004A6C1F /* Sources */,
+				0F1ED5C81F138832004A6C1F /* Frameworks */,
+				0F1ED5C91F138832004A6C1F /* Headers */,
+				0F1ED5CA1F138832004A6C1F /* Resources */,
+				9D5BF643FE94ED0CBDC99DE5 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CampNetKit;
+			productName = CampNetKit;
+			productReference = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -161,6 +284,23 @@
 						DevelopmentTeam = 7494335NRW;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.NetworkExtensions = {
+								enabled = 0;
+							};
+						};
+					};
+					0F1ED5CB1F138832004A6C1F = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 7494335NRW;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -179,6 +319,7 @@
 			projectRoot = "";
 			targets = (
 				0F14E7701E2E3AAC0092494B /* CampNet iOS */,
+				0F1ED5CB1F138832004A6C1F /* CampNetKit */,
 			);
 		};
 /* End PBXProject section */
@@ -188,7 +329,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FE597F11E2E90370013D222 /* Configurations in Resources */,
 				0F14E7811E2E3AAC0092494B /* LaunchScreen.storyboard in Resources */,
 				0FE1BBF51E44586400039D20 /* Configurations.strings in Resources */,
 				0F14E77E1E2E3AAC0092494B /* Assets.xcassets in Resources */,
@@ -196,25 +336,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0F1ED5CA1F138832004A6C1F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FD3A40D1F14D366006DA497 /* Configurations in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		613FC08E124A3078018C58EA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7D053606AA60EC11BE519219 /* [CP] Check Pods Manifest.lock */ = {
+		03FFD0CE134C2AEB943CD620 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -226,10 +359,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		E0DFAEFC43BB3E3DE8F84787 /* [CP] Embed Pods Frameworks */ = {
+		2DA83DAA5E79752AB0E1FD18 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -244,6 +377,51 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		54801E17F5B64F0518D9E195 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		886F5222D79146E6C50FD39A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D5BF643FE94ED0CBDC99DE5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CampNetKit/Pods-CampNetKit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -252,19 +430,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F14E7791E2E3AAC0092494B /* SecondViewController.swift in Sources */,
-				0FE597F71E2EAA610013D222 /* Configuration.swift in Sources */,
 				0F14E7751E2E3AAC0092494B /* AppDelegate.swift in Sources */,
 				0F4291051E3D181900336874 /* Manager.swift in Sources */,
-				0FE597F51E2E94880013D222 /* UserDefaults.swift in Sources */,
-				0F4290FE1E3CB4B500336874 /* Action.swift in Sources */,
 				0F14E7771E2E3AAC0092494B /* FirstViewController.swift in Sources */,
-				0F2934681E4B6ABE0094B5A3 /* ActionResult.swift in Sources */,
-				0FE1BBEC1E43D3B300039D20 /* Billing.swift in Sources */,
-				0FE1BBFB1E446B1B00039D20 /* Utilities.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F1ED5C71F138832004A6C1F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F464C651F13ED0F00C2F58B /* StringExtensions.swift in Sources */,
+				0F464C741F1415A000C2F58B /* CollectionExtensions.swift in Sources */,
+				0F464C581F13AD7900C2F58B /* Configuration.swift in Sources */,
+				0F464C5C1F13CB1100C2F58B /* Action.swift in Sources */,
+				0F464C5A1F13C50500C2F58B /* Account.swift in Sources */,
+				0F464C791F14A61600C2F58B /* UserDefaults.swift in Sources */,
+				0F464C631F13DB6E00C2F58B /* YamlExtensions.swift in Sources */,
+				0F464C601F13D1E800C2F58B /* CampNetError.swift in Sources */,
+				0F464C721F14093E00C2F58B /* BillingType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0F1ED5D21F138832004A6C1F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F1ED5CB1F138832004A6C1F /* CampNetKit */;
+			targetProxy = 0F1ED5D11F138832004A6C1F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0F14E77A1E2E3AAC0092494B /* Main.storyboard */ = {
@@ -394,18 +590,18 @@
 		};
 		0F14E7861E2E3AAC0092494B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A43B4E09007B67A3955CB8B2 /* Pods-CampNet iOS.debug.xcconfig */;
+			baseConfigurationReference = D7393035E9B354CD1D7D6FDF /* Pods-CampNet iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "CampNet iOS/CampNet iOS.entitlements";
 				DEVELOPMENT_TEAM = 7494335NRW;
 				INFOPLIST_FILE = "CampNet iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0aaa0a46-2bf8-454a-b630-a0e4a110d66e";
+				PROVISIONING_PROFILE = "99269909-8d98-4895-b8e2-c4d71a3bd88e";
 				PROVISIONING_PROFILE_SPECIFIER = "CampNet iOS";
-				SWIFT_OBJC_BRIDGING_HEADER = "CampNet iOS/CampNet iOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -413,10 +609,11 @@
 		};
 		0F14E7871E2E3AAC0092494B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A23F4D7FAA0339315ACE5AF /* Pods-CampNet iOS.release.xcconfig */;
+			baseConfigurationReference = D66D9B6E4664D85FE0D4E186 /* Pods-CampNet iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "CampNet iOS/CampNet iOS.entitlements";
 				DEVELOPMENT_TEAM = 7494335NRW;
 				INFOPLIST_FILE = "CampNet iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -424,8 +621,58 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0aaa0a46-2bf8-454a-b630-a0e4a110d66e";
 				PROVISIONING_PROFILE_SPECIFIER = "CampNet iOS";
-				SWIFT_OBJC_BRIDGING_HEADER = "CampNet iOS/CampNet iOS-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		0F1ED5D61F138832004A6C1F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A992B7C0FF903D2939677538 /* Pods-CampNetKit.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7494335NRW;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CampNetKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.clumsylee.CampNetKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0F1ED5D71F138832004A6C1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5FA1A929F334CF87D69CA2E /* Pods-CampNetKit.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 7494335NRW;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CampNetKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.clumsylee.CampNetKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -446,6 +693,15 @@
 			buildConfigurations = (
 				0F14E7861E2E3AAC0092494B /* Debug */,
 				0F14E7871E2E3AAC0092494B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0F1ED5D51F138832004A6C1F /* Build configuration list for PBXNativeTarget "CampNetKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F1ED5D61F138832004A6C1F /* Debug */,
+				0F1ED5D71F138832004A6C1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
