@@ -9,7 +9,7 @@
 import Foundation
 import Yaml
 
-public struct BillingType {
+public struct BillingGroup {
     public enum Cycle: String {
         case day
         case month
@@ -17,7 +17,7 @@ public struct BillingType {
     }
     
     public var configurationIdentifier: String
-    public var typeIdentifier: String
+    public var name: String
     public var identifier: String
     
     public var maxOnlineNumber: Int?
@@ -25,14 +25,14 @@ public struct BillingType {
     public var cycle: Cycle
     public var steps: [(Double, Double)]
     
-    init?(configurationIdentifier: String, typeIdentifier: String, yaml: Yaml) {
+    init?(configurationIdentifier: String, name: String, yaml: Yaml) {
         self.configurationIdentifier = configurationIdentifier
-        self.typeIdentifier = typeIdentifier
-        self.identifier = "\(configurationIdentifier).billings.\(typeIdentifier)"
+        self.name = name
+        self.identifier = "\(configurationIdentifier).billing_groups.\(name)"
         
         self.maxOnlineNumber = yaml["max_online_num"].int
         self.base = yaml["base"].double ?? 0.0
-        self.cycle = BillingType.Cycle(rawValue: yaml["cycle"].string ?? "") ?? BillingType.Cycle.month
+        self.cycle = BillingGroup.Cycle(rawValue: yaml["cycle"].string ?? "") ?? BillingGroup.Cycle.month
         self.steps = yaml["steps"].doublePairArray ?? []
     }
 }

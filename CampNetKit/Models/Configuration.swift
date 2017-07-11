@@ -51,7 +51,7 @@ public struct Session {
 
 public struct Profile {
     public var name: String?
-    public var billingType: String?
+    public var billingGroupName: String?
     public var balance: Double?
     public var usage: Int?
     public var customMaxOnlineNumber: Int?
@@ -65,7 +65,7 @@ public struct Profile {
         }
 
         self.name = vars["name"] as? String
-        self.billingType = vars["billing_type"] as? String
+        self.billingGroupName = vars["billing_group_name"] as? String
         self.balance = vars["balance"] as? Double
         self.usage = vars["usage"] as? Int
         self.customMaxOnlineNumber = vars["custom_max_online_num"] as? Int
@@ -128,7 +128,7 @@ public struct Configuration {
     public var identifier: String
     
     public var ssids: [String]
-    public var billingTypes: [String: BillingType] = [:]
+    public var billingGroups: [String: BillingGroup] = [:]
     public var actions: [Action.Role: Action] = [:]
     
     public var displayName: String {
@@ -156,18 +156,18 @@ public struct Configuration {
         self.identifier = identifier
         self.ssids = yaml["ssids"].stringArray ?? []
         
-        if let billingTypes = yaml["billing_types"].dictionary {
-            for (key, value) in billingTypes {
-                guard let typeIdentifier = key.string else {
-                    print("Billing names must be strings in \(identifier).")
+        if let billingGroups = yaml["billing_groups"].dictionary {
+            for (key, value) in billingGroups {
+                guard let name = key.string else {
+                    print("Billing group names must be strings in \(identifier).")
                     return nil
                 }
-                guard let billingType = BillingType(configurationIdentifier: identifier, typeIdentifier: typeIdentifier, yaml: value) else {
-                    print("Invalid billingType \(typeIdentifier) in \(identifier).")
+                guard let billingGroup = BillingGroup(configurationIdentifier: identifier, name: name, yaml: value) else {
+                    print("Invalid billingGroup \(name) in \(identifier).")
                     return nil
                 }
                 
-                self.billingTypes[typeIdentifier] = billingType
+                self.billingGroups[name] = billingGroup
             }
         }
         

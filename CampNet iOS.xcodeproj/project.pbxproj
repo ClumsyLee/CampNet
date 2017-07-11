@@ -23,7 +23,7 @@
 		0F464C601F13D1E800C2F58B /* CampNetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C5F1F13D1E800C2F58B /* CampNetError.swift */; };
 		0F464C631F13DB6E00C2F58B /* YamlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C621F13DB6E00C2F58B /* YamlExtensions.swift */; };
 		0F464C651F13ED0F00C2F58B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C641F13ED0F00C2F58B /* StringExtensions.swift */; };
-		0F464C721F14093E00C2F58B /* BillingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C711F14093E00C2F58B /* BillingType.swift */; };
+		0F464C721F14093E00C2F58B /* BillingGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C711F14093E00C2F58B /* BillingGroup.swift */; };
 		0F464C741F1415A000C2F58B /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C731F1415A000C2F58B /* CollectionExtensions.swift */; };
 		0F464C791F14A61600C2F58B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C781F14A61600C2F58B /* UserDefaults.swift */; };
 		0FD3A4111F1588BF006DA497 /* Configurations in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A4101F1588BF006DA497 /* Configurations */; };
@@ -76,7 +76,7 @@
 		0F464C5F1F13D1E800C2F58B /* CampNetError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CampNetError.swift; path = Models/CampNetError.swift; sourceTree = "<group>"; };
 		0F464C621F13DB6E00C2F58B /* YamlExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YamlExtensions.swift; path = Extensions/YamlExtensions.swift; sourceTree = "<group>"; };
 		0F464C641F13ED0F00C2F58B /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
-		0F464C711F14093E00C2F58B /* BillingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillingType.swift; path = Models/BillingType.swift; sourceTree = "<group>"; };
+		0F464C711F14093E00C2F58B /* BillingGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillingGroup.swift; path = Models/BillingGroup.swift; sourceTree = "<group>"; };
 		0F464C731F1415A000C2F58B /* CollectionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionExtensions.swift; path = Extensions/CollectionExtensions.swift; sourceTree = "<group>"; };
 		0F464C781F14A61600C2F58B /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaults.swift; path = Helpers/UserDefaults.swift; sourceTree = "<group>"; };
 		0FD3A4101F1588BF006DA497 /* Configurations */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Configurations; path = Resources/Configurations; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 				0F464C591F13C50500C2F58B /* Account.swift */,
 				0F464C5B1F13CB1100C2F58B /* Action.swift */,
 				0F464C5F1F13D1E800C2F58B /* CampNetError.swift */,
-				0F464C711F14093E00C2F58B /* BillingType.swift */,
+				0F464C711F14093E00C2F58B /* BillingGroup.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -456,7 +456,7 @@
 				0F464C791F14A61600C2F58B /* UserDefaults.swift in Sources */,
 				0F464C631F13DB6E00C2F58B /* YamlExtensions.swift in Sources */,
 				0F464C601F13D1E800C2F58B /* CampNetError.swift in Sources */,
-				0F464C721F14093E00C2F58B /* BillingType.swift in Sources */,
+				0F464C721F14093E00C2F58B /* BillingGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
