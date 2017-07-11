@@ -1,0 +1,10 @@
+/* 
+  Configurations.strings
+  CampNet iOS
+
+  Created by Thomas Lee on 2017/7/12.
+  Copyright © 2017年 Sihan Li. All rights reserved.
+*/
+
+/* Display name of the configuration. */
+"cn.edu.tsinghua" = "Tsinghua University";

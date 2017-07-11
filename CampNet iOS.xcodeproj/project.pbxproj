@@ -26,8 +26,8 @@
 		0F464C721F14093E00C2F58B /* BillingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C711F14093E00C2F58B /* BillingType.swift */; };
 		0F464C741F1415A000C2F58B /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C731F1415A000C2F58B /* CollectionExtensions.swift */; };
 		0F464C791F14A61600C2F58B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C781F14A61600C2F58B /* UserDefaults.swift */; };
-		0FD3A40D1F14D366006DA497 /* Configurations in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A40C1F14D366006DA497 /* Configurations */; };
-		0FE1BBF51E44586400039D20 /* Configurations.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FE1BBF71E44586400039D20 /* Configurations.strings */; };
+		0FD3A4111F1588BF006DA497 /* Configurations in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A4101F1588BF006DA497 /* Configurations */; };
+		0FD3A4141F158A12006DA497 /* Configurations.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A4161F158A12006DA497 /* Configurations.strings */; };
 		16E227AF3C8464E80AF23B00 /* Pods_CampNet_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D25E877A75F9FA989338AE4 /* Pods_CampNet_iOS.framework */; };
 		AC25B888FA44525C7982F1C6 /* Pods_CampNetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36CFD9B9674447CBF3A4A4FC /* Pods_CampNetKit.framework */; };
 /* End PBXBuildFile section */
@@ -79,11 +79,11 @@
 		0F464C711F14093E00C2F58B /* BillingType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillingType.swift; path = Models/BillingType.swift; sourceTree = "<group>"; };
 		0F464C731F1415A000C2F58B /* CollectionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionExtensions.swift; path = Extensions/CollectionExtensions.swift; sourceTree = "<group>"; };
 		0F464C781F14A61600C2F58B /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaults.swift; path = Helpers/UserDefaults.swift; sourceTree = "<group>"; };
-		0FD3A40C1F14D366006DA497 /* Configurations */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Configurations; sourceTree = "<group>"; };
+		0FD3A4101F1588BF006DA497 /* Configurations */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Configurations; path = Resources/Configurations; sourceTree = "<group>"; };
+		0FD3A4151F158A12006DA497 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Configurations.strings; sourceTree = "<group>"; };
+		0FD3A4171F158A15006DA497 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Configurations.strings"; sourceTree = "<group>"; };
 		0FE1BBEF1E43D70A00039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		0FE1BBF01E43D70A00039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		0FE1BBF61E44586400039D20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Configurations.strings; sourceTree = "<group>"; };
-		0FE1BBF91E445BA200039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Configurations.strings"; sourceTree = "<group>"; };
 		2D25E877A75F9FA989338AE4 /* Pods_CampNet_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNet_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36CFD9B9674447CBF3A4A4FC /* Pods_CampNetKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNetKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5FA1A929F334CF87D69CA2E /* Pods-CampNetKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNetKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-CampNetKit/Pods-CampNetKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,7 +145,6 @@
 				0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */,
 				0F14E7821E2E3AAC0092494B /* Info.plist */,
 				0F4291041E3D181900336874 /* Manager.swift */,
-				0FE1BBF71E44586400039D20 /* Configurations.strings */,
 			);
 			path = "CampNet iOS";
 			sourceTree = "<group>";
@@ -153,7 +152,7 @@
 		0F1ED5CD1F138832004A6C1F /* CampNetKit */ = {
 			isa = PBXGroup;
 			children = (
-				0FD3A40C1F14D366006DA497 /* Configurations */,
+				0FD3A40F1F1588A3006DA497 /* Resources */,
 				0F464C751F14A5DA00C2F58B /* Helpers */,
 				0F464C611F13DB2F00C2F58B /* Extensions */,
 				0F464C561F13AD4900C2F58B /* Models */,
@@ -191,6 +190,15 @@
 				0F464C781F14A61600C2F58B /* UserDefaults.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		0FD3A40F1F1588A3006DA497 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0FD3A4101F1588BF006DA497 /* Configurations */,
+				0FD3A4161F158A12006DA497 /* Configurations.strings */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		298ED8C6D2DAD1B93F321972 /* Frameworks */ = {
@@ -330,7 +338,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F14E7811E2E3AAC0092494B /* LaunchScreen.storyboard in Resources */,
-				0FE1BBF51E44586400039D20 /* Configurations.strings in Resources */,
 				0F14E77E1E2E3AAC0092494B /* Assets.xcassets in Resources */,
 				0F14E77C1E2E3AAC0092494B /* Main.storyboard in Resources */,
 			);
@@ -340,7 +347,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FD3A40D1F14D366006DA497 /* Configurations in Resources */,
+				0FD3A4111F1588BF006DA497 /* Configurations in Resources */,
+				0FD3A4141F158A12006DA497 /* Configurations.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,13 +489,14 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		0FE1BBF71E44586400039D20 /* Configurations.strings */ = {
+		0FD3A4161F158A12006DA497 /* Configurations.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0FE1BBF61E44586400039D20 /* Base */,
-				0FE1BBF91E445BA200039D20 /* zh-Hans */,
+				0FD3A4151F158A12006DA497 /* Base */,
+				0FD3A4171F158A15006DA497 /* zh-Hans */,
 			);
 			name = Configurations.strings;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

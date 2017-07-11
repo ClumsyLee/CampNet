@@ -106,17 +106,39 @@ public struct Configuration {
     public static let appGroup = "group.me.clumsylee.CampNet-iOS"
     public static let keychainAccessGroup = "7494335NRW.me.clumsylee.CampNet-iOS"
     public static let subdirectory = "Configurations"
+    public static let fileExtension = "yaml"
+    public static let bundle = Bundle(identifier: bundleIdentifier)!
+    
+    public static var displayNames: [String: String] {
+        var dict: [String: String] = [:]
+
+        let urls = bundle.urls(forResourcesWithExtension: fileExtension, subdirectory: subdirectory) ?? []
+        for url in urls {
+            let identifier = url.deletingPathExtension().lastPathComponent
+            dict[identifier] = displayName(identifier)
+        }
+        
+        return dict
+    }
+    
+    public static func displayName(_ identifier: String) -> String {
+        return Configuration.bundle.localizedString(forKey: identifier, value: nil, table: "Configurations")
+    }
 
     public var identifier: String
     
     public var ssids: [String]
     public var billingTypes: [String: BillingType] = [:]
     public var actions: [Action.Role: Action] = [:]
+    
+    public var displayName: String {
+        return Configuration.displayName(identifier)
+    }
 
     public init?(_ identifier: String) {
         print("Loading configuration \(identifier).")
         
-        guard let url = Bundle(identifier: Configuration.bundleIdentifier)?.url(forResource: identifier, withExtension: "yaml", subdirectory: Configuration.subdirectory) else {
+        guard let url = Configuration.bundle.url(forResource: identifier, withExtension: Configuration.fileExtension, subdirectory: Configuration.subdirectory) else {
             print("Failed to find configuration \(identifier).")
             return nil
         }
