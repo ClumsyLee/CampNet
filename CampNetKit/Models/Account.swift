@@ -15,18 +15,24 @@ import SwiftyUserDefaults
 public class Account {
     static let passwordKeychain = Keychain(service: "\(Configuration.bundleIdentifier).password", accessGroup: Configuration.keychainAccessGroup)
     
-    static var mainAccount: Account? = nil
+    public static var all: [Account] {
+        return AccountManager.shared.all
+    }
+    
     public static var main: Account? {
-        guard let identifier = Defaults[.accountIdentifier] else {
-            return nil
-        }
-        if identifier == mainAccount?.identifier ?? "" {
-            return mainAccount
-        } else {
-            let account = Account(identifier)
-            mainAccount = account
-            return account
-        }
+        return AccountManager.shared.main
+    }
+    
+    public static func add(_ account: Account) {
+        AccountManager.shared.add(account)
+    }
+    
+    public static func remove(_ account: Account) {
+        AccountManager.shared.remove(account)
+    }
+    
+    public static func makeMain(_ account: Account) {
+        AccountManager.shared.makeMain(account)
     }
     
     public let configuration: Configuration

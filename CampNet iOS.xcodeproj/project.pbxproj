@@ -26,6 +26,9 @@
 		0F464C721F14093E00C2F58B /* BillingGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C711F14093E00C2F58B /* BillingGroup.swift */; };
 		0F464C741F1415A000C2F58B /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C731F1415A000C2F58B /* CollectionExtensions.swift */; };
 		0F464C791F14A61600C2F58B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C781F14A61600C2F58B /* UserDefaults.swift */; };
+		0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A11F17593E002861F3 /* AccountManager.swift */; };
+		0FC6E2A41F175DE5002861F3 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A31F175DE5002861F3 /* ArrayExtensions.swift */; };
+		0FC6E2A61F17694E002861F3 /* NotificationNameExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */; };
 		0FD3A4111F1588BF006DA497 /* Configurations in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A4101F1588BF006DA497 /* Configurations */; };
 		0FD3A4141F158A12006DA497 /* Configurations.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A4161F158A12006DA497 /* Configurations.strings */; };
 		16E227AF3C8464E80AF23B00 /* Pods_CampNet_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D25E877A75F9FA989338AE4 /* Pods_CampNet_iOS.framework */; };
@@ -79,6 +82,9 @@
 		0F464C711F14093E00C2F58B /* BillingGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillingGroup.swift; path = Models/BillingGroup.swift; sourceTree = "<group>"; };
 		0F464C731F1415A000C2F58B /* CollectionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionExtensions.swift; path = Extensions/CollectionExtensions.swift; sourceTree = "<group>"; };
 		0F464C781F14A61600C2F58B /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaults.swift; path = Helpers/UserDefaults.swift; sourceTree = "<group>"; };
+		0FC6E2A11F17593E002861F3 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Models/AccountManager.swift; sourceTree = "<group>"; };
+		0FC6E2A31F175DE5002861F3 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtensions.swift; path = Extensions/ArrayExtensions.swift; sourceTree = "<group>"; };
+		0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationNameExtensions.swift; path = Extensions/NotificationNameExtensions.swift; sourceTree = "<group>"; };
 		0FD3A4101F1588BF006DA497 /* Configurations */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Configurations; path = Resources/Configurations; sourceTree = "<group>"; };
 		0FD3A4151F158A12006DA497 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Configurations.strings; sourceTree = "<group>"; };
 		0FD3A4171F158A15006DA497 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Configurations.strings"; sourceTree = "<group>"; };
@@ -167,6 +173,7 @@
 			children = (
 				0F464C571F13AD7900C2F58B /* Configuration.swift */,
 				0F464C591F13C50500C2F58B /* Account.swift */,
+				0FC6E2A11F17593E002861F3 /* AccountManager.swift */,
 				0F464C5B1F13CB1100C2F58B /* Action.swift */,
 				0F464C5F1F13D1E800C2F58B /* CampNetError.swift */,
 				0F464C711F14093E00C2F58B /* BillingGroup.swift */,
@@ -180,6 +187,8 @@
 				0F464C621F13DB6E00C2F58B /* YamlExtensions.swift */,
 				0F464C641F13ED0F00C2F58B /* StringExtensions.swift */,
 				0F464C731F1415A000C2F58B /* CollectionExtensions.swift */,
+				0FC6E2A31F175DE5002861F3 /* ArrayExtensions.swift */,
+				0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -453,6 +462,9 @@
 				0F464C581F13AD7900C2F58B /* Configuration.swift in Sources */,
 				0F464C5C1F13CB1100C2F58B /* Action.swift in Sources */,
 				0F464C5A1F13C50500C2F58B /* Account.swift in Sources */,
+				0FC6E2A41F175DE5002861F3 /* ArrayExtensions.swift in Sources */,
+				0FC6E2A61F17694E002861F3 /* NotificationNameExtensions.swift in Sources */,
+				0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */,
 				0F464C791F14A61600C2F58B /* UserDefaults.swift in Sources */,
 				0F464C631F13DB6E00C2F58B /* YamlExtensions.swift in Sources */,
 				0F464C601F13D1E800C2F58B /* CampNetError.swift in Sources */,

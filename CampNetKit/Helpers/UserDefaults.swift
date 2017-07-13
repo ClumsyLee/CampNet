@@ -16,7 +16,7 @@ extension DefaultsKeys {
     static func hehe(value: String) -> DefaultsKey<String> { return DefaultsKey<String>("aaa.\(value)") }
     static let username = DefaultsKey<String>("username")
     
-    public static let accountIdentifier = DefaultsKey<String?>("accountIdentifier")
+    public static let accountIdentifiers = DefaultsKey<[String]>("accountIdentifiers")
     
     // Status.
     public static func accountStatus(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountStatus") }
