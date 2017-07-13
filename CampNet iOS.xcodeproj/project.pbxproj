@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0F14E7751E2E3AAC0092494B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7741E2E3AAC0092494B /* AppDelegate.swift */; };
-		0F14E7771E2E3AAC0092494B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7761E2E3AAC0092494B /* FirstViewController.swift */; };
-		0F14E7791E2E3AAC0092494B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7781E2E3AAC0092494B /* SecondViewController.swift */; };
+		0F14E7771E2E3AAC0092494B /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7761E2E3AAC0092494B /* OverviewViewController.swift */; };
+		0F14E7791E2E3AAC0092494B /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7781E2E3AAC0092494B /* MeViewController.swift */; };
 		0F14E77C1E2E3AAC0092494B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77A1E2E3AAC0092494B /* Main.storyboard */; };
 		0F14E77E1E2E3AAC0092494B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77D1E2E3AAC0092494B /* Assets.xcassets */; };
 		0F14E7811E2E3AAC0092494B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */; };
@@ -62,8 +62,8 @@
 /* Begin PBXFileReference section */
 		0F14E7711E2E3AAC0092494B /* CampNet iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CampNet iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F14E7741E2E3AAC0092494B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0F14E7761E2E3AAC0092494B /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		0F14E7781E2E3AAC0092494B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		0F14E7761E2E3AAC0092494B /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
+		0F14E7781E2E3AAC0092494B /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		0F14E77B1E2E3AAC0092494B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F14E77D1E2E3AAC0092494B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F14E7801E2E3AAC0092494B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -85,10 +85,10 @@
 		0FC6E2A11F17593E002861F3 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Models/AccountManager.swift; sourceTree = "<group>"; };
 		0FC6E2A31F175DE5002861F3 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtensions.swift; path = Extensions/ArrayExtensions.swift; sourceTree = "<group>"; };
 		0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationNameExtensions.swift; path = Extensions/NotificationNameExtensions.swift; sourceTree = "<group>"; };
+		0FC6E2AC1F177FCC002861F3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		0FD3A4101F1588BF006DA497 /* Configurations */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Configurations; path = Resources/Configurations; sourceTree = "<group>"; };
 		0FD3A4151F158A12006DA497 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Configurations.strings; sourceTree = "<group>"; };
 		0FD3A4171F158A15006DA497 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Configurations.strings"; sourceTree = "<group>"; };
-		0FE1BBEF1E43D70A00039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		0FE1BBF01E43D70A00039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		2D25E877A75F9FA989338AE4 /* Pods_CampNet_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNet_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36CFD9B9674447CBF3A4A4FC /* Pods_CampNetKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNetKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,8 +144,8 @@
 			children = (
 				0F1ED5C61F138618004A6C1F /* CampNet iOS.entitlements */,
 				0F14E7741E2E3AAC0092494B /* AppDelegate.swift */,
-				0F14E7761E2E3AAC0092494B /* FirstViewController.swift */,
-				0F14E7781E2E3AAC0092494B /* SecondViewController.swift */,
+				0F14E7761E2E3AAC0092494B /* OverviewViewController.swift */,
+				0F14E7781E2E3AAC0092494B /* MeViewController.swift */,
 				0F14E77A1E2E3AAC0092494B /* Main.storyboard */,
 				0F14E77D1E2E3AAC0092494B /* Assets.xcassets */,
 				0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */,
@@ -446,10 +446,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F14E7791E2E3AAC0092494B /* SecondViewController.swift in Sources */,
+				0F14E7791E2E3AAC0092494B /* MeViewController.swift in Sources */,
 				0F14E7751E2E3AAC0092494B /* AppDelegate.swift in Sources */,
 				0F4291051E3D181900336874 /* Manager.swift in Sources */,
-				0F14E7771E2E3AAC0092494B /* FirstViewController.swift in Sources */,
+				0F14E7771E2E3AAC0092494B /* OverviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,7 +487,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0F14E77B1E2E3AAC0092494B /* Base */,
-				0FE1BBEF1E43D70A00039D20 /* zh-Hans */,
+				0FC6E2AC1F177FCC002861F3 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

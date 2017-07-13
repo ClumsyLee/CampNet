@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  SecondViewController.swift
 //  CampNet iOS
 //
 //  Created by Thomas Lee on 2017/1/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class MeViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
