@@ -27,14 +27,6 @@ extension String {
         return self[startIndex..<endIndex]
     }
     
-//    var int: Int? {
-//        return Int(self)
-//    }
-//    
-//    var double: Double? {
-//        return Double(self)
-//    }
-    
     var trimmed: String {
         return trimmingCharacters(in: .whitespacesAndNewlines)
     }

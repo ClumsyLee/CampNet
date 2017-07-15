@@ -13,9 +13,10 @@ import PromiseKit
 import SwiftyUserDefaults
 
 public class Account {
+    
     static let passwordKeychain = Keychain(service: "\(Configuration.bundleIdentifier).password", accessGroup: Configuration.keychainAccessGroup)
     
-    public static var all: [Account] {
+    public static var all: [Configuration: [Account]] {
         return AccountManager.shared.all
     }
     
@@ -23,8 +24,8 @@ public class Account {
         return AccountManager.shared.main
     }
     
-    public static func add(_ account: Account) {
-        AccountManager.shared.add(account)
+    public static func add(configurationIdentifier: String, username: String, password: String? = nil) {
+        AccountManager.shared.add(configurationIdentifier: configurationIdentifier, username: username, password: password)
     }
     
     public static func remove(_ account: Account) {
@@ -62,16 +63,10 @@ public class Account {
         return Profile(vars: vars)
     }
     
-    public init?(_ identifier: String) {
-        var parts = identifier.components(separatedBy: ".")
-        let username = parts.removeLast()
-        guard let configuration = Configuration(parts.joined(separator: ".")) else {
-            return nil
-        }
-        
+    init(configuration: Configuration, username: String) {
         self.configuration = configuration
         self.username = username
-        self.identifier = identifier
+        self.identifier = "\(configuration.identifier).\(username)"
     }
     
     public func login(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
@@ -208,5 +203,15 @@ public class Account {
         print("Logging out for \(identifier).")
         
         return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then { _ in Promise(value: ()) }
+    }
+}
+
+extension Account: Hashable {
+    public var hashValue: Int {
+        return identifier.hashValue
+    }
+    
+    public static func ==(lhs: Account, rhs: Account) -> Bool {
+        return lhs.identifier == rhs.identifier
     }
 }

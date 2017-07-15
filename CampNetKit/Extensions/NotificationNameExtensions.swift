@@ -9,7 +9,7 @@
 import Foundation
 
 extension Notification.Name {
-    static let accountAdded = Notification.Name("accountAdded")
-    static let accountRemoved = Notification.Name("accountRemoved")
-    static let mainAccountChanged = Notification.Name("mainAccountChanged")
+    public static let accountAdded = Notification.Name("accountAdded")
+    public static let accountRemoved = Notification.Name("accountRemoved")
+    public static let mainAccountChanged = Notification.Name("mainAccountChanged")
 }

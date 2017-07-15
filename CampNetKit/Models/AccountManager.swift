@@ -12,22 +12,25 @@ class AccountManager {
     
     static let shared = AccountManager()
     
-    fileprivate let accountsQueue = DispatchQueue(label: "\(Configuration.bundleIdentifier).accountsQueue", attributes: .concurrent)
+    fileprivate let accountsQueue = DispatchQueue(label: "\(Configuration.bundleIdentifier).accountsQueue", qos: .userInitiated, attributes: .concurrent)
     
-    fileprivate var accounts: [Account] = {
-        var array: [Account] = []
-        for accountIdentifier in Defaults[.accountIdentifiers] {
-            guard let account = Account(accountIdentifier) else {
-                print("Failed to load account \(accountIdentifier) from UserDefault, continue anyway.")
-                continue
-            }
-            array.append(account)
+    fileprivate var mainAccount: Account? = nil {
+        willSet {
+            Defaults[.mainAccount] = newValue?.identifier
         }
-        return array
-    }()
+    }
+    fileprivate var firstAccount: Account? {
+        for accountArray in accounts.values {
+            for account in accountArray {
+                return account
+            }
+        }
+        return nil
+    }
+    fileprivate var accounts: [Configuration: [Account]] = [:]
     
-    public var all: [Account] {
-        var accountsCopy: [Account]!
+    public var all: [Configuration: [Account]] {
+        var accountsCopy: [Configuration: [Account]]!
         accountsQueue.sync {
             accountsCopy = accounts
         }
@@ -37,25 +40,106 @@ class AccountManager {
     public var main: Account? {
         var accountCopy: Account?
         accountsQueue.sync {
-            accountCopy = accounts.first
+            accountCopy = mainAccount
         }
         return accountCopy
     }
     
-    fileprivate init() {}
-    
-    public func add(_ account: Account) {
-        accountsQueue.async(flags: .barrier) {
-            guard !Defaults[.accountIdentifiers].contains(account.identifier) else {
-                return
+    fileprivate init() {
+        var loadedIdentifiers: [String] = []
+        let mainAccountIdentifier = Defaults[.mainAccount]
+        
+        for accountIdentifier in Defaults[.accounts] {
+            let (configurationIdentifier, username) = splitAccountIdentifier(accountIdentifier)
+            
+            guard let account = addAccount(configurationIdentifier: configurationIdentifier, username: username) else {
+                print("Failed to load account \(accountIdentifier) from UserDefault.")
+                continue
             }
             
-            Defaults[.accountIdentifiers].append(account.identifier)
-            self.accounts.append(account)
+            loadedIdentifiers.append(account.identifier)
+            if account.identifier == mainAccountIdentifier {
+                mainAccount = account
+            }
+            print("Account \(accountIdentifier) loaded.")
+        }
+        
+        // Remove invalid defaults.
+        Defaults[.accounts] = loadedIdentifiers
+        Defaults[.mainAccount] = mainAccount?.identifier
+    }
+    
+    fileprivate func splitAccountIdentifier(_ accountIdentifier: String) -> (String, String) {
+        var parts = accountIdentifier.components(separatedBy: ".")
+        let username = parts.removeLast()
+        let configurationIdentifier = parts.joined(separator: ".")
+        
+        return (configurationIdentifier, username)
+    }
+    
+    fileprivate func addAccount(configurationIdentifier: String, username: String) -> Account? {
+
+        for (configuration, accountArray) in accounts {
+            if configuration.identifier == configurationIdentifier {
+                guard !accountArray.map({ $0.username }).contains(username) else {
+                    return nil
+                }
+                
+                let account = Account(configuration: configuration, username: username)
+                accounts[configuration]!.append(account)
+                return account
+            }
+        }
+        
+        guard let configuration = Configuration(configurationIdentifier) else {
+            return nil
+        }
+        let account = Account(configuration: configuration, username: username)
+        accounts[configuration] = [account]
+        return account
+    }
+    
+    fileprivate func removeAccount(_ account: Account) -> Bool {
+        
+        guard let accountArray = accounts[account.configuration],
+              let index = accountArray.index(of: account) else {
+            return false
+        }
+        
+        if accountArray.count == 1 {
+            accounts[account.configuration] = nil
+        } else {
+            accounts[account.configuration]!.remove(at: index)
+        }
+        return true
+    }
+    
+    fileprivate func containsAccount(_ account: Account) -> Bool {
+        if let accountArray = accounts[account.configuration] {
+            return accountArray.contains(account)
+        } else {
+            return false
+        }
+    }
+
+    public func add(configurationIdentifier: String, username: String, password: String? = nil) {
+        
+        accountsQueue.async(flags: .barrier) {
+            guard let account = self.addAccount(configurationIdentifier: configurationIdentifier, username: username) else {
+                return
+            }
+            if let password = password {
+                account.password = password
+            }
+            Defaults[.accounts].append(account.identifier)
+            
+            var mainChanged = false
+            if self.mainAccount == nil {
+                self.mainAccount = account
+                mainChanged = true
+            }
             
             // Post notification
-            let mainChanged = self.accounts.count == 1
-            
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .accountAdded, object: self, userInfo: ["account": account])
                 if mainChanged {
@@ -66,40 +150,43 @@ class AccountManager {
     }
     
     public func remove(_ account: Account) {
+        
         accountsQueue.async(flags: .barrier) {
-            guard let index = Defaults[.accountIdentifiers].index(of: account.identifier) else {
-                return
+            var mainChanged = false
+            if self.removeAccount(account) {
+                if let index = Defaults[.accounts].index(of: account.identifier) {
+                    Defaults[.accounts].remove(at: index)
+                }
+                
+                if account == self.mainAccount {
+                    self.mainAccount = self.firstAccount
+                    mainChanged = true
+                }
             }
             
-            Defaults[.accountIdentifiers].remove(at: index)
-            self.accounts.remove(at: index)
-            
             // Post notification
-            let mainChanged = self.accounts.count == 0
-            
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .accountRemoved, object: self, userInfo: ["account": account])
                 if mainChanged {
-                    NotificationCenter.default.post(name: .mainAccountChanged, object: self, userInfo: ["fromAccount": account])
+                    NotificationCenter.default.post(name: .mainAccountChanged, object: self, userInfo: ["fromAccount": account, "toAccount": self.mainAccount as Any])
                 }
             }
         }
     }
 
     public func makeMain(_ account: Account) {
+        
         accountsQueue.async(flags: .barrier) {
-            guard let index = Defaults[.accountIdentifiers].index(of: account.identifier), index > 0 else {
+            guard self.containsAccount(account) else {
                 return
             }
             
-            Defaults[.accountIdentifiers].pushToFirst(from: index)
-            self.accounts.pushToFirst(from: index)
+            let oldMain = self.mainAccount
+            self.mainAccount = account
             
             // Post notification
-            let oldMain = self.accounts[1]
-            
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: .mainAccountChanged, object: self, userInfo: ["fromAccount": oldMain, "toAccount": account])
+                NotificationCenter.default.post(name: .mainAccountChanged, object: self, userInfo: ["fromAccount": oldMain as Any, "toAccount": account])
             }
         }
     }

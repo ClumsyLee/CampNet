@@ -1,9 +1,75 @@
 
-/* Class = "UINavigationItem"; title = "Me"; ObjectID = "O8j-7m-dtA"; */
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "2XS-66-75j"; */
+"2XS-66-75j.title" = "完成";
+
+/* Class = "UITextField"; placeholder = "New Password"; ObjectID = "9DJ-2g-xJe"; */
+"9DJ-2g-xJe.placeholder" = "新密码";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "BgW-cK-Tac"; */
+"BgW-cK-Tac.placeholder" = "用户名";
+
+/* Class = "UILabel"; text = "Current Usage"; ObjectID = "EyC-sN-4d9"; */
+"EyC-sN-4d9.text" = "当前用量";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "G1Y-6U-bc9"; */
+"G1Y-6U-bc9.title" = "取消";
+
+/* Class = "UILabel"; text = "¥ 12.58"; ObjectID = "KpJ-Md-TQ4"; */
+"KpJ-Md-TQ4.text" = "¥ 12.58";
+
+/* Class = "UILabel"; text = "Accounts"; ObjectID = "Noo-Ue-Fj1"; */
+"Noo-Ue-Fj1.text" = "账户";
+
+/* Class = "UINavigationItem"; title = "我"; ObjectID = "O8j-7m-dtA"; */
 "O8j-7m-dtA.title" = "我";
 
-/* Class = "UITabBarItem"; title = "Overview"; ObjectID = "acW-dT-cKf"; */
+/* Class = "UILabel"; text = "Tsinghua University"; ObjectID = "Qn9-Mh-koJ"; */
+"Qn9-Mh-koJ.text" = "清华大学";
+
+/* Class = "UINavigationItem"; title = "Accounts"; ObjectID = "SPV-m8-ZsX"; */
+"SPV-m8-ZsX.title" = "账户";
+
+/* Class = "UITabBarItem"; title = "概览"; ObjectID = "acW-dT-cKf"; */
 "acW-dT-cKf.title" = "概览";
 
-/* Class = "UITabBarItem"; title = "Me"; ObjectID = "qvO-bg-032"; */
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "bAx-BR-1dX"; */
+"bAx-BR-1dX.placeholder" = "密码";
+
+/* Class = "UILabel"; text = "lisihan13"; ObjectID = "dg3-U4-UEY"; */
+"dg3-U4-UEY.text" = "lisihan13";
+
+/* Class = "UINavigationItem"; title = "New Account"; ObjectID = "h0d-WZ-GlQ"; */
+"h0d-WZ-GlQ.title" = "新建账户";
+
+/* Class = "UILabel"; text = "tsinghua.edu.cn"; ObjectID = "hmv-d1-B9v"; */
+"hmv-d1-B9v.text" = "tsinghua.edu.cn";
+
+/* Class = "UILabel"; text = "(Sihan Li)"; ObjectID = "hu4-PL-hKr"; */
+"hu4-PL-hKr.text" = "(李思涵)";
+
+/* Class = "UINavigationItem"; title = "Tsinghua University"; ObjectID = "jHa-8M-lSV"; */
+"jHa-8M-lSV.title" = "清华大学";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "nV5-BB-alM"; */
+"nV5-BB-alM.title" = "完成";
+
+/* Class = "UILabel"; text = "25.8"; ObjectID = "qRS-BO-6d9"; */
+"qRS-BO-6d9.text" = "25.8";
+
+/* Class = "UILabel"; text = "GB"; ObjectID = "qel-9d-xUm"; */
+"qel-9d-xUm.text" = "GB";
+
+/* Class = "UITabBarItem"; title = "我"; ObjectID = "qvO-bg-032"; */
 "qvO-bg-032.title" = "我";
+
+/* Class = "UITextField"; text = "lisihan13"; ObjectID = "r43-JQ-3fA"; */
+"r43-JQ-3fA.text" = "lisihan13";
+
+/* Class = "UILabel"; text = "25.8 GB"; ObjectID = "wYs-sX-oe8"; */
+"wYs-sX-oe8.text" = "25.8 GB";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "x6k-5X-jk9"; */
+"x6k-5X-jk9.title" = "取消";
+
+/* Class = "UINavigationItem"; title = "Change Password"; ObjectID = "ylZ-mi-qAg"; */
+"ylZ-mi-qAg.title" = "更改密码";

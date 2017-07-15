@@ -101,7 +101,7 @@ struct HistorySession {
     var device: String?
 }
 
-public struct Configuration {
+public class Configuration {
     public static let bundleIdentifier = "me.clumsylee.CampNetKit"
     public static let appGroup = "group.me.clumsylee.CampNet-iOS"
     public static let keychainAccessGroup = "7494335NRW.me.clumsylee.CampNet-iOS"
@@ -125,19 +125,14 @@ public struct Configuration {
         return Configuration.bundle.localizedString(forKey: identifier, value: nil, table: "Configurations")
     }
 
-    public var identifier: String
+    public let identifier: String
+    public let displayName: String
     
-    public var ssids: [String]
-    public var billingGroups: [String: BillingGroup] = [:]
-    public var actions: [Action.Role: Action] = [:]
-    
-    public var displayName: String {
-        return Configuration.displayName(identifier)
-    }
+    public let ssids: [String]
+    public let billingGroups: [String: BillingGroup]
+    public let actions: [Action.Role: Action]
 
     public init?(_ identifier: String) {
-        print("Loading configuration \(identifier).")
-        
         guard let url = Configuration.bundle.url(forResource: identifier, withExtension: Configuration.fileExtension, subdirectory: Configuration.subdirectory) else {
             print("Failed to find configuration \(identifier).")
             return nil
@@ -154,10 +149,12 @@ public struct Configuration {
         }
         
         self.identifier = identifier
+        self.displayName = Configuration.displayName(identifier)
         self.ssids = yaml["ssids"].stringArray ?? []
         
-        if let billingGroups = yaml["billing_groups"].dictionary {
-            for (key, value) in billingGroups {
+        var billingGroups: [String: BillingGroup] = [:]
+        if let billingGroupsYaml = yaml["billing_groups"].dictionary {
+            for (key, value) in billingGroupsYaml {
                 guard let name = key.string else {
                     print("Billing group names must be strings in \(identifier).")
                     return nil
@@ -167,12 +164,14 @@ public struct Configuration {
                     return nil
                 }
                 
-                self.billingGroups[name] = billingGroup
+                billingGroups[name] = billingGroup
             }
         }
+        self.billingGroups = billingGroups
         
-        if let actions = yaml["actions"].dictionary {
-            for (key, value) in actions {
+        var actions: [Action.Role: Action] = [:]
+        if let actionsYaml = yaml["actions"].dictionary {
+            for (key, value) in actionsYaml {
                 guard let name = key.string,
                     let role = Action.Role(rawValue: name) else {
                         print("Invalid action role \(key) in \(identifier).")
@@ -183,14 +182,25 @@ public struct Configuration {
                     return nil
                 }
                 
-                self.actions[role] = action
+                actions[role] = action
             }
         }
+        self.actions = actions
         
         print("Configuration \(identifier) loaded.")
     }
     
     public func canManage(_ network: NEHotspotNetwork) -> Bool {
         return ssids.contains(network.ssid) && !network.isSecure
+    }
+}
+
+extension Configuration: Hashable {
+    public var hashValue: Int {
+        return identifier.hashValue
+    }
+    
+    public static func ==(lhs: Configuration, rhs: Configuration) -> Bool {
+        return lhs.identifier == rhs.identifier
     }
 }
