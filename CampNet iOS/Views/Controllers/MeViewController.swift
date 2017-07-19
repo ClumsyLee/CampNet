@@ -21,6 +21,7 @@ class MeViewController: UITableViewController {
     
     var mainAccount: Account?
     var profile: Profile?
+    
     var sessions: [Session] {
         return profile?.sessions ?? []
     }

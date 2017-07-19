@@ -19,7 +19,18 @@ class MainAccountCell: UITableViewCell {
     
     var unauthorized: Bool = false {
         didSet {
-            username.textColor = unauthorized ? .red : .darkText
+            if let attributedText = username.attributedText {
+                let text = NSMutableAttributedString(attributedString: attributedText)
+                let range = NSMakeRange(0, text.length)
+                
+                if unauthorized {
+                    text.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: range)
+                } else {
+                    text.removeAttribute(NSStrikethroughStyleAttributeName, range: range)
+                }
+                
+                username.attributedText = text
+            }
         }
     }
     
