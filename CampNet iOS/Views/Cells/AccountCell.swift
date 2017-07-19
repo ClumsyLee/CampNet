@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CampNetKit
 
 class AccountCell: UITableViewCell {
 
@@ -14,6 +15,26 @@ class AccountCell: UITableViewCell {
     @IBOutlet var name: UILabel!
     @IBOutlet var balance: UILabel!
     @IBOutlet var usage: UILabel!
+    
+    var unauthorized: Bool = false {
+        didSet {
+            username.textColor = unauthorized ? .red : .darkText
+        }
+    }
+    
+    func update(profile: Profile?, decimalUnits: Bool) {
+        if let name = profile?.name {
+            self.name.text = "(\(name))"
+        } else {
+            self.name.text = nil
+        }
+        if let balance = profile?.balance {
+            self.balance.text = "¥ \(balance)"
+        } else {
+            self.balance.text = nil
+        }
+        self.usage.text = profile?.usage?.usageString(decimalUnits: decimalUnits)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

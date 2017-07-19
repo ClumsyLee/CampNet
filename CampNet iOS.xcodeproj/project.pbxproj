@@ -32,7 +32,10 @@
 		0F5EB7251F17AF0F003094DE /* ConfigurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EB7241F17AF0F003094DE /* ConfigurationCell.swift */; };
 		0F5EB7271F17B03B003094DE /* ConfigurationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EB7261F17B03B003094DE /* ConfigurationsViewController.swift */; };
 		0F5EB7291F17B06F003094DE /* ConfigurationSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EB7281F17B06F003094DE /* ConfigurationSetupViewController.swift */; };
-		0F5EB72B1F17CE0D003094DE /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EB72A1F17CE0D003094DE /* AccountCell.swift */; };
+		0F8650751F1F8F9400C654C4 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8650741F1F8F9400C654C4 /* IntExtensions.swift */; };
+		0F8F704B1F1B445B0088E2DE /* MainAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704A1F1B445B0088E2DE /* MainAccountCell.swift */; };
+		0F8F704D1F1B44A20088E2DE /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704C1F1B44A20088E2DE /* AccountCell.swift */; };
+		0F8F704F1F1B44C10088E2DE /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704E1F1B44C10088E2DE /* SessionCell.swift */; };
 		0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A11F17593E002861F3 /* AccountManager.swift */; };
 		0FC6E2A41F175DE5002861F3 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A31F175DE5002861F3 /* ArrayExtensions.swift */; };
 		0FC6E2A61F17694E002861F3 /* NotificationNameExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */; };
@@ -80,7 +83,7 @@
 		0F1ED5CE1F138832004A6C1F /* CampNetKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CampNetKit.h; sourceTree = "<group>"; };
 		0F1ED5CF1F138832004A6C1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F3685151F1A5C6B0056AED1 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = Views/Controllers/ChangePasswordViewController.swift; sourceTree = "<group>"; };
-		0F36851A1F1A7B290056AED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0F36851A1F1A7B290056AED1 /* Base */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0F36851C1F1A7B3F0056AED1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0F36851E1F1A7B8E0056AED1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		0F4291041E3D181900336874 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
@@ -97,7 +100,10 @@
 		0F5EB7241F17AF0F003094DE /* ConfigurationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationCell.swift; path = Views/Cells/ConfigurationCell.swift; sourceTree = "<group>"; };
 		0F5EB7261F17B03B003094DE /* ConfigurationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationsViewController.swift; path = Views/Controllers/ConfigurationsViewController.swift; sourceTree = "<group>"; };
 		0F5EB7281F17B06F003094DE /* ConfigurationSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationSetupViewController.swift; path = Views/Controllers/ConfigurationSetupViewController.swift; sourceTree = "<group>"; };
-		0F5EB72A1F17CE0D003094DE /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
+		0F8650741F1F8F9400C654C4 /* IntExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntExtensions.swift; path = Extensions/IntExtensions.swift; sourceTree = "<group>"; };
+		0F8F704A1F1B445B0088E2DE /* MainAccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainAccountCell.swift; path = Views/Cells/MainAccountCell.swift; sourceTree = "<group>"; };
+		0F8F704C1F1B44A20088E2DE /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountCell.swift; path = Views/Cells/AccountCell.swift; sourceTree = "<group>"; };
+		0F8F704E1F1B44C10088E2DE /* SessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionCell.swift; path = Views/Cells/SessionCell.swift; sourceTree = "<group>"; };
 		0FC6E2A11F17593E002861F3 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Models/AccountManager.swift; sourceTree = "<group>"; };
 		0FC6E2A31F175DE5002861F3 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtensions.swift; path = Extensions/ArrayExtensions.swift; sourceTree = "<group>"; };
 		0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationNameExtensions.swift; path = Extensions/NotificationNameExtensions.swift; sourceTree = "<group>"; };
@@ -204,6 +210,7 @@
 				0F464C731F1415A000C2F58B /* CollectionExtensions.swift */,
 				0FC6E2A31F175DE5002861F3 /* ArrayExtensions.swift */,
 				0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */,
+				0F8650741F1F8F9400C654C4 /* IntExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -228,8 +235,10 @@
 		0F5EB7221F17AE91003094DE /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				0F8F704C1F1B44A20088E2DE /* AccountCell.swift */,
 				0F5EB7241F17AF0F003094DE /* ConfigurationCell.swift */,
-				0F5EB72A1F17CE0D003094DE /* AccountCell.swift */,
+				0F8F704A1F1B445B0088E2DE /* MainAccountCell.swift */,
+				0F8F704E1F1B44C10088E2DE /* SessionCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -495,13 +504,15 @@
 			files = (
 				0F14E7791E2E3AAC0092494B /* MeViewController.swift in Sources */,
 				0F5EB7291F17B06F003094DE /* ConfigurationSetupViewController.swift in Sources */,
-				0F5EB72B1F17CE0D003094DE /* AccountCell.swift in Sources */,
 				0F3685161F1A5C6B0056AED1 /* ChangePasswordViewController.swift in Sources */,
 				0F5EB7271F17B03B003094DE /* ConfigurationsViewController.swift in Sources */,
 				0F14E7751E2E3AAC0092494B /* AppDelegate.swift in Sources */,
 				0F46CC831F17837700AF1FC9 /* AccountsViewController.swift in Sources */,
 				0F4291051E3D181900336874 /* Manager.swift in Sources */,
 				0F5EB7251F17AF0F003094DE /* ConfigurationCell.swift in Sources */,
+				0F8F704F1F1B44C10088E2DE /* SessionCell.swift in Sources */,
+				0F8F704B1F1B445B0088E2DE /* MainAccountCell.swift in Sources */,
+				0F8F704D1F1B44A20088E2DE /* AccountCell.swift in Sources */,
 				0F14E7771E2E3AAC0092494B /* OverviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,6 +530,7 @@
 				0FC6E2A61F17694E002861F3 /* NotificationNameExtensions.swift in Sources */,
 				0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */,
 				0F464C791F14A61600C2F58B /* UserDefaults.swift in Sources */,
+				0F8650751F1F8F9400C654C4 /* IntExtensions.swift in Sources */,
 				0F464C631F13DB6E00C2F58B /* YamlExtensions.swift in Sources */,
 				0F464C601F13D1E800C2F58B /* CampNetError.swift in Sources */,
 				0F464C721F14093E00C2F58B /* BillingGroup.swift in Sources */,

@@ -55,7 +55,7 @@ public struct Profile {
     public var balance: Double?
     public var usage: Int?
     public var customMaxOnlineNumber: Int?
-    public var sessions: [Session]?
+    public var sessions: [Session]
     
     public var updatedAt: Date
     
@@ -70,20 +70,15 @@ public struct Profile {
         self.usage = vars["usage"] as? Int
         self.customMaxOnlineNumber = vars["custom_max_online_num"] as? Int
         
-        if let ips = vars["ips"] as? [String] {
-            self.sessions = []
-            
-            let ids = vars["ids"] as? [String]
-            let startTimes = vars["start_times"] as? [Date]
-            let usages = vars["usages"] as? [Int]
-            let macs = vars["macs"] as? [String]
-            let devices = vars["devices"] as? [String]
-            
-            for (index, ip) in ips.enumerated() {
-                sessions?.append(Session(ip: ip, id: ids?[safe: index], startTime: startTimes?[safe: index], usage: usages?[safe: index], mac: macs?[safe: index], device: devices?[safe: index]))
-            }
-        } else {
-            self.sessions = nil
+        self.sessions = []
+        let ips = (vars["ips"] as? [String]) ?? []
+        let ids = vars["ids"] as? [String]
+        let startTimes = vars["start_times"] as? [Date]
+        let usages = vars["usages"] as? [Int]
+        let macs = vars["macs"] as? [String]
+        let devices = vars["devices"] as? [String]
+        for (index, ip) in ips.enumerated() {
+            sessions.append(Session(ip: ip, id: ids?[safe: index], startTime: startTimes?[safe: index], usage: usages?[safe: index], mac: macs?[safe: index], device: devices?[safe: index]))
         }
         
         self.updatedAt = updatedAt
@@ -127,8 +122,12 @@ public class Configuration {
 
     public let identifier: String
     public let displayName: String
+    public var logo: UIImage? {
+        return UIImage(named: identifier)
+    }
     
     public let ssids: [String]
+    public let decimalUnits: Bool
     public let billingGroups: [String: BillingGroup]
     public let actions: [Action.Role: Action]
 
@@ -150,6 +149,7 @@ public class Configuration {
         
         self.identifier = identifier
         self.displayName = Configuration.displayName(identifier)
+        self.decimalUnits = yaml["decimal_units"].bool ?? false
         self.ssids = yaml["ssids"].stringArray ?? []
         
         var billingGroups: [String: BillingGroup] = [:]

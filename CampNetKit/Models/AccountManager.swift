@@ -133,6 +133,8 @@ class AccountManager {
             }
             Defaults[.accounts].append(account.identifier)
             
+            _ = account.profile()  // Trigger initial update.
+            
             var mainChanged = false
             if self.mainAccount == nil {
                 self.mainAccount = account

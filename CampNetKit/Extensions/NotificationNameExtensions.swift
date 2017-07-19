@@ -12,4 +12,8 @@ extension Notification.Name {
     public static let accountAdded = Notification.Name("accountAdded")
     public static let accountRemoved = Notification.Name("accountRemoved")
     public static let mainAccountChanged = Notification.Name("mainAccountChanged")
+    
+    public static let accountAuthorizationChanged = Notification.Name("accountAuthorizationChanged")
+    public static let accountStatusUpdated = Notification.Name("accountStatusUpdated")
+    public static let accountProfileUpdated = Notification.Name("accountProfileUpdated")
 }

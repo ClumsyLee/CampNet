@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PromiseKit
 import CampNetKit
 
 class AccountsViewController: UITableViewController {
@@ -128,6 +129,41 @@ class AccountsViewController: UITableViewController {
         tableView.endUpdates()
     }
     
+    func profileUpdated(_ notification: Notification) {
+        guard let account = notification.userInfo?["account"] as? Account,
+              let profile = notification.userInfo?["profile"] as? Profile,
+              let indexPath = indexPath(of: account) else {
+            return
+        }
+        
+        let cell = tableView.cellForRow(at: indexPath) as! AccountCell
+        cell.update(profile: profile, decimalUnits: account.configuration.decimalUnits)
+    }
+    
+    func authorizationChanged(_ notification: Notification) {
+        guard let account = notification.userInfo?["account"] as? Account,
+              let indexPath = indexPath(of: account) else {
+            return
+        }
+        let cell = tableView.cellForRow(at: indexPath) as! AccountCell
+        cell.unauthorized = account.unauthorized
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        var promises: [Promise<Profile>] = []
+        
+        for (_, accountArray) in accounts {
+            for account in accountArray {
+                promises.append(account.profile(on: DispatchQueue.global(qos: .userInitiated)))
+            }
+        }
+        
+        _ = when(resolved: promises).then { _ in
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -153,10 +189,14 @@ class AccountsViewController: UITableViewController {
         // Set mainAccount.
         self.mainAccount = Account.main
         
+        self.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+        
         // Set observers.
         NotificationCenter.default.addObserver(self, selector: #selector(accountAdded(_:)), name: .accountAdded, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(accountRemoved(_:)), name: .accountRemoved, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)), name: .mainAccountChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)), name: .accountProfileUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(authorizationChanged(_:)), name: .accountAuthorizationChanged, object: nil)
     }
     
     deinit {
@@ -190,22 +230,8 @@ class AccountsViewController: UITableViewController {
         let profile = account.profile
 
         cell.username.text = account.username
-        if let name = profile?.name {
-            cell.name.text = "(\(name))"
-        } else {
-            cell.name.text = ""
-        }
-        if let balance = profile?.balance {
-            cell.balance.text = "¥ \(balance)"
-        } else {
-            cell.balance.text = "¥ -"
-        }
-        if let usage = profile?.usage {
-            cell.usage.text = "\(usage) B"
-        } else {
-            cell.usage.text = "- B"
-        }
-        
+        cell.unauthorized = account.unauthorized
+        cell.update(profile: profile, decimalUnits: account.configuration.decimalUnits)
         cell.accessoryType = (account == mainAccount) ? .checkmark : .none
 
         return cell

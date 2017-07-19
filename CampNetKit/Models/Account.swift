@@ -46,6 +46,21 @@ public class Account {
         }
         set {
             Account.passwordKeychain[identifier] = newValue
+            unauthorized = false
+        }
+    }
+    
+    public fileprivate(set) var unauthorized: Bool {
+        get {
+            return Defaults[.accountUnauthorized(of: identifier)]
+        }
+        set {
+            if unauthorized != newValue {
+                Defaults[.accountUnauthorized(of: identifier)] = newValue
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: .accountAuthorizationChanged, object: self, userInfo: ["account": self])
+                }
+            }
         }
     }
     
@@ -69,7 +84,7 @@ public class Account {
         self.identifier = "\(configuration.identifier).\(username)"
     }
     
-    public func login(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
+    public func login(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Bool> {
 
         guard let action = configuration.actions[.login] else {
             print("Login action not found in \(configuration.identifier).")
@@ -77,7 +92,25 @@ public class Account {
         }
         print("Logging in for \(identifier).")
         
-        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then { _ in Promise(value: ()) }
+        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { _ in
+            return self.status(on: queue, requestBinder: requestBinder)
+        }
+        .then(on: queue) { status in
+            if case .online = status {
+                return Promise(value: true)
+            } else {
+                return Promise(value: false)
+            }
+        }
+        .recover(on: queue) { error -> Promise<Bool> in
+            print("Failed to login account \(self.identifier). Error: \(error).")
+
+            if case CampNetError.unauthorized = error {
+                self.unauthorized = true
+            }
+            
+            return Promise(value: false)
+        }
     }
     
     public func status(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Status> {
@@ -93,15 +126,22 @@ public class Account {
                 print("No status in vars (\(vars)).")
                 throw CampNetError.invalidConfiguration
             }
+            
             Defaults[.accountProfile(of: self.identifier)] = vars
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .accountStatusUpdated, object: self, userInfo: ["account": self, "status": status])
+            }
+            
             return Promise(value: status)
         }
         .recover(on: queue) { error -> Promise<Status> in
-            if case CampNetError.networkError = error {
-                return Promise(value: .offcampus(updatedAt: Date()))
-            } else {
-                throw error
+            print("Failed to update status for account \(self.identifier). Error: \(error).")
+            
+            if case CampNetError.unauthorized = error {
+                self.unauthorized = true
             }
+            
+            throw error
         }
     }
     
@@ -118,8 +158,22 @@ public class Account {
                 print("No profile in vars (\(vars)).")
                 throw CampNetError.invalidConfiguration
             }
+            
             Defaults[.accountProfile(of: self.identifier)] = vars
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .accountProfileUpdated, object: self, userInfo: ["account": self, "profile": profile])
+            }
+            
             return Promise(value: profile)
+        }
+        .recover(on: queue) { error -> Promise<Profile> in
+            print("Failed to update profile for account \(self.identifier). Error: \(error).")
+            
+            if case CampNetError.unauthorized = error {
+                self.unauthorized = true
+            }
+            
+            throw error
         }
     }
     
