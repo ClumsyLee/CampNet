@@ -177,17 +177,6 @@ public class Account {
         }
     }
     
-    public func modifyCustomMaxOnlineNumber(newValue: Int, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
-        
-        guard let action = configuration.actions[.modifyCustomMaxOnlineNum] else {
-            print("ModifyCustomMaxOnlineNum action not found in \(configuration.identifier).")
-            return Promise(error: CampNetError.invalidConfiguration)
-        }
-        print("Modify custom max online number to \(newValue) for \(identifier).")
-        
-        return action.commit(username: username, password: password, extraVars: ["new_value": String(newValue)], on: queue, requestBinder: requestBinder).then { _ in Promise(value: ()) }
-    }
-    
     public func login(ip: String, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
         
         guard let action = configuration.actions[.loginIp] else {
@@ -196,7 +185,18 @@ public class Account {
         }
         print("Logging in IP \(ip) for \(identifier).")
         
-        return action.commit(username: username, password: password, extraVars: ["ip": ip], on: queue, requestBinder: requestBinder).then { _ in Promise(value: ()) }
+        return action.commit(username: username, password: password, extraVars: ["ip": ip], on: queue, requestBinder: requestBinder).then { _ in
+            Promise(value: ())
+        }
+        .recover(on: queue) { error -> Promise<Void> in
+            print("Failed to login IP \(ip) for account \(self.identifier). Error: \(error).")
+            
+            if case CampNetError.unauthorized = error {
+                self.unauthorized = true
+            }
+            
+            throw error
+        }
     }
     
     public func logoutSession(session: Session, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
@@ -207,46 +207,51 @@ public class Account {
         }
         print("Logging out \(session) for \(identifier).")
         
-        return action.commit(username: username, password: password, extraVars: ["ip": session.ip, "id": session.id ?? ""], on: queue, requestBinder: requestBinder).then { _ in Promise(value: ()) }
+        return action.commit(username: username, password: password, extraVars: ["ip": session.ip, "id": session.id ?? ""], on: queue, requestBinder: requestBinder).then { _ in
+            Promise(value: ())
+        }
+        .recover(on: queue) { error -> Promise<Void> in
+            print("Failed to logout session \(session) for account \(self.identifier). Error: \(error).")
+            
+            if case CampNetError.unauthorized = error {
+                self.unauthorized = true
+            }
+            
+            throw error
+        }
     }
     
-//    func history(from: Date, to: Date, on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<[HistorySession]> {
-//        guard let action = configuration.actions[.history] else {
-//            return Promise(error: CampNetError.invalidConfiguration)
-//        }
-//        
-//        let from = Calendar(identifier: .republicOfChina).dateComponents([.year, .month, .day], from: from)
-//        let to = Calendar(identifier: .republicOfChina).dateComponents([.year, .month, .day], from: to)
-//        let extraVars = [
-//            "start_time.year": String(format: "%04d", from.year!),
-//            "start_time.month": String(format: "%02d", from.month!),
-//            "start_time.day": String(format: "%02d", from.day!),
-//            "end_time.year": String(format: "%04d", to.year!),
-//            "end_time.month": String(format: "%02d", to.month!),
-//            "end_time.day": String(format: "%02d", to.day!)
-//        ]
-//        
-//        return action.commit(username: username, password: password, extraVars: extraVars, on: queue, requestBinder: requestBinder).then(on: queue) { vars in
-//            var sessions: [HistorySession] = []
-//            
-//            if let ips = vars["[ip]"]?.ipArray,
-//                let startTimes = vars["[start_time]"]?.dateArray,
-//                let endTimes = vars["[end_time]"]?.dateArray,
-//                ips.count == startTimes.count && ips.count == endTimes.count {
-//                
-//                let usages = vars["[usage]"]?.usageArray
-//                let costs = vars["[cost]"]?.doubleArray
-//                let macs = vars["[mac]"]?.macArray
-//                let devices = vars["[device]"]?.stringArray
-//                
-//                for (index, ip) in ips.enumerated() {
-//                    sessions.append(HistorySession(ip: ip, startTime: startTimes[index], endTime: endTimes[index], usage: usages?[safe: index], cost: costs?[safe: index], mac: macs?[safe: index], device: devices?[safe: index]))
-//                }
-//            }
-//            
-//            return Promise(value: sessions)
-//        }
-//    }
+    public func history(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<History> {
+        
+        guard let action = configuration.actions[.history] else {
+            print("History action not found in \(configuration.identifier).")
+            return Promise(error: CampNetError.invalidConfiguration)
+        }
+        print("Fetching history for \(identifier).")
+        
+        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { vars in
+            guard let history = History(vars: vars) else {
+                print("No history in vars (\(vars)).")
+                throw CampNetError.invalidConfiguration
+            }
+            
+            Defaults[.accountHistory(of: self.identifier)] = vars
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .accountHistoryUpdated, object: self, userInfo: ["account": self, "history": history])
+            }
+            
+            return Promise(value: history)
+        }
+        .recover(on: queue) { error -> Promise<History> in
+            print("Failed to update history for account \(self.identifier). Error: \(error).")
+            
+            if case CampNetError.unauthorized = error {
+                self.unauthorized = true
+            }
+            
+            throw error
+        }
+    }
     
     public func logout(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
         
@@ -256,7 +261,18 @@ public class Account {
         }
         print("Logging out for \(identifier).")
         
-        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then { _ in Promise(value: ()) }
+        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then { _ in
+            Promise(value: ())
+        }
+        .recover(on: queue) { error -> Promise<Void> in
+            print("Failed to logout for account \(self.identifier). Error: \(error).")
+            
+            if case CampNetError.unauthorized = error {
+                self.unauthorized = true
+            }
+            
+            throw error
+        }
     }
 }
 

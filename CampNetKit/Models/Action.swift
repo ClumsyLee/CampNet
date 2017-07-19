@@ -65,6 +65,8 @@ public struct ActionEntry {
         for (key, value) in currentVars {
             if let value = value as? String {
                 placeholders[key] = value
+            } else if let value = value as? Int {
+                placeholders[key] = String(value)
             }
         }
         
@@ -193,7 +195,6 @@ public struct Action {
         case login
         case status
         case profile
-        case modifyCustomMaxOnlineNum = "modify_custom_max_online_num"
         case loginIp = "login_ip"
         case logoutSession = "logout_session"
         case history
@@ -225,13 +226,13 @@ public struct Action {
         }
     }
     
-    public func commit(username: String, password: String, extraVars: [String: String] = [:], on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<[String: Any]> {
+    public func commit(username: String, password: String, extraVars: [String: Any] = [:], on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<[String: Any]> {
 
-        var initialVars: [String: String] = [
+        var initialVars: [String: Any] = [
             "username": username,
             "password": password,
-            "password_md5": password.md5(),
-            ]
+            "password_md5": password.md5()
+        ]
         for (key, value) in extraVars {
             initialVars[key] = value
         }

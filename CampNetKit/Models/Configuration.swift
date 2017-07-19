@@ -54,7 +54,6 @@ public struct Profile {
     public var billingGroupName: String?
     public var balance: Double?
     public var usage: Int?
-    public var customMaxOnlineNumber: Int?
     public var sessions: [Session]
     
     public var updatedAt: Date
@@ -68,7 +67,6 @@ public struct Profile {
         self.billingGroupName = vars["billing_group_name"] as? String
         self.balance = vars["balance"] as? Double
         self.usage = vars["usage"] as? Int
-        self.customMaxOnlineNumber = vars["custom_max_online_num"] as? Int
         
         self.sessions = []
         let ips = (vars["ips"] as? [String]) ?? []
@@ -85,15 +83,22 @@ public struct Profile {
     }
 }
 
-struct HistorySession {
-    var ip: String
-    var startTime: Date
-    var endTime: Date
+public struct History {
+    var year: Int
+    var month: Int
+    var usageSums: [Int]
     
-    var usage: Int?
-    var cost: Double?
-    var mac: String?
-    var device: String?
+    init?(vars: [String: Any]) {
+        guard let year = vars["year"] as? Int,
+              let month = vars["month"] as? Int,
+              let usageSums = vars["usage_sums"] as? [Int] else {
+            return nil
+        }
+        
+        self.year = year
+        self.month = month
+        self.usageSums = usageSums
+    }
 }
 
 public class Configuration {
