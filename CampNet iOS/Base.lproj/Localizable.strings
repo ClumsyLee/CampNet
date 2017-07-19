@@ -6,3 +6,6 @@
 
 /* Header title of the sessions section of MeView. */
 "Online Devices" = "Online Devices";
+
+/* Title for delete confirmation button for sessions. */
+"Logout" = "Logout";

@@ -41,6 +41,7 @@
 		0FC6E2A61F17694E002861F3 /* NotificationNameExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */; };
 		0FD3A4111F1588BF006DA497 /* Configurations in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A4101F1588BF006DA497 /* Configurations */; };
 		0FD3A4141F158A12006DA497 /* Configurations.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A4161F158A12006DA497 /* Configurations.strings */; };
+		0FF0D5641F1FF43E004072CA /* LoginIpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF0D5631F1FF43E004072CA /* LoginIpCell.swift */; };
 		16E227AF3C8464E80AF23B00 /* Pods_CampNet_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D25E877A75F9FA989338AE4 /* Pods_CampNet_iOS.framework */; };
 		AC25B888FA44525C7982F1C6 /* Pods_CampNetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36CFD9B9674447CBF3A4A4FC /* Pods_CampNetKit.framework */; };
 /* End PBXBuildFile section */
@@ -84,7 +85,7 @@
 		0F1ED5CF1F138832004A6C1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F3685151F1A5C6B0056AED1 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = Views/Controllers/ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		0F36851A1F1A7B290056AED1 /* Base */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		0F36851C1F1A7B3F0056AED1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		0F36851C1F1A7B3F0056AED1 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0F36851E1F1A7B8E0056AED1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		0F4291041E3D181900336874 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		0F464C571F13AD7900C2F58B /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Models/Configuration.swift; sourceTree = "<group>"; };
@@ -111,6 +112,7 @@
 		0FD3A4151F158A12006DA497 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Configurations.strings; sourceTree = "<group>"; };
 		0FD3A4171F158A15006DA497 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Configurations.strings"; sourceTree = "<group>"; };
 		0FE1BBF01E43D70A00039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		0FF0D5631F1FF43E004072CA /* LoginIpCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginIpCell.swift; path = Views/Cells/LoginIpCell.swift; sourceTree = "<group>"; };
 		2D25E877A75F9FA989338AE4 /* Pods_CampNet_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNet_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36CFD9B9674447CBF3A4A4FC /* Pods_CampNetKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNetKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5FA1A929F334CF87D69CA2E /* Pods-CampNetKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNetKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-CampNetKit/Pods-CampNetKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				0F5EB7241F17AF0F003094DE /* ConfigurationCell.swift */,
 				0F8F704A1F1B445B0088E2DE /* MainAccountCell.swift */,
 				0F8F704E1F1B44C10088E2DE /* SessionCell.swift */,
+				0FF0D5631F1FF43E004072CA /* LoginIpCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				0F46CC831F17837700AF1FC9 /* AccountsViewController.swift in Sources */,
 				0F4291051E3D181900336874 /* Manager.swift in Sources */,
 				0F5EB7251F17AF0F003094DE /* ConfigurationCell.swift in Sources */,
+				0FF0D5641F1FF43E004072CA /* LoginIpCell.swift in Sources */,
 				0F8F704F1F1B44C10088E2DE /* SessionCell.swift in Sources */,
 				0F8F704B1F1B445B0088E2DE /* MainAccountCell.swift in Sources */,
 				0F8F704D1F1B44A20088E2DE /* AccountCell.swift in Sources */,

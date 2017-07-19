@@ -21,6 +21,9 @@ class MeViewController: UITableViewController {
     
     var mainAccount: Account?
     var profile: Profile?
+    var sessions: [Session] {
+        return profile?.sessions ?? []
+    }
     var canLoginIp: Bool {
         return mainAccount?.configuration.actions[.loginIp] != nil
     }
@@ -41,7 +44,7 @@ class MeViewController: UITableViewController {
         
         tableView.beginUpdates()
         
-        let oldIps = self.profile?.sessions.map({ $0.ip }) ?? []
+        let oldIps = sessions.map({ $0.ip })
         self.profile = profile
         
         // Update main account section.
@@ -133,7 +136,7 @@ class MeViewController: UITableViewController {
         case Section.mainAccount.rawValue:
             return 1
         case Section.sessions.rawValue:
-            return (profile?.sessions.count ?? 0) + 1
+            return sessions.count + 1
         default:
             return 0
         }
@@ -159,7 +162,7 @@ class MeViewController: UITableViewController {
         }
     }
     
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == Section.mainAccount.rawValue {
             guard let account = mainAccount else {
@@ -178,21 +181,21 @@ class MeViewController: UITableViewController {
         
             return cell
         } else {
-            if indexPath.row < profile?.sessions.count ?? 0 {
+            if indexPath.row < sessions.count {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! SessionCell
                 
-                cell.update(session: profile!.sessions[indexPath.row], decimalUnits: mainAccount?.configuration.decimalUnits ?? false)
+                cell.update(session: sessions[indexPath.row], decimalUnits: mainAccount?.configuration.decimalUnits ?? false)
                 
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "loginIpCell", for: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "loginIpCell", for: indexPath) as! LoginIpCell
                 
-                cell.textLabel?.textColor = canLoginIp ? cell.tintColor : UIColor.darkGray
+                cell.label.textColor = canLoginIp ? cell.tintColor : UIColor.darkGray
                 
                 return cell
             }
         }
-     }
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == Section.sessions.rawValue {
@@ -200,25 +203,25 @@ class MeViewController: UITableViewController {
         }
     }
     
-    /*
-      Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-      Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == Section.sessions.rawValue {
+            return indexPath.row < sessions.count
+        } else {
+            return false
+        }
+    }
     
-    /*
-      Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-      Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-      Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
+    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return NSLocalizedString("Logout", comment: "Title for delete confirmation button for sessions.")
+    }
+ 
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let session = sessions[indexPath.row]
+            _ = mainAccount?.logoutSession(session: session, on: DispatchQueue.global(qos: .userInitiated))
+        }
+    }
+
     
     /*
       Override to support rearranging the table view.
