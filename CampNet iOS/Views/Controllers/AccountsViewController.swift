@@ -22,7 +22,7 @@ class AccountsViewController: UITableViewController {
     }
     
     var accounts: [(configuration: Configuration, accounts: [Account])] = []
-    var mainAccount: Account?
+    var mainAccount: Account? = nil
     
     func account(at indexPath: IndexPath) -> Account {
         return accounts[indexPath.section].accounts[indexPath.row]

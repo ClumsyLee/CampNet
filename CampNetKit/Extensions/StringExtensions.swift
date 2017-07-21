@@ -9,6 +9,9 @@
 import Foundation
 
 extension String {
+    public var reverseDomained: String {
+        return self.components(separatedBy: ".").reversed().joined(separator: ".")
+    }
     func replace(with placeholders: [String: String]) -> String {
         var string = self
         for (key, value) in placeholders {

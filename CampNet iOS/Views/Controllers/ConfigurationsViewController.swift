@@ -9,9 +9,27 @@
 import UIKit
 import CampNetKit
 
-class ConfigurationsViewController: UITableViewController {
+class ConfigurationsViewController: UITableViewController, UISearchResultsUpdating {
     
-    var names: [(key: String, value: String)]!
+    var searchController: UISearchController!
+    
+    var names: [(identifier: String, name: String, domain: String)] = []
+    var searchResults: [(identifier: String, name: String, domain: String)] = []
+    
+    func filter(for searchText: String) {
+        searchResults = names.filter { (identifier, name, domain) -> Bool in
+            return identifier.localizedCaseInsensitiveContains(searchText) ||
+                   name.localizedCaseInsensitiveContains(searchText) ||
+                   domain.localizedCaseInsensitiveContains(searchText)
+        }
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filter(for: searchText)
+            tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +40,18 @@ class ConfigurationsViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        self.names = Configuration.displayNames.sorted { $0.value < $1.value || $0.value == $1.value && $0.key < $1.key }
+        self.searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        tableView.tableHeaderView = searchController.searchBar
+        self.definesPresentationContext = true
+        
+        self.names = Configuration.displayNames.map {
+            (identifier: $0.key, name: $0.value, domain: $0.key.reverseDomained)
+        }
+        .sorted {
+            $0.name < $1.name || $0.name == $1.name && $0.identifier < $1.identifier
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,17 +66,17 @@ class ConfigurationsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        return searchController.isActive ? searchResults.count : names.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "configurationCell", for: indexPath) as! ConfigurationCell
 
         // Configure the cell...
-        let (identifier, name) = names[indexPath.row]
+        let (identifier, name, domain) = searchController.isActive ? searchResults[indexPath.row] : names[indexPath.row]
         cell.logo.image = UIImage(named: identifier)
         cell.name.text = name
-        cell.domain.text = identifier.components(separatedBy: ".").reversed().joined(separator: ".")
+        cell.domain.text = domain
 
         return cell
     }
@@ -93,10 +122,11 @@ class ConfigurationsViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
         if segue.identifier == "showConfigurationSetup" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let configurationIdentifier = names[indexPath.row].key
-                let name = names[indexPath.row].value
+                let (configurationIdentifier, name, _) = searchController.isActive ? searchResults[indexPath.row] : names[indexPath.row]
+                
                 var existedUsernames: Set<String> = []
                 for (configuration, accountArray) in Account.all {
                     if configuration.identifier == configurationIdentifier {
