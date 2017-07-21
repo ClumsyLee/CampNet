@@ -21,3 +21,12 @@
 
 /* Alert title when failed to login IP. */
 "Unable to Login %@" = "Cannot Login %@";
+
+/* Name of startTime field in session detail cell. */
+"Login Time" = "Login Time";
+
+/* Name of ip field in session detail cell. */
+"IP Address" = "IP Address";
+
+/* Name of mac field in session detail cell. */
+"MAC Address" = "MAC Address";

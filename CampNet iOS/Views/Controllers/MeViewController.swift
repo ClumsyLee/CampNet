@@ -42,8 +42,37 @@ class MeViewController: UITableViewController {
     var sessions: [Session] {
         return profile?.sessions ?? []
     }
+    var expandedIndex: Int = -1
+    var expandedHeight: Int {
+        return (expandedIndex < 0) ? 0 : SessionDetailCell.types
+    }
+    var expansionRange: Range<Int> {
+        return (expandedIndex + 1)..<(expandedIndex + expandedHeight + 1)
+    }
     var canLoginIp: Bool {
         return mainAccount?.configuration.actions[.loginIp] != nil
+    }
+    
+    func indexPaths(for index: Int) -> [IndexPath] {
+        if index < expandedIndex {
+            return [IndexPath(row: index, section: Section.sessions.rawValue)]
+        } else if index > expandedIndex {
+            return [IndexPath(row: index + expandedHeight, section: Section.sessions.rawValue)]
+        } else {
+            return (0...expandedHeight).map {
+                IndexPath(row: index + $0, section: Section.sessions.rawValue)
+            }
+        }
+    }
+    
+    var expandedIndexPaths: [IndexPath] {
+        return (1..<(expandedHeight + 1)).map {
+            IndexPath(row: expandedIndex + $0, section: Section.sessions.rawValue)
+        }
+    }
+    
+    func isSessionCell(_ row: Int) -> Bool {
+        return !(expansionRange ~= row || row >= sessions.count + expandedHeight)
     }
 
     func mainChanged(_ notification: Notification) {
@@ -78,16 +107,37 @@ class MeViewController: UITableViewController {
 
         var rows: [IndexPath] = []
         for (index, oldIp) in oldIps.enumerated() {
-            if !ips.contains(oldIp) {
-                rows.append(IndexPath(row: index, section: Section.sessions.rawValue))
+            let indexPaths = self.indexPaths(for: index)
+            
+            if let index = ips.index(of: oldIp) {
+                let cell = tableView.cellForRow(at: indexPaths.first!) as! SessionCell
+                let session = sessions[index]
+                
+                cell.update(session: session, decimalUnits: account.configuration.decimalUnits)
+                
+                // Update detail cells if needed.
+                for offset in 1..<indexPaths.count {
+                    let cell = tableView.cellForRow(at: indexPaths[offset]) as! SessionDetailCell
+                    cell.update(session: session, offset: offset)
+                }
+            } else {
+                rows.append(contentsOf: indexPaths)
             }
         }
         tableView.deleteRows(at: rows, with: .automatic)
         
+        if expandedIndex > 0 {
+            if let index = ips.index(of: oldIps[expandedIndex]) {
+                expandedIndex = index
+            } else {
+                expandedIndex = -1
+            }
+        }
+        
         rows = []
         for (index, ip) in ips.enumerated() {
             if !oldIps.contains(ip) {
-                rows.append(IndexPath(row: index, section: Section.sessions.rawValue))
+                rows.append(contentsOf: indexPaths(for: index))
             }
         }
         tableView.insertRows(at: rows, with: .automatic)
@@ -164,7 +214,7 @@ class MeViewController: UITableViewController {
         case Section.mainAccount.rawValue:
             return 1
         case Section.sessions.rawValue:
-            return sessions.count + 1
+            return sessions.count + expandedHeight + 1
         default:
             return 0
         }
@@ -209,16 +259,25 @@ class MeViewController: UITableViewController {
         
             return cell
         } else {
-            if indexPath.row < sessions.count {
+            switch indexPath.row {
+            case expansionRange:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "sessionDetailCell", for: indexPath) as! SessionDetailCell
+                
+                cell.update(session: sessions[expandedIndex], offset: indexPath.row - expandedIndex)
+                
+                return cell
+                
+            case sessions.count + expandedHeight:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "loginIpCell", for: indexPath)
+                
+                cell.textLabel!.textColor = canLoginIp ? cell.tintColor : UIColor.darkGray
+                
+                return cell
+                
+            default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! SessionCell
                 
                 cell.update(session: sessions[indexPath.row], decimalUnits: mainAccount?.configuration.decimalUnits ?? false)
-                
-                return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "loginIpCell", for: indexPath) as! LoginIpCell
-                
-                cell.label.textColor = canLoginIp ? cell.tintColor : UIColor.darkGray
                 
                 return cell
             }
@@ -227,13 +286,38 @@ class MeViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == Section.sessions.rawValue {
+            tableView.deselectRow(at: indexPath, animated: true)
             
+            if isSessionCell(indexPath.row) {
+                if expandedIndex < 0 {
+                    expandedIndex = indexPath.row
+                    tableView.insertRows(at: self.expandedIndexPaths, with: .top)
+                } else if expandedIndex == indexPath.row {
+                    let indexPaths = expandedIndexPaths
+                    expandedIndex = -1
+                    
+                    tableView.deleteRows(at: indexPaths, with: .top)
+                } else {
+                    let indexPathsToDelete = expandedIndexPaths
+                    if indexPath.row < expandedIndex {
+                        expandedIndex = indexPath.row
+                    } else {
+                        expandedIndex = indexPath.row - expandedHeight
+                    }
+                    let indexPathsToInsert = expandedIndexPaths
+                    
+                    tableView.beginUpdates()
+                    tableView.deleteRows(at: indexPathsToDelete, with: .top)
+                    tableView.insertRows(at: indexPathsToInsert, with: .top)
+                    tableView.endUpdates()
+                }
+            }
         }
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if indexPath.section == Section.sessions.rawValue {
-            return indexPath.row < sessions.count
+            return isSessionCell(indexPath.row)
         } else {
             return false
         }
@@ -245,7 +329,11 @@ class MeViewController: UITableViewController {
  
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let session = sessions[indexPath.row]
+            var index = indexPath.row
+            if indexPath.row > expandedIndex {
+                index -= expandedHeight
+            }
+            let session = sessions[index]
             let delegate = UIApplication.shared.delegate as! AppDelegate
             
             delegate.setNetworkActivityIndicatorVisible(true)
