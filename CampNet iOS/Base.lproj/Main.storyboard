@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TlQ-A8-CYf">
-                                <rect key="frame" x="86" y="280.5" width="203.5" height="107.5"/>
+                                <rect key="frame" x="86" y="280" width="203.5" height="107.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Usage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyC-sN-4d9">
                                         <rect key="frame" x="43" y="0.0" width="118" height="21.5"/>
@@ -50,14 +50,25 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O4H-QP-3wm" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="387.5" width="375" height="230.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="TlQ-A8-CYf" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Yyj-EY-bbP"/>
-                            <constraint firstItem="TlQ-A8-CYf" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="wkJ-Xj-9m0"/>
+                            <constraint firstItem="TlQ-A8-CYf" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="2ka-im-BAb"/>
+                            <constraint firstItem="TlQ-A8-CYf" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Oez-GH-gIu"/>
+                            <constraint firstItem="O4H-QP-3wm" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="Q49-53-5uI"/>
+                            <constraint firstAttribute="trailing" secondItem="O4H-QP-3wm" secondAttribute="trailing" id="RPY-A4-VgF"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="O4H-QP-3wm" secondAttribute="bottom" id="Vk6-Nq-Gag"/>
+                            <constraint firstItem="O4H-QP-3wm" firstAttribute="top" secondItem="TlQ-A8-CYf" secondAttribute="bottom" id="YBZ-dV-h2S"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Overview" image="overview" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="plot" destination="O4H-QP-3wm" id="9ZD-C9-TwR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -244,13 +255,13 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p93-ml-yrS">
                                             <rect key="frame" x="40" y="13" width="327" height="20.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="IP Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9g-yp-QrT">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="IP Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9g-yp-QrT">
                                                     <rect key="frame" x="0.0" y="0.0" width="231.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="59.66.141.91" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TN2-rh-TP8">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="59.66.141.91" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TN2-rh-TP8">
                                                     <rect key="frame" x="231.5" y="0.0" width="95.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -521,7 +532,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BgW-cK-Tac">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BgW-cK-Tac">
                                                     <rect key="frame" x="20" y="8" width="347" height="27.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -531,12 +542,20 @@
                                                         <action selector="usernameEntered:" destination="fTg-YW-PlX" eventType="primaryActionTriggered" id="ADQ-wj-vSO"/>
                                                     </connections>
                                                 </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account existed" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ncw-7O-lBD">
+                                                    <rect key="frame" x="244" y="11" width="123" height="21"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Ncw-7O-lBD" secondAttribute="trailing" id="5Sa-nS-Ffh"/>
                                                 <constraint firstItem="BgW-cK-Tac" firstAttribute="top" secondItem="kgz-UG-MbT" secondAttribute="topMargin" id="6Kt-Q5-8on"/>
                                                 <constraint firstItem="BgW-cK-Tac" firstAttribute="leading" secondItem="kgz-UG-MbT" secondAttribute="leadingMargin" constant="12" id="HMm-eS-zM4"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="BgW-cK-Tac" secondAttribute="trailing" id="Z82-AI-Huo"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="BgW-cK-Tac" secondAttribute="bottom" id="db4-UD-g9r"/>
+                                                <constraint firstItem="Ncw-7O-lBD" firstAttribute="centerY" secondItem="kgz-UG-MbT" secondAttribute="centerY" id="yc4-Pv-YmI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -547,7 +566,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bAx-BR-1dX">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bAx-BR-1dX">
                                                     <rect key="frame" x="20" y="8" width="347" height="27.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -581,6 +600,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="accountExistedLabel" destination="Ncw-7O-lBD" id="jhS-Po-GBN"/>
                         <outlet property="doneButton" destination="2XS-66-75j" id="5EL-Q0-ba0"/>
                         <outlet property="passwordField" destination="bAx-BR-1dX" id="bP5-1C-z9G"/>
                         <outlet property="usernameField" destination="BgW-cK-Tac" id="TN1-Dz-SQK"/>
@@ -711,7 +731,7 @@
         <!--Login IP-->
         <scene sceneID="HK5-X6-vti">
             <objects>
-                <tableViewController id="AAM-nG-qvc" sceneMemberID="viewController">
+                <tableViewController id="AAM-nG-qvc" customClass="LoginIpViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="RvJ-Fz-1YT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -731,6 +751,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                    <connections>
+                                                        <action selector="ipChanged:" destination="AAM-nG-qvc" eventType="editingChanged" id="LgR-eh-stl"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -746,7 +769,6 @@
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="AAM-nG-qvc" id="sbn-5e-oqn"/>
-                            <outlet property="delegate" destination="AAM-nG-qvc" id="t9h-8N-I8U"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Login IP" id="4fQ-du-yO1">
@@ -755,8 +777,16 @@
                                 <segue destination="Zh6-fa-eCF" kind="unwind" unwindAction="cancelLoginIpWithSegue:" id="2GV-Vx-iTJ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="Ebd-34-VdH"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="Ebd-34-VdH">
+                            <connections>
+                                <segue destination="Zh6-fa-eCF" kind="unwind" unwindAction="ipLoggedInSegue:" id="qa3-jC-J4p"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="Ebd-34-VdH" id="l45-sA-CKh"/>
+                        <outlet property="ipField" destination="mDj-vP-thr" id="lXO-oI-B6L"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19U-wi-bo6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Zh6-fa-eCF" userLabel="Exit" sceneMemberID="exit"/>

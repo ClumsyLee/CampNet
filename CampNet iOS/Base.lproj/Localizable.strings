@@ -9,3 +9,15 @@
 
 /* Title for delete confirmation button for sessions. */
 "Logout" = "Logout";
+
+/* OK button on alerts that display errors. */
+"OK" = "OK";
+
+/* Alert title when failed to logout a session. */
+"Unable to Logout \"%@\"" = "Unable to Logout \"%@\"";
+
+/* Alert title when failed to update account profile. */
+"Unable to Update Profile of \"%@\"" = "Unable to Update Profile of \"%@\"";
+
+/* Alert title when failed to login IP. */
+"Unable to Login %@" = "Cannot Login %@";

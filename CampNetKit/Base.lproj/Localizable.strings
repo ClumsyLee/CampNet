@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  CampNet iOS
+
+  Created by Thomas Lee on 2017/7/21.
+  Copyright © 2017年 Sihan Li. All rights reserved.
+*/
+
+/* Localized descriptions for CampNetError */
+"offcampus" = "Not connected to the campus network.";
+"unauthorized" = "Invalid username or password. Please change the account password in \"Me > Accounts\".";
+"arrears" = "The account is in arrears.";
+"networkError" = "Network error. Please try again later.";
+"invalidArguments" = "Invalid arguments.";
+"invalidConfiguration" = "Invalid configuration file. Please contact the developer.";
+"internalError" = "Internal error. Please contact the developer.";
+"unknown" = "Unknown error.";

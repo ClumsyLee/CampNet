@@ -84,9 +84,9 @@ public struct Profile {
 }
 
 public struct History {
-    var year: Int
-    var month: Int
-    var usageSums: [Int]
+    public var year: Int
+    public var month: Int
+    public var usageSums: [Int]
     
     init?(vars: [String: Any]) {
         guard let year = vars["year"] as? Int,

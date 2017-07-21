@@ -115,7 +115,6 @@ class ChangePasswordViewController: UITableViewController {
         
         if segue.identifier == "passwordChanged" {
             account.password = passwordField.text ?? ""
-            _ = account.profile()
         }
     }
     

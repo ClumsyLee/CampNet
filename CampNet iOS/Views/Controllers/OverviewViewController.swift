@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import Charts
+import CampNetKit
 
 class OverviewViewController: UIViewController {
 
+    @IBOutlet var plot: LineChartView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

@@ -95,9 +95,20 @@ class ConfigurationsViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "showConfigurationSetup" {
             if let indexPath = tableView.indexPathForSelectedRow {
+                let configurationIdentifier = names[indexPath.row].key
+                let name = names[indexPath.row].value
+                var existedUsernames: Set<String> = []
+                for (configuration, accountArray) in Account.all {
+                    if configuration.identifier == configurationIdentifier {
+                        existedUsernames.formUnion(accountArray.map{ $0.username })
+                        break
+                    }
+                }
+                
                 let controller = segue.destination as! ConfigurationSetupViewController
-                controller.configurationIdentifier = names[indexPath.row].key
-                controller.navigationItem.title = names[indexPath.row].value
+                controller.configurationIdentifier = configurationIdentifier
+                controller.existedUsernames = existedUsernames
+                controller.navigationItem.title = name
             }
         }
     }

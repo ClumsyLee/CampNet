@@ -9,3 +9,15 @@
 
 /* Title for delete confirmation button for sessions. */
 "Logout" = "下线";
+
+/* OK button on alerts that display errors. */
+"OK" = "好的";
+
+/* Alert title when failed to logout a session. */
+"Unable to Logout \"%@\"" = "无法下线“%@”";
+
+/* Alert title when failed to update account profile. */
+"Unable to Update Profile of \"%@\"" = "无法更新“%@”的账户信息";
+
+/* Alert title when failed to login IP. */
+"Unable to Login %@" = "无法上线 %@";

@@ -12,12 +12,12 @@ import SwiftyUserDefaults
 public let Defaults = UserDefaults(suiteName: Configuration.appGroup)!
 
 extension DefaultsKeys {
-    public static let mainAccount = DefaultsKey<String?>("mainAccount")
-    public static let accounts = DefaultsKey<[String]>("accounts")
+    static let mainAccount = DefaultsKey<String?>("mainAccount")
+    static let accounts = DefaultsKey<[String]>("accounts")
     
     // Account related.
-    public static func accountUnauthorized(of id: String) -> DefaultsKey<Bool> { return DefaultsKey<Bool>("\(id).accountUnauthorized") }
-    public static func accountStatus(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountStatus") }
-    public static func accountProfile(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountProfile") }
-    public static func accountHistory(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountHistory") }
+    static func accountUnauthorized(of id: String) -> DefaultsKey<Bool> { return DefaultsKey<Bool>("\(id).accountUnauthorized") }
+    static func accountStatus(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountStatus") }
+    static func accountProfile(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountProfile") }
+    static func accountHistory(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountHistory") }
 }

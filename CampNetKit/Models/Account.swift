@@ -78,13 +78,20 @@ public class Account {
         return Profile(vars: vars)
     }
     
+    public var history: History? {
+        guard let vars = Defaults[.accountHistory(of: identifier)] else {
+            return nil
+        }
+        return History(vars: vars)
+    }
+    
     init(configuration: Configuration, username: String) {
         self.configuration = configuration
         self.username = username
         self.identifier = "\(configuration.identifier).\(username)"
     }
     
-    public func login(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Bool> {
+    public func login(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
 
         guard let action = configuration.actions[.login] else {
             print("Login action not found in \(configuration.identifier).")
@@ -92,24 +99,24 @@ public class Account {
         }
         print("Logging in for \(identifier).")
         
-        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { _ in
-            return self.status(on: queue, requestBinder: requestBinder)
-        }
-        .then(on: queue) { status in
-            if case .online = status {
-                return Promise(value: true)
-            } else {
-                return Promise(value: false)
-            }
-        }
-        .recover(on: queue) { error -> Promise<Bool> in
+        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).recover(on: queue) { error -> Promise<[String: Any]> in
+            
             print("Failed to login account \(self.identifier). Error: \(error).")
-
+            
             if case CampNetError.unauthorized = error {
                 self.unauthorized = true
             }
             
-            return Promise(value: false)
+            throw error
+        }
+        .then(on: queue) { _ in
+            return self.status(on: queue, requestBinder: requestBinder)
+        }
+        .then(on: queue) { status in
+            guard case .online = status else {
+                throw CampNetError.unknown
+            }
+            return Promise(value: ())
         }
     }
     
@@ -122,6 +129,7 @@ public class Account {
         print("Updating status for \(identifier).")
         
         return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { vars in
+            
             guard let status = Status(vars: vars) else {
                 print("No status in vars (\(vars)).")
                 throw CampNetError.invalidConfiguration
@@ -154,6 +162,7 @@ public class Account {
         print("Updating profile for \(identifier).")
         
         return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { vars in
+            
             guard let profile = Profile(vars: vars) else {
                 print("No profile in vars (\(vars)).")
                 throw CampNetError.invalidConfiguration
@@ -185,10 +194,8 @@ public class Account {
         }
         print("Logging in IP \(ip) for \(identifier).")
         
-        return action.commit(username: username, password: password, extraVars: ["ip": ip], on: queue, requestBinder: requestBinder).then { _ in
-            Promise(value: ())
-        }
-        .recover(on: queue) { error -> Promise<Void> in
+        return action.commit(username: username, password: password, extraVars: ["ip": ip], on: queue, requestBinder: requestBinder).recover(on: queue) { error -> Promise<[String: Any]> in
+            
             print("Failed to login IP \(ip) for account \(self.identifier). Error: \(error).")
             
             if case CampNetError.unauthorized = error {
@@ -196,6 +203,18 @@ public class Account {
             }
             
             throw error
+        }
+        .then { _ in
+            if self.configuration.actions[.profile] != nil {
+                return self.profile(on: queue, requestBinder: requestBinder).then(on: queue) { profile in
+                    guard profile.sessions.map({ $0.ip }).contains(ip) else {
+                        throw CampNetError.unknown
+                    }
+                    return Promise(value: ())
+                }
+            } else {
+                return Promise(value: ())
+            }
         }
     }
     
@@ -207,10 +226,8 @@ public class Account {
         }
         print("Logging out \(session) for \(identifier).")
         
-        return action.commit(username: username, password: password, extraVars: ["ip": session.ip, "id": session.id ?? ""], on: queue, requestBinder: requestBinder).then { _ in
-            Promise(value: ())
-        }
-        .recover(on: queue) { error -> Promise<Void> in
+        return action.commit(username: username, password: password, extraVars: ["ip": session.ip, "id": session.id ?? ""], on: queue, requestBinder: requestBinder).recover(on: queue) { error -> Promise<[String: Any]> in
+            
             print("Failed to logout session \(session) for account \(self.identifier). Error: \(error).")
             
             if case CampNetError.unauthorized = error {
@@ -218,6 +235,15 @@ public class Account {
             }
             
             throw error
+        }
+        .then { _ in
+            return self.profile(on: queue, requestBinder: requestBinder)
+        }
+        .then(on: queue) { profile in
+            guard !profile.sessions.map({ $0.ip }).contains(session.ip) else {
+                throw CampNetError.unknown
+            }
+            return Promise(value: ())
         }
     }
     
@@ -261,10 +287,8 @@ public class Account {
         }
         print("Logging out for \(identifier).")
         
-        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then { _ in
-            Promise(value: ())
-        }
-        .recover(on: queue) { error -> Promise<Void> in
+        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).recover(on: queue) { error -> Promise<[String: Any]> in
+            
             print("Failed to logout for account \(self.identifier). Error: \(error).")
             
             if case CampNetError.unauthorized = error {
@@ -273,6 +297,16 @@ public class Account {
             
             throw error
         }
+        .then(on: queue) { _ in
+            return self.status(on: queue, requestBinder: requestBinder)
+        }
+        .then(on: queue) { status in
+            guard case .offline = status else {
+                throw CampNetError.unknown
+            }
+            return Promise(value: ())
+        }
+
     }
 }
 

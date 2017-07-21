@@ -29,6 +29,7 @@ public struct ActionEntry {
     public var url: String
     public var params: [String: String] = [:]
     public var vars: [String: String] = [:]
+    public var offcampusIfFailed: Bool
     public var script: String
     
     init?(actionIdentifier: String, index: Int, yaml: Yaml) {
@@ -52,6 +53,7 @@ public struct ActionEntry {
             self.vars = vars
         }
         
+        self.offcampusIfFailed = yaml["offcampus_if_failed"].bool ?? false
         self.script = "(\(ActionEntry.respName)) => {\n\(yaml["script"].string ?? "")\n}"
     }
     
@@ -80,7 +82,7 @@ public struct ActionEntry {
         
         return session.dataTask(with: request).asString().recover(on: queue) { error -> Promise<String> in
             print("Data task of \(self.identifier) failed: \(error)")
-            throw CampNetError.networkError
+            throw self.offcampusIfFailed ? CampNetError.offcampus : CampNetError.networkError
         }
         .then(on: queue) { resp in
             print("Processing the response of \(self.identifier).")
@@ -88,7 +90,7 @@ public struct ActionEntry {
             let newVars = try self.captureNewVars(resp: resp)    // Capture new vars from HTML if needed.
             try self.runScript(context: context, resp: resp ,newVars: newVars)     // Invoke script.
             let results = try self.getResults(context: context)  // Get results.
-            
+
             return Promise(value: results)
         }
     }
@@ -238,7 +240,7 @@ public struct Action {
         }
         
         let context = JSContext()!
-        context.evaluateScript("var \(ActionEntry.varsName) = {}")  // "let" does not work here.
+        context.setObject(initialVars, forKeyedSubscript: ActionEntry.varsName as (NSCopying & NSObjectProtocol))
         let session = URLSession(configuration: URLSessionConfiguration.default)
         
         var promise = Promise<[String: Any]>(value: initialVars)

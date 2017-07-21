@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.2.0)
+  - Charts (3.0.2):
+    - Charts/Core (= 3.0.2)
+  - Charts/Core (3.0.2)
   - CryptoSwift (0.6.9)
   - Kanna (2.1.1)
   - KeychainAccess (3.0.1)
@@ -19,6 +22,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - Charts
   - CryptoSwift
   - Kanna
   - KeychainAccess
@@ -28,6 +32,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   CryptoSwift: a22f6ba238e9ce4d26ee7bf45b9ed82e7122d4a0
   Kanna: 9b4b086c218703f2b94f5b21a466217dd2f9332e
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
@@ -35,6 +40,6 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
   Yaml: 18b2cf7301c4132e2bbb508a6921d2637ed3046c
 
-PODFILE CHECKSUM: ab9cb89745897ea2ca5a86b20abc73981f7bbb63
+PODFILE CHECKSUM: 8d0b121871bc6f6a3b6e3d936d5a2aab92de9e1e
 
 COCOAPODS: 1.2.1

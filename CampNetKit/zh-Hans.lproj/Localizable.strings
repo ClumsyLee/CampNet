@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  CampNet iOS
+
+  Created by Thomas Lee on 2017/7/21.
+  Copyright © 2017年 Sihan Li. All rights reserved.
+*/
+
+/* Localized descriptions for CampNetError */
+"offcampus" = "未连接到校园网。";
+"unauthorized" = "用户名或密码错误。请在“我 > 账户”中修改密码。";
+"arrears" = "账户已欠费。";
+"networkError" = "网络错误。请稍后再试。";
+"invalidArguments" = "无效的参数。";
+"invalidConfiguration" = "无效的配置文件。请联系开发者。";
+"internalError" = "内部错误。请联系开发者。";
+"unknown" = "未知错误。";

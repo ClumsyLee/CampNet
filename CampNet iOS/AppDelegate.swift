@@ -17,6 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    fileprivate let networkActivityQueue = DispatchQueue(label: "\(Bundle.main.bundleIdentifier!).networkActivityQueue", qos: .userInitiated)
+    fileprivate var networkActivityCounter: Int = 0
+    
+    func setNetworkActivityIndicatorVisible(_ value: Bool) {
+        networkActivityQueue.async {
+            self.networkActivityCounter += value ? 1 : -1
+            UIApplication.shared.isNetworkActivityIndicatorVisible = self.networkActivityCounter > 0
+        }
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

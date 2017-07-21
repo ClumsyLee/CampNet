@@ -12,10 +12,12 @@ import CampNetKit
 class ConfigurationSetupViewController: UITableViewController {
 
     @IBOutlet fileprivate var usernameField: UITextField!
+    @IBOutlet var accountExistedLabel: UILabel!
     @IBOutlet fileprivate var passwordField: UITextField!
     @IBOutlet fileprivate var doneButton: UIBarButtonItem!
     
     var configurationIdentifier: String!
+    var existedUsernames: Set<String>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,7 @@ class ConfigurationSetupViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         usernameField.text = ""
+        accountExistedLabel.isHidden = true
         passwordField.text = ""
         doneButton.isEnabled = false
     }
@@ -126,11 +129,16 @@ class ConfigurationSetupViewController: UITableViewController {
     // MARK: - UITextField
     
     @IBAction func usernameChanged(_ sender: Any) {
-        doneButton.isEnabled = !(usernameField.text ?? "").isEmpty
+        let username = usernameField.text ?? ""
+        let notExisted = !existedUsernames.contains(username)
+        doneButton.isEnabled = !username.isEmpty && notExisted
+        accountExistedLabel.isHidden = notExisted
     }
     
     @IBAction func usernameEntered(_ sender: Any) {
-        passwordField.becomeFirstResponder()
+        if !existedUsernames.contains(usernameField.text ?? "") {
+            passwordField.becomeFirstResponder()
+        }
     }
     
     @IBAction func passwordEntered(_ sender: Any) {

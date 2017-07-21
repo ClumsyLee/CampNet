@@ -12,7 +12,24 @@ import CampNetKit
 class MeViewController: UITableViewController {
     
     @IBAction func cancelLoginIp(segue: UIStoryboardSegue) {}
-    @IBAction func loggedInIp(segue: UIStoryboardSegue) {}
+    @IBAction func ipLoggedIn(segue: UIStoryboardSegue) {
+        if let controller = segue.source as? LoginIpViewController,
+           let ip = controller.ipField.text,
+           let account = mainAccount {
+            
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            
+            delegate.setNetworkActivityIndicatorVisible(true)
+            account.login(ip: ip, on: DispatchQueue.global(qos: .userInitiated)).always {
+                delegate.setNetworkActivityIndicatorVisible(false)
+            }
+            .catch { error in
+                if let error = error as? CampNetError {
+                    self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Login %@", comment: "Alert title when failed to login IP."), ip), message: error.localizedDescription)
+                }
+            }
+        }
+    }
     
     enum Section: Int {
         case mainAccount
@@ -89,9 +106,19 @@ class MeViewController: UITableViewController {
     
     func refresh(sender:AnyObject)
     {
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        
+        delegate.setNetworkActivityIndicatorVisible(true)
+        
         if let account = mainAccount {
-            _ = account.profile(on: DispatchQueue.global(qos: .userInitiated)).always {
+            account.profile(on: DispatchQueue.global(qos: .userInitiated)).always {
                 self.refreshControl?.endRefreshing()
+                delegate.setNetworkActivityIndicatorVisible(false)
+            }
+            .catch { error in
+                if let error = error as? CampNetError {
+                    self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Update Profile of \"%@\"", comment: "Alert title when failed to update account profile."), account.username), message: error.localizedDescription)
+                }
             }
         }
     }
@@ -219,8 +246,21 @@ class MeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let session = sessions[indexPath.row]
-            _ = mainAccount?.logoutSession(session: session, on: DispatchQueue.global(qos: .userInitiated))
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            
+            delegate.setNetworkActivityIndicatorVisible(true)
+            
+            _ = mainAccount?.logoutSession(session: session, on: DispatchQueue.global(qos: .userInitiated)).catch { error in
+                if let error = error as? CampNetError {
+                    self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Logout \"%@\"", comment: "Alert title when failed to logout a session."), session.device ?? session.ip), message: error.localizedDescription)
+                }
+            }
+            .always {
+                delegate.setNetworkActivityIndicatorVisible(false)
+            }
         }
+        
+        tableView.setEditing(false, animated: true)
     }
 
     

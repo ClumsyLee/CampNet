@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum CampNetError: Error {
+public enum CampNetError: String, Error {
     case offcampus
     case unauthorized
     case arrears
@@ -18,6 +18,10 @@ public enum CampNetError: Error {
     case invalidConfiguration
     case internalError
     case unknown
+    
+    public var localizedDescription: String {
+        return Configuration.bundle.localizedString(forKey: rawValue, value: nil, table: nil)
+    }
     
     init?(identifier: String) {
         switch identifier {

@@ -15,7 +15,11 @@ class AccountsViewController: UITableViewController {
     @IBAction func cancelAddingAccount(segue: UIStoryboardSegue) {}
     @IBAction func accountAdded(segue: UIStoryboardSegue) {}
     @IBAction func cancelChangingPassword(segue: UIStoryboardSegue) {}
-    @IBAction func passwordChanged(segue: UIStoryboardSegue) {}
+    @IBAction func passwordChanged(segue: UIStoryboardSegue) {
+        if let controller = segue.source as? ChangePasswordViewController {
+            _ = updateProfile(of: controller.account)
+        }
+    }
     
     var accounts: [(configuration: Configuration, accounts: [Account])] = []
     var mainAccount: Account?
@@ -44,6 +48,9 @@ class AccountsViewController: UITableViewController {
     
     func accountAdded(_ notification: Notification) {
         if let account = notification.userInfo?["account"] as? Account {
+            _ = updateProfile(of: account)  // Update the new account in the background.
+            
+            // Insert account into the table.
             let identifier = account.configuration.identifier
             let name = account.configuration.displayName
             let username = account.username
@@ -149,17 +156,31 @@ class AccountsViewController: UITableViewController {
         cell.unauthorized = account.unauthorized
     }
     
+    func updateProfile(of account: Account) -> Promise<Profile> {
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        
+        delegate.setNetworkActivityIndicatorVisible(true)
+        return account.profile(on: DispatchQueue.global(qos: .userInitiated)).always {
+            delegate.setNetworkActivityIndicatorVisible(false)
+            }
+        .catch { error in
+            if let error = error as? CampNetError {
+                self.presentAlert(title: NSLocalizedString("Unable to Update Profile", comment: "Alert title when failed to update account profile."), message: error.localizedDescription)
+            }
+        }
+    }
+    
     func refresh(sender:AnyObject)
     {
         var promises: [Promise<Profile>] = []
-        
         for (_, accountArray) in accounts {
             for account in accountArray {
-                promises.append(account.profile(on: DispatchQueue.global(qos: .userInitiated)))
+                let promise = updateProfile(of: account)
+                promises.append(promise)
             }
         }
         
-        _ = when(resolved: promises).then { _ in
+        when(resolved: promises).always { _ in
             self.refreshControl?.endRefreshing()
         }
     }
@@ -278,14 +299,17 @@ class AccountsViewController: UITableViewController {
     */
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let changePasswordAction = UITableViewRowAction(style: .normal, title: NSLocalizedString("Change\nPassword", comment: "Action to change the password of an account in the account list."), handler: { (action, indexPath) in
+        let changePasswordAction = UITableViewRowAction(style: .normal, title: NSLocalizedString("Change\nPassword", comment: "Action to change the password of an account in the account list.")) { (action, indexPath) in
             let cell = tableView.cellForRow(at: indexPath)
             self.performSegue(withIdentifier: "changePassword", sender: cell)
+            
             tableView.setEditing(false, animated: true)
-        })
+        }
         
         let deleteAction = UITableViewRowAction(style: .destructive, title: NSLocalizedString("Delete", comment: "Action to delete an account in the account list.")) { (action, indexPath) in
             Account.remove(self.account(at: indexPath))
+            
+            tableView.setEditing(false, animated: true)
         }
         
         return [deleteAction, changePasswordAction]
