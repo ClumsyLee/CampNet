@@ -51,3 +51,21 @@
 
 /* Limit line label in the history chart. */
 "Max" = "Max";
+
+/* Login button caption. */
+"Login" = "Login";
+
+/* Login button caption. */
+"Logout" = "Logout";
+
+/* Login button caption. */
+"Offcampus" = "Offcampus";
+
+/* Login button caption. */
+"Logging In…" = "Logging In…";
+
+/* Login button caption. */
+"Logging Out…" = "Logging Out…";
+
+/* Login button caption. */
+"Unknown" = "Unknown";

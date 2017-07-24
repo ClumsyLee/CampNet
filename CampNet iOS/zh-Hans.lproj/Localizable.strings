@@ -51,3 +51,21 @@
 
 /* Limit line label in the history chart. */
 "Max" = "最大";
+
+/* Login button caption. */
+"Login" = "上线";
+
+/* Login button caption. */
+"Logout" = "下线";
+
+/* Login button caption. */
+"Offcampus" = "非校园网";
+
+/* Login button caption. */
+"Logging In…" = "上线中…";
+
+/* Login button caption. */
+"Logging Out…" = "下线中…";
+
+/* Login button caption. */
+"Unknown" = "未知";

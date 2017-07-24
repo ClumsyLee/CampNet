@@ -29,6 +29,7 @@ class OverviewViewController: UIViewController {
     @IBOutlet var networkButton: UIButton!
     @IBOutlet var devicesButton: UIButton!
     @IBOutlet var loginButton: DynamicButton!
+    @IBOutlet var loginButtonCaption: UILabel!
 
     @IBOutlet var chart: LineChartView!
 
@@ -42,7 +43,48 @@ class OverviewViewController: UIViewController {
     }
 
     @IBAction func loginButtonPressed(_ sender: Any) {
+        guard let account = account,
+              let status = account.status else {
+            return
+        }
+        
+        switch status.type {
+        case .online:
+            loginButton.isEnabled = false
+            loginButton.setStyle(.horizontalMoreOptions, animated: true)
+            
+            loginButtonCaption.text = NSLocalizedString("Logging Out…", comment: "Login button caption.")
+            
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            delegate.setNetworkActivityIndicatorVisible(true)
 
+            account.logout(on: DispatchQueue.global(qos: .userInitiated)).always {
+                delegate.setNetworkActivityIndicatorVisible(false)
+            }
+            .catch { error in
+                if let error = error as? CampNetError {
+                    self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Login \"%@\"", comment: "Alert title when failed to login."), account.username), message: error.localizedDescription)
+                }
+            }
+        case .offline:
+            loginButton.isEnabled = false
+            loginButton.setStyle(.horizontalMoreOptions, animated: true)
+            
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            delegate.setNetworkActivityIndicatorVisible(true)
+            
+            loginButtonCaption.text = NSLocalizedString("Logging In…", comment: "Login button caption.")
+            
+            account.login(on: DispatchQueue.global(qos: .userInitiated)).always {
+                delegate.setNetworkActivityIndicatorVisible(false)
+            }
+            .catch { error in
+                if let error = error as? CampNetError {
+                    self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Logout \"%@\"", comment: "Alert title when failed to logout."), account.username), message: error.localizedDescription)
+                }
+            }
+        default: return
+        }
     }
 
     var account: Account? = nil
@@ -96,26 +138,34 @@ class OverviewViewController: UIViewController {
         if let type = status?.type {
             switch type {
             case .online:
+                loginButton.isEnabled = true
                 loginButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
                 loginButton.strokeColor = .white
                 loginButton.setStyle(.stop, animated: true)
-                loginButton.isEnabled = true
+                
+                loginButtonCaption.text = NSLocalizedString("Logout", comment: "Login button caption.")
             case .offline:
+                loginButton.isEnabled = true
                 loginButton.backgroundColor = .white
                 loginButton.strokeColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
                 loginButton.setStyle(.play, animated: true)
-                loginButton.isEnabled = true
+                
+                loginButtonCaption.text = NSLocalizedString("Login", comment: "Login button caption.")
             case .offcampus:
+                loginButton.isEnabled = false
                 loginButton.backgroundColor = #colorLiteral(red: 0.9372541904, green: 0.9372367859, blue: 0.9563211799, alpha: 1)
                 loginButton.strokeColor = .lightGray
                 loginButton.setStyle(.horizontalLine, animated: true)
-                loginButton.isEnabled = false
+                
+                loginButtonCaption.text = NSLocalizedString("Offcampus", comment: "Login button caption.")
             }
         } else {
+            loginButton.isEnabled = false
             loginButton.backgroundColor = #colorLiteral(red: 0.9372541904, green: 0.9372367859, blue: 0.9563211799, alpha: 1)
             loginButton.strokeColor = .lightGray
             loginButton.setStyle(.dot, animated: true)
-            loginButton.isEnabled = false
+            
+            loginButtonCaption.text = NSLocalizedString("Unknown", comment: "Login button caption.")
         }
 
         network.text = (NEHotspotHelper.supportedNetworkInterfaces().first as? NEHotspotNetwork)?.ssid ?? "-"
@@ -241,7 +291,7 @@ class OverviewViewController: UIViewController {
         chart.leftAxis.gridColor = #colorLiteral(red: 0.9372541904, green: 0.9372367859, blue: 0.9563211799, alpha: 1)
         chart.leftAxis.axisLineColor = .white
         chart.leftAxis.axisMinimum = 0
-
+        chart.leftAxis.drawLimitLinesBehindDataEnabled = true
         chart.rightAxis.enabled = false
 
         freeLimitLine.lineWidth = 1
@@ -254,12 +304,13 @@ class OverviewViewController: UIViewController {
         maxLimitLine.yOffset = 1
         maxLimitLine.lineColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         maxLimitLine.valueTextColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-        maxLimitLine.labelPosition = .leftBottom
+        maxLimitLine.labelPosition = .rightBottom
 
         self.account = Account.main
         reload()
 
         NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)), name: .mainAccountChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(statusUpdated(_:)), name: .accountStatusUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)), name: .accountProfileUpdated, object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(authorizationChanged(_:)), name: .accountAuthorizationChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(historyUpdated(_:)), name: .accountHistoryUpdated, object: nil)

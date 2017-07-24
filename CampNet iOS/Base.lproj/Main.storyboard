@@ -182,6 +182,12 @@
                                     <action selector="loginButtonPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="8Ny-MN-drn"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FY2-ia-TkL">
+                                <rect key="frame" x="167.5" y="298" width="39.5" height="14.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O4H-QP-3wm" customClass="LineChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="324" width="375" height="318.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -208,6 +214,7 @@
                             <constraint firstItem="TlQ-A8-CYf" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="XQ6-o1-WOK"/>
                             <constraint firstItem="3nS-ma-Whb" firstAttribute="top" secondItem="jz0-eb-K52" secondAttribute="bottom" id="Yos-NN-FsG"/>
                             <constraint firstItem="kY9-MZ-VUE" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" id="Z9z-WK-2eh"/>
+                            <constraint firstItem="FY2-ia-TkL" firstAttribute="top" secondItem="LWn-xC-OXn" secondAttribute="bottom" constant="4" id="bsY-AZ-nf3"/>
                             <constraint firstItem="kY9-MZ-VUE" firstAttribute="leading" secondItem="LWn-xC-OXn" secondAttribute="trailing" id="de0-YF-4aN"/>
                             <constraint firstAttribute="bottom" secondItem="N0D-C9-X2U" secondAttribute="bottom" constant="8" id="eZC-dT-3qs"/>
                             <constraint firstAttribute="trailing" secondItem="O4H-QP-3wm" secondAttribute="trailing" id="fUL-G9-Wlh"/>
@@ -222,6 +229,7 @@
                             <constraint firstItem="N0D-C9-X2U" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="uh2-Vg-fav"/>
                             <constraint firstItem="HNf-dq-eAj" firstAttribute="centerY" secondItem="9en-ME-ZJa" secondAttribute="centerY" id="vCP-ia-1gJ"/>
                             <constraint firstItem="LWn-xC-OXn" firstAttribute="bottom" secondItem="jz0-eb-K52" secondAttribute="bottom" constant="40" id="wLZ-Pw-ezf"/>
+                            <constraint firstItem="FY2-ia-TkL" firstAttribute="centerX" secondItem="LWn-xC-OXn" secondAttribute="centerX" id="yLY-Mb-XSW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QpZ-KH-7Yz">
@@ -250,6 +258,7 @@
                         <outlet property="devicesButton" destination="3nS-ma-Whb" id="76q-Na-a7e"/>
                         <outlet property="estimatedFee" destination="q35-nN-hpP" id="lIT-tj-0dE"/>
                         <outlet property="loginButton" destination="LWn-xC-OXn" id="oKy-Iq-8uE"/>
+                        <outlet property="loginButtonCaption" destination="FY2-ia-TkL" id="vR2-At-kSf"/>
                         <outlet property="network" destination="q73-Dm-dyJ" id="Zzj-h5-mif"/>
                         <outlet property="networkButton" destination="HNf-dq-eAj" id="vdU-oR-c7f"/>
                         <outlet property="refreshButton" destination="F3Z-2h-0Ih" id="Omh-On-quy"/>
