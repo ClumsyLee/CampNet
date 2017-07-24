@@ -14,11 +14,11 @@ class SessionsViewController: UITableViewController {
     @IBAction func ipLoggedIn(segue: UIStoryboardSegue) {
         if let controller = segue.source as? LoginIpViewController,
            let ip = controller.ipField.text,
-           let account = mainAccount {
+           let account = account {
             
             let delegate = UIApplication.shared.delegate as! AppDelegate
-            
             delegate.setNetworkActivityIndicatorVisible(true)
+            
             account.login(ip: ip, on: DispatchQueue.global(qos: .userInitiated)).always {
                 delegate.setNetworkActivityIndicatorVisible(false)
             }
@@ -31,20 +31,22 @@ class SessionsViewController: UITableViewController {
     }
     
     @IBAction func refresh(_ sender: Any) {
+        guard let account = account else {
+            self.refreshControl?.endRefreshing()
+            return
+        }
+        
         let delegate = UIApplication.shared.delegate as! AppDelegate
-        
         delegate.setNetworkActivityIndicatorVisible(true)
-        
-        if let account = mainAccount {
-            account.profile(on: DispatchQueue.global(qos: .userInitiated)).always {
-                self.refreshControl?.endRefreshing()
-                delegate.setNetworkActivityIndicatorVisible(false)
-                }
-                .catch { error in
-                    if let error = error as? CampNetError {
-                        self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Update Profile of \"%@\"", comment: "Alert title when failed to update account profile."), account.username), message: error.localizedDescription)
-                    }
+
+        account.profile(on: DispatchQueue.global(qos: .userInitiated)).always {
+            self.refreshControl?.endRefreshing()
+            delegate.setNetworkActivityIndicatorVisible(false)
             }
+            .catch { error in
+                if let error = error as? CampNetError {
+                    self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Update Profile of \"%@\"", comment: "Alert title when failed to update account profile."), account.username), message: error.localizedDescription)
+                }
         }
     }
     
@@ -53,7 +55,7 @@ class SessionsViewController: UITableViewController {
         case newSession
     }
     
-    var mainAccount: Account?
+    var account: Account?
     var profile: Profile?
     
     var sessions: [Session] {
@@ -67,7 +69,7 @@ class SessionsViewController: UITableViewController {
         return (expandedIndex + 1)..<(expandedIndex + expandedHeight + 1)
     }
     var canLoginIp: Bool {
-        return mainAccount?.configuration.actions[.loginIp] != nil
+        return account?.configuration.actions[.loginIp] != nil
     }
     
     func indexPaths(for index: Int) -> [IndexPath] {
@@ -91,67 +93,74 @@ class SessionsViewController: UITableViewController {
     func isSessionCell(_ row: Int) -> Bool {
         return !(expansionRange ~= row || row >= sessions.count + expandedHeight)
     }
+    
+    func reloadModel() {
+        account = Account.main
+        profile = account?.profile
+    }
 
     func mainChanged(_ notification: Notification) {
-        mainAccount = Account.main
-        profile = mainAccount?.profile
-        
+        reloadModel()
         tableView.reloadData()
     }
     
     func profileUpdated(_ notification: Notification) {
         guard let account = notification.userInfo?["account"] as? Account,
               let profile = notification.userInfo?["profile"] as? Profile,
-              mainAccount == account else {
+              account == account else {
             return
         }
         
-        tableView.beginUpdates()
-        
         let oldIps = sessions.map({ $0.ip })
         self.profile = profile
-        
-        // Update sessions section.
         let ips = profile.sessions.map({ $0.ip })
 
-        var rows: [IndexPath] = []
-        for (index, oldIp) in oldIps.enumerated() {
-            let indexPaths = self.indexPaths(for: index)
+        if oldIps.isEmpty && !ips.isEmpty {
+            tableView.insertSections(IndexSet(integer: Section.sessions.rawValue), with: .automatic)
+        } else if !oldIps.isEmpty && ips.isEmpty {
+            tableView.deleteSections(IndexSet(integer: Section.sessions.rawValue), with: .automatic)
+        } else if !oldIps.isEmpty && !ips.isEmpty {
             
-            if let index = ips.index(of: oldIp) {
-                let cell = tableView.cellForRow(at: indexPaths.first!) as! SessionCell
-                let session = sessions[index]
+            var rowsToDelete: [IndexPath] = []
+            for (index, oldIp) in oldIps.enumerated() {
+                let indexPaths = self.indexPaths(for: index)
                 
-                cell.update(session: session, decimalUnits: account.configuration.decimalUnits)
-                
-                // Update detail cells if needed.
-                for offset in 1..<indexPaths.count {
-                    let cell = tableView.cellForRow(at: indexPaths[offset]) as! SessionDetailCell
-                    cell.update(session: session, offset: offset)
+                if let index = ips.index(of: oldIp) {
+                    let cell = tableView.cellForRow(at: indexPaths.first!) as! SessionCell
+                    let session = sessions[index]
+                    
+                    cell.update(session: session, decimalUnits: account.configuration.decimalUnits)
+                    
+                    // Update detail cells if needed.
+                    for offset in 1..<indexPaths.count {
+                        let cell = tableView.cellForRow(at: indexPaths[offset]) as! SessionDetailCell
+                        cell.update(session: session, offset: offset)
+                    }
+                } else {
+                    rowsToDelete.append(contentsOf: indexPaths)
                 }
-            } else {
-                rows.append(contentsOf: indexPaths)
             }
-        }
-        tableView.deleteRows(at: rows, with: .automatic)
-        
-        if expandedIndex > 0 {
-            if let index = ips.index(of: oldIps[expandedIndex]) {
-                expandedIndex = index
-            } else {
-                expandedIndex = -1
+            
+            if expandedIndex > 0 {
+                if let index = ips.index(of: oldIps[expandedIndex]) {
+                    expandedIndex = index
+                } else {
+                    expandedIndex = -1
+                }
             }
-        }
-        
-        rows = []
-        for (index, ip) in ips.enumerated() {
-            if !oldIps.contains(ip) {
-                rows.append(contentsOf: indexPaths(for: index))
+            
+            var rowsToInsert: [IndexPath] = []
+            for (index, ip) in ips.enumerated() {
+                if !oldIps.contains(ip) {
+                    rowsToInsert.append(contentsOf: indexPaths(for: index))
+                }
             }
+            
+            tableView.beginUpdates()
+            tableView.deleteRows(at: rowsToDelete, with: .automatic)
+            tableView.insertRows(at: rowsToInsert, with: .automatic)
+            tableView.endUpdates()
         }
-        tableView.insertRows(at: rows, with: .automatic)
-        
-        tableView.endUpdates()
     }
 
     override func viewDidLoad() {
@@ -163,8 +172,7 @@ class SessionsViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        self.mainAccount = Account.main
-        self.profile = self.mainAccount?.profile
+        self.reloadModel()
         
         NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)), name: .mainAccountChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)), name: .accountProfileUpdated, object: nil)
@@ -183,34 +191,31 @@ class SessionsViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return canLoginIp ? 2 : 1
+        return (!sessions.isEmpty ? 1 : 0) + (canLoginIp ? 1 : 0)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case Section.sessions.rawValue:
-            return sessions.count + expandedHeight
-        case Section.newSession.rawValue:
+        if sessions.isEmpty {
             return 1
-        default:
-            return 0
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case Section.sessions.rawValue:
-            return 48
-        case Section.newSession.rawValue:
-            return 48
-        default:
-            return tableView.rowHeight
+        } else {
+            switch section {
+            case Section.sessions.rawValue:
+                return sessions.count + expandedHeight
+            case Section.newSession.rawValue:
+                return 1
+            default:
+                return 0
+            }
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == Section.sessions.rawValue {
+        if sessions.isEmpty || indexPath.section == Section.newSession.rawValue {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "loginIpCell", for: indexPath)
+            
+            return cell
+        } else {
             switch indexPath.row {
             case expansionRange:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "sessionDetailCell", for: indexPath) as! SessionDetailCell
@@ -218,58 +223,49 @@ class SessionsViewController: UITableViewController {
                 cell.update(session: sessions[expandedIndex], offset: indexPath.row - expandedIndex)
                 
                 return cell
-
+                
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! SessionCell
                 
-                cell.update(session: sessions[indexPath.row], decimalUnits: mainAccount?.configuration.decimalUnits ?? false)
+                cell.update(session: sessions[indexPath.row], decimalUnits: account?.configuration.decimalUnits ?? false)
                 
                 return cell
             }
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "loginIpCell", for: indexPath)
-            
-            return cell
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == Section.sessions.rawValue {
-            tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if !sessions.isEmpty && indexPath.section == Section.sessions.rawValue && isSessionCell(indexPath.row) {
             
-            if isSessionCell(indexPath.row) {
-                if expandedIndex < 0 {
+            if expandedIndex < 0 {
+                expandedIndex = indexPath.row
+                tableView.insertRows(at: self.expandedIndexPaths, with: .top)
+            } else if expandedIndex == indexPath.row {
+                let indexPaths = expandedIndexPaths
+                expandedIndex = -1
+                
+                tableView.deleteRows(at: indexPaths, with: .top)
+            } else {
+                let indexPathsToDelete = expandedIndexPaths
+                if indexPath.row < expandedIndex {
                     expandedIndex = indexPath.row
-                    tableView.insertRows(at: self.expandedIndexPaths, with: .top)
-                } else if expandedIndex == indexPath.row {
-                    let indexPaths = expandedIndexPaths
-                    expandedIndex = -1
-                    
-                    tableView.deleteRows(at: indexPaths, with: .top)
                 } else {
-                    let indexPathsToDelete = expandedIndexPaths
-                    if indexPath.row < expandedIndex {
-                        expandedIndex = indexPath.row
-                    } else {
-                        expandedIndex = indexPath.row - expandedHeight
-                    }
-                    let indexPathsToInsert = expandedIndexPaths
-                    
-                    tableView.beginUpdates()
-                    tableView.deleteRows(at: indexPathsToDelete, with: .top)
-                    tableView.insertRows(at: indexPathsToInsert, with: .top)
-                    tableView.endUpdates()
+                    expandedIndex = indexPath.row - expandedHeight
                 }
+                let indexPathsToInsert = expandedIndexPaths
+                
+                tableView.beginUpdates()
+                tableView.deleteRows(at: indexPathsToDelete, with: .top)
+                tableView.insertRows(at: indexPathsToInsert, with: .top)
+                tableView.endUpdates()
             }
         }
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section == Section.sessions.rawValue {
-            return isSessionCell(indexPath.row)
-        } else {
-            return false
-        }
+        return !sessions.isEmpty && indexPath.section == Section.sessions.rawValue && isSessionCell(indexPath.row)
     }
     
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
@@ -283,18 +279,19 @@ class SessionsViewController: UITableViewController {
                 index -= expandedHeight
             }
             let session = sessions[index]
-            let delegate = UIApplication.shared.delegate as! AppDelegate
             
+            let delegate = UIApplication.shared.delegate as! AppDelegate
             delegate.setNetworkActivityIndicatorVisible(true)
             
-            _ = mainAccount?.logoutSession(session: session, on: DispatchQueue.global(qos: .userInitiated)).catch { error in
+            _ = account?.logoutSession(session: session, on: DispatchQueue.global(qos: .userInitiated)).always {
+                delegate.setNetworkActivityIndicatorVisible(false)
+            }
+            .catch { error in
                 if let error = error as? CampNetError {
                     self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Logout \"%@\"", comment: "Alert title when failed to logout a session."), session.device ?? session.ip), message: error.localizedDescription)
                 }
             }
-            .always {
-                delegate.setNetworkActivityIndicatorVisible(false)
-            }
+            
         }
         
         tableView.setEditing(false, animated: true)

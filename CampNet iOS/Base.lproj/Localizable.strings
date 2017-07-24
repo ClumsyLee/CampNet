@@ -44,7 +44,7 @@
 "MAC Address" = "MAC Address";
 
 /* OverviewView title when no accounts are set. */
-"No Accounts ⌄" = "No Accounts ⌄";
+"Click to Setup Account" = "Click to Setup Account";
 
 /* Limit line label in the history chart. */
 "Free" = "Free";
