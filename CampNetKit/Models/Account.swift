@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import NetworkExtension
 
 import KeychainAccess
 import PromiseKit
@@ -190,7 +191,7 @@ public class Account {
         if let error = error as? CampNetError {
             switch error {
             case .unauthorized: self.unauthorized = true
-            case .offcampus: self.status = Status(type: .offcampus, updatedAt: Date())
+            case .offcampus: self.status = Status(type: .offcampus)
             default: break
             }
         }
@@ -239,6 +240,12 @@ public class Account {
             return Promise(value: status)
         }
         .recover(on: queue) { error -> Promise<Status> in
+            if case CampNetError.offcampus = error {
+                let status = Status(type: .offcampus)
+                self.status = status
+                return Promise(value: status)
+            }
+            
             print("Failed to update status for account \(self.identifier). Error: \(error).")
             self.handleError(error)
             throw error
@@ -368,7 +375,10 @@ public class Account {
             }
             return Promise(value: ())
         }
-
+    }
+    
+    public func canManage(_ network: NEHotspotNetwork) -> Bool {
+        return configuration.ssids.contains(network.ssid) && !network.isSecure
     }
 }
 

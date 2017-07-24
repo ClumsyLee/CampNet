@@ -8,8 +8,6 @@
 
 
 import Foundation
-import NetworkExtension
-
 import Yaml
 
 public enum StatusType {
@@ -42,7 +40,7 @@ public struct Status {
         return vars
     }
     
-    init(type: StatusType, updatedAt: Date) {
+    init(type: StatusType, updatedAt: Date = Date()) {
         self.type = type
         self.updatedAt = updatedAt
     }
@@ -209,7 +207,7 @@ public class Configuration {
         return UIImage(named: identifier)
     }
     
-    public let ssids: [String]
+    public let ssids: Set<String>
     public let decimalUnits: Bool
     public let billingGroups: [String: BillingGroup]
     public let actions: [Action.Role: Action]
@@ -233,7 +231,7 @@ public class Configuration {
         self.identifier = identifier
         self.displayName = Configuration.displayName(identifier)
         self.decimalUnits = yaml["decimal_units"].bool ?? false
-        self.ssids = yaml["ssids"].stringArray ?? []
+        self.ssids = Set(yaml["ssids"].stringArray ?? [])
         
         var billingGroups: [String: BillingGroup] = [:]
         if let billingGroupsYaml = yaml["billing_groups"].dictionary {
@@ -271,10 +269,6 @@ public class Configuration {
         self.actions = actions
         
         print("Configuration \(identifier) loaded.")
-    }
-    
-    public func canManage(_ network: NEHotspotNetwork) -> Bool {
-        return ssids.contains(network.ssid) && !network.isSecure
     }
 }
 

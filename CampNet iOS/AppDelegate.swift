@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         requestNotificationAuthorization(options: [.alert, .sound])
-//        registerHotspotHelper(displayName: "hehe")
+        registerHotspotHelper(displayName: NSLocalizedString("Campus network managed by CampNet", comment: "Display name of the HotspotHelper"))
 
         return true
     }
@@ -63,19 +63,139 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if granted {
                 print("User notifications are allowed.")
             } else {
-                print("User notifications are not allowed. Error: ", error as Any)
+                print("User notifications are not allowed. Error: \(error.debugDescription)")
             }
         }
     }
 
-    func registerHotspotHelper(displayName: String) -> Bool {
-        print("Registering HotspotHelper.")
-        
+    func registerHotspotHelper(displayName: String) {
         let options = [kNEHotspotHelperOptionDisplayName: displayName as NSObject]
         let queue = DispatchQueue.global(qos: .utility)
 
-        return NEHotspotHelper.register(options: options, queue: queue) { (command) in
-            print("\(command) received.")
+        let result = NEHotspotHelper.register(options: options, queue: queue) { command in
+            print("NEHotspotHelperCommand \(command.commandType) received.")
+            
+            let requestBinder: RequestBinder = { $0.bind(to: command) }
+            
+            switch command.commandType {
+                
+            case .filterScanList:
+                guard let networkList = command.networkList,
+                      let account = Account.main else {
+                    let response = command.createResponse(.success)
+                    response.deliver()
+                    return
+                }
+                
+                var knownList: [NEHotspotNetwork] = []
+                for network in networkList {
+                    if account.canManage(network) {
+                        network.setConfidence(.low)
+                        knownList.append(network)
+                    }
+                }
+                print("Known networks: \(knownList).")
+                
+                let response = command.createResponse(.success)
+                response.setNetworkList(knownList)
+                response.deliver()
+                
+            case .evaluate:
+                guard let network = command.network else {
+                    return
+                }
+                guard let account = Account.main, account.canManage(network) else {
+                    network.setConfidence(.none)
+                    let response = command.createResponse(.success)
+                    response.setNetwork(network)
+                    response.deliver()
+                    return
+                }
+                
+                account.status(requestBinder: requestBinder).then { status -> Void in
+                    switch status.type {
+                    case .online, .offline:
+                        network.setConfidence(.high)
+                    case .offcampus:
+                        network.setConfidence(.none)
+                    }
+                    
+                    let response = command.createResponse(.success)
+                    response.setNetwork(network)
+                    response.deliver()
+                }
+                .catch { _ in
+                    network.setConfidence(.low)
+                    
+                    let response = command.createResponse(.success)
+                    response.setNetwork(network)
+                    response.deliver()
+                }
+                
+            case .authenticate:
+                guard let network = command.network else {
+                    return
+                }
+                guard let account = Account.main, account.canManage(network) else {
+                    command.createResponse(.unsupportedNetwork).deliver()
+                    return
+                }
+                
+                account.login(requestBinder: requestBinder).then {
+                    command.createResponse(.success).deliver()
+                }
+                .catch { _ in
+                    command.createResponse(.temporaryFailure).deliver()
+                }
+                
+            case .maintain:
+                guard let network = command.network else {
+                    return
+                }
+                guard let account = Account.main, account.canManage(network) else {
+                    command.createResponse(.failure).deliver()
+                    return
+                }
+                
+                account.status(requestBinder: requestBinder).then { status -> Void in
+                    let result: NEHotspotHelperResult
+                    
+                    switch status.type {
+                    case .online: result = .success
+                    case .offline: result = .authenticationRequired
+                    case .offcampus: result = .failure
+                    }
+                    
+                    command.createResponse(result).deliver()
+                }
+                .catch { _ in
+                    command.createResponse(.failure).deliver()
+                }
+                
+            case .logoff:
+                guard let network = command.network else {
+                    return
+                }
+                guard let account = Account.main, account.canManage(network) else {
+                    command.createResponse(.failure).deliver()
+                    return
+                }
+                
+                account.logout(requestBinder: requestBinder).then {
+                    command.createResponse(.success).deliver()
+                }
+                .catch { _ in
+                    command.createResponse(.failure).deliver()
+                }
+                
+            default: break
+            }
+        }
+        
+        if result {
+            print("HotspotHelper registered.")
+        } else {
+            print("Unable to HotspotHelper registered.")
         }
     }
 }

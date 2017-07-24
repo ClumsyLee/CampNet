@@ -1,4 +1,7 @@
-﻿/* Action to change the password of an account in the account list. */
+﻿/* Display name of the HotspotHelper */
+"Campus network managed by CampNet" = "由 CampNet 管理的校园网";
+
+/* Action to change the password of an account in the account list. */
 "Change\nPassword" = "更改密码";
 
 /* Action to delete an account in the account list. */
