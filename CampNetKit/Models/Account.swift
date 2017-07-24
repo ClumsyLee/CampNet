@@ -217,13 +217,6 @@ public class Account {
         print("Updating profile for \(identifier).")
         
         return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { vars in
-            
-var vars = vars
-vars["ips"] = ["59.66.141.91", "166.111.11.15"]
-vars["macs"] = ["78:4f:43:51:83:89", "78:4f:43:51:83:89"]
-vars["start_times"] = [Date(), Date()]
-vars["usages"] = [123234, 234234334]
-vars["devices"] = ["iPhone", "iPad"]
 
             guard let profile = Profile(vars: vars) else {
                 print("No profile in vars (\(vars)).")
