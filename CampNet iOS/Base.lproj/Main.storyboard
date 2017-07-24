@@ -595,12 +595,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Change Password" id="ylZ-mi-qAg">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="G1Y-6U-bc9">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="G1Y-6U-bc9">
                             <connections>
                                 <segue destination="YzO-eB-hw4" kind="unwind" unwindAction="cancelChangingPasswordWithSegue:" id="AMt-Co-qpe"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="nV5-BB-alM">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="nV5-BB-alM">
                             <connections>
                                 <action selector="doneButtonPressed:" destination="lfx-1O-Dpw" id="xvh-AE-UPv"/>
                             </connections>
@@ -696,7 +696,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Tsinghua University" id="jHa-8M-lSV">
-                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="2XS-66-75j">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="2XS-66-75j">
                             <connections>
                                 <action selector="doneButtonPressed:" destination="fTg-YW-PlX" id="ajn-12-6EB"/>
                             </connections>
@@ -831,7 +831,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Login IP" id="4fQ-du-yO1">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="Ebd-34-VdH">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Ebd-34-VdH">
                             <connections>
                                 <segue destination="Zh6-fa-eCF" kind="unwind" unwindAction="ipLoggedInSegue:" id="qa3-jC-J4p"/>
                             </connections>
