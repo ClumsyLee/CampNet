@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0F14E7751E2E3AAC0092494B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7741E2E3AAC0092494B /* AppDelegate.swift */; };
 		0F14E7771E2E3AAC0092494B /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7761E2E3AAC0092494B /* OverviewViewController.swift */; };
-		0F14E7791E2E3AAC0092494B /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7781E2E3AAC0092494B /* MeViewController.swift */; };
+		0F14E7791E2E3AAC0092494B /* SessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7781E2E3AAC0092494B /* SessionsViewController.swift */; };
 		0F14E77C1E2E3AAC0092494B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77A1E2E3AAC0092494B /* Main.storyboard */; };
 		0F14E77E1E2E3AAC0092494B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77D1E2E3AAC0092494B /* Assets.xcassets */; };
 		0F14E7811E2E3AAC0092494B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */; };
@@ -36,7 +36,6 @@
 		0F5EB7291F17B06F003094DE /* ConfigurationSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EB7281F17B06F003094DE /* ConfigurationSetupViewController.swift */; };
 		0F7A93FB1F25E34C0093B3FA /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A93FA1F25E34C0093B3FA /* DoubleExtensions.swift */; };
 		0F8650751F1F8F9400C654C4 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8650741F1F8F9400C654C4 /* IntExtensions.swift */; };
-		0F8F704B1F1B445B0088E2DE /* MainAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704A1F1B445B0088E2DE /* MainAccountCell.swift */; };
 		0F8F704D1F1B44A20088E2DE /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704C1F1B44A20088E2DE /* AccountCell.swift */; };
 		0F8F704F1F1B44C10088E2DE /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704E1F1B44C10088E2DE /* SessionCell.swift */; };
 		0FBCD7B01F226F4B00333A90 /* LoginIpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */; };
@@ -78,7 +77,7 @@
 		0F14E7711E2E3AAC0092494B /* CampNet iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CampNet iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F14E7741E2E3AAC0092494B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F14E7761E2E3AAC0092494B /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OverviewViewController.swift; path = Views/Controllers/OverviewViewController.swift; sourceTree = "<group>"; };
-		0F14E7781E2E3AAC0092494B /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MeViewController.swift; path = Views/Controllers/MeViewController.swift; sourceTree = "<group>"; };
+		0F14E7781E2E3AAC0092494B /* SessionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SessionsViewController.swift; path = Views/Controllers/SessionsViewController.swift; sourceTree = "<group>"; };
 		0F14E77B1E2E3AAC0092494B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F14E77D1E2E3AAC0092494B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F14E7801E2E3AAC0092494B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -110,7 +109,6 @@
 		0F5EB7281F17B06F003094DE /* ConfigurationSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationSetupViewController.swift; path = Views/Controllers/ConfigurationSetupViewController.swift; sourceTree = "<group>"; };
 		0F7A93FA1F25E34C0093B3FA /* DoubleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleExtensions.swift; path = Extensions/DoubleExtensions.swift; sourceTree = "<group>"; };
 		0F8650741F1F8F9400C654C4 /* IntExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntExtensions.swift; path = Extensions/IntExtensions.swift; sourceTree = "<group>"; };
-		0F8F704A1F1B445B0088E2DE /* MainAccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainAccountCell.swift; path = Views/Cells/MainAccountCell.swift; sourceTree = "<group>"; };
 		0F8F704C1F1B44A20088E2DE /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountCell.swift; path = Views/Cells/AccountCell.swift; sourceTree = "<group>"; };
 		0F8F704E1F1B44C10088E2DE /* SessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionCell.swift; path = Views/Cells/SessionCell.swift; sourceTree = "<group>"; };
 		0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginIpViewController.swift; path = Views/Controllers/LoginIpViewController.swift; sourceTree = "<group>"; };
@@ -259,7 +257,6 @@
 			children = (
 				0F8F704C1F1B44A20088E2DE /* AccountCell.swift */,
 				0F5EB7241F17AF0F003094DE /* ConfigurationCell.swift */,
-				0F8F704A1F1B445B0088E2DE /* MainAccountCell.swift */,
 				0F8F704E1F1B44C10088E2DE /* SessionCell.swift */,
 				0FF0D5651F1FFCD0004072CA /* SessionDetailCell.swift */,
 			);
@@ -270,7 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				0F14E7761E2E3AAC0092494B /* OverviewViewController.swift */,
-				0F14E7781E2E3AAC0092494B /* MeViewController.swift */,
+				0F14E7781E2E3AAC0092494B /* SessionsViewController.swift */,
 				0F46CC821F17837700AF1FC9 /* AccountsViewController.swift */,
 				0F5EB7261F17B03B003094DE /* ConfigurationsViewController.swift */,
 				0F5EB7281F17B06F003094DE /* ConfigurationSetupViewController.swift */,
@@ -528,7 +525,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F2F67861F2236EE004CEF44 /* UIViewControllerExtensions.swift in Sources */,
-				0F14E7791E2E3AAC0092494B /* MeViewController.swift in Sources */,
+				0F14E7791E2E3AAC0092494B /* SessionsViewController.swift in Sources */,
 				0F5EB7291F17B06F003094DE /* ConfigurationSetupViewController.swift in Sources */,
 				0F3685161F1A5C6B0056AED1 /* ChangePasswordViewController.swift in Sources */,
 				0F5EB7271F17B03B003094DE /* ConfigurationsViewController.swift in Sources */,
@@ -538,7 +535,6 @@
 				0F4291051E3D181900336874 /* Manager.swift in Sources */,
 				0F5EB7251F17AF0F003094DE /* ConfigurationCell.swift in Sources */,
 				0F8F704F1F1B44C10088E2DE /* SessionCell.swift in Sources */,
-				0F8F704B1F1B445B0088E2DE /* MainAccountCell.swift in Sources */,
 				0FF0D5661F1FFCD0004072CA /* SessionDetailCell.swift in Sources */,
 				0F8F704D1F1B44A20088E2DE /* AccountCell.swift in Sources */,
 				0F14E7771E2E3AAC0092494B /* OverviewViewController.swift in Sources */,

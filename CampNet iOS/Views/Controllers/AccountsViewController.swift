@@ -89,26 +89,17 @@ class AccountsViewController: UITableViewController {
     }
     
     func insertRow(section: Int, row: Int, account: Account) {
-        tableView.beginUpdates()
-        
         accounts[section].accounts.insert(account, at: row)
         tableView.insertRows(at: [IndexPath(row: row, section: section)], with: .automatic)
-        
-        tableView.endUpdates()
     }
     
     func insertSection(section: Int, account: Account) {
-        tableView.beginUpdates()
-        
         accounts.insert((configuration: account.configuration, accounts: [account]), at: section)
         tableView.insertSections(IndexSet(integer: section), with: .automatic)
-        
-        tableView.endUpdates()
     }
     
     func accountRemoved(_ notification: Notification) {
         if let indexPath = indexPath(of: notification.userInfo?["account"] as? Account) {
-            tableView.beginUpdates()
             
             accounts[indexPath.section].accounts.remove(at: indexPath.row)
             if accounts[indexPath.section].accounts.isEmpty {
@@ -117,14 +108,10 @@ class AccountsViewController: UITableViewController {
             } else {
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             }
-            
-            tableView.endUpdates()
         }
     }
     
     func mainChanged(_ notification: Notification) {
-        tableView.beginUpdates()
-        
         if let fromIndexPath = indexPath(of: notification.userInfo?["fromAccount"] as? Account) {
             tableView.cellForRow(at: fromIndexPath)?.accessoryType = .none
         }
@@ -132,8 +119,6 @@ class AccountsViewController: UITableViewController {
         if let toIndexPath = indexPath(of: mainAccount) {
             tableView.cellForRow(at: toIndexPath)?.accessoryType = .checkmark
         }
-        
-        tableView.endUpdates()
     }
     
     func profileUpdated(_ notification: Notification) {
@@ -165,7 +150,7 @@ class AccountsViewController: UITableViewController {
             }
         .catch { error in
             if let error = error as? CampNetError {
-                self.presentAlert(title: NSLocalizedString("Unable to Update Profile", comment: "Alert title when failed to update account profile."), message: error.localizedDescription)
+                self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Update Profile of \"%@\"", comment: "Alert title when failed to update account profile."), account.username), message: error.localizedDescription)
             }
         }
     }
@@ -232,35 +217,45 @@ class AccountsViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return accounts.count
+        return accounts.count + 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return accounts[section].accounts.count
+        return section < accounts.count ? accounts[section].accounts.count : 1
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return accounts[section].configuration.displayName
+        return section < accounts.count ? accounts[section].configuration.displayName : nil
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "accountCell", for: indexPath) as! AccountCell
-
-        // Configure the cell...
-        let account = self.account(at: indexPath)
-        let profile = account.profile
-
-        cell.username.text = account.username
-        cell.unauthorized = account.unauthorized
-        cell.update(profile: profile, decimalUnits: account.configuration.decimalUnits)
-        cell.accessoryType = (account == mainAccount) ? .checkmark : .none
-
-        return cell
+        if indexPath.section < accounts.count {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "accountCell", for: indexPath) as! AccountCell
+            
+            // Configure the cell...
+            let account = self.account(at: indexPath)
+            let profile = account.profile
+            
+            cell.username.text = account.username
+            cell.unauthorized = account.unauthorized
+            cell.update(profile: profile, decimalUnits: account.configuration.decimalUnits)
+            cell.accessoryType = (account == mainAccount) ? .checkmark : .none
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addAccountCell", for: indexPath)
+            
+            return cell
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let account = self.account(at: indexPath)
-        Account.makeMain(account)
+        if indexPath.section < accounts.count {
+            let account = self.account(at: indexPath)
+            Account.makeMain(account)
+            
+            
+        }
     }
 
     /*
@@ -324,7 +319,7 @@ class AccountsViewController: UITableViewController {
         
         if segue.identifier == "changePassword" {
             if let indexPath = tableView.indexPath(for: sender as! AccountCell) {
-                let controller = (segue.destination as! UINavigationController).viewControllers.first as! ChangePasswordViewController
+                let controller = segue.destination as! ChangePasswordViewController
                 controller.account = account(at: indexPath)
             }
         }

@@ -9,9 +9,8 @@
 import UIKit
 import CampNetKit
 
-class MeViewController: UITableViewController {
+class SessionsViewController: UITableViewController {
     
-    @IBAction func cancelLoginIp(segue: UIStoryboardSegue) {}
     @IBAction func ipLoggedIn(segue: UIStoryboardSegue) {
         if let controller = segue.source as? LoginIpViewController,
            let ip = controller.ipField.text,
@@ -31,9 +30,27 @@ class MeViewController: UITableViewController {
         }
     }
     
+    @IBAction func refresh(_ sender: Any) {
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        
+        delegate.setNetworkActivityIndicatorVisible(true)
+        
+        if let account = mainAccount {
+            account.profile(on: DispatchQueue.global(qos: .userInitiated)).always {
+                self.refreshControl?.endRefreshing()
+                delegate.setNetworkActivityIndicatorVisible(false)
+                }
+                .catch { error in
+                    if let error = error as? CampNetError {
+                        self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Update Profile of \"%@\"", comment: "Alert title when failed to update account profile."), account.username), message: error.localizedDescription)
+                    }
+            }
+        }
+    }
+    
     enum Section: Int {
-        case mainAccount
         case sessions
+        case newSession
     }
     
     var mainAccount: Account?
@@ -94,14 +111,6 @@ class MeViewController: UITableViewController {
         let oldIps = sessions.map({ $0.ip })
         self.profile = profile
         
-        // Update main account section.
-        let indexPath = IndexPath(row: 0, section: Section.mainAccount.rawValue)
-        if let cell = tableView.cellForRow(at: indexPath) as? MainAccountCell {
-            cell.update(profile: profile, decimalUnits: account.configuration.decimalUnits)
-        } else {
-            tableView.reloadRows(at: [indexPath], with: .automatic)
-        }
-        
         // Update sessions section.
         let ips = profile.sessions.map({ $0.ip })
 
@@ -144,34 +153,6 @@ class MeViewController: UITableViewController {
         
         tableView.endUpdates()
     }
-    
-    func authorizationChanged(_ notification: Notification) {
-        guard let account = notification.userInfo?["account"] as? Account,
-              mainAccount == account else {
-            return
-        }
-        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: Section.mainAccount.rawValue)) as! MainAccountCell
-        cell.unauthorized = account.unauthorized
-    }
-    
-    func refresh(sender:AnyObject)
-    {
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        
-        delegate.setNetworkActivityIndicatorVisible(true)
-        
-        if let account = mainAccount {
-            account.profile(on: DispatchQueue.global(qos: .userInitiated)).always {
-                self.refreshControl?.endRefreshing()
-                delegate.setNetworkActivityIndicatorVisible(false)
-            }
-            .catch { error in
-                if let error = error as? CampNetError {
-                    self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Update Profile of \"%@\"", comment: "Alert title when failed to update account profile."), account.username), message: error.localizedDescription)
-                }
-            }
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -185,11 +166,8 @@ class MeViewController: UITableViewController {
         self.mainAccount = Account.main
         self.profile = self.mainAccount?.profile
         
-        self.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
-
         NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)), name: .mainAccountChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)), name: .accountProfileUpdated, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(authorizationChanged(_:)), name: .accountAuthorizationChanged, object: nil)
     }
     
     deinit {
@@ -201,39 +179,29 @@ class MeViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return (mainAccount == nil) ? 1 : 2
+        return canLoginIp ? 2 : 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case Section.mainAccount.rawValue:
-            return 1
         case Section.sessions.rawValue:
-            return sessions.count + expandedHeight + 1
+            return sessions.count + expandedHeight
+        case Section.newSession.rawValue:
+            return 1
         default:
             return 0
-        }
-    }
-
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case Section.sessions.rawValue:
-            return NSLocalizedString("Online Devices", comment: "Header title of the sessions section of MeView.")
-        default:
-            return nil
         }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
-        case Section.mainAccount.rawValue:
-            return (mainAccount == nil) ? 48 : 81
         case Section.sessions.rawValue:
+            return 48
+        case Section.newSession.rawValue:
             return 48
         default:
             return tableView.rowHeight
@@ -242,23 +210,7 @@ class MeViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == Section.mainAccount.rawValue {
-            guard let account = mainAccount else {
-                return tableView.dequeueReusableCell(withIdentifier: "noAccountsCell", for: indexPath)
-            }
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "mainAccountCell", for: indexPath) as! MainAccountCell
-            
-            // Configure the cell...
-            let profile = account.profile
-            
-            cell.logo.image = account.configuration.logo
-            cell.username.text = account.username
-            cell.unauthorized = account.unauthorized
-            cell.update(profile: profile, decimalUnits: account.configuration.decimalUnits)
-        
-            return cell
-        } else {
+        if indexPath.section == Section.sessions.rawValue {
             switch indexPath.row {
             case expansionRange:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "sessionDetailCell", for: indexPath) as! SessionDetailCell
@@ -266,14 +218,7 @@ class MeViewController: UITableViewController {
                 cell.update(session: sessions[expandedIndex], offset: indexPath.row - expandedIndex)
                 
                 return cell
-                
-            case sessions.count + expandedHeight:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "loginIpCell", for: indexPath)
-                
-                cell.textLabel!.textColor = canLoginIp ? cell.tintColor : UIColor.darkGray
-                
-                return cell
-                
+
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! SessionCell
                 
@@ -281,6 +226,10 @@ class MeViewController: UITableViewController {
                 
                 return cell
             }
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "loginIpCell", for: indexPath)
+            
+            return cell
         }
     }
     

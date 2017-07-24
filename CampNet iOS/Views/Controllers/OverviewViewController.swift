@@ -32,6 +32,9 @@ class OverviewViewController: UIViewController {
     
     @IBOutlet var chart: LineChartView!
     
+    @IBAction func cancelSwitchingAccount(segue: UIStoryboardSegue) {}
+    @IBAction func accountSwitched(segue: UIStoryboardSegue) {}
+    
     @IBAction func refreshButtonPressed(_ sender: Any) {
         refresh()
     }
@@ -82,12 +85,15 @@ class OverviewViewController: UIViewController {
     }
     
     func reloadTitle() {
+        let title: String
+        
         if let account = account {
-            let name = account.profile?.name ?? account.username
-            accountsButton.titleLabel?.text = "\(name) ▾"
+            title = "\(account.profile?.name ?? account.username) ▾"
         } else {
-            accountsButton.titleLabel?.text = NSLocalizedString("No Accounts ⌄", comment: "OverviewView title when no accounts are set.")
+            title = NSLocalizedString("No Accounts ⌄", comment: "OverviewView title when no accounts are set.")
         }
+        
+        accountsButton.setTitle(title, for: .normal)
     }
     
     func reloadStatus() {
