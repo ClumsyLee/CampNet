@@ -8,7 +8,7 @@
 
 /* Localized descriptions for CampNetError */
 "offcampus" = "Not connected to the campus network.";
-"unauthorized" = "Invalid username or password. Please change the account password in \"Me > Accounts\".";
+"unauthorized" = "Invalid username or password. Please change the account password in \"Accounts\".";
 "arrears" = "The account is in arrears.";
 "networkError" = "Network error. Please try again later.";
 "invalidArguments" = "Invalid arguments.";
