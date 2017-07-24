@@ -115,35 +115,85 @@ public class Account {
         return billingGroup.fee(at: estimatedUsage)
     }
     
-    public var status: Status? {
-        guard let vars = Defaults[.accountStatus(of: identifier)],
-              let status = Status(vars: vars) else {
-            return nil
+    public fileprivate(set) var status: Status? {
+        get {
+            guard let vars = Defaults[.accountStatus(of: identifier)],
+                  let status = Status(vars: vars) else {
+                return nil
+            }
+            
+            return -status.updatedAt.timeIntervalSinceNow <= Account.statusLifetime ? status : nil
         }
-        
-        return -status.updatedAt.timeIntervalSinceNow <= Account.statusLifetime ? status : nil
+        set {
+            Defaults[.accountStatus(of: identifier)] = newValue?.vars
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .accountStatusUpdated, object: self, userInfo: ["account": self, "status": newValue as Any])
+            }
+        }
     }
     
-    public var profile: Profile? {
-        guard let vars = Defaults[.accountProfile(of: identifier)],
-              let profile = Profile(vars: vars) else {
-            return nil
+    public fileprivate(set) var profile: Profile? {
+        get {
+            guard let vars = Defaults[.accountProfile(of: identifier)],
+                  let profile = Profile(vars: vars) else {
+                return nil
+            }
+            
+            return Calendar.current.dateComponents([.year, .month], from: Date()) == Calendar.current.dateComponents([.year, .month], from: profile.updatedAt) ? profile : nil
         }
-        
-        return Calendar.current.dateComponents([.year, .month], from: Date()) == Calendar.current.dateComponents([.year, .month], from: profile.updatedAt) ? profile : nil
+        set {
+            Defaults[.accountProfile(of: identifier)] = newValue?.vars
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .accountProfileUpdated, object: self, userInfo: ["account": self, "profile": newValue as Any])
+            }
+        }
     }
     
-    public var history: History? {
-        guard let vars = Defaults[.accountHistory(of: identifier)] else {
-            return nil
+    public fileprivate(set) var history: History? {
+        get {
+            guard let vars = Defaults[.accountHistory(of: identifier)],
+                  let history = History(vars: vars) else {
+                return nil
+            }
+            
+            let today = Date()
+            return (history.year == Calendar.current.component(.year, from: today) &&
+                    history.month == Calendar.current.component(.month, from: today)) ? history : nil
         }
-        return History(vars: vars)
+        set {
+            if let history = newValue {
+                if !history.usageSums.isEmpty && history.usageSums.count >= Account.estimationLength + 2 {
+                    let toIndex = history.usageSums.count - 2  // Avoid today.
+                    let fromIndex = toIndex - Account.estimationLength
+                    let usage = history.usageSums[toIndex] - history.usageSums[fromIndex]
+                    
+                    self.estimatedDailyUsage = usage / Account.estimationLength
+                }
+            }
+            
+            Defaults[.accountHistory(of: identifier)] = newValue?.vars
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .accountHistoryUpdated, object: self, userInfo: ["account": self, "history": newValue as Any])
+            }
+            
+            
+        }
     }
     
     init(configuration: Configuration, username: String) {
         self.configuration = configuration
         self.username = username
         self.identifier = "\(configuration.identifier).\(username)"
+    }
+    
+    func handleError(_ error: Error) {
+        if let error = error as? CampNetError {
+            switch error {
+            case .unauthorized: self.unauthorized = true
+            case .offcampus: self.status = Status(type: .offcampus, updatedAt: Date())
+            default: break
+            }
+        }
     }
     
     public func login(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
@@ -157,11 +207,7 @@ public class Account {
         return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).recover(on: queue) { error -> Promise<[String: Any]> in
             
             print("Failed to login account \(self.identifier). Error: \(error).")
-            
-            if case CampNetError.unauthorized = error {
-                self.unauthorized = true
-            }
-            
+            self.handleError(error)
             throw error
         }
         .then(on: queue) { _ in
@@ -189,21 +235,12 @@ public class Account {
                 print("No status in vars (\(vars)).")
                 throw CampNetError.invalidConfiguration
             }
-            
-            Defaults[.accountStatus(of: self.identifier)] = vars
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: .accountStatusUpdated, object: self, userInfo: ["account": self, "status": status])
-            }
-            
+            self.status = status
             return Promise(value: status)
         }
         .recover(on: queue) { error -> Promise<Status> in
             print("Failed to update status for account \(self.identifier). Error: \(error).")
-            
-            if case CampNetError.unauthorized = error {
-                self.unauthorized = true
-            }
-            
+            self.handleError(error)
             throw error
         }
     }
@@ -222,21 +259,12 @@ public class Account {
                 print("No profile in vars (\(vars)).")
                 throw CampNetError.invalidConfiguration
             }
-            
-            Defaults[.accountProfile(of: self.identifier)] = vars
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: .accountProfileUpdated, object: self, userInfo: ["account": self, "profile": profile])
-            }
-            
+            self.profile = profile
             return Promise(value: profile)
         }
         .recover(on: queue) { error -> Promise<Profile> in
             print("Failed to update profile for account \(self.identifier). Error: \(error).")
-            
-            if case CampNetError.unauthorized = error {
-                self.unauthorized = true
-            }
-            
+            self.handleError(error)
             throw error
         }
     }
@@ -252,11 +280,7 @@ public class Account {
         return action.commit(username: username, password: password, extraVars: ["ip": ip], on: queue, requestBinder: requestBinder).recover(on: queue) { error -> Promise<[String: Any]> in
             
             print("Failed to login IP \(ip) for account \(self.identifier). Error: \(error).")
-            
-            if case CampNetError.unauthorized = error {
-                self.unauthorized = true
-            }
-            
+            self.handleError(error)
             throw error
         }
         .then { _ in
@@ -284,11 +308,7 @@ public class Account {
         return action.commit(username: username, password: password, extraVars: ["ip": session.ip, "id": session.id ?? ""], on: queue, requestBinder: requestBinder).recover(on: queue) { error -> Promise<[String: Any]> in
             
             print("Failed to logout session \(session) for account \(self.identifier). Error: \(error).")
-            
-            if case CampNetError.unauthorized = error {
-                self.unauthorized = true
-            }
-            
+            self.handleError(error)
             throw error
         }
         .then { _ in
@@ -315,27 +335,12 @@ public class Account {
                 print("No history in vars (\(vars)).")
                 throw CampNetError.invalidConfiguration
             }
-            
-            Defaults[.accountHistory(of: self.identifier)] = vars
-            if !history.usageSums.isEmpty && history.usageSums.count >= Account.estimationLength + 2 {
-                let toIndex = history.usageSums.count - 2  // Avoid today.
-                let fromIndex = toIndex - Account.estimationLength
-                let usage = history.usageSums[toIndex] - history.usageSums[fromIndex]
-                self.estimatedDailyUsage = usage / Account.estimationLength
-            }
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: .accountHistoryUpdated, object: self, userInfo: ["account": self, "history": history])
-            }
-            
+            self.history = history
             return Promise(value: history)
         }
         .recover(on: queue) { error -> Promise<History> in
             print("Failed to update history for account \(self.identifier). Error: \(error).")
-            
-            if case CampNetError.unauthorized = error {
-                self.unauthorized = true
-            }
-            
+            self.handleError(error)
             throw error
         }
     }
@@ -351,11 +356,7 @@ public class Account {
         return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).recover(on: queue) { error -> Promise<[String: Any]> in
             
             print("Failed to logout for account \(self.identifier). Error: \(error).")
-            
-            if case CampNetError.unauthorized = error {
-                self.unauthorized = true
-            }
-            
+            self.handleError(error)
             throw error
         }
         .then(on: queue) { _ in

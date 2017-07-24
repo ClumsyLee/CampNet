@@ -22,6 +22,31 @@ public struct Status {
     public var type: StatusType
     public var updatedAt: Date
     
+    var vars: [String: Any] {
+        var vars: [String: Any] = [:]
+        
+        switch type {
+        case let .online(onlineUsername: onlineUsername, startTime: startTime, usage: usage):
+            vars["status"] = "online"
+            vars["online_username"] = onlineUsername
+            vars["start_time"] = startTime
+            vars["usage"] = usage
+        case .offline:
+            vars["status"] = "offline"
+        case .offcampus:
+            vars["status"] = "offcampus"
+        }
+        
+        vars["updated_at"] = updatedAt
+        
+        return vars
+    }
+    
+    init(type: StatusType, updatedAt: Date) {
+        self.type = type
+        self.updatedAt = updatedAt
+    }
+    
     init?(vars: [String: Any]) {
         guard let statusString = vars["status"] as? String,
               let updatedAt = vars["updated_at"] as? Date else {
@@ -54,6 +79,32 @@ public struct Session {
     public var usage: Int?
     public var mac: String?
     public var device: String?
+    
+    var vars: [String: Any] {
+        var vars: [String: Any] = [:]
+        
+        vars["ip"] = ip
+        vars["id"] = id
+        vars["start_time"] = startTime
+        vars["usage"] = usage
+        vars["mac"] = mac
+        vars["device"] = device
+        
+        return vars
+    }
+    
+    init?(vars: [String: Any]) {
+        guard let ip = vars["ip"] as? String else {
+            return nil
+        }
+        
+        self.ip = ip
+        self.id = vars["id"] as? String
+        self.startTime = vars["start_time"] as? Date
+        self.usage = vars["usage"] as? Int
+        self.mac = vars["mac"] as? String
+        self.device = vars["device"] as? String
+    }
 }
 
 public struct Profile {
@@ -64,6 +115,20 @@ public struct Profile {
     public var sessions: [Session]
     
     public var updatedAt: Date
+    
+    var vars: [String: Any] {
+        var vars: [String: Any] = [:]
+        
+        vars["name"] = name
+        vars["billing_group_name"] = billingGroupName
+        vars["balance"] = balance
+        vars["usage"] = usage
+        vars["sessions"] = sessions.map { $0.vars }
+        
+        vars["updated_at"] = updatedAt
+        
+        return vars
+    }
     
     init?(vars: [String: Any]) {
         guard let updatedAt = vars["updated_at"] as? Date else {
@@ -76,16 +141,12 @@ public struct Profile {
         self.usage = vars["usage"] as? Int
         
         self.sessions = []
-        let ips = (vars["ips"] as? [String]) ?? []
-        let ids = vars["ids"] as? [String]
-        let startTimes = vars["start_times"] as? [Date]
-        let usages = vars["usages"] as? [Int]
-        let macs = vars["macs"] as? [String]
-        let devices = vars["devices"] as? [String]
-        for (index, ip) in ips.enumerated() {
-            sessions.append(Session(ip: ip, id: ids?[safe: index], startTime: startTimes?[safe: index], usage: usages?[safe: index], mac: macs?[safe: index], device: devices?[safe: index]))
+        for sessionVars in (vars["sessions"] as? [[String: Any]]) ?? [] {
+            if let session = Session(vars: sessionVars) {
+                self.sessions.append(session)
+            }
         }
-        
+
         self.updatedAt = updatedAt
     }
 }
@@ -94,6 +155,16 @@ public struct History {
     public var year: Int
     public var month: Int
     public var usageSums: [Int]
+    
+    var vars: [String: Any] {
+        var vars: [String: Any] = [:]
+        
+        vars["year"] = year
+        vars["month"] = month
+        vars["usage_sums"] = usageSums
+        
+        return vars
+    }
     
     init?(vars: [String: Any]) {
         guard let year = vars["year"] as? Int,
