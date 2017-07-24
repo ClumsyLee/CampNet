@@ -1,0 +1,6 @@
+framework module DynamicButton {
+  umbrella header "DynamicButton-umbrella.h"
+
+  export *
+  module * { export * }
+}

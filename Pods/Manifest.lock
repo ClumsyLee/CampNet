@@ -4,6 +4,7 @@ PODS:
     - Charts/Core (= 3.0.2)
   - Charts/Core (3.0.2)
   - CryptoSwift (0.6.9)
+  - DynamicButton (4.0.0)
   - Kanna (2.1.1)
   - KeychainAccess (3.0.1)
   - PromiseKit (4.1.3):
@@ -24,6 +25,7 @@ DEPENDENCIES:
   - Alamofire
   - Charts
   - CryptoSwift
+  - DynamicButton
   - Kanna
   - KeychainAccess
   - PromiseKit
@@ -34,12 +36,13 @@ SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   CryptoSwift: a22f6ba238e9ce4d26ee7bf45b9ed82e7122d4a0
+  DynamicButton: ddc1e8d79e37f2761ab64df0c02e89061b05d812
   Kanna: 9b4b086c218703f2b94f5b21a466217dd2f9332e
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
   PromiseKit: 56baec63efa89210c023260879435a5a6b3bff00
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
   Yaml: 18b2cf7301c4132e2bbb508a6921d2637ed3046c
 
-PODFILE CHECKSUM: 8d0b121871bc6f6a3b6e3d936d5a2aab92de9e1e
+PODFILE CHECKSUM: db34d0c20c5cff73e7baee890668554bdb64afc7
 
 COCOAPODS: 1.2.1

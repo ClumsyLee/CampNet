@@ -10,29 +10,61 @@ import Foundation
 import Yaml
 
 public struct BillingGroup {
-    public enum Cycle: String {
-        case day
-        case month
-        case year
-    }
-    
     public var configurationIdentifier: String
     public var name: String
     public var identifier: String
     
-    public var maxOnlineNumber: Int?
-    public var base: Double
-    public var cycle: Cycle
-    public var steps: [(Double, Double)]
+    public var baseFee: Double
+    public var steps: [(usage: Int, price: Double)]
+    public var freeUsage: Int {
+        return steps.first?.0 ?? 0
+    }
+    
+    public func maxUsage(balance: Double, usage: Int) -> Int {
+        var balance = balance
+        var usage = usage
+        var price = 0.0
+        
+        for step in steps {
+            if step.usage > usage {
+                // Calculate last step.
+                let margin = Double(step.usage - usage) * price
+                if balance <= margin {
+                    break
+                }
+                
+                balance -= margin
+                usage = step.usage
+            }
+            price = step.price
+        }
+        
+        usage += Int(balance / price)
+        return usage
+    }
+    
+    public func fee(at usage: Int) -> Double{
+        var fee = 0.0
+        var lastStep = (usage: 0, price: 0.0)
+        
+        for step in steps {
+            if step.usage >= usage {
+                break
+            }
+            fee += Double(step.usage - lastStep.usage) * lastStep.price
+            lastStep = step
+        }
+        
+        fee += Double(usage - lastStep.usage) * lastStep.price
+        return fee
+    }
     
     init?(configurationIdentifier: String, name: String, yaml: Yaml) {
         self.configurationIdentifier = configurationIdentifier
         self.name = name
         self.identifier = "\(configurationIdentifier).billing_groups.\(name)"
         
-        self.maxOnlineNumber = yaml["max_online_num"].int
-        self.base = yaml["base"].double ?? 0.0
-        self.cycle = BillingGroup.Cycle(rawValue: yaml["cycle"].string ?? "") ?? BillingGroup.Cycle.month
-        self.steps = yaml["steps"].doublePairArray ?? []
+        self.baseFee = yaml["base_fee"].double ?? 0.0
+        self.steps = yaml["steps"].steps ?? []
     }
 }

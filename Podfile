@@ -21,4 +21,5 @@ target 'CampNet iOS' do
 
   # Pods for CampNet iOS
   pod 'Charts'
+  pod 'DynamicButton'
 end

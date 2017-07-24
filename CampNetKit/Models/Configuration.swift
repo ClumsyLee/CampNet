@@ -12,10 +12,15 @@ import NetworkExtension
 
 import Yaml
 
-public enum Status {
-    case online(onlineUsername: String?, startTime: Date?, usage: Int?, updatedAt: Date)
-    case offline(updatedAt: Date)
-    case offcampus(updatedAt: Date)
+public enum StatusType {
+    case online(onlineUsername: String?, startTime: Date?, usage: Int?)
+    case offline
+    case offcampus
+}
+
+public struct Status {
+    public var type: StatusType
+    public var updatedAt: Date
     
     init?(vars: [String: Any]) {
         guard let statusString = vars["status"] as? String,
@@ -28,14 +33,16 @@ public enum Status {
             let onlineUsername = vars["online_username"] as? String
             let startTime = vars["start_time"] as? Date
             let usage = vars["usage"] as? Int
-            self = .online(onlineUsername: onlineUsername, startTime: startTime, usage: usage, updatedAt: updatedAt)
+            type = .online(onlineUsername: onlineUsername, startTime: startTime, usage: usage)
         case "offline":
-            self = .offline(updatedAt: updatedAt)
+            type = .offline
         case "offcampus":
-            self = .offcampus(updatedAt: updatedAt)
+            type = .offcampus
         default:
             return nil
         }
+        
+        self.updatedAt = updatedAt
     }
 }
 

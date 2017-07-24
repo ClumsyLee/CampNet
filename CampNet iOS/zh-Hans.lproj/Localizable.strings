@@ -13,14 +13,26 @@
 /* OK button on alerts that display errors. */
 "OK" = "好的";
 
-/* Alert title when failed to logout a session. */
-"Unable to Logout \"%@\"" = "无法下线 “%@” ";
+/* Alert title when failed to login. */
+"Unable to Login \"%@\"" = "无法上线 “%@”";
+
+/* Alert title when failed to logout. */
+"Unable to Logout \"%@\"" = "无法下线 “%@”";
+
+/* Alert title when failed to update account status. */
+"Unable to Update Status of \"%@\"" = "无法更新 “%@” 的状态";
 
 /* Alert title when failed to update account profile. */
 "Unable to Update Profile of \"%@\"" = "无法更新 “%@” 的账户信息";
 
 /* Alert title when failed to login IP. */
 "Unable to Login %@" = "无法上线 %@";
+
+/* Alert title when failed to logout a session. */
+"Unable to Logout \"%@\"" = "无法下线 “%@”";
+
+/* Alert title when failed to update account history. */
+"Unable to Update History of \"%@\"" = "无法更新 “%@” 的历史";
 
 /* Name of startTime field in session detail cell. */
 "Login Time" = "上线时间";
@@ -30,3 +42,12 @@
 
 /* Name of mac field in session detail cell. */
 "MAC Address" = "MAC 地址";
+
+/* OverviewView title when no accounts are set. */
+"No Accounts ⌄" = "未设置账户";
+
+/* Limit line label in the history chart. */
+"Free" = "免费";
+
+/* Limit line label in the history chart. */
+"Max" = "最大";

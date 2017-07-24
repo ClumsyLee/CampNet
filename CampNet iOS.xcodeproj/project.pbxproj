@@ -34,6 +34,7 @@
 		0F5EB7251F17AF0F003094DE /* ConfigurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EB7241F17AF0F003094DE /* ConfigurationCell.swift */; };
 		0F5EB7271F17B03B003094DE /* ConfigurationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EB7261F17B03B003094DE /* ConfigurationsViewController.swift */; };
 		0F5EB7291F17B06F003094DE /* ConfigurationSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EB7281F17B06F003094DE /* ConfigurationSetupViewController.swift */; };
+		0F7A93FB1F25E34C0093B3FA /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A93FA1F25E34C0093B3FA /* DoubleExtensions.swift */; };
 		0F8650751F1F8F9400C654C4 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8650741F1F8F9400C654C4 /* IntExtensions.swift */; };
 		0F8F704B1F1B445B0088E2DE /* MainAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704A1F1B445B0088E2DE /* MainAccountCell.swift */; };
 		0F8F704D1F1B44A20088E2DE /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704C1F1B44A20088E2DE /* AccountCell.swift */; };
@@ -107,6 +108,7 @@
 		0F5EB7241F17AF0F003094DE /* ConfigurationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationCell.swift; path = Views/Cells/ConfigurationCell.swift; sourceTree = "<group>"; };
 		0F5EB7261F17B03B003094DE /* ConfigurationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationsViewController.swift; path = Views/Controllers/ConfigurationsViewController.swift; sourceTree = "<group>"; };
 		0F5EB7281F17B06F003094DE /* ConfigurationSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationSetupViewController.swift; path = Views/Controllers/ConfigurationSetupViewController.swift; sourceTree = "<group>"; };
+		0F7A93FA1F25E34C0093B3FA /* DoubleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleExtensions.swift; path = Extensions/DoubleExtensions.swift; sourceTree = "<group>"; };
 		0F8650741F1F8F9400C654C4 /* IntExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntExtensions.swift; path = Extensions/IntExtensions.swift; sourceTree = "<group>"; };
 		0F8F704A1F1B445B0088E2DE /* MainAccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainAccountCell.swift; path = Views/Cells/MainAccountCell.swift; sourceTree = "<group>"; };
 		0F8F704C1F1B44A20088E2DE /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountCell.swift; path = Views/Cells/AccountCell.swift; sourceTree = "<group>"; };
@@ -173,13 +175,13 @@
 			isa = PBXGroup;
 			children = (
 				0F2F67841F2236A6004CEF44 /* Extensions */,
-				0F36851B1F1A7B290056AED1 /* Localizable.strings */,
 				0F5EB7211F17AE8B003094DE /* Views */,
-				0F1ED5C61F138618004A6C1F /* CampNet iOS.entitlements */,
 				0F14E7741E2E3AAC0092494B /* AppDelegate.swift */,
 				0F14E77A1E2E3AAC0092494B /* Main.storyboard */,
-				0F14E77D1E2E3AAC0092494B /* Assets.xcassets */,
 				0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */,
+				0F36851B1F1A7B290056AED1 /* Localizable.strings */,
+				0F1ED5C61F138618004A6C1F /* CampNet iOS.entitlements */,
+				0F14E77D1E2E3AAC0092494B /* Assets.xcassets */,
 				0F14E7821E2E3AAC0092494B /* Info.plist */,
 				0F4291041E3D181900336874 /* Manager.swift */,
 			);
@@ -230,6 +232,7 @@
 				0FC6E2A31F175DE5002861F3 /* ArrayExtensions.swift */,
 				0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */,
 				0F8650741F1F8F9400C654C4 /* IntExtensions.swift */,
+				0F7A93FA1F25E34C0093B3FA /* DoubleExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				0F464C741F1415A000C2F58B /* CollectionExtensions.swift in Sources */,
 				0F464C581F13AD7900C2F58B /* Configuration.swift in Sources */,
 				0F464C5C1F13CB1100C2F58B /* Action.swift in Sources */,
+				0F7A93FB1F25E34C0093B3FA /* DoubleExtensions.swift in Sources */,
 				0F464C5A1F13C50500C2F58B /* Account.swift in Sources */,
 				0FC6E2A41F175DE5002861F3 /* ArrayExtensions.swift in Sources */,
 				0FC6E2A61F17694E002861F3 /* NotificationNameExtensions.swift in Sources */,

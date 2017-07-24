@@ -10,22 +10,22 @@ import Foundation
 import Yaml
 
 extension Yaml {
-    var doublePair: (Double, Double)? {
-        guard let first = self[0].double,
+    var step: (usage: Int, price: Double)? {
+        guard let first = self[0].int,
             let second = self[1].double else {
                 return nil
         }
-        return (first, second)
+        return (usage: first, price: second)
     }
     
-    var doublePairArray: [(Double, Double)]? {
+    var steps: [(usage: Int, price: Double)]? {
         guard let array = self.array else {
             return nil
         }
         
-        var pairs: [(Double, Double)] = []
+        var pairs: [(usage: Int, price: Double)] = []
         for element in array {
-            guard let pair = element.doublePair else {
+            guard let pair = element.step else {
                 return nil
             }
             pairs.append(pair)

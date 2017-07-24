@@ -27,4 +27,14 @@ extension Int {
         number /= step
         return String(format: "%.1f GB", number)
     }
+    
+    public func usageStringInGb(decimalUnits: Bool) -> String {
+        let step = decimalUnits ? 1000.0 : 1024.0
+        return String(format: "%.1f", Double(self) / (step * step * step))
+    }
+    
+    public func usageInGb(decimalUnits: Bool) -> Double {
+        let step = decimalUnits ? 1000.0 : 1024.0
+        return Double(self) / (step * step * step)
+    }
 }

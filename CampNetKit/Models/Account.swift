@@ -14,6 +14,9 @@ import SwiftyUserDefaults
 
 public class Account {
     
+    static let statusLifetime: TimeInterval = 86400
+    static let estimationLength = 7
+    
     static let passwordKeychain = Keychain(service: "\(Configuration.bundleIdentifier).password", accessGroup: Configuration.keychainAccessGroup)
     
     public static var all: [Configuration: [Account]] {
@@ -64,18 +67,70 @@ public class Account {
         }
     }
     
-    public var status: Status? {
-        guard let vars = Defaults[.accountStatus(of: identifier)] else {
+    public var freeUsage: Int? {
+        guard let profile = profile,
+              let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""] else {
             return nil
         }
-        return Status(vars: vars)
+        
+        return billingGroup.freeUsage
+    }
+    
+    public var maxUsage: Int? {
+        guard let profile = profile,
+              let balance = profile.balance,
+              let usage = profile.usage,
+              let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""] else {
+            return nil
+        }
+        
+        return billingGroup.maxUsage(balance: balance, usage: usage)
+    }
+    
+    public fileprivate(set) var estimatedDailyUsage: Int? {
+        get {
+            return Defaults[.accountEstimatedDailyUsage(of: identifier)]
+        }
+        set {
+            Defaults[.accountEstimatedDailyUsage(of: identifier)] = newValue
+        }
+    }
+
+    public var estimatedFee: Double? {
+        guard let profile = profile,
+              let usage = profile.usage,
+              let balance = profile.balance,
+              let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""],
+              let estimatedDailyUsage = estimatedDailyUsage else {
+            return nil
+        }
+        
+        let today = Date()
+        guard let maxDay = Calendar.current.range(of: .day, in: .month, for: today)?.upperBound else {
+            return nil
+        }
+        
+        let estimatedUsage = min(usage + estimatedDailyUsage * (maxDay - Calendar.current.component(.day, from: today)),
+                                 billingGroup.maxUsage(balance: balance, usage: usage))
+        return billingGroup.fee(at: estimatedUsage)
+    }
+    
+    public var status: Status? {
+        guard let vars = Defaults[.accountStatus(of: identifier)],
+              let status = Status(vars: vars) else {
+            return nil
+        }
+        
+        return -status.updatedAt.timeIntervalSinceNow <= Account.statusLifetime ? status : nil
     }
     
     public var profile: Profile? {
-        guard let vars = Defaults[.accountProfile(of: identifier)] else {
+        guard let vars = Defaults[.accountProfile(of: identifier)],
+              let profile = Profile(vars: vars) else {
             return nil
         }
-        return Profile(vars: vars)
+        
+        return Calendar.current.dateComponents([.year, .month], from: Date()) == Calendar.current.dateComponents([.year, .month], from: profile.updatedAt) ? profile : nil
     }
     
     public var history: History? {
@@ -113,7 +168,7 @@ public class Account {
             return self.status(on: queue, requestBinder: requestBinder)
         }
         .then(on: queue) { status in
-            guard case .online = status else {
+            guard case .online = status.type else {
                 throw CampNetError.unknown
             }
             return Promise(value: ())
@@ -135,7 +190,7 @@ public class Account {
                 throw CampNetError.invalidConfiguration
             }
             
-            Defaults[.accountProfile(of: self.identifier)] = vars
+            Defaults[.accountStatus(of: self.identifier)] = vars
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .accountStatusUpdated, object: self, userInfo: ["account": self, "status": status])
             }
@@ -163,6 +218,13 @@ public class Account {
         
         return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { vars in
             
+var vars = vars
+vars["ips"] = ["59.66.141.91", "166.111.11.15"]
+vars["macs"] = ["78:4f:43:51:83:89", "78:4f:43:51:83:89"]
+vars["start_times"] = [Date(), Date()]
+vars["usages"] = [123234, 234234334]
+vars["devices"] = ["iPhone", "iPad"]
+
             guard let profile = Profile(vars: vars) else {
                 print("No profile in vars (\(vars)).")
                 throw CampNetError.invalidConfiguration
@@ -262,6 +324,12 @@ public class Account {
             }
             
             Defaults[.accountHistory(of: self.identifier)] = vars
+            if !history.usageSums.isEmpty && history.usageSums.count >= Account.estimationLength + 2 {
+                let toIndex = history.usageSums.count - 2  // Avoid today.
+                let fromIndex = toIndex - Account.estimationLength
+                let usage = history.usageSums[toIndex] - history.usageSums[fromIndex]
+                self.estimatedDailyUsage = usage / Account.estimationLength
+            }
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .accountHistoryUpdated, object: self, userInfo: ["account": self, "history": history])
             }
@@ -301,7 +369,7 @@ public class Account {
             return self.status(on: queue, requestBinder: requestBinder)
         }
         .then(on: queue) { status in
-            guard case .offline = status else {
+            guard case .offline = status.type else {
                 throw CampNetError.unknown
             }
             return Promise(value: ())
