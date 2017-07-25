@@ -243,6 +243,7 @@ class OverviewViewController: UIViewController {
         if account != newMain {
             account = newMain
             reload()
+            refresh()
         }
     }
 

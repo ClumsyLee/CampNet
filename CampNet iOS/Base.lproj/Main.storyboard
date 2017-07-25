@@ -175,9 +175,7 @@
                                     <constraint firstAttribute="width" constant="80" id="c4Z-R2-R8j"/>
                                 </constraints>
                                 <size key="titleShadowOffset" width="10" height="10"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="9pv-A4-QxB" eventType="touchUpInside" id="8Ny-MN-drn"/>
                                 </connections>

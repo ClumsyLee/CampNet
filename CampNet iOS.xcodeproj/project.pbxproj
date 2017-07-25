@@ -739,13 +739,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "CampNet iOS/CampNet iOS.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 7494335NRW;
 				INFOPLIST_FILE = "CampNet iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0aaa0a46-2bf8-454a-b630-a0e4a110d66e";
-				PROVISIONING_PROFILE_SPECIFIER = "CampNet iOS";
+				PROVISIONING_PROFILE = "d1f2e43f-9081-4b5d-8f93-717ad35e0784";
+				PROVISIONING_PROFILE_SPECIFIER = "CampNet iOS Distribution";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
