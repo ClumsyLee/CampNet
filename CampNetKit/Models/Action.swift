@@ -18,6 +18,7 @@ import Yaml
 public typealias RequestBinder = (NSMutableURLRequest) -> Void
 
 public struct ActionEntry {
+    static let userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1"
     static let varsName = "vars"
     static let respName = "resp"
     
@@ -123,6 +124,7 @@ public struct ActionEntry {
             print("Failed to add \(params) to the request: \(error)")
             return nil
         }
+        request.setValue(ActionEntry.userAgent, forHTTPHeaderField: "User-Agent")
         
         return request
     }
