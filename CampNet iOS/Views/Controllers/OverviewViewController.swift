@@ -14,9 +14,10 @@ import DynamicButton
 import PromiseKit
 import CampNetKit
 
-class OverviewViewController: UIViewController {
-
+class OverviewViewController: UITableViewController {
+    
     @IBOutlet var upperView: UIView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
     @IBOutlet var usage: UILabel!
     @IBOutlet var balance: UILabel!
@@ -25,7 +26,6 @@ class OverviewViewController: UIViewController {
     @IBOutlet var devices: UILabel!
 
     @IBOutlet var accountsButton: UIButton!
-    @IBOutlet var refreshButton: UIBarButtonItem!
     @IBOutlet var networkButton: UIButton!
     @IBOutlet var devicesButton: UIButton!
     @IBOutlet var loginButton: DynamicButton!
@@ -37,11 +37,12 @@ class OverviewViewController: UIViewController {
     @IBAction func accountSwitched(segue: UIStoryboardSegue) {
         refresh()
     }
-
-    @IBAction func refreshButtonPressed(_ sender: Any) {
+    
+    @IBAction func tableRefreshed(_ sender: Any) {
         refresh()
+        refreshControl!.endRefreshing()
     }
-
+    
     @IBAction func loginButtonPressed(_ sender: Any) {
         guard let account = account,
               let status = account.status else {
@@ -94,13 +95,13 @@ class OverviewViewController: UIViewController {
     var maxLimitLine = ChartLimitLine(limit: 0.0, label: NSLocalizedString("Max", comment: "Limit line label in the history chart."))
 
     func refresh() {
-        guard let account = account else {
+        guard let account = account, !activityIndicator.isAnimating else {
             return
         }
-
-        refreshButton.isEnabled = false
+        
         let delegate = UIApplication.shared.delegate as! AppDelegate
         delegate.setNetworkActivityIndicatorVisible(true)
+        activityIndicator.startAnimating()
 
         var promises: [Promise<Void>] = []
 
@@ -127,8 +128,11 @@ class OverviewViewController: UIViewController {
         }
 
         when(resolved: promises).always {
-            self.refreshButton.isEnabled = true
             delegate.setNetworkActivityIndicatorVisible(false)
+            // Don't touch the activity indicator if the account has been changed.
+            if self.account == account {
+                self.activityIndicator.stopAnimating()
+            }
         }
     }
 
@@ -233,6 +237,7 @@ class OverviewViewController: UIViewController {
     }
 
     func reload() {
+        activityIndicator.stopAnimating()
         reloadStatus()
         reloadProfile()
         reloadHistory()
@@ -262,6 +267,12 @@ class OverviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        var frame = tableView.bounds
+        frame.origin.y = -frame.height
+        let upperBackgroundView = UIView(frame: frame)
+        upperBackgroundView.backgroundColor = upperView.backgroundColor
+        tableView.insertSubview(upperBackgroundView, at: 0)
 
         loginButton.lineWidth = 4
         loginButton.contentEdgeInsets.left = 20.0
