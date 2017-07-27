@@ -31,6 +31,7 @@ public class Account {
     public static var handler: NEHotspotHelperHandler = { command in
         print("NEHotspotHelperCommand \(command.commandType) received.")
         
+        let queue = DispatchQueue.global(qos: .utility)
         let requestBinder: RequestBinder = { $0.bind(to: command) }
         
         switch command.commandType {
@@ -68,7 +69,7 @@ public class Account {
                 return
             }
             
-            account.status(requestBinder: requestBinder).then { status -> Void in
+            account.status(on: queue, requestBinder: requestBinder).then(on: queue) { status -> Void in
                 switch status.type {
                 case .online, .offline:
                     network.setConfidence(.high)
@@ -79,13 +80,13 @@ public class Account {
                 let response = command.createResponse(.success)
                 response.setNetwork(network)
                 response.deliver()
-                }
-                .catch { _ in
-                    network.setConfidence(.low)
-                    
-                    let response = command.createResponse(.success)
-                    response.setNetwork(network)
-                    response.deliver()
+            }
+            .catch(on: queue) { _ in
+                network.setConfidence(.low)
+                
+                let response = command.createResponse(.success)
+                response.setNetwork(network)
+                response.deliver()
             }
             
         case .authenticate:
@@ -97,11 +98,11 @@ public class Account {
                 return
             }
             
-            account.login(requestBinder: requestBinder).then {
+            account.login(on: queue, requestBinder: requestBinder).then(on: queue) {
                 command.createResponse(.success).deliver()
-                }
-                .catch { _ in
-                    command.createResponse(.temporaryFailure).deliver()
+            }
+            .catch(on: queue) { _ in
+                command.createResponse(.temporaryFailure).deliver()
             }
             
         case .maintain:
@@ -113,7 +114,7 @@ public class Account {
                 return
             }
             
-            account.status(requestBinder: requestBinder).then { status -> Void in
+            account.status(on: queue, requestBinder: requestBinder).then(on: queue) { status -> Void in
                 let result: NEHotspotHelperResult
                 
                 switch status.type {
@@ -123,9 +124,9 @@ public class Account {
                 }
                 
                 command.createResponse(result).deliver()
-                }
-                .catch { _ in
-                    command.createResponse(.failure).deliver()
+            }
+            .catch(on: queue) { _ in
+                command.createResponse(.failure).deliver()
             }
             
         case .logoff:
@@ -137,11 +138,11 @@ public class Account {
                 return
             }
             
-            account.logout(requestBinder: requestBinder).then {
+            account.logout(on: queue, requestBinder: requestBinder).then(on: queue) {
                 command.createResponse(.success).deliver()
-                }
-                .catch { _ in
-                    command.createResponse(.failure).deliver()
+            }
+            .catch(on: queue) { _ in
+                command.createResponse(.failure).deliver()
             }
             
         default: break
@@ -305,7 +306,7 @@ public class Account {
         self.identifier = "\(configuration.identifier).\(username)"
     }
     
-    func handle(error: Error, name: Notification.Name) {
+    func handle(error: Error, name: Notification.Name, extraInfo: [String: Any]? = nil) {
         if let error = error as? CampNetError {
             switch error {
             case .unauthorized: self.unauthorized = true
@@ -314,12 +315,19 @@ public class Account {
             }
         }
         
+        var userInfo: [String: Any] = ["account": self, "error": error]
+        if let extraInfo = extraInfo {
+            for (key, value) in extraInfo {
+                userInfo[key] = value
+            }
+        }
+        
         DispatchQueue.main.async {
-            NotificationCenter.default.post(name: name, object: self, userInfo: ["account": self, "error": error])
+            NotificationCenter.default.post(name: name, object: self, userInfo: userInfo)
         }
     }
     
-    public func login(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
+    public func login(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
 
         guard let action = configuration.actions[.login] else {
             print("Login action not found in \(configuration.identifier).")
@@ -327,24 +335,24 @@ public class Account {
         }
         print("Logging in for \(identifier).")
         
-        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).recover(on: queue) { error -> Promise<[String: Any]> in
-            
-            print("Failed to login account \(self.identifier). Error: \(error).")
-            self.handle(error: error, name: .accountLoginError)
-            throw error
+        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { _ in
+            return self.status(isSubaction: true, on: queue, requestBinder: requestBinder)
         }
-        .then(on: queue) { _ in
-            return self.status(on: queue, requestBinder: requestBinder)
-        }
-        .then(on: queue) { status in
+        .then(on: queue) { status -> Void in
             guard case .online = status.type else {
                 throw CampNetError.unknown
             }
-            return Promise(value: ())
+        }
+        .recover(on: queue) { error -> Void in
+            print("Failed to login account \(self.identifier). Error: \(error).")
+            if !isSubaction {
+                self.handle(error: error, name: .accountLoginError)
+            }
+            throw error
         }
     }
     
-    public func status(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Status> {
+    public func status(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Status> {
         
         guard let action = configuration.actions[.status] else {
             print("Status action not found in \(configuration.identifier).")
@@ -352,29 +360,31 @@ public class Account {
         }
         print("Updating status for \(identifier).")
         
-        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { vars in
+        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { vars -> Status in
             
             guard let status = Status(vars: vars) else {
                 print("No status in vars (\(vars)).")
                 throw CampNetError.invalidConfiguration
             }
             self.status = status
-            return Promise(value: status)
+            return status
         }
-        .recover(on: queue) { error -> Promise<Status> in
+        .recover(on: queue) { error -> Status in
             if case CampNetError.offcampus = error {
                 let status = Status(type: .offcampus)
                 self.status = status
-                return Promise(value: status)
+                return status
             }
             
             print("Failed to update status for account \(self.identifier). Error: \(error).")
-            self.handle(error: error, name: .accountStatusError)
+            if !isSubaction {
+                self.handle(error: error, name: .accountStatusError)
+            }
             throw error
         }
     }
     
-    public func profile(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Profile> {
+    public func profile(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Profile> {
         
         guard let action = configuration.actions[.profile] else {
             print("Profile action not found in \(configuration.identifier).")
@@ -382,23 +392,25 @@ public class Account {
         }
         print("Updating profile for \(identifier).")
         
-        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { vars in
+        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { vars -> Profile in
 
             guard let profile = Profile(vars: vars) else {
                 print("No profile in vars (\(vars)).")
                 throw CampNetError.invalidConfiguration
             }
             self.profile = profile
-            return Promise(value: profile)
+            return profile
         }
-        .recover(on: queue) { error -> Promise<Profile> in
+        .recover(on: queue) { error -> Profile in
             print("Failed to update profile for account \(self.identifier). Error: \(error).")
-            self.handle(error: error, name: .accountProfileError)
+            if !isSubaction {
+                self.handle(error: error, name: .accountProfileError)
+            }
             throw error
         }
     }
     
-    public func login(ip: String, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
+    public func login(ip: String, isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
         
         guard let action = configuration.actions[.loginIp] else {
             print("LoginIp action not found in \(configuration.identifier).")
@@ -406,27 +418,27 @@ public class Account {
         }
         print("Logging in IP \(ip) for \(identifier).")
         
-        return action.commit(username: username, password: password, extraVars: ["ip": ip], on: queue, requestBinder: requestBinder).recover(on: queue) { error -> Promise<[String: Any]> in
-            
-            print("Failed to login IP \(ip) for account \(self.identifier). Error: \(error).")
-            self.handle(error: error, name: .accountLoginIpError)
-            throw error
-        }
-        .then { _ in
+        return action.commit(username: username, password: password, extraVars: ["ip": ip], on: queue, requestBinder: requestBinder).then(on: queue) { _ in
             if self.configuration.actions[.profile] != nil {
-                return self.profile(on: queue, requestBinder: requestBinder).then(on: queue) { profile in
+                return self.profile(isSubaction: true, on: queue, requestBinder: requestBinder).then(on: queue) { profile -> Void in
                     guard profile.sessions.map({ $0.ip }).contains(ip) else {
                         throw CampNetError.unknown
                     }
-                    return Promise(value: ())
                 }
             } else {
                 return Promise(value: ())
             }
         }
+        .recover(on: queue) { error -> Void in
+            print("Failed to login IP \(ip) for account \(self.identifier). Error: \(error).")
+            if !isSubaction {
+                self.handle(error: error, name: .accountLoginIpError, extraInfo: ["ip": ip])
+            }
+            throw error
+        }
     }
     
-    public func logoutSession(session: Session, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
+    public func logoutSession(session: Session, isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
         
         guard let action = configuration.actions[.logoutSession] else {
             print("LogoutSession action not found in \(configuration.identifier).")
@@ -434,24 +446,24 @@ public class Account {
         }
         print("Logging out \(session) for \(identifier).")
         
-        return action.commit(username: username, password: password, extraVars: ["ip": session.ip, "id": session.id ?? ""], on: queue, requestBinder: requestBinder).recover(on: queue) { error -> Promise<[String: Any]> in
-            
-            print("Failed to logout session \(session) for account \(self.identifier). Error: \(error).")
-            self.handle(error: error, name: .accountLogoutSessionError)
-            throw error
+        return action.commit(username: username, password: password, extraVars: ["ip": session.ip, "id": session.id ?? ""], on: queue, requestBinder: requestBinder).then(on: queue) { _ in
+            return self.profile(isSubaction: true, on: queue, requestBinder: requestBinder)
         }
-        .then { _ in
-            return self.profile(on: queue, requestBinder: requestBinder)
-        }
-        .then(on: queue) { profile in
+        .then(on: queue) { profile -> Void in
             guard !profile.sessions.map({ $0.ip }).contains(session.ip) else {
                 throw CampNetError.unknown
             }
-            return Promise(value: ())
+        }
+        .recover(on: queue) { error -> Void in
+            print("Failed to logout session \(session) for account \(self.identifier). Error: \(error).")
+            if !isSubaction {
+                self.handle(error: error, name: .accountLogoutSessionError, extraInfo: ["session": session])
+            }
+            throw error
         }
     }
     
-    public func history(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<History> {
+    public func history(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<History> {
         
         guard let action = configuration.actions[.history] else {
             print("History action not found in \(configuration.identifier).")
@@ -459,22 +471,24 @@ public class Account {
         }
         print("Fetching history for \(identifier).")
         
-        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { vars in
+        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { vars -> History in
             guard let history = History(vars: vars) else {
                 print("No history in vars (\(vars)).")
                 throw CampNetError.invalidConfiguration
             }
             self.history = history
-            return Promise(value: history)
+            return history
         }
-        .recover(on: queue) { error -> Promise<History> in
+        .recover(on: queue) { error -> History in
             print("Failed to update history for account \(self.identifier). Error: \(error).")
-            self.handle(error: error, name: .accountHistoryError)
+            if !isSubaction {
+                self.handle(error: error, name: .accountHistoryError)
+            }
             throw error
         }
     }
     
-    public func logout(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
+    public func logout(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
         
         guard let action = configuration.actions[.logout] else {
             print("Logout action not found in \(configuration.identifier).")
@@ -482,37 +496,37 @@ public class Account {
         }
         print("Logging out for \(identifier).")
         
-        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).recover(on: queue) { error -> Promise<[String: Any]> in
-            
-            print("Failed to logout for account \(self.identifier). Error: \(error).")
-            self.handle(error: error, name: .accountLogoutError)
-            throw error
+        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { _ in
+            return self.status(isSubaction: true, on: queue, requestBinder: requestBinder)
         }
-        .then(on: queue) { _ in
-            return self.status(on: queue, requestBinder: requestBinder)
-        }
-        .then(on: queue) { status in
+        .then(on: queue) { status -> Void in
             guard case .offline = status.type else {
                 throw CampNetError.unknown
             }
-            return Promise(value: ())
+        }
+        .recover(on: queue) { error -> Void in
+            print("Failed to logout for account \(self.identifier). Error: \(error).")
+            if !isSubaction {
+                self.handle(error: error, name: .accountLogoutError)
+            }
+            throw error
         }
     }
     
     public func update(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
         
         // Here we run actions in order to make sure important actions will be executed.
-        var promise = status(on: queue, requestBinder: requestBinder).asVoid()
+        var promises = [status(on: queue, requestBinder: requestBinder).asVoid()]
         
         if configuration.actions[.profile] != nil {
-            promise = promise.then { self.profile().asVoid() }
+            promises.append(profile().asVoid())
         }
         
         if configuration.actions[.history] != nil {
-            promise = promise.then { self.history().asVoid() }
+            promises.append(history().asVoid())
         }
         
-        return promise
+        return when(resolved: promises).asVoid()
     }
     
     public func canManage(_ network: NEHotspotNetwork) -> Bool {

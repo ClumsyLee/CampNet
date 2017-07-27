@@ -16,7 +16,6 @@
 		0F1ED5D01F138832004A6C1F /* CampNetKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1ED5CE1F138832004A6C1F /* CampNetKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F1ED5D31F138832004A6C1F /* CampNetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; };
 		0F1ED5D41F138832004A6C1F /* CampNetKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0F2F67861F2236EE004CEF44 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2F67851F2236EE004CEF44 /* UIViewControllerExtensions.swift */; };
 		0F2F67891F223F6B004CEF44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F2F678B1F223F6B004CEF44 /* Localizable.strings */; };
 		0F3685161F1A5C6B0056AED1 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3685151F1A5C6B0056AED1 /* ChangePasswordViewController.swift */; };
 		0F3685191F1A7B290056AED1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F36851B1F1A7B290056AED1 /* Localizable.strings */; };
@@ -85,7 +84,6 @@
 		0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CampNetKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F1ED5CE1F138832004A6C1F /* CampNetKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CampNetKit.h; sourceTree = "<group>"; };
 		0F1ED5CF1F138832004A6C1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0F2F67851F2236EE004CEF44 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtensions.swift; path = Extensions/UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		0F2F678A1F223F6B004CEF44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0F2F678C1F223F6C004CEF44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0F3685151F1A5C6B0056AED1 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = Views/Controllers/ChangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 		0F14E7731E2E3AAC0092494B /* CampNet iOS */ = {
 			isa = PBXGroup;
 			children = (
-				0F2F67841F2236A6004CEF44 /* Extensions */,
 				0F5EB7211F17AE8B003094DE /* Views */,
 				0F14E7741E2E3AAC0092494B /* AppDelegate.swift */,
 				0F14E77A1E2E3AAC0092494B /* Main.storyboard */,
@@ -195,14 +192,6 @@
 				0F2F678B1F223F6B004CEF44 /* Localizable.strings */,
 			);
 			path = CampNetKit;
-			sourceTree = "<group>";
-		};
-		0F2F67841F2236A6004CEF44 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				0F2F67851F2236EE004CEF44 /* UIViewControllerExtensions.swift */,
-			);
-			name = Extensions;
 			sourceTree = "<group>";
 		};
 		0F464C561F13AD4900C2F58B /* Models */ = {
@@ -521,7 +510,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F2F67861F2236EE004CEF44 /* UIViewControllerExtensions.swift in Sources */,
 				0F14E7791E2E3AAC0092494B /* SessionsViewController.swift in Sources */,
 				0F5EB7291F17B06F003094DE /* ConfigurationSetupViewController.swift in Sources */,
 				0F3685161F1A5C6B0056AED1 /* ChangePasswordViewController.swift in Sources */,

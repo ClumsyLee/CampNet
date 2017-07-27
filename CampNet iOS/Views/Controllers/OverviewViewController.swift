@@ -62,11 +62,7 @@ class OverviewViewController: UITableViewController {
             account.logout(on: DispatchQueue.global(qos: .userInitiated)).always {
                 delegate.setNetworkActivityIndicatorVisible(false)
             }
-            .catch { error in
-                if let error = error as? CampNetError {
-                    self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Login \"%@\"", comment: "Alert title when failed to login."), account.username), message: error.localizedDescription)
-                }
-            }
+
         case .offline:
             loginButton.isEnabled = false
             loginButton.setStyle(.horizontalMoreOptions, animated: true)
@@ -79,11 +75,7 @@ class OverviewViewController: UITableViewController {
             account.login(on: DispatchQueue.global(qos: .userInitiated)).always {
                 delegate.setNetworkActivityIndicatorVisible(false)
             }
-            .catch { error in
-                if let error = error as? CampNetError {
-                    self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Logout \"%@\"", comment: "Alert title when failed to logout."), account.username), message: error.localizedDescription)
-                }
-            }
+
         default: return
         }
     }
@@ -103,31 +95,7 @@ class OverviewViewController: UITableViewController {
         delegate.setNetworkActivityIndicatorVisible(true)
         activityIndicator.startAnimating()
 
-        var promises: [Promise<Void>] = []
-
-        promises.append(account.status().catch { error in
-            if let error = error as? CampNetError {
-                self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Update Status of \"%@\"", comment: "Alert title when failed to update account status."), account.username), message: error.localizedDescription)
-            }
-        }.asVoid())
-
-        if account.configuration.actions[.profile] != nil {
-            promises.append(account.profile().catch { error in
-                if let error = error as? CampNetError {
-                    self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Update Profile of \"%@\"", comment: "Alert title when failed to update account profile."), account.username), message: error.localizedDescription)
-                }
-            }.asVoid())
-        }
-
-        if account.configuration.actions[.history] != nil {
-            promises.append(account.history().catch { error in
-                if let error = error as? CampNetError {
-                    self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Update History of \"%@\"", comment: "Alert title when failed to update account history."), account.username), message: error.localizedDescription)
-                }
-            }.asVoid())
-        }
-
-        when(resolved: promises).always {
+        account.update(on: DispatchQueue.global(qos: .userInitiated)).always {
             delegate.setNetworkActivityIndicatorVisible(false)
             // Don't touch the activity indicator if the account has been changed.
             if self.account == account {

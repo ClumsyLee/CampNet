@@ -22,11 +22,6 @@ class SessionsViewController: UITableViewController {
             account.login(ip: ip, on: DispatchQueue.global(qos: .userInitiated)).always {
                 delegate.setNetworkActivityIndicatorVisible(false)
             }
-            .catch { error in
-                if let error = error as? CampNetError {
-                    self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Login %@", comment: "Alert title when failed to login IP."), ip), message: error.localizedDescription)
-                }
-            }
         }
     }
     
@@ -42,11 +37,6 @@ class SessionsViewController: UITableViewController {
         account.profile(on: DispatchQueue.global(qos: .userInitiated)).always {
             self.refreshControl?.endRefreshing()
             delegate.setNetworkActivityIndicatorVisible(false)
-            }
-            .catch { error in
-                if let error = error as? CampNetError {
-                    self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Update Profile of \"%@\"", comment: "Alert title when failed to update account profile."), account.username), message: error.localizedDescription)
-                }
         }
     }
     
@@ -286,12 +276,6 @@ class SessionsViewController: UITableViewController {
             _ = account?.logoutSession(session: session, on: DispatchQueue.global(qos: .userInitiated)).always {
                 delegate.setNetworkActivityIndicatorVisible(false)
             }
-            .catch { error in
-                if let error = error as? CampNetError {
-                    self.presentAlert(title: String.localizedStringWithFormat(NSLocalizedString("Unable to Logout \"%@\"", comment: "Alert title when failed to logout a session."), session.device ?? session.ip), message: error.localizedDescription)
-                }
-            }
-            
         }
         
         tableView.setEditing(false, animated: true)

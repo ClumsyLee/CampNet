@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.2.0)
+  - BRYXBanner (0.7.3)
   - Charts (3.0.2):
     - Charts/Core (= 3.0.2)
   - Charts/Core (3.0.2)
@@ -23,6 +24,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - BRYXBanner
   - Charts
   - CryptoSwift
   - DynamicButton
@@ -34,6 +36,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
+  BRYXBanner: bd26a91cb8a5826a8bc7687891043d287dd3ee53
   Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
   CryptoSwift: a22f6ba238e9ce4d26ee7bf45b9ed82e7122d4a0
   DynamicButton: ddc1e8d79e37f2761ab64df0c02e89061b05d812
@@ -43,6 +46,6 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
   Yaml: 18b2cf7301c4132e2bbb508a6921d2637ed3046c
 
-PODFILE CHECKSUM: db34d0c20c5cff73e7baee890668554bdb64afc7
+PODFILE CHECKSUM: 4e9e403db566e63d5fa8faf08604f4573caf8cc4
 
 COCOAPODS: 1.2.1

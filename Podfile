@@ -20,6 +20,7 @@ target 'CampNet iOS' do
   use_frameworks!
 
   # Pods for CampNet iOS
+  pod 'BRYXBanner'
   pod 'Charts'
   pod 'DynamicButton'
 end

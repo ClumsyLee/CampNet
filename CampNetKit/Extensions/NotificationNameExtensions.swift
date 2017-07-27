@@ -17,4 +17,12 @@ extension Notification.Name {
     public static let accountStatusUpdated = Notification.Name("accountStatusUpdated")
     public static let accountProfileUpdated = Notification.Name("accountProfileUpdated")
     public static let accountHistoryUpdated = Notification.Name("accountHistoryUpdated")
+    
+    public static let accountLoginError = Notification.Name("accountLoginError")
+    public static let accountLogoutError = Notification.Name("accountLogoutError")
+    public static let accountStatusError = Notification.Name("accountStatusError")
+    public static let accountProfileError = Notification.Name("accountProfileError")
+    public static let accountLoginIpError = Notification.Name("accountLoginIpError")
+    public static let accountLogoutSessionError = Notification.Name("accountLogoutSessionError")
+    public static let accountHistoryError = Notification.Name("accountHistoryError")
 }

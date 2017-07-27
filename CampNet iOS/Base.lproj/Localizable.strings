@@ -29,7 +29,7 @@
 "Unable to Update Profile of \"%@\"" = "Unable to Update Profile of \"%@\"";
 
 /* Alert title when failed to login IP. */
-"Unable to Login %@" = "Cannot Login %@";
+"Unable to Login %@" = "Unable to Login %@";
 
 /* Alert title when failed to logout a session. */
 "Unable to Logout \"%@\"" = "Unable to Logout \"%@\"";
