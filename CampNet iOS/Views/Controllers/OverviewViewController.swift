@@ -36,7 +36,6 @@ class OverviewViewController: UITableViewController {
 
     @IBAction func cancelSwitchingAccount(segue: UIStoryboardSegue) {}
     @IBAction func accountSwitched(segue: UIStoryboardSegue) {
-        refresh()
     }
     
     @IBAction func feedbackPressed(_ sender: Any) {
@@ -145,7 +144,8 @@ class OverviewViewController: UITableViewController {
             loginButtonCaption.text = NSLocalizedString("Unknown", comment: "Login button caption.")
         }
 
-        network.text = (NEHotspotHelper.supportedNetworkInterfaces().first as? NEHotspotNetwork)?.ssid ?? "-"
+        let ssid = (NEHotspotHelper.supportedNetworkInterfaces().first as? NEHotspotNetwork)?.ssid ?? ""
+        network.text = ssid.isEmpty ? "-": ssid
     }
 
     func reloadProfile() {

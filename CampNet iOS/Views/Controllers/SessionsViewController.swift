@@ -260,9 +260,9 @@ class SessionsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
         if !sessions.isEmpty && indexPath.section == Section.sessions.rawValue {
+            tableView.deselectRow(at: indexPath, animated: true)
+            
             switch indexPath.row {
             case expansionRange:
                 let offset = indexPath.row - expandedIndex
@@ -298,7 +298,7 @@ class SessionsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return isSessionCell(indexPath: indexPath)
+        return canLoginIp && isSessionCell(indexPath: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
