@@ -12,6 +12,12 @@ import SwiftyUserDefaults
 public let Defaults = UserDefaults(suiteName: Configuration.appGroup)!
 
 extension DefaultsKeys {
+    public static let defaultsSet = DefaultsKey<Bool>("defaultsSet")
+    
+    public static let autoLogin = DefaultsKey<Bool>("autoLogin")
+    public static let autoLogoutExpiredSessions = DefaultsKey<Bool>("autoLogoutExpiredSessions")
+    public static let usageAlertRatio = DefaultsKey<Double?>("usageAlertRatio")
+    
     static let mainAccount = DefaultsKey<String?>("mainAccount")
     static let accounts = DefaultsKey<[String]>("accounts")
     

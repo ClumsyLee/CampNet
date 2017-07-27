@@ -530,7 +530,7 @@ public class Account {
     }
     
     public func canManage(_ network: NEHotspotNetwork) -> Bool {
-        return configuration.ssids.contains(network.ssid) && !network.isSecure
+        return configuration.ssids.contains(network.ssid) && !network.isSecure && Defaults[.autoLogin]
     }
 }
 

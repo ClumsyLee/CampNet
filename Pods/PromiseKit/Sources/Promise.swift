@@ -139,7 +139,7 @@ open class Promise<T> {
      - Parameter body: The closure that is executed when this Promise is fulfilled.
      - Returns: A new promise that is resolved with the value returned from the provided closure. For example:
 
-           NSURLSession.GET(url).then { data -> Int in
+           URLSession.GET(url).then { data -> Int in
                //…
                return data.length
            }.then { length in
@@ -170,13 +170,12 @@ open class Promise<T> {
            }
      */
     public func then<U>(on q: DispatchQueue = .default, execute body: @escaping (T) throws -> Promise<U>) -> Promise<U> {
-        var rv: Promise<U>!
-        rv = Promise<U> { resolve in
-            state.then(on: q, else: resolve) { value in
-                let promise = try body(value)
-                guard promise !== rv else { throw PMKError.returnedSelf }
-                promise.state.pipe(resolve)
-            }
+        var resolve: ((Resolution<U>) -> Void)!
+        let rv = Promise<U>{ resolve = $0 }
+        state.then(on: q, else: resolve) { value in
+            let promise = try body(value)
+            guard promise !== rv else { throw PMKError.returnedSelf }
+            promise.state.pipe(resolve)
         }
         return rv
     }
@@ -268,13 +267,12 @@ open class Promise<T> {
      - SeeAlso: [Cancellation](http://promisekit.org/docs/)
      */
     public func recover(on q: DispatchQueue = .default, policy: CatchPolicy = .allErrorsExceptCancellation, execute body: @escaping (Error) throws -> Promise) -> Promise {
-        var rv: Promise!
-        rv = Promise { resolve in
-            state.catch(on: q, policy: policy, else: resolve) { error in
-                let promise = try body(error)
-                guard promise !== rv else { throw PMKError.returnedSelf }
-                promise.state.pipe(resolve)
-            }
+        var resolve: ((Resolution<T>) -> Void)!
+        let rv = Promise{ resolve = $0 }
+        state.catch(on: q, policy: policy, else: resolve) { error in
+            let promise = try body(error)
+            guard promise !== rv else { throw PMKError.returnedSelf }
+            promise.state.pipe(resolve)
         }
         return rv
     }
@@ -332,7 +330,7 @@ open class Promise<T> {
      
      The function you provide cannot mutate the chain.
  
-         NSURLSession.GET(/*…*/).tap { result in
+         URLSession.GET(/*…*/).tap { result in
              print(result)
          }
 
@@ -424,20 +422,20 @@ extension Promise: CustomStringConvertible {
 
  Compare:
 
-     NSURLSession.GET(url1).then {
-         NSURLSession.GET(url2)
+     URLSession.GET(url1).then {
+         URLSession.GET(url2)
      }.then {
-         NSURLSession.GET(url3)
+         URLSession.GET(url3)
      }
 
  With:
 
      firstly {
-         NSURLSession.GET(url1)
+         URLSession.GET(url1)
      }.then {
-         NSURLSession.GET(url2)
+         URLSession.GET(url2)
      }.then {
-         NSURLSession.GET(url3)
+         URLSession.GET(url3)
      }
  */
 public func firstly<T>(execute body: () throws -> Promise<T>) -> Promise<T> {
@@ -450,20 +448,20 @@ public func firstly<T>(execute body: () throws -> Promise<T>) -> Promise<T> {
 
  Compare:
 
-     when(fulfilled: NSURLSession.GET(url1), NSURLSession.GET(url2)).then {
-         NSURLSession.GET(url3)
+     when(fulfilled: URLSession.GET(url1), URLSession.GET(url2)).then {
+         URLSession.GET(url3)
      }.then {
-         NSURLSession.GET(url4)
+         URLSession.GET(url4)
      }
 
  With:
 
      firstly {
-         (NSURLSession.GET(url1), NSURLSession.GET(url2))
+         (URLSession.GET(url1), URLSession.GET(url2))
      }.then { _, _ in
-         NSURLSession.GET(url2)
+         URLSession.GET(url2)
      }.then {
-         NSURLSession.GET(url3)
+         URLSession.GET(url3)
      }
 
  - Note: At maximum 5 promises may be returned in a tuple

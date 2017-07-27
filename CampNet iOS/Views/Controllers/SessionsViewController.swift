@@ -53,13 +53,20 @@ class SessionsViewController: UITableViewController {
     }
     var expandedIndex: Int = -1
     var expandedHeight: Int {
-        return (expandedIndex < 0) ? 0 : SessionDetailCell.types
+        if expandedIndex < 0 {
+            return 0
+        } else {
+            return SessionDetailCell.types + (canLogoutSession ? 1 : 0)
+        }
     }
     var expansionRange: Range<Int> {
         return (expandedIndex + 1)..<(expandedIndex + expandedHeight + 1)
     }
     var canLoginIp: Bool {
         return account?.configuration.actions[.loginIp] != nil
+    }
+    var canLogoutSession: Bool {
+        return account?.configuration.actions[.logoutSession] != nil
     }
     
     func indexPaths(for index: Int) -> [IndexPath] {
@@ -80,8 +87,12 @@ class SessionsViewController: UITableViewController {
         }
     }
     
-    func isSessionCell(_ row: Int) -> Bool {
+    func isSessionCell(row: Int) -> Bool {
         return !(expansionRange ~= row || row >= sessions.count + expandedHeight)
+    }
+    
+    func isSessionCell(indexPath: IndexPath) -> Bool {
+        return !sessions.isEmpty && indexPath.section == Section.sessions.rawValue && isSessionCell(row: indexPath.row)
     }
     
     func reloadModel() {
@@ -122,7 +133,7 @@ class SessionsViewController: UITableViewController {
                     cell.update(session: session, decimalUnits: account.configuration.decimalUnits)
                     
                     // Update detail cells if needed.
-                    for offset in 1..<indexPaths.count {
+                    for offset in 1..<min(indexPaths.count, SessionDetailCell.types + 1) {
                         let cell = tableView.cellForRow(at: indexPaths[offset]) as! SessionDetailCell
                         cell.update(session: session, offset: offset)
                     }
@@ -177,6 +188,19 @@ class SessionsViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func logout(session: Session) {
+        guard let account = account else {
+            return
+        }
+        
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        delegate.setNetworkActivityIndicatorVisible(true)
+        
+        account.logoutSession(session: session, on: DispatchQueue.global(qos: .userInitiated)).always {
+            delegate.setNetworkActivityIndicatorVisible(false)
+        }
+    }
+    
     
     // MARK: - Table view data source
     
@@ -199,6 +223,10 @@ class SessionsViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return isSessionCell(indexPath: indexPath) ? 50 : 44
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if sessions.isEmpty || indexPath.section == Section.newSession.rawValue {
@@ -208,11 +236,18 @@ class SessionsViewController: UITableViewController {
         } else {
             switch indexPath.row {
             case expansionRange:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "sessionDetailCell", for: indexPath) as! SessionDetailCell
-                
-                cell.update(session: sessions[expandedIndex], offset: indexPath.row - expandedIndex)
-                
-                return cell
+                let offset = indexPath.row - expandedIndex
+                if offset <= SessionDetailCell.types {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "sessionDetailCell", for: indexPath) as! SessionDetailCell
+                    
+                    cell.update(session: sessions[expandedIndex], offset: offset)
+                    
+                    return cell
+                } else {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "logoutSessionCell", for: indexPath)
+                    
+                    return cell
+                }
                 
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! SessionCell
@@ -227,35 +262,43 @@ class SessionsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if !sessions.isEmpty && indexPath.section == Section.sessions.rawValue && isSessionCell(indexPath.row) {
-            
-            if expandedIndex < 0 {
-                expandedIndex = indexPath.row
-                tableView.insertRows(at: self.expandedIndexPaths, with: .top)
-            } else if expandedIndex == indexPath.row {
-                let indexPaths = expandedIndexPaths
-                expandedIndex = -1
-                
-                tableView.deleteRows(at: indexPaths, with: .top)
-            } else {
-                let indexPathsToDelete = expandedIndexPaths
-                if indexPath.row < expandedIndex {
-                    expandedIndex = indexPath.row
-                } else {
-                    expandedIndex = indexPath.row - expandedHeight
+        if !sessions.isEmpty && indexPath.section == Section.sessions.rawValue {
+            switch indexPath.row {
+            case expansionRange:
+                let offset = indexPath.row - expandedIndex
+                if offset > SessionDetailCell.types {
+                    logout(session: sessions[expandedIndex])
                 }
-                let indexPathsToInsert = expandedIndexPaths
                 
-                tableView.beginUpdates()
-                tableView.deleteRows(at: indexPathsToDelete, with: .top)
-                tableView.insertRows(at: indexPathsToInsert, with: .top)
-                tableView.endUpdates()
+            default:
+                if expandedIndex < 0 {
+                    expandedIndex = indexPath.row
+                    tableView.insertRows(at: self.expandedIndexPaths, with: .top)
+                } else if expandedIndex == indexPath.row {
+                    let indexPaths = expandedIndexPaths
+                    expandedIndex = -1
+                    
+                    tableView.deleteRows(at: indexPaths, with: .top)
+                } else {
+                    let indexPathsToDelete = expandedIndexPaths
+                    if indexPath.row < expandedIndex {
+                        expandedIndex = indexPath.row
+                    } else {
+                        expandedIndex = indexPath.row - expandedHeight
+                    }
+                    let indexPathsToInsert = expandedIndexPaths
+                    
+                    tableView.beginUpdates()
+                    tableView.deleteRows(at: indexPathsToDelete, with: .top)
+                    tableView.insertRows(at: indexPathsToInsert, with: .top)
+                    tableView.endUpdates()
+                }
             }
         }
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return !sessions.isEmpty && indexPath.section == Section.sessions.rawValue && isSessionCell(indexPath.row)
+        return isSessionCell(indexPath: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
@@ -268,14 +311,7 @@ class SessionsViewController: UITableViewController {
             if indexPath.row > expandedIndex {
                 index -= expandedHeight
             }
-            let session = sessions[index]
-            
-            let delegate = UIApplication.shared.delegate as! AppDelegate
-            delegate.setNetworkActivityIndicatorVisible(true)
-            
-            _ = account?.logoutSession(session: session, on: DispatchQueue.global(qos: .userInitiated)).always {
-                delegate.setNetworkActivityIndicatorVisible(false)
-            }
+            logout(session: sessions[index])
         }
         
         tableView.setEditing(false, animated: true)
@@ -306,5 +342,4 @@ class SessionsViewController: UITableViewController {
       Pass the selected object to the new view controller.
      }
      */
-    
 }

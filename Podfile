@@ -23,4 +23,5 @@ target 'CampNet iOS' do
   pod 'BRYXBanner'
   pod 'Charts'
   pod 'DynamicButton'
+  pod 'Instabug'
 end

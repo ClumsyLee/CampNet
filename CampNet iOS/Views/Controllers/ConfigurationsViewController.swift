@@ -142,5 +142,4 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
             }
         }
     }
-
 }

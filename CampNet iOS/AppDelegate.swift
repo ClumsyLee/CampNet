@@ -11,6 +11,7 @@ import UIKit
 import UserNotifications
 
 import BRYXBanner
+import Instabug
 import CampNetKit
 
 @UIApplicationMain
@@ -33,9 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
+        setDefaultsIfNot()
+        
+        setUpInstaBug()
         requestNotificationAuthorization(options: [.alert, .sound])
-        registerHotspotHelper(displayName: NSLocalizedString("Campus network managed by CampNet", comment: "Display name of the HotspotHelper"))
         addObservers()
+        
+        registerHotspotHelper(displayName: NSLocalizedString("Campus network managed by CampNet", comment: "Display name of the HotspotHelper"))
 
         return true
     }
@@ -64,6 +69,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func setDefaultsIfNot() {
+        if !Defaults[.defaultsSet] {
+            Defaults[.autoLogin] = true
+            Defaults[.autoLogoutExpiredSessions] = true
+            Defaults[.usageAlertRatio] = 0.90
+            
+            Defaults[.defaultsSet] = true
+        }
+    }
+    
+    func setUpInstaBug() {
+        Instabug.start(withToken: "7285a13216bb10bdc28941031277be41", invocationEvent: .none)
+        Instabug.setPromptOptionsEnabledWithBug(false, feedback: true, chat: false)
+        Instabug.setAttachmentTypesEnabledScreenShot(false, extraScreenShot: false, galleryImage: false, voiceNote: false, screenRecording: false)
     }
     
     func requestNotificationAuthorization(options: UNAuthorizationOptions) {

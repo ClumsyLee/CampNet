@@ -219,6 +219,10 @@ class AccountsViewController: UITableViewController {
         return section < accounts.count ? accounts[section].accounts.count : 1
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section < accounts.count ? 50 : 44
+    }
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section < accounts.count ? accounts[section].configuration.displayName : nil
     }
@@ -319,5 +323,4 @@ class AccountsViewController: UITableViewController {
             }
         }
     }
-
 }

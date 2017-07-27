@@ -11,6 +11,7 @@ import NetworkExtension
 
 import Charts
 import DynamicButton
+import Instabug
 import PromiseKit
 import CampNetKit
 
@@ -36,6 +37,10 @@ class OverviewViewController: UITableViewController {
     @IBAction func cancelSwitchingAccount(segue: UIStoryboardSegue) {}
     @IBAction func accountSwitched(segue: UIStoryboardSegue) {
         refresh()
+    }
+    
+    @IBAction func feedbackPressed(_ sender: Any) {
+        Instabug.invoke()
     }
     
     @IBAction func tableRefreshed(_ sender: Any) {
@@ -271,6 +276,7 @@ class OverviewViewController: UITableViewController {
         chart.leftAxis.gridColor = #colorLiteral(red: 0.9372541904, green: 0.9372367859, blue: 0.9563211799, alpha: 1)
         chart.leftAxis.axisLineColor = .white
         chart.leftAxis.axisMinimum = 0
+        chart.leftAxis.spaceTop = 0.15
         chart.leftAxis.drawLimitLinesBehindDataEnabled = true
         chart.rightAxis.enabled = false
 
@@ -304,7 +310,7 @@ class OverviewViewController: UITableViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
+        
         loginButton.layer.shadowColor = UIColor.lightGray.cgColor
         loginButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         loginButton.layer.shadowOpacity = 0.5
@@ -322,6 +328,9 @@ class OverviewViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.bounds.height - tableView.contentInset.top
+    }
 }
 

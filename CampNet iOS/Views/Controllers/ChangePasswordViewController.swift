@@ -46,6 +46,7 @@ class ChangePasswordViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    /*
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -53,6 +54,7 @@ class ChangePasswordViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
+    */
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -123,5 +125,4 @@ class ChangePasswordViewController: UITableViewController {
     @IBAction func passwordEntered(_ sender: Any) {
         performSegue(withIdentifier: "passwordChanged", sender: self)
     }
-
 }
