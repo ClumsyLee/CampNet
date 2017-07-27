@@ -28,6 +28,126 @@ public class Account {
         return AccountManager.shared.main
     }
     
+    public static var handler: NEHotspotHelperHandler = { command in
+        print("NEHotspotHelperCommand \(command.commandType) received.")
+        
+        let requestBinder: RequestBinder = { $0.bind(to: command) }
+        
+        switch command.commandType {
+            
+        case .filterScanList:
+            guard let networkList = command.networkList,
+                let account = Account.main else {
+                    let response = command.createResponse(.success)
+                    response.deliver()
+                    return
+            }
+            
+            var knownList: [NEHotspotNetwork] = []
+            for network in networkList {
+                if account.canManage(network) {
+                    network.setConfidence(.low)
+                    knownList.append(network)
+                }
+            }
+            print("Known networks: \(knownList).")
+            
+            let response = command.createResponse(.success)
+            response.setNetworkList(knownList)
+            response.deliver()
+            
+        case .evaluate:
+            guard let network = command.network else {
+                return
+            }
+            guard let account = Account.main, account.canManage(network) else {
+                network.setConfidence(.none)
+                let response = command.createResponse(.success)
+                response.setNetwork(network)
+                response.deliver()
+                return
+            }
+            
+            account.status(requestBinder: requestBinder).then { status -> Void in
+                switch status.type {
+                case .online, .offline:
+                    network.setConfidence(.high)
+                case .offcampus:
+                    network.setConfidence(.none)
+                }
+                
+                let response = command.createResponse(.success)
+                response.setNetwork(network)
+                response.deliver()
+                }
+                .catch { _ in
+                    network.setConfidence(.low)
+                    
+                    let response = command.createResponse(.success)
+                    response.setNetwork(network)
+                    response.deliver()
+            }
+            
+        case .authenticate:
+            guard let network = command.network else {
+                return
+            }
+            guard let account = Account.main, account.canManage(network) else {
+                command.createResponse(.unsupportedNetwork).deliver()
+                return
+            }
+            
+            account.login(requestBinder: requestBinder).then {
+                command.createResponse(.success).deliver()
+                }
+                .catch { _ in
+                    command.createResponse(.temporaryFailure).deliver()
+            }
+            
+        case .maintain:
+            guard let network = command.network else {
+                return
+            }
+            guard let account = Account.main, account.canManage(network) else {
+                command.createResponse(.failure).deliver()
+                return
+            }
+            
+            account.status(requestBinder: requestBinder).then { status -> Void in
+                let result: NEHotspotHelperResult
+                
+                switch status.type {
+                case .online: result = .success
+                case .offline: result = .authenticationRequired
+                case .offcampus: result = .failure
+                }
+                
+                command.createResponse(result).deliver()
+                }
+                .catch { _ in
+                    command.createResponse(.failure).deliver()
+            }
+            
+        case .logoff:
+            guard let network = command.network else {
+                return
+            }
+            guard let account = Account.main, account.canManage(network) else {
+                command.createResponse(.failure).deliver()
+                return
+            }
+            
+            account.logout(requestBinder: requestBinder).then {
+                command.createResponse(.success).deliver()
+                }
+                .catch { _ in
+                    command.createResponse(.failure).deliver()
+            }
+            
+        default: break
+        }
+    }
+    
     public static func add(configurationIdentifier: String, username: String, password: String? = nil) {
         AccountManager.shared.add(configurationIdentifier: configurationIdentifier, username: username, password: password)
     }
@@ -176,8 +296,6 @@ public class Account {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .accountHistoryUpdated, object: self, userInfo: ["account": self, "history": newValue as Any])
             }
-            
-            
         }
     }
     
@@ -187,13 +305,17 @@ public class Account {
         self.identifier = "\(configuration.identifier).\(username)"
     }
     
-    func handleError(_ error: Error) {
+    func handle(error: Error, name: Notification.Name) {
         if let error = error as? CampNetError {
             switch error {
             case .unauthorized: self.unauthorized = true
             case .offcampus: self.status = Status(type: .offcampus)
             default: break
             }
+        }
+        
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: name, object: self, userInfo: ["account": self, "error": error])
         }
     }
     
@@ -208,7 +330,7 @@ public class Account {
         return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).recover(on: queue) { error -> Promise<[String: Any]> in
             
             print("Failed to login account \(self.identifier). Error: \(error).")
-            self.handleError(error)
+            self.handle(error: error, name: .accountLoginError)
             throw error
         }
         .then(on: queue) { _ in
@@ -247,7 +369,7 @@ public class Account {
             }
             
             print("Failed to update status for account \(self.identifier). Error: \(error).")
-            self.handleError(error)
+            self.handle(error: error, name: .accountStatusError)
             throw error
         }
     }
@@ -271,7 +393,7 @@ public class Account {
         }
         .recover(on: queue) { error -> Promise<Profile> in
             print("Failed to update profile for account \(self.identifier). Error: \(error).")
-            self.handleError(error)
+            self.handle(error: error, name: .accountProfileError)
             throw error
         }
     }
@@ -287,7 +409,7 @@ public class Account {
         return action.commit(username: username, password: password, extraVars: ["ip": ip], on: queue, requestBinder: requestBinder).recover(on: queue) { error -> Promise<[String: Any]> in
             
             print("Failed to login IP \(ip) for account \(self.identifier). Error: \(error).")
-            self.handleError(error)
+            self.handle(error: error, name: .accountLoginIpError)
             throw error
         }
         .then { _ in
@@ -315,7 +437,7 @@ public class Account {
         return action.commit(username: username, password: password, extraVars: ["ip": session.ip, "id": session.id ?? ""], on: queue, requestBinder: requestBinder).recover(on: queue) { error -> Promise<[String: Any]> in
             
             print("Failed to logout session \(session) for account \(self.identifier). Error: \(error).")
-            self.handleError(error)
+            self.handle(error: error, name: .accountLogoutSessionError)
             throw error
         }
         .then { _ in
@@ -347,7 +469,7 @@ public class Account {
         }
         .recover(on: queue) { error -> Promise<History> in
             print("Failed to update history for account \(self.identifier). Error: \(error).")
-            self.handleError(error)
+            self.handle(error: error, name: .accountHistoryError)
             throw error
         }
     }
@@ -363,7 +485,7 @@ public class Account {
         return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).recover(on: queue) { error -> Promise<[String: Any]> in
             
             print("Failed to logout for account \(self.identifier). Error: \(error).")
-            self.handleError(error)
+            self.handle(error: error, name: .accountLogoutError)
             throw error
         }
         .then(on: queue) { _ in
@@ -375,6 +497,22 @@ public class Account {
             }
             return Promise(value: ())
         }
+    }
+    
+    public func update(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
+        
+        // Here we run actions in order to make sure important actions will be executed.
+        var promise = status(on: queue, requestBinder: requestBinder).asVoid()
+        
+        if configuration.actions[.profile] != nil {
+            promise = promise.then { self.profile().asVoid() }
+        }
+        
+        if configuration.actions[.history] != nil {
+            promise = promise.then { self.history().asVoid() }
+        }
+        
+        return promise
     }
     
     public func canManage(_ network: NEHotspotNetwork) -> Bool {
