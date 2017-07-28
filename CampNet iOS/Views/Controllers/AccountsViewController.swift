@@ -132,22 +132,13 @@ class AccountsViewController: UITableViewController {
         cell.update(profile: profile, decimalUnits: account.configuration.decimalUnits)
     }
     
-    func authorizationChanged(_ notification: Notification) {
-        guard let account = notification.userInfo?["account"] as? Account,
-              let indexPath = indexPath(of: account) else {
-            return
-        }
-        let cell = tableView.cellForRow(at: indexPath) as! AccountCell
-        cell.unauthorized = account.unauthorized
-    }
-    
     func updateProfile(of account: Account) -> Promise<Profile> {
         let delegate = UIApplication.shared.delegate as! AppDelegate
         
         delegate.setNetworkActivityIndicatorVisible(true)
         return account.profile(on: DispatchQueue.global(qos: .userInitiated)).always {
             delegate.setNetworkActivityIndicatorVisible(false)
-            }
+        }
     }
     
     func refresh(sender:AnyObject)
@@ -197,7 +188,6 @@ class AccountsViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(accountRemoved(_:)), name: .accountRemoved, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)), name: .mainAccountChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)), name: .accountProfileUpdated, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(authorizationChanged(_:)), name: .accountAuthorizationChanged, object: nil)
     }
     
     deinit {
@@ -236,7 +226,6 @@ class AccountsViewController: UITableViewController {
             let profile = account.profile
             
             cell.username.text = account.username
-            cell.unauthorized = account.unauthorized
             cell.update(profile: profile, decimalUnits: account.configuration.decimalUnits)
             cell.accessoryType = (account == mainAccount) ? .checkmark : .none
             

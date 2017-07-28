@@ -16,23 +16,6 @@ class AccountCell: UITableViewCell {
     @IBOutlet var balance: UILabel!
     @IBOutlet var usage: UILabel!
     
-    var unauthorized: Bool = false {
-        didSet {
-            if let attributedText = username.attributedText {
-                let text = NSMutableAttributedString(attributedString: attributedText)
-                let range = NSMakeRange(0, text.length)
-                
-                if unauthorized {
-                    text.addAttribute(NSStrikethroughStyleAttributeName, value: 1, range: range)
-                } else {
-                    text.removeAttribute(NSStrikethroughStyleAttributeName, range: range)
-                }
-                
-                username.attributedText = text
-            }
-        }
-    }
-    
     func update(profile: Profile?, decimalUnits: Bool) {
         if let name = profile?.name {
             self.name.text = "(\(name))"
