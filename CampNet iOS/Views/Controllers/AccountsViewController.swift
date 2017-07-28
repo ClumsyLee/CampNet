@@ -113,11 +113,13 @@ class AccountsViewController: UITableViewController {
     
     func mainChanged(_ notification: Notification) {
         if let fromIndexPath = indexPath(of: notification.userInfo?["fromAccount"] as? Account) {
-            tableView.cellForRow(at: fromIndexPath)?.accessoryType = .none
+            let cell = tableView.cellForRow(at: fromIndexPath) as! AccountCell
+            cell.isMain = false
         }
         mainAccount = notification.userInfo?["toAccount"] as? Account
         if let toIndexPath = indexPath(of: mainAccount) {
-            tableView.cellForRow(at: toIndexPath)?.accessoryType = .checkmark
+            let cell = tableView.cellForRow(at: toIndexPath) as! AccountCell
+            cell.isMain = true
         }
     }
     
@@ -227,7 +229,7 @@ class AccountsViewController: UITableViewController {
             
             cell.username.text = account.username
             cell.update(profile: profile, decimalUnits: account.configuration.decimalUnits)
-            cell.accessoryType = (account == mainAccount) ? .checkmark : .none
+            cell.isMain = account == mainAccount
             
             return cell
         } else {
@@ -241,8 +243,6 @@ class AccountsViewController: UITableViewController {
         if indexPath.section < accounts.count {
             let account = self.account(at: indexPath)
             Account.makeMain(account)
-            
-            
         }
     }
 

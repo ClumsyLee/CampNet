@@ -10,11 +10,25 @@ import UIKit
 import CampNetKit
 
 class AccountCell: UITableViewCell {
+    
+    static let mainColor = #colorLiteral(red: 0.1568627451, green: 0.7230392156, blue: 0.9803921569, alpha: 1)
+    static let normalColor = UIColor.darkText
 
     @IBOutlet var username: UILabel!
     @IBOutlet var name: UILabel!
     @IBOutlet var balance: UILabel!
     @IBOutlet var usage: UILabel!
+    
+    var isMain = false {
+        didSet {
+            let color = isMain ? AccountCell.mainColor : AccountCell.normalColor
+            
+            username.textColor = color
+            name.textColor = color
+            balance.textColor = color
+            usage.textColor = color
+        }
+    }
     
     func update(profile: Profile?, decimalUnits: Bool) {
         if let name = profile?.name {
