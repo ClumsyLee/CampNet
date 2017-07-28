@@ -503,11 +503,11 @@ public class Account {
         var promises = [status(on: queue, requestBinder: requestBinder).asVoid()]
         
         if configuration.actions[.profile] != nil {
-            promises.append(profile().asVoid())
+            promises.append(profile(on: queue, requestBinder: requestBinder).asVoid())
         }
         
         if configuration.actions[.history] != nil {
-            promises.append(history().asVoid())
+            promises.append(history(on: queue, requestBinder: requestBinder).asVoid())
         }
         
         return when(resolved: promises).asVoid()

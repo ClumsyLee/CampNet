@@ -206,6 +206,8 @@ public struct Action {
         case logout
     }
     
+    static let jsVm = JSVirtualMachine()!
+    
     public var configurationIdentifier: String
     public var role: Role
     public var identifier: String
@@ -242,7 +244,7 @@ public struct Action {
             initialVars[key] = value
         }
         
-        let context = JSContext()!
+        let context = JSContext(virtualMachine: Action.jsVm)!
         context.setObject(initialVars, forKeyedSubscript: ActionEntry.varsName as (NSCopying & NSObjectProtocol))
         
         let sessionConfiguration = URLSessionConfiguration.default
