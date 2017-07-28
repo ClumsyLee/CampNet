@@ -16,6 +16,7 @@ import SwiftyUserDefaults
 public class Account {
     
     static let statusLifetime: TimeInterval = 86400
+    static let profileValidTime: TimeInterval = 300
     static let estimationLength = 7
     
     static let passwordKeychain = Keychain(service: "\(Configuration.bundleIdentifier).password", accessGroup: Configuration.keychainAccessGroup)
@@ -503,11 +504,19 @@ public class Account {
         var promises = [status(on: queue, requestBinder: requestBinder).asVoid()]
         
         if configuration.actions[.profile] != nil {
-            promises.append(profile(on: queue, requestBinder: requestBinder).asVoid())
+            if let profile = profile, -profile.updatedAt.timeIntervalSinceNow <= Account.profileValidTime {
+                // Profile still valid, do nothing.
+            } else {
+                promises.append(profile(on: queue, requestBinder: requestBinder).asVoid())
+            }
         }
         
         if configuration.actions[.history] != nil {
-            promises.append(history(on: queue, requestBinder: requestBinder).asVoid())
+            if let history = history, history.usageSums.count >= Calendar.current.component(.day, from: Date()) {
+                // History still valid, do nothing.
+            } else {
+                promises.append(history(on: queue, requestBinder: requestBinder).asVoid())
+            }
         }
         
         return when(resolved: promises).asVoid()

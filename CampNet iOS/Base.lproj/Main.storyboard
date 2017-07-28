@@ -15,7 +15,7 @@
         <scene sceneID="hEt-O8-Pce">
             <objects>
                 <tableViewController id="42N-Jx-lGN" customClass="OverviewViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="604" sectionHeaderHeight="28" sectionFooterHeight="28" id="cPh-uV-2yr">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="604" sectionHeaderHeight="28" sectionFooterHeight="28" id="cPh-uV-2yr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="604"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NMI-zA-Awn" id="QrI-rc-bgC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="603.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="604"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bVu-CG-AHs">
@@ -196,11 +196,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OwS-9Y-JxQ" customClass="LineChartView" customModule="Charts">
-                                                    <rect key="frame" x="0.0" y="260" width="375" height="318.5"/>
+                                                    <rect key="frame" x="0.0" y="260" width="375" height="319.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monthly Trend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kM-Ii-HEq">
-                                                    <rect key="frame" x="146.5" y="580.5" width="82" height="14.5"/>
+                                                    <rect key="frame" x="146.5" y="581.5" width="82" height="14.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -797,9 +797,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Accounts" id="SPV-m8-ZsX">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gIy-AD-ziS">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="xZJ-ee-7mW">
                             <connections>
-                                <segue destination="EhV-Ab-cbe" kind="unwind" unwindAction="cancelSwitchingAccountWithSegue:" id="FXW-Ik-AI9"/>
+                                <segue destination="EhV-Ab-cbe" kind="unwind" unwindAction="cancelSwitchingAccountWithSegue:" id="GBP-6N-3YG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1119,7 +1119,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Login IP" id="4fQ-du-yO1">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Ebd-34-VdH">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Ebd-34-VdH">
                             <connections>
                                 <segue destination="Zh6-fa-eCF" kind="unwind" unwindAction="ipLoggedInSegue:" id="qa3-jC-J4p"/>
                             </connections>

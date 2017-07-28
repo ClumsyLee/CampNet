@@ -165,6 +165,16 @@ class OverviewViewController: UITableViewController {
         estimatedFee.text = account?.estimatedFee?.moneyString ?? "-"
         devices.text = profile != nil ? String(profile!.sessions.count) : "-"
 
+        // Update chart end point if needed.
+        if let profile = profile, let usage = profile.usage {
+            let day = Calendar.current.component(.day, from: profile.updatedAt)
+            let gb = usage.usageInGb(decimalUnits: decimalUnits)
+            if usageSumDataset.values.count == day && usageSumDataset.values.last!.y < gb {
+                usageSumDataset.values.last!.y = gb
+                usageSumEndDataset.values = [usageSumDataset.values.last!]
+            }
+        }
+        
         // Limit lines.
         chart.leftAxis.removeAllLimitLines()
 
@@ -281,12 +291,14 @@ class OverviewViewController: UITableViewController {
         chart.rightAxis.enabled = false
 
         freeLimitLine.lineWidth = 1
+        freeLimitLine.xOffset = 1
         freeLimitLine.yOffset = 1
         freeLimitLine.lineColor = #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1)
         freeLimitLine.valueTextColor = #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1)
         freeLimitLine.labelPosition = .leftBottom
 
         maxLimitLine.lineWidth = 1
+        maxLimitLine.xOffset = 1
         maxLimitLine.yOffset = 1
         maxLimitLine.lineColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         maxLimitLine.valueTextColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
