@@ -22,7 +22,6 @@ extension DefaultsKeys {
     static let accounts = DefaultsKey<[String]>("accounts")
     
     // Account related.
-    static func accountUnauthorized(of id: String) -> DefaultsKey<Bool> { return DefaultsKey<Bool>("\(id).accountUnauthorized") }
     static func accountStatus(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountStatus") }
     static func accountProfile(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountProfile") }
     static func accountHistory(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountHistory") }

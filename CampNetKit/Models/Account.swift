@@ -171,21 +171,6 @@ public class Account {
         }
         set {
             Account.passwordKeychain[identifier] = newValue
-            unauthorized = false
-        }
-    }
-    
-    public fileprivate(set) var unauthorized: Bool {
-        get {
-            return Defaults[.accountUnauthorized(of: identifier)]
-        }
-        set {
-            if unauthorized != newValue {
-                Defaults[.accountUnauthorized(of: identifier)] = newValue
-                DispatchQueue.main.async {
-                    NotificationCenter.default.post(name: .accountAuthorizationChanged, object: self, userInfo: ["account": self])
-                }
-            }
         }
     }
     
@@ -309,7 +294,6 @@ public class Account {
     func handle(error: Error, name: Notification.Name, extraInfo: [String: Any]? = nil) {
         if let error = error as? CampNetError {
             switch error {
-            case .unauthorized: self.unauthorized = true
             case .offcampus: self.status = Status(type: .offcampus)
             default: break
             }
