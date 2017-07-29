@@ -23,9 +23,11 @@ class AccountDetailViewController: UITableViewController {
     @IBOutlet var usage: UILabel!
     
     @IBAction func cancelChangingPassword(segue: UIStoryboardSegue) {}
-    @IBAction func passwordChanged(segue: UIStoryboardSegue) {}
+    @IBAction func passwordChanged(segue: UIStoryboardSegue) {
+        refresh()
+    }
     
-    @IBAction func tableRefreshed(_ sender: Any) {
+    @IBAction func refreshTable(_ sender: Any) {
         let delegate = UIApplication.shared.delegate as! AppDelegate
         
         delegate.setNetworkActivityIndicatorVisible(true)
@@ -36,6 +38,19 @@ class AccountDetailViewController: UITableViewController {
     }
     
     var account: Account!
+    
+    func refresh() {
+        if refreshControl!.isRefreshing {
+            return
+        }
+        
+        refreshControl!.beginRefreshing()
+        
+        let offset = CGPoint(x: 0, y: -tableView.contentInset.top)
+        tableView.setContentOffset(offset, animated: true)
+        
+        refreshTable(self)
+    }
     
     func reload(profile: Profile?) {
         self.title = account.username

@@ -14,7 +14,7 @@ class SessionsViewController: UITableViewController {
     @IBAction func cancelLoggingInIp(segue: UIStoryboardSegue) {}
     @IBAction func ipLoggedIn(segue: UIStoryboardSegue) {}
     
-    @IBAction func refresh(_ sender: Any) {
+    @IBAction func refreshTable(_ sender: Any) {
         guard let account = account else {
             self.refreshControl?.endRefreshing()
             return

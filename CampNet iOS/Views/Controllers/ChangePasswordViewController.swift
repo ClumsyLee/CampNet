@@ -117,13 +117,6 @@ class ChangePasswordViewController: UITableViewController {
         
         if segue.identifier == "passwordChanged" {
             account.password = passwordField.text ?? ""
-            
-            let delegate = UIApplication.shared.delegate as! AppDelegate
-            delegate.setNetworkActivityIndicatorVisible(true)
-            
-            account.profile(on: DispatchQueue.global(qos: .userInitiated)).always {
-                delegate.setNetworkActivityIndicatorVisible(false)
-            }
         }
     }
     

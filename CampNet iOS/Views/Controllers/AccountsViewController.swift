@@ -16,6 +16,20 @@ class AccountsViewController: UITableViewController {
     @IBAction func accountAdded(segue: UIStoryboardSegue) {}
     @IBAction func accountDeleted(segue: UIStoryboardSegue) {}
     
+    @IBAction func refreshTable(_ sender: Any) {
+        var promises: [Promise<Profile>] = []
+        for (_, accountArray) in accounts {
+            for account in accountArray {
+                let promise = updateProfile(of: account)
+                promises.append(promise)
+            }
+        }
+        
+        when(resolved: promises).always { _ in
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
     var accounts: [(configuration: Configuration, accounts: [Account])] = []
     var mainAccount: Account? = nil
     
@@ -138,21 +152,6 @@ class AccountsViewController: UITableViewController {
         }
     }
     
-    func refresh(sender:AnyObject)
-    {
-        var promises: [Promise<Profile>] = []
-        for (_, accountArray) in accounts {
-            for account in accountArray {
-                let promise = updateProfile(of: account)
-                promises.append(promise)
-            }
-        }
-        
-        when(resolved: promises).always { _ in
-            self.refreshControl?.endRefreshing()
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -177,8 +176,6 @@ class AccountsViewController: UITableViewController {
         
         // Set mainAccount.
         self.mainAccount = Account.main
-        
-        self.refreshControl?.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
         
         // Set observers.
         NotificationCenter.default.addObserver(self, selector: #selector(accountAdded(_:)), name: .accountAdded, object: nil)

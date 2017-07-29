@@ -64,9 +64,6 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
-                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="B5V-fI-7Mj">
-                                                    <rect key="frame" x="257" y="23" width="20" height="20"/>
-                                                </activityIndicatorView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J55-4c-zhh">
                                                     <rect key="frame" x="0.0" y="190" width="147.5" height="58"/>
                                                 </button>
@@ -207,7 +204,6 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="J55-4c-zhh" firstAttribute="centerY" secondItem="e2c-j2-De5" secondAttribute="centerY" id="0tV-Ns-zog"/>
-                                                <constraint firstItem="B5V-fI-7Mj" firstAttribute="centerY" secondItem="gOX-7d-QAT" secondAttribute="centerY" id="3X0-57-FgJ"/>
                                                 <constraint firstItem="bVu-CG-AHs" firstAttribute="leading" secondItem="QrI-rc-bgC" secondAttribute="leading" id="64O-dd-ht0"/>
                                                 <constraint firstItem="H8N-2s-bRD" firstAttribute="centerY" secondItem="Wmq-Nx-4po" secondAttribute="centerY" id="6o9-qm-xA3"/>
                                                 <constraint firstItem="mDD-wB-GMy" firstAttribute="centerX" secondItem="QrI-rc-bgC" secondAttribute="centerX" id="Bbe-rA-BEf"/>
@@ -233,7 +229,6 @@
                                                 <constraint firstItem="J55-4c-zhh" firstAttribute="top" secondItem="bVu-CG-AHs" secondAttribute="bottom" id="qgM-8d-zV2"/>
                                                 <constraint firstItem="bVu-CG-AHs" firstAttribute="top" secondItem="QrI-rc-bgC" secondAttribute="top" id="qiI-pp-4LT"/>
                                                 <constraint firstAttribute="trailing" secondItem="OwS-9Y-JxQ" secondAttribute="trailing" id="tBK-Kb-dik"/>
-                                                <constraint firstItem="B5V-fI-7Mj" firstAttribute="leading" secondItem="gOX-7d-QAT" secondAttribute="trailing" constant="10" id="tCo-aw-DrR"/>
                                                 <constraint firstItem="mDD-wB-GMy" firstAttribute="leading" secondItem="J55-4c-zhh" secondAttribute="trailing" id="txK-ZU-6Cq"/>
                                                 <constraint firstItem="9kM-Ii-HEq" firstAttribute="centerX" secondItem="QrI-rc-bgC" secondAttribute="centerX" id="uiB-Kp-zbR"/>
                                                 <constraint firstItem="J55-4c-zhh" firstAttribute="leading" secondItem="QrI-rc-bgC" secondAttribute="leading" id="vcU-ep-1IS"/>
@@ -275,12 +270,11 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
-                            <action selector="tableRefreshed:" destination="42N-Jx-lGN" eventType="valueChanged" id="Sza-fg-Lqt"/>
+                            <action selector="refreshTable:" destination="42N-Jx-lGN" eventType="valueChanged" id="P9d-0v-ddC"/>
                         </connections>
                     </refreshControl>
                     <connections>
                         <outlet property="accountsButton" destination="5wJ-ng-OAh" id="4iy-WX-hZ3"/>
-                        <outlet property="activityIndicator" destination="B5V-fI-7Mj" id="mip-CT-Btb"/>
                         <outlet property="balance" destination="mZm-vD-JES" id="mIC-1k-HcZ"/>
                         <outlet property="chart" destination="OwS-9Y-JxQ" id="cRE-ng-uYm"/>
                         <outlet property="devices" destination="wB6-s9-e4c" id="yy7-qU-9Um"/>
@@ -674,7 +668,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle"/>
                         <connections>
-                            <action selector="refresh:" destination="cfs-jt-JvN" eventType="valueChanged" id="ua3-9t-ucM"/>
+                            <action selector="refreshTable:" destination="cfs-jt-JvN" eventType="valueChanged" id="LjK-cg-H89"/>
                         </connections>
                     </refreshControl>
                 </tableViewController>
@@ -789,6 +783,9 @@
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="JeQ-Uw-XBd">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refreshTable:" destination="Ijn-r5-5Es" eventType="valueChanged" id="c3s-1S-U9d"/>
+                        </connections>
                     </refreshControl>
                     <connections>
                         <segue destination="3Ot-z7-Jc8" kind="show" identifier="accountDetail" id="cvJ-bN-aES"/>
@@ -1051,7 +1048,7 @@
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="3N7-st-DH2">
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
-                            <action selector="tableRefreshed:" destination="3Ot-z7-Jc8" eventType="valueChanged" id="gn8-tF-dbA"/>
+                            <action selector="refreshTable:" destination="3Ot-z7-Jc8" eventType="valueChanged" id="czt-D1-eFk"/>
                         </connections>
                     </refreshControl>
                     <connections>

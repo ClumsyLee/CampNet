@@ -16,9 +16,8 @@ import PromiseKit
 import CampNetKit
 
 class OverviewViewController: UITableViewController {
-    
+    static let autoUpdateTimeInterval: TimeInterval = 300
     @IBOutlet var upperView: UIView!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
     @IBOutlet var usage: UILabel!
     @IBOutlet var balance: UILabel!
@@ -35,15 +34,30 @@ class OverviewViewController: UITableViewController {
     @IBOutlet var chart: LineChartView!
 
     @IBAction func cancelSwitchingAccount(segue: UIStoryboardSegue) {}
-    @IBAction func accountSwitched(segue: UIStoryboardSegue) {}
+    @IBAction func accountSwitched(segue: UIStoryboardSegue) {
+        refresh()
+    }
     
     @IBAction func feedbackPressed(_ sender: Any) {
         Instabug.invoke()
     }
     
-    @IBAction func tableRefreshed(_ sender: Any) {
-        refresh()
-        refreshControl!.endRefreshing()
+    @IBAction func refreshTable(_ sender: Any) {
+        print("Refreshing overview.")
+
+        guard let account = account else {
+            return
+        }
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        delegate.setNetworkActivityIndicatorVisible(true)
+        
+        account.update(on: DispatchQueue.global(qos: .userInitiated)).always {
+            delegate.setNetworkActivityIndicatorVisible(false)
+            // Don't touch refreshControl if the account has been changed.
+            if self.account == account {
+                self.refreshControl?.endRefreshing()
+            }
+        }
     }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
@@ -89,22 +103,23 @@ class OverviewViewController: UITableViewController {
     var freeLimitLine = ChartLimitLine(limit: 0.0, label: NSLocalizedString("Free", comment: "Limit line label in the history chart."))
     var maxLimitLine = ChartLimitLine(limit: 0.0, label: NSLocalizedString("Max", comment: "Limit line label in the history chart."))
 
+    var refreshedAt: Date? = nil
+    
     func refresh() {
-        guard let account = account, !activityIndicator.isAnimating else {
+        if let refreshedAt = refreshedAt, -refreshedAt.timeIntervalSinceNow <= OverviewViewController.autoUpdateTimeInterval, account != nil {
+            return // Infos still valid, do not refresh.
+        }
+        if account == nil || refreshControl!.isRefreshing {
             return
         }
         
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        delegate.setNetworkActivityIndicatorVisible(true)
-        activityIndicator.startAnimating()
-
-        account.update(on: DispatchQueue.global(qos: .userInitiated)).always {
-            delegate.setNetworkActivityIndicatorVisible(false)
-            // Don't touch the activity indicator if the account has been changed.
-            if self.account == account {
-                self.activityIndicator.stopAnimating()
-            }
-        }
+        refreshControl!.beginRefreshing()
+        refreshedAt = Date()
+        
+        let offset = CGPoint(x: 0, y: -tableView.contentInset.top)
+        tableView.setContentOffset(offset, animated: true)
+        
+        refreshTable(self)
     }
 
     func reloadStatus() {
@@ -219,7 +234,6 @@ class OverviewViewController: UITableViewController {
     }
 
     func reload() {
-        activityIndicator.stopAnimating()
         reloadStatus()
         reloadProfile()
         reloadHistory()
@@ -229,8 +243,10 @@ class OverviewViewController: UITableViewController {
         let newMain = Account.main
         if account != newMain {
             account = newMain
+            refreshedAt = nil
+            refreshControl!.endRefreshing()
+            
             reload()
-            refresh()
         }
     }
 
@@ -310,8 +326,6 @@ class OverviewViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(statusUpdated(_:)), name: .accountStatusUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)), name: .accountProfileUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(historyUpdated(_:)), name: .accountHistoryUpdated, object: nil)
-
-        refresh()
     }
 
     deinit {
@@ -332,6 +346,10 @@ class OverviewViewController: UITableViewController {
         upperView.layer.shadowOffset = CGSize(width: 0, height: 2)
         upperView.layer.shadowRadius = 2
         upperView.layer.shadowOpacity = 0.5
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        refresh()
     }
 
     override func didReceiveMemoryWarning() {
