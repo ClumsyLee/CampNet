@@ -1,45 +1,147 @@
 
-/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "2XS-66-75j"; */
-"2XS-66-75j.title" = "完成";
+/* Class = "UILabel"; text = "Add Account"; ObjectID = "02a-kU-bIQ"; */
+"02a-kU-bIQ.text" = "添加账户";
+
+/* Class = "UITableViewController"; title = "lisihan13"; ObjectID = "3Ot-z7-Jc8"; */
+"3Ot-z7-Jc8.title" = "lisihan13";
+
+/* Class = "UILabel"; text = "Tsinghua-5G"; ObjectID = "3R3-Ml-Rbw"; */
+"3R3-Ml-Rbw.text" = "Tsinghua-5G";
+
+/* Class = "UILabel"; text = "95%"; ObjectID = "3o9-iw-fhi"; */
+"3o9-iw-fhi.text" = "95%";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "3yY-7d-sCV"; */
+"3yY-7d-sCV.text" = "Name";
+
+/* Class = "UILabel"; text = "Sihan Li"; ObjectID = "4bL-eP-eb1"; */
+"4bL-eP-eb1.text" = "李思涵";
+
+/* Class = "UINavigationItem"; title = "Login IP"; ObjectID = "4fQ-du-yO1"; */
+"4fQ-du-yO1.title" = "上线 IP";
+
+/* Class = "UIButton"; normalTitle = "Sihan Li ▾"; ObjectID = "5wJ-ng-OAh"; */
+"5wJ-ng-OAh.normalTitle" = "李思涵 ▾";
+
+/* Class = "UILabel"; text = "Off"; ObjectID = "7SM-VC-Ke4"; */
+"7SM-VC-Ke4.text" = "关闭";
+
+/* Class = "UILabel"; text = "GB"; ObjectID = "8EY-LW-m2J"; */
+"8EY-LW-m2J.text" = "GB";
+
+/* Class = "UILabel"; text = "Auto Login"; ObjectID = "99e-tq-pnT"; */
+"99e-tq-pnT.text" = "自动登录";
 
 /* Class = "UITextField"; placeholder = "New Password"; ObjectID = "9DJ-2g-xJe"; */
 "9DJ-2g-xJe.placeholder" = "新密码";
 
+/* Class = "UILabel"; text = "Monthly Trend"; ObjectID = "9kM-Ii-HEq"; */
+"9kM-Ii-HEq.text" = "本月趋势";
+
+/* Class = "UILabel"; text = "25.8"; ObjectID = "Ai3-mC-R1h"; */
+"Ai3-mC-R1h.text" = "25.8";
+
+/* Class = "UILabel"; text = "Change Password"; ObjectID = "BXT-zo-Kxq"; */
+"BXT-zo-Kxq.text" = "更改密码";
+
 /* Class = "UITextField"; placeholder = "Username"; ObjectID = "BgW-cK-Tac"; */
 "BgW-cK-Tac.placeholder" = "用户名";
 
-/* Class = "UILabel"; text = "Current Usage"; ObjectID = "EyC-sN-4d9"; */
-"EyC-sN-4d9.text" = "当前用量";
+/* Class = "UILabel"; text = "Name"; ObjectID = "Cly-A7-Aje"; */
+"Cly-A7-Aje.text" = "姓名";
 
-/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "G1Y-6U-bc9"; */
-"G1Y-6U-bc9.title" = "取消";
+/* Class = "UILabel"; text = "Usage"; ObjectID = "D83-Ak-v35"; */
+"D83-Ak-v35.text" = "流量";
+
+/* Class = "UILabel"; text = "Logout"; ObjectID = "FxC-dl-0Iy"; */
+"FxC-dl-0Iy.text" = "下线";
+
+/* Class = "UILabel"; text = "Delete Account"; ObjectID = "H7m-DO-ilD"; */
+"H7m-DO-ilD.text" = "删除账户";
+
+/* Class = "UITableViewController"; title = "Usage Alert"; ObjectID = "IRs-Zi-QK3"; */
+"IRs-Zi-QK3.title" = "流量警报";
 
 /* Class = "UILabel"; text = "¥ 12.58"; ObjectID = "KpJ-Md-TQ4"; */
 "KpJ-Md-TQ4.text" = "¥ 12.58";
 
-/* Class = "UILabel"; text = "Accounts"; ObjectID = "Noo-Ue-Fj1"; */
-"Noo-Ue-Fj1.text" = "账户";
+/* Class = "UILabel"; text = "Account existed"; ObjectID = "Ncw-7O-lBD"; */
+"Ncw-7O-lBD.text" = "账户已存在";
 
-/* Class = "UINavigationItem"; title = "我"; ObjectID = "O8j-7m-dtA"; */
-"O8j-7m-dtA.title" = "我";
+/* Class = "UINavigationItem"; title = "Online Devices"; ObjectID = "O8j-7m-dtA"; */
+"O8j-7m-dtA.title" = "在线设备";
+
+/* Class = "UILabel"; text = "Logout Device"; ObjectID = "OXD-uk-dRc"; */
+"OXD-uk-dRc.text" = "下线设备";
 
 /* Class = "UILabel"; text = "Tsinghua University"; ObjectID = "Qn9-Mh-koJ"; */
 "Qn9-Mh-koJ.text" = "清华大学";
 
+/* Class = "UILabel"; text = "Login IP"; ObjectID = "SJ2-bL-YXf"; */
+"SJ2-bL-YXf.text" = "上线 IP";
+
 /* Class = "UINavigationItem"; title = "Accounts"; ObjectID = "SPV-m8-ZsX"; */
 "SPV-m8-ZsX.title" = "账户";
 
-/* Class = "UITabBarItem"; title = "概览"; ObjectID = "acW-dT-cKf"; */
-"acW-dT-cKf.title" = "概览";
+/* Class = "UILabel"; text = "¥"; ObjectID = "U2M-eT-gOT"; */
+"U2M-eT-gOT.text" = "¥";
+
+/* Class = "UILabel"; text = "Network"; ObjectID = "UOf-dt-v27"; */
+"UOf-dt-v27.text" = "网络";
+
+/* Class = "UILabel"; text = "Balance"; ObjectID = "VSi-sq-enr"; */
+"VSi-sq-enr.text" = "余额";
+
+/* Class = "UILabel"; text = "(Current Device)"; ObjectID = "Vy1-Aq-8rI"; */
+"Vy1-Aq-8rI.text" = "(当前设备)";
+
+/* Class = "UILabel"; text = "25.8 GB"; ObjectID = "WEY-nF-qMF"; */
+"WEY-nF-qMF.text" = "25.8 GB";
+
+/* Class = "UILabel"; text = "90%"; ObjectID = "Xpa-GU-2eu"; */
+"Xpa-GU-2eu.text" = "90%";
+
+/* Class = "UILabel"; text = "iPhone"; ObjectID = "YJb-da-vHM"; */
+"YJb-da-vHM.text" = "iPhone";
+
+/* Class = "UILabel"; text = "¥"; ObjectID = "aib-2L-LwB"; */
+"aib-2L-LwB.text" = "¥";
+
+/* Class = "UILabel"; text = "80%"; ObjectID = "awr-Hm-bed"; */
+"awr-Hm-bed.text" = "80%";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "bAx-BR-1dX"; */
 "bAx-BR-1dX.placeholder" = "密码";
 
+/* Class = "UILabel"; text = "Student"; ObjectID = "c7g-hh-fH7"; */
+"c7g-hh-fH7.text" = "学生";
+
+/* Class = "UILabel"; text = "Devices"; ObjectID = "cCZ-il-6Wj"; */
+"cCZ-il-6Wj.text" = "在线设备";
+
+/* Class = "UILabel"; text = "90%"; ObjectID = "cLa-y5-HzF"; */
+"cLa-y5-HzF.text" = "90%";
+
+/* Class = "UILabel"; text = "1.36"; ObjectID = "cki-fc-f4b"; */
+"cki-fc-f4b.text" = "1.36";
+
+/* Class = "UILabel"; text = "32分钟"; ObjectID = "d5n-LD-aVS"; */
+"d5n-LD-aVS.text" = "32分钟";
+
 /* Class = "UILabel"; text = "lisihan13"; ObjectID = "dg3-U4-UEY"; */
 "dg3-U4-UEY.text" = "lisihan13";
 
-/* Class = "UINavigationItem"; title = "New Account"; ObjectID = "h0d-WZ-GlQ"; */
-"h0d-WZ-GlQ.title" = "新建账户";
+/* Class = "UITableViewController"; title = "Settings"; ObjectID = "eSM-KM-bTD"; */
+"eSM-KM-bTD.title" = "设置";
+
+/* Class = "UILabel"; text = "Current Usage"; ObjectID = "gOX-7d-QAT"; */
+"gOX-7d-QAT.text" = "当前流量";
+
+/* Class = "UILabel"; text = "Billing Group"; ObjectID = "gpc-oa-3UY"; */
+"gpc-oa-3UY.text" = "计费组";
+
+/* Class = "UINavigationItem"; title = "Add Account"; ObjectID = "h0d-WZ-GlQ"; */
+"h0d-WZ-GlQ.title" = "添加账户";
 
 /* Class = "UILabel"; text = "tsinghua.edu.cn"; ObjectID = "hmv-d1-B9v"; */
 "hmv-d1-B9v.text" = "tsinghua.edu.cn";
@@ -50,26 +152,47 @@
 /* Class = "UINavigationItem"; title = "Tsinghua University"; ObjectID = "jHa-8M-lSV"; */
 "jHa-8M-lSV.title" = "清华大学";
 
-/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "nV5-BB-alM"; */
-"nV5-BB-alM.title" = "完成";
+/* Class = "UILabel"; text = "Estimated Fee"; ObjectID = "kbL-9E-LHU"; */
+"kbL-9E-LHU.text" = "预计费用";
 
-/* Class = "UILabel"; text = "25.8"; ObjectID = "qRS-BO-6d9"; */
-"qRS-BO-6d9.text" = "25.8";
+/* Class = "UILabel"; text = "Balance"; ObjectID = "lU5-xm-7Wn"; */
+"lU5-xm-7Wn.text" = "账户余额";
 
-/* Class = "UILabel"; text = "GB"; ObjectID = "qel-9d-xUm"; */
-"qel-9d-xUm.text" = "GB";
+/* Class = "UITextField"; placeholder = "IP Address"; ObjectID = "mDj-vP-thr"; */
+"mDj-vP-thr.placeholder" = "IP 地址";
 
-/* Class = "UITabBarItem"; title = "我"; ObjectID = "qvO-bg-032"; */
-"qvO-bg-032.title" = "我";
+/* Class = "UILabel"; text = "14.52"; ObjectID = "mZm-vD-JES"; */
+"mZm-vD-JES.text" = "14.52";
+
+/* Class = "UILabel"; text = "25.8 GB"; ObjectID = "qrz-aZ-kRl"; */
+"qrz-aZ-kRl.text" = "25.8 GB";
 
 /* Class = "UITextField"; text = "lisihan13"; ObjectID = "r43-JQ-3fA"; */
 "r43-JQ-3fA.text" = "lisihan13";
 
+/* Class = "UILabel"; text = "Value"; ObjectID = "r6D-IP-omO"; */
+"r6D-IP-omO.text" = "Value";
+
+/* Class = "UILabel"; text = "¥ 14.52"; ObjectID = "vKP-yW-5vT"; */
+"vKP-yW-5vT.text" = "¥ 14.52";
+
+/* Class = "UILabel"; text = "Usage Alert"; ObjectID = "vdN-Sw-6R2"; */
+"vdN-Sw-6R2.text" = "流量警报";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "wB6-s9-e4c"; */
+"wB6-s9-e4c.text" = "3";
+
 /* Class = "UILabel"; text = "25.8 GB"; ObjectID = "wYs-sX-oe8"; */
 "wYs-sX-oe8.text" = "25.8 GB";
 
-/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "x6k-5X-jk9"; */
-"x6k-5X-jk9.title" = "取消";
+/* Class = "UILabel"; text = "Auto Logout Expired Sessions"; ObjectID = "yFG-Ic-VlG"; */
+"yFG-Ic-VlG.text" = "自动下线过期链接";
+
+/* Class = "UILabel"; text = "70%"; ObjectID = "ydn-XK-7RB"; */
+"ydn-XK-7RB.text" = "70%";
 
 /* Class = "UINavigationItem"; title = "Change Password"; ObjectID = "ylZ-mi-qAg"; */
 "ylZ-mi-qAg.title" = "更改密码";
+
+/* Class = "UITableViewSection"; footerTitle = "You will be notified when your usage has reached a certain percentage of your maximum usage this month."; ObjectID = "ymi-FS-Axh"; */
+"ymi-FS-Axh.footerTitle" = "在流量达到当月最大流量一定百分比时通知你。";

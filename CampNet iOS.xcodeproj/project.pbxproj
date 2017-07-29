@@ -92,7 +92,6 @@
 		0F3685151F1A5C6B0056AED1 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = Views/Controllers/ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		0F36851A1F1A7B290056AED1 /* Base */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0F36851C1F1A7B3F0056AED1 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		0F36851E1F1A7B8E0056AED1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		0F464C571F13AD7900C2F58B /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Models/Configuration.swift; sourceTree = "<group>"; };
 		0F464C591F13C50500C2F58B /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Models/Account.swift; sourceTree = "<group>"; };
 		0F464C5B1F13CB1100C2F58B /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = Models/Action.swift; sourceTree = "<group>"; };
@@ -118,10 +117,10 @@
 		0FD3A4101F1588BF006DA497 /* Configurations */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Configurations; path = Resources/Configurations; sourceTree = "<group>"; };
 		0FD3A4151F158A12006DA497 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Configurations.strings; sourceTree = "<group>"; };
 		0FD3A4171F158A15006DA497 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Configurations.strings"; sourceTree = "<group>"; };
-		0FE1BBF01E43D70A00039D20 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		0FF0D5651F1FFCD0004072CA /* SessionDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDetailCell.swift; path = Views/Cells/SessionDetailCell.swift; sourceTree = "<group>"; };
 		0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsageAlertViewController.swift; path = Views/Controllers/UsageAlertViewController.swift; sourceTree = "<group>"; };
 		0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountDetailViewController.swift; path = Views/Controllers/AccountDetailViewController.swift; sourceTree = "<group>"; };
+		0FF756451F2C554F00B2429A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		2D25E877A75F9FA989338AE4 /* Pods_CampNet_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNet_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36CFD9B9674447CBF3A4A4FC /* Pods_CampNetKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNetKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5FA1A929F334CF87D69CA2E /* Pods-CampNetKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNetKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-CampNetKit/Pods-CampNetKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -573,7 +572,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				0F14E77B1E2E3AAC0092494B /* Base */,
-				0F36851E1F1A7B8E0056AED1 /* zh-Hans */,
+				0FF756451F2C554F00B2429A /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -582,7 +581,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				0F14E7801E2E3AAC0092494B /* Base */,
-				0FE1BBF01E43D70A00039D20 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
