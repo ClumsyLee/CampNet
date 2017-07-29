@@ -131,21 +131,21 @@ class OverviewViewController: UITableViewController {
                 loginButton.isEnabled = true
                 loginButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
                 loginButton.strokeColor = .white
-                loginButton.setStyle(.stop, animated: true)
+                loginButton.setStyle(.stop, animated: false)
                 
                 loginButtonCaption.text = NSLocalizedString("Logout", comment: "Login button caption.")
             case .offline:
                 loginButton.isEnabled = true
                 loginButton.backgroundColor = .white
                 loginButton.strokeColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-                loginButton.setStyle(.play, animated: true)
+                loginButton.setStyle(.play, animated: false)
                 
                 loginButtonCaption.text = NSLocalizedString("Login", comment: "Login button caption.")
             case .offcampus:
                 loginButton.isEnabled = false
                 loginButton.backgroundColor = #colorLiteral(red: 0.9372541904, green: 0.9372367859, blue: 0.9563211799, alpha: 1)
                 loginButton.strokeColor = .lightGray
-                loginButton.setStyle(.horizontalLine, animated: true)
+                loginButton.setStyle(.horizontalLine, animated: false)
                 
                 loginButtonCaption.text = NSLocalizedString("Offcampus", comment: "Login button caption.")
             }
@@ -153,7 +153,7 @@ class OverviewViewController: UITableViewController {
             loginButton.isEnabled = false
             loginButton.backgroundColor = #colorLiteral(red: 0.9372541904, green: 0.9372367859, blue: 0.9563211799, alpha: 1)
             loginButton.strokeColor = .lightGray
-            loginButton.setStyle(.dot, animated: true)
+            loginButton.setStyle(.dot, animated: false)
             
             loginButtonCaption.text = NSLocalizedString("Unknown", comment: "Login button caption.")
         }
