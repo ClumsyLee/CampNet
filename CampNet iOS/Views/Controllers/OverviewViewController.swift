@@ -68,32 +68,8 @@ class OverviewViewController: UITableViewController {
         }
         
         switch status.type {
-        case .online:
-            loginButton.isEnabled = false
-            loginButton.setStyle(.horizontalMoreOptions, animated: true)
-            
-            loginButtonCaption.text = NSLocalizedString("Logging Out…", comment: "Login button caption.")
-            
-            let delegate = UIApplication.shared.delegate as! AppDelegate
-            delegate.setNetworkActivityIndicatorVisible(true)
-
-            account.logout(on: DispatchQueue.global(qos: .userInitiated)).always {
-                delegate.setNetworkActivityIndicatorVisible(false)
-            }
-
-        case .offline:
-            loginButton.isEnabled = false
-            loginButton.setStyle(.horizontalMoreOptions, animated: true)
-            
-            let delegate = UIApplication.shared.delegate as! AppDelegate
-            delegate.setNetworkActivityIndicatorVisible(true)
-            
-            loginButtonCaption.text = NSLocalizedString("Logging In…", comment: "Login button caption.")
-            
-            account.login(on: DispatchQueue.global(qos: .userInitiated)).always {
-                delegate.setNetworkActivityIndicatorVisible(false)
-            }
-
+        case .online: logout()
+        case .offline: login()
         default: return
         }
     }
@@ -105,6 +81,46 @@ class OverviewViewController: UITableViewController {
     var maxLimitLine = ChartLimitLine(limit: 0.0, label: NSLocalizedString("Max", comment: "Limit line label in the history chart."))
 
     var refreshedAt: Date? = nil
+    
+    func login() {
+        guard let account = account else {
+            return
+        }
+        
+        loginButton.isEnabled = false
+        loginButton.backgroundColor = .white
+        loginButton.strokeColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        loginButton.setStyle(.horizontalMoreOptions, animated: true)
+        
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        delegate.setNetworkActivityIndicatorVisible(true)
+        
+        loginButtonCaption.text = NSLocalizedString("Logging In…", comment: "Login button caption.")
+        
+        account.login(on: DispatchQueue.global(qos: .userInitiated)).always {
+            delegate.setNetworkActivityIndicatorVisible(false)
+        }
+    }
+    
+    func logout() {
+        guard let account = account else {
+            return
+        }
+        
+        loginButton.isEnabled = false
+        loginButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        loginButton.strokeColor = .white
+        loginButton.setStyle(.horizontalMoreOptions, animated: true)
+        
+        loginButtonCaption.text = NSLocalizedString("Logging Out…", comment: "Login button caption.")
+        
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        delegate.setNetworkActivityIndicatorVisible(true)
+        
+        account.logout(on: DispatchQueue.global(qos: .userInitiated)).always {
+            delegate.setNetworkActivityIndicatorVisible(false)
+        }
+    }
     
     func refreshIfNeeded() {
         if let refreshedAt = refreshedAt, -refreshedAt.timeIntervalSinceNow <= OverviewViewController.autoUpdateTimeInterval, account != nil {
@@ -134,6 +150,7 @@ class OverviewViewController: UITableViewController {
                 loginButton.setStyle(.stop, animated: true)
                 
                 loginButtonCaption.text = NSLocalizedString("Logout", comment: "Login button caption.")
+                
             case .offline:
                 loginButton.isEnabled = true
                 loginButton.backgroundColor = .white
@@ -141,6 +158,11 @@ class OverviewViewController: UITableViewController {
                 loginButton.setStyle(.play, animated: true)
                 
                 loginButtonCaption.text = NSLocalizedString("Login", comment: "Login button caption.")
+                
+                if Defaults[.autoLogin] {
+                    login()
+                }
+                
             case .offcampus:
                 loginButton.isEnabled = false
                 loginButton.backgroundColor = #colorLiteral(red: 0.9372541904, green: 0.9372367859, blue: 0.9563211799, alpha: 1)
