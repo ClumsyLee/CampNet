@@ -77,7 +77,7 @@
 "Unknown" = "Unknown";
 
 /* Usage alert title. */
-"Used %d%% of maximum usage" = "Used %d%% of maximum usage";
+"\"%@\" has used %d%% of maximum usage" = "\"%@\" has used %d%% of maximum usage";
 
 /* Usage alert body. */
-"You can still use up to %@ this month." = "You can still use up to %@ this month.";
+"Up to %@ can still be used this month." = "Up to %@ can still be used this month.";

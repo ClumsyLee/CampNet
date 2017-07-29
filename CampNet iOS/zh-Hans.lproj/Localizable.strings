@@ -80,7 +80,7 @@
 "Unknown" = "未知";
 
 /* Usage alert title. */
-"Used %d%% of maximum usage" = "已使用最大流量的 %d%%";
+"\"%@\" has used %d%% of maximum usage" = "“%@” 已使用最大流量的 %d%%";
 
 /* Usage alert body. */
-"You can still use up to %@ this month." = "你本月最多还可以使用 %@。";
+"Up to %@ can still be used this month." = "本月最多还可使用 %@。";
