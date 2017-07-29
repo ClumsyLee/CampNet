@@ -46,6 +46,7 @@
 		0FF0D5661F1FFCD0004072CA /* SessionDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF0D5651F1FFCD0004072CA /* SessionDetailCell.swift */; };
 		0FF7563F1F2A175600B2429A /* UsageAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */; };
 		0FF756411F2BA31500B2429A /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */; };
+		0FF756481F2CE02100B2429A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FF7564A1F2CE02100B2429A /* InfoPlist.strings */; };
 		16E227AF3C8464E80AF23B00 /* Pods_CampNet_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D25E877A75F9FA989338AE4 /* Pods_CampNet_iOS.framework */; };
 		AC25B888FA44525C7982F1C6 /* Pods_CampNetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36CFD9B9674447CBF3A4A4FC /* Pods_CampNetKit.framework */; };
 /* End PBXBuildFile section */
@@ -121,6 +122,8 @@
 		0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsageAlertViewController.swift; path = Views/Controllers/UsageAlertViewController.swift; sourceTree = "<group>"; };
 		0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountDetailViewController.swift; path = Views/Controllers/AccountDetailViewController.swift; sourceTree = "<group>"; };
 		0FF756451F2C554F00B2429A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		0FF756491F2CE02100B2429A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0FF7564B1F2CE02300B2429A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		2D25E877A75F9FA989338AE4 /* Pods_CampNet_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNet_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36CFD9B9674447CBF3A4A4FC /* Pods_CampNetKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNetKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5FA1A929F334CF87D69CA2E /* Pods-CampNetKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNetKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-CampNetKit/Pods-CampNetKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -181,6 +184,7 @@
 				0F1ED5C61F138618004A6C1F /* CampNet iOS.entitlements */,
 				0F14E77D1E2E3AAC0092494B /* Assets.xcassets */,
 				0F14E7821E2E3AAC0092494B /* Info.plist */,
+				0FF7564A1F2CE02100B2429A /* InfoPlist.strings */,
 			);
 			path = "CampNet iOS";
 			sourceTree = "<group>";
@@ -420,6 +424,7 @@
 				0F3685191F1A7B290056AED1 /* Localizable.strings in Resources */,
 				0F14E77E1E2E3AAC0092494B /* Assets.xcassets in Resources */,
 				0F14E77C1E2E3AAC0092494B /* Main.storyboard in Resources */,
+				0FF756481F2CE02100B2429A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,6 +616,15 @@
 			);
 			name = Configurations.strings;
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		0FF7564A1F2CE02100B2429A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0FF756491F2CE02100B2429A /* Base */,
+				0FF7564B1F2CE02300B2429A /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

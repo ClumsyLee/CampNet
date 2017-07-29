@@ -1,0 +1,13 @@
+/* 
+  InfoPlist.strings
+  CampNet iOS
+
+  Created by Thomas Lee on 2017/7/29.
+  Copyright © 2017年 Sihan Li. All rights reserved.
+*/
+
+/* NSMicrophoneUsageDescription */
+"CampNet needs access to the microphone to be able to attach voice notes." = "CampNet needs access to the microphone to be able to attach voice notes.";
+
+/* NSPhotoLibraryUsageDescription */
+"CampNet needs access to your photo library for you to be able to attach images." = "CampNet needs access to your photo library for you to be able to attach images.";
