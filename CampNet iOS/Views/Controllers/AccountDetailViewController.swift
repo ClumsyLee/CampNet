@@ -93,6 +93,14 @@ class AccountDetailViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if refreshControl!.isRefreshing {
+            // See https://stackoverflow.com/questions/21758892/uirefreshcontrol-stops-spinning-after-making-application-inactive
+            let offset = tableView.contentOffset
+            refreshControl?.endRefreshing()
+            refreshControl?.beginRefreshing()
+            tableView.contentOffset = offset
+        }
+        
         reload(profile: account.profile)
     }
 
