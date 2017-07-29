@@ -269,7 +269,7 @@ public class Account {
                     let usageLeft = (maxUsage - newUsage).usageString(decimalUnits: configuration.decimalUnits)
                     let content = UNMutableNotificationContent()
                     
-                    content.title = String.localizedStringWithFormat(NSLocalizedString("Used %@%% of maximum usage", comment: "Usage alert title."), percentage)
+                    content.title = String.localizedStringWithFormat(NSLocalizedString("Used %d%% of maximum usage", comment: "Usage alert title."), percentage)
                     content.body = String.localizedStringWithFormat(NSLocalizedString("You can still use up to %@ this month.", comment: "Usage alert body."), usageLeft)
                     content.sound = UNNotificationSound.default()
                     
