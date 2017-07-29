@@ -35,7 +35,7 @@ class OverviewViewController: UITableViewController {
 
     @IBAction func cancelSwitchingAccount(segue: UIStoryboardSegue) {}
     @IBAction func accountSwitched(segue: UIStoryboardSegue) {
-        refresh()
+        refreshIfNeeded()
     }
     
     @IBAction func feedbackPressed(_ sender: Any) {
@@ -47,6 +47,7 @@ class OverviewViewController: UITableViewController {
             return
         }
         print("Refreshing \(account.identifier) in overview.")
+        refreshedAt = Date()
         
         let delegate = UIApplication.shared.delegate as! AppDelegate
         delegate.setNetworkActivityIndicatorVisible(true)
@@ -105,7 +106,7 @@ class OverviewViewController: UITableViewController {
 
     var refreshedAt: Date? = nil
     
-    func refresh() {
+    func refreshIfNeeded() {
         if let refreshedAt = refreshedAt, -refreshedAt.timeIntervalSinceNow <= OverviewViewController.autoUpdateTimeInterval, account != nil {
             return // Infos still valid, do not refresh.
         }
@@ -114,7 +115,6 @@ class OverviewViewController: UITableViewController {
         }
         
         refreshControl!.beginRefreshing()
-        refreshedAt = Date()
         
         let offset = CGPoint(x: 0, y: -tableView.contentInset.top)
         tableView.setContentOffset(offset, animated: true)
@@ -363,7 +363,7 @@ class OverviewViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        refresh()
+        refreshIfNeeded()
     }
 
     override func didReceiveMemoryWarning() {
