@@ -138,6 +138,7 @@ class AccountDetailViewController: UITableViewController {
         
         if indexPath.section == Section.deleteAccount.rawValue {
             let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            menu.view.tintColor = #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1)
             
             let deleteAction = UIAlertAction(title: NSLocalizedString("Delete Account", comment: "Delete account button on alerts."), style: .destructive) { action in
                 Account.remove(self.account)
