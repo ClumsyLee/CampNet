@@ -11,7 +11,7 @@ import CampNetKit
 
 class AccountCell: UITableViewCell {
     
-    static let mainColor = #colorLiteral(red: 0.1568627451, green: 0.7230392156, blue: 0.9803921569, alpha: 1)
+    static let mainColor = #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1)
     static let normalColor = UIColor.darkText
 
     @IBOutlet var username: UILabel!
@@ -25,8 +25,6 @@ class AccountCell: UITableViewCell {
             
             username.textColor = color
             name.textColor = color
-            balance.textColor = color
-            usage.textColor = color
         }
     }
     

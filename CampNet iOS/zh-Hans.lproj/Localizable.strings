@@ -16,6 +16,12 @@
 /* OK button on alerts that display errors. */
 "OK" = "好的";
 
+/* Cancel button on alerts. */
+"Cancel" = "取消";
+
+/* Delete account button on alerts. */
+"Delete Account" = "删除账户";
+
 /* Alert title when failed to login. */
 "Unable to Login \"%@\"" = "无法上线 “%@”";
 

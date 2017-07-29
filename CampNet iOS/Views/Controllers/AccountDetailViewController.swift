@@ -1,19 +1,32 @@
 //
-//  UsageAlertViewController.swift
+//  AccountDetailViewController.swift
 //  CampNet iOS
 //
-//  Created by Thomas Lee on 2017/7/27.
+//  Created by Thomas Lee on 2017/7/29.
 //  Copyright © 2017年 Sihan Li. All rights reserved.
 //
 
 import UIKit
 import CampNetKit
 
-class UsageAlertViewController: UITableViewController {
-    static let ratios = [nil, 0.95, 0.90, 0.80, 0.70]
+class AccountDetailViewController: UITableViewController {
     
-    var selectedRow: Int?
+    enum Section: Int {
+        case profile
+        case changePassword
+        case deleteAccount
+    }
     
+    @IBOutlet var name: UILabel!
+    @IBOutlet var billingGroup: UILabel!
+    @IBOutlet var balance: UILabel!
+    @IBOutlet var usage: UILabel!
+    
+    @IBAction func cancelChangingPassword(segue: UIStoryboardSegue) {}
+    @IBAction func passwordChanged(segue: UIStoryboardSegue) {}
+    
+    var account: Account!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,15 +35,22 @@ class UsageAlertViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        let ratio = Defaults[.usageAlertRatio]
-        self.selectedRow = UsageAlertViewController.ratios.index { $0 == ratio }
     }
     
-    override func viewDidLayoutSubviews() {
-        if let row = selectedRow {
-            tableView.cellForRow(at: IndexPath(row: row, section: 0))?.accessoryType = .checkmark
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let profile = account.profile
+        
+        self.title = account.username
+        self.name.text = profile?.name
+        self.billingGroup.text = account.configuration.billingGroups[profile?.billingGroupName ?? ""]?.displayName
+        if let moneyString = profile?.balance?.moneyString {
+            self.balance.text = "¥ \(moneyString)"
+        } else {
+            self.balance.text = nil
         }
+        self.usage.text = profile?.usage?.usageString(decimalUnits: account.configuration.decimalUnits)
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +59,7 @@ class UsageAlertViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
+    
     /*
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -64,18 +84,21 @@ class UsageAlertViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print("indexPath.row = ", indexPath.row)
-        if indexPath.row == selectedRow {
-            return
-        }
         
-        if let row = selectedRow {
-            print("row = ", row)
-            tableView.cellForRow(at: IndexPath(row: row, section: 0))?.accessoryType = .none
+        if indexPath.section == Section.deleteAccount.rawValue {
+            let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            
+            let deleteAction = UIAlertAction(title: NSLocalizedString("Delete Account", comment: "Delete account button on alerts."), style: .destructive) { action in
+                Account.remove(self.account)
+                self.performSegue(withIdentifier: "accountDeleted", sender: self)
+            }
+            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button on alerts."), style: .cancel, handler: nil)
+            
+            menu.addAction(deleteAction)
+            menu.addAction(cancelAction)
+            
+            present(menu, animated: true, completion: nil)
         }
-        selectedRow = indexPath.row
-        Defaults[.usageAlertRatio] = UsageAlertViewController.ratios[indexPath.row]
-        tableView.cellForRow(at: IndexPath(row: indexPath.row, section: 0))?.accessoryType = .checkmark
     }
 
     /*
@@ -113,14 +136,17 @@ class UsageAlertViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "changePassword" {
+            let controller = (segue.destination as! UINavigationController).topViewController as! ChangePasswordViewController
+            
+            controller.account = account
+        }
     }
-    */
-
 }

@@ -14,12 +14,7 @@ class AccountsViewController: UITableViewController {
 
     @IBAction func cancelAddingAccount(segue: UIStoryboardSegue) {}
     @IBAction func accountAdded(segue: UIStoryboardSegue) {}
-    @IBAction func cancelChangingPassword(segue: UIStoryboardSegue) {}
-    @IBAction func passwordChanged(segue: UIStoryboardSegue) {
-        if let controller = segue.source as? ChangePasswordViewController {
-            _ = updateProfile(of: controller.account)
-        }
-    }
+    @IBAction func accountDeleted(segue: UIStoryboardSegue) {}
     
     var accounts: [(configuration: Configuration, accounts: [Account])] = []
     var mainAccount: Account? = nil
@@ -240,31 +235,32 @@ class AccountsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         if indexPath.section < accounts.count {
             let account = self.account(at: indexPath)
             Account.makeMain(account)
         }
     }
+    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        performSegue(withIdentifier: "accountDetail", sender: account(at: indexPath))
+    }
 
-    /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return true
+        return indexPath.section < accounts.count
     }
-    */
-
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            Account.remove(self.account(at: indexPath))
+            
+            tableView.setEditing(false, animated: true)
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -280,23 +276,6 @@ class AccountsViewController: UITableViewController {
         return true
     }
     */
-    
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let changePasswordAction = UITableViewRowAction(style: .normal, title: NSLocalizedString("Change\nPassword", comment: "Action to change the password of an account in the account list.")) { (action, indexPath) in
-            let cell = tableView.cellForRow(at: indexPath)
-            self.performSegue(withIdentifier: "changePassword", sender: cell)
-            
-            tableView.setEditing(false, animated: true)
-        }
-        
-        let deleteAction = UITableViewRowAction(style: .destructive, title: NSLocalizedString("Delete", comment: "Action to delete an account in the account list.")) { (action, indexPath) in
-            Account.remove(self.account(at: indexPath))
-            
-            tableView.setEditing(false, animated: true)
-        }
-        
-        return [deleteAction, changePasswordAction]
-    }
 
     // MARK: - Navigation
 
@@ -305,11 +284,10 @@ class AccountsViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        if segue.identifier == "changePassword" {
-            if let indexPath = tableView.indexPath(for: sender as! AccountCell) {
-                let controller = segue.destination as! ChangePasswordViewController
-                controller.account = account(at: indexPath)
-            }
+        if segue.identifier == "accountDetail" {
+            let controller = segue.destination as! AccountDetailViewController
+            
+            controller.account = sender as! Account
         }
     }
 }

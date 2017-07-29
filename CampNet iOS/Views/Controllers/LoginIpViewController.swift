@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CampNetKit
 
 class LoginIpViewController: UITableViewController {
 
@@ -107,6 +108,17 @@ class LoginIpViewController: UITableViewController {
         
         // Resign first responder no matter what.
         ipField.resignFirstResponder()
+        
+        if segue.identifier == "ipLoggedIn" {
+            if let account = Account.main, let ip = ipField.text {
+                let delegate = UIApplication.shared.delegate as! AppDelegate
+                delegate.setNetworkActivityIndicatorVisible(true)
+                
+                account.login(ip: ip, on: DispatchQueue.global(qos: .userInitiated)).always {
+                    delegate.setNetworkActivityIndicatorVisible(false)
+                }
+            }
+        }
     }
     
     // MARK: - UITextField

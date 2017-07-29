@@ -9,3 +9,7 @@
 /* Display name of the configuration. */
 "cn.edu.tsinghua" = "Tsinghua University";
 "cn.edu.ruc" = "Renmin University of China";
+
+/* Display name of the billing groups. */
+"cn.edu.tsinghua.billing_groups.student" = "Student";
+"cn.edu.tsinghua.billing_groups.staff" = "Staff";

@@ -11,19 +11,8 @@ import CampNetKit
 
 class SessionsViewController: UITableViewController {
     
-    @IBAction func ipLoggedIn(segue: UIStoryboardSegue) {
-        if let controller = segue.source as? LoginIpViewController,
-           let ip = controller.ipField.text,
-           let account = account {
-            
-            let delegate = UIApplication.shared.delegate as! AppDelegate
-            delegate.setNetworkActivityIndicatorVisible(true)
-            
-            account.login(ip: ip, on: DispatchQueue.global(qos: .userInitiated)).always {
-                delegate.setNetworkActivityIndicatorVisible(false)
-            }
-        }
-    }
+    @IBAction func cancelLoggingInIp(segue: UIStoryboardSegue) {}
+    @IBAction func ipLoggedIn(segue: UIStoryboardSegue) {}
     
     @IBAction func refresh(_ sender: Any) {
         guard let account = account else {
@@ -260,9 +249,9 @@ class SessionsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         if !sessions.isEmpty && indexPath.section == Section.sessions.rawValue {
-            tableView.deselectRow(at: indexPath, animated: true)
-            
             switch indexPath.row {
             case expansionRange:
                 let offset = indexPath.row - expandedIndex

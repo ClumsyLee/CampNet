@@ -4,9 +4,6 @@
 /* Action to change the password of an account in the account list. */
 "Change\nPassword" = "Change\nPassword";
 
-/* Action to delete an account in the account list. */
-"Delete" = "Delete";
-
 /* Header title of the sessions section of MeView. */
 "Online Devices" = "Online Devices";
 
@@ -15,6 +12,12 @@
 
 /* OK button on alerts that display errors. */
 "OK" = "OK";
+
+/* Cancel button on alerts. */
+"Cancel" = "Cancel";
+
+/* Delete account button on alerts. */
+"Delete Account" = "Delete Account";
 
 /* Alert title when failed to login. */
 "Unable to Login \"%@\"" = "Unable to Login \"%@\"";

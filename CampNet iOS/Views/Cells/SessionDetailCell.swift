@@ -18,27 +18,24 @@ class SessionDetailCell: UITableViewCell {
     }
     static let types = 3
     
-    @IBOutlet var name: UILabel!
-    @IBOutlet var value: UILabel!
-    
     func update(session: Session, offset: Int) {
         switch offset {
         case SessionDetail.startTime.rawValue:
-            name.text = NSLocalizedString("Login Time", comment: "Name of startTime field in session detail cell.")
+            textLabel?.text = NSLocalizedString("Login Time", comment: "Name of startTime field in session detail cell.")
             if let startTime = session.startTime {
-                value.text = DateFormatter.localizedString(from: startTime, dateStyle: .medium, timeStyle: .short)
+                detailTextLabel?.text = DateFormatter.localizedString(from: startTime, dateStyle: .medium, timeStyle: .short)
             } else {
-                value.text = nil
+                detailTextLabel?.text = nil
             }
         case SessionDetail.ip.rawValue:
-            name.text = NSLocalizedString("IP Address", comment: "Name of ip field in session detail cell.")
-            value.text = session.ip
+            textLabel?.text = NSLocalizedString("IP Address", comment: "Name of ip field in session detail cell.")
+            detailTextLabel?.text = session.ip
         case SessionDetail.mac.rawValue:
-            name.text = NSLocalizedString("MAC Address", comment: "Name of mac field in session detail cell.")
-            value.text = session.mac
+            textLabel?.text = NSLocalizedString("MAC Address", comment: "Name of mac field in session detail cell.")
+            detailTextLabel?.text = session.mac
         default:
-            name.text = nil
-            value.text = nil
+            textLabel?.text = nil
+            detailTextLabel?.text = nil
         }
     }
     

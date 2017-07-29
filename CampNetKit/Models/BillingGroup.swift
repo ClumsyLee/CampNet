@@ -16,6 +16,11 @@ public struct BillingGroup {
     
     public var baseFee: Double
     public var steps: [(usage: Int, price: Double)]
+    
+    public var displayName: String? {
+        return Configuration.bundle.localizedString(forKey: identifier, value: nil, table: "Configurations")
+    }
+    
     public var freeUsage: Int {
         return steps.first?.0 ?? 0
     }
