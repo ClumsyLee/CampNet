@@ -247,7 +247,7 @@ public struct Action {
         let context = JSContext(virtualMachine: Action.jsVm)!
         context.setObject(initialVars, forKeyedSubscript: ActionEntry.varsName as (NSCopying & NSObjectProtocol))
         
-        let sessionConfiguration = URLSessionConfiguration.default
+        let sessionConfiguration = URLSessionConfiguration.ephemeral
         sessionConfiguration.timeoutIntervalForRequest = ActionEntry.timeout
         let session = URLSession(configuration: sessionConfiguration)
         
