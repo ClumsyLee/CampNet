@@ -8,6 +8,7 @@
 
 import Foundation
 import NetworkExtension
+import UserNotifications
 
 import KeychainAccess
 import PromiseKit
@@ -249,9 +250,32 @@ public class Account {
             return Calendar.current.dateComponents([.year, .month], from: Date()) == Calendar.current.dateComponents([.year, .month], from: profile.updatedAt) ? profile : nil
         }
         set {
+            let oldVars = Defaults[.accountProfile(of: identifier)]
             Defaults[.accountProfile(of: identifier)] = newValue?.vars
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .accountProfileUpdated, object: self, userInfo: ["account": self, "profile": newValue as Any])
+            }
+            
+            // Send usage alert if needed.
+            let oldUsage = Profile(vars: oldVars ?? [:])?.usage ?? -1
+            if let newUsage = newValue?.usage,
+               let ratio = Defaults[.usageAlertRatio],
+               let maxUsage = maxUsage {
+                
+                let limit = Int(Double(maxUsage) * ratio)
+                if oldUsage < limit && newUsage >= limit {
+                    // Should send.
+                    let percentage = Int((Double(newUsage) / Double(maxUsage)) * 100.0)
+                    let usageLeft = (maxUsage - newUsage).usageString(decimalUnits: configuration.decimalUnits)
+                    let content = UNMutableNotificationContent()
+                    
+                    content.title = String.localizedStringWithFormat(NSLocalizedString("Used %@%% of maximum usage", comment: "Usage alert title."), percentage)
+                    content.body = String.localizedStringWithFormat(NSLocalizedString("You can still use up to %@ this month.", comment: "Usage alert body."), usageLeft)
+                    content.sound = UNNotificationSound.default()
+                    
+                    let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
+                    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                }
             }
         }
     }

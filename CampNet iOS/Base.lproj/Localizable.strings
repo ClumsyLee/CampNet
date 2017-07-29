@@ -75,3 +75,9 @@
 
 /* Login button caption. */
 "Unknown" = "Unknown";
+
+/* Usage alert title. */
+"Used %@%% of maximum usage" = "Used %@%% of maximum usage";
+
+/* Usage alert body. */
+"You can still use up to %@ this month." = "You can still use up to %@ this month.";
