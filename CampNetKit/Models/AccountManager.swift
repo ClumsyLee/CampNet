@@ -105,6 +105,10 @@ class AccountManager {
               let index = accountArray.index(of: account) else {
             return false
         }
+        Defaults.remove(.accountStatus(of: account.identifier))
+        Defaults.remove(.accountProfile(of: account.identifier))
+        Defaults.remove(.accountHistory(of: account.identifier))
+        Defaults.remove(.accountEstimatedDailyUsage(of: account.identifier))
         
         if accountArray.count == 1 {
             accounts[account.configuration] = nil
