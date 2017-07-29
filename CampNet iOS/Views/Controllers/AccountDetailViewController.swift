@@ -63,6 +63,8 @@ class AccountDetailViewController: UITableViewController {
             self.balance.text = nil
         }
         self.usage.text = profile?.usage?.usageString(decimalUnits: account.configuration.decimalUnits)
+        
+        tableView.reloadData()
     }
 
     func profileUpdated(_ notification: Notification) {
