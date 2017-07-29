@@ -25,24 +25,21 @@ class AccountDetailViewController: UITableViewController {
     @IBAction func cancelChangingPassword(segue: UIStoryboardSegue) {}
     @IBAction func passwordChanged(segue: UIStoryboardSegue) {}
     
-    var account: Account!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    @IBAction func tableRefreshed(_ sender: Any) {
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        
+        delegate.setNetworkActivityIndicatorVisible(true)
+        account.profile(on: DispatchQueue.global(qos: .userInitiated)).always {
+            self.tableView.refreshControl?.endRefreshing()
+            delegate.setNetworkActivityIndicatorVisible(false)
+        }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let profile = account.profile
-        
+    var account: Account!
+    
+    func reload(profile: Profile?) {
         self.title = account.username
+        
         self.name.text = profile?.name
         self.billingGroup.text = account.configuration.billingGroups[profile?.billingGroupName ?? ""]?.displayName
         if let moneyString = profile?.balance?.moneyString {
@@ -51,6 +48,37 @@ class AccountDetailViewController: UITableViewController {
             self.balance.text = nil
         }
         self.usage.text = profile?.usage?.usageString(decimalUnits: account.configuration.decimalUnits)
+    }
+
+    func profileUpdated(_ notification: Notification) {
+        guard let account = notification.userInfo?["account"] as? Account, account == self.account,
+              let profile = notification.userInfo?["profile"] as? Profile else {
+            return
+        }
+        
+        reload(profile: profile)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)), name: .accountProfileUpdated, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        reload(profile: account.profile)
     }
 
     override func didReceiveMemoryWarning() {
