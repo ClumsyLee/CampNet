@@ -185,16 +185,16 @@ class OverviewViewController: UITableViewController {
     }
 
     func reloadProfile() {
-        let profile = account?.profile
-        let decimalUnits = account?.configuration.decimalUnits ?? false
-        
         let title: String
         if let account = account {
-            title = "\(profile?.name ?? account.username) ▾"
+            title = "\(account.username) ▾"
         } else {
             title = NSLocalizedString("Click to Setup Account", comment: "OverviewView title when no accounts are set.")
         }
         accountsButton.setTitle(title, for: .normal)
+        
+        let profile = account?.profile
+        let decimalUnits = account?.configuration.decimalUnits ?? false
         
         usage.text = profile?.usage?.usageStringInGb(decimalUnits: decimalUnits) ?? "-"
         balance.text = profile?.balance?.moneyString ?? "-"

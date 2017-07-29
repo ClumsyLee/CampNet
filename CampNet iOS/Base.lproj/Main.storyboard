@@ -254,7 +254,7 @@
                             <rect key="frame" x="112.5" y="5.5" width="150" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                            <state key="normal" title="Sihan Li ▾"/>
+                            <state key="normal" title="lisihan13 ▾"/>
                             <connections>
                                 <segue destination="gpo-wN-CAY" kind="presentation" id="8GC-wi-wo6"/>
                             </connections>
@@ -885,10 +885,10 @@
             </objects>
             <point key="canvasLocation" x="3889" y="-1710"/>
         </scene>
-        <!--lisihan13-->
+        <!--Account Detail-->
         <scene sceneID="oj2-gQ-aPN">
             <objects>
-                <tableViewController title="lisihan13" id="3Ot-z7-Jc8" customClass="AccountDetailViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="lisihan13" id="3Ot-z7-Jc8" userLabel="Account Detail" customClass="AccountDetailViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="ruR-DY-XMP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
