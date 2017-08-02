@@ -80,5 +80,13 @@ public struct BillingGroup {
         
         self.baseFee = yaml["base_fee"].double ?? 0.0
         self.steps = yaml["steps"].steps ?? []
+        
+        var lastUsage = 0
+        for step in self.steps {
+            if lastUsage > step.usage {
+                return nil
+            }
+            lastUsage = step.usage
+        }
     }
 }
