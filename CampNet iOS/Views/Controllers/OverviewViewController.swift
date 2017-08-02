@@ -186,7 +186,7 @@ class OverviewViewController: UITableViewController {
         if let account = account {
             title = "\(account.username) ▾"
         } else {
-            title = NSLocalizedString("Click to Setup Account", comment: "OverviewView title when no accounts are set.")
+            title = NSLocalizedString("No Accounts ▾", comment: "OverviewView title when no accounts are set.")
         }
         accountsButton.setTitle(title, for: .normal)
         
@@ -239,7 +239,7 @@ class OverviewViewController: UITableViewController {
                 y = usageY
             }
         } else {
-            y = maxY ?? freeY ?? 1.0
+            y = maxY ?? freeY ?? 10.0
         }
         chart.leftAxis.axisMaximum = y * 1.1
 

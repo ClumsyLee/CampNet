@@ -53,7 +53,7 @@
 "MAC Address" = "MAC Address";
 
 /* OverviewView title when no accounts are set. */
-"Click to Setup Account" = "Click to Setup Account";
+"No Accounts ▾" = "No Accounts ▾";
 
 /* Limit line label in the history chart. */
 "Free" = "Free";

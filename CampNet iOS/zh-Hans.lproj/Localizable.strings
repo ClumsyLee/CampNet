@@ -56,7 +56,7 @@
 "MAC Address" = "MAC 地址";
 
 /* OverviewView title when no accounts are set. */
-"Click to Setup Account" = "点此处设置账户";
+"No Accounts ▾" = "未设置账户 ▾";
 
 /* Limit line label in the history chart. */
 "Free" = "免费";
