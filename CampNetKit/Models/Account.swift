@@ -99,8 +99,14 @@ public class Account {
                 return
             }
             
-            account.login(on: queue, requestBinder: requestBinder).then(on: queue) {
-                command.createResponse(.success).deliver()
+            account.login(on: queue, requestBinder: requestBinder).then(on: queue) { () -> Void in
+                if account.configuration.actions[.profile] != nil {
+                    account.profile(on: queue, requestBinder: requestBinder).always(on: queue) {
+                        command.createResponse(.success).deliver()
+                    }
+                } else {
+                    command.createResponse(.success).deliver()
+                }
             }
             .catch(on: queue) { _ in
                 command.createResponse(.temporaryFailure).deliver()
@@ -124,7 +130,13 @@ public class Account {
                 case .offcampus: result = .failure
                 }
                 
-                command.createResponse(result).deliver()
+                if result == .success && account.configuration.actions[.profile] != nil {
+                    account.profile(on: queue, requestBinder: requestBinder).always(on: queue) {
+                        command.createResponse(result).deliver()
+                    }
+                } else {
+                    command.createResponse(result).deliver()
+                }
             }
             .catch(on: queue) { _ in
                 command.createResponse(.failure).deliver()
