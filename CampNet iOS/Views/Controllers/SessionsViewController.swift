@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  SessionsViewController.swift
 //  CampNet iOS
 //
 //  Created by Thomas Lee on 2017/1/17.
@@ -55,14 +55,12 @@ class SessionsViewController: UITableViewController {
     }
     
     func profileUpdated(_ notification: Notification) {
-        guard let account = notification.userInfo?["account"] as? Account,
-              let profile = notification.userInfo?["profile"] as? Profile,
-              account == account else {
+        guard let account = notification.userInfo?["account"] as? Account, self.account == account else {
             return
         }
         
         let oldIps = sessions.map({ $0.ip })
-        sessions = profile.sessions
+        reloadSessions()
         let ips = sessions.map({ $0.ip })
 
         var rowsToReload: [IndexPath] = []

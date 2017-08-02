@@ -390,8 +390,11 @@ public class Account {
         return action.commit(username: username, password: password, extraVars: ["ip": ip], on: queue, requestBinder: requestBinder).then(on: queue) { _ in
             if self.configuration.actions[.profile] != nil {
                 return self.profile(isSubaction: true, on: queue, requestBinder: requestBinder).then(on: queue) { profile -> Void in
-                    guard profile.sessions.map({ $0.ip }).contains(ip) else {
-                        throw CampNetError.unknown
+                    // Check sessions if possible.
+                    if let sessions = profile.sessions {
+                        guard sessions.map({ $0.ip }).contains(ip) else {
+                            throw CampNetError.unknown
+                        }
                     }
                 }
             } else {
@@ -419,8 +422,11 @@ public class Account {
             return self.profile(isSubaction: true, on: queue, requestBinder: requestBinder)
         }
         .then(on: queue) { profile -> Void in
-            guard !profile.sessions.map({ $0.ip }).contains(session.ip) else {
-                throw CampNetError.unknown
+            // Check sessions if possible.
+            if let sessions = profile.sessions {
+                guard !sessions.map({ $0.ip }).contains(session.ip) else {
+                    throw CampNetError.unknown
+                }
             }
         }
         .recover(on: queue) { error -> Void in

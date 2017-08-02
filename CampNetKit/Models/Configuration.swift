@@ -110,7 +110,7 @@ public struct Profile {
     public var billingGroupName: String?
     public var balance: Double?
     public var usage: Int?
-    public var sessions: [Session]
+    public var sessions: [Session]?
     
     public var updatedAt: Date
     
@@ -121,7 +121,7 @@ public struct Profile {
         vars["billing_group_name"] = billingGroupName
         vars["balance"] = balance
         vars["usage"] = usage
-        vars["sessions"] = sessions.map { $0.vars }
+        vars["sessions"] = sessions?.map { $0.vars }
         
         vars["updated_at"] = updatedAt
         
@@ -138,11 +138,15 @@ public struct Profile {
         self.balance = vars["balance"] as? Double
         self.usage = vars["usage"] as? Int
         
-        self.sessions = []
-        for sessionVars in (vars["sessions"] as? [[String: Any]]) ?? [] {
-            if let session = Session(vars: sessionVars) {
-                self.sessions.append(session)
+        if let sessions = vars["sessions"] as? [[String: Any]] {
+            self.sessions = []
+            for sessionVars in sessions {
+                if let session = Session(vars: sessionVars) {
+                    self.sessions?.append(session)
+                }
             }
+        } else {
+            self.sessions = nil
         }
 
         self.updatedAt = updatedAt

@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  OverviewViewController.swift
 //  CampNet iOS
 //
 //  Created by Thomas Lee on 2017/1/17.
@@ -193,7 +193,13 @@ class OverviewViewController: UITableViewController {
         usage.text = profile?.usage?.usageStringInGb(decimalUnits: decimalUnits) ?? "-"
         balance.text = profile?.balance?.moneyString ?? "-"
         estimatedFee.text = account?.estimatedFee(profile: profile)?.moneyString ?? "-"
-        devices.text = profile != nil ? String(profile!.sessions.count) : "-"
+        if let sessions = profile?.sessions {
+            devices.text = String(sessions.count)
+            devicesButton.isEnabled = true
+        } else {
+            devices.text = "-"
+            devicesButton.isEnabled = false
+        }
         
         // Chart end point.
         var usageY: Double? = nil
