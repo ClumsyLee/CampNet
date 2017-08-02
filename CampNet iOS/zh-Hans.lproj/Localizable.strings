@@ -22,6 +22,9 @@
 /* Delete account button on alerts. */
 "Delete Account" = "删除账户";
 
+/* Logout device button on alerts. */
+"Logout Device" = "下线设备";
+
 /* Alert title when failed to login. */
 "Unable to Login \"%@\"" = "无法上线 “%@”";
 
@@ -66,6 +69,9 @@
 
 /* Login button caption. */
 "Logout" = "下线";
+
+/* Login button caption. */
+"Logout \"%@\"" = "下线 “%@”";
 
 /* Login button caption. */
 "Offcampus" = "非校园网";

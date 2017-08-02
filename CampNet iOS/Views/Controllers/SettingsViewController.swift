@@ -30,14 +30,13 @@ class SettingsViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        autoLoginSwitch.setOn(Defaults[.autoLogin], animated: false)
-        autoLogoutExpiredSessionsSwitch.setOn(Defaults[.autoLogoutExpiredSessions], animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        autoLoginSwitch.setOn(Defaults[.autoLogin], animated: false)
+        autoLogoutExpiredSessionsSwitch.setOn(Defaults[.autoLogoutExpiredSessions], animated: false)
         if let ratio = Defaults[.usageAlertRatio] {
             usageAlertPercentage.text = "\(Int(ratio * 100))%"
         } else {

@@ -206,6 +206,16 @@ public struct Action {
         case logout
     }
     
+    fileprivate static let networkActivityQueue = DispatchQueue(label: "\(Bundle.main.bundleIdentifier!).networkActivityQueue", qos: .userInitiated)
+    fileprivate static var networkActivityCounter = 0
+    
+    static func setNetworkActivityIndicatorVisible(_ value: Bool) {
+        Action.networkActivityQueue.async {
+            Action.networkActivityCounter += value ? 1 : -1
+            UIApplication.shared.isNetworkActivityIndicatorVisible = Action.networkActivityCounter > 0
+        }
+    }
+    
     static let jsVm = JSVirtualMachine()!
     
     public var configurationIdentifier: String
@@ -251,6 +261,8 @@ public struct Action {
         sessionConfiguration.timeoutIntervalForRequest = ActionEntry.timeout
         let session = URLSession(configuration: sessionConfiguration)
         
+        Action.setNetworkActivityIndicatorVisible(true)
+        
         var promise = Promise<[String: Any]>(value: initialVars)
         for entry in entries {
             promise = promise.then(on: queue) { vars in
@@ -258,13 +270,16 @@ public struct Action {
             }
         }
         
-        // Add timestamp if needed.
         promise = promise.then(on: queue) { vars in
+            // Add timestamp if needed.
             var vars = vars
             if vars["updated_at"] == nil {
                 vars["updated_at"] = Date()
             }
             return Promise(value: vars)
+        }
+        .always {
+            Action.setNetworkActivityIndicatorVisible(false)
         }
         
         return promise

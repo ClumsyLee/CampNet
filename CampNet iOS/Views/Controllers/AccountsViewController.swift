@@ -122,34 +122,28 @@ class AccountsViewController: UITableViewController {
     
     func mainChanged(_ notification: Notification) {
         if let fromIndexPath = indexPath(of: notification.userInfo?["fromAccount"] as? Account) {
-            let cell = tableView.cellForRow(at: fromIndexPath) as! AccountCell
-            cell.isMain = false
+            if let cell = tableView.cellForRow(at: fromIndexPath) as? AccountCell {
+                cell.isMain = false
+            }
         }
         mainAccount = notification.userInfo?["toAccount"] as? Account
         if let toIndexPath = indexPath(of: mainAccount) {
-            let cell = tableView.cellForRow(at: toIndexPath) as! AccountCell
-            cell.isMain = true
+            if let cell = tableView.cellForRow(at: toIndexPath) as? AccountCell {
+                cell.isMain = true
+            }
         }
     }
     
     func profileUpdated(_ notification: Notification) {
         guard let account = notification.userInfo?["account"] as? Account,
-              let profile = notification.userInfo?["profile"] as? Profile,
               let indexPath = indexPath(of: account) else {
             return
         }
-        
-        let cell = tableView.cellForRow(at: indexPath) as! AccountCell
-        cell.update(profile: profile, decimalUnits: account.configuration.decimalUnits)
+        tableView.reloadRows(at: [indexPath], with: .fade)
     }
     
     func updateProfile(of account: Account) -> Promise<Profile> {
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        
-        delegate.setNetworkActivityIndicatorVisible(true)
-        return account.profile(on: DispatchQueue.global(qos: .userInitiated)).always {
-            delegate.setNetworkActivityIndicatorVisible(false)
-        }
+        return account.profile(on: DispatchQueue.global(qos: .userInitiated))
     }
     
     override func viewDidLoad() {
@@ -208,67 +202,45 @@ class AccountsViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return accounts.count + 1
+        return accounts.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section < accounts.count ? accounts[section].accounts.count : 1
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section < accounts.count ? 50 : 44
+        return accounts[section].accounts.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section < accounts.count ? accounts[section].configuration.displayName : nil
+        return accounts[section].configuration.displayName
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section < accounts.count {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "accountCell", for: indexPath) as! AccountCell
-            
-            // Configure the cell...
-            let account = self.account(at: indexPath)
-            let profile = account.profile
-            
-            cell.username.text = account.username
-            cell.update(profile: profile, decimalUnits: account.configuration.decimalUnits)
-            cell.isMain = account == mainAccount
-            
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "addAccountCell", for: indexPath)
-            
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "accountCell", for: indexPath) as! AccountCell
+        
+        // Configure the cell...
+        let account = self.account(at: indexPath)
+        cell.update(account: account, isMain: account == mainAccount)
+        
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.section < accounts.count {
-            let account = self.account(at: indexPath)
-            Account.makeMain(account)
-        }
+        let account = self.account(at: indexPath)
+        Account.makeMain(account)
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         performSegue(withIdentifier: "accountDetail", sender: account(at: indexPath))
-    }
-
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return indexPath.section < accounts.count
     }
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             Account.remove(self.account(at: indexPath))
-            
-            tableView.setEditing(false, animated: true)
         }
+        
+        tableView.setEditing(false, animated: true)
     }
 
     /*

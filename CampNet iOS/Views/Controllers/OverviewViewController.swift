@@ -32,6 +32,18 @@ class OverviewViewController: UITableViewController {
     @IBOutlet var loginButtonCaption: UILabel!
 
     @IBOutlet var chart: LineChartView!
+    
+    var account: Account? = nil
+    var status: Status? = nil
+    var profile: Profile? = nil
+    var history: History? = nil
+    
+    var usageSumDataset = LineChartDataSet(values: [], label: nil)
+    var usageSumEndDataset = LineChartDataSet(values: [], label: nil)
+    var freeLimitLine = ChartLimitLine(limit: 0.0, label: NSLocalizedString("Free", comment: "Limit line label in the history chart."))
+    var maxLimitLine = ChartLimitLine(limit: 0.0, label: NSLocalizedString("Max", comment: "Limit line label in the history chart."))
+    
+    var refreshedAt: Date? = nil
 
     @IBAction func cancelSwitchingAccount(segue: UIStoryboardSegue) {}
     @IBAction func accountSwitched(segue: UIStoryboardSegue) {
@@ -49,11 +61,7 @@ class OverviewViewController: UITableViewController {
         print("Refreshing \(account.identifier) in overview.")
         refreshedAt = Date()
         
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        delegate.setNetworkActivityIndicatorVisible(true)
-        
         account.update(on: DispatchQueue.global(qos: .userInitiated)).always {
-            delegate.setNetworkActivityIndicatorVisible(false)
             // Don't touch refreshControl if the account has been changed.
             if self.account == account {
                 self.refreshControl?.endRefreshing()
@@ -62,8 +70,7 @@ class OverviewViewController: UITableViewController {
     }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
-        guard let account = account,
-              let status = account.status else {
+        guard let status = status else {
             return
         }
         
@@ -73,14 +80,6 @@ class OverviewViewController: UITableViewController {
         default: return
         }
     }
-
-    var account: Account? = nil
-    var usageSumDataset = LineChartDataSet(values: [], label: nil)
-    var usageSumEndDataset = LineChartDataSet(values: [], label: nil)
-    var freeLimitLine = ChartLimitLine(limit: 0.0, label: NSLocalizedString("Free", comment: "Limit line label in the history chart."))
-    var maxLimitLine = ChartLimitLine(limit: 0.0, label: NSLocalizedString("Max", comment: "Limit line label in the history chart."))
-
-    var refreshedAt: Date? = nil
     
     func login() {
         guard let account = account else {
@@ -88,18 +87,11 @@ class OverviewViewController: UITableViewController {
         }
         
         loginButton.isEnabled = false
-        loginButton.backgroundColor = .white
-        loginButton.strokeColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         loginButton.setStyle(.horizontalMoreOptions, animated: true)
-        
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        delegate.setNetworkActivityIndicatorVisible(true)
         
         loginButtonCaption.text = NSLocalizedString("Logging In…", comment: "Login button caption.")
         
-        account.login(on: DispatchQueue.global(qos: .userInitiated)).always {
-            delegate.setNetworkActivityIndicatorVisible(false)
-        }
+        _ = account.login(on: DispatchQueue.global(qos: .userInitiated))
     }
     
     func logout() {
@@ -108,18 +100,11 @@ class OverviewViewController: UITableViewController {
         }
         
         loginButton.isEnabled = false
-        loginButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-        loginButton.strokeColor = .white
         loginButton.setStyle(.horizontalMoreOptions, animated: true)
         
         loginButtonCaption.text = NSLocalizedString("Logging Out…", comment: "Login button caption.")
         
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        delegate.setNetworkActivityIndicatorVisible(true)
-        
-        account.logout(on: DispatchQueue.global(qos: .userInitiated)).always {
-            delegate.setNetworkActivityIndicatorVisible(false)
-        }
+        _ = account.logout(on: DispatchQueue.global(qos: .userInitiated))
     }
     
     func refreshIfNeeded() {
@@ -139,17 +124,26 @@ class OverviewViewController: UITableViewController {
     }
 
     func reloadStatus() {
-        let status = account?.status
+        status = account?.status
 
         if let type = status?.type {
             switch type {
-            case .online:
-                loginButton.isEnabled = true
-                loginButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-                loginButton.strokeColor = .white
-                loginButton.setStyle(.stop, animated: true)
-                
-                loginButtonCaption.text = NSLocalizedString("Logout", comment: "Login button caption.")
+            case let .online(onlineUsername: onlineUsername, _, _):
+                if let username = account?.username, let onlineUsername = onlineUsername, username != onlineUsername {
+                    loginButton.isEnabled = true
+                    loginButton.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
+                    loginButton.strokeColor = .white
+                    loginButton.setStyle(.stop, animated: true)
+                    
+                    loginButtonCaption.text = String.localizedStringWithFormat(NSLocalizedString("Logout \"%@\"", comment: "Login button caption."), onlineUsername)
+                } else {
+                    loginButton.isEnabled = true
+                    loginButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+                    loginButton.strokeColor = .white
+                    loginButton.setStyle(.stop, animated: true)
+                    
+                    loginButtonCaption.text = NSLocalizedString("Logout", comment: "Login button caption.")
+                }
                 
             case .offline:
                 loginButton.isEnabled = true
@@ -185,6 +179,9 @@ class OverviewViewController: UITableViewController {
     }
 
     func reloadProfile() {
+        profile = account?.profile
+        let decimalUnits = account?.configuration.decimalUnits ?? false
+        
         let title: String
         if let account = account {
             title = "\(account.username) ▾"
@@ -193,62 +190,83 @@ class OverviewViewController: UITableViewController {
         }
         accountsButton.setTitle(title, for: .normal)
         
-        let profile = account?.profile
-        let decimalUnits = account?.configuration.decimalUnits ?? false
-        
         usage.text = profile?.usage?.usageStringInGb(decimalUnits: decimalUnits) ?? "-"
         balance.text = profile?.balance?.moneyString ?? "-"
-        estimatedFee.text = account?.estimatedFee?.moneyString ?? "-"
+        estimatedFee.text = account?.estimatedFee(profile: profile)?.moneyString ?? "-"
         devices.text = profile != nil ? String(profile!.sessions.count) : "-"
-
-        // Update chart end point if needed.
+        
+        // Chart end point.
+        var usageY: Double? = nil
+        
+        usageSumEndDataset.values = []
         if let profile = profile, let usage = profile.usage {
-            let day = Calendar.current.component(.day, from: profile.updatedAt)
-            let gb = usage.usageInGb(decimalUnits: decimalUnits)
-            if usageSumDataset.values.count == day && usageSumDataset.values.last!.y < gb {
-                usageSumDataset.values.last!.y = gb
-                usageSumEndDataset.values = [usageSumDataset.values.last!]
+            if Calendar.current.dateComponents([.year, .month], from: Date()) == Calendar.current.dateComponents([.year, .month], from: profile.updatedAt) {
+                let day = Calendar.current.component(.day, from: profile.updatedAt)
+                let entry = ChartDataEntry(x: Double(day), y: usage.usageInGb(decimalUnits: decimalUnits))
+                usageSumEndDataset.values.append(entry)
+                
+                usageY = entry.y
             }
         }
         
         // Limit lines.
         chart.leftAxis.removeAllLimitLines()
 
-        if let freeUsage = account?.freeUsage {
+        var freeY: Double? = nil
+        var maxY: Double? = nil
+        
+        if let freeUsage = account?.freeUsage(profile: profile) {
             freeLimitLine.limit = freeUsage.usageInGb(decimalUnits: decimalUnits)
             chart.leftAxis.addLimitLine(freeLimitLine)
+            
+            freeY = freeLimitLine.limit
         }
-        if let maxUsage = account?.maxUsage {
+        if let maxUsage = account?.maxUsage(profile: profile) {
             maxLimitLine.limit = maxUsage.usageInGb(decimalUnits: decimalUnits)
             chart.leftAxis.addLimitLine(maxLimitLine)
+            
+            maxY = maxLimitLine.limit
         }
+        
+        // Calculate chart.leftAxis.axisMaximum.
+        let y: Double
+        if let usageY = usageY {
+            if let maxY = maxY {
+                y = maxY
+            } else if let freeY = freeY {
+                y = max(usageY, freeY)
+            } else {
+                y = usageY
+            }
+        } else {
+            y = maxY ?? freeY ?? 1.0
+        }
+        chart.leftAxis.axisMaximum = y * 1.1
 
         chart.data?.notifyDataChanged()
         chart.notifyDataSetChanged()
     }
 
     func reloadHistory() {
+        history = account?.history
+        let decimalUnits = account?.configuration.decimalUnits ?? false
+        
         let today = Date()
         let year = Calendar.current.component(.year, from:
             today)
         let month = Calendar.current.component(.month, from: today)
-        let decimalUnits = account?.configuration.decimalUnits ?? false
 
-        estimatedFee.text = account?.estimatedFee?.moneyString ?? "-"
+        estimatedFee.text = account?.estimatedFee(profile: profile)?.moneyString ?? "-"
 
         usageSumDataset.values = []
-        usageSumEndDataset.values = []
-
-        if let history = account?.history,
+        if let history = history,
            history.year == year, history.month == month,
            !history.usageSums.isEmpty {
 
-            var lastEntry: ChartDataEntry!
             for (index, usageSum) in history.usageSums.enumerated() {
-                lastEntry = ChartDataEntry(x: Double(index + 1), y: usageSum.usageInGb(decimalUnits: decimalUnits))
-                usageSumDataset.values.append(lastEntry)
+                let entry = ChartDataEntry(x: Double(index + 1), y: usageSum.usageInGb(decimalUnits: decimalUnits))
+                usageSumDataset.values.append(entry)
             }
-            usageSumEndDataset.values.append(lastEntry)
         }
 
         chart.data?.notifyDataChanged()
@@ -256,20 +274,17 @@ class OverviewViewController: UITableViewController {
     }
 
     func reload() {
+        account = Account.main
+        refreshedAt = nil
+        refreshControl!.endRefreshing()
+        
         reloadStatus()
         reloadProfile()
         reloadHistory()
     }
 
     func mainChanged(_ notification: Notification) {
-        let newMain = Account.main
-        if account != newMain {
-            account = newMain
-            refreshedAt = nil
-            refreshControl!.endRefreshing()
-            
-            reload()
-        }
+        reload()
     }
 
     func statusUpdated(_ notification: Notification) {
@@ -323,7 +338,6 @@ class OverviewViewController: UITableViewController {
         chart.leftAxis.gridColor = #colorLiteral(red: 0.9372541904, green: 0.9372367859, blue: 0.9563211799, alpha: 1)
         chart.leftAxis.axisLineColor = .white
         chart.leftAxis.axisMinimum = 0
-        chart.leftAxis.spaceTop = 0.15
         chart.leftAxis.drawLimitLinesBehindDataEnabled = true
         chart.rightAxis.enabled = false
 
@@ -332,17 +346,16 @@ class OverviewViewController: UITableViewController {
         freeLimitLine.yOffset = 1
         freeLimitLine.lineColor = #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1)
         freeLimitLine.valueTextColor = #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1)
-        freeLimitLine.labelPosition = .leftBottom
+        freeLimitLine.labelPosition = .leftTop
 
         maxLimitLine.lineWidth = 1
         maxLimitLine.xOffset = 1
         maxLimitLine.yOffset = 1
         maxLimitLine.lineColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         maxLimitLine.valueTextColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-        maxLimitLine.labelPosition = .rightBottom
+        maxLimitLine.labelPosition = .rightTop
 
-        self.account = Account.main
-        reload()
+        self.reload()
 
         NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)), name: .mainAccountChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(statusUpdated(_:)), name: .accountStatusUpdated, object: nil)

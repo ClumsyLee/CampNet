@@ -28,18 +28,23 @@ class AccountCell: UITableViewCell {
         }
     }
     
-    func update(profile: Profile?, decimalUnits: Bool) {
+    func update(account: Account, isMain: Bool) {
+        let profile = account.profile
+        
+        username.text = account.username
         if let name = profile?.name {
             self.name.text = "(\(name))"
         } else {
             self.name.text = nil
         }
-        if let balance = profile?.balance {
-            self.balance.text = "¥ \(balance)"
+        if let moneyString = profile?.balance?.moneyString {
+            self.balance.text = "¥ \(moneyString)"
         } else {
             self.balance.text = nil
         }
-        self.usage.text = profile?.usage?.usageString(decimalUnits: decimalUnits)
+        self.usage.text = profile?.usage?.usageString(decimalUnits: account.configuration.decimalUnits)
+        
+        self.isMain = isMain
     }
     
     override func awakeFromNib() {

@@ -124,22 +124,21 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
         // Pass the selected object to the new view controller.
         
         if segue.identifier == "showConfigurationSetup" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let (configurationIdentifier, name, _) = searchController.isActive ? searchResults[indexPath.row] : names[indexPath.row]
-                
-                var existedUsernames: Set<String> = []
-                for (configuration, accountArray) in Account.all {
-                    if configuration.identifier == configurationIdentifier {
-                        existedUsernames.formUnion(accountArray.map{ $0.username })
-                        break
-                    }
+            let indexPath = tableView.indexPathForSelectedRow!
+            let (configurationIdentifier, name, _) = searchController.isActive ? searchResults[indexPath.row] : names[indexPath.row]
+            
+            var existedUsernames: Set<String> = []
+            for (configuration, accountArray) in Account.all {
+                if configuration.identifier == configurationIdentifier {
+                    existedUsernames.formUnion(accountArray.map{ $0.username })
+                    break
                 }
-                
-                let controller = segue.destination as! ConfigurationSetupViewController
-                controller.configurationIdentifier = configurationIdentifier
-                controller.existedUsernames = existedUsernames
-                controller.navigationItem.title = name
             }
+            
+            let controller = segue.destination as! ConfigurationSetupViewController
+            controller.configurationIdentifier = configurationIdentifier
+            controller.configurationDisplayName = name
+            controller.existedUsernames = existedUsernames
         }
     }
 }

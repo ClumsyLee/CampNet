@@ -19,6 +19,9 @@
 /* Delete account button on alerts. */
 "Delete Account" = "Delete Account";
 
+/* Logout device button on alerts. */
+"Logout Device" = "Logout Device";
+
 /* Alert title when failed to login. */
 "Unable to Login \"%@\"" = "Unable to Login \"%@\"";
 
@@ -63,6 +66,9 @@
 
 /* Login button caption. */
 "Logout" = "Logout";
+
+/* Login button caption. */
+"Logout \"%@\"" = "Logout \"%@\"";
 
 /* Login button caption. */
 "Offcampus" = "Offcampus";

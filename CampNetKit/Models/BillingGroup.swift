@@ -44,23 +44,32 @@ public struct BillingGroup {
             price = step.price
         }
         
-        usage += Int(balance / price)
-        return usage
+        if price.isZero {
+            return freeUsage
+        } else {
+            return usage + Int(balance / price)
+        }
     }
     
-    public func fee(at usage: Int) -> Double{
+    public func fee(from: Int, to: Int) -> Double{
         var fee = 0.0
         var lastStep = (usage: 0, price: 0.0)
         
         for step in steps {
-            if step.usage >= usage {
+            if step.usage < from {
+                lastStep.usage = from
+                lastStep.price = step.price
+                continue
+            }
+            
+            if step.usage >= to {
                 break
             }
             fee += Double(step.usage - lastStep.usage) * lastStep.price
             lastStep = step
         }
         
-        fee += Double(usage - lastStep.usage) * lastStep.price
+        fee += Double(to - lastStep.usage) * lastStep.price
         return fee
     }
     

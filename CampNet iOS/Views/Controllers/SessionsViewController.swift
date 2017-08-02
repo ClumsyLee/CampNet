@@ -11,46 +11,11 @@ import CampNetKit
 
 class SessionsViewController: UITableViewController {
     
-    @IBAction func cancelLoggingInIp(segue: UIStoryboardSegue) {}
-    @IBAction func ipLoggedIn(segue: UIStoryboardSegue) {}
-    
-    @IBAction func refreshTable(_ sender: Any) {
-        guard let account = account else {
-            self.refreshControl?.endRefreshing()
-            return
-        }
-        
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        delegate.setNetworkActivityIndicatorVisible(true)
-
-        account.profile(on: DispatchQueue.global(qos: .userInitiated)).always {
-            self.refreshControl?.endRefreshing()
-            delegate.setNetworkActivityIndicatorVisible(false)
-        }
-    }
-    
-    enum Section: Int {
-        case sessions
-        case newSession
-    }
+    @IBOutlet var loginIpButton: UIBarButtonItem!
     
     var account: Account?
-    var profile: Profile?
+    var sessions: [Session] = []
     
-    var sessions: [Session] {
-        return profile?.sessions ?? []
-    }
-    var expandedIndex: Int = -1
-    var expandedHeight: Int {
-        if expandedIndex < 0 {
-            return 0
-        } else {
-            return SessionDetailCell.types + (canLogoutSession ? 1 : 0)
-        }
-    }
-    var expansionRange: Range<Int> {
-        return (expandedIndex + 1)..<(expandedIndex + expandedHeight + 1)
-    }
     var canLoginIp: Bool {
         return account?.configuration.actions[.loginIp] != nil
     }
@@ -58,39 +23,34 @@ class SessionsViewController: UITableViewController {
         return account?.configuration.actions[.logoutSession] != nil
     }
     
-    func indexPaths(for index: Int) -> [IndexPath] {
-        if index < expandedIndex {
-            return [IndexPath(row: index, section: Section.sessions.rawValue)]
-        } else if index > expandedIndex {
-            return [IndexPath(row: index + expandedHeight, section: Section.sessions.rawValue)]
-        } else {
-            return (0...expandedHeight).map {
-                IndexPath(row: index + $0, section: Section.sessions.rawValue)
-            }
+    @IBAction func cancelLoggingInIp(segue: UIStoryboardSegue) {}
+    @IBAction func ipLoggedIn(segue: UIStoryboardSegue) {}
+    @IBAction func sessionLoggedOut(segue: UIStoryboardSegue) {}
+    
+    @IBAction func refreshTable(_ sender: Any) {
+        guard let account = account else {
+            self.refreshControl?.endRefreshing()
+            return
+        }
+
+        account.profile(on: DispatchQueue.global(qos: .userInitiated)).always {
+            self.refreshControl?.endRefreshing()
         }
     }
     
-    var expandedIndexPaths: [IndexPath] {
-        return (1..<(expandedHeight + 1)).map {
-            IndexPath(row: expandedIndex + $0, section: Section.sessions.rawValue)
-        }
+    func reloadSessions() {
+        sessions = account?.profile?.sessions ?? []
     }
     
-    func isSessionCell(row: Int) -> Bool {
-        return !(expansionRange ~= row || row >= sessions.count + expandedHeight)
-    }
-    
-    func isSessionCell(indexPath: IndexPath) -> Bool {
-        return !sessions.isEmpty && indexPath.section == Section.sessions.rawValue && isSessionCell(row: indexPath.row)
-    }
-    
-    func reloadModel() {
+    func reload() {
         account = Account.main
-        profile = account?.profile
+        loginIpButton.isEnabled = canLoginIp
+        
+        reloadSessions()
     }
 
     func mainChanged(_ notification: Notification) {
-        reloadModel()
+        reload()
         tableView.reloadData()
     }
     
@@ -102,55 +62,34 @@ class SessionsViewController: UITableViewController {
         }
         
         let oldIps = sessions.map({ $0.ip })
-        self.profile = profile
-        let ips = profile.sessions.map({ $0.ip })
+        sessions = profile.sessions
+        let ips = sessions.map({ $0.ip })
 
-        if oldIps.isEmpty && !ips.isEmpty {
-            tableView.insertSections(IndexSet(integer: Section.sessions.rawValue), with: .automatic)
-        } else if !oldIps.isEmpty && ips.isEmpty {
-            tableView.deleteSections(IndexSet(integer: Section.sessions.rawValue), with: .automatic)
-        } else if !oldIps.isEmpty && !ips.isEmpty {
+        var rowsToReload: [IndexPath] = []
+        var rowsToDelete: [IndexPath] = []
+        var rowsToInsert: [IndexPath] = []
+        
+        for (index, oldIp) in oldIps.enumerated() {
+            let indexPath = IndexPath(row: index, section: 0)
             
-            var rowsToDelete: [IndexPath] = []
-            for (index, oldIp) in oldIps.enumerated() {
-                let indexPaths = self.indexPaths(for: index)
-                
-                if let index = ips.index(of: oldIp) {
-                    let cell = tableView.cellForRow(at: indexPaths.first!) as! SessionCell
-                    let session = sessions[index]
-                    
-                    cell.update(session: session, decimalUnits: account.configuration.decimalUnits)
-                    
-                    // Update detail cells if needed.
-                    for offset in 1..<min(indexPaths.count, SessionDetailCell.types + 1) {
-                        let cell = tableView.cellForRow(at: indexPaths[offset]) as! SessionDetailCell
-                        cell.update(session: session, offset: offset)
-                    }
-                } else {
-                    rowsToDelete.append(contentsOf: indexPaths)
-                }
+            if ips.contains(oldIp) {
+                rowsToReload.append(indexPath)
+            } else {
+                rowsToDelete.append(indexPath)
             }
-            
-            if expandedIndex > 0 {
-                if let index = ips.index(of: oldIps[expandedIndex]) {
-                    expandedIndex = index
-                } else {
-                    expandedIndex = -1
-                }
-            }
-            
-            var rowsToInsert: [IndexPath] = []
-            for (index, ip) in ips.enumerated() {
-                if !oldIps.contains(ip) {
-                    rowsToInsert.append(contentsOf: indexPaths(for: index))
-                }
-            }
-            
-            tableView.beginUpdates()
-            tableView.deleteRows(at: rowsToDelete, with: .automatic)
-            tableView.insertRows(at: rowsToInsert, with: .automatic)
-            tableView.endUpdates()
         }
+
+        for (index, ip) in ips.enumerated() {
+            if !oldIps.contains(ip) {
+                rowsToInsert.append(IndexPath(row: index, section: 0))
+            }
+        }
+        
+        tableView.beginUpdates()
+        tableView.reloadRows(at: rowsToReload, with: .fade)
+        tableView.deleteRows(at: rowsToDelete, with: .automatic)
+        tableView.insertRows(at: rowsToInsert, with: .automatic)
+        tableView.endUpdates()
     }
 
     override func viewDidLoad() {
@@ -162,7 +101,7 @@ class SessionsViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        self.reloadModel()
+        self.reload()
         
         NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)), name: .mainAccountChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)), name: .accountProfileUpdated, object: nil)
@@ -194,112 +133,30 @@ class SessionsViewController: UITableViewController {
             return
         }
         
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        delegate.setNetworkActivityIndicatorVisible(true)
-        
-        account.logoutSession(session: session, on: DispatchQueue.global(qos: .userInitiated)).always {
-            delegate.setNetworkActivityIndicatorVisible(false)
-        }
+        _  = account.logoutSession(session: session, on: DispatchQueue.global(qos: .userInitiated))
     }
     
     
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return (!sessions.isEmpty ? 1 : 0) + (canLoginIp ? 1 : 0)
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if sessions.isEmpty {
-            return 1
-        } else {
-            switch section {
-            case Section.sessions.rawValue:
-                return sessions.count + expandedHeight
-            case Section.newSession.rawValue:
-                return 1
-            default:
-                return 0
-            }
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return isSessionCell(indexPath: indexPath) ? 50 : 44
+        return sessions.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! SessionCell
         
-        if sessions.isEmpty || indexPath.section == Section.newSession.rawValue {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "loginIpCell", for: indexPath)
-            
-            return cell
-        } else {
-            switch indexPath.row {
-            case expansionRange:
-                let offset = indexPath.row - expandedIndex
-                if offset <= SessionDetailCell.types {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "sessionDetailCell", for: indexPath) as! SessionDetailCell
-                    
-                    cell.update(session: sessions[expandedIndex], offset: offset)
-                    
-                    return cell
-                } else {
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "logoutSessionCell", for: indexPath)
-                    
-                    return cell
-                }
-                
-            default:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! SessionCell
-                
-                cell.update(session: sessions[indexPath.row], decimalUnits: account?.configuration.decimalUnits ?? false)
-                
-                return cell
-            }
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        cell.update(session: sessions[indexPath.row], decimalUnits: account?.configuration.decimalUnits ?? false)
         
-        if !sessions.isEmpty && indexPath.section == Section.sessions.rawValue {
-            switch indexPath.row {
-            case expansionRange:
-                let offset = indexPath.row - expandedIndex
-                if offset > SessionDetailCell.types {
-                    logout(session: sessions[expandedIndex])
-                }
-                
-            default:
-                if expandedIndex < 0 {
-                    expandedIndex = indexPath.row
-                    tableView.insertRows(at: self.expandedIndexPaths, with: .top)
-                } else if expandedIndex == indexPath.row {
-                    let indexPaths = expandedIndexPaths
-                    expandedIndex = -1
-                    
-                    tableView.deleteRows(at: indexPaths, with: .top)
-                } else {
-                    let indexPathsToDelete = expandedIndexPaths
-                    if indexPath.row < expandedIndex {
-                        expandedIndex = indexPath.row
-                    } else {
-                        expandedIndex = indexPath.row - expandedHeight
-                    }
-                    let indexPathsToInsert = expandedIndexPaths
-                    
-                    tableView.beginUpdates()
-                    tableView.deleteRows(at: indexPathsToDelete, with: .top)
-                    tableView.insertRows(at: indexPathsToInsert, with: .top)
-                    tableView.endUpdates()
-                }
-            }
-        }
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return canLoginIp && isSessionCell(indexPath: indexPath)
+        return canLogoutSession
     }
     
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
@@ -308,11 +165,7 @@ class SessionsViewController: UITableViewController {
  
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            var index = indexPath.row
-            if indexPath.row > expandedIndex {
-                index -= expandedHeight
-            }
-            logout(session: sessions[index])
+            logout(session: sessions[indexPath.row])
         }
         
         tableView.setEditing(false, animated: true)
@@ -334,13 +187,21 @@ class SessionsViewController: UITableViewController {
      }
      */
     
-    /*
-      MARK: - Navigation
+    // MARK: - Navigation
      
-      In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      Get the new view controller using segue.destinationViewController.
-      Pass the selected object to the new view controller.
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //Get the new view controller using segue.destinationViewController.
+        //Pass the selected object to the new view controller.
+        if segue.identifier == "sessionDetail" {
+            let controller = segue.destination as! SessionDetailViewController
+            
+            controller.account = account!
+            controller.session = sessions[tableView.indexPathForSelectedRow!.row]
+        } else if segue.identifier == "loginIp" {
+            let controller = (segue.destination as! UINavigationController).topViewController as! LoginIpViewController
+            
+            controller.account = account!
+        }
      }
-     */
 }

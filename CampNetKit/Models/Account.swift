@@ -175,26 +175,6 @@ public class Account {
         }
     }
     
-    public var freeUsage: Int? {
-        guard let profile = profile,
-              let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""] else {
-            return nil
-        }
-        
-        return billingGroup.freeUsage
-    }
-    
-    public var maxUsage: Int? {
-        guard let profile = profile,
-              let balance = profile.balance,
-              let usage = profile.usage,
-              let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""] else {
-            return nil
-        }
-        
-        return billingGroup.maxUsage(balance: balance, usage: usage)
-    }
-    
     public fileprivate(set) var estimatedDailyUsage: Int? {
         get {
             return Defaults[.accountEstimatedDailyUsage(of: identifier)]
@@ -204,25 +184,6 @@ public class Account {
         }
     }
 
-    public var estimatedFee: Double? {
-        guard let profile = profile,
-              let usage = profile.usage,
-              let balance = profile.balance,
-              let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""],
-              let estimatedDailyUsage = estimatedDailyUsage else {
-            return nil
-        }
-        
-        let today = Date()
-        guard let maxDay = Calendar.current.range(of: .day, in: .month, for: today)?.upperBound else {
-            return nil
-        }
-        
-        let estimatedUsage = min(usage + estimatedDailyUsage * (maxDay - Calendar.current.component(.day, from: today)),
-                                 billingGroup.maxUsage(balance: balance, usage: usage))
-        return billingGroup.fee(at: estimatedUsage)
-    }
-    
     public fileprivate(set) var status: Status? {
         get {
             guard let vars = Defaults[.accountStatus(of: identifier)],
@@ -260,7 +221,7 @@ public class Account {
             let oldUsage = Profile(vars: oldVars ?? [:])?.usage ?? -1
             if let newUsage = newValue?.usage,
                let ratio = Defaults[.usageAlertRatio],
-               let maxUsage = maxUsage {
+               let maxUsage = maxUsage(profile: newValue) {
                 
                 let limit = Int(Double(maxUsage) * ratio)
                 if oldUsage < limit && newUsage >= limit {
@@ -544,6 +505,47 @@ public class Account {
     public func canManage(_ network: NEHotspotNetwork) -> Bool {
         return configuration.ssids.contains(network.ssid) && !network.isSecure && Defaults[.autoLogin]
     }
+    
+    
+    public func freeUsage(profile: Profile?) -> Int? {
+        guard let profile = profile,
+              let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""] else {
+            return nil
+        }
+        
+        return billingGroup.freeUsage
+    }
+    
+    public func maxUsage(profile: Profile?) -> Int? {
+        guard let profile = profile,
+              let balance = profile.balance,
+              let usage = profile.usage,
+              let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""] else {
+            return nil
+        }
+        
+        return billingGroup.maxUsage(balance: balance, usage: usage)
+    }
+    
+    public func estimatedFee(profile: Profile?) -> Double? {
+        guard let profile = profile,
+              let usage = profile.usage,
+              let balance = profile.balance,
+              let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""],
+              let estimatedDailyUsage = estimatedDailyUsage else {
+            return nil
+        }
+        
+        let today = Date()
+        guard let maxDay = Calendar.current.range(of: .day, in: .month, for: today)?.upperBound else {
+            return nil
+        }
+        
+        let estimatedUsage = min(usage + estimatedDailyUsage * (maxDay - Calendar.current.component(.day, from: today)),
+                                 billingGroup.maxUsage(balance: balance, usage: usage))
+        return billingGroup.fee(from: usage, to: estimatedUsage)
+    }
+    
 }
 
 extension Account: Hashable {

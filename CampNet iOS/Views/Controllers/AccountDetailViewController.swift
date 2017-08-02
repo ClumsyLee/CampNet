@@ -28,12 +28,8 @@ class AccountDetailViewController: UITableViewController {
     }
     
     @IBAction func refreshTable(_ sender: Any) {
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        
-        delegate.setNetworkActivityIndicatorVisible(true)
         account.profile(on: DispatchQueue.global(qos: .userInitiated)).always {
             self.tableView.refreshControl?.endRefreshing()
-            delegate.setNetworkActivityIndicatorVisible(false)
         }
     }
     
@@ -52,28 +48,31 @@ class AccountDetailViewController: UITableViewController {
         refreshTable(self)
     }
     
-    func reload(profile: Profile?) {
-        self.title = account.username
+    func reloadProfile() {
+        let profile = account.profile
         
-        self.name.text = profile?.name
-        self.billingGroup.text = account.configuration.billingGroups[profile?.billingGroupName ?? ""]?.displayName
+        name.text = profile?.name ?? " "
+        billingGroup.text = account.configuration.billingGroups[profile?.billingGroupName ?? ""]?.displayName ?? " "
         if let moneyString = profile?.balance?.moneyString {
-            self.balance.text = "¥ \(moneyString)"
+            balance.text = "¥ \(moneyString)"
         } else {
-            self.balance.text = nil
+            balance.text = " "
         }
-        self.usage.text = profile?.usage?.usageString(decimalUnits: account.configuration.decimalUnits)
+        usage.text = profile?.usage?.usageString(decimalUnits: account.configuration.decimalUnits) ?? " "
+    }
+    
+    func reload() {
+        navigationItem.title = account.username
         
-        tableView.reloadData()
+        reloadProfile()
     }
 
     func profileUpdated(_ notification: Notification) {
-        guard let account = notification.userInfo?["account"] as? Account, account == self.account,
-              let profile = notification.userInfo?["profile"] as? Profile else {
+        guard let account = notification.userInfo?["account"] as? Account, account == self.account else {
             return
         }
         
-        reload(profile: profile)
+        reloadProfile()
     }
     
     override func viewDidLoad() {
@@ -103,7 +102,7 @@ class AccountDetailViewController: UITableViewController {
             tableView.contentOffset = offset
         }
         
-        reload(profile: account.profile)
+        reload()
     }
 
     override func didReceiveMemoryWarning() {

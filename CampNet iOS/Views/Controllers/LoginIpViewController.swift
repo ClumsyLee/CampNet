@@ -14,6 +14,8 @@ class LoginIpViewController: UITableViewController {
     @IBOutlet var ipField: UITextField!
     @IBOutlet var doneButton: UIBarButtonItem!
     
+    var account: Account!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -110,13 +112,8 @@ class LoginIpViewController: UITableViewController {
         ipField.resignFirstResponder()
         
         if segue.identifier == "ipLoggedIn" {
-            if let account = Account.main, let ip = ipField.text {
-                let delegate = UIApplication.shared.delegate as! AppDelegate
-                delegate.setNetworkActivityIndicatorVisible(true)
-                
-                account.login(ip: ip, on: DispatchQueue.global(qos: .userInitiated)).always {
-                    delegate.setNetworkActivityIndicatorVisible(false)
-                }
+            if let ip = ipField.text {
+                _ = account.login(ip: ip, on: DispatchQueue.global(qos: .userInitiated))
             }
         }
     }

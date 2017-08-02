@@ -1,24 +1,29 @@
 //
-//  ConfigurationSetupViewController.swift
+//  SessionDetailViewController.swift
 //  CampNet iOS
 //
-//  Created by Thomas Lee on 2017/7/13.
+//  Created by Thomas Lee on 2017/7/30.
 //  Copyright © 2017年 Sihan Li. All rights reserved.
 //
 
 import UIKit
 import CampNetKit
 
-class ConfigurationSetupViewController: UITableViewController {
+class SessionDetailViewController: UITableViewController {
 
-    @IBOutlet fileprivate var usernameField: UITextField!
-    @IBOutlet var accountExistedLabel: UILabel!
-    @IBOutlet fileprivate var passwordField: UITextField!
-    @IBOutlet fileprivate var doneButton: UIBarButtonItem!
+    enum Section: Int {
+        case details
+        case logoutSession
+    }
     
-    var configurationIdentifier: String!
-    var configurationDisplayName: String!
-    var existedUsernames: Set<String>!
+    @IBOutlet var ip: UILabel!
+    @IBOutlet var id: UILabel!
+    @IBOutlet var startTime: UILabel!
+    @IBOutlet var usage: UILabel!
+    @IBOutlet var mac: UILabel!
+    
+    var account: Account!
+    var session: Session!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,36 +38,40 @@ class ConfigurationSetupViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationItem.title = configurationDisplayName
-        usernameField.text = ""
-        accountExistedLabel.isHidden = true
-        passwordField.text = ""
-        doneButton.isEnabled = false
+        navigationItem.title = session.device
+        if session.ip.isEmpty {
+            ip.text = " "
+        } else {
+            ip.text = session.ip
+        }
+        id.text = session.id ?? " "
+        if let startTime = session.startTime {
+            self.startTime.text = DateFormatter.localizedString(from: startTime, dateStyle: .medium, timeStyle: .short)
+        } else {
+            self.startTime.text = " "
+        }
+        usage.text = session.usage?.usageString(decimalUnits: account.configuration.decimalUnits) ?? " "
+        mac.text = session.mac ?? " "
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        usernameField.becomeFirstResponder()
-    }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
-
     /*
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        // #warning Incomplete implementation, return the number of sections
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        // #warning Incomplete implementation, return the number of rows
+        return 0
     }
     */
-
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -72,6 +81,26 @@ class ConfigurationSetupViewController: UITableViewController {
         return cell
     }
     */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == Section.logoutSession.rawValue {
+            let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            menu.view.tintColor = #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1)
+            
+            let deleteAction = UIAlertAction(title: NSLocalizedString("Logout Device", comment: "Logout device button on alerts."), style: .destructive) { action in
+                _ = self.account.logoutSession(session: self.session, on: DispatchQueue.global(qos: .userInitiated))
+                self.performSegue(withIdentifier: "sessionLoggedOut", sender: self)
+            }
+            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button on alerts."), style: .cancel, handler: nil)
+            
+            menu.addAction(deleteAction)
+            menu.addAction(cancelAction)
+            
+            present(menu, animated: true, completion: nil)
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -108,46 +137,14 @@ class ConfigurationSetupViewController: UITableViewController {
     }
     */
 
+    /*
     // MARK: - Navigation
 
-    @IBAction func doneButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "accountAdded", sender: self)
-    }
-    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
-        // Resign first responder no matter what.
-        usernameField.resignFirstResponder()
-        passwordField.resignFirstResponder()
-        
-        if segue.identifier == "accountAdded" {
-            if let username = usernameField.text {
-                Account.add(configurationIdentifier: configurationIdentifier, username: username, password: passwordField.text ?? "")
-            }
-        }
     }
+    */
 
-    // MARK: - UITextField
-    
-    @IBAction func usernameChanged(_ sender: Any) {
-        let username = usernameField.text ?? ""
-        let notExisted = !existedUsernames.contains(username)
-        doneButton.isEnabled = !username.isEmpty && notExisted
-        accountExistedLabel.isHidden = notExisted
-    }
-    
-    @IBAction func usernameEntered(_ sender: Any) {
-        if !existedUsernames.contains(usernameField.text ?? "") {
-            passwordField.becomeFirstResponder()
-        }
-    }
-    
-    @IBAction func passwordEntered(_ sender: Any) {
-        if doneButton.isEnabled {
-            performSegue(withIdentifier: "accountAdded", sender: self)
-        }
-    }
 }
