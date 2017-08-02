@@ -46,9 +46,7 @@ class OverviewViewController: UITableViewController {
     var refreshedAt: Date? = nil
 
     @IBAction func cancelSwitchingAccount(segue: UIStoryboardSegue) {}
-    @IBAction func accountSwitched(segue: UIStoryboardSegue) {
-        refreshIfNeeded()
-    }
+    @IBAction func accountSwitched(segue: UIStoryboardSegue) {}
     
     @IBAction func feedbackPressed(_ sender: Any) {
         Instabug.invoke()
