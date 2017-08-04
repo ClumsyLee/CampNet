@@ -171,7 +171,7 @@ class OverviewViewController: UITableViewController {
                 loginButton.strokeColor = .lightGray
                 loginButton.setStyle(.horizontalLine, animated: true)
                 
-                loginButtonCaption.text = NSLocalizedString("Offcampus", comment: "Login button caption.")
+                loginButtonCaption.text = NSLocalizedString("Off-campus", comment: "Login button caption.")
             }
         } else {
             loginButton.isEnabled = false

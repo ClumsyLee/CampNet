@@ -74,7 +74,7 @@
 "Logout \"%@\"" = "下线 “%@”";
 
 /* Login button caption. */
-"Offcampus" = "非校园网";
+"Off-campus" = "非校园网";
 
 /* Login button caption. */
 "Logging In…" = "上线中…";
