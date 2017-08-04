@@ -89,7 +89,15 @@ class OverviewViewController: UITableViewController {
         
         loginButtonCaption.text = NSLocalizedString("Logging In…", comment: "Login button caption.")
         
-        _ = account.login(on: DispatchQueue.global(qos: .userInitiated))
+        account.login(on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
+            // Update the profile in the background if possible.
+            if account.configuration.actions[.profile] != nil {
+                _ = account.profile()
+            }
+        }
+        .catch { _ in
+            self.reloadStatus()
+        }
     }
     
     func logout() {
@@ -102,7 +110,9 @@ class OverviewViewController: UITableViewController {
         
         loginButtonCaption.text = NSLocalizedString("Logging Out…", comment: "Login button caption.")
         
-        _ = account.logout(on: DispatchQueue.global(qos: .userInitiated))
+        account.logout(on: DispatchQueue.global(qos: .userInitiated)).catch { _ in
+            self.reloadStatus()
+        }
     }
     
     func refreshIfNeeded() {

@@ -9,13 +9,30 @@
 import UIKit
 import CampNetKit
 
-class SessionCell: UITableViewCell {
+enum SessionType {
+    case normal
+    case current
+    case expired
+}
 
+class SessionCell: UITableViewCell {
     @IBOutlet var device: UILabel!
     @IBOutlet var startTime: UILabel!
     @IBOutlet var usage: UILabel!
     
-    func update(session: Session, decimalUnits: Bool) {
+    var type: SessionType = .normal {
+        didSet {
+            let color: UIColor
+            switch type {
+            case .normal: color = .darkText
+            case .current: color = #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1)
+            case .expired: color = #colorLiteral(red: 1, green: 0.3300932944, blue: 0.2421161532, alpha: 1)
+            }
+            device.textColor = color
+        }
+    }
+    
+    func update(session: Session, type: SessionType, decimalUnits: Bool) {
         device.text = session.device ?? session.ip
         if let time = session.startTime {
             let formatter = DateComponentsFormatter()
@@ -29,6 +46,7 @@ class SessionCell: UITableViewCell {
         }
         usage.text = session.usage?.usageString(decimalUnits: decimalUnits)
         
+        self.type = type
     }
     
     override func awakeFromNib() {

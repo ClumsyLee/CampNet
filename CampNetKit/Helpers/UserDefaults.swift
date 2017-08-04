@@ -26,4 +26,5 @@ extension DefaultsKeys {
     static func accountProfile(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountProfile") }
     static func accountHistory(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountHistory") }
     static func accountEstimatedDailyUsage(of id: String) -> DefaultsKey<Int?> { return DefaultsKey<Int?>("\(id).accountEstimatedDailyUsage") }
+    static func accountPastIps(of id: String) -> DefaultsKey<[String]> { return DefaultsKey<[String]>("\(id).accountPastIps") }
 }

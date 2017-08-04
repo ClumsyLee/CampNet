@@ -31,6 +31,7 @@
 		0F52FE121F29F1C800A88E90 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F52FE111F29F1C800A88E90 /* SettingsViewController.swift */; };
 		0F56148C1F31A167008A1232 /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F56148B1F31A167008A1232 /* SessionDetailViewController.swift */; };
 		0F56148E1F31A18C008A1232 /* SessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F56148D1F31A18C008A1232 /* SessionsViewController.swift */; };
+		0F5614951F31DEA2008A1232 /* WifiAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5614941F31DEA2008A1232 /* WifiAddress.swift */; };
 		0F5EB7251F17AF0F003094DE /* ConfigurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EB7241F17AF0F003094DE /* ConfigurationCell.swift */; };
 		0F5EB7271F17B03B003094DE /* ConfigurationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EB7261F17B03B003094DE /* ConfigurationsViewController.swift */; };
 		0F5EB7291F17B06F003094DE /* ConfigurationSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EB7281F17B06F003094DE /* ConfigurationSetupViewController.swift */; };
@@ -105,6 +106,7 @@
 		0F52FE111F29F1C800A88E90 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Views/Controllers/SettingsViewController.swift; sourceTree = "<group>"; };
 		0F56148B1F31A167008A1232 /* SessionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDetailViewController.swift; path = Views/Controllers/SessionDetailViewController.swift; sourceTree = "<group>"; };
 		0F56148D1F31A18C008A1232 /* SessionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionsViewController.swift; path = Views/Controllers/SessionsViewController.swift; sourceTree = "<group>"; };
+		0F5614941F31DEA2008A1232 /* WifiAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WifiAddress.swift; path = Helpers/WifiAddress.swift; sourceTree = "<group>"; };
 		0F5EB7241F17AF0F003094DE /* ConfigurationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationCell.swift; path = Views/Cells/ConfigurationCell.swift; sourceTree = "<group>"; };
 		0F5EB7261F17B03B003094DE /* ConfigurationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationsViewController.swift; path = Views/Controllers/ConfigurationsViewController.swift; sourceTree = "<group>"; };
 		0F5EB7281F17B06F003094DE /* ConfigurationSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationSetupViewController.swift; path = Views/Controllers/ConfigurationSetupViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				0F464C781F14A61600C2F58B /* UserDefaults.swift */,
+				0F5614941F31DEA2008A1232 /* WifiAddress.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 				0F464C651F13ED0F00C2F58B /* StringExtensions.swift in Sources */,
 				0F464C741F1415A000C2F58B /* CollectionExtensions.swift in Sources */,
 				0F464C581F13AD7900C2F58B /* Configuration.swift in Sources */,
+				0F5614951F31DEA2008A1232 /* WifiAddress.swift in Sources */,
 				0F464C5C1F13CB1100C2F58B /* Action.swift in Sources */,
 				0F7A93FB1F25E34C0093B3FA /* DoubleExtensions.swift in Sources */,
 				0F464C5A1F13C50500C2F58B /* Account.swift in Sources */,

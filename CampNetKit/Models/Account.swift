@@ -10,6 +10,7 @@ import Foundation
 import NetworkExtension
 import UserNotifications
 
+import NetUtils
 import KeychainAccess
 import PromiseKit
 import SwiftyUserDefaults
@@ -193,6 +194,15 @@ public class Account {
         }
         set {
             Defaults[.accountEstimatedDailyUsage(of: identifier)] = newValue
+        }
+    }
+    
+    public fileprivate(set) var pastIps: [String] {
+        get {
+            return Defaults[.accountPastIps(of: identifier)]
+        }
+        set {
+            Defaults[.accountPastIps(of: identifier)] = newValue
         }
     }
 
@@ -379,6 +389,12 @@ public class Account {
                 print("No profile in vars (\(vars)).")
                 throw CampNetError.invalidConfiguration
             }
+            // Logout expired sessions if needed.
+            // Do not perform in subactions to avoid recursions.
+            if let sessions = profile.sessions, !isSubaction {
+                self.updatePastIps(sessions: sessions, on: queue)
+            }
+            
             self.profile = profile
             return profile
         }
@@ -564,6 +580,28 @@ public class Account {
         return billingGroup.fee(from: usage, to: estimatedUsage)
     }
     
+    fileprivate func updatePastIps(sessions: [Session], on queue: DispatchQueue) {
+        let ips = sessions.map { $0.ip }
+        let currentIp = wifiIp()
+        
+        var ipsToLogout = pastIps.filter { ips.contains($0) && $0 != currentIp }
+        
+        if configuration.actions[.logoutSession] != nil, Defaults[.autoLogoutExpiredSessions] {
+            var promise = Promise<Void>(value: ())
+            for session in sessions {
+                if ipsToLogout.contains(session.ip) {
+                    promise = promise.then(on: queue) {
+                        return self.logoutSession(session: session, on: queue)
+                    }
+                }
+            }
+        }
+        
+        if let currentIp = currentIp {
+            ipsToLogout.append(currentIp)
+        }
+        pastIps = ipsToLogout
+    }
 }
 
 extension Account: Hashable {

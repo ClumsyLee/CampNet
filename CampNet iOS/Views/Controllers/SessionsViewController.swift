@@ -15,6 +15,8 @@ class SessionsViewController: UITableViewController {
     
     var account: Account?
     var sessions: [Session] = []
+    var pastIps: [String] = []
+    var currentIp: String? = nil
     
     var canLoginIp: Bool {
         return account?.configuration.actions[.loginIp] != nil
@@ -40,6 +42,8 @@ class SessionsViewController: UITableViewController {
     
     func reloadSessions() {
         sessions = account?.profile?.sessions ?? []
+        pastIps = account?.pastIps ?? []
+        currentIp = wifiIp()
     }
     
     func reload() {
@@ -147,8 +151,17 @@ class SessionsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell", for: indexPath) as! SessionCell
+        let session = sessions[indexPath.row]
         
-        cell.update(session: sessions[indexPath.row], decimalUnits: account?.configuration.decimalUnits ?? false)
+        let type: SessionType
+        if session.ip == currentIp {
+            type = .current
+        } else if pastIps.contains(session.ip) {
+            type = .expired
+        } else {
+            type = .normal
+        }
+        cell.update(session: session, type: type, decimalUnits: account?.configuration.decimalUnits ?? false)
         
         return cell
     }

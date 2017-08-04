@@ -10,6 +10,7 @@ target 'CampNetKit' do
   pod 'CryptoSwift'
   pod 'Kanna'
   pod 'KeychainAccess'
+  pod 'NetUtils'
   pod 'PromiseKit'
   pod 'SwiftyUserDefaults'
   pod 'Yaml'
