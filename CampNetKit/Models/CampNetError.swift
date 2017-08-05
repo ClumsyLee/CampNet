@@ -8,19 +8,40 @@
 
 import Foundation
 
-public enum CampNetError: String, Error {
+public enum CampNetError: Error {
     case offcampus
     case unauthorized
     case arrears
     
     case networkError
-    case invalidArguments
     case invalidConfiguration
     case internalError
-    case unknown
+    case unknown(String)
     
     public var localizedDescription: String {
-        return Configuration.bundle.localizedString(forKey: rawValue, value: nil, table: nil)
+        let key: String
+        var argument: String? = nil
+        
+        switch self {
+        case .offcampus: key = "offcampus"
+        case .unauthorized: key = "unauthorized"
+        case .arrears: key = "arrears"
+
+        case .networkError: key = "networkError"
+        case .invalidConfiguration: key = "invalidConfiguration"
+        case .internalError: key = "internalError"
+            
+        case let .unknown(detail):
+            key = "unknown"
+            argument = detail
+        }
+        
+        let formatString = Configuration.bundle.localizedString(forKey: key, value: nil, table: nil)
+        if let argument = argument {
+            return String.localizedStringWithFormat(formatString, argument)
+        } else {
+            return formatString
+        }
     }
     
     init?(identifier: String) {
@@ -30,11 +51,14 @@ public enum CampNetError: String, Error {
         case "arrears": self = .arrears
             
         case "network_error": self = .networkError
-        case "invalid_arguments": self = .invalidArguments
         case "invalid_configuration": self = .invalidConfiguration
         case "internal_error": self = .internalError
-        case "unknown": self = .unknown
-        default: return nil
+        default:
+            if let detail = identifier.chopPrefix("unknown: ") {
+                self = .unknown(detail)
+            } else {
+                return nil
+            }
         }
     }
 }

@@ -11,7 +11,6 @@
 "unauthorized" = "Invalid username or password, please change the account password in \"Accounts\".";
 "arrears" = "The account is in arrears.";
 "networkError" = "Network error, please try again later.";
-"invalidArguments" = "Invalid arguments.";
 "invalidConfiguration" = "Invalid configuration file, please contact the developer.";
 "internalError" = "Internal error, please contact the developer.";
-"unknown" = "Unknown error.";
+"unknown" = "Unknown error: %@";

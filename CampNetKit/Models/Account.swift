@@ -333,7 +333,7 @@ public class Account {
         }
         .then(on: queue) { status -> Void in
             guard case .online = status.type else {
-                throw CampNetError.unknown
+                throw CampNetError.unknown("Login action finished successfully, but status check failed.")
             }
         }
         .recover(on: queue) { error -> Void in
@@ -423,7 +423,7 @@ public class Account {
                     // Check sessions if possible.
                     if let sessions = profile.sessions {
                         guard sessions.map({ $0.ip }).contains(ip) else {
-                            throw CampNetError.unknown
+                            throw CampNetError.unknown("Login IP action finished successfully, but profile check failed.")
                         }
                     }
                 }
@@ -455,7 +455,7 @@ public class Account {
             // Check sessions if possible.
             if let sessions = profile.sessions {
                 guard !sessions.map({ $0.ip }).contains(session.ip) else {
-                    throw CampNetError.unknown
+                    throw CampNetError.unknown("Logout session action finished successfully, but profile check failed.")
                 }
             }
         }
@@ -506,7 +506,7 @@ public class Account {
         }
         .then(on: queue) { status -> Void in
             guard case .offline = status.type else {
-                throw CampNetError.unknown
+                throw CampNetError.unknown("Logout action finished successfully, but status check failed.")
             }
         }
         .recover(on: queue) { error -> Void in

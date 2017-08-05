@@ -38,4 +38,12 @@ extension String {
     var trimmed: String {
         return trimmingCharacters(in: .whitespacesAndNewlines)
     }
+    
+    func chopPrefix(_ prefix: String) -> String? {
+        if hasPrefix(prefix) {
+            return substring(from: index(startIndex, offsetBy: prefix.characters.count))
+        } else {
+            return nil
+        }
+    }
 }
