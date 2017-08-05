@@ -37,6 +37,7 @@ class OverviewViewController: UITableViewController {
     var status: Status? = nil
     var profile: Profile? = nil
     var history: History? = nil
+    var ssid: String = ""
     
     var usageSumDataset = LineChartDataSet(values: [], label: nil)
     var usageSumEndDataset = LineChartDataSet(values: [], label: nil)
@@ -161,7 +162,7 @@ class OverviewViewController: UITableViewController {
                 
                 loginButtonCaption.text = NSLocalizedString("Login", comment: "Login button caption.")
                 
-                if Defaults[.autoLogin] {
+                if account?.canManage(ssid: ssid) == true {
                     login()
                 }
                 
@@ -182,8 +183,14 @@ class OverviewViewController: UITableViewController {
             loginButtonCaption.text = NSLocalizedString("Unknown", comment: "Login button caption.")
         }
 
-        let ssid = (NEHotspotHelper.supportedNetworkInterfaces().first as? NEHotspotNetwork)?.ssid ?? ""
-        network.text = ssid.isEmpty ? "-": ssid
+        ssid = (NEHotspotHelper.supportedNetworkInterfaces().first as? NEHotspotNetwork)?.ssid ?? ""
+        if ssid.isEmpty {
+            network.text = "-"
+            networkButton.isEnabled = false
+        } else {
+            network.text = ssid
+            networkButton.isEnabled = true
+        }
     }
 
     func reloadProfile() {
@@ -422,6 +429,14 @@ class OverviewViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.bounds.height - tableView.contentInset.top
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "network" {
+            let controller = segue.destination as! NetworkViewController
+            controller.account = account
+            controller.ssid = ssid
+        }
     }
 }
 

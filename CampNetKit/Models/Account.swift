@@ -48,7 +48,7 @@ public class Account {
             
             var knownList: [NEHotspotNetwork] = []
             for network in networkList {
-                if account.canManage(network) {
+                if account.canManage(network: network) {
                     network.setConfidence(.low)
                     knownList.append(network)
                 }
@@ -63,7 +63,7 @@ public class Account {
             guard let network = command.network else {
                 return
             }
-            guard let account = Account.main, account.canManage(network) else {
+            guard let account = Account.main, account.canManage(network: network) else {
                 network.setConfidence(.none)
                 let response = command.createResponse(.success)
                 response.setNetwork(network)
@@ -95,7 +95,7 @@ public class Account {
             guard let network = command.network else {
                 return
             }
-            guard let account = Account.main, account.canManage(network) else {
+            guard let account = Account.main, account.canManage(network: network) else {
                 command.createResponse(.unsupportedNetwork).deliver()
                 return
             }
@@ -117,7 +117,7 @@ public class Account {
             guard let network = command.network else {
                 return
             }
-            guard let account = Account.main, account.canManage(network) else {
+            guard let account = Account.main, account.canManage(network: network) else {
                 command.createResponse(.failure).deliver()
                 return
             }
@@ -147,7 +147,7 @@ public class Account {
             guard let network = command.network else {
                 return
             }
-            guard let account = Account.main, account.canManage(network) else {
+            guard let account = Account.main, account.canManage(network: network) else {
                 command.createResponse(.failure).deliver()
                 return
             }
@@ -536,10 +536,15 @@ public class Account {
         return when(resolved: promises).asVoid()
     }
     
-    public func canManage(_ network: NEHotspotNetwork) -> Bool {
-        return configuration.ssids.contains(network.ssid) && !network.isSecure && Defaults[.autoLogin]
+    public func canManage(ssid: String) -> Bool {
+        return (configuration.ssids.contains(ssid) ||
+                Defaults[.onCampus(id: configuration.identifier, ssid: ssid)]) &&
+               Defaults[.autoLogin]
     }
     
+    public func canManage(network: NEHotspotNetwork) -> Bool {
+        return !network.isSecure && canManage(ssid: network.ssid)
+    }
     
     public func freeUsage(profile: Profile?) -> Int? {
         guard let profile = profile,

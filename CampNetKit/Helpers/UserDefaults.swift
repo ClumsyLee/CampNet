@@ -18,6 +18,8 @@ extension DefaultsKeys {
     public static let autoLogoutExpiredSessions = DefaultsKey<Bool>("autoLogoutExpiredSessions")
     public static let usageAlertRatio = DefaultsKey<Double?>("usageAlertRatio")
     
+    public static func onCampus(id: String, ssid: String) -> DefaultsKey<Bool> { return DefaultsKey<Bool>("\(id).\(ssid).onCampus") }
+    
     static let mainAccount = DefaultsKey<String?>("mainAccount")
     static let accounts = DefaultsKey<[String]>("accounts")
     

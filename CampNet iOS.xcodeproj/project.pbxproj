@@ -16,6 +16,7 @@
 		0F1ED5D31F138832004A6C1F /* CampNetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; };
 		0F1ED5D41F138832004A6C1F /* CampNetKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0F2F67891F223F6B004CEF44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F2F678B1F223F6B004CEF44 /* Localizable.strings */; };
+		0F3465701F34D80A008E329F /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34656F1F34D80A008E329F /* NetworkViewController.swift */; };
 		0F3685161F1A5C6B0056AED1 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3685151F1A5C6B0056AED1 /* ChangePasswordViewController.swift */; };
 		0F3685191F1A7B290056AED1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F36851B1F1A7B290056AED1 /* Localizable.strings */; };
 		0F464C581F13AD7900C2F58B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C571F13AD7900C2F58B /* Configuration.swift */; };
@@ -90,6 +91,7 @@
 		0F1ED5CF1F138832004A6C1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F2F678A1F223F6B004CEF44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0F2F678C1F223F6C004CEF44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		0F34656F1F34D80A008E329F /* NetworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkViewController.swift; path = Views/Controllers/NetworkViewController.swift; sourceTree = "<group>"; };
 		0F3685151F1A5C6B0056AED1 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = Views/Controllers/ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		0F36851A1F1A7B290056AED1 /* Base */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0F36851C1F1A7B3F0056AED1 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				0F52FE111F29F1C800A88E90 /* SettingsViewController.swift */,
 				0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */,
 				0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */,
+				0F34656F1F34D80A008E329F /* NetworkViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				0F14E7771E2E3AAC0092494B /* OverviewViewController.swift in Sources */,
 				0F56148C1F31A167008A1232 /* SessionDetailViewController.swift in Sources */,
 				0FF7563F1F2A175600B2429A /* UsageAlertViewController.swift in Sources */,
+				0F3465701F34D80A008E329F /* NetworkViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

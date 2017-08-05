@@ -66,6 +66,9 @@
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J55-4c-zhh">
                                                     <rect key="frame" x="0.0" y="190" width="147.5" height="58"/>
+                                                    <connections>
+                                                        <segue destination="jqA-PI-eoz" kind="show" identifier="network" id="SUK-ga-fMK"/>
+                                                    </connections>
                                                 </button>
                                                 <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="tAO-Ij-9Vs">
                                                     <rect key="frame" x="8" y="140.5" width="139.5" height="99"/>
@@ -627,7 +630,7 @@
         <!--Device Detail-->
         <scene sceneID="ona-26-OV1">
             <objects>
-                <tableViewController title="iPhone" id="DAi-w4-MYy" userLabel="Device Detail" customClass="SessionDetailViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="DAi-w4-MYy" userLabel="Device Detail" customClass="SessionDetailViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="8Xw-1F-Gpi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -784,6 +787,7 @@
                             <outlet property="delegate" destination="DAi-w4-MYy" id="6vf-xS-Ar4"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="iPhone" id="mDB-mw-Sof"/>
                     <connections>
                         <outlet property="id" destination="EhS-oQ-jTz" id="En7-lO-hzg"/>
                         <outlet property="ip" destination="GY5-DR-kzJ" id="NDT-KH-u1l"/>
@@ -995,7 +999,7 @@
         <!--Account Detail-->
         <scene sceneID="oj2-gQ-aPN">
             <objects>
-                <tableViewController title="lisihan13" id="3Ot-z7-Jc8" userLabel="Account Detail" customClass="AccountDetailViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="3Ot-z7-Jc8" userLabel="Account Detail" customClass="AccountDetailViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="ruR-DY-XMP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1152,6 +1156,7 @@
                             <outlet property="delegate" destination="3Ot-z7-Jc8" id="Et4-JL-bRg"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="lisihan13" id="XU5-h4-kRo"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="3N7-st-DH2">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1433,6 +1438,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7SX-6l-TAq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="735" y="-322"/>
+        </scene>
+        <!--Tsinghua-5G-->
+        <scene sceneID="f4J-79-FEk">
+            <objects>
+                <tableViewController id="jqA-PI-eoz" customClass="NetworkViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="LCu-9P-yI3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection footerTitle="&quot;Auto Login&quot; will only be enabled in networks marked as &quot;On Campus&quot;." id="aQ1-I3-iDE">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="xi9-tb-rvd">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xi9-tb-rvd" id="4NA-0C-Fp8">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g3K-fP-64I">
+                                                    <rect key="frame" x="15" y="6.5" width="342" height="31"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Campus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHb-VQ-txu">
+                                                            <rect key="frame" x="0.0" y="0.0" width="293" height="31"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aMD-ge-EVP">
+                                                            <rect key="frame" x="293" y="0.0" width="51" height="31"/>
+                                                            <connections>
+                                                                <action selector="autoLoginChanged:" destination="eSM-KM-bTD" eventType="valueChanged" id="BBK-b7-0Qk"/>
+                                                                <action selector="onCampusChanged:" destination="jqA-PI-eoz" eventType="valueChanged" id="dRf-vQ-1eW"/>
+                                                            </connections>
+                                                        </switch>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="g3K-fP-64I" firstAttribute="centerY" secondItem="4NA-0C-Fp8" secondAttribute="centerY" id="GCd-BQ-chU"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="g3K-fP-64I" secondAttribute="trailing" constant="10" id="IMj-uq-k9A"/>
+                                                <constraint firstItem="g3K-fP-64I" firstAttribute="leading" secondItem="4NA-0C-Fp8" secondAttribute="leadingMargin" constant="7" id="PVf-3T-ZNS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="jqA-PI-eoz" id="f7B-En-I1g"/>
+                            <outlet property="delegate" destination="jqA-PI-eoz" id="kBB-Oo-LLr"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Tsinghua-5G" id="8CI-YN-nRB"/>
+                    <connections>
+                        <outlet property="onCampusSwitch" destination="aMD-ge-EVP" id="gIw-0b-oA4"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JSG-Eb-UNw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="734" y="385"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Nv2-24-9Ht">
