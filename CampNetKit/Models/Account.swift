@@ -322,13 +322,16 @@ public class Account {
     
     public func login(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
 
-        guard let action = configuration.actions[.login] else {
-            print("Login action not found in \(configuration.identifier).")
-            return Promise(error: CampNetError.invalidConfiguration)
+        return firstly { () -> Promise<[String: Any]> in
+            guard let action = configuration.actions[.login] else {
+                print("Login action not found in \(configuration.identifier).")
+                throw CampNetError.invalidConfiguration
+            }
+            print("Logging in for \(identifier).")
+            
+            return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder)
         }
-        print("Logging in for \(identifier).")
-        
-        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { _ in
+        .then(on: queue) { _ in
             return self.status(isSubaction: true, on: queue, requestBinder: requestBinder)
         }
         .then(on: queue) { status -> Void in
@@ -347,14 +350,16 @@ public class Account {
     
     public func status(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Status> {
         
-        guard let action = configuration.actions[.status] else {
-            print("Status action not found in \(configuration.identifier).")
-            return Promise(error: CampNetError.invalidConfiguration)
-        }
-        print("Updating status for \(identifier).")
-        
-        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { vars -> Status in
+        return firstly { () -> Promise<[String: Any]> in
+            guard let action = configuration.actions[.status] else {
+                print("Status action not found in \(configuration.identifier).")
+                throw CampNetError.invalidConfiguration
+            }
+            print("Updating status for \(identifier).")
             
+            return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder)
+        }
+        .then(on: queue) { vars -> Status in
             guard let status = Status(vars: vars) else {
                 print("No status in vars (\(vars)).")
                 throw CampNetError.invalidConfiguration
@@ -379,14 +384,16 @@ public class Account {
     
     public func profile(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Profile> {
         
-        guard let action = configuration.actions[.profile] else {
-            print("Profile action not found in \(configuration.identifier).")
-            return Promise(error: CampNetError.invalidConfiguration)
+        return firstly { () -> Promise<[String: Any]> in
+            guard let action = configuration.actions[.profile] else {
+                print("Profile action not found in \(configuration.identifier).")
+                throw CampNetError.invalidConfiguration
+            }
+            print("Updating profile for \(identifier).")
+            
+            return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder)
         }
-        print("Updating profile for \(identifier).")
-        
-        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { vars -> Profile in
-
+        .then(on: queue) { vars -> Profile in
             guard let profile = Profile(vars: vars) else {
                 print("No profile in vars (\(vars)).")
                 throw CampNetError.invalidConfiguration
@@ -411,13 +418,16 @@ public class Account {
     
     public func login(ip: String, isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
         
-        guard let action = configuration.actions[.loginIp] else {
-            print("LoginIp action not found in \(configuration.identifier).")
-            return Promise(error: CampNetError.invalidConfiguration)
+        return firstly { () -> Promise<[String: Any]> in
+            guard let action = configuration.actions[.loginIp] else {
+                print("LoginIp action not found in \(configuration.identifier).")
+                throw CampNetError.invalidConfiguration
+            }
+            print("Logging in IP \(ip) for \(identifier).")
+            
+            return action.commit(username: username, password: password, extraVars: ["ip": ip], on: queue, requestBinder: requestBinder)
         }
-        print("Logging in IP \(ip) for \(identifier).")
-        
-        return action.commit(username: username, password: password, extraVars: ["ip": ip], on: queue, requestBinder: requestBinder).then(on: queue) { _ in
+        .then(on: queue) { _ in
             if self.configuration.actions[.profile] != nil {
                 return self.profile(isSubaction: true, on: queue, requestBinder: requestBinder).then(on: queue) { profile -> Void in
                     // Check sessions if possible.
@@ -442,13 +452,16 @@ public class Account {
     
     public func logoutSession(session: Session, isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
         
-        guard let action = configuration.actions[.logoutSession] else {
-            print("LogoutSession action not found in \(configuration.identifier).")
-            return Promise(error: CampNetError.invalidConfiguration)
+        return firstly { () -> Promise<[String: Any]> in
+            guard let action = configuration.actions[.logoutSession] else {
+                print("LogoutSession action not found in \(configuration.identifier).")
+                throw CampNetError.invalidConfiguration
+            }
+            print("Logging out \(session) for \(identifier).")
+            
+            return action.commit(username: username, password: password, extraVars: ["ip": session.ip, "id": session.id ?? ""], on: queue, requestBinder: requestBinder)
         }
-        print("Logging out \(session) for \(identifier).")
-        
-        return action.commit(username: username, password: password, extraVars: ["ip": session.ip, "id": session.id ?? ""], on: queue, requestBinder: requestBinder).then(on: queue) { _ in
+        .then(on: queue) { _ in
             return self.profile(isSubaction: true, on: queue, requestBinder: requestBinder)
         }
         .then(on: queue) { profile -> Void in
@@ -470,13 +483,16 @@ public class Account {
     
     public func history(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<History> {
         
-        guard let action = configuration.actions[.history] else {
-            print("History action not found in \(configuration.identifier).")
-            return Promise(error: CampNetError.invalidConfiguration)
+        return firstly { () -> Promise<[String: Any]> in
+            guard let action = configuration.actions[.history] else {
+                print("History action not found in \(configuration.identifier).")
+                throw CampNetError.invalidConfiguration
+            }
+            print("Fetching history for \(identifier).")
+            
+            return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder)
         }
-        print("Fetching history for \(identifier).")
-        
-        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { vars -> History in
+        .then(on: queue) { vars -> History in
             guard let history = History(vars: vars) else {
                 print("No history in vars (\(vars)).")
                 throw CampNetError.invalidConfiguration
@@ -495,13 +511,16 @@ public class Account {
     
     public func logout(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
         
-        guard let action = configuration.actions[.logout] else {
-            print("Logout action not found in \(configuration.identifier).")
-            return Promise(error: CampNetError.invalidConfiguration)
+        return firstly { () -> Promise<[String: Any]> in
+            guard let action = configuration.actions[.logout] else {
+                print("Logout action not found in \(configuration.identifier).")
+                throw CampNetError.invalidConfiguration
+            }
+            print("Logging out for \(identifier).")
+            
+            return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder)
         }
-        print("Logging out for \(identifier).")
-        
-        return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder).then(on: queue) { _ in
+        .then(on: queue) { _ in
             return self.status(isSubaction: true, on: queue, requestBinder: requestBinder)
         }
         .then(on: queue) { status -> Void in
