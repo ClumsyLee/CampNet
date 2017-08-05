@@ -77,8 +77,29 @@ class OverviewViewController: UITableViewController {
         }
         
         switch status.type {
-        case .online: logout()
-        case .offline: login()
+        case .online:
+            logout()
+        case .offline:
+            if let account = account, let network = network,
+               !account.configuration.ssids.contains(network.ssid),
+               !Defaults[.onCampus(id: account.configuration.identifier, ssid: network.ssid)] {
+                // Manually logging into an unknown network.
+                
+                let menu = UIAlertController(title: String.localizedStringWithFormat(NSLocalizedString("Do You Want to Mark \"%@\" as \"On Campus\"?", comment: "Title on alerts."), network.ssid), message: NSLocalizedString("\"Auto Login\" will only be effective in networks marked as \"On Campus\".", comment: "Message on alerts."), preferredStyle: .actionSheet)
+                menu.view.tintColor = #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1)
+                
+                let markAction = UIAlertAction(title: NSLocalizedString("Mark As \"On Campus\"", comment: "Mark as on campus button on alerts."), style: .default) { action in
+                    Defaults[.onCampus(id: account.configuration.identifier, ssid: network.ssid)] = true
+                }
+                let laterAction = UIAlertAction(title: NSLocalizedString("Later", comment: "Later button on alerts."), style: .cancel, handler: nil)
+                
+                menu.addAction(markAction)
+                menu.addAction(laterAction)
+                
+                present(menu, animated: true, completion: nil)
+            }
+            
+            login()
         default: return
         }
     }

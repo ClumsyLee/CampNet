@@ -1524,7 +1524,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection footerTitle="&quot;Auto Login&quot; will only be enabled in networks marked as &quot;On Campus&quot;." id="Tm8-iG-baP">
+                            <tableViewSection footerTitle="&quot;Auto Login&quot; will only be effective in networks marked as &quot;On Campus&quot;." id="Tm8-iG-baP">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="25c-53-UgV">
                                         <rect key="frame" x="0.0" y="203" width="375" height="44"/>

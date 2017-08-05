@@ -13,6 +13,18 @@
 /* Logout device button on alerts. */
 "Logout Device" = "Logout Device";
 
+/* Title on alerts. */
+"Do You Want to Mark \"%@\" as \"On Campus\"?" = "Do You Want to Mark \"%@\" as \"On Campus\"?";
+
+/* Message on alerts. */
+"\"Auto Login\" will only be effective in networks marked as \"On Campus\"." = "\"Auto Login\" will only be effective in networks marked as \"On Campus\".";
+
+/* Mark as on campus button on alerts. */
+"Mark As \"On Campus\"" = "Mark As \"On Campus\"";
+
+/* Later button on alerts. */
+"Later" = "Later";
+
 /* Alert title when failed to login. */
 "Unable to Login \"%@\"" = "Unable to Login \"%@\"";
 

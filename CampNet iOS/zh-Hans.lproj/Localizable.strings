@@ -16,6 +16,18 @@
 /* Logout device button on alerts. */
 "Logout Device" = "下线设备";
 
+/* Title on alerts. */
+"Do You Want to Mark \"%@\" as \"On Campus\"?" = "您要将 “%@” 标记为 “校园内” 吗？";
+
+/* Message on alerts. */
+"\"Auto Login\" will only be effective in networks marked as \"On Campus\"." = "“自动登录” 只会在标记为 “校园内” 的网络中生效。";
+
+/* Mark as on campus button on alerts. */
+"Mark As \"On Campus\"" = "标记为 “校园内”";
+
+/* Later button on alerts. */
+"Later" = "以后";
+
 /* Alert title when failed to login. */
 "Unable to Login \"%@\"" = "无法上线 “%@”";
 
