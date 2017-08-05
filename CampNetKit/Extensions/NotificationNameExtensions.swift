@@ -25,4 +25,6 @@ extension Notification.Name {
     public static let accountLoginIpError = Notification.Name("accountLoginIpError")
     public static let accountLogoutSessionError = Notification.Name("accountLogoutSessionError")
     public static let accountHistoryError = Notification.Name("accountHistoryError")
+    
+    public static let accountUsageAlert = Notification.Name("accountUsageAlert")
 }

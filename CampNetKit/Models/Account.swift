@@ -258,16 +258,10 @@ public class Account {
                 let limit = Int(Double(maxUsage) * ratio)
                 if oldUsage < limit && newUsage >= limit {
                     // Should send.
-                    let percentage = Int((Double(newUsage) / Double(maxUsage)) * 100.0)
-                    let usageLeft = (maxUsage - newUsage).usageString(decimalUnits: configuration.decimalUnits)
-                    let content = UNMutableNotificationContent()
                     
-                    content.title = String.localizedStringWithFormat(NSLocalizedString("\"%@\" has used %d%% of maximum usage", comment: "Usage alert title."), username, percentage)
-                    content.body = String.localizedStringWithFormat(NSLocalizedString("Up to %@ can still be used this month.", comment: "Usage alert body."), usageLeft)
-                    content.sound = UNNotificationSound.default()
-
-                    let request = UNNotificationRequest(identifier: "\(identifier).usageAlert", content: content, trigger: nil)
-                    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                    DispatchQueue.main.async {
+                        NotificationCenter.default.post(name: .accountUsageAlert, object: self, userInfo: ["account": self, "usage": newUsage, "maxUsage": maxUsage])
+                    }
                 }
             }
         }
