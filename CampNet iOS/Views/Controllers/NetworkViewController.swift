@@ -7,21 +7,28 @@
 //
 
 import UIKit
+import NetworkExtension
+
 import CampNetKit
 
 class NetworkViewController: UITableViewController {
 
+    @IBOutlet var ipLabel: UILabel!
+    @IBOutlet var bssid: UILabel!
+    @IBOutlet var signalStrength: UILabel!
+    
     @IBOutlet var onCampusSwitch: UISwitch!
     
     var account: Account? = nil
-    var ssid: String = ""
+    var network: NEHotspotNetwork!
+    var ip: String!
     
     @IBAction func onCampusChanged(_ sender: Any) {
-        guard let configuration = account?.configuration, !configuration.ssids.contains(ssid) else {
+        guard let configuration = account?.configuration, !configuration.ssids.contains(network.ssid) else {
             return
         }
         
-        Defaults[.onCampus(id: configuration.identifier, ssid: ssid)] = onCampusSwitch.isOn
+        Defaults[.onCampus(id: configuration.identifier, ssid: network.ssid)] = onCampusSwitch.isOn
     }
     
     override func viewDidLoad() {
@@ -37,14 +44,18 @@ class NetworkViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationItem.title = ssid
+        navigationItem.title = network.ssid
+        
+        ipLabel.text = ip.nonEmpty ?? " "
+        bssid.text = network.bssid.nonEmpty ?? " "
+        signalStrength.text = "\(Int(network.signalStrength * 100))%"
         
         if let configuration = account?.configuration {
-            if configuration.ssids.contains(ssid) {
+            if configuration.ssids.contains(network.ssid) {
                 onCampusSwitch.isOn = true
                 onCampusSwitch.isEnabled = false
             } else {
-                onCampusSwitch.isOn = Defaults[.onCampus(id: configuration.identifier, ssid: ssid)]
+                onCampusSwitch.isOn = Defaults[.onCampus(id: configuration.identifier, ssid: network.ssid)]
                 onCampusSwitch.isEnabled = true
             }
         } else {

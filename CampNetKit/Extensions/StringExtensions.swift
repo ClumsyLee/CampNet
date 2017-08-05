@@ -12,6 +12,11 @@ extension String {
     public var reverseDomained: String {
         return self.components(separatedBy: ".").reversed().joined(separator: ".")
     }
+    
+    public var nonEmpty: String? {
+        return self.isEmpty ? nil : self
+    }
+    
     func replace(with placeholders: [String: String]) -> String {
         var string = self
         for (key, value) in placeholders {

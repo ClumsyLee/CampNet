@@ -51,14 +51,14 @@ class AccountDetailViewController: UITableViewController {
     func reloadProfile() {
         let profile = account.profile
         
-        name.text = profile?.name ?? " "
-        billingGroup.text = account.configuration.billingGroups[profile?.billingGroupName ?? ""]?.displayName ?? " "
+        name.text = profile?.name?.nonEmpty ?? " "
+        billingGroup.text = account.configuration.billingGroups[profile?.billingGroupName ?? ""]?.displayName?.nonEmpty ?? " "
         if let moneyString = profile?.balance?.moneyString {
             balance.text = "¥ \(moneyString)"
         } else {
             balance.text = " "
         }
-        usage.text = profile?.usage?.usageString(decimalUnits: account.configuration.decimalUnits) ?? " "
+        usage.text = profile?.usage?.usageString(decimalUnits: account.configuration.decimalUnits).nonEmpty ?? " "
     }
     
     func reload() {

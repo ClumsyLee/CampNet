@@ -220,6 +220,7 @@ public class Account {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .accountStatusUpdated, object: self, userInfo: ["account": self, "status": newValue as Any])
             }
+            print("\(identifier) status changed: \(newValue as Any)")
         }
     }
     
@@ -238,6 +239,7 @@ public class Account {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .accountProfileUpdated, object: self, userInfo: ["account": self, "profile": newValue as Any])
             }
+            print("\(identifier) profile changed: \(newValue as Any)")
             
             // Send usage alert if needed.
             let oldUsage = Profile(vars: oldVars ?? [:])?.usage ?? -1
@@ -536,14 +538,10 @@ public class Account {
         return when(resolved: promises).asVoid()
     }
     
-    public func canManage(ssid: String) -> Bool {
-        return (configuration.ssids.contains(ssid) ||
-                Defaults[.onCampus(id: configuration.identifier, ssid: ssid)]) &&
-               Defaults[.autoLogin]
-    }
-    
     public func canManage(network: NEHotspotNetwork) -> Bool {
-        return !network.isSecure && canManage(ssid: network.ssid)
+        return (configuration.ssids.contains(network.ssid) ||
+                Defaults[.onCampus(id: configuration.identifier, ssid: network.ssid)]) &&
+               Defaults[.autoLogin]
     }
     
     public func freeUsage(profile: Profile?) -> Int? {

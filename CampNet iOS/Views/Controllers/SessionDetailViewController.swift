@@ -39,19 +39,16 @@ class SessionDetailViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         navigationItem.title = session.device
-        if session.ip.isEmpty {
-            ip.text = " "
-        } else {
-            ip.text = session.ip
-        }
-        id.text = session.id ?? " "
+        
+        ip.text = session.ip.nonEmpty ?? " "
+        id.text = session.id?.nonEmpty ?? " "
         if let startTime = session.startTime {
             self.startTime.text = DateFormatter.localizedString(from: startTime, dateStyle: .medium, timeStyle: .short)
         } else {
             self.startTime.text = " "
         }
-        usage.text = session.usage?.usageString(decimalUnits: account.configuration.decimalUnits) ?? " "
-        mac.text = session.mac ?? " "
+        usage.text = session.usage?.usageString(decimalUnits: account.configuration.decimalUnits).nonEmpty ?? " "
+        mac.text = session.mac?.nonEmpty ?? " "
     }
 
     override func didReceiveMemoryWarning() {

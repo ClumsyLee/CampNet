@@ -22,7 +22,7 @@ class OverviewViewController: UITableViewController {
     @IBOutlet var usage: UILabel!
     @IBOutlet var balance: UILabel!
     @IBOutlet var estimatedFee: UILabel!
-    @IBOutlet var network: UILabel!
+    @IBOutlet var networkName: UILabel!
     @IBOutlet var devices: UILabel!
 
     @IBOutlet var accountsButton: UIButton!
@@ -37,7 +37,9 @@ class OverviewViewController: UITableViewController {
     var status: Status? = nil
     var profile: Profile? = nil
     var history: History? = nil
-    var ssid: String = ""
+    
+    var network: NEHotspotNetwork? = nil
+    var ip: String = ""
     
     var usageSumDataset = LineChartDataSet(values: [], label: nil)
     var usageSumEndDataset = LineChartDataSet(values: [], label: nil)
@@ -163,7 +165,7 @@ class OverviewViewController: UITableViewController {
                 
                 loginButtonCaption.text = NSLocalizedString("Login", comment: "Login button caption.")
                 
-                if account?.canManage(ssid: ssid) == true {
+                if let account = account, let network = network, account.canManage(network: network) {
                     login()
                 }
                 
@@ -184,14 +186,16 @@ class OverviewViewController: UITableViewController {
             loginButtonCaption.text = NSLocalizedString("Unknown", comment: "Login button caption.")
         }
 
-        ssid = (NEHotspotHelper.supportedNetworkInterfaces().first as? NEHotspotNetwork)?.ssid ?? ""
-        if ssid.isEmpty {
-            network.text = "-"
-            networkButton.isEnabled = false
-        } else {
-            network.text = ssid
+        if let wifi = NEHotspotHelper.supportedNetworkInterfaces().first as? NEHotspotNetwork, !wifi.ssid.isEmpty {
+            network = wifi
+            networkName.text = wifi.ssid
             networkButton.isEnabled = true
+        } else {
+            network = nil
+            networkName.text = "-"
+            networkButton.isEnabled = false
         }
+        ip = wifiIp() ?? ""
     }
 
     func reloadProfile() {
@@ -436,7 +440,8 @@ class OverviewViewController: UITableViewController {
         if segue.identifier == "network" {
             let controller = segue.destination as! NetworkViewController
             controller.account = account
-            controller.ssid = ssid
+            controller.network = network!
+            controller.ip = ip
         }
     }
 }
