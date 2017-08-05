@@ -206,11 +206,10 @@ public struct Action {
         case logout
     }
     
-    fileprivate static let networkActivityQueue = DispatchQueue(label: "\(Bundle.main.bundleIdentifier!).networkActivityQueue", qos: .userInitiated)
     fileprivate static var networkActivityCounter = 0
     
     static func setNetworkActivityIndicatorVisible(_ value: Bool) {
-        Action.networkActivityQueue.async {
+        DispatchQueue.main.async {
             Action.networkActivityCounter += value ? 1 : -1
             UIApplication.shared.isNetworkActivityIndicatorVisible = Action.networkActivityCounter > 0
         }
