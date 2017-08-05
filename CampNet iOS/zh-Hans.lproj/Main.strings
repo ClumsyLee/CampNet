@@ -55,8 +55,8 @@
 /* Class = "UILabel"; text = "MAC Address"; ObjectID = "REZ-rf-euA"; */
 "REZ-rf-euA.text" = "MAC 地址";
 
-/* Class = "UINavigationItem"; title = "Switch Account"; ObjectID = "SPV-m8-ZsX"; */
-"SPV-m8-ZsX.title" = "切换账户";
+/* Class = "UINavigationItem"; title = "Account"; ObjectID = "SPV-m8-ZsX"; */
+"SPV-m8-ZsX.title" = "账户";
 
 /* Class = "UITableViewSection"; footerTitle = "\"Auto Login\" will only be effective in networks marked as \"On Campus\"."; ObjectID = "Tm8-iG-baP"; */
 "Tm8-iG-baP.footerTitle" = "“自动登录” 只会在标记为 “校园内” 的网络中生效。";
