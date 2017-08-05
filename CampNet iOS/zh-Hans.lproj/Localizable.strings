@@ -1,20 +1,11 @@
 ﻿/* Display name of the HotspotHelper */
 "Campus network managed by CampNet" = "由 CampNet 管理的校园网";
 
-/* Action to change the password of an account in the account list. */
-"Change\nPassword" = "更改密码";
-
 /* Action to delete an account in the account list. */
 "Delete" = "删除";
 
-/* Header title of the sessions section of MeView. */
-"Online Devices" = "在线设备";
-
 /* Title for delete confirmation button for sessions. */
 "Logout" = "下线";
-
-/* OK button on alerts that display errors. */
-"OK" = "好的";
 
 /* Cancel button on alerts. */
 "Cancel" = "取消";
@@ -45,15 +36,6 @@
 
 /* Alert title when failed to update account history. */
 "Unable to Update History of \"%@\"" = "无法更新 “%@” 的历史";
-
-/* Name of startTime field in session detail cell. */
-"Login Time" = "上线时间";
-
-/* Name of ip field in session detail cell. */
-"IP Address" = "IP 地址";
-
-/* Name of mac field in session detail cell. */
-"MAC Address" = "MAC 地址";
 
 /* OverviewView title when no accounts are set. */
 "No Accounts ▾" = "未设置账户 ▾";

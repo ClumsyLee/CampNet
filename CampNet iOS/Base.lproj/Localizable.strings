@@ -1,17 +1,8 @@
 ﻿/* Display name of the HotspotHelper */
 "Campus network managed by CampNet" = "Campus network managed by CampNet";
 
-/* Action to change the password of an account in the account list. */
-"Change\nPassword" = "Change\nPassword";
-
-/* Header title of the sessions section of MeView. */
-"Online Devices" = "Online Devices";
-
 /* Title for delete confirmation button for sessions. */
 "Logout" = "Logout";
-
-/* OK button on alerts that display errors. */
-"OK" = "OK";
 
 /* Cancel button on alerts. */
 "Cancel" = "Cancel";
@@ -42,15 +33,6 @@
 
 /* Alert title when failed to update account history. */
 "Unable to Update History of \"%@\"" = "Unable to Update History of \"%@\"";
-
-/* Name of startTime field in session detail cell. */
-"Login Time" = "Login Time";
-
-/* Name of ip field in session detail cell. */
-"IP Address" = "IP Address";
-
-/* Name of mac field in session detail cell. */
-"MAC Address" = "MAC Address";
 
 /* OverviewView title when no accounts are set. */
 "No Accounts ▾" = "No Accounts ▾";
