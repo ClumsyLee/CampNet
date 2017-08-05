@@ -98,7 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if result {
             print("HotspotHelper registered.")
         } else {
-            print("Unable to HotspotHelper registered.")
+            print("Unable to register HotspotHelper.")
         }
     }
     
