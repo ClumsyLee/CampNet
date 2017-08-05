@@ -71,15 +71,32 @@ class OverviewViewController: UITableViewController {
     }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
-        guard let status = status else {
+        guard let account = account, let status = status else {
             return
         }
         
         switch status.type {
-        case .online:
-            logout()
+        case let .online(onlineUsername, _, _):
+            if let network = network, account.username == onlineUsername, account.canManage(network: network) {
+                // Will auto login after logging out, warn for it.
+                let menu = UIAlertController(title: NSLocalizedString("Auto Login Will Be Triggered After Logging Out. Do You Want to Logout Anyway?", comment: "Title on alerts."), message: nil, preferredStyle: .actionSheet)
+                menu.view.tintColor = #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1)
+                
+                let logoutAction = UIAlertAction(title: NSLocalizedString("Logout", comment: "Logout button on alerts."), style: .destructive) { action in
+                    self.logout()
+                }
+                let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button on alerts."), style: .cancel, handler: nil)
+                
+                menu.addAction(logoutAction)
+                menu.addAction(cancelAction)
+                
+                present(menu, animated: true, completion: nil)
+            } else {
+                logout()
+            }
+            
         case .offline:
-            if let account = account, let network = network,
+            if let network = network,
                !account.configuration.ssids.contains(network.ssid),
                !Defaults[.onCampus(id: account.configuration.identifier, ssid: network.ssid)] {
                 // Manually logging into an unknown network.

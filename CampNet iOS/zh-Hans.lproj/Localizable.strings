@@ -28,6 +28,12 @@
 /* Later button on alerts. */
 "Later" = "以后";
 
+/* Title on alerts. */
+"Auto Login Will Be Triggered After Logging Out. Do You Want to Logout Anyway?" = "下线后自动登录会被触发。您仍要下线吗？";
+
+/* Logout button on alerts. */
+"Logout" = "下线";
+
 /* Alert title when failed to login. */
 "Unable to Login \"%@\"" = "无法上线 “%@”";
 

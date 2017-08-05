@@ -25,6 +25,12 @@
 /* Later button on alerts. */
 "Later" = "Later";
 
+/* Title on alerts. */
+"Auto Login Will Be Triggered After Logging Out. Do You Want to Logout Anyway?" = "Auto Login Will Be Triggered After Logging Out. Do You Want to Logout Anyway?";
+
+/* Logout button on alerts. */
+"Logout" = "Logout";
+
 /* Alert title when failed to login. */
 "Unable to Login \"%@\"" = "Unable to Login \"%@\"";
 
