@@ -31,14 +31,14 @@ public class Account {
     }
     
     public static var handler: NEHotspotHelperHandler = { command in
-        print("NEHotspotHelperCommand \(command.commandType) received.")
-        
         let queue = DispatchQueue.global(qos: .utility)
         let requestBinder: RequestBinder = { $0.bind(to: command) }
         
         switch command.commandType {
             
         case .filterScanList:
+            print("Command filterScanList received.")
+            
             guard let networkList = command.networkList,
                 let account = Account.main else {
                     let response = command.createResponse(.success)
@@ -60,6 +60,8 @@ public class Account {
             response.deliver()
             
         case .evaluate:
+            print("Command evaluate received.")
+            
             guard let network = command.network else {
                 return
             }
@@ -92,6 +94,8 @@ public class Account {
             }
             
         case .authenticate:
+            print("Command authenticate received.")
+            
             guard let network = command.network else {
                 return
             }
@@ -114,6 +118,8 @@ public class Account {
             }
             
         case .maintain:
+            print("Command maintain received.")
+            
             guard let network = command.network else {
                 return
             }
@@ -144,6 +150,8 @@ public class Account {
             }
             
         case .logoff:
+            print("Command logoff received.")
+            
             guard let network = command.network else {
                 return
             }
