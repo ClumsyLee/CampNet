@@ -90,3 +90,6 @@
 
 /* Usage alert body. */
 "Up to %@ can still be used this month." = "本月最多还可使用 %@。";
+
+/* Setting value. */
+"Off" = "关闭";

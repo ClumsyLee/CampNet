@@ -87,3 +87,6 @@
 
 /* Usage alert body. */
 "Up to %@ can still be used this month." = "Up to %@ can still be used this month.";
+
+/* Setting value. */
+"Off" = "Off";

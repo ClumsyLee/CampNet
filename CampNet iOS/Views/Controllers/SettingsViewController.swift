@@ -40,7 +40,7 @@ class SettingsViewController: UITableViewController {
         if let ratio = Defaults[.usageAlertRatio] {
             usageAlertPercentage.text = "\(Int(ratio * 100))%"
         } else {
-            usageAlertPercentage.text = "Off"
+            usageAlertPercentage.text = NSLocalizedString("Off", comment: "Setting value.")
         }
     }
 
