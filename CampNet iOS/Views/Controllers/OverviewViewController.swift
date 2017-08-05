@@ -55,6 +55,7 @@ class OverviewViewController: UITableViewController {
     
     @IBAction func refreshTable(_ sender: Any) {
         guard let account = account else {
+            self.refreshControl?.endRefreshing()
             return
         }
         print("Refreshing \(account.identifier) in overview.")
