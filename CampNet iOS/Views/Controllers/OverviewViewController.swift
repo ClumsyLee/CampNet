@@ -121,7 +121,7 @@ class OverviewViewController: UITableViewController {
             }
         }
         .catch { _ in
-            self.reloadStatus()
+            self.reloadStatus(autoLogin: false)  // Avoid logging in forever.
         }
     }
     
@@ -156,7 +156,7 @@ class OverviewViewController: UITableViewController {
         refreshTable(self)
     }
 
-    func reloadStatus() {
+    func reloadStatus(autoLogin: Bool = true) {
         status = account?.status
 
         if let type = status?.type {
@@ -186,7 +186,7 @@ class OverviewViewController: UITableViewController {
                 
                 loginButtonCaption.text = NSLocalizedString("Login", comment: "Login button caption.")
                 
-                if let account = account, let network = network, account.canManage(network: network) {
+                if let account = account, let network = network, account.canManage(network: network), autoLogin {
                     login()
                 }
                 
