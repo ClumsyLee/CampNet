@@ -48,7 +48,6 @@ class OverviewViewController: UITableViewController {
     
     var refreshedAt: Date? = nil
 
-    @IBAction func cancelSwitchingAccount(segue: UIStoryboardSegue) {}
     @IBAction func accountSwitched(segue: UIStoryboardSegue) {}
     
     @IBAction func feedbackPressed(_ sender: Any) {
@@ -223,14 +222,6 @@ class OverviewViewController: UITableViewController {
         profile = account?.profile
         let decimalUnits = account?.configuration.decimalUnits ?? false
         
-        let title: String
-        if let account = account {
-            title = "\(account.username) ▾"
-        } else {
-            title = NSLocalizedString("No Accounts ▾", comment: "OverviewView title when no accounts are set.")
-        }
-        accountsButton.setTitle(title, for: .normal)
-        
         usage.text = profile?.usage?.usageStringInGb(decimalUnits: decimalUnits) ?? "-"
         balance.text = profile?.balance?.moneyString ?? "-"
         estimatedFee.text = account?.estimatedFee(profile: profile)?.moneyString ?? "-"
@@ -324,6 +315,14 @@ class OverviewViewController: UITableViewController {
         account = Account.main
         refreshedAt = nil
         refreshControl!.endRefreshing()
+        
+        let title: String
+        if let account = account {
+            title = "\(account.username) ▸"
+        } else {
+            title = "\(NSLocalizedString("No Accounts", comment: "OverviewView title when no accounts are set.")) ▸"
+        }
+        accountsButton.setTitle(title, for: .normal)
         
         reloadStatus()
         reloadProfile()

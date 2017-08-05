@@ -47,7 +47,7 @@
 "Unable to Update History of \"%@\"" = "Unable to Update History of \"%@\"";
 
 /* OverviewView title when no accounts are set. */
-"No Accounts ▾" = "No Accounts ▾";
+"No Accounts" = "No Accounts";
 
 /* Limit line label in the history chart. */
 "Free" = "Free";

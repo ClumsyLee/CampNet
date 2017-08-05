@@ -10,10 +10,8 @@ import UIKit
 import CampNetKit
 
 class AccountCell: UITableViewCell {
-    
-    static let mainColor = #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1)
-    static let normalColor = UIColor.darkText
 
+    @IBOutlet var checkmark: UIImageView!
     @IBOutlet var username: UILabel!
     @IBOutlet var name: UILabel!
     @IBOutlet var balance: UILabel!
@@ -21,10 +19,7 @@ class AccountCell: UITableViewCell {
     
     var isMain = false {
         didSet {
-            let color = isMain ? AccountCell.mainColor : AccountCell.normalColor
-            
-            username.textColor = color
-            name.textColor = color
+            checkmark.isHidden = !isMain
         }
     }
     

@@ -50,7 +50,7 @@
 "Unable to Update History of \"%@\"" = "无法更新 “%@” 的历史";
 
 /* OverviewView title when no accounts are set. */
-"No Accounts ▾" = "未设置账户 ▾";
+"No Accounts" = "未设置账户";
 
 /* Limit line label in the history chart. */
 "Free" = "免费";

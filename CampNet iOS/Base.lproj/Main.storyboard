@@ -247,7 +247,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="4RU-jX-ZaR">
-                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="compose" id="4nQ-dM-8Qo">
                             <connections>
                                 <action selector="feedbackPressed:" destination="42N-Jx-lGN" id="dWN-wu-qd3"/>
@@ -257,9 +256,9 @@
                             <rect key="frame" x="112.5" y="5.5" width="150" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                            <state key="normal" title="lisihan13 ▾"/>
+                            <state key="normal" title="lisihan13 ▸"/>
                             <connections>
-                                <segue destination="gpo-wN-CAY" kind="presentation" id="8GC-wi-wo6"/>
+                                <segue destination="Ijn-r5-5Es" kind="show" id="BoE-19-QJd"/>
                             </connections>
                         </button>
                         <barButtonItem key="rightBarButtonItem" image="settings" id="6DO-ue-7yL">
@@ -392,7 +391,7 @@
                                                     <rect key="frame" x="306" y="12" width="34" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -427,6 +426,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="tintColor" red="0.19215686274509802" green="0.73448164530000004" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
                             <tableViewSection footerTitle="You will be notified when your usage has reached a certain percentage of your maximum usage this month." id="ymi-FS-Axh">
                                 <cells>
@@ -819,10 +819,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Vn2-Av-xIT">
-                                            <rect key="frame" x="15" y="7.5" width="311" height="35"/>
+                                            <rect key="frame" x="45" y="7.5" width="281" height="35"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="yam-5S-7y8">
-                                                    <rect key="frame" x="0.0" y="0.0" width="249.5" height="35"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="219.5" height="35"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="lastBaseline" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Yz0-dj-XFJ">
                                                             <rect key="frame" x="0.0" y="0.0" width="145" height="20.5"/>
@@ -850,27 +850,37 @@
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25.8 GB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYs-sX-oe8">
-                                                    <rect key="frame" x="249.5" y="7.5" width="61.5" height="20.5"/>
+                                                    <rect key="frame" x="219.5" y="7.5" width="61.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </stackView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="BXQ-39-n1c">
+                                            <rect key="frame" x="12" y="15" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="Azn-L7-giJ"/>
+                                                <constraint firstAttribute="height" constant="20" id="G1F-Zt-LHN"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Vn2-Av-xIT" firstAttribute="centerY" secondItem="VVA-EL-FAo" secondAttribute="centerY" id="JPB-Iy-o2P"/>
                                         <constraint firstAttribute="trailing" secondItem="Vn2-Av-xIT" secondAttribute="trailing" constant="2" id="Piw-P9-eoQ"/>
-                                        <constraint firstItem="Vn2-Av-xIT" firstAttribute="leading" secondItem="VVA-EL-FAo" secondAttribute="leadingMargin" constant="7" id="VYy-MH-pNV"/>
+                                        <constraint firstItem="Vn2-Av-xIT" firstAttribute="leading" secondItem="VVA-EL-FAo" secondAttribute="leadingMargin" constant="37" id="VYy-MH-pNV"/>
+                                        <constraint firstItem="BXQ-39-n1c" firstAttribute="leading" secondItem="VVA-EL-FAo" secondAttribute="leadingMargin" constant="4" id="eST-ny-Zv2"/>
+                                        <constraint firstItem="BXQ-39-n1c" firstAttribute="centerY" secondItem="VVA-EL-FAo" secondAttribute="centerY" id="rRk-pV-Nbv"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="tintColor" red="0.19347851990000001" green="0.73448164530000004" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="balance" destination="KpJ-Md-TQ4" id="bZD-LE-wDF"/>
+                                    <outlet property="checkmark" destination="BXQ-39-n1c" id="ipZ-KG-C8G"/>
                                     <outlet property="name" destination="hu4-PL-hKr" id="clr-vr-68Q"/>
                                     <outlet property="usage" destination="wYs-sX-oe8" id="cgr-u7-a98"/>
                                     <outlet property="username" destination="dg3-U4-UEY" id="A6Z-kY-fgg"/>
-                                    <segue destination="EhV-Ab-cbe" kind="unwind" unwindAction="accountSwitchedWithSegue:" id="zwZ-ev-Kky"/>
+                                    <segue destination="EhV-Ab-cbe" kind="unwind" unwindAction="accountSwitchedWithSegue:" id="GA4-TT-rrc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -880,11 +890,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Switch Account" id="SPV-m8-ZsX">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Qr7-vo-Cj8">
-                            <connections>
-                                <segue destination="EhV-Ab-cbe" kind="unwind" unwindAction="cancelSwitchingAccountWithSegue:" id="wGD-XM-bRy"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xZJ-ee-7mW">
                             <connections>
                                 <segue destination="Ivf-RU-hO9" kind="presentation" id="SAg-Sx-jBT"/>
@@ -1579,26 +1584,6 @@
             <point key="canvasLocation" x="734" y="385"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Nv2-24-9Ht">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gpo-wN-CAY" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="tsZ-s8-Xke">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Ijn-r5-5Es" kind="relationship" relationship="rootViewController" id="GEJ-rs-mMc"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WRv-3n-RdZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1494" y="-1011"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="hPr-kS-m2g">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rmy-Ep-uQ0" sceneMemberID="viewController">
@@ -1660,6 +1645,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark" width="20" height="20"/>
         <image name="settings" width="25" height="25"/>
     </resources>
 </document>
