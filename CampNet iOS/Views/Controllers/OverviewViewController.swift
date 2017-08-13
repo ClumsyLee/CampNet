@@ -487,7 +487,9 @@ class OverviewViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        refreshIfNeeded()
+        if UIApplication.shared.applicationState == .active {
+            refreshIfNeeded()
+        }
     }
 
     override func didReceiveMemoryWarning() {
