@@ -17,7 +17,10 @@ import CampNetKit
 
 class OverviewViewController: UITableViewController {
     static let autoUpdateTimeInterval: TimeInterval = 300
+    
     @IBOutlet var upperView: UIView!
+    
+    var upperBackgroundView: UIView!
 
     @IBOutlet var usage: UILabel!
     @IBOutlet var balance: UILabel!
@@ -378,21 +381,17 @@ class OverviewViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        var frame = tableView.bounds
-        frame.origin.y = -frame.height
-        let upperBackgroundView = UIView(frame: frame)
+        upperBackgroundView = UIView()
         upperBackgroundView.backgroundColor = upperView.backgroundColor
         tableView.insertSubview(upperBackgroundView, at: 0)
         
         networkDisclosure = UITableViewCell()
-        networkDisclosure.frame = networkButton.bounds
         networkDisclosure.accessoryType = .disclosureIndicator
         networkDisclosure.isUserInteractionEnabled = false
         networkDisclosure.isHidden = true
         networkButton.addSubview(networkDisclosure)
         
         devicesDisclosure = UITableViewCell()
-        devicesDisclosure.frame = devicesButton.bounds
         devicesDisclosure.accessoryType = .disclosureIndicator
         devicesDisclosure.isUserInteractionEnabled = false
         devicesDisclosure.isHidden = true
@@ -458,6 +457,13 @@ class OverviewViewController: UITableViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        var frame = tableView.bounds
+        frame.origin.y = -frame.height
+        upperBackgroundView.frame = frame
+        
+        networkDisclosure.frame = networkButton.bounds
+        devicesDisclosure.frame = devicesButton.bounds
         
         loginButton.layer.shadowColor = UIColor.lightGray.cgColor
         loginButton.layer.shadowOffset = CGSize(width: 0, height: 2)
