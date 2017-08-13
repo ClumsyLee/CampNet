@@ -25,6 +25,9 @@ class OverviewViewController: UITableViewController {
     @IBOutlet var networkName: UILabel!
     @IBOutlet var devices: UILabel!
 
+    var networkDisclosure: UITableViewCell!
+    var devicesDisclosure: UITableViewCell!
+    
     @IBOutlet var accountsButton: UIButton!
     @IBOutlet var networkButton: UIButton!
     @IBOutlet var devicesButton: UIButton!
@@ -227,10 +230,12 @@ class OverviewViewController: UITableViewController {
             network = wifi
             networkName.text = wifi.ssid
             networkButton.isEnabled = true
+            networkDisclosure.isHidden = false
         } else {
             network = nil
             networkName.text = "-"
             networkButton.isEnabled = false
+            networkDisclosure.isHidden = true
         }
         ip = wifiIp() ?? ""
     }
@@ -253,9 +258,11 @@ class OverviewViewController: UITableViewController {
         if let sessions = profile?.sessions {
             devices.text = String(sessions.count)
             devicesButton.isEnabled = true
+            devicesDisclosure.isHidden = false
         } else {
             devices.text = "-"
             devicesButton.isEnabled = false
+            devicesDisclosure.isHidden = true
         }
         
         // Chart end point.
@@ -371,6 +378,20 @@ class OverviewViewController: UITableViewController {
         let upperBackgroundView = UIView(frame: frame)
         upperBackgroundView.backgroundColor = upperView.backgroundColor
         tableView.insertSubview(upperBackgroundView, at: 0)
+        
+        networkDisclosure = UITableViewCell()
+        networkDisclosure.frame = networkButton.bounds
+        networkDisclosure.accessoryType = .disclosureIndicator
+        networkDisclosure.isUserInteractionEnabled = false
+        networkDisclosure.isHidden = true
+        networkButton.addSubview(networkDisclosure)
+        
+        devicesDisclosure = UITableViewCell()
+        devicesDisclosure.frame = devicesButton.bounds
+        devicesDisclosure.accessoryType = .disclosureIndicator
+        devicesDisclosure.isUserInteractionEnabled = false
+        devicesDisclosure.isHidden = true
+        devicesButton.addSubview(devicesDisclosure)
 
         loginButton.lineWidth = 4
         loginButton.contentEdgeInsets.left = 20.0

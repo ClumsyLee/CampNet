@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wNT-Uw-3L2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wNT-Uw-3L2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -71,10 +71,10 @@
                                                     </connections>
                                                 </button>
                                                 <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="tAO-Ij-9Vs">
-                                                    <rect key="frame" x="8" y="140.5" width="139.5" height="99"/>
+                                                    <rect key="frame" x="20" y="140.5" width="107.5" height="99"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="ZIr-D2-KHa">
-                                                            <rect key="frame" x="42.5" y="0.0" width="54.5" height="40.5"/>
+                                                            <rect key="frame" x="26.5" y="0.0" width="54.5" height="40.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lU5-xm-7Wn">
                                                                     <rect key="frame" x="0.0" y="0.0" width="54.5" height="18"/>
@@ -102,7 +102,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="e2c-j2-De5">
-                                                            <rect key="frame" x="20" y="58.5" width="99.5" height="40.5"/>
+                                                            <rect key="frame" x="4" y="58.5" width="99.5" height="40.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOf-dt-v27">
                                                                     <rect key="frame" x="21" y="0.0" width="58" height="18"/>
@@ -127,10 +127,10 @@
                                                     </connections>
                                                 </button>
                                                 <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="DlO-p5-jm1">
-                                                    <rect key="frame" x="227.5" y="140" width="139.5" height="99"/>
+                                                    <rect key="frame" x="247.5" y="140" width="107.5" height="99"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="gCc-4H-U2U">
-                                                            <rect key="frame" x="21" y="0.0" width="97.5" height="40.5"/>
+                                                            <rect key="frame" x="5" y="0.0" width="97.5" height="40.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estimated Fee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbL-9E-LHU">
                                                                     <rect key="frame" x="0.0" y="0.0" width="97.5" height="18"/>
@@ -158,7 +158,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Wmq-Nx-4po">
-                                                            <rect key="frame" x="42.5" y="58.5" width="54.5" height="40.5"/>
+                                                            <rect key="frame" x="26.5" y="58.5" width="54.5" height="40.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Devices" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCZ-il-6Wj">
                                                                     <rect key="frame" x="0.0" y="0.0" width="54.5" height="18"/>
@@ -214,15 +214,15 @@
                                                 <constraint firstItem="FxC-dl-0Iy" firstAttribute="top" secondItem="mDD-wB-GMy" secondAttribute="bottom" constant="4" id="Huu-RD-A0H"/>
                                                 <constraint firstItem="tAO-Ij-9Vs" firstAttribute="centerY" secondItem="mDD-wB-GMy" secondAttribute="centerY" id="JVT-jY-XfB"/>
                                                 <constraint firstItem="OwS-9Y-JxQ" firstAttribute="top" secondItem="mDD-wB-GMy" secondAttribute="bottom" constant="30" id="JsT-4e-48V"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="DlO-p5-jm1" secondAttribute="trailing" id="KVa-ue-Ci2"/>
                                                 <constraint firstItem="mDD-wB-GMy" firstAttribute="bottom" secondItem="bVu-CG-AHs" secondAttribute="bottom" constant="40" id="Mhe-CM-m0s"/>
+                                                <constraint firstAttribute="trailing" secondItem="DlO-p5-jm1" secondAttribute="trailing" constant="20" id="R6G-ml-LHj"/>
                                                 <constraint firstItem="FxC-dl-0Iy" firstAttribute="centerX" secondItem="mDD-wB-GMy" secondAttribute="centerX" id="RQ9-fW-esD"/>
                                                 <constraint firstItem="H8N-2s-bRD" firstAttribute="top" secondItem="bVu-CG-AHs" secondAttribute="bottom" id="T00-Dx-Obb"/>
+                                                <constraint firstItem="tAO-Ij-9Vs" firstAttribute="leading" secondItem="QrI-rc-bgC" secondAttribute="leading" constant="20" id="UXr-4R-HrZ"/>
                                                 <constraint firstItem="UJD-qF-d5S" firstAttribute="centerX" secondItem="QrI-rc-bgC" secondAttribute="centerX" id="UoT-lZ-adc"/>
-                                                <constraint firstItem="mDD-wB-GMy" firstAttribute="leading" secondItem="tAO-Ij-9Vs" secondAttribute="trailing" id="WZK-sj-teK"/>
+                                                <constraint firstItem="mDD-wB-GMy" firstAttribute="leading" secondItem="tAO-Ij-9Vs" secondAttribute="trailing" constant="20" id="WZK-sj-teK"/>
                                                 <constraint firstItem="9kM-Ii-HEq" firstAttribute="top" secondItem="OwS-9Y-JxQ" secondAttribute="bottom" constant="2" id="YIv-T7-pWE"/>
-                                                <constraint firstItem="tAO-Ij-9Vs" firstAttribute="leading" secondItem="QrI-rc-bgC" secondAttribute="leadingMargin" id="Z4P-c0-aqc"/>
-                                                <constraint firstItem="DlO-p5-jm1" firstAttribute="leading" secondItem="mDD-wB-GMy" secondAttribute="trailing" id="ZQl-CX-buQ"/>
+                                                <constraint firstItem="DlO-p5-jm1" firstAttribute="leading" secondItem="mDD-wB-GMy" secondAttribute="trailing" constant="20" id="ZQl-CX-buQ"/>
                                                 <constraint firstItem="H8N-2s-bRD" firstAttribute="leading" secondItem="mDD-wB-GMy" secondAttribute="trailing" id="bFS-dB-RCc"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="9kM-Ii-HEq" secondAttribute="bottom" id="dP7-cy-SHR"/>
                                                 <constraint firstItem="OwS-9Y-JxQ" firstAttribute="leading" secondItem="QrI-rc-bgC" secondAttribute="leading" id="iH0-x5-Jkd"/>
