@@ -58,6 +58,8 @@ class OverviewViewController: UITableViewController {
     }
     
     @IBAction func refreshTable(_ sender: Any) {
+        reloadNetwork()
+        
         guard let account = account else {
             self.refreshControl?.endRefreshing()
             return
@@ -174,6 +176,21 @@ class OverviewViewController: UITableViewController {
         
         refreshTable(self)
     }
+    
+    func reloadNetwork() {
+        if let wifi = NEHotspotHelper.supportedNetworkInterfaces().first as? NEHotspotNetwork, !wifi.ssid.isEmpty {
+            network = wifi
+            networkName.text = wifi.ssid
+            networkButton.isEnabled = true
+            networkDisclosure.isHidden = false
+        } else {
+            network = nil
+            networkName.text = "-"
+            networkButton.isEnabled = false
+            networkDisclosure.isHidden = true
+        }
+        ip = wifiIp() ?? ""
+    }
 
     func reloadStatus(autoLogin: Bool = true) {
         status = account?.status
@@ -225,19 +242,6 @@ class OverviewViewController: UITableViewController {
             
             loginButtonCaption.text = NSLocalizedString("Unknown", comment: "Login button caption.")
         }
-
-        if let wifi = NEHotspotHelper.supportedNetworkInterfaces().first as? NEHotspotNetwork, !wifi.ssid.isEmpty {
-            network = wifi
-            networkName.text = wifi.ssid
-            networkButton.isEnabled = true
-            networkDisclosure.isHidden = false
-        } else {
-            network = nil
-            networkName.text = "-"
-            networkButton.isEnabled = false
-            networkDisclosure.isHidden = true
-        }
-        ip = wifiIp() ?? ""
     }
 
     func reloadProfile() {
@@ -348,6 +352,7 @@ class OverviewViewController: UITableViewController {
         refreshedAt = nil
         refreshControl!.endRefreshing()
         
+        reloadNetwork()
         reloadStatus()
         reloadProfile()
         reloadHistory()
