@@ -541,21 +541,22 @@ public class Account {
     
     public func update(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
         
-        var promises = [status(on: queue, requestBinder: requestBinder).asVoid()]
+        // Here we run actions in order to make sure important actions will be executed.
+        var promise = status(on: queue, requestBinder: requestBinder).asVoid()
         
         if configuration.actions[.profile] != nil {
-            promises.append(profile(on: queue, requestBinder: requestBinder).asVoid())
+            promise = promise.then(on: queue) { return self.profile(on: queue, requestBinder: requestBinder).asVoid() }
         }
         
         if configuration.actions[.history] != nil {
             if let history = history, history.usageSums.count >= Calendar.current.component(.day, from: Date()) {
                 // History still valid, do nothing.
             } else {
-                promises.append(history(on: queue, requestBinder: requestBinder).asVoid())
+                promise = promise.then(on: queue) { self.history(on: queue, requestBinder: requestBinder).asVoid() }
             }
         }
         
-        return when(fulfilled: promises).asVoid()
+        return promise
     }
     
     public func canManage(network: NEHotspotNetwork) -> Bool {
