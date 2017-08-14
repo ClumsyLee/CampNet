@@ -100,6 +100,12 @@ class OverviewViewController: UITableViewController {
                 menu.addAction(logoutAction)
                 menu.addAction(cancelAction)
                 
+                // Show as a popover on iPads.
+                if let popoverPresentationController = menu.popoverPresentationController {
+                    popoverPresentationController.sourceView = loginButton
+                    popoverPresentationController.sourceRect = loginButton.bounds
+                }
+                
                 present(menu, animated: true, completion: nil)
             } else {
                 logout()
@@ -121,6 +127,12 @@ class OverviewViewController: UITableViewController {
                 
                 menu.addAction(markAction)
                 menu.addAction(laterAction)
+                
+                // Show as a popover on iPads.
+                if let popoverPresentationController = menu.popoverPresentationController {
+                    popoverPresentationController.sourceView = loginButton
+                    popoverPresentationController.sourceRect = loginButton.bounds
+                }
                 
                 present(menu, animated: true, completion: nil)
             }

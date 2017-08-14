@@ -22,6 +22,8 @@ class SessionDetailViewController: UITableViewController {
     @IBOutlet var usage: UILabel!
     @IBOutlet var mac: UILabel!
     
+    @IBOutlet var logoutDeviceRow: UITableViewCell!
+    
     var account: Account!
     var session: Session!
     
@@ -94,6 +96,12 @@ class SessionDetailViewController: UITableViewController {
             
             menu.addAction(deleteAction)
             menu.addAction(cancelAction)
+            
+            // Show as a popover on iPads.
+            if let popoverPresentationController = menu.popoverPresentationController {
+                popoverPresentationController.sourceView = logoutDeviceRow
+                popoverPresentationController.sourceRect = logoutDeviceRow.bounds
+            }
             
             present(menu, animated: true, completion: nil)
         }

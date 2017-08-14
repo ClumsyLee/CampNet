@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -780,6 +779,7 @@
                     <connections>
                         <outlet property="id" destination="EhS-oQ-jTz" id="En7-lO-hzg"/>
                         <outlet property="ip" destination="GY5-DR-kzJ" id="NDT-KH-u1l"/>
+                        <outlet property="logoutDeviceRow" destination="l5p-mc-Vg0" id="Rtt-Hx-HvE"/>
                         <outlet property="mac" destination="4LP-cm-Yin" id="Ufo-HJ-bD7"/>
                         <outlet property="startTime" destination="20j-Md-asu" id="N5m-dQ-eWl"/>
                         <outlet property="usage" destination="Waa-QI-dvm" id="27g-2p-Rjm"/>
@@ -1161,6 +1161,7 @@
                     <connections>
                         <outlet property="balance" destination="vKP-yW-5vT" id="Cp8-yO-pif"/>
                         <outlet property="billingGroup" destination="c7g-hh-fH7" id="8X5-TK-sGj"/>
+                        <outlet property="deleteAccountRow" destination="ydD-Fa-Sdg" id="bEd-ZL-ewB"/>
                         <outlet property="name" destination="4bL-eP-eb1" id="s3y-pg-4h5"/>
                         <outlet property="usage" destination="qrz-aZ-kRl" id="XU1-yf-Khw"/>
                         <segue destination="dy9-c3-T4y" kind="unwind" identifier="accountDeleted" unwindAction="accountDeletedWithSegue:" id="HnJ-27-e1B"/>

@@ -22,6 +22,8 @@ class AccountDetailViewController: UITableViewController {
     @IBOutlet var balance: UILabel!
     @IBOutlet var usage: UILabel!
     
+    @IBOutlet var deleteAccountRow: UITableViewCell!
+    
     @IBAction func cancelChangingPassword(segue: UIStoryboardSegue) {}
     @IBAction func passwordChanged(segue: UIStoryboardSegue) {
         refresh()
@@ -149,6 +151,12 @@ class AccountDetailViewController: UITableViewController {
             
             menu.addAction(deleteAction)
             menu.addAction(cancelAction)
+            
+            // Show as a popover on iPads.
+            if let popoverPresentationController = menu.popoverPresentationController {
+                popoverPresentationController.sourceView = deleteAccountRow
+                popoverPresentationController.sourceRect = deleteAccountRow.bounds
+            }
             
             present(menu, animated: true, completion: nil)
         }

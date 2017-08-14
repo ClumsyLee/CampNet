@@ -210,12 +210,12 @@
 		0F464C561F13AD4900C2F58B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0F464C571F13AD7900C2F58B /* Configuration.swift */,
 				0F464C591F13C50500C2F58B /* Account.swift */,
 				0FC6E2A11F17593E002861F3 /* AccountManager.swift */,
 				0F464C5B1F13CB1100C2F58B /* Action.swift */,
-				0F464C5F1F13D1E800C2F58B /* CampNetError.swift */,
 				0F464C711F14093E00C2F58B /* BillingGroup.swift */,
+				0F464C5F1F13D1E800C2F58B /* CampNetError.swift */,
+				0F464C571F13AD7900C2F58B /* Configuration.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -223,14 +223,14 @@
 		0F464C611F13DB2F00C2F58B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				0F464C621F13DB6E00C2F58B /* YamlExtensions.swift */,
-				0F464C641F13ED0F00C2F58B /* StringExtensions.swift */,
-				0F464C731F1415A000C2F58B /* CollectionExtensions.swift */,
 				0FC6E2A31F175DE5002861F3 /* ArrayExtensions.swift */,
-				0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */,
-				0F8650741F1F8F9400C654C4 /* IntExtensions.swift */,
+				0F464C731F1415A000C2F58B /* CollectionExtensions.swift */,
 				0F7A93FA1F25E34C0093B3FA /* DoubleExtensions.swift */,
+				0F8650741F1F8F9400C654C4 /* IntExtensions.swift */,
+				0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */,
+				0F464C641F13ED0F00C2F58B /* StringExtensions.swift */,
 				0FD239C01F415EC6006EA7F9 /* UserDefaultsExtensions.swift */,
+				0F464C621F13DB6E00C2F58B /* YamlExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -265,18 +265,18 @@
 		0F5EB7231F17AE95003094DE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0F56148D1F31A18C008A1232 /* SessionsViewController.swift */,
-				0F56148B1F31A167008A1232 /* SessionDetailViewController.swift */,
-				0F14E7761E2E3AAC0092494B /* OverviewViewController.swift */,
-				0F46CC821F17837700AF1FC9 /* AccountsViewController.swift */,
-				0F5EB7261F17B03B003094DE /* ConfigurationsViewController.swift */,
-				0F5EB7281F17B06F003094DE /* ConfigurationSetupViewController.swift */,
-				0F3685151F1A5C6B0056AED1 /* ChangePasswordViewController.swift */,
-				0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */,
-				0F52FE111F29F1C800A88E90 /* SettingsViewController.swift */,
-				0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */,
 				0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */,
+				0F46CC821F17837700AF1FC9 /* AccountsViewController.swift */,
+				0F3685151F1A5C6B0056AED1 /* ChangePasswordViewController.swift */,
+				0F5EB7281F17B06F003094DE /* ConfigurationSetupViewController.swift */,
+				0F5EB7261F17B03B003094DE /* ConfigurationsViewController.swift */,
+				0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */,
 				0F34656F1F34D80A008E329F /* NetworkViewController.swift */,
+				0F14E7761E2E3AAC0092494B /* OverviewViewController.swift */,
+				0F56148B1F31A167008A1232 /* SessionDetailViewController.swift */,
+				0F52FE111F29F1C800A88E90 /* SettingsViewController.swift */,
+				0F56148D1F31A18C008A1232 /* SessionsViewController.swift */,
+				0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
