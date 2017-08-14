@@ -42,7 +42,12 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
         
         self.searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
+        if #available(iOS 9.1, *) {
+            searchController.obscuresBackgroundDuringPresentation = false
+        } else {
+            // Fallback on earlier versions
+            searchController.dimsBackgroundDuringPresentation = false
+        }
         tableView.tableHeaderView = searchController.searchBar
         self.definesPresentationContext = true
         
