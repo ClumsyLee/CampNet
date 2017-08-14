@@ -179,6 +179,10 @@ class OverviewViewController: UITableViewController {
     }
     
     func refreshIfNeeded() {
+        guard UIApplication.shared.applicationState == .active else {
+            return
+        }
+        
         if let refreshedAt = refreshedAt, -refreshedAt.timeIntervalSinceNow <= OverviewViewController.autoUpdateTimeInterval, account != nil {
             return // Infos still valid, do not refresh.
         }
@@ -390,6 +394,10 @@ class OverviewViewController: UITableViewController {
     func historyUpdated(_ notification: Notification) {
         reloadHistory()
     }
+    
+    func didBecomeActive(_ notification: Notification) {
+        refreshIfNeeded()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -507,9 +515,12 @@ class OverviewViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if UIApplication.shared.applicationState == .active {
-            refreshIfNeeded()
-        }
+        refreshIfNeeded()
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(_:)), name: .UIApplicationDidBecomeActive, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: .UIApplicationDidBecomeActive, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
