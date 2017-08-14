@@ -1,0 +1,122 @@
+/* Class = "UINavigationItem"; title = "Login IP"; ObjectID = "4fQ-du-yO1"; */
+"4fQ-du-yO1.title" = "上線 IP";
+
+/* Class = "UILabel"; text = "Off"; ObjectID = "7SM-VC-Ke4"; */
+"7SM-VC-Ke4.text" = "關閉";
+
+/* Class = "UILabel"; text = "Auto Login"; ObjectID = "99e-tq-pnT"; */
+"99e-tq-pnT.text" = "自動登錄";
+
+/* Class = "UITextField"; placeholder = "New Password"; ObjectID = "9DJ-2g-xJe"; */
+"9DJ-2g-xJe.placeholder" = "新密碼";
+
+/* Class = "UILabel"; text = "Monthly Trend"; ObjectID = "9kM-Ii-HEq"; */
+"9kM-Ii-HEq.text" = "本月趨勢";
+
+/* Class = "UILabel"; text = "Change Password"; ObjectID = "BXT-zo-Kxq"; */
+"BXT-zo-Kxq.text" = "更改密碼";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "BgW-cK-Tac"; */
+"BgW-cK-Tac.placeholder" = "用戶名";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "Cly-A7-Aje"; */
+"Cly-A7-Aje.text" = "姓名";
+
+/* Class = "UILabel"; text = "Usage"; ObjectID = "D83-Ak-v35"; */
+"D83-Ak-v35.text" = "流量";
+
+/* Class = "UILabel"; text = "Logout"; ObjectID = "FxC-dl-0Iy"; */
+"FxC-dl-0Iy.text" = "下線";
+
+/* Class = "UILabel"; text = "Login Time"; ObjectID = "GoG-x4-2ts"; */
+"GoG-x4-2ts.text" = "上線時間";
+
+/* Class = "UILabel"; text = "Delete Account"; ObjectID = "H7m-DO-ilD"; */
+"H7m-DO-ilD.text" = "刪除賬戶";
+
+/* Class = "UILabel"; text = "Signal Strength"; ObjectID = "Hwm-MP-Vrd"; */
+"Hwm-MP-Vrd.text" = "信號強度";
+
+/* Class = "UILabel"; text = "b1:f0:9a:6d:85:92"; ObjectID = "IRC-lJ-hoY"; */
+"IRC-lJ-hoY.text" = "b1:f0:9a:6d:85:92";
+
+/* Class = "UITableViewController"; title = "Usage Alert"; ObjectID = "IRs-Zi-QK3"; */
+"IRs-Zi-QK3.title" = "流量警報";
+
+/* Class = "UILabel"; text = "Account existed"; ObjectID = "Ncw-7O-lBD"; */
+"Ncw-7O-lBD.text" = "賬戶已存在";
+
+/* Class = "UINavigationItem"; title = "Online Devices"; ObjectID = "O8j-7m-dtA"; */
+"O8j-7m-dtA.title" = "在線設備";
+
+/* Class = "UILabel"; text = "Logout Device"; ObjectID = "OBf-u0-QLv"; */
+"OBf-u0-QLv.text" = "下線設備";
+
+/* Class = "UILabel"; text = "MAC Address"; ObjectID = "REZ-rf-euA"; */
+"REZ-rf-euA.text" = "MAC 地址";
+
+/* Class = "UINavigationItem"; title = "Account"; ObjectID = "SPV-m8-ZsX"; */
+"SPV-m8-ZsX.title" = "賬戶";
+
+/* Class = "UITableViewSection"; footerTitle = "\"Auto Login\" will only be effective in networks marked as \"On Campus\"."; ObjectID = "Tm8-iG-baP"; */
+"Tm8-iG-baP.footerTitle" = "“自動登錄” 只會在標記為 “校園內” 的網絡中生效。";
+
+/* Class = "UILabel"; text = "Network"; ObjectID = "UOf-dt-v27"; */
+"UOf-dt-v27.text" = "網絡";
+
+/* Class = "UILabel"; text = "Balance"; ObjectID = "VSi-sq-enr"; */
+"VSi-sq-enr.text" = "餘額";
+
+/* Class = "UILabel"; text = "IP Address"; ObjectID = "Xwc-9G-Tg7"; */
+"Xwc-9G-Tg7.text" = "IP 地址";
+
+/* Class = "UILabel"; text = "IP Address"; ObjectID = "ZHg-Zl-dhb"; */
+"ZHg-Zl-dhb.text" = "IP 地址";
+
+/* Class = "UILabel"; text = "On Campus"; ObjectID = "ayd-eJ-zk7"; */
+"ayd-eJ-zk7.text" = "校園內";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "bAx-BR-1dX"; */
+"bAx-BR-1dX.placeholder" = "密碼";
+
+/* Class = "UILabel"; text = "Devices"; ObjectID = "cCZ-il-6Wj"; */
+"cCZ-il-6Wj.text" = "在線設備";
+
+/* Class = "UITableViewController"; title = "Settings"; ObjectID = "eSM-KM-bTD"; */
+"eSM-KM-bTD.title" = "設置";
+
+/* Class = "UILabel"; text = "Current Usage"; ObjectID = "gOX-7d-QAT"; */
+"gOX-7d-QAT.text" = "當前流量";
+
+/* Class = "UILabel"; text = "Billing Group"; ObjectID = "gpc-oa-3UY"; */
+"gpc-oa-3UY.text" = "計費組";
+
+/* Class = "UINavigationItem"; title = "Add Account"; ObjectID = "h0d-WZ-GlQ"; */
+"h0d-WZ-GlQ.title" = "添加賬戶";
+
+/* Class = "UILabel"; text = "Session ID"; ObjectID = "h4V-Fw-Kxc"; */
+"h4V-Fw-Kxc.text" = "鏈接 ID";
+
+/* Class = "UILabel"; text = "Usage"; ObjectID = "hFv-mQ-09d"; */
+"hFv-mQ-09d.text" = "流量";
+
+/* Class = "UILabel"; text = "Estimated Fee"; ObjectID = "kbL-9E-LHU"; */
+"kbL-9E-LHU.text" = "預計費用";
+
+/* Class = "UILabel"; text = "Balance"; ObjectID = "lU5-xm-7Wn"; */
+"lU5-xm-7Wn.text" = "賬戶餘額";
+
+/* Class = "UITextField"; placeholder = "IP Address"; ObjectID = "mDj-vP-thr"; */
+"mDj-vP-thr.placeholder" = "IP 地址";
+
+/* Class = "UILabel"; text = "Usage Alert"; ObjectID = "vdN-Sw-6R2"; */
+"vdN-Sw-6R2.text" = "流量警報";
+
+/* Class = "UILabel"; text = "Auto Logout Expired Sessions"; ObjectID = "yFG-Ic-VlG"; */
+"yFG-Ic-VlG.text" = "自動下線過期鏈接";
+
+/* Class = "UINavigationItem"; title = "Change Password"; ObjectID = "ylZ-mi-qAg"; */
+"ylZ-mi-qAg.title" = "更改密碼";
+
+/* Class = "UITableViewSection"; footerTitle = "You will be notified when your usage has reached a certain percentage of your maximum usage this month."; ObjectID = "ymi-FS-Axh"; */
+"ymi-FS-Axh.footerTitle" = "在當月流量達到最大可用流量一定百分比時，你會收到通知。";

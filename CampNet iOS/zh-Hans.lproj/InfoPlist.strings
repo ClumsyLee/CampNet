@@ -7,7 +7,7 @@
 */
 
 /* NSMicrophoneUsageDescription */
-"CampNet needs access to the microphone to be able to attach voice notes." = "CampNet needs access to the microphone to be able to attach voice notes.";
+"CampNet needs access to the microphone to be able to attach voice notes." = "CampNet 需要访问你的麦克风以添加音频附件。";
 
 /* NSPhotoLibraryUsageDescription */
-"CampNet needs access to your photo library for you to be able to attach images." = "CampNet needs access to your photo library for you to be able to attach images.";
+"CampNet needs access to your photo library for you to be able to attach images." = "CampNet 需要访问你的照片以添加图片附件。";
