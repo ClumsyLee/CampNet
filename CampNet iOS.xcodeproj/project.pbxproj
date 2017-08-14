@@ -27,7 +27,6 @@
 		0F464C651F13ED0F00C2F58B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C641F13ED0F00C2F58B /* StringExtensions.swift */; };
 		0F464C721F14093E00C2F58B /* BillingGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C711F14093E00C2F58B /* BillingGroup.swift */; };
 		0F464C741F1415A000C2F58B /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C731F1415A000C2F58B /* CollectionExtensions.swift */; };
-		0F464C791F14A61600C2F58B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C781F14A61600C2F58B /* UserDefaults.swift */; };
 		0F46CC831F17837700AF1FC9 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F46CC821F17837700AF1FC9 /* AccountsViewController.swift */; };
 		0F52FE121F29F1C800A88E90 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F52FE111F29F1C800A88E90 /* SettingsViewController.swift */; };
 		0F56148C1F31A167008A1232 /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F56148B1F31A167008A1232 /* SessionDetailViewController.swift */; };
@@ -44,6 +43,7 @@
 		0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A11F17593E002861F3 /* AccountManager.swift */; };
 		0FC6E2A41F175DE5002861F3 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A31F175DE5002861F3 /* ArrayExtensions.swift */; };
 		0FC6E2A61F17694E002861F3 /* NotificationNameExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */; };
+		0FD239C11F415EC6006EA7F9 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD239C01F415EC6006EA7F9 /* UserDefaultsExtensions.swift */; };
 		0FD3A4111F1588BF006DA497 /* Configurations in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A4101F1588BF006DA497 /* Configurations */; };
 		0FD3A4141F158A12006DA497 /* Configurations.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A4161F158A12006DA497 /* Configurations.strings */; };
 		0FF7563F1F2A175600B2429A /* UsageAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */; };
@@ -104,7 +104,6 @@
 		0F464C641F13ED0F00C2F58B /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
 		0F464C711F14093E00C2F58B /* BillingGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillingGroup.swift; path = Models/BillingGroup.swift; sourceTree = "<group>"; };
 		0F464C731F1415A000C2F58B /* CollectionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionExtensions.swift; path = Extensions/CollectionExtensions.swift; sourceTree = "<group>"; };
-		0F464C781F14A61600C2F58B /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaults.swift; path = Helpers/UserDefaults.swift; sourceTree = "<group>"; };
 		0F46CC821F17837700AF1FC9 /* AccountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountsViewController.swift; path = Views/Controllers/AccountsViewController.swift; sourceTree = "<group>"; };
 		0F52FE111F29F1C800A88E90 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Views/Controllers/SettingsViewController.swift; sourceTree = "<group>"; };
 		0F56148B1F31A167008A1232 /* SessionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDetailViewController.swift; path = Views/Controllers/SessionDetailViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +120,7 @@
 		0FC6E2A11F17593E002861F3 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Models/AccountManager.swift; sourceTree = "<group>"; };
 		0FC6E2A31F175DE5002861F3 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtensions.swift; path = Extensions/ArrayExtensions.swift; sourceTree = "<group>"; };
 		0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationNameExtensions.swift; path = Extensions/NotificationNameExtensions.swift; sourceTree = "<group>"; };
+		0FD239C01F415EC6006EA7F9 /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsExtensions.swift; path = Extensions/UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		0FD3A4101F1588BF006DA497 /* Configurations */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Configurations; path = Resources/Configurations; sourceTree = "<group>"; };
 		0FD3A4151F158A12006DA497 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Configurations.strings; sourceTree = "<group>"; };
 		0FD3A4171F158A15006DA497 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Configurations.strings"; sourceTree = "<group>"; };
@@ -230,6 +230,7 @@
 				0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */,
 				0F8650741F1F8F9400C654C4 /* IntExtensions.swift */,
 				0F7A93FA1F25E34C0093B3FA /* DoubleExtensions.swift */,
+				0FD239C01F415EC6006EA7F9 /* UserDefaultsExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -237,7 +238,6 @@
 		0F464C751F14A5DA00C2F58B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				0F464C781F14A61600C2F58B /* UserDefaults.swift */,
 				0F5614941F31DEA2008A1232 /* WifiAddress.swift */,
 			);
 			name = Helpers;
@@ -598,10 +598,10 @@
 				0FC6E2A41F175DE5002861F3 /* ArrayExtensions.swift in Sources */,
 				0FC6E2A61F17694E002861F3 /* NotificationNameExtensions.swift in Sources */,
 				0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */,
-				0F464C791F14A61600C2F58B /* UserDefaults.swift in Sources */,
 				0F8650751F1F8F9400C654C4 /* IntExtensions.swift in Sources */,
 				0F464C631F13DB6E00C2F58B /* YamlExtensions.swift in Sources */,
 				0F464C601F13D1E800C2F58B /* CampNetError.swift in Sources */,
+				0FD239C11F415EC6006EA7F9 /* UserDefaultsExtensions.swift in Sources */,
 				0F464C721F14093E00C2F58B /* BillingGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

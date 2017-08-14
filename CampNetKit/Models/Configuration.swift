@@ -74,7 +74,7 @@ public struct Session {
 
     public var id: String?
     public var startTime: Date?
-    public var usage: Int?
+    public var usage: Int64?
     public var mac: String?
     public var device: String?
     
@@ -99,7 +99,7 @@ public struct Session {
         self.ip = ip
         self.id = vars["id"] as? String
         self.startTime = vars["start_time"] as? Date
-        self.usage = vars["usage"] as? Int
+        self.usage = vars["usage"] as? Int64
         self.mac = vars["mac"] as? String
         self.device = vars["device"] as? String
     }
@@ -109,7 +109,7 @@ public struct Profile {
     public var name: String?
     public var billingGroupName: String?
     public var balance: Double?
-    public var usage: Int?
+    public var usage: Int64?
     public var sessions: [Session]?
     
     public var updatedAt: Date
@@ -136,7 +136,7 @@ public struct Profile {
         self.name = vars["name"] as? String
         self.billingGroupName = vars["billing_group_name"] as? String
         self.balance = vars["balance"] as? Double
-        self.usage = vars["usage"] as? Int
+        self.usage = vars["usage"] as? Int64
         
         if let sessions = vars["sessions"] as? [[String: Any]] {
             self.sessions = []
@@ -156,7 +156,7 @@ public struct Profile {
 public struct History {
     public var year: Int
     public var month: Int
-    public var usageSums: [Int]
+    public var usageSums: [Int64]
     
     var vars: [String: Any] {
         var vars: [String: Any] = [:]
@@ -171,7 +171,7 @@ public struct History {
     init?(vars: [String: Any]) {
         guard let year = vars["year"] as? Int,
               let month = vars["month"] as? Int,
-              let usageSums = vars["usage_sums"] as? [Int] else {
+              let usageSums = vars["usage_sums"] as? [Int64] else {
             return nil
         }
         
@@ -244,7 +244,7 @@ public class Configuration {
                     print("Billing group names must be strings in \(identifier).")
                     return nil
                 }
-                guard let billingGroup = BillingGroup(configurationIdentifier: identifier, name: name, yaml: value) else {
+                guard let billingGroup = BillingGroup(configurationIdentifier: identifier, name: name, decimalUnits: decimalUnits, yaml: value) else {
                     print("Invalid billingGroup \(name) in \(identifier).")
                     return nil
                 }

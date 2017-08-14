@@ -49,7 +49,7 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
             searchController.dimsBackgroundDuringPresentation = false
         }
         tableView.tableHeaderView = searchController.searchBar
-        self.definesPresentationContext = true
+        self.definesPresentationContext = true  // For navigation bar.
         
         self.names = Configuration.displayNames.map {
             (identifier: $0.key, name: $0.value, domain: $0.key.reverseDomained)
@@ -57,6 +57,10 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
         .sorted {
             $0.name < $1.name || $0.name == $1.name && $0.identifier < $1.identifier
         }
+    }
+    
+    deinit {
+        searchController.view.removeFromSuperview()  // A bug in iOS 9. See https://stackoverflow.com/questions/32282401/attempting-to-load-the-view-of-a-view-controller-while-it-is-deallocating-uis
     }
 
     override func didReceiveMemoryWarning() {

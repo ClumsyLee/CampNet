@@ -21,6 +21,7 @@ public struct ActionEntry {
     static let userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1"
     static let timeout = 30.0
     static let varsName = "vars"
+    static let newVarsName = "newVars"
     static let respName = "resp"
     
     public var actionIdentifier: String
@@ -56,7 +57,7 @@ public struct ActionEntry {
         }
         
         self.offcampusIfFailed = yaml["offcampus_if_failed"].bool ?? false
-        self.script = "(\(ActionEntry.respName)) => {\n\(yaml["script"].string ?? "")\n}"
+        self.script = yaml["script"].string ?? ""
     }
     
     func commit(currentVars: [String: Any] = [:],
@@ -167,14 +168,16 @@ public struct ActionEntry {
     
     func runScript(context: JSContext, resp: String, newVars: [String: Any]) throws {
         // Send new vars.
-        _ = context.evaluateScript("(newVars) => { Object.assign(\(ActionEntry.varsName), newVars) }").call(withArguments: [newVars])
+        context.setObject(newVars, forKeyedSubscript: ActionEntry.newVarsName as (NSCopying & NSObjectProtocol))
+        _ = context.evaluateScript("Object.assign(\(ActionEntry.varsName), \(ActionEntry.newVarsName));")
         if let error = context.exception {
-            print("Failed to send new vars of \(identifier): \(error)")
+            print("Failed to send new vars of \(identifier): \(error). resp: \(resp.debugDescription). newVars: \(newVars.debugDescription).")
             throw CampNetError.internalError
         }
         
         // Run script.
-        _ = context.evaluateScript(script).call(withArguments: [resp])
+        context.setObject(resp, forKeyedSubscript: ActionEntry.respName as (NSCopying & NSObjectProtocol))
+        _ = context.evaluateScript(script)
         if let errorString = context.exception?.description {
             print("Failed to execute the script of \(identifier): \(errorString). resp: \(resp.debugDescription). newVars: \(newVars.debugDescription).")
             if let error = CampNetError(identifier: errorString) {

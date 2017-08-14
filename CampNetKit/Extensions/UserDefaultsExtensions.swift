@@ -1,8 +1,8 @@
 //
-//  UserDefaults.swift
+//  UserDefaultsExtensions.swift
 //  CampNet iOS
 //
-//  Created by Thomas Lee on 2017/7/11.
+//  Created by Thomas Lee on 2017/8/13.
 //  Copyright © 2017年 Sihan Li. All rights reserved.
 //
 
@@ -10,6 +10,13 @@ import Foundation
 import SwiftyUserDefaults
 
 public let Defaults = UserDefaults(suiteName: Configuration.appGroup)!
+
+extension UserDefaults {
+    subscript(key: DefaultsKey<Int64?>) -> Int64? {
+        get { return object(forKey: key._key) as? Int64 }
+        set { set(key, newValue) }
+    }
+}
 
 extension DefaultsKeys {
     public static let defaultsSet = DefaultsKey<Bool>("defaultsSet")
@@ -27,6 +34,6 @@ extension DefaultsKeys {
     static func accountStatus(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountStatus") }
     static func accountProfile(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountProfile") }
     static func accountHistory(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountHistory") }
-    static func accountEstimatedDailyUsage(of id: String) -> DefaultsKey<Int?> { return DefaultsKey<Int?>("\(id).accountEstimatedDailyUsage") }
+    static func accountEstimatedDailyUsage(of id: String) -> DefaultsKey<Int64?> { return DefaultsKey<Int64?>("\(id).accountEstimatedDailyUsage") }
     static func accountPastIps(of id: String) -> DefaultsKey<[String]> { return DefaultsKey<[String]>("\(id).accountPastIps") }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Int {
+extension Int64 {
     public func usageString(decimalUnits: Bool) -> String {
         let step = decimalUnits ? 1000.0 : 1024.0
         var number = Double(self)

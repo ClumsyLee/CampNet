@@ -10,29 +10,6 @@ import Foundation
 import Yaml
 
 extension Yaml {
-    var step: (usage: Int, price: Double)? {
-        guard let first = self[0].int,
-            let second = self[1].double else {
-                return nil
-        }
-        return (usage: first, price: second)
-    }
-    
-    var steps: [(usage: Int, price: Double)]? {
-        guard let array = self.array else {
-            return nil
-        }
-        
-        var pairs: [(usage: Int, price: Double)] = []
-        for element in array {
-            guard let pair = element.step else {
-                return nil
-            }
-            pairs.append(pair)
-        }
-        return pairs
-    }
-    
     var stringArray: [String]? {
         guard let array = self.array else {
             return nil

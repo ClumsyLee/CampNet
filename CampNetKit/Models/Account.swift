@@ -196,7 +196,7 @@ public class Account {
         }
     }
     
-    public fileprivate(set) var estimatedDailyUsage: Int? {
+    public fileprivate(set) var estimatedDailyUsage: Int64? {
         get {
             return Defaults[.accountEstimatedDailyUsage(of: identifier)]
         }
@@ -255,7 +255,7 @@ public class Account {
                let ratio = Defaults[.usageAlertRatio],
                let maxUsage = maxUsage(profile: newValue) {
                 
-                let limit = Int(Double(maxUsage) * ratio)
+                let limit = Int64(Double(maxUsage) * ratio)
                 if oldUsage < limit && newUsage >= limit {
                     // Should send.
                     
@@ -285,7 +285,7 @@ public class Account {
                     let fromIndex = toIndex - Account.estimationLength
                     let usage = history.usageSums[toIndex] - history.usageSums[fromIndex]
                     
-                    self.estimatedDailyUsage = usage / Account.estimationLength
+                    self.estimatedDailyUsage = usage / Int64(Account.estimationLength)
                 }
             }
             
@@ -565,7 +565,7 @@ public class Account {
                Defaults[.autoLogin]
     }
     
-    public func freeUsage(profile: Profile?) -> Int? {
+    public func freeUsage(profile: Profile?) -> Int64? {
         guard let profile = profile,
               let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""] else {
             return nil
@@ -574,7 +574,7 @@ public class Account {
         return billingGroup.freeUsage
     }
     
-    public func maxUsage(profile: Profile?) -> Int? {
+    public func maxUsage(profile: Profile?) -> Int64? {
         guard let profile = profile,
               let balance = profile.balance,
               let usage = profile.usage,
@@ -599,7 +599,7 @@ public class Account {
             return nil
         }
         
-        let estimatedUsage = min(usage + estimatedDailyUsage * (maxDay - Calendar.current.component(.day, from: today)),
+        let estimatedUsage = min(usage + estimatedDailyUsage * Int64(maxDay - Calendar.current.component(.day, from: today)),
                                  billingGroup.maxUsage(balance: balance, usage: usage))
         return billingGroup.fee(from: usage, to: estimatedUsage)
     }

@@ -108,6 +108,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
+    func showErrorBanner(title: String?, body: String?, duration: Double = AppDelegate.bannerDuration) {
+        let banner = Banner(title: title, subtitle: body, backgroundColor: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1))
+        banner.show(duration: duration)
+    }
+    
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
@@ -115,11 +120,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             completionHandler([.alert, .sound])
         } else {
             let content = notification.request.content
-            let banner = Banner(title: content.title, subtitle: content.body, backgroundColor: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1))
-            banner.show(duration: AppDelegate.bannerDuration)
-            
+            showErrorBanner(title: content.title, body: content.body)
             completionHandler([])
         }
+    }
+    
+    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+        showErrorBanner(title: notification.alertTitle, body: notification.alertBody)
     }
     
     func sendNotification(title: String, body: String, identifier: String) {
@@ -216,8 +223,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func accountUsageAlert(_ notification: Notification) {
         guard let account = notification.userInfo?["account"] as? Account,
-              let usage = notification.userInfo?["usage"] as? Int,
-              let maxUsage = notification.userInfo?["maxUsage"] as? Int else {
+              let usage = notification.userInfo?["usage"] as? Int64,
+              let maxUsage = notification.userInfo?["maxUsage"] as? Int64 else {
             return
         }
         
