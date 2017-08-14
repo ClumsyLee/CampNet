@@ -68,9 +68,11 @@ class OverviewViewController: UITableViewController {
             return
         }
         print("Refreshing \(account.identifier) in overview.")
-        refreshedAt = Date()
         
-        account.update(on: DispatchQueue.global(qos: .userInitiated)).always {
+        account.update(on: DispatchQueue.global(qos: .userInitiated)).then {
+            self.refreshedAt = Date()
+        }
+        .always {
             // Don't touch refreshControl if the account has been changed.
             if self.account == account {
                 self.refreshControl?.endRefreshing()

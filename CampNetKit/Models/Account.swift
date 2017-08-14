@@ -541,7 +541,6 @@ public class Account {
     
     public func update(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
         
-        // Here we run actions in order to make sure important actions will be executed.
         var promises = [status(on: queue, requestBinder: requestBinder).asVoid()]
         
         if configuration.actions[.profile] != nil {
@@ -556,7 +555,7 @@ public class Account {
             }
         }
         
-        return when(resolved: promises).asVoid()
+        return when(fulfilled: promises).asVoid()
     }
     
     public func canManage(network: NEHotspotNetwork) -> Bool {
