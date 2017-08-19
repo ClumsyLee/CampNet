@@ -403,7 +403,7 @@ public class Account {
             // Logout expired sessions if needed.
             // Do not perform in subactions to avoid recursions.
             if let sessions = profile.sessions, !isSubaction {
-                self.updatePastIps(sessions: sessions, on: queue)
+                self.updatePastIps(sessions: sessions, on: queue, requestBinder: requestBinder)
             }
             
             self.profile = profile
@@ -604,7 +604,7 @@ public class Account {
         return billingGroup.fee(from: usage, to: estimatedUsage)
     }
     
-    fileprivate func updatePastIps(sessions: [Session], on queue: DispatchQueue) {
+    fileprivate func updatePastIps(sessions: [Session], on queue: DispatchQueue, requestBinder: RequestBinder?) {
         let ips = sessions.map { $0.ip }
         let currentIp = wifiIp()
         
@@ -615,7 +615,7 @@ public class Account {
             for session in sessions {
                 if ipsToLogout.contains(session.ip) {
                     promise = promise.then(on: queue) {
-                        return self.logoutSession(session: session, on: queue)
+                        return self.logoutSession(session: session, on: queue, requestBinder: requestBinder)
                     }
                 }
             }
