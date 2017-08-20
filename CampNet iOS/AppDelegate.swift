@@ -85,7 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         SwiftRater.daysUntilPrompt = 7
         SwiftRater.significantUsesUntilPrompt = 3
         SwiftRater.daysBeforeReminding = 1
-        SwiftRater.debugMode = true
     }
     
     func requestNotificationAuthorization() {
