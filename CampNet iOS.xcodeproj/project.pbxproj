@@ -279,8 +279,8 @@
 				0F34656F1F34D80A008E329F /* NetworkViewController.swift */,
 				0F14E7761E2E3AAC0092494B /* OverviewViewController.swift */,
 				0F56148B1F31A167008A1232 /* SessionDetailViewController.swift */,
-				0F52FE111F29F1C800A88E90 /* SettingsViewController.swift */,
 				0F56148D1F31A18C008A1232 /* SessionsViewController.swift */,
+				0F52FE111F29F1C800A88E90 /* SettingsViewController.swift */,
 				0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */,
 			);
 			name = Controllers;
@@ -483,6 +483,7 @@
 				"${BUILT_PRODUCTS_DIR}/DynamicButton/DynamicButton.framework",
 				"${PODS_ROOT}/Instabug/Instabug.framework",
 				"${PODS_ROOT}/Instabug/Instabug.framework.dSYM",
+				"${BUILT_PRODUCTS_DIR}/SwiftRater/SwiftRater.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
@@ -499,6 +500,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instabug.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Instabug.framework.dSYM",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftRater.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",

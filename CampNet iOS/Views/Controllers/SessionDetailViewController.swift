@@ -7,6 +7,8 @@
 //
 
 import UIKit
+
+import SwiftRater
 import CampNetKit
 
 class SessionDetailViewController: UITableViewController {
@@ -89,7 +91,9 @@ class SessionDetailViewController: UITableViewController {
             menu.view.tintColor = #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1)
             
             let deleteAction = UIAlertAction(title: NSLocalizedString("Logout Device", comment: "Logout device button on alerts."), style: .destructive) { action in
-                _ = self.account.logoutSession(session: self.session, on: DispatchQueue.global(qos: .userInitiated))
+                _ = self.account.logoutSession(session: self.session, on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
+                    SwiftRater.incrementSignificantUsageCount()
+                }
                 self.performSegue(withIdentifier: "sessionLoggedOut", sender: self)
             }
             let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button on alerts."), style: .cancel, handler: nil)

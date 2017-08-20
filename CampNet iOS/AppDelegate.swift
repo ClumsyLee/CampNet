@@ -12,6 +12,8 @@ import UserNotifications
 
 import BRYXBanner
 import Instabug
+import SwiftRater
+
 import CampNetKit
 
 @UIApplicationMain
@@ -27,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         setDefaultsIfNot()
         
         setUpInstaBug()
+        setUpSwiftRater()
         requestNotificationAuthorization()
         addObservers()
         
@@ -77,6 +80,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Instabug.setAttachmentTypesEnabledScreenShot(false, extraScreenShot: false, galleryImage: false, voiceNote: false, screenRecording: false)
     }
     
+    func setUpSwiftRater() {
+        SwiftRater.appId = "1263284287"
+        SwiftRater.daysUntilPrompt = 7
+        SwiftRater.significantUsesUntilPrompt = 3
+        SwiftRater.daysBeforeReminding = 1
+        SwiftRater.debugMode = true
+    }
+    
     func requestNotificationAuthorization() {
         if #available(iOS 10.0, *) {
             let center = UNUserNotificationCenter.current()
@@ -116,7 +127,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-        if notification.request.identifier.hasSuffix("accountUsageAlert") {
+        if notification.request.identifier.hasSuffix(".accountUsageAlert") {
             completionHandler([.alert, .sound])
         } else {
             let content = notification.request.content

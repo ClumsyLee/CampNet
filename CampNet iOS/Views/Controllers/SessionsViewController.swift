@@ -7,6 +7,8 @@
 //
 
 import UIKit
+
+import SwiftRater
 import CampNetKit
 
 class SessionsViewController: UITableViewController {
@@ -135,7 +137,9 @@ class SessionsViewController: UITableViewController {
             return
         }
         
-        _  = account.logoutSession(session: session, on: DispatchQueue.global(qos: .userInitiated))
+        _  = account.logoutSession(session: session, on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
+            SwiftRater.incrementSignificantUsageCount()
+        }
     }
     
     

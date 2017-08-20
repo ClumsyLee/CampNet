@@ -112,6 +112,9 @@
 /* Class = "UILabel"; text = "Usage Alert"; ObjectID = "vdN-Sw-6R2"; */
 "vdN-Sw-6R2.text" = "流量警报";
 
+/* Class = "UILabel"; text = "Rate Us"; ObjectID = "Ldh-WC-BHg"; */
+"Ldh-WC-BHg.text" = "给我们评分";
+
 /* Class = "UILabel"; text = "Auto Logout Expired Sessions"; ObjectID = "yFG-Ic-VlG"; */
 "yFG-Ic-VlG.text" = "自动下线过期链接";
 

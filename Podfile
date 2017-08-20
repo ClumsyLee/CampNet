@@ -25,4 +25,5 @@ target 'CampNet iOS' do
   pod 'Charts'
   pod 'DynamicButton'
   pod 'Instabug'
+  pod 'SwiftRater', :git => 'https://github.com/ThomasLee969/SwiftRater'
 end

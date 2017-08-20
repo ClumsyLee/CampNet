@@ -7,6 +7,8 @@
 //
 
 import UIKit
+
+import SwiftRater
 import CampNetKit
 
 class LoginIpViewController: UITableViewController {
@@ -113,7 +115,9 @@ class LoginIpViewController: UITableViewController {
         
         if segue.identifier == "ipLoggedIn" {
             if let ip = ipField.text {
-                _ = account.login(ip: ip, on: DispatchQueue.global(qos: .userInitiated))
+                _ = account.login(ip: ip, on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
+                    SwiftRater.incrementSignificantUsageCount()
+                }
             }
         }
     }

@@ -13,6 +13,8 @@ import Charts
 import DynamicButton
 import Instabug
 import PromiseKit
+import SwiftRater
+
 import CampNetKit
 
 class OverviewViewController: UITableViewController {
@@ -69,7 +71,9 @@ class OverviewViewController: UITableViewController {
         }
         print("Refreshing \(account.identifier) in overview.")
         
-        account.update(on: DispatchQueue.global(qos: .userInitiated)).then {
+        account.update(on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
+            SwiftRater.incrementSignificantUsageCount()
+            
             self.refreshedAt = Date()
         }
         .always {
@@ -153,6 +157,8 @@ class OverviewViewController: UITableViewController {
         loginButtonCaption.text = NSLocalizedString("Logging In…", comment: "Login button caption.")
         
         account.login(on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
+            SwiftRater.incrementSignificantUsageCount()
+            
             // Update the profile in the background if possible.
             if account.configuration.actions[.profile] != nil {
                 _ = account.profile()
@@ -173,7 +179,10 @@ class OverviewViewController: UITableViewController {
         
         loginButtonCaption.text = NSLocalizedString("Logging Out…", comment: "Login button caption.")
         
-        account.logout(on: DispatchQueue.global(qos: .userInitiated)).catch { _ in
+        account.logout(on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
+            SwiftRater.incrementSignificantUsageCount()
+        }
+        .catch { _ in
             self.reloadStatus()
         }
     }
@@ -516,6 +525,8 @@ class OverviewViewController: UITableViewController {
         super.viewDidAppear(animated)
         
         refreshIfNeeded()
+        SwiftRater.check()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(_:)), name: .UIApplicationDidBecomeActive, object: nil)
     }
     
