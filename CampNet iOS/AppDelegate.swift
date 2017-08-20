@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func setUpInstaBug() {
-        Instabug.start(withToken: "7285a13216bb10bdc28941031277be41", invocationEvent: .none)
+        Instabug.start(withToken: "0df1051f1ad636fc8efd87baef010aaa", invocationEvent: .none)
         Instabug.setPromptOptionsEnabledWithBug(false, feedback: true, chat: false)
         Instabug.setAttachmentTypesEnabledScreenShot(false, extraScreenShot: false, galleryImage: false, voiceNote: false, screenRecording: false)
     }
