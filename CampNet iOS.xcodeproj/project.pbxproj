@@ -39,6 +39,7 @@
 		0F8650751F1F8F9400C654C4 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8650741F1F8F9400C654C4 /* IntExtensions.swift */; };
 		0F8F704D1F1B44A20088E2DE /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704C1F1B44A20088E2DE /* AccountCell.swift */; };
 		0F8F704F1F1B44C10088E2DE /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704E1F1B44C10088E2DE /* SessionCell.swift */; };
+		0FA85DA31F4DDF8E00F76A86 /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA85DA21F4DDF8E00F76A86 /* SwiftyBeaver.swift */; };
 		0FBCD7B01F226F4B00333A90 /* LoginIpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */; };
 		0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A11F17593E002861F3 /* AccountManager.swift */; };
 		0FC6E2A41F175DE5002861F3 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A31F175DE5002861F3 /* ArrayExtensions.swift */; };
@@ -116,6 +117,7 @@
 		0F8650741F1F8F9400C654C4 /* IntExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntExtensions.swift; path = Extensions/IntExtensions.swift; sourceTree = "<group>"; };
 		0F8F704C1F1B44A20088E2DE /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountCell.swift; path = Views/Cells/AccountCell.swift; sourceTree = "<group>"; };
 		0F8F704E1F1B44C10088E2DE /* SessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionCell.swift; path = Views/Cells/SessionCell.swift; sourceTree = "<group>"; };
+		0FA85DA21F4DDF8E00F76A86 /* SwiftyBeaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyBeaver.swift; sourceTree = "<group>"; };
 		0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginIpViewController.swift; path = Views/Controllers/LoginIpViewController.swift; sourceTree = "<group>"; };
 		0FC6E2A11F17593E002861F3 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Models/AccountManager.swift; sourceTree = "<group>"; };
 		0FC6E2A31F175DE5002861F3 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtensions.swift; path = Extensions/ArrayExtensions.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 		0F464C751F14A5DA00C2F58B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0FA85DA21F4DDF8E00F76A86 /* SwiftyBeaver.swift */,
 				0F5614941F31DEA2008A1232 /* WifiAddress.swift */,
 			);
 			name = Helpers;
@@ -490,6 +493,7 @@
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/NetUtils/NetUtils.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
 				"${BUILT_PRODUCTS_DIR}/Yaml/Yaml.framework",
 			);
@@ -507,6 +511,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NetUtils.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Yaml.framework",
 			);
@@ -604,6 +609,7 @@
 				0F7A93FB1F25E34C0093B3FA /* DoubleExtensions.swift in Sources */,
 				0F464C5A1F13C50500C2F58B /* Account.swift in Sources */,
 				0FC6E2A41F175DE5002861F3 /* ArrayExtensions.swift in Sources */,
+				0FA85DA31F4DDF8E00F76A86 /* SwiftyBeaver.swift in Sources */,
 				0FC6E2A61F17694E002861F3 /* NotificationNameExtensions.swift in Sources */,
 				0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */,
 				0F8650751F1F8F9400C654C4 /* IntExtensions.swift in Sources */,

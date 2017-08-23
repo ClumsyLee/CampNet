@@ -12,9 +12,12 @@ import UserNotifications
 
 import BRYXBanner
 import Instabug
+import SwiftyBeaver
 import SwiftRater
 
 import CampNetKit
+
+let log = SwiftyBeaver.self
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -29,7 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         setDefaultsIfNot()
         
         setUpInstaBug()
+        setUpSwiftyBeaver()
         setUpSwiftRater()
+        
         requestNotificationAuthorization()
         addObservers()
         
@@ -78,6 +83,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Instabug.start(withToken: "0df1051f1ad636fc8efd87baef010aaa", invocationEvent: .none)
         Instabug.setPromptOptionsEnabledWithBug(false, feedback: true, chat: false)
         Instabug.setAttachmentTypesEnabledScreenShot(false, extraScreenShot: false, galleryImage: false, voiceNote: false, screenRecording: false)
+    }
+    
+    func setUpSwiftyBeaver() {
+        let console = ConsoleDestination()
+        let file = FileDestination()
+        let cloud = SBPlatformDestination(appID: "NxnNNO", appSecret: "7tqeijmBtx2ytbwuBMspzilcow0oPwr1", encryptionKey: "jJsbg9pj9j5u7hQDhwymWqcv2AaaoumP")
+        
+        log.addDestination(console)
+        log.addDestination(file)
+        log.addDestination(cloud)
     }
     
     func setUpSwiftRater() {

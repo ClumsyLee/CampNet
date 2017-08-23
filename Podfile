@@ -12,6 +12,7 @@ target 'CampNetKit' do
   pod 'KeychainAccess'
   pod 'NetUtils'
   pod 'PromiseKit'
+  pod 'SwiftyBeaver'
   pod 'SwiftyUserDefaults'
   pod 'Yaml'
 end
