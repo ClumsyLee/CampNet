@@ -53,15 +53,16 @@ class AccountManager {
             let (configurationIdentifier, username) = splitAccountIdentifier(accountIdentifier)
             
             guard let account = addAccount(configurationIdentifier: configurationIdentifier, username: username) else {
-                print("Failed to load account \(accountIdentifier) from UserDefault.")
+                log.error("\(accountIdentifier): Failed to load.")
                 continue
             }
             
             loadedIdentifiers.append(account.identifier)
             if account.identifier == mainAccountIdentifier {
+                log.info("\(accountIdentifier): Is main.")
                 mainAccount = account
             }
-            print("Account \(accountIdentifier) loaded.")
+            log.info("\(accountIdentifier): Loaded.")
         }
         
         // Remove invalid defaults.
@@ -143,6 +144,8 @@ class AccountManager {
                 mainChanged = true
             }
             
+            log.info("\(account): Added.")
+            
             // Post notification
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .accountAdded, object: self, userInfo: ["account": account])
@@ -168,6 +171,8 @@ class AccountManager {
                 }
             }
             
+            log.info("\(account): Removed.")
+            
             // Post notification
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .accountRemoved, object: self, userInfo: ["account": account])
@@ -187,6 +192,8 @@ class AccountManager {
             
             let oldMain = self.mainAccount
             self.mainAccount = account
+            
+            log.info("\(account): Became main.")
             
             // Post notification
             DispatchQueue.main.async {
