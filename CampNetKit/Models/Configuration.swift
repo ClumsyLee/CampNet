@@ -69,6 +69,19 @@ public struct Status {
     }
 }
 
+extension Status: CustomStringConvertible {
+    public var description: String {
+        switch type {
+        case let .online(onlineUsername: onlineUsername, startTime: startTime, usage: usage):
+            return "online(\(onlineUsername ?? "nil"), \(startTime?.description ?? "nil"), \(usage?.description ?? "nil"))"
+        case .offline:
+            return "offline"
+        case .offcampus:
+            return "offcampus"
+        }
+    }
+}
+
 public struct Session {
     public var ip: String
 
@@ -102,6 +115,12 @@ public struct Session {
         self.usage = vars["usage"] as? Int64
         self.mac = vars["mac"] as? String
         self.device = vars["device"] as? String
+    }
+}
+
+extension Session: CustomStringConvertible {
+    public var description: String {
+        return vars.description
     }
 }
 
@@ -153,6 +172,12 @@ public struct Profile {
     }
 }
 
+extension Profile: CustomStringConvertible {
+    public var description: String {
+        return vars.description
+    }
+}
+
 public struct History {
     public var year: Int
     public var month: Int
@@ -178,6 +203,12 @@ public struct History {
         self.year = year
         self.month = month
         self.usageSums = usageSums
+    }
+}
+
+extension History: CustomStringConvertible {
+    public var description: String {
+        return vars.description
     }
 }
 
