@@ -249,17 +249,17 @@ public class Configuration {
 
     public init?(_ identifier: String) {
         guard let url = Configuration.bundle.url(forResource: identifier, withExtension: Configuration.fileExtension, subdirectory: Configuration.subdirectory) else {
-            print("Failed to find configuration \(identifier).")
+            log.error("\(identifier): Failed to find.")
             return nil
         }
         
         guard let content = try? String(contentsOf: url) else {
-            print("Failed to read the configuration \(identifier).")
+            log.error("\(identifier): Failed to read.")
             return nil
         }
         
         guard let yaml = try? Yaml.load(content) else {
-            print("Failed to load YAML out of configuration \(identifier).")
+            log.error("\(identifier): Failed to load YAML.")
             return nil
         }
         
@@ -272,15 +272,11 @@ public class Configuration {
         if let billingGroupsYaml = yaml["billing_groups"].dictionary {
             for (key, value) in billingGroupsYaml {
                 guard let name = key.string else {
-                    print("Billing group names must be strings in \(identifier).")
-                    return nil
-                }
-                guard let billingGroup = BillingGroup(configurationIdentifier: identifier, name: name, decimalUnits: decimalUnits, yaml: value) else {
-                    print("Invalid billingGroup \(name) in \(identifier).")
+                    log.error("\(identifier): Billing group names must be strings.")
                     return nil
                 }
                 
-                billingGroups[name] = billingGroup
+                billingGroups[name] = BillingGroup(configurationIdentifier: identifier, name: name, decimalUnits: decimalUnits, yaml: value)
             }
         }
         self.billingGroups = billingGroups
@@ -290,11 +286,10 @@ public class Configuration {
             for (key, value) in actionsYaml {
                 guard let name = key.string,
                     let role = Action.Role(rawValue: name) else {
-                        print("Invalid action role \(key) in \(identifier).")
+                        log.error("\(identifier): Invalid action role \(key).")
                         return nil
                 }
                 guard let action = Action(configurationIdentifier: identifier, role: role, yaml: value) else {
-                    print("Invalid action \(role) in \(identifier).")
                     return nil
                 }
                 
@@ -303,7 +298,7 @@ public class Configuration {
         }
         self.actions = actions
         
-        print("Configuration \(identifier) loaded.")
+        log.info("\(identifier): Loaded.")
     }
 }
 

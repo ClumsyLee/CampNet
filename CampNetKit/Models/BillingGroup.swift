@@ -97,7 +97,7 @@ public struct BillingGroup {
         return fee
     }
     
-    init?(configurationIdentifier: String, name: String, decimalUnits: Bool, yaml: Yaml) {
+    init(configurationIdentifier: String, name: String, decimalUnits: Bool, yaml: Yaml) {
         self.configurationIdentifier = configurationIdentifier
         self.name = name
         self.identifier = "\(configurationIdentifier).billing_groups.\(name)"
