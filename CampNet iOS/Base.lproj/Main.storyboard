@@ -589,7 +589,7 @@
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="SFMono-Regular"/>
                                             <integer key="NSLigature" value="0"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="27.149999999999999" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="charWrapping" baseWritingDirection="natural" defaultTabInterval="27.149999999999999" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                 <tabStops>
                                                     <textTab alignment="left" location="27.149999618530273">
                                                         <options/>
