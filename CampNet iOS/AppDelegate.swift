@@ -90,6 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let file = FileDestination()
         let cloud = SBPlatformDestination(appID: "NxnNNO", appSecret: "7tqeijmBtx2ytbwuBMspzilcow0oPwr1", encryptionKey: "jJsbg9pj9j5u7hQDhwymWqcv2AaaoumP")
         cloud.serverURL = URL(string: "https://swiftybeaver.campnet.io/api/entries/")
+        cloud.minLevel = .info
         
         log.addDestination(console)
         log.addDestination(file)
