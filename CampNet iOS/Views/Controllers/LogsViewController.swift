@@ -24,11 +24,10 @@ class LogsViewController: UIViewController {
         let delegate = UIApplication.shared.delegate as! AppDelegate
         
         if let url = delegate.logFileURL {
-            textView.text = (try? String(contentsOf: url)) ?? ""
+            textView.text = (try? String(contentsOf: url, encoding: .utf8)) ?? ""
         } else {
             textView.text = ""
         }
-        textView.textContainer.lineBreakMode = .byCharWrapping
     }
 
     override func didReceiveMemoryWarning() {
