@@ -571,7 +571,7 @@
         <!--Logs-->
         <scene sceneID="Fr2-U2-7du">
             <objects>
-                <viewController title="Logs" automaticallyAdjustsScrollViewInsets="NO" id="eYS-u7-PWQ" customClass="LogsViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="eYS-u7-PWQ" customClass="LogsViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="A83-oH-Tsh"/>
                         <viewControllerLayoutGuide type="bottom" id="RiJ-Ph-xwq"/>
@@ -610,6 +610,13 @@
                             <constraint firstItem="LP9-zR-21e" firstAttribute="top" secondItem="A83-oH-Tsh" secondAttribute="bottom" id="zHn-c8-luM"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Logs" id="2gO-MJ-ZJV">
+                        <barButtonItem key="rightBarButtonItem" title="Copy" id="wLj-zB-6MO">
+                            <connections>
+                                <action selector="copyAll:" destination="eYS-u7-PWQ" id="aDB-wQ-EhQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="textView" destination="LP9-zR-21e" id="biv-wW-ZEt"/>
                     </connections>

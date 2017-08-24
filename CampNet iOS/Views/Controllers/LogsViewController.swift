@@ -7,10 +7,17 @@
 //
 
 import UIKit
+import BRYXBanner
 
 class LogsViewController: UIViewController {
 
     @IBOutlet var textView: UITextView!
+    
+    @IBAction func copyAll(_ sender: Any) {
+        UIPasteboard.general.string = textView.text
+        let banner = Banner(title: NSLocalizedString("Logs copied", comment: "Banner title when logs are copied."), backgroundColor: #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1))
+        banner.show(duration: 0.6)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -43,8 +43,11 @@
 /* Class = "UITableViewController"; title = "Usage Alert"; ObjectID = "IRs-Zi-QK3"; */
 "IRs-Zi-QK3.title" = "流量警报";
 
-/* Class = "UIViewController"; title = "Logs"; ObjectID = "eYS-u7-PWQ"; */
-"eYS-u7-PWQ.title" = "日志";
+/* Class = "UINavigationItem"; title = "Logs"; ObjectID = "2gO-MJ-ZJV"; */
+"2gO-MJ-ZJV.title" = "日志";
+
+/* Class = "UIBarButtonItem"; title = "Copy"; ObjectID = "wLj-zB-6MO"; */
+"wLj-zB-6MO.title" = "复制";
 
 /* Class = "UILabel"; text = "Account existed"; ObjectID = "Ncw-7O-lBD"; */
 "Ncw-7O-lBD.text" = "账户已存在";

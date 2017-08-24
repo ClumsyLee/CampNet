@@ -90,3 +90,6 @@
 
 /* Setting value. */
 "Off" = "Off";
+
+/* Banner title when logs are copied. */
+"Logs copied" = "Logs copied";

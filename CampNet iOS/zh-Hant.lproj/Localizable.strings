@@ -93,3 +93,6 @@
 
 /* Setting value. */
 "Off" = "關閉";
+
+/* Banner title when logs are copied. */
+"Logs copied" = "已復制日誌";
