@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     static let bannerDuration = 3.0
 
     var window: UIWindow?
+    var logFileURL: URL? = nil
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -87,7 +88,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func setUpSwiftyBeaver() {
         let console = ConsoleDestination()
+        
         let file = FileDestination()
+        _ = file.deleteLogFile()
+        self.logFileURL = file.logFileURL
+        // Remove colors.
+        file.format = file.format.replacingOccurrences(of: "$C", with: "")
+        file.format = file.format.replacingOccurrences(of: "$c", with: "")
+        
         let cloud = SBPlatformDestination(appID: "NxnNNO", appSecret: "7tqeijmBtx2ytbwuBMspzilcow0oPwr1", encryptionKey: "jJsbg9pj9j5u7hQDhwymWqcv2AaaoumP")
         cloud.serverURL = URL(string: "https://swiftybeaver.campnet.io/api/entries/")
         cloud.minLevel = .info

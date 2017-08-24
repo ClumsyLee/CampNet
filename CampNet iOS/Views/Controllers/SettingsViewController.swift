@@ -15,6 +15,11 @@ class SettingsViewController: UITableViewController {
     enum Section: Int {
         case auto
         case usageAlert
+        case others
+    }
+    
+    enum Others: Int {
+        case logs
         case rate
     }
 
@@ -81,7 +86,7 @@ class SettingsViewController: UITableViewController {
     */
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == Section.rate.rawValue {
+        if indexPath.section == Section.others.rawValue, indexPath.row == Others.rate.rawValue {
             tableView.deselectRow(at: indexPath, animated: true)
             SwiftRater.rateApp()
         }

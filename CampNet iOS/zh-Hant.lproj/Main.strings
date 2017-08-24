@@ -43,6 +43,9 @@
 /* Class = "UITableViewController"; title = "Usage Alert"; ObjectID = "IRs-Zi-QK3"; */
 "IRs-Zi-QK3.title" = "流量警報";
 
+/* Class = "UIViewController"; title = "Logs"; ObjectID = "eYS-u7-PWQ"; */
+"eYS-u7-PWQ.title" = "日誌";
+
 /* Class = "UILabel"; text = "Account existed"; ObjectID = "Ncw-7O-lBD"; */
 "Ncw-7O-lBD.text" = "賬戶已存在";
 
@@ -112,8 +115,11 @@
 /* Class = "UILabel"; text = "Usage Alert"; ObjectID = "vdN-Sw-6R2"; */
 "vdN-Sw-6R2.text" = "流量警報";
 
-/* Class = "UILabel"; text = "Rate Us"; ObjectID = "Ldh-WC-BHg"; */
-"Ldh-WC-BHg.text" = "給我們評分";
+/* Class = "UILabel"; text = "Logs"; ObjectID = "Ldh-WC-BHg"; */
+"Ldh-WC-BHg.text" = "日誌";
+
+/* Class = "UILabel"; text = "Rate Us"; ObjectID = "rRb-Ti-t7w"; */
+"rRb-Ti-t7w.text" = "給我們評分";
 
 /* Class = "UILabel"; text = "Auto Logout Expired Sessions"; ObjectID = "yFG-Ic-VlG"; */
 "yFG-Ic-VlG.text" = "自動下線過期鏈接";

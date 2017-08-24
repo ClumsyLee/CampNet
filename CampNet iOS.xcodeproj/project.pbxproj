@@ -40,6 +40,7 @@
 		0F8F704D1F1B44A20088E2DE /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704C1F1B44A20088E2DE /* AccountCell.swift */; };
 		0F8F704F1F1B44C10088E2DE /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704E1F1B44C10088E2DE /* SessionCell.swift */; };
 		0FA85DA31F4DDF8E00F76A86 /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA85DA21F4DDF8E00F76A86 /* SwiftyBeaver.swift */; };
+		0FA85DA51F4E930C00F76A86 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */; };
 		0FBCD7B01F226F4B00333A90 /* LoginIpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */; };
 		0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A11F17593E002861F3 /* AccountManager.swift */; };
 		0FC6E2A41F175DE5002861F3 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A31F175DE5002861F3 /* ArrayExtensions.swift */; };
@@ -118,6 +119,7 @@
 		0F8F704C1F1B44A20088E2DE /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountCell.swift; path = Views/Cells/AccountCell.swift; sourceTree = "<group>"; };
 		0F8F704E1F1B44C10088E2DE /* SessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionCell.swift; path = Views/Cells/SessionCell.swift; sourceTree = "<group>"; };
 		0FA85DA21F4DDF8E00F76A86 /* SwiftyBeaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyBeaver.swift; sourceTree = "<group>"; };
+		0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogsViewController.swift; path = Views/Controllers/LogsViewController.swift; sourceTree = "<group>"; };
 		0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginIpViewController.swift; path = Views/Controllers/LoginIpViewController.swift; sourceTree = "<group>"; };
 		0FC6E2A11F17593E002861F3 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Models/AccountManager.swift; sourceTree = "<group>"; };
 		0FC6E2A31F175DE5002861F3 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtensions.swift; path = Extensions/ArrayExtensions.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				0F5EB7281F17B06F003094DE /* ConfigurationSetupViewController.swift */,
 				0F5EB7261F17B03B003094DE /* ConfigurationsViewController.swift */,
 				0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */,
+				0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */,
 				0F34656F1F34D80A008E329F /* NetworkViewController.swift */,
 				0F14E7761E2E3AAC0092494B /* OverviewViewController.swift */,
 				0F56148B1F31A167008A1232 /* SessionDetailViewController.swift */,
@@ -585,6 +588,7 @@
 				0F46CC831F17837700AF1FC9 /* AccountsViewController.swift in Sources */,
 				0FF756411F2BA31500B2429A /* AccountDetailViewController.swift in Sources */,
 				0FBCD7B01F226F4B00333A90 /* LoginIpViewController.swift in Sources */,
+				0FA85DA51F4E930C00F76A86 /* LogsViewController.swift in Sources */,
 				0F5EB7251F17AF0F003094DE /* ConfigurationCell.swift in Sources */,
 				0F8F704F1F1B44C10088E2DE /* SessionCell.swift in Sources */,
 				0F52FE121F29F1C800A88E90 /* SettingsViewController.swift in Sources */,
