@@ -36,14 +36,15 @@ public struct ActionEntry {
     public var script: String
     
     init?(actionIdentifier: String, index: Int, yaml: Yaml) {
+        let identifier = "\(actionIdentifier)[\(index)]"
         self.actionIdentifier = actionIdentifier
         self.index = index
-        self.identifier = "\(actionIdentifier)[\(index)]"
+        self.identifier = identifier
         
         self.method = yaml["method"].string ?? "GET"
         
         guard let url = yaml["url"].string else {
-            print("url key is missing for \(identifier).")
+            log.error("\(identifier): url key is missing.")
             return nil
         }
         self.url = url
@@ -65,6 +66,8 @@ public struct ActionEntry {
                 session: URLSession,
                 on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
                 requestBinder: RequestBinder? = nil) -> Promise<[String: Any]> {
+        log.debug("\(self): Commiting.")
+        
         // Load placeholders from vars.
         var placeholders: [String: String] = [:]
         for (key, value) in currentVars {
@@ -77,22 +80,18 @@ public struct ActionEntry {
         
         // Build request.
         guard let request = buildRequest(placeholders: placeholders, requestBinder: requestBinder) else {
-            print("Failed to build the request for \(identifier).")
             return Promise(error: CampNetError.invalidConfiguration)
         }
         
-        print("Commiting \(identifier).")
-        
         return session.dataTask(with: request).asString().recover(on: queue) { error -> Promise<String> in
-            print("Data task of \(self.identifier) failed: \(error)")
             throw self.offcampusIfFailed ? CampNetError.offcampus : CampNetError.networkError
         }
         .then(on: queue) { resp in
-            print("Processing the response of \(self.identifier).")
+            log.debug("\(self): Processing response.")
             
-            let newVars = try self.captureNewVars(resp: resp)    // Capture new vars from HTML if needed.
-            try self.runScript(context: context, resp: resp ,newVars: newVars)     // Invoke script.
-            let results = try self.getResults(context: context)  // Get results.
+            let newVars = try self.captureNewVars(resp: resp)                   // Capture new vars from HTML if needed.
+            try self.runScript(context: context, resp: resp ,newVars: newVars)  // Invoke script.
+            let results = try self.getResults(context: context)                 // Get results.
 
             return Promise(value: results)
         }
@@ -102,7 +101,7 @@ public struct ActionEntry {
         // Prepare arguments.
         let urlString = url.replace(with: placeholders)
         guard let url = URL(string: urlString) else {
-            print("Failed to convert \(urlString) to URL.")
+            log.error("\(self): Failed to convert \(urlString.debugDescription) to URL.")
             return nil
         }
         
@@ -123,7 +122,7 @@ public struct ActionEntry {
         do {
             request = try URLEncoding.methodDependent.encode(request, with: params)
         } catch let error {
-            print("Failed to add \(params) to the request: \(error)")
+            log.error("\(self): Failed to add \(params) to the request: \(error)")
             return nil
         }
         request.setValue(ActionEntry.userAgent, forHTTPHeaderField: "User-Agent")
@@ -137,7 +136,7 @@ public struct ActionEntry {
         }
         
         guard let doc = HTML(html: resp, encoding: String.Encoding.utf8) else {
-            print("Failed to parse HTML of \(identifier): \(resp)")
+            log.error("\(self): Failed to parse HTML from \(resp.debugDescription).")
             throw CampNetError.invalidConfiguration  // Not a valid HTML doc.
         }
         
@@ -158,7 +157,7 @@ public struct ActionEntry {
                 if let node = nodes.first {
                     newVars[name] = node.text?.trimmed ?? ""
                 } else {
-                    print("Failed to capture \(identifier).vars.\(name), continue anyway.")
+                    log.warning("\(self): Failed to capture \(name).")
                 }
             }
         }
@@ -171,7 +170,7 @@ public struct ActionEntry {
         context.setObject(newVars, forKeyedSubscript: ActionEntry.newVarsName as (NSCopying & NSObjectProtocol))
         _ = context.evaluateScript("Object.assign(\(ActionEntry.varsName), \(ActionEntry.newVarsName));")
         if let error = context.exception {
-            print("Failed to send new vars of \(identifier): \(error). resp: \(resp.debugDescription). newVars: \(newVars.debugDescription).")
+            log.error("\(self): Failed to send new vars: \(error). resp: \(resp.debugDescription). newVars: \(newVars.debugDescription).")
             throw CampNetError.internalError
         }
         
@@ -179,10 +178,10 @@ public struct ActionEntry {
         context.setObject(resp, forKeyedSubscript: ActionEntry.respName as (NSCopying & NSObjectProtocol))
         _ = context.evaluateScript(script)
         if let errorString = context.exception?.description {
-            print("Failed to execute the script of \(identifier): \(errorString). resp: \(resp.debugDescription). newVars: \(newVars.debugDescription).")
             if let error = CampNetError(identifier: errorString) {
                 throw error
             } else {
+                log.error("\(self): Failed to execute script: \(errorString). resp: \(resp.debugDescription). newVars: \(newVars.debugDescription).")
                 throw CampNetError.invalidConfiguration
             }
         }
@@ -190,11 +189,17 @@ public struct ActionEntry {
     
     func getResults(context: JSContext) throws -> [String: Any] {
         guard let results = context.objectForKeyedSubscript(ActionEntry.varsName).toDictionary() as? [String: Any] else {
-            print("Failed to get the results of \(identifier). Object: \(context.objectForKeyedSubscript(ActionEntry.varsName).debugDescription)")
+            log.error("\(self): Failed to get results. Object: \(context.objectForKeyedSubscript(ActionEntry.varsName).debugDescription)")
             throw CampNetError.internalError
         }
         
         return results
+    }
+}
+
+extension ActionEntry: CustomStringConvertible {
+    public var description: String {
+        return identifier
     }
 }
 
@@ -227,18 +232,19 @@ public struct Action {
     public var entries: [ActionEntry] = []
     
     init?(configurationIdentifier: String, role: Role, yaml: Yaml) {
+        let identifier = "\(configurationIdentifier).actions.\(role)"
         self.configurationIdentifier = configurationIdentifier
         self.role = role
-        self.identifier = "\(configurationIdentifier).actions.\(role)"
+        self.identifier = identifier
         
         guard let array = yaml.array else {
-            print("\(identifier) is not an array.")
+            log.error("\(identifier): Not an array.")
             return nil
         }
         
         for (index, entry) in array.enumerated() {
             guard let entry = ActionEntry(actionIdentifier: identifier, index: index, yaml: entry) else {
-                print("Invalid action entry on index \(index).")
+                log.error("\(identifier): Invalid action entry on index \(index).")
                 return nil
             }
             entries.append(entry)
@@ -285,5 +291,11 @@ public struct Action {
         }
         
         return promise
+    }
+}
+
+extension Action: CustomStringConvertible {
+    public var description: String {
+        return identifier
     }
 }
