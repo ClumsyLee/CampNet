@@ -142,12 +142,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-        if notification.request.identifier.hasSuffix(".accountUsageAlert") {
-            completionHandler([.alert, .sound])
-        } else {
+        if notification.request.identifier.hasSuffix("Error") {
             let content = notification.request.content
             showErrorBanner(title: content.title, body: content.body)
             completionHandler([])
+        } else {
+            completionHandler([.alert, .sound])
         }
     }
     
@@ -182,7 +182,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         let title = String.localizedStringWithFormat(NSLocalizedString("Unable to Login \"%@\"", comment: "Alert title when failed to login."), account.username)
-        sendNotification(title: title, body: error.localizedDescription, identifier: "\(account.identifier).accountLoginError")
+        switch error {
+        case .arrears, .unauthorized:
+            sendNotification(title: title, body: error.localizedDescription, identifier: "\(account.identifier).accountLoginError")
+        default:
+            showErrorBanner(title: title, body: error.localizedDescription)
+        }
     }
     
     func accountLogoutError(_ notification: Notification) {
@@ -192,7 +197,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         let title = String.localizedStringWithFormat(NSLocalizedString("Unable to Logout \"%@\"", comment: "Alert title when failed to logout."), account.username)
-        sendNotification(title: title, body: error.localizedDescription, identifier: "\(account.identifier).accountLogoutError")
+        showErrorBanner(title: title, body: error.localizedDescription)
     }
     
     func accountStatusError(_ notification: Notification) {
@@ -202,7 +207,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         let title = String.localizedStringWithFormat(NSLocalizedString("Unable to Update Status of \"%@\"", comment: "Alert title when failed to update account status."), account.username)
-        sendNotification(title: title, body: error.localizedDescription, identifier: "\(account.identifier).accountStatusError")
+        showErrorBanner(title: title, body: error.localizedDescription)
     }
     
     func accountProfileError(_ notification: Notification) {
@@ -212,29 +217,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         let title = String.localizedStringWithFormat(NSLocalizedString("Unable to Update Profile of \"%@\"", comment: "Alert title when failed to update account profile."), account.username)
-        sendNotification(title: title, body: error.localizedDescription, identifier: "\(account.identifier).accountProfileError")
+        showErrorBanner(title: title, body: error.localizedDescription)
     }
     
     func accountLoginIpError(_ notification: Notification) {
-        guard let account = notification.userInfo?["account"] as? Account,
-              let ip = notification.userInfo?["ip"] as? String,
+        guard let ip = notification.userInfo?["ip"] as? String,
               let error = notification.userInfo?["error"] as? CampNetError else {
             return
         }
         
         let title = String.localizedStringWithFormat(NSLocalizedString("Unable to Login %@", comment: "Alert title when failed to login IP."), ip)
-        sendNotification(title: title, body: error.localizedDescription, identifier: "\(account.identifier).accountLoginIpError")
+        showErrorBanner(title: title, body: error.localizedDescription)
     }
     
     func accountLogoutSessionError(_ notification: Notification) {
-        guard let account = notification.userInfo?["account"] as? Account,
-              let session = notification.userInfo?["session"] as? Session,
+        guard let session = notification.userInfo?["session"] as? Session,
               let error = notification.userInfo?["error"] as? CampNetError else {
             return
         }
         
         let title = String.localizedStringWithFormat(NSLocalizedString("Unable to Logout \"%@\"", comment: "Alert title when failed to logout a session."), session.device ?? session.ip)
-        sendNotification(title: title, body: error.localizedDescription, identifier: "\(account.identifier).accountLogoutSessionError")
+        showErrorBanner(title: title, body: error.localizedDescription)
     }
     
     func accountHistoryError(_ notification: Notification) {
@@ -244,7 +247,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         let title = String.localizedStringWithFormat(NSLocalizedString("Unable to Update History of \"%@\"", comment: "Alert title when failed to update account history."), account.username)
-        sendNotification(title: title, body: error.localizedDescription, identifier: "\(account.identifier).accountHistoryError")
+        showErrorBanner(title: title, body: error.localizedDescription)
     }
     
     func accountUsageAlert(_ notification: Notification) {

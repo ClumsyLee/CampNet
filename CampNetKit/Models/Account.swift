@@ -402,7 +402,7 @@ public class Account {
             return status
         }
         .recover(on: queue) { error -> Status in
-            if case CampNetError.offcampus = error {
+            if let error = error as? CampNetError, case .offcampus = error {
                 let status = Status(type: .offcampus)
                 self.status = status
                 return status
