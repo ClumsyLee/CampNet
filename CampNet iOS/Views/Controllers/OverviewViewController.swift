@@ -69,7 +69,6 @@ class OverviewViewController: UITableViewController {
             self.refreshControl?.endRefreshing()
             return
         }
-        print("Refreshing \(account.identifier) in overview.")
         
         account.update(on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
             SwiftRater.incrementSignificantUsageCount()

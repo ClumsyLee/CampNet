@@ -111,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 if granted {
                     log.info("User notifications are allowed.")
                 } else {
-                    log.info("User notifications are not allowed. Error: \(error.debugDescription).")
+                    log.warning("User notifications are not allowed: \(error.debugDescription).")
                 }
             }
         } else {
@@ -128,9 +128,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let result = NEHotspotHelper.register(options: options, queue: queue, handler: Account.handler)
         
         if result {
-            print("HotspotHelper registered.")
+            log.info("HotspotHelper registered.")
         } else {
-            print("Unable to register HotspotHelper.")
+            log.error("Unable to register HotspotHelper.")
         }
     }
     

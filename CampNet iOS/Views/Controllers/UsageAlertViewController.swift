@@ -64,13 +64,11 @@ class UsageAlertViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print("indexPath.row = ", indexPath.row)
         if indexPath.row == selectedRow {
             return
         }
         
         if let row = selectedRow {
-            print("row = ", row)
             tableView.cellForRow(at: IndexPath(row: row, section: 0))?.accessoryType = .none
         }
         selectedRow = indexPath.row
