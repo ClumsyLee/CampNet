@@ -89,6 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let console = ConsoleDestination()
         let file = FileDestination()
         let cloud = SBPlatformDestination(appID: "NxnNNO", appSecret: "7tqeijmBtx2ytbwuBMspzilcow0oPwr1", encryptionKey: "jJsbg9pj9j5u7hQDhwymWqcv2AaaoumP")
+        cloud.serverURL = URL(string: "https://swiftybeaver.campnet.io/api/entries/")
         
         log.addDestination(console)
         log.addDestination(file)
@@ -108,9 +109,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             center.delegate = self
             center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
                 if granted {
-                    print("User notifications are allowed.")
+                    log.info("User notifications are allowed.")
                 } else {
-                    print("User notifications are not allowed. Error: \(error.debugDescription).")
+                    log.info("User notifications are not allowed. Error: \(error.debugDescription).")
                 }
             }
         } else {
