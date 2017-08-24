@@ -34,7 +34,14 @@ class SessionCell: UITableViewCell {
     
     func update(session: Session, type: SessionType, decimalUnits: Bool) {
         device.text = session.device ?? session.ip
-        if let time = session.startTime {
+        updateStartTime(date: session.startTime)
+        usage.text = session.usage?.usageString(decimalUnits: decimalUnits)
+        
+        self.type = type
+    }
+    
+    func updateStartTime(date: Date?) {
+        if let time = date {
             let formatter = DateComponentsFormatter()
             formatter.allowedUnits = [.day, .hour, .minute]
             formatter.unitsStyle = .abbreviated
@@ -44,9 +51,6 @@ class SessionCell: UITableViewCell {
         } else {
             startTime.text = nil
         }
-        usage.text = session.usage?.usageString(decimalUnits: decimalUnits)
-        
-        self.type = type
     }
     
     override func awakeFromNib() {

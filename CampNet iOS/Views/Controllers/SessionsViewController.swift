@@ -20,6 +20,8 @@ class SessionsViewController: UITableViewController {
     var pastIps: [String] = []
     var currentIp: String? = nil
     
+    var timer = Timer()
+    
     var canLoginIp: Bool {
         return account?.configuration.actions[.loginIp] != nil
     }
@@ -95,6 +97,13 @@ class SessionsViewController: UITableViewController {
         tableView.insertRows(at: rowsToInsert, with: .automatic)
         tableView.endUpdates()
     }
+    
+    func updateStartTimes() {
+        for (index, session) in sessions.enumerated() {
+            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? SessionCell
+            cell?.updateStartTime(date: session.startTime)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,6 +134,14 @@ class SessionsViewController: UITableViewController {
             refreshControl?.beginRefreshing()
             tableView.contentOffset = offset
         }
+        
+        timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(updateStartTimes), userInfo: nil, repeats: true)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        timer.invalidate()
     }
     
     override func didReceiveMemoryWarning() {
