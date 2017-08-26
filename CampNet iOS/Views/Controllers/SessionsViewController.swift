@@ -192,7 +192,7 @@ class SessionsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return NSLocalizedString("Logout", comment: "Title for delete confirmation button for sessions.")
+        return L10n.Sessions.DeleteConfirmationButton.title
     }
  
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

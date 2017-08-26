@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         requestNotificationAuthorization()
         addObservers()
         
-        registerHotspotHelper(displayName: NSLocalizedString("Campus network managed by CampNet", comment: "Display name of the HotspotHelper"))
+        registerHotspotHelper(displayName: L10n.HotspotHelper.displayName)
 
         return true
     }
@@ -190,7 +190,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
         
-        let title = String.localizedStringWithFormat(NSLocalizedString("Unable to Login \"%@\"", comment: "Alert title when failed to login."), account.username)
+        let title = L10n.Notifications.LoginError.title(account.username)
         switch error {
         case .arrears, .unauthorized:
             sendNotification(title: title, body: error.localizedDescription, identifier: "\(account.identifier).accountLoginError")
@@ -205,7 +205,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
         
-        let title = String.localizedStringWithFormat(NSLocalizedString("Unable to Logout \"%@\"", comment: "Alert title when failed to logout."), account.username)
+        let title = L10n.Notifications.LogoutError.title(account.username)
         showErrorBanner(title: title, body: error.localizedDescription)
     }
     
@@ -215,7 +215,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
         
-        let title = String.localizedStringWithFormat(NSLocalizedString("Unable to Update Status of \"%@\"", comment: "Alert title when failed to update account status."), account.username)
+        let title = L10n.Notifications.StatusError.title(account.username)
         showErrorBanner(title: title, body: error.localizedDescription)
     }
     
@@ -225,7 +225,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
         
-        let title = String.localizedStringWithFormat(NSLocalizedString("Unable to Update Profile of \"%@\"", comment: "Alert title when failed to update account profile."), account.username)
+        let title = L10n.Notifications.ProfileError.title(account.username)
         showErrorBanner(title: title, body: error.localizedDescription)
     }
     
@@ -235,7 +235,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
         
-        let title = String.localizedStringWithFormat(NSLocalizedString("Unable to Login %@", comment: "Alert title when failed to login IP."), ip)
+        let title = L10n.Notifications.LoginIpError.title(ip)
         showErrorBanner(title: title, body: error.localizedDescription)
     }
     
@@ -245,7 +245,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
         
-        let title = String.localizedStringWithFormat(NSLocalizedString("Unable to Logout \"%@\"", comment: "Alert title when failed to logout a session."), session.device ?? session.ip)
+        let title = L10n.Notifications.LogoutSessionError.title(session.device ?? session.ip)
         showErrorBanner(title: title, body: error.localizedDescription)
     }
     
@@ -255,7 +255,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
         
-        let title = String.localizedStringWithFormat(NSLocalizedString("Unable to Update History of \"%@\"", comment: "Alert title when failed to update account history."), account.username)
+        let title = L10n.Notifications.HistoryError.title(account.username)
         showErrorBanner(title: title, body: error.localizedDescription)
     }
     
@@ -269,8 +269,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let percentage = Int((Double(usage) / Double(maxUsage)) * 100.0)
         let usageLeft = (maxUsage - usage).usageString(decimalUnits: account.configuration.decimalUnits)
         
-        let title = String.localizedStringWithFormat(NSLocalizedString("\"%@\" has used %d%% of maximum usage", comment: "Usage alert title."), account.username, percentage)
-        let body = String.localizedStringWithFormat(NSLocalizedString("Up to %@ can still be used this month.", comment: "Usage alert body."), usageLeft)
+        let title = L10n.Notifications.UsageAlert.title(account.username, percentage)
+        let body = L10n.Notifications.UsageAlert.body(usageLeft)
         sendNotification(title: title, body: body, identifier: "\(account.identifier).accountUsageAlert")
     }
     
@@ -292,4 +292,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
 }
-

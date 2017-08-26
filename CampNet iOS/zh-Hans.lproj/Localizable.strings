@@ -1,96 +1,52 @@
 
-/* Display name of the HotspotHelper */
-"Campus network managed by CampNet" = "由 CampNet 管理的校园网";
+/* Account Detail */
+"account_detail.delete_account_alert.actions.cancel" = "取消";
+"account_detail.delete_account_alert.actions.delete" = "删除账户";
 
-/* Title for delete confirmation button for sessions. */
-"Logout" = "下线";
+/* Hotspot Helper */
+"hotspot_helper.display_name" = "由 CampNet 管理的校园网";
 
-/* Cancel button on alerts. */
-"Cancel" = "取消";
+/* Notifications */
+"notifications.history_error.title" = "无法更新 “%@” 的历史";
+"notifications.login_error.title" = "无法上线 “%@”";
+"notifications.login_ip_error.title" = "无法上线 %@";
+"notifications.logout_error.title" = "无法下线 “%@”";
+"notifications.logout_session_error.title" = "无法下线 “%@”";
+"notifications.logs_copied.title" = "已复制日志";
+"notifications.profile_error.title" = "无法更新 “%@” 的账户信息";
+"notifications.status_error.title" = "无法更新 “%@” 的状态";
+"notifications.usage_alert.body" = "本月最多还可使用 %@。";
+"notifications.usage_alert.title" = "“%@” 已使用最大流量的 %d%%";
 
-/* Delete account button on alerts. */
-"Delete Account" = "删除账户";
+/* Overview */
+"overview.chart.limit_lines.free" = "免费";
+"overview.chart.limit_lines.max" = "最大";
 
-/* Logout device button on alerts. */
-"Logout Device" = "下线设备";
+"overview.login_button.captions.logging_in" = "上线中…";
+"overview.login_button.captions.logging_out" = "下线中…";
+"overview.login_button.captions.login" = "上线";
+"overview.login_button.captions.logout" = "下线";
+"overview.login_button.captions.logout_others" = "下线 “%@”";
+"overview.login_button.captions.offcampus" = "非校园网";
+"overview.login_button.captions.unknown" = "未知";
 
-/* Title on alerts. */
-"Do You Want to Mark \"%@\" as \"On Campus\"?" = "您要将 “%@” 标记为 “校园内” 吗？";
+"overview.login_unknown_network_alert.actions.later" = "以后";
+"overview.login_unknown_network_alert.actions.mark_as_on_campus" = "标记为 “校园内”";
+"overview.login_unknown_network_alert.message" = "“自动登录” 只会在标记为 “校园内” 的网络中生效。";
+"overview.login_unknown_network_alert.title" = "您要将 “%@” 标记为 “校园内” 吗？";
 
-/* Message on alerts. */
-"\"Auto Login\" will only be effective in networks marked as \"On Campus\"." = "“自动登录” 只会在标记为 “校园内” 的网络中生效。";
+"overview.logout_when_auto_login_alert.actions.cancel" = "取消";
+"overview.logout_when_auto_login_alert.actions.logout" = "下线";
+"overview.logout_when_auto_login_alert.title" = "下线后自动登录会被触发。您仍要下线吗？";
 
-/* Mark as on campus button on alerts. */
-"Mark As \"On Campus\"" = "标记为 “校园内”";
+"overview.titles.no_accounts" = "未设置账户";
 
-/* Later button on alerts. */
-"Later" = "以后";
+/* Session Detail */
+"session_detail.logout_alert.actions.cancel" = "取消";
+"session_detail.logout_alert.actions.logout" = "下线设备";
 
-/* Title on alerts. */
-"Auto Login Will Be Triggered After Logging Out. Do You Want to Logout Anyway?" = "下线后自动登录会被触发。您仍要下线吗？";
+/* Sessions */
+"sessions.delete_confirmation_button.title" = "下线";
 
-/* Logout button on alerts. */
-"Logout" = "下线";
-
-/* Alert title when failed to login. */
-"Unable to Login \"%@\"" = "无法上线 “%@”";
-
-/* Alert title when failed to logout. */
-"Unable to Logout \"%@\"" = "无法下线 “%@”";
-
-/* Alert title when failed to update account status. */
-"Unable to Update Status of \"%@\"" = "无法更新 “%@” 的状态";
-
-/* Alert title when failed to update account profile. */
-"Unable to Update Profile of \"%@\"" = "无法更新 “%@” 的账户信息";
-
-/* Alert title when failed to login IP. */
-"Unable to Login %@" = "无法上线 %@";
-
-/* Alert title when failed to logout a session. */
-"Unable to Logout \"%@\"" = "无法下线 “%@”";
-
-/* Alert title when failed to update account history. */
-"Unable to Update History of \"%@\"" = "无法更新 “%@” 的历史";
-
-/* OverviewView title when no accounts are set. */
-"No Accounts" = "未设置账户";
-
-/* Limit line label in the history chart. */
-"Free" = "免费";
-
-/* Limit line label in the history chart. */
-"Max" = "最大";
-
-/* Login button caption. */
-"Login" = "上线";
-
-/* Login button caption. */
-"Logout" = "下线";
-
-/* Login button caption. */
-"Logout \"%@\"" = "下线 “%@”";
-
-/* Login button caption. */
-"Off-campus" = "非校园网";
-
-/* Login button caption. */
-"Logging In…" = "上线中…";
-
-/* Login button caption. */
-"Logging Out…" = "下线中…";
-
-/* Login button caption. */
-"Unknown" = "未知";
-
-/* Usage alert title. */
-"\"%@\" has used %d%% of maximum usage" = "“%@” 已使用最大流量的 %d%%";
-
-/* Usage alert body. */
-"Up to %@ can still be used this month." = "本月最多还可使用 %@。";
-
-/* Setting value. */
-"Off" = "关闭";
-
-/* Banner title when logs are copied. */
-"Logs copied" = "已复制日志";
+/* Settings */
+"settings.usage_alert.values.off" = "关闭";

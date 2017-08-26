@@ -143,11 +143,11 @@ class AccountDetailViewController: UITableViewController {
             let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             menu.view.tintColor = #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1)
             
-            let deleteAction = UIAlertAction(title: NSLocalizedString("Delete Account", comment: "Delete account button on alerts."), style: .destructive) { action in
+            let deleteAction = UIAlertAction(title: L10n.AccountDetail.DeleteAccountAlert.Actions.delete, style: .destructive) { action in
                 Account.remove(self.account)
                 self.performSegue(withIdentifier: "accountDeleted", sender: self)
             }
-            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button on alerts."), style: .cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: L10n.AccountDetail.DeleteAccountAlert.Actions.cancel, style: .cancel, handler: nil)
             
             menu.addAction(deleteAction)
             menu.addAction(cancelAction)

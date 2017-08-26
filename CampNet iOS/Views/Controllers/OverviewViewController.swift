@@ -51,8 +51,8 @@ class OverviewViewController: UITableViewController {
     
     var usageSumDataset = LineChartDataSet(values: [], label: nil)
     var usageSumEndDataset = LineChartDataSet(values: [], label: nil)
-    var freeLimitLine = ChartLimitLine(limit: 0.0, label: NSLocalizedString("Free", comment: "Limit line label in the history chart."))
-    var maxLimitLine = ChartLimitLine(limit: 0.0, label: NSLocalizedString("Max", comment: "Limit line label in the history chart."))
+    var freeLimitLine = ChartLimitLine(limit: 0.0, label: L10n.Overview.Chart.LimitLines.free)
+    var maxLimitLine = ChartLimitLine(limit: 0.0, label: L10n.Overview.Chart.LimitLines.max)
     
     var refreshedAt: Date? = nil
 
@@ -92,13 +92,13 @@ class OverviewViewController: UITableViewController {
         case let .online(onlineUsername, _, _):
             if let network = network, account.username == onlineUsername, account.canManage(network: network) {
                 // Will auto login after logging out, warn for it.
-                let menu = UIAlertController(title: NSLocalizedString("Auto Login Will Be Triggered After Logging Out. Do You Want to Logout Anyway?", comment: "Title on alerts."), message: nil, preferredStyle: .actionSheet)
+                let menu = UIAlertController(title: L10n.Overview.LogoutWhenAutoLoginAlert.title, message: nil, preferredStyle: .actionSheet)
                 menu.view.tintColor = #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1)
                 
-                let logoutAction = UIAlertAction(title: NSLocalizedString("Logout", comment: "Logout button on alerts."), style: .destructive) { action in
+                let logoutAction = UIAlertAction(title: L10n.Overview.LogoutWhenAutoLoginAlert.Actions.logout, style: .destructive) { action in
                     self.logout()
                 }
-                let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel button on alerts."), style: .cancel, handler: nil)
+                let cancelAction = UIAlertAction(title: L10n.Overview.LogoutWhenAutoLoginAlert.Actions.cancel, style: .cancel, handler: nil)
                 
                 menu.addAction(logoutAction)
                 menu.addAction(cancelAction)
@@ -120,13 +120,13 @@ class OverviewViewController: UITableViewController {
                !Defaults[.onCampus(id: account.configuration.identifier, ssid: network.ssid)] {
                 // Manually logging into an unknown network.
                 
-                let menu = UIAlertController(title: String.localizedStringWithFormat(NSLocalizedString("Do You Want to Mark \"%@\" as \"On Campus\"?", comment: "Title on alerts."), network.ssid), message: NSLocalizedString("\"Auto Login\" will only be effective in networks marked as \"On Campus\".", comment: "Message on alerts."), preferredStyle: .actionSheet)
+                let menu = UIAlertController(title: L10n.Overview.LoginUnknownNetworkAlert.title(network.ssid), message: L10n.Overview.LoginUnknownNetworkAlert.message, preferredStyle: .actionSheet)
                 menu.view.tintColor = #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1)
                 
-                let markAction = UIAlertAction(title: NSLocalizedString("Mark As \"On Campus\"", comment: "Mark as on campus button on alerts."), style: .default) { action in
+                let markAction = UIAlertAction(title: L10n.Overview.LoginUnknownNetworkAlert.Actions.markAsOnCampus, style: .default) { action in
                     Defaults[.onCampus(id: account.configuration.identifier, ssid: network.ssid)] = true
                 }
-                let laterAction = UIAlertAction(title: NSLocalizedString("Later", comment: "Later button on alerts."), style: .cancel, handler: nil)
+                let laterAction = UIAlertAction(title: L10n.Overview.LoginUnknownNetworkAlert.Actions.later, style: .cancel, handler: nil)
                 
                 menu.addAction(markAction)
                 menu.addAction(laterAction)
@@ -153,7 +153,7 @@ class OverviewViewController: UITableViewController {
         loginButton.isEnabled = false
         loginButton.setStyle(.horizontalMoreOptions, animated: true)
         
-        loginButtonCaption.text = NSLocalizedString("Logging In…", comment: "Login button caption.")
+        loginButtonCaption.text = L10n.Overview.LoginButton.Captions.loggingIn
         
         account.login(on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
             SwiftRater.incrementSignificantUsageCount()
@@ -176,7 +176,7 @@ class OverviewViewController: UITableViewController {
         loginButton.isEnabled = false
         loginButton.setStyle(.horizontalMoreOptions, animated: true)
         
-        loginButtonCaption.text = NSLocalizedString("Logging Out…", comment: "Login button caption.")
+        loginButtonCaption.text = L10n.Overview.LoginButton.Captions.loggingOut
         
         account.logout(on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
             SwiftRater.incrementSignificantUsageCount()
@@ -233,14 +233,14 @@ class OverviewViewController: UITableViewController {
                     loginButton.strokeColor = .white
                     loginButton.setStyle(.stop, animated: true)
                     
-                    loginButtonCaption.text = String.localizedStringWithFormat(NSLocalizedString("Logout \"%@\"", comment: "Login button caption."), onlineUsername)
+                    loginButtonCaption.text = L10n.Overview.LoginButton.Captions.logoutOthers(onlineUsername)
                 } else {
                     loginButton.isEnabled = true
                     loginButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
                     loginButton.strokeColor = .white
                     loginButton.setStyle(.stop, animated: true)
                     
-                    loginButtonCaption.text = NSLocalizedString("Logout", comment: "Login button caption.")
+                    loginButtonCaption.text = L10n.Overview.LoginButton.Captions.logout
                 }
                 
             case .offline:
@@ -249,7 +249,7 @@ class OverviewViewController: UITableViewController {
                 loginButton.strokeColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
                 loginButton.setStyle(.play, animated: true)
                 
-                loginButtonCaption.text = NSLocalizedString("Login", comment: "Login button caption.")
+                loginButtonCaption.text = L10n.Overview.LoginButton.Captions.login
                 
                 if let account = account, let network = network, account.canManage(network: network), autoLogin {
                     login()
@@ -261,7 +261,7 @@ class OverviewViewController: UITableViewController {
                 loginButton.strokeColor = .lightGray
                 loginButton.setStyle(.horizontalLine, animated: true)
                 
-                loginButtonCaption.text = NSLocalizedString("Off-campus", comment: "Login button caption.")
+                loginButtonCaption.text = L10n.Overview.LoginButton.Captions.offcampus
             }
         } else {
             loginButton.isEnabled = false
@@ -269,7 +269,7 @@ class OverviewViewController: UITableViewController {
             loginButton.strokeColor = .lightGray
             loginButton.setStyle(.dot, animated: true)
             
-            loginButtonCaption.text = NSLocalizedString("Unknown", comment: "Login button caption.")
+            loginButtonCaption.text = L10n.Overview.LoginButton.Captions.unknown
         }
     }
 
@@ -281,7 +281,7 @@ class OverviewViewController: UITableViewController {
         if let account = account {
             title = "\(account.username) ▸"
         } else {
-            title = "\(NSLocalizedString("No Accounts", comment: "OverviewView title when no accounts are set.")) ▸"
+            title = "\(L10n.Overview.Titles.noAccounts) ▸"
         }
         accountsButton.setTitle(title, for: .normal)
         

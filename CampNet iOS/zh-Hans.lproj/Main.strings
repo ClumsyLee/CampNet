@@ -1,3 +1,4 @@
+
 /* Class = "UINavigationItem"; title = "Login IP"; ObjectID = "4fQ-du-yO1"; */
 "4fQ-du-yO1.title" = "上线 IP";
 
@@ -132,3 +133,123 @@
 
 /* Class = "UITableViewSection"; footerTitle = "You will be notified when your usage has reached a certain percentage of your maximum usage this month."; ObjectID = "ymi-FS-Axh"; */
 "ymi-FS-Axh.footerTitle" = "在当月流量达到最大可用流量一定百分比时，你会收到通知。";
+
+/* Class = "UILabel"; text = "59.66.141.91"; ObjectID = "1JB-Wb-KeE"; */
+"1JB-Wb-KeE.text" = "59.66.141.91";
+
+/* Class = "UILabel"; text = "Jul 30, 2017, 1:08 PM"; ObjectID = "20j-Md-asu"; */
+"20j-Md-asu.text" = "Jul 30, 2017, 1:08 PM";
+
+/* Class = "UILabel"; text = "Tsinghua-5G"; ObjectID = "3R3-Ml-Rbw"; */
+"3R3-Ml-Rbw.text" = "Tsinghua-5G";
+
+/* Class = "UILabel"; text = "95%"; ObjectID = "3o9-iw-fhi"; */
+"3o9-iw-fhi.text" = "95%";
+
+/* Class = "UILabel"; text = "7a:23:43:f1:90:12"; ObjectID = "4LP-cm-Yin"; */
+"4LP-cm-Yin.text" = "7a:23:43:f1:90:12";
+
+/* Class = "UILabel"; text = "Sihan Li"; ObjectID = "4bL-eP-eb1"; */
+"4bL-eP-eb1.text" = "Sihan Li";
+
+/* Class = "UIButton"; normalTitle = "lisihan13 ▸"; ObjectID = "5wJ-ng-OAh"; */
+"5wJ-ng-OAh.normalTitle" = "lisihan13 ▸";
+
+/* Class = "UINavigationItem"; title = "Tsinghua-5G"; ObjectID = "8CI-YN-nRB"; */
+"8CI-YN-nRB.title" = "Tsinghua-5G";
+
+/* Class = "UILabel"; text = "GB"; ObjectID = "8EY-LW-m2J"; */
+"8EY-LW-m2J.text" = "GB";
+
+/* Class = "UILabel"; text = "25.8"; ObjectID = "Ai3-mC-R1h"; */
+"Ai3-mC-R1h.text" = "25.8";
+
+/* Class = "UILabel"; text = "14258"; ObjectID = "EhS-oQ-jTz"; */
+"EhS-oQ-jTz.text" = "14258";
+
+/* Class = "UILabel"; text = "59.66.141.91"; ObjectID = "GY5-DR-kzJ"; */
+"GY5-DR-kzJ.text" = "59.66.141.91";
+
+/* Class = "UILabel"; text = "¥ 12.58"; ObjectID = "KpJ-Md-TQ4"; */
+"KpJ-Md-TQ4.text" = "¥ 12.58";
+
+/* Class = "UILabel"; text = "Tsinghua University"; ObjectID = "Qn9-Mh-koJ"; */
+"Qn9-Mh-koJ.text" = "Tsinghua University";
+
+/* Class = "UILabel"; text = "¥"; ObjectID = "U2M-eT-gOT"; */
+"U2M-eT-gOT.text" = "¥";
+
+/* Class = "UILabel"; text = "25.8 GB"; ObjectID = "WEY-nF-qMF"; */
+"WEY-nF-qMF.text" = "25.8 GB";
+
+/* Class = "UILabel"; text = "28.8 MB"; ObjectID = "Waa-QI-dvm"; */
+"Waa-QI-dvm.text" = "28.8 MB";
+
+/* Class = "UINavigationItem"; title = "lisihan13"; ObjectID = "XU5-h4-kRo"; */
+"XU5-h4-kRo.title" = "lisihan13";
+
+/* Class = "UILabel"; text = "90%"; ObjectID = "Xpa-GU-2eu"; */
+"Xpa-GU-2eu.text" = "90%";
+
+/* Class = "UILabel"; text = "iPhone"; ObjectID = "YJb-da-vHM"; */
+"YJb-da-vHM.text" = "iPhone";
+
+/* Class = "UILabel"; text = "¥"; ObjectID = "aib-2L-LwB"; */
+"aib-2L-LwB.text" = "¥";
+
+/* Class = "UILabel"; text = "80%"; ObjectID = "awr-Hm-bed"; */
+"awr-Hm-bed.text" = "80%";
+
+/* Class = "UILabel"; text = "BSSID"; ObjectID = "b0A-hf-T5g"; */
+"b0A-hf-T5g.text" = "BSSID";
+
+/* Class = "UILabel"; text = "Student"; ObjectID = "c7g-hh-fH7"; */
+"c7g-hh-fH7.text" = "Student";
+
+/* Class = "UILabel"; text = "90%"; ObjectID = "cLa-y5-HzF"; */
+"cLa-y5-HzF.text" = "90%";
+
+/* Class = "UILabel"; text = "1.36"; ObjectID = "cki-fc-f4b"; */
+"cki-fc-f4b.text" = "1.36";
+
+/* Class = "UILabel"; text = "32分钟"; ObjectID = "d5n-LD-aVS"; */
+"d5n-LD-aVS.text" = "32分钟";
+
+/* Class = "UILabel"; text = "lisihan13"; ObjectID = "dg3-U4-UEY"; */
+"dg3-U4-UEY.text" = "lisihan13";
+
+/* Class = "UILabel"; text = "tsinghua.edu.cn"; ObjectID = "hmv-d1-B9v"; */
+"hmv-d1-B9v.text" = "tsinghua.edu.cn";
+
+/* Class = "UILabel"; text = "(Sihan Li)"; ObjectID = "hu4-PL-hKr"; */
+"hu4-PL-hKr.text" = "(Sihan Li)";
+
+/* Class = "UINavigationItem"; title = "Tsinghua University"; ObjectID = "jHa-8M-lSV"; */
+"jHa-8M-lSV.title" = "Tsinghua University";
+
+/* Class = "UINavigationItem"; title = "iPhone"; ObjectID = "mDB-mw-Sof"; */
+"mDB-mw-Sof.title" = "iPhone";
+
+/* Class = "UILabel"; text = "14.52"; ObjectID = "mZm-vD-JES"; */
+"mZm-vD-JES.text" = "14.52";
+
+/* Class = "UILabel"; text = "25.8 GB"; ObjectID = "qrz-aZ-kRl"; */
+"qrz-aZ-kRl.text" = "25.8 GB";
+
+/* Class = "UITextField"; text = "lisihan13"; ObjectID = "r43-JQ-3fA"; */
+"r43-JQ-3fA.text" = "lisihan13";
+
+/* Class = "UILabel"; text = "86%"; ObjectID = "tMu-yM-Z5W"; */
+"tMu-yM-Z5W.text" = "86%";
+
+/* Class = "UILabel"; text = "¥ 14.52"; ObjectID = "vKP-yW-5vT"; */
+"vKP-yW-5vT.text" = "¥ 14.52";
+
+/* Class = "UILabel"; text = "3"; ObjectID = "wB6-s9-e4c"; */
+"wB6-s9-e4c.text" = "3";
+
+/* Class = "UILabel"; text = "25.8 GB"; ObjectID = "wYs-sX-oe8"; */
+"wYs-sX-oe8.text" = "25.8 GB";
+
+/* Class = "UILabel"; text = "70%"; ObjectID = "ydn-XK-7RB"; */
+"ydn-XK-7RB.text" = "70%";

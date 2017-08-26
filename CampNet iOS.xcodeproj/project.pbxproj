@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F0FF1F91F5224A7000B608A /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FF1F81F5224A7000B608A /* L10n.swift */; };
 		0F14E7751E2E3AAC0092494B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7741E2E3AAC0092494B /* AppDelegate.swift */; };
 		0F14E7771E2E3AAC0092494B /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7761E2E3AAC0092494B /* OverviewViewController.swift */; };
 		0F14E77C1E2E3AAC0092494B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77A1E2E3AAC0092494B /* Main.storyboard */; };
@@ -80,6 +81,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F0FF1F81F5224A7000B608A /* L10n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		0F14E7711E2E3AAC0092494B /* CampNet iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CampNet iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F14E7741E2E3AAC0092494B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F14E7761E2E3AAC0092494B /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OverviewViewController.swift; path = Views/Controllers/OverviewViewController.swift; sourceTree = "<group>"; };
@@ -191,13 +193,14 @@
 			children = (
 				0F5EB7211F17AE8B003094DE /* Views */,
 				0F14E7741E2E3AAC0092494B /* AppDelegate.swift */,
+				0F0FF1F81F5224A7000B608A /* L10n.swift */,
 				0F14E77A1E2E3AAC0092494B /* Main.storyboard */,
 				0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */,
-				0F36851B1F1A7B290056AED1 /* Localizable.strings */,
 				0F1ED5C61F138618004A6C1F /* CampNet iOS.entitlements */,
 				0F14E77D1E2E3AAC0092494B /* Assets.xcassets */,
 				0F14E7821E2E3AAC0092494B /* Info.plist */,
 				0FF7564A1F2CE02100B2429A /* InfoPlist.strings */,
+				0F36851B1F1A7B290056AED1 /* Localizable.strings */,
 			);
 			path = "CampNet iOS";
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				0F1ED5D81F138832004A6C1F /* Embed Frameworks */,
 				2DA83DAA5E79752AB0E1FD18 /* [CP] Embed Pods Frameworks */,
 				886F5222D79146E6C50FD39A /* [CP] Copy Pods Resources */,
+				0F0FF1FA1F522F38000B608A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -477,6 +481,19 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		0F0FF1FA1F522F38000B608A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/local/bin/bash;
+			shellScript = "if which bartycrouch > /dev/null; then\n  bartycrouch interfaces -p \"$PROJECT_DIR\"\n  swiftgen strings -t structured-swift3 \"${PROJECT_DIR}/CampNet iOS/Base.lproj/Localizable.strings\" -o \"${PROJECT_DIR}/CampNet iOS/L10n.swift\"\nelse\n  echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi";
+		};
 		2DA83DAA5E79752AB0E1FD18 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -583,6 +600,7 @@
 			files = (
 				0F5EB7291F17B06F003094DE /* ConfigurationSetupViewController.swift in Sources */,
 				0F3685161F1A5C6B0056AED1 /* ChangePasswordViewController.swift in Sources */,
+				0F0FF1F91F5224A7000B608A /* L10n.swift in Sources */,
 				0F5EB7271F17B03B003094DE /* ConfigurationsViewController.swift in Sources */,
 				0F14E7751E2E3AAC0092494B /* AppDelegate.swift in Sources */,
 				0F46CC831F17837700AF1FC9 /* AccountsViewController.swift in Sources */,
