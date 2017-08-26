@@ -1,8 +1,6 @@
-﻿/* Display name of the HotspotHelper */
-"Campus network managed by CampNet" = "由 CampNet 管理的校园网";
 
-/* Action to delete an account in the account list. */
-"Delete" = "删除";
+/* Display name of the HotspotHelper */
+"Campus network managed by CampNet" = "由 CampNet 管理的校园网";
 
 /* Title for delete confirmation button for sessions. */
 "Logout" = "下线";
