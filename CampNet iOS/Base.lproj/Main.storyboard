@@ -826,7 +826,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gMC-pM-X3r">
                                 <rect key="frame" x="8" y="64" width="367" height="603"/>
-                                <string key="text">"CampNet logo" is a derivative of "Network" by riyazali, used under CC BY 3.0 US. "CampNet logo" is licensed under CC BY by Sihan Li.
+                                <string key="text">"CampNet logo" is a derivative of "Network" by riyazali, used under CC BY 3.0 US. "CampNet logo" is licensed under CC BY 4.0 by Sihan Li.
 
 "Settings" is licensed under CC BY 3.0 US by Viktor Vorobyev.</string>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

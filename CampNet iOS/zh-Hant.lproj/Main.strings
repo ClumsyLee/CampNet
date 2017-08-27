@@ -284,8 +284,8 @@
 /* Class = "UILabel"; text = "Acknowledgements"; ObjectID = "kJS-cc-R8f"; */
 "kJS-cc-R8f.text" = "致謝";
 
-/* Class = "UITextView"; text = "\"CampNet logo\" is a derivative of \"Network\" by riyazali, used under CC BY 3.0 US. \"CampNet logo\" is licensed under CC BY by Sihan Li.\n\n\"Settings\" is licensed under CC BY 3.0 US by Viktor Vorobyev."; ObjectID = "gMC-pM-X3r"; */
-"gMC-pM-X3r.text" = "\"CampNet logo\" is a derivative of \"Network\" by riyazali, used under CC BY 3.0 US. \"CampNet logo\" is licensed under CC BY by Sihan Li.\n\n\"Settings\" is licensed under CC BY 3.0 US by Viktor Vorobyev.";
+/* Class = "UITextView"; text = "\"CampNet logo\" is a derivative of \"Network\" by riyazali, used under CC BY 3.0 US. \"CampNet logo\" is licensed under CC BY 4.0 by Sihan Li.\n\n\"Settings\" is licensed under CC BY 3.0 US by Viktor Vorobyev."; ObjectID = "gMC-pM-X3r"; */
+"gMC-pM-X3r.text" = "\"CampNet logo\" is a derivative of \"Network\" by riyazali, used under CC BY 3.0 US. \"CampNet logo\" is licensed under CC BY 4.0 by Sihan Li.\n\n\"Settings\" is licensed under CC BY 3.0 US by Viktor Vorobyev.";
 
 /* Class = "UIViewController"; title = "Acknowledgements"; ObjectID = "pQx-xB-pf4"; */
 "pQx-xB-pf4.title" = "致謝";
