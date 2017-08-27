@@ -265,3 +265,27 @@
 
 /* Class = "UITableViewController"; title = "Privacy"; ObjectID = "PSb-6u-zWB"; */
 "PSb-6u-zWB.title" = "隱私";
+
+/* Class = "UILabel"; text = "About CampNet"; ObjectID = "25S-7C-CHX"; */
+"25S-7C-CHX.text" = "關於 CampNet";
+
+/* Class = "UILabel"; text = "Version 1.0.7 (10)"; ObjectID = "ZIH-Ar-Q8L"; */
+"ZIH-Ar-Q8L.text" = "版本 1.0.7 (10)";
+
+/* Class = "UILabel"; text = "CampNet"; ObjectID = "ahs-cf-cfv"; */
+"ahs-cf-cfv.text" = "CampNet";
+
+/* Class = "UITableViewController"; title = "About CampNet"; ObjectID = "cgD-an-vZQ"; */
+"cgD-an-vZQ.title" = "關於 CampNet";
+
+/* Class = "UITableViewSection"; footerTitle = "Copyright © 2017 Sihan Li. All rights reserved."; ObjectID = "5l9-LW-jLm"; */
+"5l9-LW-jLm.footerTitle" = "Copyright © 2017 Sihan Li. All rights reserved.";
+
+/* Class = "UILabel"; text = "Acknowledgements"; ObjectID = "kJS-cc-R8f"; */
+"kJS-cc-R8f.text" = "致謝";
+
+/* Class = "UITextView"; text = "\"CampNet logo\" is a derivative of \"Network\" by riyazali, used under CC BY 3.0 US. \"CampNet logo\" is licensed under CC BY by Sihan Li.\n\n\"Settings\" is licensed under CC BY 3.0 US by Viktor Vorobyev."; ObjectID = "gMC-pM-X3r"; */
+"gMC-pM-X3r.text" = "\"CampNet logo\" is a derivative of \"Network\" by riyazali, used under CC BY 3.0 US. \"CampNet logo\" is licensed under CC BY by Sihan Li.\n\n\"Settings\" is licensed under CC BY 3.0 US by Viktor Vorobyev.";
+
+/* Class = "UIViewController"; title = "Acknowledgements"; ObjectID = "pQx-xB-pf4"; */
+"pQx-xB-pf4.title" = "致謝";

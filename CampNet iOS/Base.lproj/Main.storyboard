@@ -464,6 +464,26 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="25S-7C-CHX" style="IBUITableViewCellStyleDefault" id="mnn-Bz-GC3">
+                                        <rect key="frame" x="0.0" y="407" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mnn-Bz-GC3" id="Mxx-7I-1gU">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="About CampNet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="25S-7C-CHX">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="cgD-an-vZQ" kind="show" id="Trf-Rg-w0y"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -613,7 +633,7 @@
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="Menlo-Regular"/>
                                             <integer key="NSLigature" value="0"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="charWrapping" baseWritingDirection="natural" defaultTabInterval="27.149999999999999" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="charWrapping" baseWritingDirection="natural" defaultTabInterval="27.149999999999999" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                 <tabStops>
                                                     <textTab alignment="left" location="27.149999618530273">
                                                         <options/>
@@ -709,6 +729,123 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BDN-as-bgv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3097" y="2508"/>
+        </scene>
+        <!--About CampNet-->
+        <scene sceneID="q03-dA-AFU">
+            <objects>
+                <tableViewController title="About CampNet" id="cgD-an-vZQ" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="sxs-kw-TaG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Dno-7x-jNX">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="pzW-vS-gG1">
+                                    <rect key="frame" x="137" y="15" width="100" height="100"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="100" id="6h4-Js-hzt"/>
+                                        <constraint firstAttribute="width" constant="100" id="M9Y-n1-RpO"/>
+                                    </constraints>
+                                </imageView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fV0-io-MSZ">
+                                    <rect key="frame" x="129" y="123" width="116.5" height="52"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CampNet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahs-cf-cfv">
+                                            <rect key="frame" x="0.0" y="0.0" width="116.5" height="34.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Version 1.0.7 (10)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIH-Ar-Q8L">
+                                            <rect key="frame" x="13.5" y="38.5" width="90" height="13.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="fV0-io-MSZ" firstAttribute="top" secondItem="pzW-vS-gG1" secondAttribute="bottom" constant="8" id="FNu-uo-3TL"/>
+                                <constraint firstAttribute="bottomMargin" secondItem="fV0-io-MSZ" secondAttribute="bottom" constant="7" id="Gml-SV-aGU"/>
+                                <constraint firstItem="pzW-vS-gG1" firstAttribute="centerX" secondItem="Dno-7x-jNX" secondAttribute="centerX" id="IoV-9v-g9e"/>
+                                <constraint firstItem="pzW-vS-gG1" firstAttribute="top" secondItem="Dno-7x-jNX" secondAttribute="topMargin" constant="7" id="Xlr-nq-Rhc"/>
+                                <constraint firstItem="fV0-io-MSZ" firstAttribute="centerX" secondItem="Dno-7x-jNX" secondAttribute="centerX" id="uFz-qo-gW8"/>
+                            </constraints>
+                        </view>
+                        <sections>
+                            <tableViewSection footerTitle="Copyright © 2017 Sihan Li. All rights reserved." id="5l9-LW-jLm">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="kJS-cc-R8f" style="IBUITableViewCellStyleDefault" id="Fd2-Gc-2Pr">
+                                        <rect key="frame" x="0.0" y="190" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fd2-Gc-2Pr" id="1SC-UO-me1">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Acknowledgements" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kJS-cc-R8f">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="pQx-xB-pf4" kind="show" id="cYZ-U6-DVJ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="cgD-an-vZQ" id="e3Z-5C-bkU"/>
+                            <outlet property="delegate" destination="cgD-an-vZQ" id="bdQ-0e-bpt"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ag7-RR-2mX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3096.8000000000002" y="3222.6386806596706"/>
+        </scene>
+        <!--Acknowledgements-->
+        <scene sceneID="450-we-PZQ">
+            <objects>
+                <viewController title="Acknowledgements" automaticallyAdjustsScrollViewInsets="NO" id="pQx-xB-pf4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jk0-eX-0qk"/>
+                        <viewControllerLayoutGuide type="bottom" id="0iS-5B-2hJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xD7-i9-zzU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gMC-pM-X3r">
+                                <rect key="frame" x="8" y="64" width="367" height="603"/>
+                                <string key="text">"CampNet logo" is a derivative of "Network" by riyazali, used under CC BY 3.0 US. "CampNet logo" is licensed under CC BY by Sihan Li.
+
+"Settings" is licensed under CC BY 3.0 US by Viktor Vorobyev.</string>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0iS-5B-2hJ" firstAttribute="top" secondItem="gMC-pM-X3r" secondAttribute="bottom" id="0zX-s6-kSK"/>
+                            <constraint firstItem="gMC-pM-X3r" firstAttribute="leading" secondItem="xD7-i9-zzU" secondAttribute="leading" constant="8" id="aO7-fn-dxA"/>
+                            <constraint firstItem="gMC-pM-X3r" firstAttribute="top" secondItem="Jk0-eX-0qk" secondAttribute="bottom" id="iIx-Ti-vp8"/>
+                            <constraint firstAttribute="trailing" secondItem="gMC-pM-X3r" secondAttribute="trailing" id="sJq-QI-cUS"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3BG-Q4-DCP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3888.8000000000002" y="3222.6386806596706"/>
         </scene>
         <!--Online Devices-->
         <scene sceneID="wmP-zu-uD6">
@@ -1819,6 +1956,7 @@
     </scenes>
     <resources>
         <image name="checkmark" width="20" height="20"/>
+        <image name="logo" width="100" height="100"/>
         <image name="settings" width="25" height="25"/>
     </resources>
 </document>

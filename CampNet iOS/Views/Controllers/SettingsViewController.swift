@@ -26,6 +26,7 @@ class SettingsViewController: UITableViewController {
     
     enum About: Int {
         case rate
+        case about
     }
 
     @IBOutlet var autoLoginSwitch: UISwitch!
