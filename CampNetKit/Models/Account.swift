@@ -113,14 +113,7 @@ public class Account {
             
             account.login(on: queue, requestBinder: requestBinder).then(on: queue) { () -> Void in
                 log.info("Logged in \(account) on \(network).")
-                
-                if account.configuration.actions[.profile] != nil {
-                    account.profile(on: queue, requestBinder: requestBinder).always(on: queue) {
-                        command.createResponse(.success).deliver()
-                    }
-                } else {
-                    command.createResponse(.success).deliver()
-                }
+                command.createResponse(.success).deliver()
             }
             .catch(on: queue) { error in
                 log.info("Failed to login \(account) on \(network): \(error)")
