@@ -22,6 +22,7 @@
 		071162DDC8C10B6A7F1CEB9FBFE30C1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33083C616C9CA8AF16FA7C690BC673C7 /* Foundation.framework */; };
 		0722631B8A27CA86C38EC986707E927A /* OFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403FCD707C4CFAA8935840C1A1EF805 /* OFB.swift */; };
 		08700CBB713B443AFA394EFD6B74E402 /* libxmlHTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDE9A1168F0DC6D33677FDA05F7AC3D /* libxmlHTMLNode.swift */; };
+		09B94836EA1E1698F1F7B440359214A8 /* Pods-CampNetKit-CampNet iOS Widget-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B4413F628C2CCDA1691D52E88F8FA58C /* Pods-CampNetKit-CampNet iOS Widget-dummy.m */; };
 		0A09FDE133E395DCB2A16F7990C18A09 /* SecureBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB187D74058E236F2F921596099AF8 /* SecureBytes.swift */; };
 		0A84B463BABCA1CD5CE63CD3252F323F /* LineScatterCandleRadarChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8B0975E05B8B42FA16E9EEB33C054 /* LineScatterCandleRadarChartDataSet.swift */; };
 		0C0DABECE429B7BC34F98DAD145CAE34 /* DynamicButtonStyleArrowUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D833A40F9F4EABD1EA71079085F5E876 /* DynamicButtonStyleArrowUp.swift */; };
@@ -45,9 +46,9 @@
 		139FF6DA1D05B90F2631E069C8D13832 /* BRYXBanner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BDB93232EFF81476B5AC8B4C7694B03 /* BRYXBanner-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		15178CC13A504C1C847917F313EA4230 /* CFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B6A4C075A74AE271F383D5BC1D9119 /* CFB.swift */; };
 		152409899B88199697082E9D3104502C /* HorizontalBarHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB4690BD7C988A8A7A783EB3C31F746 /* HorizontalBarHighlighter.swift */; };
-		1529323DBC27A4668F495CA2A4FAAE1C /* Pods-CampNet iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CAD70299DDFC89FBFD01E0DACCA0D30 /* Pods-CampNet iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1529323DBC27A4668F495CA2A4FAAE1C /* Pods-CampNet iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 459D2E8A36BC35C1A3B9A33E48B6C307 /* Pods-CampNet iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1545999141978F143D09974A8BCCE4DF /* Checksum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023C43A84D33330E77D62A033F634BBC /* Checksum.swift */; };
-		15BE14ABA66189CE28E1D5D5D210CB8F /* Pods-CampNetKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B65A5C7DEBB458039C13605EB56066 /* Pods-CampNetKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		15BE14ABA66189CE28E1D5D5D210CB8F /* Pods-CampNetKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA4A8D8D1A7B68FF4939EE66BD65C20 /* Pods-CampNetKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		15C2B48224260E50C912E9A5B3C95E5D /* LineChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D5284481A9EA5154268DCA82678BC8 /* LineChartRenderer.swift */; };
 		16B57D23AA767CA20ABF5C59633E5476 /* IndexAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB310283ABA07B30E006D4C29380656 /* IndexAxisValueFormatter.swift */; };
 		179FBF957E0FD2D4165C43699E30A8B8 /* SwiftRaterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272CD2AD37BE0680A36EEC7913CD3EC2 /* SwiftRaterError.swift */; };
@@ -190,7 +191,7 @@
 		796E2EA2ADAF1239102E19CF09065A25 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33083C616C9CA8AF16FA7C690BC673C7 /* Foundation.framework */; };
 		79E207340572954ED7E5CF8CA730526E /* hang.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6803A8CF37569A8CB7AECE91A4FF03 /* hang.m */; };
 		7B5FE28C7EA4122B0598738E54DBEBD8 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0E21E5C51CD4472ECB053B998B35F3 /* SessionDelegate.swift */; };
-		7B7C406D25292F9F749864532A983D9E /* Pods-CampNetKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 68CE26CE16E1CEA64D15ADD470F6DF9A /* Pods-CampNetKit-dummy.m */; };
+		7B7C406D25292F9F749864532A983D9E /* Pods-CampNetKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FA8B32E478A9E292F198000EDBD330 /* Pods-CampNetKit-dummy.m */; };
 		7C4FF613D0A3EFD6B5157AE0B400E838 /* PMKFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D5A79352A5505D51CCAB1B31F0F0F01 /* PMKFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D2208C2B879BD873863CD22DFC6E172 /* BarChartDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21699B356B5245E5A1E0BD7D6AC11506 /* BarChartDataProvider.swift */; };
 		7D8CC01E8C9EFFF9F4D65406CDE0AB66 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17133EDBF59CA84678D2B19042EE2798 /* Result.swift */; };
@@ -220,6 +221,7 @@
 		8A8D1FD7C407985D4CF5FC926A79C167 /* DefaultFillFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5309582857FF8652FDCB1A135214408 /* DefaultFillFormatter.swift */; };
 		8B05083CA44803381B6B7D22F0F76155 /* HorizontalBarChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FC0CF5C8691B871677D1589DD8C5ED /* HorizontalBarChartRenderer.swift */; };
 		8D0E74B2ACD71DC9BD2AFA8F97C36BBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33083C616C9CA8AF16FA7C690BC673C7 /* Foundation.framework */; };
+		8E114E9E6ED777D3DAF2676C9C849228 /* Pods-CampNetKit-CampNet iOS Widget-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F2B79C5D80A25F5A5B8558F690EAD95 /* Pods-CampNetKit-CampNet iOS Widget-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8EB02CA4DBBB1C27C55389D38AD6D5BE /* ChartDataRendererBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105EAECF7F7D93A3C4CFBBFF3BD8B1B /* ChartDataRendererBase.swift */; };
 		8FA9EE6D096BADB9F4C746836EBFE422 /* IBubbleChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC788D561B03324A635973F2598D04F /* IBubbleChartDataSet.swift */; };
 		8FBD53C8BBED7B75ED3A9281BE87DC3D /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8B26747416367C551F3DEB9F26F42C /* Authenticator.swift */; };
@@ -277,7 +279,7 @@
 		AD8C85BF427C2E633E28F8863C5435C4 /* MarkerImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D8232A95041790D97A8A6455E3DB0 /* MarkerImage.swift */; };
 		AE1EF48399533730D0066E04B22CA2D6 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6CDA596295A820556554C99523D90C /* SessionManager.swift */; };
 		AE5CE8378B3C1C5BDF33BE0E44C91FEB /* ScatterChartDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAEF96CA3A35696AA4A3DC06BB1FB69 /* ScatterChartDataProvider.swift */; };
-		AF083DE16285A64C08CC421BFD1D112F /* Pods-CampNet iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1603E7D7A84DD48D15EDEA2967393F70 /* Pods-CampNet iOS-dummy.m */; };
+		AF083DE16285A64C08CC421BFD1D112F /* Pods-CampNet iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E2D4E9DE50EFB65E63AF869B6298DC3 /* Pods-CampNet iOS-dummy.m */; };
 		AF3146F9CB65E3027D15B89B3A14C13A /* IFillFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEA221A3940B1C55F54078F94298744 /* IFillFormatter.swift */; };
 		AF863C36D259D89189A0BDF54912C76E /* CSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B1F3E7A3D390E36798B71F75B9300 /* CSS.swift */; };
 		B104AE9D522AC75080ADA7A49DF5C1CA /* XShapeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F9BBEBFEAA2D5AA76F3800F0F03E79 /* XShapeRenderer.swift */; };
@@ -343,6 +345,7 @@
 		D97F4D9EDDB2AB619E77B72257CDC1E7 /* ECB.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6B826D829B5EA4469050B0BD8439F /* ECB.swift */; };
 		DA81588B8021D88A39C950324466DEA4 /* DynamicButtonStyleArrowLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569EE3B9EF377E4D33343AF64FC57841 /* DynamicButtonStyleArrowLeft.swift */; };
 		DB33AED9998B1903B316A64670148A2A /* LegendEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104D702C42F664001D3D6C5B12EBCA08 /* LegendEntry.swift */; };
+		DB5B987538ED6B5B9D8E31C78DB223B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33083C616C9CA8AF16FA7C690BC673C7 /* Foundation.framework */; };
 		DB627C8A5AAEAF2BAE6CBE630031A2B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3917A50EB224EEDBC66971700D698782 /* UIKit.framework */; };
 		DBA60E90DFFB006CC41283258F53B894 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464553AE6FE3FF66E0E30D441D278E27 /* Updatable.swift */; };
 		DE7D8E74AF9285815D84DFD2D3377F44 /* ChaCha20.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95741FB83B1972EBAF01BD1A965897 /* ChaCha20.swift */; };
@@ -413,6 +416,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		01D239522ADE41813D02937E60979599 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CED21A30112252ED22A28FE9BB968A5;
+			remoteInfo = SwiftyUserDefaults;
+		};
 		0B6A2CBBC45D9DC3A6785C9E5C2D6420 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -504,6 +514,13 @@
 			remoteGlobalIDString = 0170FEDEDC56BB5BB8846EB5C65393B9;
 			remoteInfo = NetUtils;
 		};
+		9066FBCB5E4C4A153F231C733B6970DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0170FEDEDC56BB5BB8846EB5C65393B9;
+			remoteInfo = NetUtils;
+		};
 		927C571CF13343760082E533EC81FC86 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -532,6 +549,27 @@
 			remoteGlobalIDString = F307B842FF76B2DE6C55DB67C0885325;
 			remoteInfo = Charts;
 		};
+		A19EA3A36B5BC149C63AAD23E5EAA45F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5035786467D5191E2D74F374BC719CA4;
+			remoteInfo = SwiftyBeaver;
+		};
+		B22C38E051F3C8F4B73F44F79B19A508 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D10E4FF5A483B852B47CCA0B994E340;
+			remoteInfo = Kanna;
+		};
+		B7F16818E560E2B41CE111244C64778C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6BB1C1403B2419F911818DA8413FDA07;
+			remoteInfo = CryptoSwift;
+		};
 		B926C8FB30D1F70FEDA3F0494E406BE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -539,12 +577,33 @@
 			remoteGlobalIDString = B688024B71CD11E9CF72392ECADC195F;
 			remoteInfo = PromiseKit;
 		};
+		BEE2C605721DC149106267DA14A2775B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8905DB6521F8FDC34752B69DEE3FDEB7;
+			remoteInfo = KeychainAccess;
+		};
+		CE6563CB03C09F2AFE10EE3431126F36 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B408F4EF8DACAED17EFF083E77405E90;
+			remoteInfo = Yaml;
+		};
 		DAF775B8AEDA732AB307FD9A4B7DB16B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0170FEDEDC56BB5BB8846EB5C65393B9;
 			remoteInfo = NetUtils;
+		};
+		E1E2F90543505985AD896B2E6CD57B6D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 88E9EC28B8B46C3631E6B242B50F4442;
+			remoteInfo = Alamofire;
 		};
 		E59FA5D82465A5F7B28CF8F828F458EF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -560,6 +619,13 @@
 			remoteGlobalIDString = 6CED21A30112252ED22A28FE9BB968A5;
 			remoteInfo = SwiftyUserDefaults;
 		};
+		F0C28C660B89C00533C0781FF6E2F1D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B688024B71CD11E9CF72392ECADC195F;
+			remoteInfo = PromiseKit;
+		};
 		F19B60075D758E77E1F475E1B82E6007 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -571,44 +637,44 @@
 
 /* Begin PBXFileReference section */
 		00C4BCF3C2FCF3F78956632C6112DBCE /* BarLineScatterCandleBubbleRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineScatterCandleBubbleRenderer.swift; path = Source/Charts/Renderers/BarLineScatterCandleBubbleRenderer.swift; sourceTree = "<group>"; };
+		01408BC68FDEBA930C26F2AD25FE4407 /* Pods-CampNetKit-CampNet iOS Widget.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CampNetKit-CampNet iOS Widget.modulemap"; sourceTree = "<group>"; };
 		01B8B9D7D67356DDE7A9344B6E80392A /* DynamicButton-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DynamicButton-dummy.m"; sourceTree = "<group>"; };
 		01DA0394763DEF6D8C2D5B2F855A278C /* Rabbit+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Rabbit+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/Rabbit+Foundation.swift"; sourceTree = "<group>"; };
 		023C43A84D33330E77D62A033F634BBC /* Checksum.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Checksum.swift; path = Sources/CryptoSwift/Checksum.swift; sourceTree = "<group>"; };
-		0260D9CB3E0362DB754C614E3FD0EEC5 /* SwiftRater.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftRater.framework; path = SwiftRater.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		02F2C777767F30629B93B3D2A1E22A09 /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = id.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
 		033859F3CBB97FC9411B7B04727C8616 /* ChartHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartHighlighter.swift; path = Source/Charts/Highlight/ChartHighlighter.swift; sourceTree = "<group>"; };
+		035518F799B04A4039C7324058718BA9 /* Pods-CampNetKit-CampNet iOS Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CampNetKit-CampNet iOS Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		0389F3FE0E4F550E0C58731C7EF2551F /* ScatterChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScatterChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/ScatterChartDataSet.swift; sourceTree = "<group>"; };
-		04B65A5C7DEBB458039C13605EB56066 /* Pods-CampNetKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CampNetKit-umbrella.h"; sourceTree = "<group>"; };
 		04F852C432A016A6E846A5650E00030C /* UIView+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Promise.swift"; path = "Extensions/UIKit/Sources/UIView+Promise.swift"; sourceTree = "<group>"; };
 		05E687A526C0296E17CFF640E47B2E00 /* CrossShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CrossShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/CrossShapeRenderer.swift; sourceTree = "<group>"; };
 		061072332EC5E59749FCCA170E4C69DF /* IBarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IBarChartDataSet.swift; path = Source/Charts/Data/Interfaces/IBarChartDataSet.swift; sourceTree = "<group>"; };
 		07476A9A647E414CD7A83DB7AF27B6AC /* DynamicButtonStyleDot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleDot.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleDot.swift; sourceTree = "<group>"; };
 		076CD8FD6C2795680859A44F0A4ADA3D /* LineChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartDataProvider.swift; path = Source/Charts/Interfaces/LineChartDataProvider.swift; sourceTree = "<group>"; };
-		08230417905C093B3D990C4F50301F43 /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyUserDefaults.framework; path = SwiftyUserDefaults.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		086BB37420B9FF9340F49CC80FB9D0EE /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = ru.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
 		08A1844B49EAEF3D749748C1AA4BD94B /* AnimatedMoveViewJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedMoveViewJob.swift; path = Source/Charts/Jobs/AnimatedMoveViewJob.swift; sourceTree = "<group>"; };
 		08D75686560FC0B8D39B424A7AA2977F /* RandomBytesSequence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RandomBytesSequence.swift; path = Sources/CryptoSwift/RandomBytesSequence.swift; sourceTree = "<group>"; };
 		0A36CBFC419626F5337FD1BBB3328457 /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = el.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
 		0A634F2185008B0FE0A934D756CE0671 /* Transformer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Transformer.swift; path = Source/Charts/Utils/Transformer.swift; sourceTree = "<group>"; };
+		0AD3E1FD3B4A0D409FAC977C0E054611 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Charts.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AFCFD5EC69EEB08913A7F2F02C7124B /* Blowfish.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Blowfish.swift; path = Sources/CryptoSwift/Blowfish.swift; sourceTree = "<group>"; };
 		0B6EBEA3808E34EF96922B7173482FC7 /* ICandleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ICandleChartDataSet.swift; path = Source/Charts/Data/Interfaces/ICandleChartDataSet.swift; sourceTree = "<group>"; };
 		0BDC097EDFE7B299166674E584D0D3AE /* MarkerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkerView.swift; path = Source/Charts/Components/MarkerView.swift; sourceTree = "<group>"; };
 		0BDE73982C903BCD593A7560F00B7ED1 /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = ja.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
 		0C28797C6E937B2F0EB8A9F5BEA17598 /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = ko.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
 		0C4021A44CC2B38E50682B10F5393FC9 /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = uk.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
-		0CAD70299DDFC89FBFD01E0DACCA0D30 /* Pods-CampNet iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CampNet iOS-umbrella.h"; sourceTree = "<group>"; };
 		0D8583844EC6D1CFF5CDB8CB9E326499 /* IScatterChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IScatterChartDataSet.swift; path = Source/Charts/Data/Interfaces/IScatterChartDataSet.swift; sourceTree = "<group>"; };
 		0DC31BDEAD36EA48C2E7D158AE68F81B /* LineChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartData.swift; path = Source/Charts/Data/Implementations/Standard/LineChartData.swift; sourceTree = "<group>"; };
+		0E2D4E9DE50EFB65E63AF869B6298DC3 /* Pods-CampNet iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CampNet iOS-dummy.m"; sourceTree = "<group>"; };
 		0E6803A8CF37569A8CB7AECE91A4FF03 /* hang.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = hang.m; path = Sources/hang.m; sourceTree = "<group>"; };
 		0FC960A8FB23DD41B731AF56DA668B3E /* Process+Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Process+Promise.swift"; path = "Extensions/Foundation/Sources/Process+Promise.swift"; sourceTree = "<group>"; };
 		104D702C42F664001D3D6C5B12EBCA08 /* LegendEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LegendEntry.swift; path = Source/Charts/Components/LegendEntry.swift; sourceTree = "<group>"; };
-		106D4142177BBEBED32D918C5FF95697 /* Pods_CampNetKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CampNetKit.framework; path = "Pods-CampNetKit.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		110D8E90D9D6BE3FBDABEBE8188B49AC /* Pods-CampNetKit-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CampNetKit-acknowledgements.markdown"; sourceTree = "<group>"; };
 		112B52091C307E56FF3EE590336C05CB /* ChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartDataProvider.swift; path = Source/Charts/Interfaces/ChartDataProvider.swift; sourceTree = "<group>"; };
 		11356BD5E7FAEF9871D8CB13397C971D /* DynamicButtonStylePlay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStylePlay.swift; path = Sources/DynamicButtonStyles/DynamicButtonStylePlay.swift; sourceTree = "<group>"; };
 		11E26FB74301A34B22B989BB5F7A5DA5 /* PieChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieChartView.swift; path = Source/Charts/Charts/PieChartView.swift; sourceTree = "<group>"; };
-		1201C85F990D89FA38A7399E756D8942 /* Pods-CampNet iOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CampNet iOS-acknowledgements.plist"; sourceTree = "<group>"; };
 		120B1A44A2CD56D633F5EFA2FF676F59 /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = ca.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
 		123AA85421F33605B0732233F8D3ADC9 /* UIView+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+AnyPromise.h"; path = "Extensions/UIKit/Sources/UIView+AnyPromise.h"; sourceTree = "<group>"; };
+		12CB797B2B07F65AE619509E0D578B72 /* Pods-CampNet iOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CampNet iOS-acknowledgements.plist"; sourceTree = "<group>"; };
 		1312A4BFFD4392E74376A25DBA3A465B /* Collection+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Collection+Extension.swift"; path = "Sources/CryptoSwift/Collection+Extension.swift"; sourceTree = "<group>"; };
 		1381BD1B0DA3BCA19E0B00A29EB7A183 /* CombinedHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedHighlighter.swift; path = Source/Charts/Highlight/CombinedHighlighter.swift; sourceTree = "<group>"; };
 		14425D90737DF74F96DFD18D5B1762D0 /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = sv.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
@@ -616,7 +682,6 @@
 		14A16460A76D1B3D9ED27802828AE6C6 /* DynamicButtonStyleHorizontalLine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleHorizontalLine.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleHorizontalLine.swift; sourceTree = "<group>"; };
 		14BEC920FBDB2B36B6846580E66BE7F1 /* CandleChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleChartDataProvider.swift; path = Source/Charts/Interfaces/CandleChartDataProvider.swift; sourceTree = "<group>"; };
 		1525279059D9F38B750EF9C222C761C6 /* SwiftRater.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftRater.modulemap; sourceTree = "<group>"; };
-		1603E7D7A84DD48D15EDEA2967393F70 /* Pods-CampNet iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CampNet iOS-dummy.m"; sourceTree = "<group>"; };
 		16F8747C1845160A002BD3ECE2E589F4 /* PieRadarHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieRadarHighlighter.swift; path = Source/Charts/Highlight/PieRadarHighlighter.swift; sourceTree = "<group>"; };
 		17133EDBF59CA84678D2B19042EE2798 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
 		17579B3AF6AE34F0C95FA78F6DB74FB4 /* BarChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartData.swift; path = Source/Charts/Data/Implementations/Standard/BarChartData.swift; sourceTree = "<group>"; };
@@ -634,7 +699,6 @@
 		1CB4A304AF541AF21C5B192BAD820492 /* Yaml.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Yaml.modulemap; sourceTree = "<group>"; };
 		1D5A79352A5505D51CCAB1B31F0F0F01 /* PMKFoundation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PMKFoundation.h; path = Extensions/Foundation/Sources/PMKFoundation.h; sourceTree = "<group>"; };
 		1E0B6A7DF8BA9C0922CBE07E9DF0F51E /* TriangleShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TriangleShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/TriangleShapeRenderer.swift; sourceTree = "<group>"; };
-		1E2B2E8D52EBA7AC9722BA8F218370B0 /* Pods-CampNetKit-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CampNetKit-resources.sh"; sourceTree = "<group>"; };
 		1E8AE14260094D0E66DCF8D627B47F0B /* CandleStickChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleStickChartRenderer.swift; path = Source/Charts/Renderers/CandleStickChartRenderer.swift; sourceTree = "<group>"; };
 		1F0FFE4325E046B4E5525B69D4A65AA8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		202C3E4B0958399BF8064FBCB28BBA2F /* IChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IChartDataSet.swift; path = Source/Charts/Data/Interfaces/IChartDataSet.swift; sourceTree = "<group>"; };
@@ -650,9 +714,11 @@
 		24F3BA2607797886A772C975F69A340C /* PMKAlertController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PMKAlertController.swift; path = Extensions/UIKit/Sources/PMKAlertController.swift; sourceTree = "<group>"; };
 		2501E2B50D00C92DDC6BA2104C44A987 /* AnyPromise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyPromise.swift; path = Sources/AnyPromise.swift; sourceTree = "<group>"; };
 		2576D2661E59F0801F4030182A78C04A /* ChartViewBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartViewBase.swift; path = Source/Charts/Charts/ChartViewBase.swift; sourceTree = "<group>"; };
+		26FA8B32E478A9E292F198000EDBD330 /* Pods-CampNetKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CampNetKit-dummy.m"; sourceTree = "<group>"; };
 		272CD2AD37BE0680A36EEC7913CD3EC2 /* SwiftRaterError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftRaterError.swift; path = SwiftRater/SwiftRaterError.swift; sourceTree = "<group>"; };
 		27D4811412C0A3602763F7EADC67B6C6 /* BarLineScatterCandleBubbleChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineScatterCandleBubbleChartDataProvider.swift; path = Source/Charts/Interfaces/BarLineScatterCandleBubbleChartDataProvider.swift; sourceTree = "<group>"; };
 		289C007C9ABDD79C1E0C651AEAFE4E5A /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = cs.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
+		28E13B1ED4A1F59276C13AD9A56FA92F /* Pods_CampNetKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CampNetKit.framework; path = "Pods-CampNetKit.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29822E4705EBE1E696BDCECF32944099 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A073404F89C7C87792AFA8B8AC06287 /* UIViewController+AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+AnyPromise.m"; path = "Extensions/UIKit/Sources/UIViewController+AnyPromise.m"; sourceTree = "<group>"; };
 		2A1E0069A5039B4AF94F24346CC12AFF /* Animator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Animator.swift; path = Source/Charts/Animation/Animator.swift; sourceTree = "<group>"; };
@@ -674,6 +740,7 @@
 		33083C616C9CA8AF16FA7C690BC673C7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		338A21103ED7A60C3724AB88B58843B4 /* DefaultValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultValueFormatter.swift; path = Source/Charts/Formatters/DefaultValueFormatter.swift; sourceTree = "<group>"; };
 		338CF1DCE5D890519FEDCE2FB2C27871 /* HMAC+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "HMAC+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/HMAC+Foundation.swift"; sourceTree = "<group>"; };
+		33B513F143CD8D7A8F7D11FB0D61ADEA /* Pods-CampNet iOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CampNet iOS-resources.sh"; sourceTree = "<group>"; };
 		33EEE94AF8E14AD448A14BB22F63C7CE /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
 		33F9BBEBFEAA2D5AA76F3800F0F03E79 /* XShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/XShapeRenderer.swift; sourceTree = "<group>"; };
 		34FC0CF5C8691B871677D1589DD8C5ED /* HorizontalBarChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HorizontalBarChartRenderer.swift; path = Source/Charts/Renderers/HorizontalBarChartRenderer.swift; sourceTree = "<group>"; };
@@ -689,6 +756,7 @@
 		39C44E8171302582941986B708552110 /* UInt32+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UInt32+Extension.swift"; path = "Sources/CryptoSwift/UInt32+Extension.swift"; sourceTree = "<group>"; };
 		39D66C8B8BCE4492CD8437531B41284D /* AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AnyPromise.m; path = Sources/AnyPromise.m; sourceTree = "<group>"; };
 		3A0CEB155F06E4D00C7F37E69C97049C /* Platform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Platform.swift; path = Source/Charts/Utils/Platform.swift; sourceTree = "<group>"; };
+		3A388F6C079FADAB0CD7ABBEACF86419 /* NetUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NetUtils.framework; path = NetUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A9E6628DF632CA6FE4E4C5DBC22F106 /* DynamicButtonStyleCaretUp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleCaretUp.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleCaretUp.swift; sourceTree = "<group>"; };
 		3AA715F4C0197E0E8280968650EF7947 /* RadarChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartData.swift; path = Source/Charts/Data/Implementations/Standard/RadarChartData.swift; sourceTree = "<group>"; };
 		3AC9025E0FBFCFFF29FEF3C760BCDA92 /* ILineChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ILineChartDataSet.swift; path = Source/Charts/Data/Interfaces/ILineChartDataSet.swift; sourceTree = "<group>"; };
@@ -698,7 +766,6 @@
 		3D11CF6E44D2A32A0DD2B01B77B039D5 /* SwiftyBeaver-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyBeaver-dummy.m"; sourceTree = "<group>"; };
 		3D4CF39F04D82AB75AF4EDA97FD1305C /* DynamicButtonStyleRewind.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleRewind.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleRewind.swift; sourceTree = "<group>"; };
 		3DA154F41FF447264ADCDEC3C7595095 /* PromiseKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PromiseKit.xcconfig; sourceTree = "<group>"; };
-		3DC3A74839BC05CDCEE83CFDEE974DA1 /* Pods-CampNetKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CampNetKit.modulemap"; sourceTree = "<group>"; };
 		3E831A71B5665A2A6B2C9F6E713A38B3 /* fwd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = fwd.h; path = Sources/fwd.h; sourceTree = "<group>"; };
 		3FA63A2BE49F47752F44C043F23E5552 /* IBarLineScatterCandleBubbleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IBarLineScatterCandleBubbleChartDataSet.swift; path = Source/Charts/Data/Interfaces/IBarLineScatterCandleBubbleChartDataSet.swift; sourceTree = "<group>"; };
 		40187F7321AA7E7A7A6A60213C6E44CF /* DynamicButton-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DynamicButton-prefix.pch"; sourceTree = "<group>"; };
@@ -707,15 +774,16 @@
 		4159D258AD0464B115BE790F7367D8ED /* Interface.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Interface.swift; path = NetUtils/Interface.swift; sourceTree = "<group>"; };
 		418CF0599E6F8104EB83CF968206EB37 /* Renderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Renderer.swift; path = Source/Charts/Renderers/Renderer.swift; sourceTree = "<group>"; };
 		41961AE7620F0A97DC44421569C36521 /* Kanna-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kanna-prefix.pch"; sourceTree = "<group>"; };
+		425A3FE1172DAFFD20F5D39A4E50A371 /* Pods-CampNetKit-CampNet iOS Widget-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CampNetKit-CampNet iOS Widget-acknowledgements.plist"; sourceTree = "<group>"; };
 		42F9D97A18D40B1542693D902DECFCC4 /* CombinedChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedChartDataProvider.swift; path = Source/Charts/Interfaces/CombinedChartDataProvider.swift; sourceTree = "<group>"; };
 		439434989E8E0703E9C3AA983D3C88C2 /* Blowfish+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Blowfish+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/Blowfish+Foundation.swift"; sourceTree = "<group>"; };
 		442748F5E7FDC31BBB53548AA4A6ACD6 /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
+		459D2E8A36BC35C1A3B9A33E48B6C307 /* Pods-CampNet iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CampNet iOS-umbrella.h"; sourceTree = "<group>"; };
 		45FCCE055D0B56B11F888E8813E49337 /* CandleChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleChartData.swift; path = Source/Charts/Data/Implementations/Standard/CandleChartData.swift; sourceTree = "<group>"; };
 		4614FA099AD1CF8264C1C4BB9E0E4989 /* BarChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartView.swift; path = Source/Charts/Charts/BarChartView.swift; sourceTree = "<group>"; };
 		464553AE6FE3FF66E0E30D441D278E27 /* Updatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Updatable.swift; path = Sources/CryptoSwift/Updatable.swift; sourceTree = "<group>"; };
 		46D47843CA262E1F36B311D68A229297 /* PathHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PathHelper.swift; path = Sources/PathHelper.swift; sourceTree = "<group>"; };
 		4970B5D359407300CD96866C5BB8A6DE /* KeychainAccess.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = KeychainAccess.modulemap; sourceTree = "<group>"; };
-		49975A6F1E07724DB80F0463940312CF /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AB2FABD0CFAE7395279B97C5423DA6D /* UInt8+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UInt8+Extension.swift"; path = "Sources/CryptoSwift/UInt8+Extension.swift"; sourceTree = "<group>"; };
 		4B053B186944B9DA01197D930387282B /* IHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IHighlighter.swift; path = Source/Charts/Highlight/IHighlighter.swift; sourceTree = "<group>"; };
 		4B5C1EC2688293D8DB240E0660B11C43 /* ChartUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartUtils.swift; path = Source/Charts/Utils/ChartUtils.swift; sourceTree = "<group>"; };
@@ -729,7 +797,6 @@
 		5087A1C6F9F5E7F1E15591156B9C4824 /* PBKDF1.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PBKDF1.swift; path = Sources/CryptoSwift/PKCS5/PBKDF1.swift; sourceTree = "<group>"; };
 		5097E7042753EC1DA3A81A74E8FC5EA1 /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = de.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
 		513D61969D2F981F7295C9FFB699F1BC /* UIViewController+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+AnyPromise.h"; path = "Extensions/UIKit/Sources/UIViewController+AnyPromise.h"; sourceTree = "<group>"; };
-		52A3A39005401BC577615E97C7D7161E /* Pods-CampNet iOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CampNet iOS-resources.sh"; sourceTree = "<group>"; };
 		532D8232A95041790D97A8A6455E3DB0 /* MarkerImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkerImage.swift; path = Source/Charts/Components/MarkerImage.swift; sourceTree = "<group>"; };
 		53997628579D452E47C31143A05919A6 /* PieRadarChartViewBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieRadarChartViewBase.swift; path = Source/Charts/Charts/PieRadarChartViewBase.swift; sourceTree = "<group>"; };
 		5433299F2C541399FF8B1C68681E5EFE /* Bit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bit.swift; path = Sources/CryptoSwift/Bit.swift; sourceTree = "<group>"; };
@@ -748,26 +815,24 @@
 		5BDB93232EFF81476B5AC8B4C7694B03 /* BRYXBanner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BRYXBanner-umbrella.h"; sourceTree = "<group>"; };
 		5BE5B79045A55536C3A2AE6C0FCA20B9 /* BlockModeWorker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlockModeWorker.swift; path = Sources/CryptoSwift/BlockMode/BlockModeWorker.swift; sourceTree = "<group>"; };
 		5C8B3667EA7422B607D08FA8A1B4C4DE /* LineChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartView.swift; path = Source/Charts/Charts/LineChartView.swift; sourceTree = "<group>"; };
+		5CE13CCF3E3BB7DEF8BBD58054DD4220 /* Pods-CampNetKit-CampNet iOS Widget-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CampNetKit-CampNet iOS Widget-resources.sh"; sourceTree = "<group>"; };
 		5E00F2CBDAE027CBCAB19C74D448915A /* KeychainAccess.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KeychainAccess.xcconfig; sourceTree = "<group>"; };
 		5E5F76C37089FA98CFE89676E9C8059E /* RadarChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartView.swift; path = Source/Charts/Charts/RadarChartView.swift; sourceTree = "<group>"; };
 		5EE44ADCD64453C50D851E191F86961A /* LegendRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LegendRenderer.swift; path = Source/Charts/Renderers/LegendRenderer.swift; sourceTree = "<group>"; };
-		5F11037AF49EAAE225BC861210167D38 /* Yaml.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Yaml.framework; path = Yaml.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F1BDD02BC8071F8E87210A6775C528C /* DynamicButton.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DynamicButton.xcconfig; sourceTree = "<group>"; };
+		5F2B79C5D80A25F5A5B8558F690EAD95 /* Pods-CampNetKit-CampNet iOS Widget-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CampNetKit-CampNet iOS Widget-umbrella.h"; sourceTree = "<group>"; };
 		5F6D4983B43671ED51552D6DE31BBD0F /* Yaml.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Yaml.swift; path = Yaml/Yaml.swift; sourceTree = "<group>"; };
 		5F9DD4BE521D93BBE98E6167F7F8C6F0 /* NSNotificationCenter+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSNotificationCenter+AnyPromise.h"; path = "Extensions/Foundation/Sources/NSNotificationCenter+AnyPromise.h"; sourceTree = "<group>"; };
 		601AA0BEA187A2FF3EC6DC15D0FD09B2 /* URLDataPromise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLDataPromise.swift; path = Extensions/Foundation/Sources/URLDataPromise.swift; sourceTree = "<group>"; };
 		60C6D8CB39CAA66C73EE601B430C11B1 /* DynamicButtonStyleVerticalMoreOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleVerticalMoreOptions.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleVerticalMoreOptions.swift; sourceTree = "<group>"; };
-		60CD3A551FD7F6A00815DDD5CC13D5E4 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PromiseKit.framework; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6192B6083E9A99328824137614A7556C /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
 		63C41D4D2B1C83B7F3A10A4D9B0554D0 /* AnimatedZoomViewJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedZoomViewJob.swift; path = Source/Charts/Jobs/AnimatedZoomViewJob.swift; sourceTree = "<group>"; };
 		63E398B8A79BD172BE193E23FEF06EC0 /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = "pt-PT.lproj/SwiftRaterLocalization.strings"; sourceTree = "<group>"; };
 		64C7125AD5A5B9E9F706DC1193EE6C1F /* State.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = State.swift; path = Sources/State.swift; sourceTree = "<group>"; };
-		651EDA5AAE43049A893FF0C0E3FF3AEB /* BRYXBanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BRYXBanner.framework; path = BRYXBanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		654E90B9431568D69CC2E04049B362C7 /* BRYXBanner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = BRYXBanner.modulemap; sourceTree = "<group>"; };
 		672775075DA7B111DFF043DD8FE77B8C /* Cryptors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cryptors.swift; path = Sources/CryptoSwift/Cryptors.swift; sourceTree = "<group>"; };
 		67C759A5678604B42683EE97F7D202FB /* ConsoleDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConsoleDestination.swift; path = Sources/ConsoleDestination.swift; sourceTree = "<group>"; };
 		683B62790166068B874A4B1B7B213EA8 /* Legend.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Legend.swift; path = Source/Charts/Components/Legend.swift; sourceTree = "<group>"; };
-		68CE26CE16E1CEA64D15ADD470F6DF9A /* Pods-CampNetKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CampNetKit-dummy.m"; sourceTree = "<group>"; };
 		6A28F75B4BC9AAB96C63395407B915CF /* after.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = after.swift; path = Sources/after.swift; sourceTree = "<group>"; };
 		6ADFBB424FABA8B93C7DE0232FCA66BD /* ChartLimitLine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartLimitLine.swift; path = Source/Charts/Components/ChartLimitLine.swift; sourceTree = "<group>"; };
 		6AED157591A9A69827CC240212670AA2 /* XAxis.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XAxis.swift; path = Source/Charts/Components/XAxis.swift; sourceTree = "<group>"; };
@@ -777,7 +842,9 @@
 		6BF8D3C9AF1F4ABE405A6AD19338E999 /* DynamicButtonStyleCaretRight.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleCaretRight.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleCaretRight.swift; sourceTree = "<group>"; };
 		6CC572053D4C1004356EE6E0AD2C70DB /* SwiftyBeaver-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyBeaver-prefix.pch"; sourceTree = "<group>"; };
 		6D3E99BA41D42370C92350062E4746F1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6EEFC4498BE34510007F9F462F198D19 /* Pods-CampNetKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CampNetKit.release.xcconfig"; sourceTree = "<group>"; };
 		6F9B5D3A9EE2A13ED5DBC9C1B4877D23 /* ILineScatterCandleRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ILineScatterCandleRadarChartDataSet.swift; path = Source/Charts/Data/Interfaces/ILineScatterCandleRadarChartDataSet.swift; sourceTree = "<group>"; };
+		70C2C18E34F00A350E005CA05CFB9ABF /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CryptoSwift.framework; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70DB187D74058E236F2F921596099AF8 /* SecureBytes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SecureBytes.swift; path = Sources/CryptoSwift/SecureBytes.swift; sourceTree = "<group>"; };
 		7307BB032685289B799891B65EF20152 /* SwiftyBeaver.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyBeaver.xcconfig; sourceTree = "<group>"; };
 		7321DD74A5CE40E69844EC2DA4573918 /* IValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IValueFormatter.swift; path = Source/Charts/Formatters/IValueFormatter.swift; sourceTree = "<group>"; };
@@ -786,8 +853,8 @@
 		73DDC7239C89671FF3B69305EB0770FB /* dispatch_promise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = dispatch_promise.m; path = Sources/dispatch_promise.m; sourceTree = "<group>"; };
 		73E9892729E59B13000881283ABB4693 /* AES.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AES.swift; path = Sources/CryptoSwift/AES.swift; sourceTree = "<group>"; };
 		740866157DA577CB77C96E2D771CE9DF /* DynamicButtonStyleDownload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleDownload.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleDownload.swift; sourceTree = "<group>"; };
-		7443C83AB13D0684CFE7DADB0B83CA37 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74EEDD9D9B5CE507EBAE6DB45F846EBE /* DigestType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DigestType.swift; path = Sources/CryptoSwift/DigestType.swift; sourceTree = "<group>"; };
+		75242D0459640274FB9718AF30C9F65A /* Pods-CampNetKit-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CampNetKit-acknowledgements.plist"; sourceTree = "<group>"; };
 		756E7F864D8BC575175B9CFDF4BBC9E4 /* BarHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarHighlighter.swift; path = Source/Charts/Highlight/BarHighlighter.swift; sourceTree = "<group>"; };
 		75B9F1CAD8196F123CC7C5E2288DAE6E /* BarLineScatterCandleBubbleChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineScatterCandleBubbleChartData.swift; path = Source/Charts/Data/Implementations/Standard/BarLineScatterCandleBubbleChartData.swift; sourceTree = "<group>"; };
 		7601D4B49D327F311F5F0EA78A76D263 /* Utils+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Utils+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/Utils+Foundation.swift"; sourceTree = "<group>"; };
@@ -804,6 +871,8 @@
 		78CB6FEE860C84BE9BFD2295E9B5AA71 /* DynamicButton-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DynamicButton-umbrella.h"; sourceTree = "<group>"; };
 		792A938AEE35212D997E4FBC892C84E0 /* YAxisRendererHorizontalBarChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAxisRendererHorizontalBarChart.swift; path = Source/Charts/Renderers/YAxisRendererHorizontalBarChart.swift; sourceTree = "<group>"; };
 		7960D34A070CA00B40026680BD316449 /* BaseDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseDestination.swift; path = Sources/BaseDestination.swift; sourceTree = "<group>"; };
+		7A6819E13EA7BA8ABDC16327773E454C /* BRYXBanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BRYXBanner.framework; path = BRYXBanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B1DF94B940CF0C005F1F1D21B23846B /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyUserDefaults.framework; path = SwiftyUserDefaults.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C4809CF3AD8CAE3F381005F00CA04BD /* PieChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieChartData.swift; path = Source/Charts/Data/Implementations/Standard/PieChartData.swift; sourceTree = "<group>"; };
 		7C49BD6889A1073D494CE4D47E17E545 /* DynamicButtonStyleClose.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleClose.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleClose.swift; sourceTree = "<group>"; };
 		7C57061B3633E827C8F3CA5348B83FFB /* SwiftyUserDefaults-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyUserDefaults-dummy.m"; sourceTree = "<group>"; };
@@ -827,10 +896,12 @@
 		85DA894FBC8F49977945CCEE598FA098 /* YAxisRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAxisRenderer.swift; path = Source/Charts/Renderers/YAxisRenderer.swift; sourceTree = "<group>"; };
 		8634FD99E30A701B251AC7BBFEE2B4E7 /* ScatterChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScatterChartView.swift; path = Source/Charts/Charts/ScatterChartView.swift; sourceTree = "<group>"; };
 		865CA322F4FFEEE9F9C0A69D899B6521 /* CryptoSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CryptoSwift-prefix.pch"; sourceTree = "<group>"; };
+		873CC08861030B04652F5370CB11CC1A /* Pods-CampNetKit-CampNet iOS Widget-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CampNetKit-CampNet iOS Widget-acknowledgements.markdown"; sourceTree = "<group>"; };
 		877E13E69B178D25DEE73EF5ADD20D44 /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = th.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
+		883FC1DF64955E4A8B49537CDF552681 /* Pods-CampNetKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CampNetKit.modulemap"; sourceTree = "<group>"; };
 		89B8AD188A8AC9D4937E07D96A6CAABA /* Yaml-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Yaml-umbrella.h"; sourceTree = "<group>"; };
 		89DBE6A01C57B657E28FEDC5A7AE5252 /* CALayer+AnyPromise.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "CALayer+AnyPromise.h"; path = "Extensions/QuartzCore/Sources/CALayer+AnyPromise.h"; sourceTree = "<group>"; };
-		8A5AE0F42EB1B2E3EFF01B52BA9AA4F7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B1C7CEA37790361B10CB16917BE756D /* Pods-CampNet iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CampNet iOS.release.xcconfig"; sourceTree = "<group>"; };
 		8B4C9A3C17AA436AADE1931EB1A6296A /* Kanna.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Kanna.modulemap; sourceTree = "<group>"; };
 		8B971607D9E358DF754BC5CA3D48769B /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		8C68C4C7D3549CA2FA23BC9ECD61CEE6 /* SHA3.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SHA3.swift; path = Sources/CryptoSwift/SHA3.swift; sourceTree = "<group>"; };
@@ -850,10 +921,9 @@
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93DFB561AF595D88257909E088DA0A5F /* when.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = when.m; path = Sources/when.m; sourceTree = "<group>"; };
 		93FB8BF2D5549AF86E4BC5377930A671 /* race.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = race.swift; path = Sources/race.swift; sourceTree = "<group>"; };
-		9516651BB2759D35C2556161E16D251A /* Pods-CampNetKit-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CampNetKit-acknowledgements.plist"; sourceTree = "<group>"; };
 		97D68FD8036555C9A95208F0816C7AA7 /* LineChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/LineChartDataSet.swift; sourceTree = "<group>"; };
-		98B9090157089398EA0FD7897F52E739 /* Pods-CampNet iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CampNet iOS.release.xcconfig"; sourceTree = "<group>"; };
-		98F230FEB62098802470D4A405A6CEE6 /* Pods-CampNet iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CampNet iOS.modulemap"; sourceTree = "<group>"; };
+		97DA1E6EA8FC8DDEB4959965440F4A51 /* SwiftRater.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftRater.framework; path = SwiftRater.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99681C862E448A607CD12A06BE50F4EA /* SwiftyBeaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyBeaver.framework; path = SwiftyBeaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A8D668B7358558B2D0C4B570B82178 /* CBC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CBC.swift; path = Sources/CryptoSwift/BlockMode/CBC.swift; sourceTree = "<group>"; };
 		9A5583A460D63F57EA5C3F6C514CECB6 /* XAxisRendererHorizontalBarChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XAxisRendererHorizontalBarChart.swift; path = Source/Charts/Renderers/XAxisRendererHorizontalBarChart.swift; sourceTree = "<group>"; };
 		9B63ABCA5A7EE1CEA4160C4809FD5748 /* LineRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineRadarChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/LineRadarChartDataSet.swift; sourceTree = "<group>"; };
@@ -862,25 +932,28 @@
 		9C34854EA58021791BB6BC0071654705 /* UsageDataManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UsageDataManager.swift; path = SwiftRater/UsageDataManager.swift; sourceTree = "<group>"; };
 		9C90B244C09FC91C2404F97DF7637EF8 /* AxisBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AxisBase.swift; path = Source/Charts/Components/AxisBase.swift; sourceTree = "<group>"; };
 		9CC2CF1DC37A8770EFF58FBD79B886A8 /* DynamicButtonBuildableStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonBuildableStyle.swift; path = Sources/DynamicButtonBuildableStyle.swift; sourceTree = "<group>"; };
-		9E4EE8C8FC353ABB65ABEA1C12640EB3 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Charts.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EC7E31D5D07C227F5EEA8A878FDE22B /* when.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = when.swift; path = Sources/when.swift; sourceTree = "<group>"; };
 		9F98AAC85211FFE4677E4003158BCBC6 /* BubbleChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartView.swift; path = Source/Charts/Charts/BubbleChartView.swift; sourceTree = "<group>"; };
+		A02BE238B8A485E1BB9F5B665F3E5B2E /* Pods_CampNetKit_CampNet_iOS_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CampNetKit_CampNet_iOS_Widget.framework; path = "Pods-CampNetKit-CampNet iOS Widget.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A04EF70E3D58390FF270B39EB25DE9CA /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
+		A0577C558D7D2D139DF38A4CA89DCA15 /* Kanna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kanna.framework; path = Kanna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A06A5D846B0D0DB1CC3268081C964A78 /* Zalgo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Zalgo.swift; path = Sources/Zalgo.swift; sourceTree = "<group>"; };
+		A079A30B52055AC6C501FA0CBB0D220F /* Pods-CampNet iOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CampNet iOS-frameworks.sh"; sourceTree = "<group>"; };
 		A0D9336BFF4AA5208632B8EF892240E5 /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = ms.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
 		A1F146CA84634E9A9C95CE07BAA2DF24 /* Kanna.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Kanna.h; path = Sources/Kanna/Kanna.h; sourceTree = "<group>"; };
 		A23292B559A3FEA160784120D2CE058C /* CryptoSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CryptoSwift.xcconfig; sourceTree = "<group>"; };
+		A245B479A8E687A3831D454491D5F2B6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3380A3780580C2203D5EB7C3868EA7A /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = nl.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
-		A4576A98DD497C86CEF5EAB6B73E0FDC /* Pods_CampNet_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CampNet_iOS.framework; path = "Pods-CampNet iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A36B2606917F440F5B6AF9939DF24C20 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5309582857FF8652FDCB1A135214408 /* DefaultFillFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultFillFormatter.swift; path = Source/Charts/Formatters/DefaultFillFormatter.swift; sourceTree = "<group>"; };
 		A62EE227C9D7C6DB3490318A8EB36350 /* DynamicButtonStyleNone.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleNone.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleNone.swift; sourceTree = "<group>"; };
 		A6E73A33E74D249603168D20078EBF2C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7063C4069D570DBA3D76842C64FBCC0 /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = pl.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
-		A71125716C383239029423241A3F0BD1 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyBeaver.framework; path = SwiftyBeaver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7621A36806A114B2AA67B267F623A17 /* BatchedCollection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BatchedCollection.swift; path = Sources/CryptoSwift/BatchedCollection.swift; sourceTree = "<group>"; };
 		A7E17BA7C90C5E636002F661650CFEE6 /* PMKQuartzCore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PMKQuartzCore.h; path = Extensions/QuartzCore/Sources/PMKQuartzCore.h; sourceTree = "<group>"; };
 		A7E93630D231BB8FD17C2D0331C42CBE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A82EC90A32E98F714969A3F30355B133 /* SwiftRater.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftRater.h; path = SwiftRater/SwiftRater.h; sourceTree = "<group>"; };
+		A8C76D1F0C9FF5904C112F39E59F879C /* DynamicButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DynamicButton.framework; path = DynamicButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D5F42B913381B94AD71499161F0CC9 /* SwiftRaterErrorCode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftRaterErrorCode.swift; path = SwiftRater/SwiftRaterErrorCode.swift; sourceTree = "<group>"; };
 		A8DE746E56710F731018FFB198B1C426 /* YAMLOperators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAMLOperators.swift; path = Yaml/YAMLOperators.swift; sourceTree = "<group>"; };
 		AA95741FB83B1972EBAF01BD1A965897 /* ChaCha20.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChaCha20.swift; path = Sources/CryptoSwift/ChaCha20.swift; sourceTree = "<group>"; };
@@ -891,8 +964,8 @@
 		AC4D15275E6D4E686578DD43C6ED67D0 /* PromiseKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PromiseKit-prefix.pch"; sourceTree = "<group>"; };
 		AC8B62ECAB19D1BA0F60C9381B167983 /* SwiftRaterBundleExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftRaterBundleExtension.swift; path = SwiftRater/SwiftRaterBundleExtension.swift; sourceTree = "<group>"; };
 		ACCE128118CD94B7FBB4587F5DE9A0F1 /* BubbleChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartDataProvider.swift; path = Source/Charts/Interfaces/BubbleChartDataProvider.swift; sourceTree = "<group>"; };
-		AF044BEF7D122FE2F2C731F81C2B974C /* Kanna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kanna.framework; path = Kanna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF1823201E2A41073B7C5F69E569B6E9 /* SwiftyBeaver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyBeaver.swift; path = Sources/SwiftyBeaver.swift; sourceTree = "<group>"; };
+		AFDCB16F406C8B70C44467D91F63BB3C /* Pods_CampNet_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CampNet_iOS.framework; path = "Pods-CampNet iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B01EBC54CAE1ABE9231ED796D2BCB7DE /* SwiftRater.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftRater.swift; path = SwiftRater/SwiftRater.swift; sourceTree = "<group>"; };
 		B064223D9ECFC48A2C0EC140CF1038B7 /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = "zh-Hant.lproj/SwiftRaterLocalization.strings"; sourceTree = "<group>"; };
 		B102124F0EFB6C0545089F359B756274 /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = ar.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
@@ -900,6 +973,7 @@
 		B28C73C38629F43F28709C340F7C1EEF /* CombinedChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedChartData.swift; path = Source/Charts/Data/Implementations/Standard/CombinedChartData.swift; sourceTree = "<group>"; };
 		B2C21D229A9955D25A3A011953B513E8 /* DynamicButtonStyleStop.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleStop.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleStop.swift; sourceTree = "<group>"; };
 		B2FA22FEBCAB6D791D43DEF096E5F188 /* PieChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/PieChartDataEntry.swift; sourceTree = "<group>"; };
+		B4413F628C2CCDA1691D52E88F8FA58C /* Pods-CampNetKit-CampNet iOS Widget-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CampNetKit-CampNet iOS Widget-dummy.m"; sourceTree = "<group>"; };
 		B4A8BA459596D5753E0BC215F62B1E65 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4C62A82346A010ABD9113DB6249C8BA /* ChartColorTemplates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartColorTemplates.swift; path = Source/Charts/Utils/ChartColorTemplates.swift; sourceTree = "<group>"; };
 		B52FD57621A27D1AE98E09F5E6A5CC36 /* Keychain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Keychain.swift; path = Lib/KeychainAccess/Keychain.swift; sourceTree = "<group>"; };
@@ -908,12 +982,10 @@
 		B60F0A648EC35EB5AD967CD52CA9D2CE /* DynamicButtonStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyle.swift; path = Sources/DynamicButtonStyle.swift; sourceTree = "<group>"; };
 		B62BECA4C6C5DA3D83D1B6B029A502E2 /* DynamicButtonStyleCirclePlus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleCirclePlus.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleCirclePlus.swift; sourceTree = "<group>"; };
 		B722AC524012827E7F78C00552ABAD06 /* YAMLParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAMLParser.swift; path = Yaml/YAMLParser.swift; sourceTree = "<group>"; };
-		B738291627504E1B1A0EA0905D5F8F0E /* NetUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NetUtils.framework; path = NetUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B784AAC2152D8584E2E33150C62A995B /* DataApproximator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataApproximator.swift; path = Source/Charts/Filters/DataApproximator.swift; sourceTree = "<group>"; };
 		B8061CB7D94B300627C900D19C6281D0 /* ZeroPadding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZeroPadding.swift; path = Sources/CryptoSwift/ZeroPadding.swift; sourceTree = "<group>"; };
 		B8A1C138C0921B486EA7E0702E4506DA /* wrap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = wrap.swift; path = Sources/wrap.swift; sourceTree = "<group>"; };
 		B8C5D4AE13887E8B93F6F29370A6CC76 /* SBPlatformDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SBPlatformDestination.swift; path = Sources/SBPlatformDestination.swift; sourceTree = "<group>"; };
-		B9127FC54509E28EB05B139376EDCEA2 /* Pods-CampNetKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CampNetKit.release.xcconfig"; sourceTree = "<group>"; };
 		B936776790E53517C5BA9B6662FEEE51 /* BRYXBanner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BRYXBanner.xcconfig; sourceTree = "<group>"; };
 		B945415FDC7B85730E1CD91548DBE8CE /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
 		B946D5ACF4D9FECA46B65CDBE69003B7 /* NetUtils-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NetUtils-dummy.m"; sourceTree = "<group>"; };
@@ -934,24 +1006,25 @@
 		BDA005F0985664EDAAC782266C3DBAF5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE60BC50FB286BB7306807A75856A4A0 /* SwiftyUserDefaults-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyUserDefaults-umbrella.h"; sourceTree = "<group>"; };
 		BE6A87E4828C735FA3D2194D801B886D /* RadarHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarHighlighter.swift; path = Source/Charts/Highlight/RadarHighlighter.swift; sourceTree = "<group>"; };
+		BE7A8F0659305A7036B70BA228DB15BE /* Pods-CampNet iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CampNet iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
 		BEB1FE04C1AE17238AB219A3E7D82F5E /* BarLineScatterCandleBubbleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineScatterCandleBubbleChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/BarLineScatterCandleBubbleChartDataSet.swift; sourceTree = "<group>"; };
 		BFD1F40F8E90198BE49FA58107347726 /* ILineRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ILineRadarChartDataSet.swift; path = Source/Charts/Data/Interfaces/ILineRadarChartDataSet.swift; sourceTree = "<group>"; };
+		C00EB6B5350003A7EF1D3A04FE4711E8 /* Pods-CampNetKit-CampNet iOS Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CampNetKit-CampNet iOS Widget.release.xcconfig"; sourceTree = "<group>"; };
 		C041974CB907699E5504F93161180C04 /* ChevronDownShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChevronDownShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/ChevronDownShapeRenderer.swift; sourceTree = "<group>"; };
 		C0C8B0975E05B8B42FA16E9EEB33C054 /* LineScatterCandleRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineScatterCandleRadarChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/LineScatterCandleRadarChartDataSet.swift; sourceTree = "<group>"; };
 		C2432CBEFB8C4ADA1EFE00BBF8D80A60 /* afterlife.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = afterlife.swift; path = Extensions/Foundation/Sources/afterlife.swift; sourceTree = "<group>"; };
 		C264D9788E700F652E377AA674A36B36 /* BubbleChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartRenderer.swift; path = Source/Charts/Renderers/BubbleChartRenderer.swift; sourceTree = "<group>"; };
-		C27541979BDF195CD23AE0C2820CF844 /* CryptoSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CryptoSwift.framework; path = CryptoSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C45919F6AD8FF97B30FF8F841FC1EEC5 /* AES+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "AES+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/AES+Foundation.swift"; sourceTree = "<group>"; };
 		C4BD12BD5621B8719E9BCE3F05F6B318 /* Charts-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Charts-dummy.m"; sourceTree = "<group>"; };
+		C53E510FE116AD0C95F2781A808E4599 /* PromiseKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PromiseKit.framework; path = PromiseKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C61596573AB7A17091103CA64A33699A /* RandomAccessCryptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RandomAccessCryptor.swift; path = Sources/CryptoSwift/RandomAccessCryptor.swift; sourceTree = "<group>"; };
 		C657502694AA9565C6F8A484CAF94834 /* BubbleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/BubbleChartDataSet.swift; sourceTree = "<group>"; };
-		C6BB2CE118CDB6891B70A166925ABBB8 /* Pods-CampNet iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CampNet iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C711546E569A2D388B6E646AE3A2C867 /* YAMLRegex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAMLRegex.swift; path = Yaml/YAMLRegex.swift; sourceTree = "<group>"; };
 		C7FDA174B7F94B42425EB08BD047661C /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
-		C881FA712F998C886BDE013200092B68 /* Pods-CampNet iOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CampNet iOS-frameworks.sh"; sourceTree = "<group>"; };
 		C9241542EE9301C80D799A785F94B91A /* PromiseKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PromiseKit-umbrella.h"; sourceTree = "<group>"; };
 		CA508E755B6B11D88A663C921A1377B6 /* IRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IRadarChartDataSet.swift; path = Source/Charts/Data/Interfaces/IRadarChartDataSet.swift; sourceTree = "<group>"; };
 		CA62B6C17DC86F56417A66374F34822D /* RandomAccessBlockModeWorker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RandomAccessBlockModeWorker.swift; path = Sources/CryptoSwift/BlockMode/RandomAccessBlockModeWorker.swift; sourceTree = "<group>"; };
+		CA8C36243B5413B5501BA7087E6BCFE7 /* Yaml.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Yaml.framework; path = Yaml.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBC69F56B12413FB237D543F8B7B4F6B /* Charts-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Charts-umbrella.h"; sourceTree = "<group>"; };
 		CBD6B826D829B5EA4469050B0BD8439F /* ECB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ECB.swift; path = Sources/CryptoSwift/BlockMode/ECB.swift; sourceTree = "<group>"; };
 		CD781F443CB1AACD4A643E8E547B1DA8 /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = "pt-BR.lproj/SwiftRaterLocalization.strings"; sourceTree = "<group>"; };
@@ -965,9 +1038,9 @@
 		D2B144CDA2D1F1C4D5F660E0DCE9A49D /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = ro.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
 		D403FCD707C4CFAA8935840C1A1EF805 /* OFB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OFB.swift; path = Sources/CryptoSwift/BlockMode/OFB.swift; sourceTree = "<group>"; };
 		D4BDF92A9490ADF5C654EB3707BBE9A2 /* join.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = join.swift; path = Sources/join.swift; sourceTree = "<group>"; };
-		D5B0DB8865E30A8CAC9598011BF1C43A /* KeychainAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KeychainAccess.framework; path = KeychainAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D62EB173094D312BF95BBE3CCE102F35 /* CALayer+AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "CALayer+AnyPromise.m"; path = "Extensions/QuartzCore/Sources/CALayer+AnyPromise.m"; sourceTree = "<group>"; };
 		D68048193CEC6276D97F8642046BB5CB /* IBGTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IBGTypes.h; path = Instabug.framework/Headers/IBGTypes.h; sourceTree = "<group>"; };
+		D688B089E20AFF01CC4A6CBD37DA859B /* KeychainAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KeychainAccess.framework; path = KeychainAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B4325ACB51B12787B1B72D6C8A3D6C /* DynamicButtonStyleHorizontalMoreOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleHorizontalMoreOptions.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleHorizontalMoreOptions.swift; sourceTree = "<group>"; };
 		D7BF702D6352C8A823A65B521DAC7C35 /* NSURLSession+AnyPromise.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURLSession+AnyPromise.m"; path = "Extensions/Foundation/Sources/NSURLSession+AnyPromise.m"; sourceTree = "<group>"; };
 		D7CA5E695DB3AD42E814B55420963A34 /* RadarChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/RadarChartDataEntry.swift; sourceTree = "<group>"; };
@@ -985,7 +1058,7 @@
 		DC8B26747416367C551F3DEB9F26F42C /* Authenticator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Authenticator.swift; path = Sources/CryptoSwift/Authenticator.swift; sourceTree = "<group>"; };
 		DE193FD55ACB2A9A059E8B77DA4DA077 /* BlockCipher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlockCipher.swift; path = Sources/CryptoSwift/BlockCipher.swift; sourceTree = "<group>"; };
 		DE93FD0626E9A3BFE68DE890179E18DF /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
-		DF88FE2CB0D1084B7A1285364AE92287 /* Pods-CampNetKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CampNetKit.debug.xcconfig"; sourceTree = "<group>"; };
+		DF1C75B1FA18AB696EF8AF248EADA5B5 /* Pods-CampNet iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CampNet iOS.modulemap"; sourceTree = "<group>"; };
 		DFDD2B10651BD1A0EDB7D56C0A2214BF /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = he.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
 		E00DC5D7EA8A02022B9730664373B4CF /* PromiseKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PromiseKit-dummy.m"; sourceTree = "<group>"; };
 		E0770EE4E013EAD07D66E47290DD6422 /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Sources/Error.swift; sourceTree = "<group>"; };
@@ -995,25 +1068,26 @@
 		E26A255014B5E951CFC389C25B13223E /* CombinedChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedChartView.swift; path = Source/Charts/Charts/CombinedChartView.swift; sourceTree = "<group>"; };
 		E2AA7BD94C5E92B78A071303EEC613B1 /* AES256CBC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AES256CBC.swift; path = Sources/AES256CBC.swift; sourceTree = "<group>"; };
 		E2AC955DCCB16746B87651D11142C3C5 /* join.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = join.m; path = Sources/join.m; sourceTree = "<group>"; };
+		E3CDBD068FD32134B64300DC77D9A25B /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E461A2687B9E5EF371DD663343CA4981 /* FileDestination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileDestination.swift; path = Sources/FileDestination.swift; sourceTree = "<group>"; };
 		E46A7B80598458E628CC7EE2365950F8 /* DynamicButtonStyleVerticalLine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonStyleVerticalLine.swift; path = Sources/DynamicButtonStyles/DynamicButtonStyleVerticalLine.swift; sourceTree = "<group>"; };
 		E47D47971FDF098EBE7BAF3E44BC9261 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		E4ABD053AE9211ADAE13108FD0DE4127 /* CircleShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CircleShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/CircleShapeRenderer.swift; sourceTree = "<group>"; };
 		E5535577992343ECE3DDCA24CFAEE412 /* NetUtils.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = NetUtils.modulemap; sourceTree = "<group>"; };
 		E5A6CECE65938B1C9C8E9A940521F2EC /* Data+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Data+Extension.swift"; path = "Sources/CryptoSwift/Foundation/Data+Extension.swift"; sourceTree = "<group>"; };
+		E69D2CE7F96A45C29614206D88CDC904 /* Pods-CampNetKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CampNetKit.debug.xcconfig"; sourceTree = "<group>"; };
 		E7937E4C226DB58C6727FF286B62A62D /* HorizontalBarChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HorizontalBarChartView.swift; path = Source/Charts/Charts/HorizontalBarChartView.swift; sourceTree = "<group>"; };
 		E8630B6230C9B565745C602E2B0C431F /* Charts.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Charts.modulemap; sourceTree = "<group>"; };
 		E8E6981834964A717E9E7D577F462F8C /* SwiftyUserDefaults.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyUserDefaults.xcconfig; sourceTree = "<group>"; };
-		E935E9E3FA465DC3DD711B5B6F420607 /* DynamicButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DynamicButton.framework; path = DynamicButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E93D714C6C7642A0DE51FC93BB837677 /* Generics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Generics.swift; path = Sources/CryptoSwift/Generics.swift; sourceTree = "<group>"; };
 		E97BA41C6786906A3B76F5CBC4522969 /* Yaml.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Yaml.xcconfig; sourceTree = "<group>"; };
 		E9FEC3DBD54ED384EDDC3F8449C6351D /* LineRadarRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineRadarRenderer.swift; path = Source/Charts/Renderers/LineRadarRenderer.swift; sourceTree = "<group>"; };
 		EA0F7DB79BD0CCDB4D0B94FDF9141C96 /* ScatterChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScatterChartData.swift; path = Source/Charts/Data/Implementations/Standard/ScatterChartData.swift; sourceTree = "<group>"; };
+		EA127460A03EF3C0282BF5909B4AD4E8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA6DC68805F1EA7BB95A21A75073EF1F /* PieHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieHighlighter.swift; path = Source/Charts/Highlight/PieHighlighter.swift; sourceTree = "<group>"; };
 		EA8D16D7A12BFC368129AA84436BA9D6 /* Kanna.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Kanna.swift; path = Sources/Kanna/Kanna.swift; sourceTree = "<group>"; };
 		EAFB84F3A6CA5FC4CE21AA85C4F09F34 /* DynamicButtonPathVector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicButtonPathVector.swift; path = Sources/DynamicButtonPathVector.swift; sourceTree = "<group>"; };
 		EB58254DFD5945918A5838CE2CB5E98A /* ChaCha20+Foundation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ChaCha20+Foundation.swift"; path = "Sources/CryptoSwift/Foundation/ChaCha20+Foundation.swift"; sourceTree = "<group>"; };
-		EB8BD8971167FD4CEF3AF0E176C70EBA /* Pods-CampNetKit-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CampNetKit-acknowledgements.markdown"; sourceTree = "<group>"; };
 		EBB3C5C9F046B9D1E76A6D7342530CDE /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = fi.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
 		ECD0DEC78F292EF5D6CB9C871C566952 /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = en.lproj/SwiftRaterLocalization.strings; sourceTree = "<group>"; };
 		ED570781068166100FC34669809BB0ED /* Promise+AnyPromise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Promise+AnyPromise.swift"; path = "Sources/Promise+AnyPromise.swift"; sourceTree = "<group>"; };
@@ -1024,6 +1098,7 @@
 		F0365454C8FD5275374BC388B05AA9F4 /* ZoomViewJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZoomViewJob.swift; path = Source/Charts/Jobs/ZoomViewJob.swift; sourceTree = "<group>"; };
 		F0B5A8EC98EDCDF3A1F5B536F92540F6 /* Kanna.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Kanna.xcconfig; sourceTree = "<group>"; };
 		F0F1DE9EC6B2EA2F2069915AA7A52034 /* SwiftRaterLocalization.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = SwiftRaterLocalization.strings; path = "zh-Hans.lproj/SwiftRaterLocalization.strings"; sourceTree = "<group>"; };
+		F20DBAC824435328B7394383533FBCBF /* Pods-CampNetKit-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CampNetKit-resources.sh"; sourceTree = "<group>"; };
 		F2533A81E8D3EF2C997E9AE6FE243B61 /* SwiftRater.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftRater.xcconfig; sourceTree = "<group>"; };
 		F2D02A92E81F147C8B3B4C8CD0B3C1D9 /* SwiftyBeaver-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyBeaver-umbrella.h"; sourceTree = "<group>"; };
 		F3377703CEE2EBB5495E1800FCA261C2 /* XAxisRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XAxisRenderer.swift; path = Source/Charts/Renderers/XAxisRenderer.swift; sourceTree = "<group>"; };
@@ -1033,8 +1108,10 @@
 		F940FE8BC0BF582E06F0AD57E924F22D /* IAxisValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IAxisValueFormatter.swift; path = Source/Charts/Formatters/IAxisValueFormatter.swift; sourceTree = "<group>"; };
 		F950F2E5D4A69759C9A871C83A436B65 /* SwiftRater-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftRater-dummy.m"; sourceTree = "<group>"; };
 		F970B06A3CA4971214E8DDD742226BB8 /* Kanna-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Kanna-dummy.m"; sourceTree = "<group>"; };
+		F97E618FC00949BEC6BD8D8717514FF0 /* Pods-CampNet iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CampNet iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		F9D5284481A9EA5154268DCA82678BC8 /* LineChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartRenderer.swift; path = Source/Charts/Renderers/LineChartRenderer.swift; sourceTree = "<group>"; };
 		FA6CBC371CA80D106A19E7DE74534222 /* Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Promise.swift; path = Sources/Promise.swift; sourceTree = "<group>"; };
+		FAA4A8D8D1A7B68FF4939EE66BD65C20 /* Pods-CampNetKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CampNetKit-umbrella.h"; sourceTree = "<group>"; };
 		FB0E21E5C51CD4472ECB053B998B35F3 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
 		FB24233994171D363BB0780BF0EF6EE4 /* CombinedChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedChartRenderer.swift; path = Source/Charts/Renderers/CombinedChartRenderer.swift; sourceTree = "<group>"; };
 		FB7751D4D791D1183FB66D3CCA52CD8E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -1043,7 +1120,6 @@
 		FCD9895F97010B4DFEDA09EA891611F8 /* PromiseKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = PromiseKit.modulemap; sourceTree = "<group>"; };
 		FCDE9A1168F0DC6D33677FDA05F7AC3D /* libxmlHTMLNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = libxmlHTMLNode.swift; path = Sources/Kanna/libxmlHTMLNode.swift; sourceTree = "<group>"; };
 		FD3EB574FE29D560A4B25806026F208D /* Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Sources/CryptoSwift/Operators.swift; sourceTree = "<group>"; };
-		FDCC3DDBC9C022165F6EF8EFD2A50C8E /* Pods-CampNet iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CampNet iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		FFB310283ABA07B30E006D4C29380656 /* IndexAxisValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IndexAxisValueFormatter.swift; path = Source/Charts/Formatters/IndexAxisValueFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1144,6 +1220,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D6F4BB41E23B78CAE2944B5F03DD5663 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB5B987538ED6B5B9D8E31C78DB223B4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D85787F9A1F390DE0D501F97F3A671DB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1174,6 +1258,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		078E1E86F290E2EE5437602D9F1F1E13 /* Pods-CampNet iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A245B479A8E687A3831D454491D5F2B6 /* Info.plist */,
+				DF1C75B1FA18AB696EF8AF248EADA5B5 /* Pods-CampNet iOS.modulemap */,
+				BE7A8F0659305A7036B70BA228DB15BE /* Pods-CampNet iOS-acknowledgements.markdown */,
+				12CB797B2B07F65AE619509E0D578B72 /* Pods-CampNet iOS-acknowledgements.plist */,
+				0E2D4E9DE50EFB65E63AF869B6298DC3 /* Pods-CampNet iOS-dummy.m */,
+				A079A30B52055AC6C501FA0CBB0D220F /* Pods-CampNet iOS-frameworks.sh */,
+				33B513F143CD8D7A8F7D11FB0D61ADEA /* Pods-CampNet iOS-resources.sh */,
+				459D2E8A36BC35C1A3B9A33E48B6C307 /* Pods-CampNet iOS-umbrella.h */,
+				F97E618FC00949BEC6BD8D8717514FF0 /* Pods-CampNet iOS.debug.xcconfig */,
+				8B1C7CEA37790361B10CB16917BE756D /* Pods-CampNet iOS.release.xcconfig */,
+			);
+			name = "Pods-CampNet iOS";
+			path = "Target Support Files/Pods-CampNet iOS";
+			sourceTree = "<group>";
+		};
 		085628D36F141E71551079B16C869E20 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1220,6 +1322,23 @@
 				93A319F2C1969B7AA0B17444A3F8BA22 /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		12FD584C2751020395C8E8764CAA2181 /* Pods-CampNetKit-CampNet iOS Widget */ = {
+			isa = PBXGroup;
+			children = (
+				A36B2606917F440F5B6AF9939DF24C20 /* Info.plist */,
+				01408BC68FDEBA930C26F2AD25FE4407 /* Pods-CampNetKit-CampNet iOS Widget.modulemap */,
+				873CC08861030B04652F5370CB11CC1A /* Pods-CampNetKit-CampNet iOS Widget-acknowledgements.markdown */,
+				425A3FE1172DAFFD20F5D39A4E50A371 /* Pods-CampNetKit-CampNet iOS Widget-acknowledgements.plist */,
+				B4413F628C2CCDA1691D52E88F8FA58C /* Pods-CampNetKit-CampNet iOS Widget-dummy.m */,
+				5CE13CCF3E3BB7DEF8BBD58054DD4220 /* Pods-CampNetKit-CampNet iOS Widget-resources.sh */,
+				5F2B79C5D80A25F5A5B8558F690EAD95 /* Pods-CampNetKit-CampNet iOS Widget-umbrella.h */,
+				035518F799B04A4039C7324058718BA9 /* Pods-CampNetKit-CampNet iOS Widget.debug.xcconfig */,
+				C00EB6B5350003A7EF1D3A04FE4711E8 /* Pods-CampNetKit-CampNet iOS Widget.release.xcconfig */,
+			);
+			name = "Pods-CampNetKit-CampNet iOS Widget";
+			path = "Target Support Files/Pods-CampNetKit-CampNet iOS Widget";
 			sourceTree = "<group>";
 		};
 		1BC27CB6D6E56D940CEF56ED044EE4B6 /* Support Files */ = {
@@ -1419,23 +1538,6 @@
 			path = "../Target Support Files/CryptoSwift";
 			sourceTree = "<group>";
 		};
-		3407B343EAAA190981FD60A56CC336C3 /* Pods-CampNetKit */ = {
-			isa = PBXGroup;
-			children = (
-				7443C83AB13D0684CFE7DADB0B83CA37 /* Info.plist */,
-				3DC3A74839BC05CDCEE83CFDEE974DA1 /* Pods-CampNetKit.modulemap */,
-				EB8BD8971167FD4CEF3AF0E176C70EBA /* Pods-CampNetKit-acknowledgements.markdown */,
-				9516651BB2759D35C2556161E16D251A /* Pods-CampNetKit-acknowledgements.plist */,
-				68CE26CE16E1CEA64D15ADD470F6DF9A /* Pods-CampNetKit-dummy.m */,
-				1E2B2E8D52EBA7AC9722BA8F218370B0 /* Pods-CampNetKit-resources.sh */,
-				04B65A5C7DEBB458039C13605EB56066 /* Pods-CampNetKit-umbrella.h */,
-				DF88FE2CB0D1084B7A1285364AE92287 /* Pods-CampNetKit.debug.xcconfig */,
-				B9127FC54509E28EB05B139376EDCEA2 /* Pods-CampNetKit.release.xcconfig */,
-			);
-			name = "Pods-CampNetKit";
-			path = "Target Support Files/Pods-CampNetKit";
-			sourceTree = "<group>";
-		};
 		37E42924CA71BEF10ED7902DE7CE3B1D /* Instabug */ = {
 			isa = PBXGroup;
 			children = (
@@ -1446,6 +1548,29 @@
 			);
 			name = Instabug;
 			path = Instabug;
+			sourceTree = "<group>";
+		};
+		3A7F500771003364857BBFF2B4A0C81D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E3CDBD068FD32134B64300DC77D9A25B /* Alamofire.framework */,
+				7A6819E13EA7BA8ABDC16327773E454C /* BRYXBanner.framework */,
+				0AD3E1FD3B4A0D409FAC977C0E054611 /* Charts.framework */,
+				70C2C18E34F00A350E005CA05CFB9ABF /* CryptoSwift.framework */,
+				A8C76D1F0C9FF5904C112F39E59F879C /* DynamicButton.framework */,
+				A0577C558D7D2D139DF38A4CA89DCA15 /* Kanna.framework */,
+				D688B089E20AFF01CC4A6CBD37DA859B /* KeychainAccess.framework */,
+				3A388F6C079FADAB0CD7ABBEACF86419 /* NetUtils.framework */,
+				AFDCB16F406C8B70C44467D91F63BB3C /* Pods_CampNet_iOS.framework */,
+				28E13B1ED4A1F59276C13AD9A56FA92F /* Pods_CampNetKit.framework */,
+				A02BE238B8A485E1BB9F5B665F3E5B2E /* Pods_CampNetKit_CampNet_iOS_Widget.framework */,
+				C53E510FE116AD0C95F2781A808E4599 /* PromiseKit.framework */,
+				97DA1E6EA8FC8DDEB4959965440F4A51 /* SwiftRater.framework */,
+				99681C862E448A607CD12A06BE50F4EA /* SwiftyBeaver.framework */,
+				7B1DF94B940CF0C005F1F1D21B23846B /* SwiftyUserDefaults.framework */,
+				CA8C36243B5413B5501BA7087E6BCFE7 /* Yaml.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		3D09300E0A7CC8193540D616FF9EFC38 /* QuartzCore */ = {
@@ -1585,9 +1710,26 @@
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
 				FC1D20359525D024699F64F093248E42 /* Pods */,
-				E28A66036A8EA87CDC27F086A3558BEA /* Products */,
-				D537E2CC4265524B5FA2E7897D904C23 /* Targets Support Files */,
+				3A7F500771003364857BBFF2B4A0C81D /* Products */,
+				A74CC211929CAC1BB3E5D7E92B6E3C34 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		85D57DD944AEF86D77944C054A66AF4A /* Pods-CampNetKit */ = {
+			isa = PBXGroup;
+			children = (
+				EA127460A03EF3C0282BF5909B4AD4E8 /* Info.plist */,
+				883FC1DF64955E4A8B49537CDF552681 /* Pods-CampNetKit.modulemap */,
+				110D8E90D9D6BE3FBDABEBE8188B49AC /* Pods-CampNetKit-acknowledgements.markdown */,
+				75242D0459640274FB9718AF30C9F65A /* Pods-CampNetKit-acknowledgements.plist */,
+				26FA8B32E478A9E292F198000EDBD330 /* Pods-CampNetKit-dummy.m */,
+				F20DBAC824435328B7394383533FBCBF /* Pods-CampNetKit-resources.sh */,
+				FAA4A8D8D1A7B68FF4939EE66BD65C20 /* Pods-CampNetKit-umbrella.h */,
+				E69D2CE7F96A45C29614206D88CDC904 /* Pods-CampNetKit.debug.xcconfig */,
+				6EEFC4498BE34510007F9F462F198D19 /* Pods-CampNetKit.release.xcconfig */,
+			);
+			name = "Pods-CampNetKit";
+			path = "Target Support Files/Pods-CampNetKit";
 			sourceTree = "<group>";
 		};
 		93A319F2C1969B7AA0B17444A3F8BA22 /* iOS */ = {
@@ -1608,6 +1750,16 @@
 			);
 			name = SwiftyUserDefaults;
 			path = SwiftyUserDefaults;
+			sourceTree = "<group>";
+		};
+		A74CC211929CAC1BB3E5D7E92B6E3C34 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				078E1E86F290E2EE5437602D9F1F1E13 /* Pods-CampNet iOS */,
+				85D57DD944AEF86D77944C054A66AF4A /* Pods-CampNetKit */,
+				12FD584C2751020395C8E8764CAA2181 /* Pods-CampNetKit-CampNet iOS Widget */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		BEC53CB9004289E2BDAC8991D608D187 /* Foundation */ = {
@@ -1683,15 +1835,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/BRYXBanner";
-			sourceTree = "<group>";
-		};
-		D537E2CC4265524B5FA2E7897D904C23 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				F665F48116145D1CF9118ABF06122681 /* Pods-CampNet iOS */,
-				3407B343EAAA190981FD60A56CC336C3 /* Pods-CampNetKit */,
-			);
-			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		D9E20C0DA9789CF7D8DDF6E66E6B7260 /* CorePromise */ = {
@@ -1795,28 +1938,6 @@
 			path = CryptoSwift;
 			sourceTree = "<group>";
 		};
-		E28A66036A8EA87CDC27F086A3558BEA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				49975A6F1E07724DB80F0463940312CF /* Alamofire.framework */,
-				651EDA5AAE43049A893FF0C0E3FF3AEB /* BRYXBanner.framework */,
-				9E4EE8C8FC353ABB65ABEA1C12640EB3 /* Charts.framework */,
-				C27541979BDF195CD23AE0C2820CF844 /* CryptoSwift.framework */,
-				E935E9E3FA465DC3DD711B5B6F420607 /* DynamicButton.framework */,
-				AF044BEF7D122FE2F2C731F81C2B974C /* Kanna.framework */,
-				D5B0DB8865E30A8CAC9598011BF1C43A /* KeychainAccess.framework */,
-				B738291627504E1B1A0EA0905D5F8F0E /* NetUtils.framework */,
-				A4576A98DD497C86CEF5EAB6B73E0FDC /* Pods_CampNet_iOS.framework */,
-				106D4142177BBEBED32D918C5FF95697 /* Pods_CampNetKit.framework */,
-				60CD3A551FD7F6A00815DDD5CC13D5E4 /* PromiseKit.framework */,
-				0260D9CB3E0362DB754C614E3FD0EEC5 /* SwiftRater.framework */,
-				A71125716C383239029423241A3F0BD1 /* SwiftyBeaver.framework */,
-				08230417905C093B3D990C4F50301F43 /* SwiftyUserDefaults.framework */,
-				5F11037AF49EAAE225BC861210167D38 /* Yaml.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		EF73EFE14236950C1806108ECF00DB4A /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1862,24 +1983,6 @@
 			);
 			name = Yaml;
 			path = Yaml;
-			sourceTree = "<group>";
-		};
-		F665F48116145D1CF9118ABF06122681 /* Pods-CampNet iOS */ = {
-			isa = PBXGroup;
-			children = (
-				8A5AE0F42EB1B2E3EFF01B52BA9AA4F7 /* Info.plist */,
-				98F230FEB62098802470D4A405A6CEE6 /* Pods-CampNet iOS.modulemap */,
-				C6BB2CE118CDB6891B70A166925ABBB8 /* Pods-CampNet iOS-acknowledgements.markdown */,
-				1201C85F990D89FA38A7399E756D8942 /* Pods-CampNet iOS-acknowledgements.plist */,
-				1603E7D7A84DD48D15EDEA2967393F70 /* Pods-CampNet iOS-dummy.m */,
-				C881FA712F998C886BDE013200092B68 /* Pods-CampNet iOS-frameworks.sh */,
-				52A3A39005401BC577615E97C7D7161E /* Pods-CampNet iOS-resources.sh */,
-				0CAD70299DDFC89FBFD01E0DACCA0D30 /* Pods-CampNet iOS-umbrella.h */,
-				FDCC3DDBC9C022165F6EF8EFD2A50C8E /* Pods-CampNet iOS.debug.xcconfig */,
-				98B9090157089398EA0FD7897F52E739 /* Pods-CampNet iOS.release.xcconfig */,
-			);
-			name = "Pods-CampNet iOS";
-			path = "Target Support Files/Pods-CampNet iOS";
 			sourceTree = "<group>";
 		};
 		FAF6C2E32BA54326282F93EF418A761D /* DynamicButton */ = {
@@ -2087,6 +2190,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DD6784D3A0376121968EC153C977760A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E114E9E6ED777D3DAF2676C9C849228 /* Pods-CampNetKit-CampNet iOS Widget-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E0B8FC3C42567C239A9D51ED5D27D424 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -2136,7 +2247,7 @@
 			);
 			name = NetUtils;
 			productName = NetUtils;
-			productReference = B738291627504E1B1A0EA0905D5F8F0E /* NetUtils.framework */;
+			productReference = 3A388F6C079FADAB0CD7ABBEACF86419 /* NetUtils.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		0F3B36547C3C2CC3060475E614BCBF32 /* BRYXBanner */ = {
@@ -2153,7 +2264,7 @@
 			);
 			name = BRYXBanner;
 			productName = BRYXBanner;
-			productReference = 651EDA5AAE43049A893FF0C0E3FF3AEB /* BRYXBanner.framework */;
+			productReference = 7A6819E13EA7BA8ABDC16327773E454C /* BRYXBanner.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		2686B8C5B5576F39F105E3C679B56ECE /* Pods-CampNetKit */ = {
@@ -2179,7 +2290,7 @@
 			);
 			name = "Pods-CampNetKit";
 			productName = "Pods-CampNetKit";
-			productReference = 106D4142177BBEBED32D918C5FF95697 /* Pods_CampNetKit.framework */;
+			productReference = 28E13B1ED4A1F59276C13AD9A56FA92F /* Pods_CampNetKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		35C6E88E0D9F0E3DD7309AD7276CBC58 /* Pods-CampNet iOS */ = {
@@ -2209,7 +2320,7 @@
 			);
 			name = "Pods-CampNet iOS";
 			productName = "Pods-CampNet iOS";
-			productReference = A4576A98DD497C86CEF5EAB6B73E0FDC /* Pods_CampNet_iOS.framework */;
+			productReference = AFDCB16F406C8B70C44467D91F63BB3C /* Pods_CampNet_iOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		4D10E4FF5A483B852B47CCA0B994E340 /* Kanna */ = {
@@ -2226,7 +2337,7 @@
 			);
 			name = Kanna;
 			productName = Kanna;
-			productReference = AF044BEF7D122FE2F2C731F81C2B974C /* Kanna.framework */;
+			productReference = A0577C558D7D2D139DF38A4CA89DCA15 /* Kanna.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5035786467D5191E2D74F374BC719CA4 /* SwiftyBeaver */ = {
@@ -2243,7 +2354,7 @@
 			);
 			name = SwiftyBeaver;
 			productName = SwiftyBeaver;
-			productReference = A71125716C383239029423241A3F0BD1 /* SwiftyBeaver.framework */;
+			productReference = 99681C862E448A607CD12A06BE50F4EA /* SwiftyBeaver.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		6BB1C1403B2419F911818DA8413FDA07 /* CryptoSwift */ = {
@@ -2260,7 +2371,7 @@
 			);
 			name = CryptoSwift;
 			productName = CryptoSwift;
-			productReference = C27541979BDF195CD23AE0C2820CF844 /* CryptoSwift.framework */;
+			productReference = 70C2C18E34F00A350E005CA05CFB9ABF /* CryptoSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		6CED21A30112252ED22A28FE9BB968A5 /* SwiftyUserDefaults */ = {
@@ -2277,7 +2388,33 @@
 			);
 			name = SwiftyUserDefaults;
 			productName = SwiftyUserDefaults;
-			productReference = 08230417905C093B3D990C4F50301F43 /* SwiftyUserDefaults.framework */;
+			productReference = 7B1DF94B940CF0C005F1F1D21B23846B /* SwiftyUserDefaults.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		871AC74AD66A1291894CF809E6F00220 /* Pods-CampNetKit-CampNet iOS Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 834B44FF30503C1F8874A1D2A92A3C8D /* Build configuration list for PBXNativeTarget "Pods-CampNetKit-CampNet iOS Widget" */;
+			buildPhases = (
+				3D9CB25489F3C34DEF4EBAE7A9B225E9 /* Sources */,
+				D6F4BB41E23B78CAE2944B5F03DD5663 /* Frameworks */,
+				DD6784D3A0376121968EC153C977760A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA6BC46E87A92B11CB6C3E8CB02FD8F6 /* PBXTargetDependency */,
+				EA67E34DB845EF673716669028E0D5C5 /* PBXTargetDependency */,
+				0D2EDA32649A10A5ECFE843D3E14DB2A /* PBXTargetDependency */,
+				5BAEFFF0F9CE1D4B624C2FED02FD7E88 /* PBXTargetDependency */,
+				4F30411D22A1D10F970B8B2AAFA7B4D1 /* PBXTargetDependency */,
+				98CD1847F1E086783842AADABF04F862 /* PBXTargetDependency */,
+				B9DCAC59F3F969574AD2A8EAF3D84EF8 /* PBXTargetDependency */,
+				7F0735F44B25585C2F8730EBF59F5337 /* PBXTargetDependency */,
+				D3EDC502A8F56C99B265A0EBCE9EC434 /* PBXTargetDependency */,
+			);
+			name = "Pods-CampNetKit-CampNet iOS Widget";
+			productName = "Pods-CampNetKit-CampNet iOS Widget";
+			productReference = A02BE238B8A485E1BB9F5B665F3E5B2E /* Pods_CampNetKit_CampNet_iOS_Widget.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */ = {
@@ -2294,7 +2431,7 @@
 			);
 			name = Alamofire;
 			productName = Alamofire;
-			productReference = 49975A6F1E07724DB80F0463940312CF /* Alamofire.framework */;
+			productReference = E3CDBD068FD32134B64300DC77D9A25B /* Alamofire.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8905DB6521F8FDC34752B69DEE3FDEB7 /* KeychainAccess */ = {
@@ -2311,7 +2448,7 @@
 			);
 			name = KeychainAccess;
 			productName = KeychainAccess;
-			productReference = D5B0DB8865E30A8CAC9598011BF1C43A /* KeychainAccess.framework */;
+			productReference = D688B089E20AFF01CC4A6CBD37DA859B /* KeychainAccess.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B408F4EF8DACAED17EFF083E77405E90 /* Yaml */ = {
@@ -2328,7 +2465,7 @@
 			);
 			name = Yaml;
 			productName = Yaml;
-			productReference = 5F11037AF49EAAE225BC861210167D38 /* Yaml.framework */;
+			productReference = CA8C36243B5413B5501BA7087E6BCFE7 /* Yaml.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B688024B71CD11E9CF72392ECADC195F /* PromiseKit */ = {
@@ -2345,7 +2482,7 @@
 			);
 			name = PromiseKit;
 			productName = PromiseKit;
-			productReference = 60CD3A551FD7F6A00815DDD5CC13D5E4 /* PromiseKit.framework */;
+			productReference = C53E510FE116AD0C95F2781A808E4599 /* PromiseKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		BA074C577779FF88EB7926723ED9D0B1 /* DynamicButton */ = {
@@ -2362,7 +2499,7 @@
 			);
 			name = DynamicButton;
 			productName = DynamicButton;
-			productReference = E935E9E3FA465DC3DD711B5B6F420607 /* DynamicButton.framework */;
+			productReference = A8C76D1F0C9FF5904C112F39E59F879C /* DynamicButton.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		E9D04B585D49F90D5F4846B14893097B /* SwiftRater */ = {
@@ -2379,7 +2516,7 @@
 			);
 			name = SwiftRater;
 			productName = SwiftRater;
-			productReference = 0260D9CB3E0362DB754C614E3FD0EEC5 /* SwiftRater.framework */;
+			productReference = 97DA1E6EA8FC8DDEB4959965440F4A51 /* SwiftRater.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		F307B842FF76B2DE6C55DB67C0885325 /* Charts */ = {
@@ -2396,7 +2533,7 @@
 			);
 			name = Charts;
 			productName = Charts;
-			productReference = 9E4EE8C8FC353ABB65ABEA1C12640EB3 /* Charts.framework */;
+			productReference = 0AD3E1FD3B4A0D409FAC977C0E054611 /* Charts.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -2416,7 +2553,7 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = E28A66036A8EA87CDC27F086A3558BEA /* Products */;
+			productRefGroup = 3A7F500771003364857BBFF2B4A0C81D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -2430,6 +2567,7 @@
 				0170FEDEDC56BB5BB8846EB5C65393B9 /* NetUtils */,
 				35C6E88E0D9F0E3DD7309AD7276CBC58 /* Pods-CampNet iOS */,
 				2686B8C5B5576F39F105E3C679B56ECE /* Pods-CampNetKit */,
+				871AC74AD66A1291894CF809E6F00220 /* Pods-CampNetKit-CampNet iOS Widget */,
 				B688024B71CD11E9CF72392ECADC195F /* PromiseKit */,
 				E9D04B585D49F90D5F4846B14893097B /* SwiftRater */,
 				5035786467D5191E2D74F374BC719CA4 /* SwiftyBeaver */,
@@ -2492,6 +2630,14 @@
 				3626B94094672CB1C9DEA32B9F9502E1 /* TaskDelegate.swift in Sources */,
 				10EB23E9ECC4B33E16933BB1EA560B6A /* Timeline.swift in Sources */,
 				BBEFE2F9CEB73DC7BD97FFA66A0D9D4F /* Validation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D9CB25489F3C34DEF4EBAE7A9B225E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09B94836EA1E1698F1F7B440359214A8 /* Pods-CampNetKit-CampNet iOS Widget-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2910,6 +3056,12 @@
 			target = 8905DB6521F8FDC34752B69DEE3FDEB7 /* KeychainAccess */;
 			targetProxy = 1AAC812E5DB8343EDCF3B0180F898FF7 /* PBXContainerItemProxy */;
 		};
+		0D2EDA32649A10A5ECFE843D3E14DB2A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Kanna;
+			target = 4D10E4FF5A483B852B47CCA0B994E340 /* Kanna */;
+			targetProxy = B22C38E051F3C8F4B73F44F79B19A508 /* PBXContainerItemProxy */;
+		};
 		2198DAB1D2AC5FD5CBF4B677E8C02BFA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CryptoSwift;
@@ -2921,6 +3073,12 @@
 			name = Yaml;
 			target = B408F4EF8DACAED17EFF083E77405E90 /* Yaml */;
 			targetProxy = 0EDA11519C849531E17120FC822AB4D0 /* PBXContainerItemProxy */;
+		};
+		4F30411D22A1D10F970B8B2AAFA7B4D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NetUtils;
+			target = 0170FEDEDC56BB5BB8846EB5C65393B9 /* NetUtils */;
+			targetProxy = 9066FBCB5E4C4A153F231C733B6970DB /* PBXContainerItemProxy */;
 		};
 		53E842B0C1FD2EC143AB229CA4CC4445 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2958,6 +3116,12 @@
 			target = 6BB1C1403B2419F911818DA8413FDA07 /* CryptoSwift */;
 			targetProxy = 1E2664E6272C8C7920C7F4B7DEAC5C9F /* PBXContainerItemProxy */;
 		};
+		5BAEFFF0F9CE1D4B624C2FED02FD7E88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KeychainAccess;
+			target = 8905DB6521F8FDC34752B69DEE3FDEB7 /* KeychainAccess */;
+			targetProxy = BEE2C605721DC149106267DA14A2775B /* PBXContainerItemProxy */;
+		};
 		5C5D83D89E9099B14A6FBA8D83F87F72 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftRater;
@@ -2988,6 +3152,12 @@
 			target = 8905DB6521F8FDC34752B69DEE3FDEB7 /* KeychainAccess */;
 			targetProxy = 148DCC207C3620095AD231AE5064BDF0 /* PBXContainerItemProxy */;
 		};
+		7F0735F44B25585C2F8730EBF59F5337 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyUserDefaults;
+			target = 6CED21A30112252ED22A28FE9BB968A5 /* SwiftyUserDefaults */;
+			targetProxy = 01D239522ADE41813D02937E60979599 /* PBXContainerItemProxy */;
+		};
 		80DA633B4E444492F215AF54D6497499 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PromiseKit;
@@ -3005,6 +3175,12 @@
 			name = Alamofire;
 			target = 88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */;
 			targetProxy = 289723F52C959235142F6B3687468027 /* PBXContainerItemProxy */;
+		};
+		98CD1847F1E086783842AADABF04F862 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PromiseKit;
+			target = B688024B71CD11E9CF72392ECADC195F /* PromiseKit */;
+			targetProxy = F0C28C660B89C00533C0781FF6E2F1D4 /* PBXContainerItemProxy */;
 		};
 		9B78FF5A66CE9145AF1969CF376D0599 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3024,17 +3200,41 @@
 			target = 4D10E4FF5A483B852B47CCA0B994E340 /* Kanna */;
 			targetProxy = 95A328A5A84BA372B7A9DCCB52368BF0 /* PBXContainerItemProxy */;
 		};
+		B9DCAC59F3F969574AD2A8EAF3D84EF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyBeaver;
+			target = 5035786467D5191E2D74F374BC719CA4 /* SwiftyBeaver */;
+			targetProxy = A19EA3A36B5BC149C63AAD23E5EAA45F /* PBXContainerItemProxy */;
+		};
 		B9E3869632A3D35B926FADAEE2486B6F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftyUserDefaults;
 			target = 6CED21A30112252ED22A28FE9BB968A5 /* SwiftyUserDefaults */;
 			targetProxy = 945450E9DA389ECA37D3C247481F1F07 /* PBXContainerItemProxy */;
 		};
+		D3EDC502A8F56C99B265A0EBCE9EC434 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Yaml;
+			target = B408F4EF8DACAED17EFF083E77405E90 /* Yaml */;
+			targetProxy = CE6563CB03C09F2AFE10EE3431126F36 /* PBXContainerItemProxy */;
+		};
 		DC329D1A772ACD68104532F40EA689A1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = DynamicButton;
 			target = BA074C577779FF88EB7926723ED9D0B1 /* DynamicButton */;
 			targetProxy = 0D184122081EEC23F7D3AE404D7C0204 /* PBXContainerItemProxy */;
+		};
+		EA67E34DB845EF673716669028E0D5C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CryptoSwift;
+			target = 6BB1C1403B2419F911818DA8413FDA07 /* CryptoSwift */;
+			targetProxy = B7F16818E560E2B41CE111244C64778C /* PBXContainerItemProxy */;
+		};
+		EA6BC46E87A92B11CB6C3E8CB02FD8F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Alamofire;
+			target = 88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */;
+			targetProxy = E1E2F90543505985AD896B2E6CD57B6D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3439,6 +3639,45 @@
 			};
 			name = Release;
 		};
+		65D8F89964335C0B70E597BFB4A8A881 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C00EB6B5350003A7EF1D3A04FE4711E8 /* Pods-CampNetKit-CampNet iOS Widget.release.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CampNetKit-CampNet iOS Widget/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CampNetKit-CampNet iOS Widget/Pods-CampNetKit-CampNet iOS Widget.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CampNetKit_CampNet_iOS_Widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		6BC3BE7C376B24FC5DB8B0E58726039C /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7307BB032685289B799891B65EF20152 /* SwiftyBeaver.xcconfig */;
@@ -3513,7 +3752,7 @@
 		};
 		79950EC47AB94010B32ED3FF24F769E9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98B9090157089398EA0FD7897F52E739 /* Pods-CampNet iOS.release.xcconfig */;
+			baseConfigurationReference = 8B1C7CEA37790361B10CB16917BE756D /* Pods-CampNet iOS.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -3778,7 +4017,7 @@
 		};
 		9C2B227036A1F4030081E3A6C27BAA6D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FDCC3DDBC9C022165F6EF8EFD2A50C8E /* Pods-CampNet iOS.debug.xcconfig */;
+			baseConfigurationReference = F97E618FC00949BEC6BD8D8717514FF0 /* Pods-CampNet iOS.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -4004,7 +4243,7 @@
 		};
 		C7C69037282B8B83D1C0BE6ECF84DAD7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B9127FC54509E28EB05B139376EDCEA2 /* Pods-CampNetKit.release.xcconfig */;
+			baseConfigurationReference = 6EEFC4498BE34510007F9F462F198D19 /* Pods-CampNetKit.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -4112,6 +4351,46 @@
 			};
 			name = Debug;
 		};
+		CED22555FB4A45CB27FDFEE25849819E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 035518F799B04A4039C7324058718BA9 /* Pods-CampNetKit-CampNet iOS Widget.debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CampNetKit-CampNet iOS Widget/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CampNetKit-CampNet iOS Widget/Pods-CampNetKit-CampNet iOS Widget.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CampNetKit_CampNet_iOS_Widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		D912958F7528A14B1915E53374E07E1D /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F2533A81E8D3EF2C997E9AE6FE243B61 /* SwiftRater.xcconfig */;
@@ -4149,7 +4428,7 @@
 		};
 		DA36A9C9D6CD583FDD227B0F292D14D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF88FE2CB0D1084B7A1285364AE92287 /* Pods-CampNetKit.debug.xcconfig */;
+			baseConfigurationReference = E69D2CE7F96A45C29614206D88CDC904 /* Pods-CampNetKit.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -4338,6 +4617,15 @@
 			buildConfigurations = (
 				DA36A9C9D6CD583FDD227B0F292D14D1 /* Debug */,
 				C7C69037282B8B83D1C0BE6ECF84DAD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		834B44FF30503C1F8874A1D2A92A3C8D /* Build configuration list for PBXNativeTarget "Pods-CampNetKit-CampNet iOS Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CED22555FB4A45CB27FDFEE25849819E /* Debug */,
+				65D8F89964335C0B70E597BFB4A8A881 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
