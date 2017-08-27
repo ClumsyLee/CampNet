@@ -23,6 +23,7 @@ let log = SwiftyBeaver.self
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     static let bannerDuration = 3.0
+    static let loginErrorNotificationInterval: TimeInterval = 86400
 
     var window: UIWindow?
     var logFileURL: URL? = nil
@@ -156,14 +157,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        if notification.request.identifier.hasSuffix("Error") {
-            let content = notification.request.content
-            showErrorBanner(title: content.title, body: content.body)
-            completionHandler([])
-        } else {
-            completionHandler([.alert, .sound])
-        }
+        completionHandler([.alert, .sound])
     }
     
     func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
@@ -197,11 +191,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         let title = L10n.Notifications.LoginError.title(account.username)
-        switch error {
-        case .arrears, .unauthorized:
-            sendNotification(title: title, body: error.localizedDescription, identifier: "\(account.identifier).accountLoginError")
-        default:
+        if UIApplication.shared.applicationState == .active {
             showErrorBanner(title: title, body: error.localizedDescription)
+        } else {
+            if let date = Defaults[.accountLastLoginErrorNotification(of: account.identifier)], -date.timeIntervalSinceNow <= AppDelegate.loginErrorNotificationInterval {
+                // Should not send a notification.
+            } else {
+                switch error {
+                case .arrears, .unauthorized:
+                    sendNotification(title: title, body: error.localizedDescription, identifier: "\(account.identifier).accountLoginError")
+                    Defaults[.accountLastLoginErrorNotification(of: account.identifier)] = Date()
+                default:
+                    break  // Do not send notifications for other types because the user cannot fix them.
+                }
+            }
         }
     }
     

@@ -30,9 +30,23 @@ extension DefaultsKeys {
     static let accounts = DefaultsKey<[String]>("accounts")
     
     // Account related.
+    public static func accountLastLoginErrorNotification(of id: String) -> DefaultsKey<Date?> { return DefaultsKey<Date?>("\(id).accountLastLoginErrorNotification") }
+    
     static func accountStatus(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountStatus") }
     static func accountProfile(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountProfile") }
     static func accountHistory(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountHistory") }
     static func accountEstimatedDailyUsage(of id: String) -> DefaultsKey<Int64?> { return DefaultsKey<Int64?>("\(id).accountEstimatedDailyUsage") }
     static func accountPastIps(of id: String) -> DefaultsKey<[String]> { return DefaultsKey<[String]>("\(id).accountPastIps") }
+}
+
+extension Account {
+    public func removeDefaults() {
+        Defaults.remove(.accountLastLoginErrorNotification(of: identifier))
+        
+        Defaults.remove(.accountStatus(of: identifier))
+        Defaults.remove(.accountProfile(of: identifier))
+        Defaults.remove(.accountHistory(of: identifier))
+        Defaults.remove(.accountEstimatedDailyUsage(of: identifier))
+        Defaults.remove(.accountPastIps(of: identifier))
+    }
 }

@@ -209,6 +209,7 @@ public class Account {
         }
         set {
             Account.passwordKeychain[identifier] = newValue
+            Defaults[.accountLastLoginErrorNotification(of: identifier)] = nil
             log.info("\(self): Password changed.")
         }
     }
@@ -371,6 +372,7 @@ public class Account {
                 throw CampNetError.unknown("")
             }
             
+            Defaults[.accountLastLoginErrorNotification(of: self.identifier)] = nil
             log.info("\(self): Logged in.")
         }
         .recover(on: queue) { error -> Void in
