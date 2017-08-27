@@ -216,8 +216,8 @@
 		0F14E7681E2E3AAC0092494B = {
 			isa = PBXGroup;
 			children = (
-				0F14E7731E2E3AAC0092494B /* CampNet iOS */,
 				0F1ED5CD1F138832004A6C1F /* CampNetKit */,
+				0F14E7731E2E3AAC0092494B /* CampNet iOS */,
 				0F9AAD081F535C5B00E14838 /* CampNet iOS Widget */,
 				0F14E7721E2E3AAC0092494B /* Products */,
 				2EF32BE92DEB0316C46ED2BF /* Pods */,
@@ -502,7 +502,7 @@
 					0F9AAD041F535C5B00E14838 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 7494335NRW;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -980,14 +980,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "CampNet iOS/CampNet iOS.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 7494335NRW;
 				INFOPLIST_FILE = "CampNet iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "99269909-8d98-4895-b8e2-c4d71a3bd88e";
-				PROVISIONING_PROFILE_SPECIFIER = "CampNet iOS";
+				PROVISIONING_PROFILE = "f5c7019a-74f3-43ae-a08b-a80d43cab922";
+				PROVISIONING_PROFILE_SPECIFIER = "CampNet iOS Development";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1008,7 +1009,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d1f2e43f-9081-4b5d-8f93-717ad35e0784";
+				PROVISIONING_PROFILE = "f4eb85ed-301c-4fdf-970a-bc9a941e8b4f";
 				PROVISIONING_PROFILE_SPECIFIER = "CampNet iOS Distribution";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1078,8 +1079,10 @@
 				INFOPLIST_FILE = "CampNet iOS Widget/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS.CampNet-iOS-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS.Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "83bf1532-4744-4822-b8e7-01143776bb3e";
+				PROVISIONING_PROFILE_SPECIFIER = "CampNet iOS Widget Development";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -1091,12 +1094,15 @@
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "CampNet iOS Widget/CampNet iOS Widget.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 7494335NRW;
 				INFOPLIST_FILE = "CampNet iOS Widget/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS.CampNet-iOS-Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS.Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "357c6d3d-a67e-4cc1-8c2a-2af70e9ac4bf";
+				PROVISIONING_PROFILE_SPECIFIER = "CampNet iOS Widget Distribution";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
