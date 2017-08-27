@@ -18,6 +18,7 @@ import SwiftyUserDefaults
 public class Account {
     
     static let statusLifetime: TimeInterval = 86400
+    static let profileAutoUpdateInterval: TimeInterval = 7200
     static let estimationLength = 7
     
     static let passwordKeychain = Keychain(service: "\(Configuration.bundleIdentifier).password", accessGroup: Configuration.keychainAccessGroup)
@@ -148,7 +149,7 @@ public class Account {
                     result = .failure
                 }
                 
-                if result == .success && account.configuration.actions[.profile] != nil {
+                if result == .success, account.configuration.actions[.profile] != nil, account.shouldAutoUpdateProfile {
                     account.profile(on: queue, requestBinder: requestBinder).always(on: queue) {
                         command.createResponse(result).deliver()
                     }
@@ -314,6 +315,14 @@ public class Account {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .accountHistoryUpdated, object: self, userInfo: ["account": self, "history": newValue as Any])
             }
+        }
+    }
+    
+    public var shouldAutoUpdateProfile: Bool {
+        if let profile = profile {
+            return -profile.updatedAt.timeIntervalSinceNow > Account.profileAutoUpdateInterval
+        } else {
+            return true
         }
     }
     
