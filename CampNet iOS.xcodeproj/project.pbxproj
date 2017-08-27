@@ -864,6 +864,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A992B7C0FF903D2939677538 /* Pods-CampNetKit.debug.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -890,6 +891,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A5FA1A929F334CF87D69CA2E /* Pods-CampNetKit.release.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";

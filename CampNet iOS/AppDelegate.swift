@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         setUpInstaBug()
         setUpSwiftyBeaver()
         setUpSwiftRater()
+        setUpCampNet()
         
         requestNotificationAuthorization()
         addObservers()
@@ -117,6 +118,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         SwiftRater.daysUntilPrompt = 7
         SwiftRater.significantUsesUntilPrompt = 3
         SwiftRater.daysBeforeReminding = 1
+    }
+    
+    func setUpCampNet() {
+        Action.networkActivityIndicatorHandler = { value in UIApplication.shared.isNetworkActivityIndicatorVisible = value }
     }
     
     func requestNotificationAuthorization() {

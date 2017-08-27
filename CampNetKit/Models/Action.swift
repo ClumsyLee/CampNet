@@ -214,16 +214,17 @@ public struct Action {
         case logout
     }
     
+    public static var networkActivityIndicatorHandler = { (_: Bool) in }
+    
+    static let jsVm = JSVirtualMachine()!
     fileprivate static var networkActivityCounter = 0
     
     static func setNetworkActivityIndicatorVisible(_ value: Bool) {
         DispatchQueue.main.async {
             Action.networkActivityCounter += value ? 1 : -1
-            UIApplication.shared.isNetworkActivityIndicatorVisible = Action.networkActivityCounter > 0
+            networkActivityIndicatorHandler(Action.networkActivityCounter > 0)
         }
     }
-    
-    static let jsVm = JSVirtualMachine()!
     
     public var configurationIdentifier: String
     public var role: Role
