@@ -50,6 +50,7 @@
 		0FD239C11F415EC6006EA7F9 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD239C01F415EC6006EA7F9 /* UserDefaultsExtensions.swift */; };
 		0FD3A4111F1588BF006DA497 /* Configurations in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A4101F1588BF006DA497 /* Configurations */; };
 		0FD3A4141F158A12006DA497 /* Configurations.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A4161F158A12006DA497 /* Configurations.strings */; };
+		0FEA66DF1F533DC300F3867C /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEA66DE1F533DC300F3867C /* AboutViewController.swift */; };
 		0FF7563F1F2A175600B2429A /* UsageAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */; };
 		0FF756411F2BA31500B2429A /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */; };
 		0FF756481F2CE02100B2429A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FF7564A1F2CE02100B2429A /* InfoPlist.strings */; };
@@ -137,6 +138,7 @@
 		0FD3A4101F1588BF006DA497 /* Configurations */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Configurations; path = Resources/Configurations; sourceTree = "<group>"; };
 		0FD3A4151F158A12006DA497 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Configurations.strings; sourceTree = "<group>"; };
 		0FD3A4171F158A15006DA497 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Configurations.strings"; sourceTree = "<group>"; };
+		0FEA66DE1F533DC300F3867C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = Views/Controllers/AboutViewController.swift; sourceTree = "<group>"; };
 		0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsageAlertViewController.swift; path = Views/Controllers/UsageAlertViewController.swift; sourceTree = "<group>"; };
 		0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountDetailViewController.swift; path = Views/Controllers/AccountDetailViewController.swift; sourceTree = "<group>"; };
 		0FF756491F2CE02100B2429A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 		0F5EB7231F17AE95003094DE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0FEA66DE1F533DC300F3867C /* AboutViewController.swift */,
 				0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */,
 				0F46CC821F17837700AF1FC9 /* AccountsViewController.swift */,
 				0F3685151F1A5C6B0056AED1 /* ChangePasswordViewController.swift */,
@@ -619,6 +622,7 @@
 				0F14E7771E2E3AAC0092494B /* OverviewViewController.swift in Sources */,
 				0F56148C1F31A167008A1232 /* SessionDetailViewController.swift in Sources */,
 				0FF7563F1F2A175600B2429A /* UsageAlertViewController.swift in Sources */,
+				0FEA66DF1F533DC300F3867C /* AboutViewController.swift in Sources */,
 				0F3465701F34D80A008E329F /* NetworkViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,4 +1,7 @@
 
+/* About */
+"about.version" = "Version %@ (%@)";
+
 /* Account Detail */
 "account_detail.delete_account_alert.actions.cancel" = "Cancel";
 "account_detail.delete_account_alert.actions.delete" = "Delete Account";

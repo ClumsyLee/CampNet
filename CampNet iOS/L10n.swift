@@ -7,6 +7,13 @@ import Foundation
 // swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 enum L10n {
 
+  enum About {
+    /// Version %@ (%@)
+    static func version(_ p1: String, _ p2: String) -> String {
+      return L10n.tr("Localizable", "about.version", p1, p2)
+    }
+  }
+
   enum AccountDetail {
 
     enum DeleteAccountAlert {

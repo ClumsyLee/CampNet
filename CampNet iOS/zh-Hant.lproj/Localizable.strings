@@ -1,4 +1,7 @@
 
+/* About */
+"about.version" = "版本 %@ (%@)";
+
 /* Account Detail */
 "account_detail.delete_account_alert.actions.cancel" = "取消";
 "account_detail.delete_account_alert.actions.delete" = "刪除賬戶";

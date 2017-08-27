@@ -733,7 +733,7 @@
         <!--About CampNet-->
         <scene sceneID="q03-dA-AFU">
             <objects>
-                <tableViewController title="About CampNet" id="cgD-an-vZQ" sceneMemberID="viewController">
+                <tableViewController title="About CampNet" id="cgD-an-vZQ" customClass="AboutViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="sxs-kw-TaG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -807,6 +807,9 @@
                             <outlet property="delegate" destination="cgD-an-vZQ" id="bdQ-0e-bpt"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="version" destination="ZIH-Ar-Q8L" id="VJT-Bw-nUF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ag7-RR-2mX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
