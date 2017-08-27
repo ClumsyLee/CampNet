@@ -35,16 +35,18 @@ public class Account {
         let queue = DispatchQueue.global(qos: .utility)
         let requestBinder: RequestBinder = { $0.bind(to: command) }
         
+        let account = main
+        let accountId = account?.description ?? "nil"
+        
         switch command.commandType {
             
         case .filterScanList:
-            log.info("filterScanList command received.")
+            log.info("\(accountId): Received filterScanList command.")
             
-            guard let networkList = command.networkList,
-                let account = Account.main else {
-                    let response = command.createResponse(.success)
-                    response.deliver()
-                    return
+            guard let networkList = command.networkList, let account = account else {
+                let response = command.createResponse(.success)
+                response.deliver()
+                return
             }
             
             var knownList: [NEHotspotNetwork] = []
@@ -54,7 +56,7 @@ public class Account {
                     knownList.append(network)
                 }
             }
-            log.info("Known networks: \(knownList).")
+            log.info("\(accountId): Known networks: \(knownList).")
             
             let response = command.createResponse(.success)
             response.setNetworkList(knownList)
@@ -64,10 +66,10 @@ public class Account {
             guard let network = command.network else {
                 return
             }
-            log.info("evaluate command for \(network) received.")
+            log.info("\(accountId): Received evaluate command for \(network).")
             
-            guard let account = Account.main, account.canManage(network: network) else {
-                log.info("\(Account.main?.description ?? "nil") cannot manage \(network).")
+            guard let account = account, account.canManage(network: network) else {
+                log.info("\(accountId): Cannot manage \(network).")
                 
                 network.setConfidence(.none)
                 let response = command.createResponse(.success)
@@ -79,10 +81,10 @@ public class Account {
             account.status(on: queue, requestBinder: requestBinder).then(on: queue) { status -> Void in
                 switch status.type {
                 case .online, .offline:
-                    log.info("\(account) can manage \(network).")
+                    log.info("\(accountId): Can manage \(network).")
                     network.setConfidence(.high)
                 case .offcampus:
-                    log.info("\(account) cannot manage \(network).")
+                    log.info("\(accountId): Cannot manage \(network).")
                     network.setConfidence(.none)
                 }
                 
@@ -91,7 +93,7 @@ public class Account {
                 response.deliver()
             }
             .catch(on: queue) { _ in
-                log.info("\(account) can possibly manage \(network).")
+                log.info("\(accountId): Can possibly manage \(network).")
                 network.setConfidence(.low)
                 
                 let response = command.createResponse(.success)
@@ -103,21 +105,20 @@ public class Account {
             guard let network = command.network else {
                 return
             }
-            log.info("authenticate command for \(network) received.")
+            log.info("\(accountId): Received authenticate command for \(network).")
             
-            guard let account = Account.main, account.canManage(network: network) else {
-                log.info("\(Account.main?.description ?? "nil") cannot manage \(network).")
-                
+            guard let account = account, account.canManage(network: network) else {
+                log.info("\(accountId): Cannot manage \(network).")
                 command.createResponse(.unsupportedNetwork).deliver()
                 return
             }
             
             account.login(on: queue, requestBinder: requestBinder).then(on: queue) { () -> Void in
-                log.info("Logged in \(account) on \(network).")
+                log.info("\(accountId): Logged in on \(network).")
                 command.createResponse(.success).deliver()
             }
             .catch(on: queue) { error in
-                log.info("Failed to login \(account) on \(network): \(error)")
+                log.info("\(accountId): Failed to login on \(network): \(error)")
                 command.createResponse(.temporaryFailure).deliver()
             }
             
@@ -125,11 +126,10 @@ public class Account {
             guard let network = command.network else {
                 return
             }
-            log.info("maintain command for \(network) received.")
+            log.info("\(accountId): Received maintain command for \(network).")
             
-            guard let account = Account.main, account.canManage(network: network) else {
-                log.info("\(Account.main?.description ?? "nil") cannot manage \(network).")
-                
+            guard let account = account, account.canManage(network: network) else {
+                log.info("\(accountId): Cannot manage \(network).")
                 command.createResponse(.failure).deliver()
                 return
             }
@@ -139,13 +139,13 @@ public class Account {
                 
                 switch status.type {
                 case .online:
-                    log.info("\(account) is still online on \(network).")
+                    log.info("\(accountId): Still online on \(network).")
                     result = .success
                 case .offline:
-                    log.info("\(account) is offline on \(network).")
+                    log.info("\(accountId): Offline on \(network).")
                     result = .authenticationRequired
                 case .offcampus:
-                    log.info("\(account) cannot manage \(network).")
+                    log.info("\(accountId): Cannot manage \(network).")
                     result = .failure
                 }
                 
@@ -158,7 +158,7 @@ public class Account {
                 }
             }
             .catch(on: queue) { error in
-                log.info("Failed to maintain \(account) on \(network): \(error)")
+                log.info("\(accountId): Failed to maintain on \(network): \(error)")
                 command.createResponse(.failure).deliver()
             }
             
@@ -166,21 +166,20 @@ public class Account {
             guard let network = command.network else {
                 return
             }
-            log.info("logoff command for \(network) received.")
+            log.info("\(accountId): Received logoff command for \(network).")
             
-            guard let account = Account.main, account.canManage(network: network) else {
-                log.info("\(Account.main?.description ?? "nil") cannot manage \(network).")
-                
+            guard let account = account, account.canManage(network: network) else {
+                log.info("\(accountId): Cannot manage \(network).")
                 command.createResponse(.failure).deliver()
                 return
             }
             
             account.logout(on: queue, requestBinder: requestBinder).then(on: queue) { _ -> Void in
-                log.info("Logged out \(account) on \(network).")
+                log.info("\(accountId): Logged out on \(network).")
                 command.createResponse(.success).deliver()
             }
             .catch(on: queue) { error in
-                log.info("Failed to logout \(account) on \(network): \(error)")
+                log.info("\(accountId): Failed to logout on \(network): \(error)")
                 command.createResponse(.failure).deliver()
             }
             
