@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        setDefaultsIfNot()
+        setDefaultsIfNot()  // Do it first to ensure that the defaults can be read in the following setups.
         
         setUpInstaBug()
         setUpSwiftyBeaver()
@@ -71,12 +71,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func setDefaultsIfNot() {
-        if !Defaults[.defaultsSet] {
+        if !Defaults.hasKey(.autoLogin) {
             Defaults[.autoLogin] = true
+        }
+        if !Defaults.hasKey(.autoLogoutExpiredSessions) {
             Defaults[.autoLogoutExpiredSessions] = true
+        }
+        if !Defaults.hasKey(.usageAlertRatio) {
             Defaults[.usageAlertRatio] = 0.90
-            
-            Defaults[.defaultsSet] = true
+        }
+        if !Defaults.hasKey(.sendLogs) {
+            Defaults[.sendLogs] = true
         }
     }
     
@@ -88,6 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func setUpSwiftyBeaver() {
         let console = ConsoleDestination()
+        log.addDestination(console)
         
         let file = FileDestination()
         _ = file.deleteLogFile()
@@ -95,14 +101,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Remove colors.
         file.format = file.format.replacingOccurrences(of: "$C", with: "")
         file.format = file.format.replacingOccurrences(of: "$c", with: "")
-        
-        let cloud = SBPlatformDestination(appID: "NxnNNO", appSecret: "7tqeijmBtx2ytbwuBMspzilcow0oPwr1", encryptionKey: "jJsbg9pj9j5u7hQDhwymWqcv2AaaoumP")
-        cloud.serverURL = URL(string: "https://swiftybeaver.campnet.io/api/entries/")
-        cloud.minLevel = .info
-        
-        log.addDestination(console)
         log.addDestination(file)
-        log.addDestination(cloud)
+        
+        if Defaults[.sendLogs] {
+            let cloud = SBPlatformDestination(appID: "NxnNNO", appSecret: "7tqeijmBtx2ytbwuBMspzilcow0oPwr1", encryptionKey: "jJsbg9pj9j5u7hQDhwymWqcv2AaaoumP")
+            cloud.serverURL = URL(string: "https://swiftybeaver.campnet.io/api/entries/")
+            cloud.minLevel = .info
+            log.addDestination(cloud)
+        }
     }
     
     func setUpSwiftRater() {

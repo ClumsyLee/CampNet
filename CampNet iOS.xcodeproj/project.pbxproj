@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F0FF1F91F5224A7000B608A /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FF1F81F5224A7000B608A /* L10n.swift */; };
+		0F0FF1FE1F524CF1000B608A /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FF1FD1F524CF1000B608A /* PrivacyViewController.swift */; };
 		0F14E7751E2E3AAC0092494B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7741E2E3AAC0092494B /* AppDelegate.swift */; };
 		0F14E7771E2E3AAC0092494B /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7761E2E3AAC0092494B /* OverviewViewController.swift */; };
 		0F14E77C1E2E3AAC0092494B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77A1E2E3AAC0092494B /* Main.storyboard */; };
@@ -82,6 +83,7 @@
 
 /* Begin PBXFileReference section */
 		0F0FF1F81F5224A7000B608A /* L10n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
+		0F0FF1FD1F524CF1000B608A /* PrivacyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivacyViewController.swift; path = Views/Controllers/PrivacyViewController.swift; sourceTree = "<group>"; };
 		0F14E7711E2E3AAC0092494B /* CampNet iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CampNet iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F14E7741E2E3AAC0092494B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F14E7761E2E3AAC0092494B /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OverviewViewController.swift; path = Views/Controllers/OverviewViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				0F56148D1F31A18C008A1232 /* SessionsViewController.swift */,
 				0F52FE111F29F1C800A88E90 /* SettingsViewController.swift */,
 				0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */,
+				0F0FF1FD1F524CF1000B608A /* PrivacyViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -610,6 +613,7 @@
 				0F5EB7251F17AF0F003094DE /* ConfigurationCell.swift in Sources */,
 				0F8F704F1F1B44C10088E2DE /* SessionCell.swift in Sources */,
 				0F52FE121F29F1C800A88E90 /* SettingsViewController.swift in Sources */,
+				0F0FF1FE1F524CF1000B608A /* PrivacyViewController.swift in Sources */,
 				0F56148E1F31A18C008A1232 /* SessionsViewController.swift in Sources */,
 				0F8F704D1F1B44A20088E2DE /* AccountCell.swift in Sources */,
 				0F14E7771E2E3AAC0092494B /* OverviewViewController.swift in Sources */,

@@ -19,11 +19,10 @@ extension UserDefaults {
 }
 
 extension DefaultsKeys {
-    public static let defaultsSet = DefaultsKey<Bool>("defaultsSet")
-    
     public static let autoLogin = DefaultsKey<Bool>("autoLogin")
     public static let autoLogoutExpiredSessions = DefaultsKey<Bool>("autoLogoutExpiredSessions")
     public static let usageAlertRatio = DefaultsKey<Double?>("usageAlertRatio")
+    public static let sendLogs = DefaultsKey<Bool>("sendLogs")
     
     public static func onCampus(id: String, ssid: String) -> DefaultsKey<Bool> { return DefaultsKey<Bool>("\(id).\(ssid).onCampus") }
     

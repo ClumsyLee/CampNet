@@ -253,3 +253,15 @@
 
 /* Class = "UILabel"; text = "70%"; ObjectID = "ydn-XK-7RB"; */
 "ydn-XK-7RB.text" = "70%";
+
+/* Class = "UITableViewSection"; footerTitle = "Help us to improve CampNet by automatically sending crash data and anonymous usage statistics. You will have to relaunch the app for this change to take effect."; ObjectID = "9cP-xt-9ba"; */
+"9cP-xt-9ba.footerTitle" = "通过自动发送崩溃数据和匿名使用统计信息来帮助我们改进 CampNet。您必须重新启动应用才能使此更改生效。";
+
+/* Class = "UILabel"; text = "Send Crash Data and Statistics"; ObjectID = "URK-Ii-svK"; */
+"URK-Ii-svK.text" = "发送崩溃数据和统计信息";
+
+/* Class = "UILabel"; text = "Privacy"; ObjectID = "d1B-B0-i41"; */
+"d1B-B0-i41.text" = "隐私";
+
+/* Class = "UITableViewController"; title = "Privacy"; ObjectID = "PSb-6u-zWB"; */
+"PSb-6u-zWB.title" = "隐私";

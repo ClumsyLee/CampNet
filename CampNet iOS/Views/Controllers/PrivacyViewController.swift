@@ -1,42 +1,20 @@
 //
-//  SettingsViewController.swift
+//  PrivacyViewController.swift
 //  CampNet iOS
 //
-//  Created by Thomas Lee on 2017/7/27.
+//  Created by Thomas Lee on 2017/8/26.
 //  Copyright © 2017年 Sihan Li. All rights reserved.
 //
 
 import UIKit
-import SwiftRater
 import CampNetKit
 
-class SettingsViewController: UITableViewController {
-    
-    enum Section: Int {
-        case auto
-        case usageAlert
-        case logs
-        case about
-    }
-    
-    enum Logs: Int {
-        case logs
-        case privacy
-    }
-    
-    enum About: Int {
-        case rate
-    }
+class PrivacyViewController: UITableViewController {
 
-    @IBOutlet var autoLoginSwitch: UISwitch!
-    @IBOutlet var autoLogoutExpiredSessionsSwitch: UISwitch!
-    @IBOutlet var usageAlertPercentage: UILabel!
+    @IBOutlet var sendLogsSwitch: UISwitch!
     
-    @IBAction func autoLoginChanged(_ sender: Any) {
-        Defaults[.autoLogin] = autoLoginSwitch.isOn
-    }
-    @IBAction func autoLogoutExpiredSessionsChanged(_ sender: Any) {
-        Defaults[.autoLogoutExpiredSessions] = autoLogoutExpiredSessionsSwitch.isOn
+    @IBAction func sendLogsChanged(_ sender: Any) {
+        Defaults[.sendLogs] = sendLogsSwitch.isOn
     }
     
     override func viewDidLoad() {
@@ -50,15 +28,9 @@ class SettingsViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         
-        autoLoginSwitch.isOn = Defaults[.autoLogin]
-        autoLogoutExpiredSessionsSwitch.isOn = Defaults[.autoLogoutExpiredSessions]
-        if let ratio = Defaults[.usageAlertRatio] {
-            usageAlertPercentage.text = "\(Int(ratio * 100))%"
-        } else {
-            usageAlertPercentage.text = L10n.Settings.UsageAlert.Values.off
-        }
+        sendLogsSwitch.isOn = Defaults[.sendLogs]
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,7 +39,6 @@ class SettingsViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     /*
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -89,13 +60,6 @@ class SettingsViewController: UITableViewController {
         return cell
     }
     */
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == Section.about.rawValue, indexPath.row == About.rate.rawValue {
-            tableView.deselectRow(at: indexPath, animated: true)
-            SwiftRater.rateApp()
-        }
-    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -141,4 +105,5 @@ class SettingsViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
 }
