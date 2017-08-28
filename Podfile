@@ -4,6 +4,15 @@ platform :ios, '9.0'
 # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
 use_frameworks!
 
+target 'CampNet iOS' do
+  # Pods for CampNet iOS
+  pod 'BRYXBanner'
+  pod 'Charts'
+  pod 'DynamicButton'
+  pod 'Instabug'
+  pod 'SwiftRater', :git => 'https://github.com/ThomasLee969/SwiftRater'
+end
+
 target 'CampNetKit' do
   # Pods for CampNetKit
   pod 'Alamofire'
@@ -18,13 +27,4 @@ target 'CampNetKit' do
 
   target 'CampNet iOS Widget' do
   end
-end
-
-target 'CampNet iOS' do
-  # Pods for CampNet iOS
-  pod 'BRYXBanner'
-  pod 'Charts'
-  pod 'DynamicButton'
-  pod 'Instabug'
-  pod 'SwiftRater', :git => 'https://github.com/ThomasLee969/SwiftRater'
 end
