@@ -17,6 +17,7 @@ class AccountManager {
     fileprivate var mainAccount: Account? = nil {
         willSet {
             Defaults[.mainAccount] = newValue?.identifier
+            Defaults.synchronize()
         }
     }
     fileprivate var firstAccount: Account? {
@@ -68,6 +69,7 @@ class AccountManager {
         // Remove invalid defaults.
         Defaults[.accounts] = loadedIdentifiers
         Defaults[.mainAccount] = mainAccount?.identifier
+        Defaults.synchronize()
     }
     
     fileprivate func splitAccountIdentifier(_ accountIdentifier: String) -> (String, String) {
@@ -135,6 +137,7 @@ class AccountManager {
                 account.password = password
             }
             Defaults[.accounts].append(account.identifier)
+            Defaults.synchronize()
             
             var mainChanged = false
             if self.mainAccount == nil {
@@ -161,6 +164,7 @@ class AccountManager {
             if self.removeAccount(account) {
                 if let index = Defaults[.accounts].index(of: account.identifier) {
                     Defaults[.accounts].remove(at: index)
+                    Defaults.synchronize()
                 }
                 
                 if account == self.mainAccount {

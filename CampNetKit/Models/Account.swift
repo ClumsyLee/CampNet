@@ -220,6 +220,7 @@ public class Account {
         }
         set {
             Defaults[.accountEstimatedDailyUsage(of: identifier)] = newValue
+            Defaults.synchronize()
             log.info("\(self): Estimated daily usage changed to \(newValue?.description ?? "nil").")
         }
     }
@@ -245,6 +246,7 @@ public class Account {
         }
         set {
             Defaults[.accountStatus(of: identifier)] = newValue?.vars
+            Defaults.synchronize()
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .accountStatusUpdated, object: self, userInfo: ["account": self, "status": newValue as Any])
             }
@@ -264,6 +266,7 @@ public class Account {
         set {
             let oldVars = Defaults[.accountProfile(of: identifier)]
             Defaults[.accountProfile(of: identifier)] = newValue?.vars
+            Defaults.synchronize()
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .accountProfileUpdated, object: self, userInfo: ["account": self, "profile": newValue as Any])
             }
@@ -312,6 +315,7 @@ public class Account {
             log.info("\(self): History changed to \(newValue?.description ?? "nil").")
             
             Defaults[.accountHistory(of: identifier)] = newValue?.vars
+            Defaults.synchronize()
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .accountHistoryUpdated, object: self, userInfo: ["account": self, "history": newValue as Any])
             }
