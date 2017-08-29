@@ -26,7 +26,7 @@ class AccountDetailViewController: UITableViewController {
     
     @IBAction func cancelChangingPassword(segue: UIStoryboardSegue) {}
     @IBAction func passwordChanged(segue: UIStoryboardSegue) {
-        refresh()
+        _ = account.update(on: DispatchQueue.global(qos: .userInitiated))
     }
     
     @IBAction func refreshTable(_ sender: Any) {
@@ -36,19 +36,6 @@ class AccountDetailViewController: UITableViewController {
     }
     
     var account: Account!
-    
-    func refresh() {
-        if refreshControl!.isRefreshing {
-            return
-        }
-        
-        refreshControl!.beginRefreshing()
-        
-        let offset = CGPoint(x: 0, y: -tableView.contentInset.top)
-        tableView.setContentOffset(offset, animated: true)
-        
-        refreshTable(self)
-    }
     
     func reloadProfile() {
         let profile = account.profile
