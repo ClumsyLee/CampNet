@@ -39,6 +39,8 @@
 		0F5EB7291F17B06F003094DE /* ConfigurationSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5EB7281F17B06F003094DE /* ConfigurationSetupViewController.swift */; };
 		0F7A93FB1F25E34C0093B3FA /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A93FA1F25E34C0093B3FA /* DoubleExtensions.swift */; };
 		0F8650751F1F8F9400C654C4 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8650741F1F8F9400C654C4 /* IntExtensions.swift */; };
+		0F8DBDCF1F54ECFB00879276 /* CampNet_iOS_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8DBDCE1F54ECFB00879276 /* CampNet_iOS_UITests.swift */; };
+		0F8DBDD71F54EE4700879276 /* SnapshotHelperXcode8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8DBDD61F54EE4700879276 /* SnapshotHelperXcode8.swift */; };
 		0F8F704D1F1B44A20088E2DE /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704C1F1B44A20088E2DE /* AccountCell.swift */; };
 		0F8F704F1F1B44C10088E2DE /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704E1F1B44C10088E2DE /* SessionCell.swift */; };
 		0F9AAD071F535C5B00E14838 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9AAD061F535C5B00E14838 /* NotificationCenter.framework */; };
@@ -70,6 +72,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 0F1ED5CB1F138832004A6C1F;
 			remoteInfo = CampNetKit;
+		};
+		0F8DBDD11F54ECFB00879276 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F14E7691E2E3AAC0092494B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F14E7701E2E3AAC0092494B;
+			remoteInfo = "CampNet iOS";
 		};
 		0F9AAD0F1F535C5B00E14838 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -144,6 +153,10 @@
 		0F5EB7281F17B06F003094DE /* ConfigurationSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationSetupViewController.swift; path = Views/Controllers/ConfigurationSetupViewController.swift; sourceTree = "<group>"; };
 		0F7A93FA1F25E34C0093B3FA /* DoubleExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleExtensions.swift; path = Extensions/DoubleExtensions.swift; sourceTree = "<group>"; };
 		0F8650741F1F8F9400C654C4 /* IntExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntExtensions.swift; path = Extensions/IntExtensions.swift; sourceTree = "<group>"; };
+		0F8DBDCC1F54ECFB00879276 /* CampNet iOS UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CampNet iOS UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F8DBDCE1F54ECFB00879276 /* CampNet_iOS_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampNet_iOS_UITests.swift; sourceTree = "<group>"; };
+		0F8DBDD01F54ECFB00879276 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F8DBDD61F54EE4700879276 /* SnapshotHelperXcode8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelperXcode8.swift; path = fastlane/SnapshotHelperXcode8.swift; sourceTree = SOURCE_ROOT; };
 		0F8F704C1F1B44A20088E2DE /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountCell.swift; path = Views/Cells/AccountCell.swift; sourceTree = "<group>"; };
 		0F8F704E1F1B44C10088E2DE /* SessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionCell.swift; path = Views/Cells/SessionCell.swift; sourceTree = "<group>"; };
 		0F9AAD051F535C5B00E14838 /* CampNet iOS Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CampNet iOS Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,6 +214,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0F8DBDC91F54ECFB00879276 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F9AAD021F535C5B00E14838 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -219,6 +239,7 @@
 				0F14E7731E2E3AAC0092494B /* CampNet iOS */,
 				0F1ED5CD1F138832004A6C1F /* CampNetKit */,
 				0F9AAD081F535C5B00E14838 /* CampNet iOS Widget */,
+				0F8DBDCD1F54ECFB00879276 /* CampNet iOS UITests */,
 				0F14E7721E2E3AAC0092494B /* Products */,
 				2EF32BE92DEB0316C46ED2BF /* Pods */,
 				298ED8C6D2DAD1B93F321972 /* Frameworks */,
@@ -231,6 +252,7 @@
 				0F14E7711E2E3AAC0092494B /* CampNet iOS.app */,
 				0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */,
 				0F9AAD051F535C5B00E14838 /* CampNet iOS Widget.appex */,
+				0F8DBDCC1F54ECFB00879276 /* CampNet iOS UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -344,6 +366,16 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		0F8DBDCD1F54ECFB00879276 /* CampNet iOS UITests */ = {
+			isa = PBXGroup;
+			children = (
+				0F8DBDCE1F54ECFB00879276 /* CampNet_iOS_UITests.swift */,
+				0F8DBDD61F54EE4700879276 /* SnapshotHelperXcode8.swift */,
+				0F8DBDD01F54ECFB00879276 /* Info.plist */,
+			);
+			path = "CampNet iOS UITests";
+			sourceTree = "<group>";
+		};
 		0F9AAD081F535C5B00E14838 /* CampNet iOS Widget */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,6 +479,24 @@
 			productReference = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		0F8DBDCB1F54ECFB00879276 /* CampNet iOS UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F8DBDD51F54ECFB00879276 /* Build configuration list for PBXNativeTarget "CampNet iOS UITests" */;
+			buildPhases = (
+				0F8DBDC81F54ECFB00879276 /* Sources */,
+				0F8DBDC91F54ECFB00879276 /* Frameworks */,
+				0F8DBDCA1F54ECFB00879276 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0F8DBDD21F54ECFB00879276 /* PBXTargetDependency */,
+			);
+			name = "CampNet iOS UITests";
+			productName = "CampNet iOS UITests";
+			productReference = 0F8DBDCC1F54ECFB00879276 /* CampNet iOS UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		0F9AAD041F535C5B00E14838 /* CampNet iOS Widget */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F9AAD141F535C5B00E14838 /* Build configuration list for PBXNativeTarget "CampNet iOS Widget" */;
@@ -499,6 +549,11 @@
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
+					0F8DBDCB1F54ECFB00879276 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0F14E7701E2E3AAC0092494B;
+					};
 					0F9AAD041F535C5B00E14838 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 7494335NRW;
@@ -532,6 +587,7 @@
 				0F14E7701E2E3AAC0092494B /* CampNet iOS */,
 				0F1ED5CB1F138832004A6C1F /* CampNetKit */,
 				0F9AAD041F535C5B00E14838 /* CampNet iOS Widget */,
+				0F8DBDCB1F54ECFB00879276 /* CampNet iOS UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -556,6 +612,13 @@
 				0FD3A4111F1588BF006DA497 /* Configurations in Resources */,
 				0F2F67891F223F6B004CEF44 /* Localizable.strings in Resources */,
 				0FD3A4141F158A12006DA497 /* Configurations.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F8DBDCA1F54ECFB00879276 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,6 +847,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0F8DBDC81F54ECFB00879276 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F8DBDD71F54EE4700879276 /* SnapshotHelperXcode8.swift in Sources */,
+				0F8DBDCF1F54ECFB00879276 /* CampNet_iOS_UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F9AAD011F535C5B00E14838 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -799,6 +871,11 @@
 			isa = PBXTargetDependency;
 			target = 0F1ED5CB1F138832004A6C1F /* CampNetKit */;
 			targetProxy = 0F1ED5D11F138832004A6C1F /* PBXContainerItemProxy */;
+		};
+		0F8DBDD21F54ECFB00879276 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F14E7701E2E3AAC0092494B /* CampNet iOS */;
+			targetProxy = 0F8DBDD11F54ECFB00879276 /* PBXContainerItemProxy */;
 		};
 		0F9AAD101F535C5B00E14838 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1069,6 +1146,42 @@
 			};
 			name = Release;
 		};
+		0F8DBDD31F54ECFB00879276 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "CampNet iOS UITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "CampNet iOS";
+			};
+			name = Debug;
+		};
+		0F8DBDD41F54ECFB00879276 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "CampNet iOS UITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "CampNet iOS";
+			};
+			name = Release;
+		};
 		0F9AAD121F535C5B00E14838 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6B54F972BCF375434C9333B2 /* Pods-CampNetKit-CampNet iOS Widget.debug.xcconfig */;
@@ -1137,6 +1250,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		0F8DBDD51F54ECFB00879276 /* Build configuration list for PBXNativeTarget "CampNet iOS UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F8DBDD31F54ECFB00879276 /* Debug */,
+				0F8DBDD41F54ECFB00879276 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		0F9AAD141F535C5B00E14838 /* Build configuration list for PBXNativeTarget "CampNet iOS Widget" */ = {
 			isa = XCConfigurationList;
