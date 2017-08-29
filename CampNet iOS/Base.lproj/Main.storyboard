@@ -16,7 +16,7 @@
             <objects>
                 <tableViewController id="42N-Jx-lGN" customClass="OverviewViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="604" sectionHeaderHeight="28" sectionFooterHeight="28" id="cPh-uV-2yr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -34,7 +34,7 @@
                                                     <color key="backgroundColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Usage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOX-7d-QAT">
-                                                    <rect key="frame" x="132" y="27" width="111.5" height="20.5"/>
+                                                    <rect key="frame" x="132" y="25" width="111.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -218,7 +218,7 @@
                                                 <constraint firstItem="MNa-aH-dLT" firstAttribute="centerX" secondItem="QrI-rc-bgC" secondAttribute="centerX" id="ZNv-pH-fMZ"/>
                                                 <constraint firstItem="DlO-p5-jm1" firstAttribute="leading" secondItem="mDD-wB-GMy" secondAttribute="trailing" constant="10" id="ZQl-CX-buQ"/>
                                                 <constraint firstItem="H8N-2s-bRD" firstAttribute="leading" secondItem="mDD-wB-GMy" secondAttribute="trailing" id="bFS-dB-RCc"/>
-                                                <constraint firstItem="MNa-aH-dLT" firstAttribute="top" secondItem="gOX-7d-QAT" secondAttribute="bottom" constant="-10" id="bIr-Ft-2Pt"/>
+                                                <constraint firstItem="MNa-aH-dLT" firstAttribute="top" secondItem="gOX-7d-QAT" secondAttribute="bottom" constant="-8" id="bIr-Ft-2Pt"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="9kM-Ii-HEq" secondAttribute="bottom" id="dP7-cy-SHR"/>
                                                 <constraint firstItem="gOX-7d-QAT" firstAttribute="centerX" secondItem="QrI-rc-bgC" secondAttribute="centerX" id="fhp-qd-Qyx"/>
                                                 <constraint firstItem="OwS-9Y-JxQ" firstAttribute="leading" secondItem="QrI-rc-bgC" secondAttribute="leading" id="iH0-x5-Jkd"/>
@@ -296,7 +296,7 @@
             <objects>
                 <tableViewController title="Settings" id="eSM-KM-bTD" customClass="SettingsViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="sr8-NR-H3D">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -505,7 +505,7 @@
             <objects>
                 <tableViewController title="Usage Alert" id="IRs-Zi-QK3" customClass="UsageAlertViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="ALp-jw-gLf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="tintColor" red="0.19215686274509802" green="0.73448164530000004" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -619,11 +619,11 @@
                         <viewControllerLayoutGuide type="bottom" id="RiJ-Ph-xwq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fIm-L4-iBh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LP9-zR-21e">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <attributedString key="attributedText">
                                     <fragment content="22:47:18.284 INFO AppDelegate.requestNotificationAuthorization():121 - User notifications are allowed.">
@@ -672,7 +672,7 @@
             <objects>
                 <tableViewController title="Privacy" id="PSb-6u-zWB" customClass="PrivacyViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="b8s-j8-9G0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -733,7 +733,7 @@
             <objects>
                 <tableViewController title="About CampNet" id="cgD-an-vZQ" customClass="AboutViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="sxs-kw-TaG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Dno-7x-jNX">
@@ -822,11 +822,11 @@
                         <viewControllerLayoutGuide type="bottom" id="0iS-5B-2hJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xD7-i9-zzU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gMC-pM-X3r">
-                                <rect key="frame" x="8" y="64" width="367" height="603"/>
+                                <rect key="frame" x="8" y="0.0" width="367" height="603"/>
                                 <string key="text">"CampNet logo" is a derivative of "Network" by riyazali, used under CC BY 3.0 US. "CampNet logo" is licensed under CC BY 4.0 by Sihan Li.
 
 "Settings" is licensed under CC BY 3.0 US by Viktor Vorobyev.</string>
@@ -853,7 +853,7 @@
             <objects>
                 <tableViewController id="cfs-jt-JvN" customClass="SessionsViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" id="Ixx-GA-cRL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -941,7 +941,7 @@
             <objects>
                 <tableViewController id="DAi-w4-MYy" userLabel="Device Detail" customClass="SessionDetailViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="8Xw-1F-Gpi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -1117,7 +1117,7 @@
             <objects>
                 <tableViewController id="Ijn-r5-5Es" customClass="AccountsViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="18" sectionFooterHeight="18" id="9Hl-R1-fzM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -1316,7 +1316,7 @@
             <objects>
                 <tableViewController id="3Ot-z7-Jc8" userLabel="Account Detail" customClass="AccountDetailViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="ruR-DY-XMP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -1740,7 +1740,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wNT-Uw-3L2" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="bu6-Uq-abJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="bu6-Uq-abJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1760,7 +1760,7 @@
             <objects>
                 <tableViewController id="jqA-PI-eoz" userLabel="Network" customClass="NetworkViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="LCu-9P-yI3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>

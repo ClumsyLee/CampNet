@@ -423,7 +423,11 @@ class OverviewViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
+        let bar = navigationController!.navigationBar
+        bar.setBackgroundImage(UIImage(), for: .default)
+        bar.shadowImage = UIImage()
+
         upperBackgroundView = UIView()
         upperBackgroundView.backgroundColor = upperView.backgroundColor
         tableView.insertSubview(upperBackgroundView, at: 0)
