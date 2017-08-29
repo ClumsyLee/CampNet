@@ -18,6 +18,9 @@ import SwiftRater
 import CampNetKit
 
 class OverviewViewController: UITableViewController {
+
+    static let networkUpdateInterval: TimeInterval = 10
+
     @IBOutlet var upperView: UIView!
     
     var upperBackgroundView: UIView!
@@ -53,6 +56,8 @@ class OverviewViewController: UITableViewController {
     var maxLimitLine = ChartLimitLine(limit: 0.0, label: L10n.Overview.Chart.LimitLines.max)
 
     var backgroundRefreshing = false
+    var networkTimer = Timer()
+
 
     @IBAction func accountSwitched(segue: UIStoryboardSegue) {}
     
@@ -541,7 +546,15 @@ class OverviewViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        networkTimer = Timer.scheduledTimer(timeInterval: OverviewViewController.networkUpdateInterval, target: self, selector: #selector(reloadNetwork), userInfo: nil, repeats: true)
+
         SwiftRater.check()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        networkTimer.invalidate()
     }
 
     override func didReceiveMemoryWarning() {

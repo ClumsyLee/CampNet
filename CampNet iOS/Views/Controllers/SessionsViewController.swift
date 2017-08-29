@@ -12,6 +12,8 @@ import SwiftRater
 import CampNetKit
 
 class SessionsViewController: UITableViewController {
+
+    static let startTimeUpdateInterval: TimeInterval = 60
     
     @IBOutlet var loginIpButton: UIBarButtonItem!
     
@@ -20,7 +22,7 @@ class SessionsViewController: UITableViewController {
     var pastIps: [String] = []
     var currentIp: String? = nil
     
-    var timer = Timer()
+    var startTimeTimer = Timer()
     
     var canLoginIp: Bool {
         return account?.configuration.actions[.loginIp] != nil
@@ -139,13 +141,13 @@ class SessionsViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(updateStartTimes), userInfo: nil, repeats: true)
+        startTimeTimer = Timer.scheduledTimer(timeInterval: SessionsViewController.startTimeUpdateInterval, target: self, selector: #selector(updateStartTimes), userInfo: nil, repeats: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        timer.invalidate()
+        startTimeTimer.invalidate()
     }
     
     override func didReceiveMemoryWarning() {
