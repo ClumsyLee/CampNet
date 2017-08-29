@@ -387,7 +387,9 @@ class OverviewViewController: UITableViewController {
 
     func reload() {
         account = Account.main
-        refreshControl!.endRefreshing()
+        if refreshControl!.isRefreshing {
+            refreshControl!.endRefreshing()  // Doing it alone will cause a bug on iOS 9.
+        }
         backgroundRefreshing = false
         
         reloadNetwork()
