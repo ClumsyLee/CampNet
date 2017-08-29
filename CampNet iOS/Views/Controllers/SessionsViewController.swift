@@ -134,12 +134,16 @@ class SessionsViewController: UITableViewController {
             refreshControl?.beginRefreshing()
             tableView.contentOffset = offset
         }
-        
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
         timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(updateStartTimes), userInfo: nil, repeats: true)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
         timer.invalidate()
     }
