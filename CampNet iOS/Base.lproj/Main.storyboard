@@ -34,8 +34,8 @@
                                                     <color key="backgroundColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Usage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOX-7d-QAT">
-                                                    <rect key="frame" x="128.5" y="16" width="118" height="21.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <rect key="frame" x="132" y="27" width="111.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -218,7 +218,7 @@
                                                 <constraint firstItem="MNa-aH-dLT" firstAttribute="centerX" secondItem="QrI-rc-bgC" secondAttribute="centerX" id="ZNv-pH-fMZ"/>
                                                 <constraint firstItem="DlO-p5-jm1" firstAttribute="leading" secondItem="mDD-wB-GMy" secondAttribute="trailing" constant="10" id="ZQl-CX-buQ"/>
                                                 <constraint firstItem="H8N-2s-bRD" firstAttribute="leading" secondItem="mDD-wB-GMy" secondAttribute="trailing" id="bFS-dB-RCc"/>
-                                                <constraint firstItem="MNa-aH-dLT" firstAttribute="top" secondItem="gOX-7d-QAT" secondAttribute="bottom" id="bIr-Ft-2Pt"/>
+                                                <constraint firstItem="MNa-aH-dLT" firstAttribute="top" secondItem="gOX-7d-QAT" secondAttribute="bottom" constant="-10" id="bIr-Ft-2Pt"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="9kM-Ii-HEq" secondAttribute="bottom" id="dP7-cy-SHR"/>
                                                 <constraint firstItem="gOX-7d-QAT" firstAttribute="centerX" secondItem="QrI-rc-bgC" secondAttribute="centerX" id="fhp-qd-Qyx"/>
                                                 <constraint firstItem="OwS-9Y-JxQ" firstAttribute="leading" secondItem="QrI-rc-bgC" secondAttribute="leading" id="iH0-x5-Jkd"/>
