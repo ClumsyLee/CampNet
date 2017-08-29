@@ -6,6 +6,9 @@
 "account_detail.delete_account_alert.actions.cancel" = "取消";
 "account_detail.delete_account_alert.actions.delete" = "删除账户";
 
+/* Accounts */
+"accounts.empty_view.title" = "未设置账户";
+
 /* Hotspot Helper */
 "hotspot_helper.display_name" = "由 CampNet 管理的校园网";
 
@@ -50,6 +53,7 @@
 
 /* Sessions */
 "sessions.delete_confirmation_button.title" = "下线";
+"sessions.empty_view.title" = "无在线设备";
 
 /* Settings */
 "settings.usage_alert.values.off" = "关闭";

@@ -202,7 +202,21 @@ class AccountsViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return accounts.count
+        if accounts.isEmpty {
+            let label = UILabel(frame: tableView.bounds)
+            label.text = L10n.Accounts.EmptyView.title
+            label.textColor = .lightGray
+            label.textAlignment = .center
+            label.font = .preferredFont(forTextStyle: .title1)
+
+            tableView.backgroundView = label
+
+            return 0
+        } else {
+            tableView.backgroundView = nil
+
+            return accounts.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

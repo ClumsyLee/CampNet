@@ -6,6 +6,9 @@
 "account_detail.delete_account_alert.actions.cancel" = "Cancel";
 "account_detail.delete_account_alert.actions.delete" = "Delete Account";
 
+/* Accounts */
+"accounts.empty_view.title" = "No Accounts";
+
 /* Hotspot Helper */
 "hotspot_helper.display_name" = "Campus network managed by CampNet";
 
@@ -50,6 +53,7 @@
 
 /* Sessions */
 "sessions.delete_confirmation_button.title" = "Logout";
+"sessions.empty_view.title" = "No Online Devices";
 
 /* Settings */
 "settings.usage_alert.values.off" = "Off";

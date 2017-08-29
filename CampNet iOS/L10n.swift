@@ -27,6 +27,14 @@ enum L10n {
     }
   }
 
+  enum Accounts {
+
+    enum EmptyView {
+      /// No Accounts
+      static let title = L10n.tr("Localizable", "accounts.empty_view.title")
+    }
+  }
+
   enum HotspotHelper {
     /// Campus network managed by CampNet
     static let displayName = L10n.tr("Localizable", "hotspot_helper.display_name")
@@ -186,6 +194,11 @@ enum L10n {
     enum DeleteConfirmationButton {
       /// Logout
       static let title = L10n.tr("Localizable", "sessions.delete_confirmation_button.title")
+    }
+
+    enum EmptyView {
+      /// No Online Devices
+      static let title = L10n.tr("Localizable", "sessions.empty_view.title")
     }
   }
 

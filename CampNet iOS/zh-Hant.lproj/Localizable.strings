@@ -6,6 +6,9 @@
 "account_detail.delete_account_alert.actions.cancel" = "取消";
 "account_detail.delete_account_alert.actions.delete" = "刪除賬戶";
 
+/* Accounts */
+"accounts.empty_view.title" = "未設置賬戶";
+
 /* Hotspot Helper */
 "hotspot_helper.display_name" = "由 CampNet 管理的校園網";
 
@@ -50,6 +53,7 @@
 
 /* Sessions */
 "sessions.delete_confirmation_button.title" = "下線";
+"sessions.empty_view.title" = "無在線設備";
 
 /* Settings */
 "settings.usage_alert.values.off" = "關閉";

@@ -169,7 +169,21 @@ class SessionsViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if sessions.isEmpty {
+            let label = UILabel(frame: tableView.bounds)
+            label.text = L10n.Sessions.EmptyView.title
+            label.textColor = .lightGray
+            label.textAlignment = .center
+            label.font = .preferredFont(forTextStyle: .title1)
+
+            tableView.backgroundView = label
+
+            return 0
+        } else {
+            tableView.backgroundView = nil
+
+            return 1
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
