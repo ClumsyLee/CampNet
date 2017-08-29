@@ -16,7 +16,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dDG-Q4-pPo" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WkO-6R-DFU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="WkO-6R-DFU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -43,18 +43,18 @@
                         <viewControllerLayoutGuide type="bottom" id="DLl-PG-Bw1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0E4-Kb-feV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jc5-5o-NCd">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H93-7a-phy">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="181"/>
                                         <color key="backgroundColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QnC-xN-SQK">
-                                        <rect key="frame" x="185" y="16" width="5" height="21.5"/>
+                                        <rect key="frame" x="185" y="20" width="5" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -231,7 +231,7 @@
                                     <constraint firstItem="H93-7a-phy" firstAttribute="top" secondItem="jc5-5o-NCd" secondAttribute="top" id="StJ-zH-Ru7"/>
                                     <constraint firstItem="SI9-gq-WNa" firstAttribute="leading" secondItem="jc5-5o-NCd" secondAttribute="leading" constant="10" id="T6Z-FM-00T"/>
                                     <constraint firstItem="H93-7a-phy" firstAttribute="height" secondItem="jc5-5o-NCd" secondAttribute="height" multiplier="0.3" id="XA5-MK-1U9"/>
-                                    <constraint firstItem="yZB-Pf-8fn" firstAttribute="top" secondItem="QnC-xN-SQK" secondAttribute="bottom" id="eqg-Jj-NmF"/>
+                                    <constraint firstItem="yZB-Pf-8fn" firstAttribute="top" secondItem="QnC-xN-SQK" secondAttribute="bottom" constant="-4" id="eqg-Jj-NmF"/>
                                     <constraint firstItem="Evo-qD-Y8M" firstAttribute="top" secondItem="LpL-qY-ymu" secondAttribute="bottom" constant="30" id="fx4-jI-pvg"/>
                                     <constraint firstItem="rZr-Cs-gcG" firstAttribute="centerY" secondItem="9tW-aZ-8bT" secondAttribute="centerY" id="l1L-qY-LQ2"/>
                                     <constraint firstItem="SIr-AJ-FWA" firstAttribute="leading" secondItem="LpL-qY-ymu" secondAttribute="trailing" constant="10" id="mMJ-fd-mRK"/>
