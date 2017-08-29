@@ -9,4 +9,4 @@
 import Foundation
 import SwiftyBeaver
 
-let log = SwiftyBeaver.self
+public let log = SwiftyBeaver.self

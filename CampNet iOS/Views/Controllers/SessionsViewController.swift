@@ -47,7 +47,7 @@ class SessionsViewController: UITableViewController {
     func reloadSessions() {
         sessions = account?.profile?.sessions ?? []
         pastIps = account?.pastIps ?? []
-        currentIp = wifiIp()
+        currentIp = WiFi.ip
     }
     
     func reload() {

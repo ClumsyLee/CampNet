@@ -215,7 +215,7 @@ class OverviewViewController: UITableViewController {
             networkButton.isEnabled = false
             networkDisclosure.isHidden = true
         }
-        ip = wifiIp() ?? ""
+        ip = WiFi.ip ?? ""
     }
 
     func reloadStatus(autoLogin: Bool = true) {

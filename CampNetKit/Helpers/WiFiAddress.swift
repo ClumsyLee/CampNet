@@ -9,12 +9,13 @@
 import Foundation
 import NetUtils
 
-public func wifiIp() -> String? {
-    for interface in Interface.allInterfaces() {
-        if interface.isUp && interface.isRunning && interface.name == "en0" && interface.family == .ipv4 {
-            return interface.address
+public class WiFi {
+    public static var ip: String? {
+        for interface in Interface.allInterfaces() {
+            if interface.isUp && interface.isRunning && interface.name == "en0" && interface.family == .ipv4 {
+                return interface.address
+            }
         }
+        return nil
     }
-    
-    return nil
 }

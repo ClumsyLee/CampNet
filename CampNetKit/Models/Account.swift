@@ -657,7 +657,7 @@ public class Account {
     
     fileprivate func updatePastIps(sessions: [Session], autoLogout: Bool, on queue: DispatchQueue, requestBinder: RequestBinder?) {
         let ips = sessions.map { $0.ip }
-        let currentIp = wifiIp()
+        let currentIp = WiFi.ip
         
         var ipsToLogout = pastIps.filter { ips.contains($0) && $0 != currentIp }
         

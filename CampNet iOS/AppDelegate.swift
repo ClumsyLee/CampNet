@@ -17,8 +17,6 @@ import SwiftRater
 
 import CampNetKit
 
-let log = SwiftyBeaver.self
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     

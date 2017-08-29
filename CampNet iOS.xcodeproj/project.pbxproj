@@ -41,13 +41,13 @@
 		0F8650751F1F8F9400C654C4 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8650741F1F8F9400C654C4 /* IntExtensions.swift */; };
 		0F8DBDCF1F54ECFB00879276 /* CampNet_iOS_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8DBDCE1F54ECFB00879276 /* CampNet_iOS_UITests.swift */; };
 		0F8DBDD71F54EE4700879276 /* SnapshotHelperXcode8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8DBDD61F54EE4700879276 /* SnapshotHelperXcode8.swift */; };
+		0F8DBDDB1F55445300879276 /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8DBDDA1F55445300879276 /* SwiftyBeaver.swift */; };
 		0F8F704D1F1B44A20088E2DE /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704C1F1B44A20088E2DE /* AccountCell.swift */; };
 		0F8F704F1F1B44C10088E2DE /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704E1F1B44C10088E2DE /* SessionCell.swift */; };
 		0F9AAD071F535C5B00E14838 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F9AAD061F535C5B00E14838 /* NotificationCenter.framework */; };
 		0F9AAD0A1F535C5B00E14838 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9AAD091F535C5B00E14838 /* TodayViewController.swift */; };
 		0F9AAD0D1F535C5B00E14838 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F9AAD0B1F535C5B00E14838 /* MainInterface.storyboard */; };
 		0F9AAD111F535C5B00E14838 /* CampNet iOS Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0F9AAD051F535C5B00E14838 /* CampNet iOS Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		0FA85DA31F4DDF8E00F76A86 /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA85DA21F4DDF8E00F76A86 /* SwiftyBeaver.swift */; };
 		0FA85DA51F4E930C00F76A86 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */; };
 		0FBCD7B01F226F4B00333A90 /* LoginIpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */; };
 		0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A11F17593E002861F3 /* AccountManager.swift */; };
@@ -157,6 +157,7 @@
 		0F8DBDCE1F54ECFB00879276 /* CampNet_iOS_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampNet_iOS_UITests.swift; sourceTree = "<group>"; };
 		0F8DBDD01F54ECFB00879276 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F8DBDD61F54EE4700879276 /* SnapshotHelperXcode8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelperXcode8.swift; path = fastlane/SnapshotHelperXcode8.swift; sourceTree = SOURCE_ROOT; };
+		0F8DBDDA1F55445300879276 /* SwiftyBeaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyBeaver.swift; path = Helpers/SwiftyBeaver.swift; sourceTree = "<group>"; };
 		0F8F704C1F1B44A20088E2DE /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountCell.swift; path = Views/Cells/AccountCell.swift; sourceTree = "<group>"; };
 		0F8F704E1F1B44C10088E2DE /* SessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionCell.swift; path = Views/Cells/SessionCell.swift; sourceTree = "<group>"; };
 		0F9AAD051F535C5B00E14838 /* CampNet iOS Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CampNet iOS Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,7 +166,6 @@
 		0F9AAD0C1F535C5B00E14838 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		0F9AAD0E1F535C5B00E14838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F9AAD161F535D1100E14838 /* CampNet iOS Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CampNet iOS Widget.entitlements"; sourceTree = "<group>"; };
-		0FA85DA21F4DDF8E00F76A86 /* SwiftyBeaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyBeaver.swift; sourceTree = "<group>"; };
 		0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogsViewController.swift; path = Views/Controllers/LogsViewController.swift; sourceTree = "<group>"; };
 		0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginIpViewController.swift; path = Views/Controllers/LoginIpViewController.swift; sourceTree = "<group>"; };
 		0FC6E2A11F17593E002861F3 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Models/AccountManager.swift; sourceTree = "<group>"; };
@@ -319,7 +319,7 @@
 		0F464C751F14A5DA00C2F58B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				0FA85DA21F4DDF8E00F76A86 /* SwiftyBeaver.swift */,
+				0F8DBDDA1F55445300879276 /* SwiftyBeaver.swift */,
 				0F5614941F31DEA2008A1232 /* WifiAddress.swift */,
 			);
 			name = Helpers;
@@ -836,11 +836,11 @@
 				0F7A93FB1F25E34C0093B3FA /* DoubleExtensions.swift in Sources */,
 				0F464C5A1F13C50500C2F58B /* Account.swift in Sources */,
 				0FC6E2A41F175DE5002861F3 /* ArrayExtensions.swift in Sources */,
-				0FA85DA31F4DDF8E00F76A86 /* SwiftyBeaver.swift in Sources */,
 				0FC6E2A61F17694E002861F3 /* NotificationNameExtensions.swift in Sources */,
 				0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */,
 				0F8650751F1F8F9400C654C4 /* IntExtensions.swift in Sources */,
 				0F464C631F13DB6E00C2F58B /* YamlExtensions.swift in Sources */,
+				0F8DBDDB1F55445300879276 /* SwiftyBeaver.swift in Sources */,
 				0F464C601F13D1E800C2F58B /* CampNetError.swift in Sources */,
 				0FD239C11F415EC6006EA7F9 /* UserDefaultsExtensions.swift in Sources */,
 				0F464C721F14093E00C2F58B /* BillingGroup.swift in Sources */,

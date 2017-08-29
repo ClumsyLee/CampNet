@@ -56,11 +56,11 @@ public struct Status {
             let onlineUsername = vars["online_username"] as? String
             let startTime = vars["start_time"] as? Date
             let usage = vars["usage"] as? Int
-            type = .online(onlineUsername: onlineUsername, startTime: startTime, usage: usage)
+            self.type = .online(onlineUsername: onlineUsername, startTime: startTime, usage: usage)
         case "offline":
-            type = .offline
+            self.type = .offline
         case "offcampus":
-            type = .offcampus
+            self.type = .offcampus
         default:
             return nil
         }
@@ -103,7 +103,16 @@ public struct Session {
         
         return vars
     }
-    
+
+    init(ip: String, id: String? = nil, startTime: Date? = nil, usage: Int64? = nil, mac: String? = nil, device: String? = nil) {
+        self.ip = ip
+        self.id = id
+        self.startTime = startTime
+        self.usage = usage
+        self.mac = mac
+        self.device = device
+    }
+
     init?(vars: [String: Any]) {
         guard let ip = vars["ip"] as? String else {
             return nil
@@ -145,6 +154,15 @@ public struct Profile {
         vars["updated_at"] = updatedAt
         
         return vars
+    }
+
+    init(name: String? = nil, billingGroupName: String? = nil, balance: Double? = nil, usage: Int64? = nil, sessions: [Session]? = nil, updatedAt: Date = Date()) {
+        self.name = name
+        self.billingGroupName = billingGroupName
+        self.balance = balance
+        self.usage = usage
+        self.sessions = sessions
+        self.updatedAt = updatedAt
     }
     
     init?(vars: [String: Any]) {
@@ -195,6 +213,12 @@ public struct History {
         vars["usage_sums"] = usageSums
         
         return vars
+    }
+
+    init(year: Int, month: Int, usageSums: [Int64]) {
+        self.year = year
+        self.month = month
+        self.usageSums = usageSums
     }
     
     init?(vars: [String: Any]) {
