@@ -183,7 +183,7 @@ class OverviewViewController: UITableViewController {
     }
     
     func refreshIfNeeded() {
-        guard UIApplication.shared.applicationState == .active else {
+        guard UIApplication.shared.applicationState == .active, !AccountManager.inUITest else {
             return
         }
 
@@ -216,6 +216,12 @@ class OverviewViewController: UITableViewController {
             networkDisclosure.isHidden = true
         }
         ip = WiFi.ip ?? ""
+
+        #if DEBUG
+            if AccountManager.inUITest {
+                networkName.text = "Tsinghua-5G"
+            }
+        #endif
     }
 
     func reloadStatus(autoLogin: Bool = true) {
@@ -300,8 +306,14 @@ class OverviewViewController: UITableViewController {
         
         usageSumEndDataset.values = []
         if let profile = profile, let usage = profile.usage {
-            if Calendar.current.dateComponents([.year, .month], from: Date()) == Calendar.current.dateComponents([.year, .month], from: profile.updatedAt) {
-                let day = Calendar.current.component(.day, from: profile.updatedAt)
+            if AccountManager.inUITest || Calendar.current.dateComponents([.year, .month], from: Date()) == Calendar.current.dateComponents([.year, .month], from: profile.updatedAt) {
+                let day: Int
+                if AccountManager.inUITest {
+                    day = account?.history?.usageSums.count ?? 1
+                } else {
+                    day = Calendar.current.component(.day, from: profile.updatedAt)
+                }
+
                 let entry = ChartDataEntry(x: Double(day), y: usage.usageInGb(decimalUnits: decimalUnits))
                 usageSumEndDataset.values.append(entry)
                 
@@ -360,7 +372,7 @@ class OverviewViewController: UITableViewController {
 
         usageSumDataset.values = []
         if let history = history,
-           history.year == year, history.month == month,
+           AccountManager.inUITest || (history.year == year && history.month == month),
            !history.usageSums.isEmpty {
 
             for (index, usageSum) in history.usageSums.enumerated() {

@@ -231,6 +231,7 @@ public class Account {
         }
         set {
             Defaults[.accountPastIps(of: identifier)] = newValue
+            Defaults.synchronize()
             log.info("\(self): Past IPs changed to \(newValue.description).")
         }
     }
@@ -377,6 +378,7 @@ public class Account {
             }
             
             Defaults[.accountLastLoginErrorNotification(of: self.identifier)] = nil
+            Defaults.synchronize()
             log.info("\(self): Logged in.")
         }
         .recover(on: queue) { error -> Void in

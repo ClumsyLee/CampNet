@@ -50,5 +50,7 @@ extension Account {
         Defaults.remove(.accountHistory(of: identifier))
         Defaults.remove(.accountEstimatedDailyUsage(of: identifier))
         Defaults.remove(.accountPastIps(of: identifier))
+
+        Defaults.synchronize()
     }
 }

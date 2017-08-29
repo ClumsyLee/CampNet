@@ -121,6 +121,7 @@
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H8N-2s-bRD">
                                                     <rect key="frame" x="227.5" y="190" width="147.5" height="57.5"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="devices"/>
                                                     <connections>
                                                         <segue destination="cfs-jt-JvN" kind="show" id="jyV-OC-WcL"/>
                                                     </connections>
@@ -254,6 +255,7 @@
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5wJ-ng-OAh">
                             <rect key="frame" x="112.5" y="5.5" width="150" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <accessibility key="accessibilityConfiguration" identifier="accounts"/>
                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                             <state key="normal" title="lisihan13 ▸"/>
                             <connections>
