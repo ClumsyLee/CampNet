@@ -18,7 +18,7 @@ import SwiftyUserDefaults
 public class Account {
     
     static let statusLifetime: TimeInterval = 86400
-    static let profileAutoUpdateInterval: TimeInterval = 7200
+    static let profileAutoUpdateInterval: TimeInterval = 600
     static let estimationLength = 7
     
     static let passwordKeychain = Keychain(service: "\(Configuration.bundleIdentifier).password", accessGroup: Configuration.keychainAccessGroup)

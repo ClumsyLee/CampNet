@@ -18,8 +18,6 @@ import SwiftRater
 import CampNetKit
 
 class OverviewViewController: UITableViewController {
-    static let autoUpdateTimeInterval: TimeInterval = 300
-    
     @IBOutlet var upperView: UIView!
     
     var upperBackgroundView: UIView!
@@ -53,8 +51,8 @@ class OverviewViewController: UITableViewController {
     var usageSumEndDataset = LineChartDataSet(values: [], label: nil)
     var freeLimitLine = ChartLimitLine(limit: 0.0, label: L10n.Overview.Chart.LimitLines.free)
     var maxLimitLine = ChartLimitLine(limit: 0.0, label: L10n.Overview.Chart.LimitLines.max)
-    
-    var refreshedAt: Date? = nil
+
+    var backgroundRefreshing = false
 
     @IBAction func accountSwitched(segue: UIStoryboardSegue) {}
     
@@ -72,8 +70,6 @@ class OverviewViewController: UITableViewController {
         
         account.update(on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
             SwiftRater.incrementSignificantUsageCount()
-            
-            self.refreshedAt = Date()
         }
         .always {
             // Don't touch refreshControl if the account has been changed.
@@ -190,20 +186,21 @@ class OverviewViewController: UITableViewController {
         guard UIApplication.shared.applicationState == .active else {
             return
         }
-        
-        if let refreshedAt = refreshedAt, -refreshedAt.timeIntervalSinceNow <= OverviewViewController.autoUpdateTimeInterval, account != nil {
-            return // Infos still valid, do not refresh.
-        }
-        if account == nil || refreshControl!.isRefreshing {
+
+        // Refresh the network.
+        reloadNetwork()
+
+        // Refresh the account.
+        guard let account = account, account.shouldAutoUpdateProfile, !refreshControl!.isRefreshing, !backgroundRefreshing else {
             return
         }
-        
-        refreshControl!.beginRefreshing()
-        
-        let offset = CGPoint(x: 0, y: -tableView.contentInset.top)
-        tableView.setContentOffset(offset, animated: true)
-        
-        refreshTable(self)
+
+        account.update().always {
+            // Don't touch backgroundRefreshing if the account has been changed.
+            if self.account == account {
+                self.backgroundRefreshing = false
+            }
+        }
     }
     
     func reloadNetwork() {
@@ -378,8 +375,8 @@ class OverviewViewController: UITableViewController {
 
     func reload() {
         account = Account.main
-        refreshedAt = nil
         refreshControl!.endRefreshing()
+        backgroundRefreshing = false
         
         reloadNetwork()
         reloadStatus()
@@ -518,12 +515,13 @@ class OverviewViewController: UITableViewController {
             refreshControl?.beginRefreshing()
             tableView.contentOffset = offset
         }
+
+        refreshIfNeeded()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        refreshIfNeeded()
+
         SwiftRater.check()
         
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(_:)), name: .UIApplicationDidBecomeActive, object: nil)
