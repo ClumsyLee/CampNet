@@ -382,6 +382,8 @@ class OverviewViewController: UITableViewController {
         reloadStatus()
         reloadProfile()
         reloadHistory()
+
+        refreshIfNeeded()  // Triger initial refresh if needed.
     }
 
     func mainChanged(_ notification: Notification) {
@@ -476,6 +478,7 @@ class OverviewViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(statusUpdated(_:)), name: .accountStatusUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)), name: .accountProfileUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(historyUpdated(_:)), name: .accountHistoryUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(_:)), name: .UIApplicationDidBecomeActive, object: nil)
     }
 
     deinit {
@@ -515,20 +518,12 @@ class OverviewViewController: UITableViewController {
             refreshControl?.beginRefreshing()
             tableView.contentOffset = offset
         }
-
-        refreshIfNeeded()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         SwiftRater.check()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(_:)), name: .UIApplicationDidBecomeActive, object: nil)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: .UIApplicationDidBecomeActive, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
