@@ -1190,7 +1190,7 @@
 				CODE_SIGN_ENTITLEMENTS = "CampNet iOS Widget/CampNet iOS Widget.entitlements";
 				DEVELOPMENT_TEAM = 7494335NRW;
 				INFOPLIST_FILE = "CampNet iOS Widget/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS.Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1210,7 +1210,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 7494335NRW;
 				INFOPLIST_FILE = "CampNet iOS Widget/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS.Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1258,6 +1258,7 @@
 				0F8DBDD41F54ECFB00879276 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0F9AAD141F535C5B00E14838 /* Build configuration list for PBXNativeTarget "CampNet iOS Widget" */ = {
 			isa = XCConfigurationList;

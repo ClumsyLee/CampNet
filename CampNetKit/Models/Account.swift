@@ -31,44 +31,43 @@ public class Account {
         return AccountManager.shared.main
     }
 
-
-    public static var decimalUnits: Bool {
-        return Defaults[.mainDecimalUnits]
+    public static var identifier: String? {
+        return Defaults[.mainAccount]
     }
 
-    public static var status: Status? {
-        guard let mainId = Defaults[.mainAccount], let vars = Defaults[.accountStatus(of: mainId)] else {
+    public static func decimalUnits(of identifier: String) -> Bool {
+        return Defaults[.accountDecimalUnits(of: identifier)]
+    }
+
+    public static func status(of identifier: String) -> Status? {
+        guard let vars = Defaults[.accountStatus(of: identifier)] else {
             return nil
         }
         return Status(vars: vars)
     }
 
-    public static var profile: Profile? {
-        guard let mainId = Defaults[.mainAccount], let vars = Defaults[.accountProfile(of: mainId)] else {
+    public static func profile(of identifier: String) -> Profile? {
+        guard let vars = Defaults[.accountProfile(of: identifier)], let profile = Profile(vars: vars) else {
             return nil
         }
-        return Profile(vars: vars)
+        return (AccountManager.inUITest || Calendar.current.dateComponents([.year, .month], from: Date()) == Calendar.current.dateComponents([.year, .month], from: profile.updatedAt)) ? profile : nil
     }
 
-    public static var history: History? {
-        guard let mainId = Defaults[.mainAccount], let vars = Defaults[.accountHistory(of: mainId)] else {
+    public static func history(of identifier: String) -> History? {
+        guard let vars = Defaults[.accountHistory(of: identifier)], let history = History(vars: vars) else {
             return nil
         }
-        return History(vars: vars)
+        let today = Date()
+        return (AccountManager.inUITest || history.year == Calendar.current.component(.year, from: today) &&
+            history.month == Calendar.current.component(.month, from: today)) ? history : nil
     }
 
-    public static var freeUsage: Int64? {
-        guard let mainId = Defaults[.mainAccount] else {
-            return nil
-        }
-        return Defaults[.accountFreeUsage(of: mainId)]
+    public static func freeUsage(of identifier: String) -> Int64? {
+        return Defaults[.accountFreeUsage(of: identifier)]
     }
 
-    public static var maxUsage: Int64? {
-        guard let mainId = Defaults[.mainAccount] else {
-            return nil
-        }
-        return Defaults[.accountMaxUsage(of: mainId)]
+    public static func maxUsage(of identifier: String) -> Int64? {
+        return Defaults[.accountMaxUsage(of: identifier)]
     }
 
 
@@ -320,12 +319,7 @@ public class Account {
     
     public fileprivate(set) var profile: Profile? {
         get {
-            guard let vars = Defaults[.accountProfile(of: identifier)],
-                  let profile = Profile(vars: vars) else {
-                return nil
-            }
-            
-            return Calendar.current.dateComponents([.year, .month], from: Date()) == Calendar.current.dateComponents([.year, .month], from: profile.updatedAt) ? profile : nil
+            return Account.profile(of: identifier)
         }
         set {
             // Update free usage & max usage if possible.
@@ -372,14 +366,7 @@ public class Account {
     
     public fileprivate(set) var history: History? {
         get {
-            guard let vars = Defaults[.accountHistory(of: identifier)],
-                  let history = History(vars: vars) else {
-                return nil
-            }
-            
-            let today = Date()
-            return (history.year == Calendar.current.component(.year, from: today) &&
-                    history.month == Calendar.current.component(.month, from: today)) ? history : nil
+            return Account.history(of: identifier)
         }
         set {
             if let history = newValue {
@@ -413,6 +400,8 @@ public class Account {
         self.configuration = configuration
         self.username = username
         self.identifier = "\(configuration.identifier).\(username)"
+
+        Defaults[.accountDecimalUnits(of: identifier)] = configuration.decimalUnits
     }
     
     func handle(error: Error, name: Notification.Name, extraInfo: [String: Any]? = nil) {

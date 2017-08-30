@@ -312,19 +312,17 @@ class OverviewViewController: UITableViewController {
 
         usageSumEndDataset.values = []
         if let profile = profile, let usage = profile.usage {
-            if AccountManager.inUITest || Calendar.current.dateComponents([.year, .month], from: Date()) == Calendar.current.dateComponents([.year, .month], from: profile.updatedAt) {
-                let day: Int
-                if AccountManager.inUITest {
-                    day = account?.history?.usageSums.count ?? 1
-                } else {
-                    day = Calendar.current.component(.day, from: profile.updatedAt)
-                }
-
-                let entry = ChartDataEntry(x: Double(day), y: usage.usageInGb(decimalUnits: decimalUnits))
-                usageSumEndDataset.values.append(entry)
-
-                usageY = entry.y
+            let day: Int
+            if AccountManager.inUITest {
+                day = account?.history?.usageSums.count ?? 1
+            } else {
+                day = Calendar.current.component(.day, from: profile.updatedAt)
             }
+
+            let entry = ChartDataEntry(x: Double(day), y: usage.usageInGb(decimalUnits: decimalUnits))
+            usageSumEndDataset.values.append(entry)
+
+            usageY = entry.y
         }
 
         // Limit lines.
@@ -369,18 +367,10 @@ class OverviewViewController: UITableViewController {
         history = account?.history
         let decimalUnits = account?.configuration.decimalUnits ?? false
 
-        let today = Date()
-        let year = Calendar.current.component(.year, from:
-            today)
-        let month = Calendar.current.component(.month, from: today)
-
         estimatedFee.text = account?.estimatedFee(profile: profile)?.moneyString ?? "-"
 
         usageSumDataset.values = []
-        if let history = history,
-           AccountManager.inUITest || (history.year == year && history.month == month),
-           !history.usageSums.isEmpty {
-
+        if let history = history {
             for (index, usageSum) in history.usageSums.enumerated() {
                 let entry = ChartDataEntry(x: Double(index + 1), y: usageSum.usageInGb(decimalUnits: decimalUnits))
                 usageSumDataset.values.append(entry)

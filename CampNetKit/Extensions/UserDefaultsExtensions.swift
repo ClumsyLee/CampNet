@@ -29,12 +29,12 @@ extension DefaultsKeys {
     // Sync with the widget.
     static let mainAccount = DefaultsKey<String?>("mainAccount")
     static let accounts = DefaultsKey<[String]>("accounts")
-    static let mainDecimalUnits = DefaultsKey<Bool>("mainDecimalUnits")
     
     // Account related.
     public static func accountLastLoginErrorNotification(of id: String) -> DefaultsKey<Date?> { return DefaultsKey<Date?>("\(id).accountLastLoginErrorNotification") }
     static func accountPastIps(of id: String) -> DefaultsKey<[String]> { return DefaultsKey<[String]>("\(id).accountPastIps") }
     // Sync with the widget.
+    static func accountDecimalUnits(of id: String) -> DefaultsKey<Bool> { return DefaultsKey<Bool>("\(id).accountDecimalUnits") }
     static func accountStatus(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountStatus") }
     static func accountProfile(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountProfile") }
     static func accountHistory(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountHistory") }
