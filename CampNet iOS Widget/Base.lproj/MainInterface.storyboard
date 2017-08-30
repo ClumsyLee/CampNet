@@ -93,6 +93,8 @@
                     <connections>
                         <outlet property="balance" destination="hT7-Jh-O2v" id="avu-0O-UFb"/>
                         <outlet property="chart" destination="1Ci-eK-SQc" id="LEy-Qz-TaD"/>
+                        <outlet property="gb" destination="pWq-kH-jgR" id="fcg-YW-eKK"/>
+                        <outlet property="rmb" destination="qaX-8Q-A49" id="H9Z-G9-4Jx"/>
                         <outlet property="usage" destination="BYY-qW-gKq" id="tWL-4b-37Y"/>
                         <outlet property="username" destination="Ybc-eL-75M" id="sRf-4X-djJ"/>
                     </connections>

@@ -20,6 +20,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet var usage: UILabel!
     @IBOutlet var balance: UILabel!
 
+    @IBOutlet var gb: UILabel!
+    @IBOutlet var rmb: UILabel!
+
     var usageSumDataset = LineChartDataSet(values: [], label: nil)
     var usageSumEndDataset = LineChartDataSet(values: [], label: nil)
     var freeLimitLine = ChartLimitLine(limit: 0.0)
@@ -32,6 +35,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
+
+        preferredContentSize.height = 110
 
         usageSumDataset.drawCirclesEnabled = false
         usageSumDataset.lineWidth = 3
@@ -60,11 +65,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         chart.xAxis.drawGridLinesEnabled = false
         chart.xAxis.axisMinimum = 1.0
         chart.xAxis.axisMaximum = 31
-        chart.xAxis.axisLineColor = .black
 
-        chart.leftAxis.labelTextColor = .darkGray
-        chart.leftAxis.gridColor = .lightGray
-        chart.leftAxis.axisLineColor = .black
+        chart.leftAxis.drawAxisLineEnabled = false
         chart.leftAxis.axisMinimum = 0
         chart.leftAxis.drawLimitLinesBehindDataEnabled = true
         chart.leftAxis.setLabelCount(4, force: false)
@@ -81,8 +83,30 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         maxLimitLine.yOffset = 1
         maxLimitLine.lineColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         maxLimitLine.valueTextColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+
+        if #available(iOS 10.0, *) {
+            chart.xAxis.axisLineColor = .darkGray
+            chart.leftAxis.labelTextColor = .darkGray
+            chart.leftAxis.gridColor = .lightGray
+
+            username.textColor = .darkGray
+            usage.textColor = .darkText
+            gb.textColor = .darkText
+            rmb.textColor = .darkGray
+            balance.textColor = .darkGray
+        } else {
+            chart.xAxis.axisLineColor = .lightGray
+            chart.leftAxis.labelTextColor = .lightGray
+            chart.leftAxis.gridColor = .darkGray
+
+            username.textColor = .lightGray
+            usage.textColor = .white
+            gb.textColor = .white
+            rmb.textColor = .lightGray
+            balance.textColor = .lightGray
+        }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -183,5 +207,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         self.history = Account.history(of: identifier)
         reload()
         completionHandler(NCUpdateResult.newData)
+    }
+
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(0, 16, 0, 16)
     }
 }

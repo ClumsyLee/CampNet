@@ -490,7 +490,7 @@ class OverviewViewController: UITableViewController {
 
         chart.leftAxis.labelTextColor = .lightGray
         chart.leftAxis.gridColor = #colorLiteral(red: 0.9372541904, green: 0.9372367859, blue: 0.9563211799, alpha: 1)
-        chart.leftAxis.axisLineColor = .white
+        chart.leftAxis.drawAxisLineEnabled = false
         chart.leftAxis.axisMinimum = 0
         chart.leftAxis.drawLimitLinesBehindDataEnabled = true
         chart.rightAxis.enabled = false
