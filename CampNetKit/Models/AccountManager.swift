@@ -118,10 +118,10 @@ public class AccountManager {
 
             loadedIdentifiers.append(account.identifier)
             if account.identifier == mainAccountIdentifier {
-                log.info("\(accountIdentifier): Is main.")
+                log.debug("\(accountIdentifier): Is main.")
                 mainAccount = account
             }
-            log.info("\(accountIdentifier): Loaded.")
+            log.debug("\(accountIdentifier): Loaded.")
         }
 
         // Remove invalid defaults.
@@ -203,7 +203,7 @@ public class AccountManager {
                 mainChanged = true
             }
 
-            log.info("\(account): Added.")
+            log.debug("\(account): Added.")
 
             // Post notification
             DispatchQueue.main.async {
@@ -231,7 +231,7 @@ public class AccountManager {
                 }
             }
 
-            log.info("\(account): Removed.")
+            log.debug("\(account): Removed.")
 
             // Post notification
             DispatchQueue.main.async {
@@ -253,7 +253,7 @@ public class AccountManager {
             let oldMain = self.mainAccount
             self.mainAccount = account
 
-            log.info("\(account): Became main.")
+            log.debug("\(account): Became main.")
 
             // Post notification
             DispatchQueue.main.async {

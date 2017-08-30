@@ -19,10 +19,10 @@ public enum StatusType {
 public struct Status {
     public var type: StatusType
     public var updatedAt: Date
-    
+
     var vars: [String: Any] {
         var vars: [String: Any] = [:]
-        
+
         switch type {
         case let .online(onlineUsername: onlineUsername, startTime: startTime, usage: usage):
             vars["status"] = "online"
@@ -34,23 +34,23 @@ public struct Status {
         case .offcampus:
             vars["status"] = "offcampus"
         }
-        
+
         vars["updated_at"] = updatedAt
-        
+
         return vars
     }
-    
+
     init(type: StatusType, updatedAt: Date = Date()) {
         self.type = type
         self.updatedAt = updatedAt
     }
-    
+
     init?(vars: [String: Any]) {
         guard let statusString = vars["status"] as? String,
               let updatedAt = vars["updated_at"] as? Date else {
             return nil
         }
-        
+
         switch statusString {
         case "online":
             let onlineUsername = vars["online_username"] as? String
@@ -64,7 +64,7 @@ public struct Status {
         default:
             return nil
         }
-        
+
         self.updatedAt = updatedAt
     }
 }
@@ -90,17 +90,17 @@ public struct Session {
     public var usage: Int64?
     public var mac: String?
     public var device: String?
-    
+
     var vars: [String: Any] {
         var vars: [String: Any] = [:]
-        
+
         vars["ip"] = ip
         vars["id"] = id
         vars["start_time"] = startTime
         vars["usage"] = usage
         vars["mac"] = mac
         vars["device"] = device
-        
+
         return vars
     }
 
@@ -117,7 +117,7 @@ public struct Session {
         guard let ip = vars["ip"] as? String else {
             return nil
         }
-        
+
         self.ip = ip
         self.id = vars["id"] as? String
         self.startTime = vars["start_time"] as? Date
@@ -139,20 +139,20 @@ public struct Profile {
     public var balance: Double?
     public var usage: Int64?
     public var sessions: [Session]?
-    
+
     public var updatedAt: Date
-    
+
     var vars: [String: Any] {
         var vars: [String: Any] = [:]
-        
+
         vars["name"] = name
         vars["billing_group_name"] = billingGroupName
         vars["balance"] = balance
         vars["usage"] = usage
         vars["sessions"] = sessions?.map { $0.vars }
-        
+
         vars["updated_at"] = updatedAt
-        
+
         return vars
     }
 
@@ -164,7 +164,7 @@ public struct Profile {
         self.sessions = sessions
         self.updatedAt = updatedAt
     }
-    
+
     init?(vars: [String: Any]) {
         guard let updatedAt = vars["updated_at"] as? Date else {
             return nil
@@ -174,7 +174,7 @@ public struct Profile {
         self.billingGroupName = vars["billing_group_name"] as? String
         self.balance = vars["balance"] as? Double
         self.usage = vars["usage"] as? Int64
-        
+
         if let sessions = vars["sessions"] as? [[String: Any]] {
             self.sessions = []
             for sessionVars in sessions {
@@ -200,14 +200,14 @@ public struct History {
     public var year: Int
     public var month: Int
     public var usageSums: [Int64]
-    
+
     var vars: [String: Any] {
         var vars: [String: Any] = [:]
-        
+
         vars["year"] = year
         vars["month"] = month
         vars["usage_sums"] = usageSums
-        
+
         return vars
     }
 
@@ -216,14 +216,14 @@ public struct History {
         self.month = month
         self.usageSums = usageSums
     }
-    
+
     init?(vars: [String: Any]) {
         guard let year = vars["year"] as? Int,
               let month = vars["month"] as? Int,
               let usageSums = vars["usage_sums"] as? [Int64] else {
             return nil
         }
-        
+
         self.year = year
         self.month = month
         self.usageSums = usageSums
@@ -243,7 +243,7 @@ public class Configuration {
     public static let subdirectory = "Configurations"
     public static let fileExtension = "yaml"
     public static let bundle = Bundle(identifier: bundleIdentifier)!
-    
+
     public static var displayNames: [String: String] {
         var dict: [String: String] = [:]
 
@@ -252,10 +252,10 @@ public class Configuration {
             let identifier = url.deletingPathExtension().lastPathComponent
             dict[identifier] = displayName(identifier)
         }
-        
+
         return dict
     }
-    
+
     public static func displayName(_ identifier: String) -> String {
         return Configuration.bundle.localizedString(forKey: identifier, value: nil, table: "Configurations")
     }
@@ -265,7 +265,7 @@ public class Configuration {
     public var logo: UIImage? {
         return UIImage(named: identifier)
     }
-    
+
     public let ssids: Set<String>
     public let decimalUnits: Bool
     public let billingGroups: [String: BillingGroup]
@@ -276,22 +276,22 @@ public class Configuration {
             log.error("\(identifier): Failed to find.")
             return nil
         }
-        
+
         guard let content = try? String(contentsOf: url) else {
             log.error("\(identifier): Failed to read.")
             return nil
         }
-        
+
         guard let yaml = try? Yaml.load(content) else {
             log.error("\(identifier): Failed to load YAML.")
             return nil
         }
-        
+
         self.identifier = identifier
         self.displayName = Configuration.displayName(identifier)
         self.decimalUnits = yaml["decimal_units"].bool ?? false
         self.ssids = Set(yaml["ssids"].stringArray ?? [])
-        
+
         var billingGroups: [String: BillingGroup] = [:]
         if let billingGroupsYaml = yaml["billing_groups"].dictionary {
             for (key, value) in billingGroupsYaml {
@@ -299,12 +299,12 @@ public class Configuration {
                     log.error("\(identifier): Billing group names must be strings.")
                     return nil
                 }
-                
+
                 billingGroups[name] = BillingGroup(configurationIdentifier: identifier, name: name, decimalUnits: decimalUnits, yaml: value)
             }
         }
         self.billingGroups = billingGroups
-        
+
         var actions: [Action.Role: Action] = [:]
         if let actionsYaml = yaml["actions"].dictionary {
             for (key, value) in actionsYaml {
@@ -316,13 +316,13 @@ public class Configuration {
                 guard let action = Action(configurationIdentifier: identifier, role: role, yaml: value) else {
                     return nil
                 }
-                
+
                 actions[role] = action
             }
         }
         self.actions = actions
-        
-        log.info("\(identifier): Loaded.")
+
+        log.debug("\(identifier): Loaded.")
     }
 }
 
@@ -330,7 +330,7 @@ extension Configuration: Hashable {
     public var hashValue: Int {
         return identifier.hashValue
     }
-    
+
     public static func ==(lhs: Configuration, rhs: Configuration) -> Bool {
         return lhs.identifier == rhs.identifier
     }

@@ -23,51 +23,51 @@ public struct ActionEntry {
     static let varsName = "vars"
     static let newVarsName = "newVars"
     static let respName = "resp"
-    
+
     public var actionIdentifier: String
     public var index: Int
     public var identifier: String
-    
+
     public var method: String
     public var url: String
     public var params: [String: String] = [:]
     public var vars: [String: String] = [:]
     public var offcampusIfFailed: Bool
     public var script: String
-    
+
     init?(actionIdentifier: String, index: Int, yaml: Yaml) {
         let identifier = "\(actionIdentifier)[\(index)]"
         self.actionIdentifier = actionIdentifier
         self.index = index
         self.identifier = identifier
-        
+
         self.method = yaml["method"].string ?? "GET"
-        
+
         guard let url = yaml["url"].string else {
             log.error("\(identifier): url key is missing.")
             return nil
         }
         self.url = url
-        
+
         if let params = yaml["params"].stringDictionary {
             self.params = params
         }
-        
+
         if let vars = yaml["vars"].stringDictionary {
             self.vars = vars
         }
-        
+
         self.offcampusIfFailed = yaml["offcampus_if_failed"].bool ?? false
         self.script = yaml["script"].string ?? ""
     }
-    
+
     func commit(currentVars: [String: Any] = [:],
                 context: JSContext,
                 session: URLSession,
                 on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
                 requestBinder: RequestBinder? = nil) -> Promise<[String: Any]> {
-        log.debug("\(self): Commiting.")
-        
+        log.verbose("\(self): Commiting.")
+
         // Load placeholders from vars.
         var placeholders: [String: String] = [:]
         for (key, value) in currentVars {
@@ -77,18 +77,18 @@ public struct ActionEntry {
                 placeholders[key] = String(value)
             }
         }
-        
+
         // Build request.
         guard let request = buildRequest(placeholders: placeholders, requestBinder: requestBinder) else {
             return Promise(error: CampNetError.invalidConfiguration)
         }
-        
+
         return session.dataTask(with: request).asString().recover(on: queue) { error -> Promise<String> in
             throw self.offcampusIfFailed ? CampNetError.offcampus : CampNetError.networkError
         }
         .then(on: queue) { resp in
-            log.debug("\(self): Processing response.")
-            
+            log.verbose("\(self): Processing response.")
+
             let newVars = try self.captureNewVars(resp: resp)                   // Capture new vars from HTML if needed.
             try self.runScript(context: context, resp: resp ,newVars: newVars)  // Invoke script.
             let results = try self.getResults(context: context)                 // Get results.
@@ -96,7 +96,7 @@ public struct ActionEntry {
             return Promise(value: results)
         }
     }
-    
+
     func buildRequest(placeholders: [String: String] = [:], requestBinder: RequestBinder?) -> URLRequest? {
         // Prepare arguments.
         let urlString = url.replace(with: placeholders)
@@ -104,19 +104,19 @@ public struct ActionEntry {
             log.error("\(self): Failed to convert \(urlString.debugDescription) to URL.")
             return nil
         }
-        
+
         var params: [String: String] = [:]
         for (key, value) in self.params {
             params[key.replace(with: placeholders)] = value.replace(with: placeholders)
         }
-        
+
         // Bind.
         let oldRequest = NSMutableURLRequest(url: url)  // The binding API is only available to NSMutableURLRequest now.
         if let requestBinder = requestBinder {
             requestBinder(oldRequest)
         }
         var request = oldRequest as URLRequest
-        
+
         // Build request.
         request.httpMethod = method
         do {
@@ -126,25 +126,25 @@ public struct ActionEntry {
             return nil
         }
         request.setValue(ActionEntry.userAgent, forHTTPHeaderField: "User-Agent")
-        
+
         return request
     }
-    
+
     func captureNewVars(resp: String) throws -> [String: Any] {
         if self.vars.isEmpty {
             return [:]  // Don't parse HTML if there is nothing to capture.
         }
-        
+
         guard let doc = HTML(html: resp, encoding: String.Encoding.utf8) else {
             log.error("\(self): Failed to parse HTML from \(resp.debugDescription).")
             throw CampNetError.invalidConfiguration  // Not a valid HTML doc.
         }
-        
+
         var newVars: [String: Any] = [:]
-        
+
         for (name, xpath) in self.vars {
             let nodes = doc.xpath(xpath)
-            
+
             if name.hasSuffix("[]") {
                 // Capture an array.
                 var texts: [String] = []
@@ -161,10 +161,10 @@ public struct ActionEntry {
                 }
             }
         }
-        
+
         return newVars
     }
-    
+
     func runScript(context: JSContext, resp: String, newVars: [String: Any]) throws {
         // Send new vars.
         context.setObject(newVars, forKeyedSubscript: ActionEntry.newVarsName as (NSCopying & NSObjectProtocol))
@@ -173,7 +173,7 @@ public struct ActionEntry {
             log.error("\(self): Failed to send new vars: \(error). resp: \(resp.debugDescription). newVars: \(newVars.debugDescription).")
             throw CampNetError.internalError
         }
-        
+
         // Run script.
         context.setObject(resp, forKeyedSubscript: ActionEntry.respName as (NSCopying & NSObjectProtocol))
         _ = context.evaluateScript(script)
@@ -186,13 +186,13 @@ public struct ActionEntry {
             }
         }
     }
-    
+
     func getResults(context: JSContext) throws -> [String: Any] {
         guard let results = context.objectForKeyedSubscript(ActionEntry.varsName).toDictionary() as? [String: Any] else {
             log.error("\(self): Failed to get results. Object: \(context.objectForKeyedSubscript(ActionEntry.varsName).debugDescription)")
             throw CampNetError.internalError
         }
-        
+
         return results
     }
 }
@@ -213,36 +213,36 @@ public struct Action {
         case history
         case logout
     }
-    
+
     public static var networkActivityIndicatorHandler = { (_: Bool) in }
-    
+
     static let jsVm = JSVirtualMachine()!
     fileprivate static var networkActivityCounter = 0
-    
+
     static func setNetworkActivityIndicatorVisible(_ value: Bool) {
         DispatchQueue.main.async {
             Action.networkActivityCounter += value ? 1 : -1
             networkActivityIndicatorHandler(Action.networkActivityCounter > 0)
         }
     }
-    
+
     public var configurationIdentifier: String
     public var role: Role
     public var identifier: String
-    
+
     public var entries: [ActionEntry] = []
-    
+
     init?(configurationIdentifier: String, role: Role, yaml: Yaml) {
         let identifier = "\(configurationIdentifier).actions.\(role)"
         self.configurationIdentifier = configurationIdentifier
         self.role = role
         self.identifier = identifier
-        
+
         guard let array = yaml.array else {
             log.error("\(identifier): Not an array.")
             return nil
         }
-        
+
         for (index, entry) in array.enumerated() {
             guard let entry = ActionEntry(actionIdentifier: identifier, index: index, yaml: entry) else {
                 log.error("\(identifier): Invalid action entry on index \(index).")
@@ -251,7 +251,7 @@ public struct Action {
             entries.append(entry)
         }
     }
-    
+
     public func commit(username: String, password: String, extraVars: [String: Any] = [:], on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<[String: Any]> {
 
         var initialVars: [String: Any] = [
@@ -262,23 +262,23 @@ public struct Action {
         for (key, value) in extraVars {
             initialVars[key] = value
         }
-        
+
         let context = JSContext(virtualMachine: Action.jsVm)!
         context.setObject(initialVars, forKeyedSubscript: ActionEntry.varsName as (NSCopying & NSObjectProtocol))
-        
+
         let sessionConfiguration = URLSessionConfiguration.ephemeral
         sessionConfiguration.timeoutIntervalForRequest = ActionEntry.timeout
         let session = URLSession(configuration: sessionConfiguration)
-        
+
         Action.setNetworkActivityIndicatorVisible(true)
-        
+
         var promise = Promise<[String: Any]>(value: initialVars)
         for entry in entries {
             promise = promise.then(on: queue) { vars in
                 return entry.commit(currentVars: vars, context: context, session: session, on: queue, requestBinder: requestBinder)
             }
         }
-        
+
         promise = promise.then(on: queue) { vars in
             // Add timestamp if needed.
             var vars = vars
@@ -290,7 +290,7 @@ public struct Action {
         .always {
             Action.setNetworkActivityIndicatorVisible(false)
         }
-        
+
         return promise
     }
 }
