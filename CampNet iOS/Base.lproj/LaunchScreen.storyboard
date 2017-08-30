@@ -53,13 +53,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="181"/>
                                         <color key="backgroundColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QnC-xN-SQK">
-                                        <rect key="frame" x="185.5" y="21" width="4.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QnC-xN-SQK">
+                                        <rect key="frame" x="185" y="13.5" width="5.5" height="24"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="lastBaseline" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yZB-Pf-8fn">
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" alignment="lastBaseline" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yZB-Pf-8fn">
                                         <rect key="frame" x="94.5" y="37.5" width="186" height="86"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="        " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLB-II-Ld3">
@@ -211,6 +211,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Evo-qD-Y8M" firstAttribute="leading" secondItem="jc5-5o-NCd" secondAttribute="leading" id="0jO-VN-U8e"/>
+                                    <constraint firstItem="yZB-Pf-8fn" firstAttribute="top" secondItem="QnC-xN-SQK" secondAttribute="bottom" priority="900" id="3sF-CJ-e5f"/>
                                     <constraint firstItem="SI9-gq-WNa" firstAttribute="centerY" secondItem="LpL-qY-ymu" secondAttribute="centerY" id="597-pl-pVW"/>
                                     <constraint firstItem="yZB-Pf-8fn" firstAttribute="centerY" secondItem="H93-7a-phy" secondAttribute="centerY" constant="-10" id="5D8-G9-PhG"/>
                                     <constraint firstItem="bzV-ce-8b0" firstAttribute="top" secondItem="H93-7a-phy" secondAttribute="bottom" id="5tM-4o-jII"/>
@@ -231,7 +232,6 @@
                                     <constraint firstItem="H93-7a-phy" firstAttribute="top" secondItem="jc5-5o-NCd" secondAttribute="top" id="StJ-zH-Ru7"/>
                                     <constraint firstItem="SI9-gq-WNa" firstAttribute="leading" secondItem="jc5-5o-NCd" secondAttribute="leading" constant="10" id="T6Z-FM-00T"/>
                                     <constraint firstItem="H93-7a-phy" firstAttribute="height" secondItem="jc5-5o-NCd" secondAttribute="height" multiplier="0.3" id="XA5-MK-1U9"/>
-                                    <constraint firstItem="yZB-Pf-8fn" firstAttribute="top" secondItem="QnC-xN-SQK" secondAttribute="bottom" constant="-4" id="eqg-Jj-NmF"/>
                                     <constraint firstItem="Evo-qD-Y8M" firstAttribute="top" secondItem="LpL-qY-ymu" secondAttribute="bottom" constant="30" id="fx4-jI-pvg"/>
                                     <constraint firstItem="rZr-Cs-gcG" firstAttribute="centerY" secondItem="9tW-aZ-8bT" secondAttribute="centerY" id="l1L-qY-LQ2"/>
                                     <constraint firstItem="SIr-AJ-FWA" firstAttribute="leading" secondItem="LpL-qY-ymu" secondAttribute="trailing" constant="10" id="mMJ-fd-mRK"/>
@@ -241,6 +241,7 @@
                                     <constraint firstAttribute="bottomMargin" secondItem="MQs-MM-g9f" secondAttribute="bottom" id="tXQ-NQ-bCz"/>
                                     <constraint firstItem="rZr-Cs-gcG" firstAttribute="top" secondItem="H93-7a-phy" secondAttribute="bottom" id="uY3-Rg-Qxq"/>
                                     <constraint firstItem="SIr-AJ-FWA" firstAttribute="centerY" secondItem="LpL-qY-ymu" secondAttribute="centerY" id="vaQ-M3-ONg"/>
+                                    <constraint firstItem="QnC-xN-SQK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jc5-5o-NCd" secondAttribute="top" id="vpU-pg-wbj"/>
                                     <constraint firstItem="zlf-PV-kXx" firstAttribute="top" secondItem="LpL-qY-ymu" secondAttribute="bottom" constant="4" id="vqq-Tq-t9z"/>
                                 </constraints>
                             </view>

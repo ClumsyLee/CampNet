@@ -33,9 +33,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="181"/>
                                                     <color key="backgroundColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Usage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOX-7d-QAT">
-                                                    <rect key="frame" x="132" y="21" width="111.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Current Usage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOX-7d-QAT">
+                                                    <rect key="frame" x="123" y="13.5" width="130" height="24"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                     <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -208,6 +208,7 @@
                                                 <constraint firstItem="FxC-dl-0Iy" firstAttribute="top" secondItem="mDD-wB-GMy" secondAttribute="bottom" constant="4" id="Huu-RD-A0H"/>
                                                 <constraint firstItem="tAO-Ij-9Vs" firstAttribute="centerY" secondItem="mDD-wB-GMy" secondAttribute="centerY" id="JVT-jY-XfB"/>
                                                 <constraint firstItem="OwS-9Y-JxQ" firstAttribute="top" secondItem="mDD-wB-GMy" secondAttribute="bottom" constant="30" id="JsT-4e-48V"/>
+                                                <constraint firstItem="gOX-7d-QAT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="QrI-rc-bgC" secondAttribute="top" id="LZQ-Op-9S8"/>
                                                 <constraint firstItem="mDD-wB-GMy" firstAttribute="bottom" secondItem="bVu-CG-AHs" secondAttribute="bottom" constant="40" id="Mhe-CM-m0s"/>
                                                 <constraint firstAttribute="trailing" secondItem="DlO-p5-jm1" secondAttribute="trailing" constant="10" id="R6G-ml-LHj"/>
                                                 <constraint firstItem="MNa-aH-dLT" firstAttribute="centerY" secondItem="bVu-CG-AHs" secondAttribute="centerY" constant="-10" id="RGA-XW-rol"/>
@@ -218,7 +219,7 @@
                                                 <constraint firstItem="MNa-aH-dLT" firstAttribute="centerX" secondItem="QrI-rc-bgC" secondAttribute="centerX" id="ZNv-pH-fMZ"/>
                                                 <constraint firstItem="DlO-p5-jm1" firstAttribute="leading" secondItem="mDD-wB-GMy" secondAttribute="trailing" constant="10" id="ZQl-CX-buQ"/>
                                                 <constraint firstItem="H8N-2s-bRD" firstAttribute="leading" secondItem="mDD-wB-GMy" secondAttribute="trailing" id="bFS-dB-RCc"/>
-                                                <constraint firstItem="MNa-aH-dLT" firstAttribute="top" secondItem="gOX-7d-QAT" secondAttribute="bottom" constant="-4" id="bIr-Ft-2Pt"/>
+                                                <constraint firstItem="MNa-aH-dLT" firstAttribute="top" secondItem="gOX-7d-QAT" secondAttribute="bottom" priority="900" id="bIr-Ft-2Pt"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="9kM-Ii-HEq" secondAttribute="bottom" id="dP7-cy-SHR"/>
                                                 <constraint firstItem="gOX-7d-QAT" firstAttribute="centerX" secondItem="QrI-rc-bgC" secondAttribute="centerX" id="fhp-qd-Qyx"/>
                                                 <constraint firstItem="OwS-9Y-JxQ" firstAttribute="leading" secondItem="QrI-rc-bgC" secondAttribute="leading" id="iH0-x5-Jkd"/>
@@ -757,7 +758,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Version 1.0.7 (10)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIH-Ar-Q8L">
-                                            <rect key="frame" x="13" y="38.5" width="90" height="13.5"/>
+                                            <rect key="frame" x="13.5" y="38.5" width="90" height="13.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
