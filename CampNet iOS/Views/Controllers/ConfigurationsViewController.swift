@@ -19,6 +19,10 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
     
     var names: [(identifier: String, name: String, domain: String)] = []
     var searchResults: [(identifier: String, name: String, domain: String)] = []
+
+    var githubRow: Int {
+        return searchController.isActive ? searchResults.count : names.count
+    }
     
     func filter(for searchText: String) {
         searchResults = names.filter { (identifier, name, domain) -> Bool in
@@ -79,11 +83,13 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (searchController.isActive ? searchResults.count : names.count) + 1
+        return githubRow + 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row < names.count {
+        if indexPath.row == githubRow {
+            return tableView.dequeueReusableCell(withIdentifier: "githubCell", for: indexPath)
+        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "configurationCell", for: indexPath) as! ConfigurationCell
 
             // Configure the cell...
@@ -93,14 +99,11 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
             cell.domain.text = domain
             
             return cell
-        } else {
-            return tableView.dequeueReusableCell(withIdentifier: "githubCell", for: indexPath)
         }
-
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == names.count {
+        if indexPath.row == githubRow {
             let controller = SFSafariViewController(url: ConfigurationsViewController.repoUrl)
             present(controller, animated: true)
         }
