@@ -289,3 +289,9 @@
 
 /* Class = "UIViewController"; title = "Acknowledgements"; ObjectID = "pQx-xB-pf4"; */
 "pQx-xB-pf4.title" = "致謝";
+
+/* Class = "UILabel"; text = "Add Your School"; ObjectID = "5RI-AJ-7Cr"; */
+"5RI-AJ-7Cr.text" = "添加你的學校";
+
+/* Class = "UILabel"; text = "Create a new configuration on GitHub"; ObjectID = "m5x-VH-ldq"; */
+"m5x-VH-ldq.text" = "在 GitHub 上創建一個新的配置";

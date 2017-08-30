@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import SafariServices
+
 import CampNetKit
 
 class ConfigurationsViewController: UITableViewController, UISearchResultsUpdating {
-    
+
+    static let repoUrl = URL(string: "https://github.com/ThomasLee969/CampNet-Configurations")!
+
     var searchController: UISearchController!
     
     var names: [(identifier: String, name: String, domain: String)] = []
@@ -75,19 +79,31 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchController.isActive ? searchResults.count : names.count
+        return (searchController.isActive ? searchResults.count : names.count) + 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "configurationCell", for: indexPath) as! ConfigurationCell
+        if indexPath.row < names.count {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "configurationCell", for: indexPath) as! ConfigurationCell
 
-        // Configure the cell...
-        let (identifier, name, domain) = searchController.isActive ? searchResults[indexPath.row] : names[indexPath.row]
-        cell.logo.image = UIImage(named: identifier)
-        cell.name.text = name
-        cell.domain.text = domain
+            // Configure the cell...
+            let (identifier, name, domain) = searchController.isActive ? searchResults[indexPath.row] : names[indexPath.row]
+            cell.logo.image = UIImage(named: identifier)
+            cell.name.text = name
+            cell.domain.text = domain
+            
+            return cell
+        } else {
+            return tableView.dequeueReusableCell(withIdentifier: "githubCell", for: indexPath)
+        }
 
-        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == names.count {
+            let controller = SFSafariViewController(url: ConfigurationsViewController.repoUrl)
+            present(controller, animated: true)
+        }
     }
 
     /*
