@@ -7,8 +7,16 @@
 //
 
 import UIKit
+import SafariServices
 
 class AboutViewController: UITableViewController {
+
+    enum Row: Int {
+        case myGithub
+        case acknowledgements
+    }
+
+    static let myGithubUrl = URL(string: "https://github.com/ThomasLee969")!
 
     @IBOutlet var version: UILabel!
     
@@ -53,6 +61,13 @@ class AboutViewController: UITableViewController {
         return cell
     }
     */
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == Row.myGithub.rawValue {
+            let controller = SFSafariViewController(url: AboutViewController.myGithubUrl)
+            present(controller, animated: true)
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.

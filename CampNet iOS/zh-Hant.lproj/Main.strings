@@ -295,3 +295,6 @@
 
 /* Class = "UILabel"; text = "Create a new configuration on GitHub"; ObjectID = "m5x-VH-ldq"; */
 "m5x-VH-ldq.text" = "在 GitHub 上創建一個新的配置";
+
+/* Class = "UILabel"; text = "@ThomasLee969 on GitHub"; ObjectID = "4hX-Ng-op9"; */
+"4hX-Ng-op9.text" = "GitHub 上的 @ThomasLee969";
