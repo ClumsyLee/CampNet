@@ -192,10 +192,6 @@ public struct Profile {
 
 extension Profile: CustomStringConvertible {
     public var description: String {
-        var vars = self.vars
-        if let name = vars["name"] as? String {
-            vars["name"] = String(repeating: "*", count: name.characters.count)  // Hide name in logs.
-        }
         return vars.description
     }
 }
