@@ -219,14 +219,15 @@ class OverviewViewController: UITableViewController {
             networkName.text = "-"
             networkButton.isEnabled = false
             networkDisclosure.isHidden = true
+
+            #if DEBUG
+                if AccountManager.inUITest {
+                    networkName.text = "Tsinghua-5G"
+                    networkDisclosure.isHidden = false
+                }
+            #endif
         }
         ip = WiFi.ip ?? ""
-
-        #if DEBUG
-            if AccountManager.inUITest {
-                networkName.text = "Tsinghua-5G"
-            }
-        #endif
     }
 
     func reloadStatus(autoLogin: Bool = true) {
