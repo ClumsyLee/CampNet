@@ -59,17 +59,17 @@
                                         <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" alignment="lastBaseline" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yZB-Pf-8fn">
-                                        <rect key="frame" x="94.5" y="37.5" width="186" height="86"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" alignment="lastBaseline" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yZB-Pf-8fn">
+                                        <rect key="frame" x="102.5" y="37.5" width="170.5" height="86"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="        " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLB-II-Ld3">
-                                                <rect key="frame" x="0.0" y="0.0" width="129" height="86"/>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="72"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="115.5" height="86"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="72"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exb-et-0qV">
-                                                <rect key="frame" x="139" y="34" width="47" height="43"/>
+                                                <rect key="frame" x="123.5" y="34" width="47" height="43"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="36"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>

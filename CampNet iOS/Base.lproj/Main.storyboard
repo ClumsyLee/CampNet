@@ -39,17 +39,17 @@
                                                     <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" alignment="lastBaseline" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MNa-aH-dLT">
-                                                    <rect key="frame" x="88" y="37.5" width="199" height="86"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" alignment="lastBaseline" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MNa-aH-dLT">
+                                                    <rect key="frame" x="91.5" y="37.5" width="193" height="86"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="25.8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ai3-mC-R1h">
-                                                            <rect key="frame" x="0.0" y="0.0" width="142" height="86"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="72"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="138" height="86"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="72"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="GB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8EY-LW-m2J">
-                                                            <rect key="frame" x="152" y="34" width="47" height="43"/>
+                                                            <rect key="frame" x="146" y="34" width="47" height="43"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="36"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
