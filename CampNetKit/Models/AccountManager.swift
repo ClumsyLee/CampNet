@@ -80,7 +80,7 @@ public class AccountManager {
                         Session(ip: "59.66.141.91",
                                 startTime: Date(timeIntervalSinceNow: -70000),
                                 usage: 548_000_000,
-                                device: "iOS-Client"),
+                                device: "iPhone"),
                         Session(ip: "59.66.141.92",
                                 startTime: Date(timeIntervalSinceNow: -160000),
                                 usage: 1_385_000_000,
