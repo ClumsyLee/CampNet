@@ -36,7 +36,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
 
-        preferredContentSize.height = 110
+        preferredContentSize.height = 150
 
         usageSumDataset.drawCirclesEnabled = false
         usageSumDataset.lineWidth = 3
@@ -210,6 +210,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
 
     func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(0, 16, 0, 16)
+        return UIEdgeInsetsMake(8, 16, 8, 16)
     }
 }
