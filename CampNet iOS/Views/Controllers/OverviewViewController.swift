@@ -22,7 +22,7 @@ class OverviewViewController: UITableViewController {
     static let networkUpdateInterval: TimeInterval = 10
 
     @IBOutlet var upperView: UIView!
-    
+
     var upperBackgroundView: UIView!
 
     @IBOutlet var usage: UILabel!
@@ -33,7 +33,7 @@ class OverviewViewController: UITableViewController {
 
     var networkDisclosure: UITableViewCell!
     var devicesDisclosure: UITableViewCell!
-    
+
     @IBOutlet var accountsButton: UIButton!
     @IBOutlet var networkButton: UIButton!
     @IBOutlet var devicesButton: UIButton!
@@ -41,15 +41,15 @@ class OverviewViewController: UITableViewController {
     @IBOutlet var loginButtonCaption: UILabel!
 
     @IBOutlet var chart: LineChartView!
-    
+
     var account: Account? = nil
     var status: Status? = nil
     var profile: Profile? = nil
     var history: History? = nil
-    
+
     var network: NEHotspotNetwork? = nil
     var ip: String = ""
-    
+
     var usageSumDataset = LineChartDataSet(values: [], label: nil)
     var usageSumEndDataset = LineChartDataSet(values: [], label: nil)
     var freeLimitLine = ChartLimitLine(limit: 0.0, label: L10n.Overview.Chart.LimitLines.free)
@@ -60,19 +60,19 @@ class OverviewViewController: UITableViewController {
 
 
     @IBAction func accountSwitched(segue: UIStoryboardSegue) {}
-    
+
     @IBAction func feedbackPressed(_ sender: Any) {
         Instabug.invoke()
     }
-    
+
     @IBAction func refreshTable(_ sender: Any) {
         reloadNetwork()
-        
+
         guard let account = account else {
             self.refreshControl?.endRefreshing()
             return
         }
-        
+
         account.update(on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
             SwiftRater.incrementSignificantUsageCount()
         }
@@ -83,82 +83,82 @@ class OverviewViewController: UITableViewController {
             }
         }
     }
-    
+
     @IBAction func loginButtonPressed(_ sender: Any) {
         guard let account = account, let status = status else {
             return
         }
-        
+
         switch status.type {
         case let .online(onlineUsername, _, _):
             if let network = network, account.username == onlineUsername, account.canManage(network: network) {
                 // Will auto login after logging out, warn for it.
                 let menu = UIAlertController(title: L10n.Overview.LogoutWhenAutoLoginAlert.title, message: nil, preferredStyle: .actionSheet)
                 menu.view.tintColor = #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1)
-                
+
                 let logoutAction = UIAlertAction(title: L10n.Overview.LogoutWhenAutoLoginAlert.Actions.logout, style: .destructive) { action in
                     self.logout()
                 }
                 let cancelAction = UIAlertAction(title: L10n.Overview.LogoutWhenAutoLoginAlert.Actions.cancel, style: .cancel, handler: nil)
-                
+
                 menu.addAction(logoutAction)
                 menu.addAction(cancelAction)
-                
+
                 // Show as a popover on iPads.
                 if let popoverPresentationController = menu.popoverPresentationController {
                     popoverPresentationController.sourceView = loginButton
                     popoverPresentationController.sourceRect = loginButton.bounds
                 }
-                
+
                 present(menu, animated: true, completion: nil)
             } else {
                 logout()
             }
-            
+
         case .offline:
             if let network = network,
                !account.configuration.ssids.contains(network.ssid),
                !Defaults[.onCampus(id: account.configuration.identifier, ssid: network.ssid)] {
                 // Manually logging into an unknown network.
-                
+
                 let menu = UIAlertController(title: L10n.Overview.LoginUnknownNetworkAlert.title(network.ssid), message: L10n.Overview.LoginUnknownNetworkAlert.message, preferredStyle: .actionSheet)
                 menu.view.tintColor = #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1)
-                
+
                 let markAction = UIAlertAction(title: L10n.Overview.LoginUnknownNetworkAlert.Actions.markAsOnCampus, style: .default) { action in
                     Defaults[.onCampus(id: account.configuration.identifier, ssid: network.ssid)] = true
                 }
                 let laterAction = UIAlertAction(title: L10n.Overview.LoginUnknownNetworkAlert.Actions.later, style: .cancel, handler: nil)
-                
+
                 menu.addAction(markAction)
                 menu.addAction(laterAction)
-                
+
                 // Show as a popover on iPads.
                 if let popoverPresentationController = menu.popoverPresentationController {
                     popoverPresentationController.sourceView = loginButton
                     popoverPresentationController.sourceRect = loginButton.bounds
                 }
-                
+
                 present(menu, animated: true, completion: nil)
             }
-            
+
             login()
         default: return
         }
     }
-    
+
     func login() {
         guard let account = account else {
             return
         }
-        
+
         loginButton.isEnabled = false
         loginButton.setStyle(.horizontalMoreOptions, animated: true)
-        
+
         loginButtonCaption.text = L10n.Overview.LoginButton.Captions.loggingIn
-        
+
         account.login(on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
             SwiftRater.incrementSignificantUsageCount()
-            
+
             // Update the profile in the background if possible.
             if account.configuration.actions[.profile] != nil {
                 _ = account.profile()
@@ -168,17 +168,17 @@ class OverviewViewController: UITableViewController {
             self.reloadStatus(autoLogin: false)  // Avoid logging in forever.
         }
     }
-    
+
     func logout() {
         guard let account = account else {
             return
         }
-        
+
         loginButton.isEnabled = false
         loginButton.setStyle(.horizontalMoreOptions, animated: true)
-        
+
         loginButtonCaption.text = L10n.Overview.LoginButton.Captions.loggingOut
-        
+
         account.logout(on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
             SwiftRater.incrementSignificantUsageCount()
         }
@@ -186,7 +186,7 @@ class OverviewViewController: UITableViewController {
             self.reloadStatus()
         }
     }
-    
+
     func refreshIfNeeded() {
         guard UIApplication.shared.applicationState == .active, !AccountManager.inUITest else {
             return
@@ -207,7 +207,7 @@ class OverviewViewController: UITableViewController {
             }
         }
     }
-    
+
     func reloadNetwork() {
         if let wifi = NEHotspotHelper.supportedNetworkInterfaces().first as? NEHotspotNetwork, !wifi.ssid.isEmpty {
             network = wifi
@@ -241,35 +241,35 @@ class OverviewViewController: UITableViewController {
                     loginButton.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
                     loginButton.strokeColor = .white
                     loginButton.setStyle(.stop, animated: true)
-                    
+
                     loginButtonCaption.text = L10n.Overview.LoginButton.Captions.logoutOthers(onlineUsername)
                 } else {
                     loginButton.isEnabled = true
                     loginButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
                     loginButton.strokeColor = .white
                     loginButton.setStyle(.stop, animated: true)
-                    
+
                     loginButtonCaption.text = L10n.Overview.LoginButton.Captions.logout
                 }
-                
+
             case .offline:
                 loginButton.isEnabled = true
                 loginButton.backgroundColor = .white
                 loginButton.strokeColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
                 loginButton.setStyle(.play, animated: true)
-                
+
                 loginButtonCaption.text = L10n.Overview.LoginButton.Captions.login
-                
+
                 if let account = account, let network = network, account.canManage(network: network), autoLogin {
                     login()
                 }
-                
+
             case .offcampus:
                 loginButton.isEnabled = false
                 loginButton.backgroundColor = #colorLiteral(red: 0.9372541904, green: 0.9372367859, blue: 0.9563211799, alpha: 1)
                 loginButton.strokeColor = .lightGray
                 loginButton.setStyle(.horizontalLine, animated: true)
-                
+
                 loginButtonCaption.text = L10n.Overview.LoginButton.Captions.offcampus
             }
         } else {
@@ -277,7 +277,7 @@ class OverviewViewController: UITableViewController {
             loginButton.backgroundColor = #colorLiteral(red: 0.9372541904, green: 0.9372367859, blue: 0.9563211799, alpha: 1)
             loginButton.strokeColor = .lightGray
             loginButton.setStyle(.dot, animated: true)
-            
+
             loginButtonCaption.text = L10n.Overview.LoginButton.Captions.unknown
         }
     }
@@ -285,7 +285,7 @@ class OverviewViewController: UITableViewController {
     func reloadProfile() {
         profile = account?.profile
         let decimalUnits = account?.configuration.decimalUnits ?? false
-        
+
         let title: String
         if let account = account {
             title = "\(account.username) ▸"
@@ -293,7 +293,7 @@ class OverviewViewController: UITableViewController {
             title = "\(L10n.Overview.Titles.noAccounts) ▸"
         }
         accountsButton.setTitle(title, for: .normal)
-        
+
         usage.text = profile?.usage?.usageStringInGb(decimalUnits: decimalUnits) ?? "-"
         balance.text = profile?.balance?.moneyString ?? "-"
         estimatedFee.text = account?.estimatedFee(profile: profile)?.moneyString ?? "-"
@@ -306,10 +306,10 @@ class OverviewViewController: UITableViewController {
             devicesButton.isEnabled = false
             devicesDisclosure.isHidden = true
         }
-        
+
         // Chart end point.
         var usageY: Double? = nil
-        
+
         usageSumEndDataset.values = []
         if let profile = profile, let usage = profile.usage {
             if AccountManager.inUITest || Calendar.current.dateComponents([.year, .month], from: Date()) == Calendar.current.dateComponents([.year, .month], from: profile.updatedAt) {
@@ -322,30 +322,30 @@ class OverviewViewController: UITableViewController {
 
                 let entry = ChartDataEntry(x: Double(day), y: usage.usageInGb(decimalUnits: decimalUnits))
                 usageSumEndDataset.values.append(entry)
-                
+
                 usageY = entry.y
             }
         }
-        
+
         // Limit lines.
         chart.leftAxis.removeAllLimitLines()
 
         var freeY: Double? = nil
         var maxY: Double? = nil
-        
-        if let freeUsage = account?.freeUsage(profile: profile) {
+
+        if let freeUsage = account?.freeUsage {
             freeLimitLine.limit = freeUsage.usageInGb(decimalUnits: decimalUnits)
             chart.leftAxis.addLimitLine(freeLimitLine)
-            
+
             freeY = freeLimitLine.limit
         }
-        if let maxUsage = account?.maxUsage(profile: profile) {
+        if let maxUsage = account?.maxUsage {
             maxLimitLine.limit = maxUsage.usageInGb(decimalUnits: decimalUnits)
             chart.leftAxis.addLimitLine(maxLimitLine)
-            
+
             maxY = maxLimitLine.limit
         }
-        
+
         // Calculate chart.leftAxis.axisMaximum.
         let y: Double
         if let usageY = usageY {
@@ -368,7 +368,7 @@ class OverviewViewController: UITableViewController {
     func reloadHistory() {
         history = account?.history
         let decimalUnits = account?.configuration.decimalUnits ?? false
-        
+
         let today = Date()
         let year = Calendar.current.component(.year, from:
             today)
@@ -398,7 +398,7 @@ class OverviewViewController: UITableViewController {
             refreshControl!.endRefreshing()  // Doing it alone will cause a bug on iOS 9.
         }
         backgroundRefreshing = false
-        
+
         reloadNetwork()
         reloadStatus()
         reloadProfile()
@@ -444,7 +444,7 @@ class OverviewViewController: UITableViewController {
     func historyUpdated(_ notification: Notification) {
         reloadHistory()
     }
-    
+
     func didBecomeActive(_ notification: Notification) {
         refreshIfNeeded()
     }
@@ -460,13 +460,13 @@ class OverviewViewController: UITableViewController {
         upperBackgroundView = UIView()
         upperBackgroundView.backgroundColor = upperView.backgroundColor
         tableView.insertSubview(upperBackgroundView, at: 0)
-        
+
         networkDisclosure = UITableViewCell()
         networkDisclosure.accessoryType = .disclosureIndicator
         networkDisclosure.isUserInteractionEnabled = false
         networkDisclosure.isHidden = true
         networkButton.addSubview(networkDisclosure)
-        
+
         devicesDisclosure = UITableViewCell()
         devicesDisclosure.accessoryType = .disclosureIndicator
         devicesDisclosure.isUserInteractionEnabled = false
@@ -496,7 +496,7 @@ class OverviewViewController: UITableViewController {
         chart.xAxis.labelPosition = .bottom
         chart.xAxis.drawGridLinesEnabled = false
         chart.xAxis.axisMinimum = 1.0
-        chart.xAxis.axisMaximum = Double(Calendar.current.range(of: .day, in: .month, for: Date())?.upperBound ?? 31)
+        chart.xAxis.axisMaximum = 31.0
 
         chart.leftAxis.labelTextColor = .lightGray
         chart.leftAxis.gridColor = #colorLiteral(red: 0.9372541904, green: 0.9372367859, blue: 0.9563211799, alpha: 1)
@@ -535,14 +535,14 @@ class OverviewViewController: UITableViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+
         var frame = tableView.bounds
         frame.origin.y = -frame.height
         upperBackgroundView.frame = frame
-        
+
         networkDisclosure.frame = networkButton.bounds
         devicesDisclosure.frame = devicesButton.bounds
-        
+
         loginButton.layer.shadowColor = UIColor.lightGray.cgColor
         loginButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         loginButton.layer.shadowOpacity = 0.5
@@ -555,10 +555,10 @@ class OverviewViewController: UITableViewController {
         upperView.layer.shadowRadius = 2
         upperView.layer.shadowOpacity = 0.5
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if refreshControl!.isRefreshing {
             // See https://stackoverflow.com/questions/21758892/uirefreshcontrol-stops-spinning-after-making-application-inactive
             let offset = tableView.contentOffset
@@ -567,7 +567,7 @@ class OverviewViewController: UITableViewController {
             tableView.contentOffset = offset
         }
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -586,11 +586,11 @@ class OverviewViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.bounds.height
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "network" {
             let controller = segue.destination as! NetworkViewController
