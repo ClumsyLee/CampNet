@@ -25,6 +25,7 @@ public class AccountManager {
     fileprivate var mainAccount: Account? = nil {
         willSet {
             Defaults[.mainAccount] = newValue?.identifier
+            Defaults[.mainDecimalUnits] = newValue?.configuration.decimalUnits ?? false
             Defaults.synchronize()
         }
     }

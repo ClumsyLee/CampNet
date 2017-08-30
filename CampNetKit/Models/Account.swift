@@ -30,7 +30,48 @@ public class Account {
     public static var main: Account? {
         return AccountManager.shared.main
     }
-    
+
+
+    public static var decimalUnits: Bool {
+        return Defaults[.mainDecimalUnits]
+    }
+
+    public static var status: Status? {
+        guard let mainId = Defaults[.mainAccount], let vars = Defaults[.accountStatus(of: mainId)] else {
+            return nil
+        }
+        return Status(vars: vars)
+    }
+
+    public static var profile: Profile? {
+        guard let mainId = Defaults[.mainAccount], let vars = Defaults[.accountProfile(of: mainId)] else {
+            return nil
+        }
+        return Profile(vars: vars)
+    }
+
+    public static var history: History? {
+        guard let mainId = Defaults[.mainAccount], let vars = Defaults[.accountHistory(of: mainId)] else {
+            return nil
+        }
+        return History(vars: vars)
+    }
+
+    public static var freeUsage: Int64? {
+        guard let mainId = Defaults[.mainAccount] else {
+            return nil
+        }
+        return Defaults[.accountFreeUsage(of: mainId)]
+    }
+
+    public static var maxUsage: Int64? {
+        guard let mainId = Defaults[.mainAccount] else {
+            return nil
+        }
+        return Defaults[.accountMaxUsage(of: mainId)]
+    }
+
+
     public static var handler: NEHotspotHelperHandler = { command in
         let queue = DispatchQueue.global(qos: .utility)
         let requestBinder: RequestBinder = { $0.bind(to: command) }
@@ -224,6 +265,28 @@ public class Account {
             log.info("\(self): Estimated daily usage changed to \(newValue?.description ?? "nil").")
         }
     }
+
+    public fileprivate(set) var freeUsage: Int64? {
+        get {
+            return Defaults[.accountFreeUsage(of: identifier)]
+        }
+        set {
+            Defaults[.accountFreeUsage(of: identifier)] = newValue
+            Defaults.synchronize()
+            log.info("\(self): Free usage changed to \(newValue?.description ?? "nil").")
+        }
+    }
+
+    public fileprivate(set) var maxUsage: Int64? {
+        get {
+            return Defaults[.accountMaxUsage(of: identifier)]
+        }
+        set {
+            Defaults[.accountMaxUsage(of: identifier)] = newValue
+            Defaults.synchronize()
+            log.info("\(self): Max usage changed to \(newValue?.description ?? "nil").")
+        }
+    }
     
     public fileprivate(set) var pastIps: [String] {
         get {
@@ -265,7 +328,23 @@ public class Account {
             return Calendar.current.dateComponents([.year, .month], from: Date()) == Calendar.current.dateComponents([.year, .month], from: profile.updatedAt) ? profile : nil
         }
         set {
-            let oldVars = Defaults[.accountProfile(of: identifier)]
+            // Update free usage & max usage if possible.
+            var freeUsage: Int64? = nil
+            var maxUsage: Int64? = nil
+
+            if let profile = newValue, let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""] {
+                freeUsage = billingGroup.freeUsage
+
+                if let balance = profile.balance, let usage = profile.usage {
+                    maxUsage = billingGroup.maxUsage(balance: balance, usage: usage)
+                }
+            }
+
+            self.freeUsage = freeUsage
+            self.maxUsage = maxUsage
+
+
+            let oldUsage = Profile(vars: Defaults[.accountProfile(of: identifier)] ?? [:])?.usage ?? -1
             Defaults[.accountProfile(of: identifier)] = newValue?.vars
             Defaults.synchronize()
             DispatchQueue.main.async {
@@ -274,10 +353,9 @@ public class Account {
             log.info("\(self): Profile changed to \(newValue?.description ?? "nil").")
             
             // Send usage alert if needed.
-            let oldUsage = Profile(vars: oldVars ?? [:])?.usage ?? -1
             if let newUsage = newValue?.usage,
                let ratio = Defaults[.usageAlertRatio],
-               let maxUsage = maxUsage(profile: newValue) {
+               let maxUsage = maxUsage {
                 
                 let limit = Int64(Double(maxUsage) * ratio)
                 if oldUsage < limit && newUsage >= limit {
@@ -310,16 +388,16 @@ public class Account {
                     let fromIndex = toIndex - Account.estimationLength
                     let usage = history.usageSums[toIndex] - history.usageSums[fromIndex]
                     
-                    self.estimatedDailyUsage = usage / Int64(Account.estimationLength)
+                    estimatedDailyUsage = usage / Int64(Account.estimationLength)
                 }
             }
-            log.info("\(self): History changed to \(newValue?.description ?? "nil").")
             
             Defaults[.accountHistory(of: identifier)] = newValue?.vars
             Defaults.synchronize()
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .accountHistoryUpdated, object: self, userInfo: ["account": self, "history": newValue as Any])
             }
+            log.info("\(self): History changed to \(newValue?.description ?? "nil").")
         }
     }
     
@@ -616,26 +694,6 @@ public class Account {
         return (configuration.ssids.contains(network.ssid) ||
                 Defaults[.onCampus(id: configuration.identifier, ssid: network.ssid)]) &&
                Defaults[.autoLogin]
-    }
-    
-    public func freeUsage(profile: Profile?) -> Int64? {
-        guard let profile = profile,
-              let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""] else {
-            return nil
-        }
-        
-        return billingGroup.freeUsage
-    }
-    
-    public func maxUsage(profile: Profile?) -> Int64? {
-        guard let profile = profile,
-              let balance = profile.balance,
-              let usage = profile.usage,
-              let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""] else {
-            return nil
-        }
-        
-        return billingGroup.maxUsage(balance: balance, usage: usage)
     }
     
     public func estimatedFee(profile: Profile?) -> Double? {

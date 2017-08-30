@@ -29,6 +29,7 @@ extension DefaultsKeys {
     // Sync with the widget.
     static let mainAccount = DefaultsKey<String?>("mainAccount")
     static let accounts = DefaultsKey<[String]>("accounts")
+    static let mainDecimalUnits = DefaultsKey<Bool>("mainDecimalUnits")
     
     // Account related.
     public static func accountLastLoginErrorNotification(of id: String) -> DefaultsKey<Date?> { return DefaultsKey<Date?>("\(id).accountLastLoginErrorNotification") }
@@ -38,7 +39,8 @@ extension DefaultsKeys {
     static func accountProfile(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountProfile") }
     static func accountHistory(of id: String) -> DefaultsKey<[String: Any]?> { return DefaultsKey<[String: Any]?>("\(id).accountHistory") }
     static func accountEstimatedDailyUsage(of id: String) -> DefaultsKey<Int64?> { return DefaultsKey<Int64?>("\(id).accountEstimatedDailyUsage") }
-    
+    static func accountFreeUsage(of id: String) -> DefaultsKey<Int64?> { return DefaultsKey<Int64?>("\(id).accountFreeUsage") }
+    static func accountMaxUsage(of id: String) -> DefaultsKey<Int64?> { return DefaultsKey<Int64?>("\(id).accountMaxUsage") }
 }
 
 extension Account {
