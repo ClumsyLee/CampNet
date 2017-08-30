@@ -26,5 +26,6 @@ target 'CampNetKit' do
   pod 'Yaml'
 
   target 'CampNet iOS Widget' do
+    pod 'Charts'
   end
 end

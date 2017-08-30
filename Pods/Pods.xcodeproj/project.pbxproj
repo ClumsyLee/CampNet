@@ -22,13 +22,13 @@
 		071162DDC8C10B6A7F1CEB9FBFE30C1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33083C616C9CA8AF16FA7C690BC673C7 /* Foundation.framework */; };
 		0722631B8A27CA86C38EC986707E927A /* OFB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403FCD707C4CFAA8935840C1A1EF805 /* OFB.swift */; };
 		08700CBB713B443AFA394EFD6B74E402 /* libxmlHTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDE9A1168F0DC6D33677FDA05F7AC3D /* libxmlHTMLNode.swift */; };
-		09B94836EA1E1698F1F7B440359214A8 /* Pods-CampNetKit-CampNet iOS Widget-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B4413F628C2CCDA1691D52E88F8FA58C /* Pods-CampNetKit-CampNet iOS Widget-dummy.m */; };
 		0A09FDE133E395DCB2A16F7990C18A09 /* SecureBytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DB187D74058E236F2F921596099AF8 /* SecureBytes.swift */; };
 		0A84B463BABCA1CD5CE63CD3252F323F /* LineScatterCandleRadarChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C8B0975E05B8B42FA16E9EEB33C054 /* LineScatterCandleRadarChartDataSet.swift */; };
 		0C0DABECE429B7BC34F98DAD145CAE34 /* DynamicButtonStyleArrowUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D833A40F9F4EABD1EA71079085F5E876 /* DynamicButtonStyleArrowUp.swift */; };
 		0CE725310C54DAA2AB6DAF1FA0B57EBE /* RandomBytesSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D75686560FC0B8D39B424A7AA2977F /* RandomBytesSequence.swift */; };
 		0D3E9C2808AF58ED0BDE756891F57093 /* SwiftRater.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EBC54CAE1ABE9231ED796D2BCB7DE /* SwiftRater.swift */; };
 		0D71EB8C3E11EEB929A0E68D4AC7E10D /* SBPlatformDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C5D4AE13887E8B93F6F29370A6CC76 /* SBPlatformDestination.swift */; };
+		0D75BA9DE904ED279F550A22AA1E07C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33083C616C9CA8AF16FA7C690BC673C7 /* Foundation.framework */; };
 		0EC713154C775B365F9B58889D34EDA3 /* SwiftRaterLocalization.strings in Sources */ = {isa = PBXBuildFile; fileRef = A0D9336BFF4AA5208632B8EF892240E5 /* SwiftRaterLocalization.strings */; };
 		0F1E2C99E17511B333F3676550E7D05F /* DynamicButtonPathVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB84F3A6CA5FC4CE21AA85C4F09F34 /* DynamicButtonPathVector.swift */; };
 		0F4B5F1A93D665E7E9A0B8994EE40FE4 /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A6CECE65938B1C9C8E9A940521F2EC /* Data+Extension.swift */; };
@@ -85,6 +85,7 @@
 		312CDB4970A4DB70398C20B6E6D8A1A8 /* UIViewController+AnyPromise.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A073404F89C7C87792AFA8B8AC06287 /* UIViewController+AnyPromise.m */; };
 		322F32F75AC8A04064F70A089800AF88 /* Kanna-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7337F418753672559E444FE8C10063EA /* Kanna-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3626B94094672CB1C9DEA32B9F9502E1 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442748F5E7FDC31BBB53548AA4A6ACD6 /* TaskDelegate.swift */; };
+		36654658482EA9FBEB6920D904E71E26 /* Pods-CampNetKit-CampNet iOS Widget-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F2B79C5D80A25F5A5B8558F690EAD95 /* Pods-CampNetKit-CampNet iOS Widget-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		36F8A0EBEE24E1ED7DF70B54237C95C5 /* Rabbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7559D513AE83E924244F855FA2CE25 /* Rabbit.swift */; };
 		3763321FA6345ED32C370B367AAEFB84 /* SwiftRaterLocalization.strings in Sources */ = {isa = PBXBuildFile; fileRef = 5A32F1288903E9000DFB071AF00C41B5 /* SwiftRaterLocalization.strings */; };
 		3892407590F7B7AAAA487B421A0869F4 /* RadarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5F76C37089FA98CFE89676E9C8059E /* RadarChartView.swift */; };
@@ -221,7 +222,6 @@
 		8A8D1FD7C407985D4CF5FC926A79C167 /* DefaultFillFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5309582857FF8652FDCB1A135214408 /* DefaultFillFormatter.swift */; };
 		8B05083CA44803381B6B7D22F0F76155 /* HorizontalBarChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FC0CF5C8691B871677D1589DD8C5ED /* HorizontalBarChartRenderer.swift */; };
 		8D0E74B2ACD71DC9BD2AFA8F97C36BBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33083C616C9CA8AF16FA7C690BC673C7 /* Foundation.framework */; };
-		8E114E9E6ED777D3DAF2676C9C849228 /* Pods-CampNetKit-CampNet iOS Widget-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F2B79C5D80A25F5A5B8558F690EAD95 /* Pods-CampNetKit-CampNet iOS Widget-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8EB02CA4DBBB1C27C55389D38AD6D5BE /* ChartDataRendererBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105EAECF7F7D93A3C4CFBBFF3BD8B1B /* ChartDataRendererBase.swift */; };
 		8FA9EE6D096BADB9F4C746836EBFE422 /* IBubbleChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC788D561B03324A635973F2598D04F /* IBubbleChartDataSet.swift */; };
 		8FBD53C8BBED7B75ED3A9281BE87DC3D /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8B26747416367C551F3DEB9F26F42C /* Authenticator.swift */; };
@@ -345,7 +345,6 @@
 		D97F4D9EDDB2AB619E77B72257CDC1E7 /* ECB.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD6B826D829B5EA4469050B0BD8439F /* ECB.swift */; };
 		DA81588B8021D88A39C950324466DEA4 /* DynamicButtonStyleArrowLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569EE3B9EF377E4D33343AF64FC57841 /* DynamicButtonStyleArrowLeft.swift */; };
 		DB33AED9998B1903B316A64670148A2A /* LegendEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104D702C42F664001D3D6C5B12EBCA08 /* LegendEntry.swift */; };
-		DB5B987538ED6B5B9D8E31C78DB223B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33083C616C9CA8AF16FA7C690BC673C7 /* Foundation.framework */; };
 		DB627C8A5AAEAF2BAE6CBE630031A2B0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3917A50EB224EEDBC66971700D698782 /* UIKit.framework */; };
 		DBA60E90DFFB006CC41283258F53B894 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464553AE6FE3FF66E0E30D441D278E27 /* Updatable.swift */; };
 		DE7D8E74AF9285815D84DFD2D3377F44 /* ChaCha20.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95741FB83B1972EBAF01BD1A965897 /* ChaCha20.swift */; };
@@ -393,6 +392,7 @@
 		F6BECD98B97CBFEBE2C96F0E9E72A6C0 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCBD9208592C2D7C666F707A96AD2A9 /* ResponseSerialization.swift */; };
 		F7E1991DFFCE919F5D75D773104B701B /* AES.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E9892729E59B13000881283ABB4693 /* AES.swift */; };
 		F81601D7380A2D55DD2EF91F1586894A /* DynamicButtonStyleCaretRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF8D3C9AF1F4ABE405A6AD19338E999 /* DynamicButtonStyleCaretRight.swift */; };
+		F844D3AA14ACBC77C57414DB17A99762 /* Pods-CampNetKit-CampNet iOS Widget-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B4413F628C2CCDA1691D52E88F8FA58C /* Pods-CampNetKit-CampNet iOS Widget-dummy.m */; };
 		F87B1AEA73775B8F7673B53BC9DA047D /* SwiftRaterLocalization.strings in Sources */ = {isa = PBXBuildFile; fileRef = F0F1DE9EC6B2EA2F2069915AA7A52034 /* SwiftRaterLocalization.strings */; };
 		F8A04A00749B2932DC597163FC902993 /* DynamicButtonStyleNone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62EE227C9D7C6DB3490318A8EB36350 /* DynamicButtonStyleNone.swift */; };
 		F8B3D3092ED0417E8CDF32033F6122F5 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47D47971FDF098EBE7BAF3E44BC9261 /* Alamofire.swift */; };
@@ -416,7 +416,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		01D239522ADE41813D02937E60979599 /* PBXContainerItemProxy */ = {
+		06FE94839DAF87EC2864DC9C648F5F8E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -500,6 +500,27 @@
 			remoteGlobalIDString = 4D10E4FF5A483B852B47CCA0B994E340;
 			remoteInfo = Kanna;
 		};
+		3D6C9923AC93642367563F8C186F21CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0170FEDEDC56BB5BB8846EB5C65393B9;
+			remoteInfo = NetUtils;
+		};
+		43BDA1EFD009B5FFF8EA57BC5D9C68B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D10E4FF5A483B852B47CCA0B994E340;
+			remoteInfo = Kanna;
+		};
+		4E2BEC527E29E6B0E33E28EF59B7D5CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B408F4EF8DACAED17EFF083E77405E90;
+			remoteInfo = Yaml;
+		};
 		58A8BA4D5DE48AB3C2F8EF286F89A18B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -507,14 +528,14 @@
 			remoteGlobalIDString = E9D04B585D49F90D5F4846B14893097B;
 			remoteInfo = SwiftRater;
 		};
-		7C9C520924E64780C5B1E690A63FECAB /* PBXContainerItemProxy */ = {
+		6624AC5741BC3327F12C9AA342E31E62 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0170FEDEDC56BB5BB8846EB5C65393B9;
-			remoteInfo = NetUtils;
+			remoteGlobalIDString = B688024B71CD11E9CF72392ECADC195F;
+			remoteInfo = PromiseKit;
 		};
-		9066FBCB5E4C4A153F231C733B6970DB /* PBXContainerItemProxy */ = {
+		7C9C520924E64780C5B1E690A63FECAB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -549,26 +570,19 @@
 			remoteGlobalIDString = F307B842FF76B2DE6C55DB67C0885325;
 			remoteInfo = Charts;
 		};
-		A19EA3A36B5BC149C63AAD23E5EAA45F /* PBXContainerItemProxy */ = {
+		A93C0771B45ADB95AA7EFC985E7AD56E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 88E9EC28B8B46C3631E6B242B50F4442;
+			remoteInfo = Alamofire;
+		};
+		B4D43B411A2576F0EC16559A6CF1EC95 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 5035786467D5191E2D74F374BC719CA4;
 			remoteInfo = SwiftyBeaver;
-		};
-		B22C38E051F3C8F4B73F44F79B19A508 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4D10E4FF5A483B852B47CCA0B994E340;
-			remoteInfo = Kanna;
-		};
-		B7F16818E560E2B41CE111244C64778C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6BB1C1403B2419F911818DA8413FDA07;
-			remoteInfo = CryptoSwift;
 		};
 		B926C8FB30D1F70FEDA3F0494E406BE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -577,19 +591,19 @@
 			remoteGlobalIDString = B688024B71CD11E9CF72392ECADC195F;
 			remoteInfo = PromiseKit;
 		};
-		BEE2C605721DC149106267DA14A2775B /* PBXContainerItemProxy */ = {
+		CA52AB6F0173AC45C0700FA38975CD8B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8905DB6521F8FDC34752B69DEE3FDEB7;
-			remoteInfo = KeychainAccess;
+			remoteGlobalIDString = 6BB1C1403B2419F911818DA8413FDA07;
+			remoteInfo = CryptoSwift;
 		};
-		CE6563CB03C09F2AFE10EE3431126F36 /* PBXContainerItemProxy */ = {
+		D32B7681A66FCBBE8BC079601D9E4509 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B408F4EF8DACAED17EFF083E77405E90;
-			remoteInfo = Yaml;
+			remoteGlobalIDString = F307B842FF76B2DE6C55DB67C0885325;
+			remoteInfo = Charts;
 		};
 		DAF775B8AEDA732AB307FD9A4B7DB16B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -598,12 +612,12 @@
 			remoteGlobalIDString = 0170FEDEDC56BB5BB8846EB5C65393B9;
 			remoteInfo = NetUtils;
 		};
-		E1E2F90543505985AD896B2E6CD57B6D /* PBXContainerItemProxy */ = {
+		E490351454BE6F129DA71D7F87F2F045 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 88E9EC28B8B46C3631E6B242B50F4442;
-			remoteInfo = Alamofire;
+			remoteGlobalIDString = 8905DB6521F8FDC34752B69DEE3FDEB7;
+			remoteInfo = KeychainAccess;
 		};
 		E59FA5D82465A5F7B28CF8F828F458EF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -618,13 +632,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 6CED21A30112252ED22A28FE9BB968A5;
 			remoteInfo = SwiftyUserDefaults;
-		};
-		F0C28C660B89C00533C0781FF6E2F1D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B688024B71CD11E9CF72392ECADC195F;
-			remoteInfo = PromiseKit;
 		};
 		F19B60075D758E77E1F475E1B82E6007 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1220,14 +1227,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D6F4BB41E23B78CAE2944B5F03DD5663 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB5B987538ED6B5B9D8E31C78DB223B4 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D85787F9A1F390DE0D501F97F3A671DB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1242,6 +1241,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FDA626E2281B75AAB68B5CDD89C3844 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAF105C0722DA0F9D199A908F9F0A3F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D75BA9DE904ED279F550A22AA1E07C5 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2190,14 +2197,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DD6784D3A0376121968EC153C977760A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8E114E9E6ED777D3DAF2676C9C849228 /* Pods-CampNetKit-CampNet iOS Widget-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E0B8FC3C42567C239A9D51ED5D27D424 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -2219,6 +2218,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				627DB82F916E6224743447DA1B6413F7 /* DynamicButton-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA3C96CE2CB7B70C9C843DD18DC16CFB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36654658482EA9FBEB6920D904E71E26 /* Pods-CampNetKit-CampNet iOS Widget-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2357,6 +2364,33 @@
 			productReference = 99681C862E448A607CD12A06BE50F4EA /* SwiftyBeaver.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		6956B735D7A6D6A64B192DDD6C4D7FD9 /* Pods-CampNetKit-CampNet iOS Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD57F8F173C45CE90D5A2F45430365B3 /* Build configuration list for PBXNativeTarget "Pods-CampNetKit-CampNet iOS Widget" */;
+			buildPhases = (
+				97285611CF851977D7967A3F75D14F25 /* Sources */,
+				EAF105C0722DA0F9D199A908F9F0A3F6 /* Frameworks */,
+				FA3C96CE2CB7B70C9C843DD18DC16CFB /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BF61B837FD5F6896A59EFD9DA71F5833 /* PBXTargetDependency */,
+				34FBAF4D1BEDAA49A98D47424DBAB4E9 /* PBXTargetDependency */,
+				A57E28AF7255F594B272F952DC459826 /* PBXTargetDependency */,
+				083229B7D731A2050A1D5979E41380FB /* PBXTargetDependency */,
+				90F0A1F82BF355BEC0AED852616ECD80 /* PBXTargetDependency */,
+				B35BEE7CC198CEB72E6684D9C99487F2 /* PBXTargetDependency */,
+				0660907FD8A7456832A4FF028B4E7203 /* PBXTargetDependency */,
+				1D14EF73D38247A0B7AFD3B18098AB71 /* PBXTargetDependency */,
+				58032D3B531606FD6A85BA4CD1126EA1 /* PBXTargetDependency */,
+				61A3653E7E274DDC8E963E18D38CBB1B /* PBXTargetDependency */,
+			);
+			name = "Pods-CampNetKit-CampNet iOS Widget";
+			productName = "Pods-CampNetKit-CampNet iOS Widget";
+			productReference = A02BE238B8A485E1BB9F5B665F3E5B2E /* Pods_CampNetKit_CampNet_iOS_Widget.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		6BB1C1403B2419F911818DA8413FDA07 /* CryptoSwift */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4F2D4DEFD9716C954D1E8ADC5D5601A5 /* Build configuration list for PBXNativeTarget "CryptoSwift" */;
@@ -2389,32 +2423,6 @@
 			name = SwiftyUserDefaults;
 			productName = SwiftyUserDefaults;
 			productReference = 7B1DF94B940CF0C005F1F1D21B23846B /* SwiftyUserDefaults.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		871AC74AD66A1291894CF809E6F00220 /* Pods-CampNetKit-CampNet iOS Widget */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 834B44FF30503C1F8874A1D2A92A3C8D /* Build configuration list for PBXNativeTarget "Pods-CampNetKit-CampNet iOS Widget" */;
-			buildPhases = (
-				3D9CB25489F3C34DEF4EBAE7A9B225E9 /* Sources */,
-				D6F4BB41E23B78CAE2944B5F03DD5663 /* Frameworks */,
-				DD6784D3A0376121968EC153C977760A /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EA6BC46E87A92B11CB6C3E8CB02FD8F6 /* PBXTargetDependency */,
-				EA67E34DB845EF673716669028E0D5C5 /* PBXTargetDependency */,
-				0D2EDA32649A10A5ECFE843D3E14DB2A /* PBXTargetDependency */,
-				5BAEFFF0F9CE1D4B624C2FED02FD7E88 /* PBXTargetDependency */,
-				4F30411D22A1D10F970B8B2AAFA7B4D1 /* PBXTargetDependency */,
-				98CD1847F1E086783842AADABF04F862 /* PBXTargetDependency */,
-				B9DCAC59F3F969574AD2A8EAF3D84EF8 /* PBXTargetDependency */,
-				7F0735F44B25585C2F8730EBF59F5337 /* PBXTargetDependency */,
-				D3EDC502A8F56C99B265A0EBCE9EC434 /* PBXTargetDependency */,
-			);
-			name = "Pods-CampNetKit-CampNet iOS Widget";
-			productName = "Pods-CampNetKit-CampNet iOS Widget";
-			productReference = A02BE238B8A485E1BB9F5B665F3E5B2E /* Pods_CampNetKit_CampNet_iOS_Widget.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */ = {
@@ -2567,7 +2575,7 @@
 				0170FEDEDC56BB5BB8846EB5C65393B9 /* NetUtils */,
 				35C6E88E0D9F0E3DD7309AD7276CBC58 /* Pods-CampNet iOS */,
 				2686B8C5B5576F39F105E3C679B56ECE /* Pods-CampNetKit */,
-				871AC74AD66A1291894CF809E6F00220 /* Pods-CampNetKit-CampNet iOS Widget */,
+				6956B735D7A6D6A64B192DDD6C4D7FD9 /* Pods-CampNetKit-CampNet iOS Widget */,
 				B688024B71CD11E9CF72392ECADC195F /* PromiseKit */,
 				E9D04B585D49F90D5F4846B14893097B /* SwiftRater */,
 				5035786467D5191E2D74F374BC719CA4 /* SwiftyBeaver */,
@@ -2630,14 +2638,6 @@
 				3626B94094672CB1C9DEA32B9F9502E1 /* TaskDelegate.swift in Sources */,
 				10EB23E9ECC4B33E16933BB1EA560B6A /* Timeline.swift in Sources */,
 				BBEFE2F9CEB73DC7BD97FFA66A0D9D4F /* Validation.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D9CB25489F3C34DEF4EBAE7A9B225E9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				09B94836EA1E1698F1F7B440359214A8 /* Pods-CampNetKit-CampNet iOS Widget-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2747,6 +2747,14 @@
 				0D71EB8C3E11EEB929A0E68D4AC7E10D /* SBPlatformDestination.swift in Sources */,
 				51B40879D35DCE6FB27242E9E7E84461 /* SwiftyBeaver-dummy.m in Sources */,
 				22824FD973B2E209F600572567C31D12 /* SwiftyBeaver.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97285611CF851977D7967A3F75D14F25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F844D3AA14ACBC77C57414DB17A99762 /* Pods-CampNetKit-CampNet iOS Widget-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3056,11 +3064,23 @@
 			target = 8905DB6521F8FDC34752B69DEE3FDEB7 /* KeychainAccess */;
 			targetProxy = 1AAC812E5DB8343EDCF3B0180F898FF7 /* PBXContainerItemProxy */;
 		};
-		0D2EDA32649A10A5ECFE843D3E14DB2A /* PBXTargetDependency */ = {
+		0660907FD8A7456832A4FF028B4E7203 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PromiseKit;
+			target = B688024B71CD11E9CF72392ECADC195F /* PromiseKit */;
+			targetProxy = 6624AC5741BC3327F12C9AA342E31E62 /* PBXContainerItemProxy */;
+		};
+		083229B7D731A2050A1D5979E41380FB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Kanna;
 			target = 4D10E4FF5A483B852B47CCA0B994E340 /* Kanna */;
-			targetProxy = B22C38E051F3C8F4B73F44F79B19A508 /* PBXContainerItemProxy */;
+			targetProxy = 43BDA1EFD009B5FFF8EA57BC5D9C68B5 /* PBXContainerItemProxy */;
+		};
+		1D14EF73D38247A0B7AFD3B18098AB71 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyBeaver;
+			target = 5035786467D5191E2D74F374BC719CA4 /* SwiftyBeaver */;
+			targetProxy = B4D43B411A2576F0EC16559A6CF1EC95 /* PBXContainerItemProxy */;
 		};
 		2198DAB1D2AC5FD5CBF4B677E8C02BFA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3068,17 +3088,17 @@
 			target = 6BB1C1403B2419F911818DA8413FDA07 /* CryptoSwift */;
 			targetProxy = 927C571CF13343760082E533EC81FC86 /* PBXContainerItemProxy */;
 		};
+		34FBAF4D1BEDAA49A98D47424DBAB4E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			target = F307B842FF76B2DE6C55DB67C0885325 /* Charts */;
+			targetProxy = D32B7681A66FCBBE8BC079601D9E4509 /* PBXContainerItemProxy */;
+		};
 		4E74604B96B1618847AB8390A9B4C5C4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Yaml;
 			target = B408F4EF8DACAED17EFF083E77405E90 /* Yaml */;
 			targetProxy = 0EDA11519C849531E17120FC822AB4D0 /* PBXContainerItemProxy */;
-		};
-		4F30411D22A1D10F970B8B2AAFA7B4D1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = NetUtils;
-			target = 0170FEDEDC56BB5BB8846EB5C65393B9 /* NetUtils */;
-			targetProxy = 9066FBCB5E4C4A153F231C733B6970DB /* PBXContainerItemProxy */;
 		};
 		53E842B0C1FD2EC143AB229CA4CC4445 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3098,6 +3118,12 @@
 			target = 5035786467D5191E2D74F374BC719CA4 /* SwiftyBeaver */;
 			targetProxy = F19B60075D758E77E1F475E1B82E6007 /* PBXContainerItemProxy */;
 		};
+		58032D3B531606FD6A85BA4CD1126EA1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyUserDefaults;
+			target = 6CED21A30112252ED22A28FE9BB968A5 /* SwiftyUserDefaults */;
+			targetProxy = 06FE94839DAF87EC2864DC9C648F5F8E /* PBXContainerItemProxy */;
+		};
 		58EBD6E0241E1724E5DB35939AD5A6F0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Alamofire;
@@ -3116,12 +3142,6 @@
 			target = 6BB1C1403B2419F911818DA8413FDA07 /* CryptoSwift */;
 			targetProxy = 1E2664E6272C8C7920C7F4B7DEAC5C9F /* PBXContainerItemProxy */;
 		};
-		5BAEFFF0F9CE1D4B624C2FED02FD7E88 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = KeychainAccess;
-			target = 8905DB6521F8FDC34752B69DEE3FDEB7 /* KeychainAccess */;
-			targetProxy = BEE2C605721DC149106267DA14A2775B /* PBXContainerItemProxy */;
-		};
 		5C5D83D89E9099B14A6FBA8D83F87F72 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftRater;
@@ -3133,6 +3153,12 @@
 			name = SwiftyUserDefaults;
 			target = 6CED21A30112252ED22A28FE9BB968A5 /* SwiftyUserDefaults */;
 			targetProxy = E7F95997EE873CD17E1223567B994F38 /* PBXContainerItemProxy */;
+		};
+		61A3653E7E274DDC8E963E18D38CBB1B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Yaml;
+			target = B408F4EF8DACAED17EFF083E77405E90 /* Yaml */;
+			targetProxy = 4E2BEC527E29E6B0E33E28EF59B7D5CE /* PBXContainerItemProxy */;
 		};
 		6A87CCC8A634DF6A2F03631AE56D21A9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3152,12 +3178,6 @@
 			target = 8905DB6521F8FDC34752B69DEE3FDEB7 /* KeychainAccess */;
 			targetProxy = 148DCC207C3620095AD231AE5064BDF0 /* PBXContainerItemProxy */;
 		};
-		7F0735F44B25585C2F8730EBF59F5337 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftyUserDefaults;
-			target = 6CED21A30112252ED22A28FE9BB968A5 /* SwiftyUserDefaults */;
-			targetProxy = 01D239522ADE41813D02937E60979599 /* PBXContainerItemProxy */;
-		};
 		80DA633B4E444492F215AF54D6497499 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = PromiseKit;
@@ -3170,17 +3190,17 @@
 			target = 0170FEDEDC56BB5BB8846EB5C65393B9 /* NetUtils */;
 			targetProxy = 7C9C520924E64780C5B1E690A63FECAB /* PBXContainerItemProxy */;
 		};
+		90F0A1F82BF355BEC0AED852616ECD80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KeychainAccess;
+			target = 8905DB6521F8FDC34752B69DEE3FDEB7 /* KeychainAccess */;
+			targetProxy = E490351454BE6F129DA71D7F87F2F045 /* PBXContainerItemProxy */;
+		};
 		92B0BF6E63D5A00EC50D525E880BC982 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Alamofire;
 			target = 88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */;
 			targetProxy = 289723F52C959235142F6B3687468027 /* PBXContainerItemProxy */;
-		};
-		98CD1847F1E086783842AADABF04F862 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PromiseKit;
-			target = B688024B71CD11E9CF72392ECADC195F /* PromiseKit */;
-			targetProxy = F0C28C660B89C00533C0781FF6E2F1D4 /* PBXContainerItemProxy */;
 		};
 		9B78FF5A66CE9145AF1969CF376D0599 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3188,11 +3208,23 @@
 			target = 4D10E4FF5A483B852B47CCA0B994E340 /* Kanna */;
 			targetProxy = 30BCAC1F9CCA8931FC2503ADC54A6CF0 /* PBXContainerItemProxy */;
 		};
+		A57E28AF7255F594B272F952DC459826 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CryptoSwift;
+			target = 6BB1C1403B2419F911818DA8413FDA07 /* CryptoSwift */;
+			targetProxy = CA52AB6F0173AC45C0700FA38975CD8B /* PBXContainerItemProxy */;
+		};
 		B2BAAE793CC137BC1DA1F23054B49389 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftyBeaver;
 			target = 5035786467D5191E2D74F374BC719CA4 /* SwiftyBeaver */;
 			targetProxy = E59FA5D82465A5F7B28CF8F828F458EF /* PBXContainerItemProxy */;
+		};
+		B35BEE7CC198CEB72E6684D9C99487F2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NetUtils;
+			target = 0170FEDEDC56BB5BB8846EB5C65393B9 /* NetUtils */;
+			targetProxy = 3D6C9923AC93642367563F8C186F21CB /* PBXContainerItemProxy */;
 		};
 		B3E2EC63AF66165E69652582F33BE0F8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -3200,41 +3232,23 @@
 			target = 4D10E4FF5A483B852B47CCA0B994E340 /* Kanna */;
 			targetProxy = 95A328A5A84BA372B7A9DCCB52368BF0 /* PBXContainerItemProxy */;
 		};
-		B9DCAC59F3F969574AD2A8EAF3D84EF8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftyBeaver;
-			target = 5035786467D5191E2D74F374BC719CA4 /* SwiftyBeaver */;
-			targetProxy = A19EA3A36B5BC149C63AAD23E5EAA45F /* PBXContainerItemProxy */;
-		};
 		B9E3869632A3D35B926FADAEE2486B6F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftyUserDefaults;
 			target = 6CED21A30112252ED22A28FE9BB968A5 /* SwiftyUserDefaults */;
 			targetProxy = 945450E9DA389ECA37D3C247481F1F07 /* PBXContainerItemProxy */;
 		};
-		D3EDC502A8F56C99B265A0EBCE9EC434 /* PBXTargetDependency */ = {
+		BF61B837FD5F6896A59EFD9DA71F5833 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = Yaml;
-			target = B408F4EF8DACAED17EFF083E77405E90 /* Yaml */;
-			targetProxy = CE6563CB03C09F2AFE10EE3431126F36 /* PBXContainerItemProxy */;
+			name = Alamofire;
+			target = 88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */;
+			targetProxy = A93C0771B45ADB95AA7EFC985E7AD56E /* PBXContainerItemProxy */;
 		};
 		DC329D1A772ACD68104532F40EA689A1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = DynamicButton;
 			target = BA074C577779FF88EB7926723ED9D0B1 /* DynamicButton */;
 			targetProxy = 0D184122081EEC23F7D3AE404D7C0204 /* PBXContainerItemProxy */;
-		};
-		EA67E34DB845EF673716669028E0D5C5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CryptoSwift;
-			target = 6BB1C1403B2419F911818DA8413FDA07 /* CryptoSwift */;
-			targetProxy = B7F16818E560E2B41CE111244C64778C /* PBXContainerItemProxy */;
-		};
-		EA6BC46E87A92B11CB6C3E8CB02FD8F6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Alamofire;
-			target = 88E9EC28B8B46C3631E6B242B50F4442 /* Alamofire */;
-			targetProxy = E1E2F90543505985AD896B2E6CD57B6D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3531,6 +3545,42 @@
 			};
 			name = Release;
 		};
+		3E6FD9D076894A090DEF68C13484BA04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B45738B2203EF1A97B3CC6C5EC06A0D /* Charts.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Charts/Charts-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Charts/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Charts/Charts.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Charts;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		3EBDE041E7EB42EB0EDAB3641FF0B554 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A23292B559A3FEA160784120D2CE058C /* CryptoSwift.xcconfig */;
@@ -3639,9 +3689,49 @@
 			};
 			name = Release;
 		};
-		65D8F89964335C0B70E597BFB4A8A881 /* Release */ = {
+		53527F36B9A97489FBB3777F08DA49F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C00EB6B5350003A7EF1D3A04FE4711E8 /* Pods-CampNetKit-CampNet iOS Widget.release.xcconfig */;
+			baseConfigurationReference = 035518F799B04A4039C7324058718BA9 /* Pods-CampNetKit-CampNet iOS Widget.debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-CampNetKit-CampNet iOS Widget/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CampNetKit-CampNet iOS Widget/Pods-CampNetKit-CampNet iOS Widget.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CampNetKit_CampNet_iOS_Widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5D92B989847F33DC84DC5BC3BD6B87C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B45738B2203EF1A97B3CC6C5EC06A0D /* Charts.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -3656,20 +3746,17 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-CampNetKit-CampNet iOS Widget/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Charts/Charts-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Charts/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CampNetKit-CampNet iOS Widget/Pods-CampNetKit-CampNet iOS Widget.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Charts/Charts.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_CampNetKit_CampNet_iOS_Widget;
+				PRODUCT_NAME = Charts;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4054,10 +4141,11 @@
 			};
 			name = Debug;
 		};
-		AD5C918AD5130BB8232B8DB68C1A74D8 /* Release */ = {
+		AA7FFFF183F0449D221A36689E93F8C3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B45738B2203EF1A97B3CC6C5EC06A0D /* Charts.xcconfig */;
+			baseConfigurationReference = C00EB6B5350003A7EF1D3A04FE4711E8 /* Pods-CampNetKit-CampNet iOS Widget.release.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -4070,17 +4158,20 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Charts/Charts-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Charts/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-CampNetKit-CampNet iOS Widget/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Charts/Charts.modulemap";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CampNetKit-CampNet iOS Widget/Pods-CampNetKit-CampNet iOS Widget.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Charts;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CampNetKit_CampNet_iOS_Widget;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4351,46 +4442,6 @@
 			};
 			name = Debug;
 		};
-		CED22555FB4A45CB27FDFEE25849819E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 035518F799B04A4039C7324058718BA9 /* Pods-CampNetKit-CampNet iOS Widget.debug.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-CampNetKit-CampNet iOS Widget/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-CampNetKit-CampNet iOS Widget/Pods-CampNetKit-CampNet iOS Widget.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_CampNetKit_CampNet_iOS_Widget;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		D912958F7528A14B1915E53374E07E1D /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F2533A81E8D3EF2C997E9AE6FE243B61 /* SwiftRater.xcconfig */;
@@ -4502,41 +4553,6 @@
 			};
 			name = Debug;
 		};
-		FEB514B5C02BB88A29C8EFF36B049B57 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B45738B2203EF1A97B3CC6C5EC06A0D /* Charts.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Charts/Charts-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Charts/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Charts/Charts.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Charts;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -4621,15 +4637,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		834B44FF30503C1F8874A1D2A92A3C8D /* Build configuration list for PBXNativeTarget "Pods-CampNetKit-CampNet iOS Widget" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CED22555FB4A45CB27FDFEE25849819E /* Debug */,
-				65D8F89964335C0B70E597BFB4A8A881 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		8F7A42C5DA56B7ACF8FB582C8F3981B3 /* Build configuration list for PBXNativeTarget "SwiftRater" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -4669,8 +4676,8 @@
 		B884B744051112994AC77F888AEB0925 /* Build configuration list for PBXNativeTarget "Charts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FEB514B5C02BB88A29C8EFF36B049B57 /* Debug */,
-				AD5C918AD5130BB8232B8DB68C1A74D8 /* Release */,
+				3E6FD9D076894A090DEF68C13484BA04 /* Debug */,
+				5D92B989847F33DC84DC5BC3BD6B87C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -4689,6 +4696,15 @@
 			buildConfigurations = (
 				980D7DC5CF8E9634CA1D18A2FC685886 /* Debug */,
 				02019674604E8BA09E9EEA02FCCFD2EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD57F8F173C45CE90D5A2F45430365B3 /* Build configuration list for PBXNativeTarget "Pods-CampNetKit-CampNet iOS Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53527F36B9A97489FBB3777F08DA49F9 /* Debug */,
+				AA7FFFF183F0449D221A36689E93F8C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
