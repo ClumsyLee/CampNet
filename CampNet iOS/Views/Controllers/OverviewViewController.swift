@@ -391,8 +391,9 @@ class OverviewViewController: UITableViewController {
         chart.notifyDataSetChanged()
     }
 
-    func reload() {
-        account = Account.main
+    func reload(_ account: Account?) {
+        self.account = account
+
         if refreshControl!.isRefreshing {
             refreshControl!.endRefreshing()  // Doing it alone will cause a bug on iOS 9.
         }
@@ -403,11 +404,33 @@ class OverviewViewController: UITableViewController {
         reloadProfile()
         reloadHistory()
 
-        refreshIfNeeded()  // Triger initial refresh if needed.
+        refreshIfNeeded()
+    }
+
+    func accountAdded(_ notification: Notification) {
+        guard account != nil else {
+            return // This is actually a new account, update will be performed so we do not need to valid it now.
+        }
+
+        if let account = notification.userInfo?["account"] as? Account {
+            _ = account.profile(autoLogout: false)  // Validate the account.
+        }
     }
 
     func mainChanged(_ notification: Notification) {
-        reload()
+        let main = notification.userInfo?["toAccount"] as? Account
+
+        if let account = account {
+            if let main = main, account == main {
+                // Nothing happened actually.
+            } else {
+                reload(main)
+            }
+        } else {
+            if main != nil {
+                reload(main)
+            }
+        }
     }
 
     func statusUpdated(_ notification: Notification) {
@@ -496,8 +519,9 @@ class OverviewViewController: UITableViewController {
         maxLimitLine.valueTextColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         maxLimitLine.labelPosition = .rightTop
 
-        self.reload()
+        self.reload(Account.main)
 
+        NotificationCenter.default.addObserver(self, selector: #selector(accountAdded(_:)), name: .accountAdded, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)), name: .mainAccountChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(statusUpdated(_:)), name: .accountStatusUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)), name: .accountProfileUpdated, object: nil)

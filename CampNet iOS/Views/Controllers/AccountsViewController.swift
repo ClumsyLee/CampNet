@@ -57,8 +57,6 @@ class AccountsViewController: UITableViewController {
     
     func accountAdded(_ notification: Notification) {
         if let account = notification.userInfo?["account"] as? Account {
-            _ = updateProfile(of: account)  // Update the new account in the background.
-            
             // Insert account into the table.
             let identifier = account.configuration.identifier
             let name = account.configuration.displayName
