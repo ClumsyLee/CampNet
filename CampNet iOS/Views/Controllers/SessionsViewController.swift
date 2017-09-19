@@ -59,12 +59,12 @@ class SessionsViewController: UITableViewController {
         reloadSessions()
     }
 
-    func mainChanged(_ notification: Notification) {
+    @objc func mainChanged(_ notification: Notification) {
         reload()
         tableView.reloadData()
     }
     
-    func profileUpdated(_ notification: Notification) {
+    @objc func profileUpdated(_ notification: Notification) {
         guard let account = notification.userInfo?["account"] as? Account, self.account == account else {
             return
         }
@@ -100,7 +100,7 @@ class SessionsViewController: UITableViewController {
         tableView.endUpdates()
     }
     
-    func updateStartTimes() {
+    @objc func updateStartTimes() {
         for (index, session) in sessions.enumerated() {
             let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? SessionCell
             cell?.updateStartTime(date: session.startTime)

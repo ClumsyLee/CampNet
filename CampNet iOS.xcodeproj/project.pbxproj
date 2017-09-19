@@ -28,7 +28,6 @@
 		0F464C631F13DB6E00C2F58B /* YamlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C621F13DB6E00C2F58B /* YamlExtensions.swift */; };
 		0F464C651F13ED0F00C2F58B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C641F13ED0F00C2F58B /* StringExtensions.swift */; };
 		0F464C721F14093E00C2F58B /* BillingGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C711F14093E00C2F58B /* BillingGroup.swift */; };
-		0F464C741F1415A000C2F58B /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C731F1415A000C2F58B /* CollectionExtensions.swift */; };
 		0F46CC831F17837700AF1FC9 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F46CC821F17837700AF1FC9 /* AccountsViewController.swift */; };
 		0F52FE121F29F1C800A88E90 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F52FE111F29F1C800A88E90 /* SettingsViewController.swift */; };
 		0F56148C1F31A167008A1232 /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F56148B1F31A167008A1232 /* SessionDetailViewController.swift */; };
@@ -142,7 +141,6 @@
 		0F464C621F13DB6E00C2F58B /* YamlExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YamlExtensions.swift; path = Extensions/YamlExtensions.swift; sourceTree = "<group>"; };
 		0F464C641F13ED0F00C2F58B /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
 		0F464C711F14093E00C2F58B /* BillingGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillingGroup.swift; path = Models/BillingGroup.swift; sourceTree = "<group>"; };
-		0F464C731F1415A000C2F58B /* CollectionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionExtensions.swift; path = Extensions/CollectionExtensions.swift; sourceTree = "<group>"; };
 		0F46CC821F17837700AF1FC9 /* AccountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountsViewController.swift; path = Views/Controllers/AccountsViewController.swift; sourceTree = "<group>"; };
 		0F52FE111F29F1C800A88E90 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Views/Controllers/SettingsViewController.swift; sourceTree = "<group>"; };
 		0F56148B1F31A167008A1232 /* SessionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDetailViewController.swift; path = Views/Controllers/SessionDetailViewController.swift; sourceTree = "<group>"; };
@@ -305,7 +303,6 @@
 			isa = PBXGroup;
 			children = (
 				0FC6E2A31F175DE5002861F3 /* ArrayExtensions.swift */,
-				0F464C731F1415A000C2F58B /* CollectionExtensions.swift */,
 				0F7A93FA1F25E34C0093B3FA /* DoubleExtensions.swift */,
 				0F8650741F1F8F9400C654C4 /* IntExtensions.swift */,
 				0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */,
@@ -529,7 +526,7 @@
 					0F14E7701E2E3AAC0092494B = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 7494335NRW;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -546,17 +543,19 @@
 					0F1ED5CB1F138832004A6C1F = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 7494335NRW;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					0F8DBDCB1F54ECFB00879276 = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 0F14E7701E2E3AAC0092494B;
 					};
 					0F9AAD041F535C5B00E14838 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 7494335NRW;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -829,7 +828,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F464C651F13ED0F00C2F58B /* StringExtensions.swift in Sources */,
-				0F464C741F1415A000C2F58B /* CollectionExtensions.swift in Sources */,
 				0F464C581F13AD7900C2F58B /* Configuration.swift in Sources */,
 				0F5614951F31DEA2008A1232 /* WifiAddress.swift in Sources */,
 				0F464C5C1F13CB1100C2F58B /* Action.swift in Sources */,
@@ -1079,7 +1077,8 @@
 				PROVISIONING_PROFILE = "f5c7019a-74f3-43ae-a08b-a80d43cab922";
 				PROVISIONING_PROFILE_SPECIFIER = "CampNet iOS Development";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1100,7 +1099,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "f4eb85ed-301c-4fdf-970a-bc9a941e8b4f";
 				PROVISIONING_PROFILE_SPECIFIER = "CampNet iOS Distribution";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1126,7 +1126,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1152,7 +1153,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.clumsylee.CampNetKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1171,7 +1173,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = "CampNet iOS";
 			};
 			name = Debug;
@@ -1189,7 +1192,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = "CampNet iOS";
 			};
 			name = Release;
@@ -1209,7 +1213,8 @@
 				PROVISIONING_PROFILE = "83bf1532-4744-4822-b8e7-01143776bb3e";
 				PROVISIONING_PROFILE_SPECIFIER = "CampNet iOS Widget Development";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1229,7 +1234,8 @@
 				PROVISIONING_PROFILE = "357c6d3d-a67e-4cc1-8c2a-2af70e9ac4bf";
 				PROVISIONING_PROFILE_SPECIFIER = "CampNet iOS Widget Distribution";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

@@ -56,7 +56,7 @@ class AccountDetailViewController: UITableViewController {
         reloadProfile()
     }
 
-    func profileUpdated(_ notification: Notification) {
+    @objc func profileUpdated(_ notification: Notification) {
         guard let account = notification.userInfo?["account"] as? Account, account == self.account else {
             return
         }

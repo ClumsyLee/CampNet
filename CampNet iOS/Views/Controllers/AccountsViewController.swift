@@ -25,7 +25,7 @@ class AccountsViewController: UITableViewController {
             }
         }
         
-        when(resolved: promises).always { _ in
+        when(resolved: promises).always { 
             self.refreshControl?.endRefreshing()
         }
     }
@@ -55,7 +55,7 @@ class AccountsViewController: UITableViewController {
         return nil
     }
     
-    func accountAdded(_ notification: Notification) {
+    @objc func accountAdded(_ notification: Notification) {
         if let account = notification.userInfo?["account"] as? Account {
             // Insert account into the table.
             let identifier = account.configuration.identifier
@@ -105,7 +105,7 @@ class AccountsViewController: UITableViewController {
         tableView.insertSections(IndexSet(integer: section), with: .automatic)
     }
     
-    func accountRemoved(_ notification: Notification) {
+    @objc func accountRemoved(_ notification: Notification) {
         if let indexPath = indexPath(of: notification.userInfo?["account"] as? Account) {
             
             accounts[indexPath.section].accounts.remove(at: indexPath.row)
@@ -118,7 +118,7 @@ class AccountsViewController: UITableViewController {
         }
     }
     
-    func mainChanged(_ notification: Notification) {
+    @objc func mainChanged(_ notification: Notification) {
         if let fromIndexPath = indexPath(of: notification.userInfo?["fromAccount"] as? Account) {
             if let cell = tableView.cellForRow(at: fromIndexPath) as? AccountCell {
                 cell.isMain = false
@@ -132,7 +132,7 @@ class AccountsViewController: UITableViewController {
         }
     }
     
-    func profileUpdated(_ notification: Notification) {
+    @objc func profileUpdated(_ notification: Notification) {
         guard let account = notification.userInfo?["account"] as? Account,
               let indexPath = indexPath(of: account) else {
             return

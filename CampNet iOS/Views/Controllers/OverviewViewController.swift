@@ -208,8 +208,8 @@ class OverviewViewController: UITableViewController {
         }
     }
 
-    func reloadNetwork() {
-        if let wifi = NEHotspotHelper.supportedNetworkInterfaces().first as? NEHotspotNetwork, !wifi.ssid.isEmpty {
+    @objc func reloadNetwork() {
+        if let wifi = NEHotspotHelper.supportedNetworkInterfaces()?.first as? NEHotspotNetwork, !wifi.ssid.isEmpty {
             network = wifi
             networkName.text = wifi.ssid
             networkButton.isEnabled = true
@@ -397,7 +397,7 @@ class OverviewViewController: UITableViewController {
         refreshIfNeeded()
     }
 
-    func accountAdded(_ notification: Notification) {
+    @objc func accountAdded(_ notification: Notification) {
         guard account != nil else {
             return // This is actually a new account, update will be performed so we do not need to valid it now.
         }
@@ -407,7 +407,7 @@ class OverviewViewController: UITableViewController {
         }
     }
 
-    func mainChanged(_ notification: Notification) {
+    @objc func mainChanged(_ notification: Notification) {
         let main = notification.userInfo?["toAccount"] as? Account
 
         if let account = account {
@@ -423,19 +423,19 @@ class OverviewViewController: UITableViewController {
         }
     }
 
-    func statusUpdated(_ notification: Notification) {
+    @objc func statusUpdated(_ notification: Notification) {
         reloadStatus()
     }
 
-    func profileUpdated(_ notification: Notification) {
+    @objc func profileUpdated(_ notification: Notification) {
         reloadProfile()
     }
 
-    func historyUpdated(_ notification: Notification) {
+    @objc func historyUpdated(_ notification: Notification) {
         reloadHistory()
     }
 
-    func didBecomeActive(_ notification: Notification) {
+    @objc func didBecomeActive(_ notification: Notification) {
         refreshIfNeeded()
     }
 

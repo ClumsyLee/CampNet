@@ -24,24 +24,14 @@ extension String {
         }
         return string
     }
-    
-    subscript (index: Int) -> String {
-        return String(self[self.index(self.startIndex, offsetBy: index)])
-    }
-    
-    subscript (range: Range<Int>) -> String {
-        let startIndex =  self.index(self.startIndex, offsetBy: range.lowerBound)
-        let endIndex = self.index(startIndex, offsetBy: range.upperBound - range.lowerBound)
-        return self[startIndex..<endIndex]
-    }
-    
+
     var trimmed: String {
         return trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
     func chopPrefix(_ prefix: String) -> String? {
         if hasPrefix(prefix) {
-            return substring(from: index(startIndex, offsetBy: prefix.characters.count))
+            return String(self[index(startIndex, offsetBy: prefix.count)...])
         } else {
             return nil
         }

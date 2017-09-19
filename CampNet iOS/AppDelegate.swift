@@ -187,7 +187,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
-    func accountLoginError(_ notification: Notification) {
+    @objc func accountLoginError(_ notification: Notification) {
         guard let account = notification.userInfo?["account"] as? Account,
               let error = notification.userInfo?["error"] as? CampNetError else {
             return
@@ -211,7 +211,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
-    func accountLogoutError(_ notification: Notification) {
+    @objc func accountLogoutError(_ notification: Notification) {
         guard let account = notification.userInfo?["account"] as? Account,
               let error = notification.userInfo?["error"] as? CampNetError else {
             return
@@ -221,7 +221,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         showErrorBanner(title: title, body: error.localizedDescription)
     }
     
-    func accountStatusError(_ notification: Notification) {
+    @objc func accountStatusError(_ notification: Notification) {
         guard let account = notification.userInfo?["account"] as? Account,
               let error = notification.userInfo?["error"] as? CampNetError else {
             return
@@ -231,7 +231,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         showErrorBanner(title: title, body: error.localizedDescription)
     }
     
-    func accountProfileError(_ notification: Notification) {
+    @objc func accountProfileError(_ notification: Notification) {
         guard let account = notification.userInfo?["account"] as? Account,
               let error = notification.userInfo?["error"] as? CampNetError else {
             return
@@ -241,7 +241,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         showErrorBanner(title: title, body: error.localizedDescription)
     }
     
-    func accountLoginIpError(_ notification: Notification) {
+    @objc func accountLoginIpError(_ notification: Notification) {
         guard let ip = notification.userInfo?["ip"] as? String,
               let error = notification.userInfo?["error"] as? CampNetError else {
             return
@@ -251,7 +251,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         showErrorBanner(title: title, body: error.localizedDescription)
     }
     
-    func accountLogoutSessionError(_ notification: Notification) {
+    @objc func accountLogoutSessionError(_ notification: Notification) {
         guard let session = notification.userInfo?["session"] as? Session,
               let error = notification.userInfo?["error"] as? CampNetError else {
             return
@@ -261,7 +261,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         showErrorBanner(title: title, body: error.localizedDescription)
     }
     
-    func accountHistoryError(_ notification: Notification) {
+    @objc func accountHistoryError(_ notification: Notification) {
         guard let account = notification.userInfo?["account"] as? Account,
               let error = notification.userInfo?["error"] as? CampNetError else {
             return
@@ -271,7 +271,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         showErrorBanner(title: title, body: error.localizedDescription)
     }
     
-    func accountUsageAlert(_ notification: Notification) {
+    @objc func accountUsageAlert(_ notification: Notification) {
         guard let account = notification.userInfo?["account"] as? Account,
               let usage = notification.userInfo?["usage"] as? Int64,
               let maxUsage = notification.userInfo?["maxUsage"] as? Int64 else {
