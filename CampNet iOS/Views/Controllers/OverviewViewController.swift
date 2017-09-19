@@ -260,7 +260,7 @@ class OverviewViewController: UITableViewController {
 
                 loginButtonCaption.text = L10n.Overview.LoginButton.Captions.login
 
-                if let account = account, let network = network, account.canManage(network: network), autoLogin {
+                if let account = account, let network = network, account.canManage(network: network), autoLogin, UIApplication.shared.applicationState == .active {
                     login()
                 }
 
@@ -563,7 +563,10 @@ class OverviewViewController: UITableViewController {
 
         networkTimer = Timer.scheduledTimer(timeInterval: OverviewViewController.networkUpdateInterval, target: self, selector: #selector(reloadNetwork), userInfo: nil, repeats: true)
 
-        SwiftRater.check()
+        // We don't have many changes, so make sure we are in the foreground when rating.
+        if UIApplication.shared.applicationState == .active {
+            SwiftRater.check()
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
