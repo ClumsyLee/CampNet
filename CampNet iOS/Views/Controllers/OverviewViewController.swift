@@ -213,6 +213,12 @@ class OverviewViewController: UITableViewController {
             networkName.textColor = .darkText
         } else {
             networkName.textColor = .lightGray
+
+            #if DEBUG
+                if AccountManager.inUITest {
+                    networkName.textColor = .darkText
+                }
+            #endif
         }
     }
 
@@ -235,9 +241,9 @@ class OverviewViewController: UITableViewController {
                 }
             #endif
         }
-        ip = WiFi.ip ?? ""
-
         reloadNetworkColor()
+
+        ip = WiFi.ip ?? ""
     }
 
     func reloadStatus(autoLogin: Bool = true) {
