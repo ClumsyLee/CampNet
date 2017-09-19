@@ -419,7 +419,8 @@ public class Account {
             }
         }
 
-        DispatchQueue.main.async {
+        // Here send the errors in sync, so that error notifications are sent before return.
+        DispatchQueue.main.sync {
             NotificationCenter.default.post(name: name, object: self, userInfo: userInfo)
         }
     }
