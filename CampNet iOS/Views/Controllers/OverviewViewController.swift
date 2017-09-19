@@ -578,7 +578,11 @@ class OverviewViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.bounds.height
+        if #available(iOS 11.0, *) {
+            return tableView.bounds.height - tableView.safeAreaInsets.top - tableView.safeAreaInsets.bottom
+        } else {
+            return tableView.bounds.height
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
