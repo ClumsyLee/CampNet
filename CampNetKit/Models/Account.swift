@@ -189,8 +189,8 @@ public class Account {
                     result = .failure
                 }
 
-                if result == .success, account.configuration.actions[.profile] != nil, account.shouldAutoUpdateProfile {
-                    account.profile(on: queue, requestBinder: requestBinder).always(on: queue) {
+                if result == .success, account.shouldAutoUpdateProfile {
+                    account.update(skipStatus: true, on: queue, requestBinder: requestBinder).always(on: queue) {
                         command.createResponse(result).deliver()
                     }
                 } else {
@@ -663,10 +663,14 @@ public class Account {
         }
     }
 
-    public func update(on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
+    public func update(skipStatus: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
+
+        var promise = Promise()
 
         // Here we run actions in order to make sure important actions will be executed.
-        var promise = status(on: queue, requestBinder: requestBinder).asVoid()
+        if !skipStatus {
+            promise = promise.then(on: queue) { return self.status(on: queue, requestBinder: requestBinder).asVoid() }
+        }
 
         if configuration.actions[.profile] != nil {
             promise = promise.then(on: queue) { return self.profile(on: queue, requestBinder: requestBinder).asVoid() }

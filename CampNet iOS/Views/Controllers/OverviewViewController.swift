@@ -440,7 +440,7 @@ class OverviewViewController: UITableViewController {
         }
 
         if let account = notification.userInfo?["account"] as? Account {
-            _ = account.update(on: DispatchQueue.global(qos: .userInitiated))  // Validate & initial update.
+            _ = account.update(skipStatus: true, on: DispatchQueue.global(qos: .userInitiated))  // Validate & initial update.
         }
     }
 
