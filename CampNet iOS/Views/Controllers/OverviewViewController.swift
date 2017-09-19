@@ -208,6 +208,14 @@ class OverviewViewController: UITableViewController {
         }
     }
 
+    func reloadNetworkColor() {
+        if let account = account, let network = network, account.canManage(network: network) {
+            networkName.textColor = .darkText
+        } else {
+            networkName.textColor = .lightGray
+        }
+    }
+
     @objc func reloadNetwork() {
         if let wifi = NEHotspotHelper.supportedNetworkInterfaces()?.first as? NEHotspotNetwork, !wifi.ssid.isEmpty {
             network = wifi
@@ -228,6 +236,8 @@ class OverviewViewController: UITableViewController {
             #endif
         }
         ip = WiFi.ip ?? ""
+
+        reloadNetworkColor()
     }
 
     func reloadStatus(autoLogin: Bool = true) {
@@ -556,6 +566,8 @@ class OverviewViewController: UITableViewController {
             refreshControl?.beginRefreshing()
             tableView.contentOffset = offset
         }
+
+        reloadNetworkColor()
     }
 
     override func viewDidAppear(_ animated: Bool) {
