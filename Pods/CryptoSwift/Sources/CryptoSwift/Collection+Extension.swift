@@ -2,10 +2,17 @@
 //  Collection+Extension.swift
 //  CryptoSwift
 //
-//  Created by Marcin Krzyzanowski on 02/08/16.
-//  Copyright © 2016 Marcin Krzyzanowski. All rights reserved.
+//  Copyright (C) 2014-2017 Krzyżanowski <marcin@krzyzanowskim.com>
+//  This software is provided 'as-is', without any express or implied warranty.
 //
-
+//  In no event will the authors be held liable for any damages arising from the use of this software.
+//
+//  Permission is granted to anyone to use this software for any purpose,including commercial applications, and to alter it and redistribute it freely, subject to the following restrictions:
+//
+//  - The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation is required.
+//  - Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
+//  - This notice may not be removed or altered from any source or binary distribution.
+//
 extension Collection where Self.Iterator.Element == UInt8, Self.Index == Int {
 
     func toUInt32Array() -> Array<UInt32> {
@@ -46,7 +53,7 @@ extension Collection where Self.Iterator.Element == UInt8, Self.Index == Int {
 
     /// Initialize integer from array of bytes. Caution: may be slow!
     @available(*, deprecated: 0.6.0, message: "Dont use it. Too generic to be fast")
-    func toInteger<T: Integer>() -> T where T: ByteConvertible, T: BitshiftOperationsType {
+    func toInteger<T>() -> T where T: FixedWidthInteger {
         if self.count == 0 {
             return 0
         }
@@ -61,7 +68,7 @@ extension Collection where Self.Iterator.Element == UInt8, Self.Index == Int {
         }
 
         if size == 1 {
-            return T(truncatingBitPattern: UInt64(bytes[0]))
+            return T(truncatingIfNeeded: UInt64(bytes[0]))
         }
 
         var result: T = 0

@@ -2,8 +2,16 @@
 //  ByteExtension.swift
 //  CryptoSwift
 //
-//  Created by Marcin Krzyzanowski on 07/08/14.
-//  Copyright (c) 2014 Marcin Krzyzanowski. All rights reserved.
+//  Copyright (C) 2014-2017 Krzyżanowski <marcin@krzyzanowskim.com>
+//  This software is provided 'as-is', without any express or implied warranty.
+//
+//  In no event will the authors be held liable for any damages arising from the use of this software.
+//
+//  Permission is granted to anyone to use this software for any purpose,including commercial applications, and to alter it and redistribute it freely, subject to the following restrictions:
+//
+//  - The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation is required.
+//  - Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
+//  - This notice may not be removed or altered from any source or binary distribution.
 //
 
 #if os(Linux) || os(Android) || os(FreeBSD)
@@ -43,7 +51,7 @@ extension UInt8 {
     }
 
     /** array of bits */
-    func bits() -> [Bit] {
+    public func bits() -> [Bit] {
         let totalBitsCount = MemoryLayout<UInt8>.size * 8
 
         var bitsArray = [Bit](repeating: Bit.zero, count: totalBitsCount)
@@ -59,7 +67,7 @@ extension UInt8 {
         return bitsArray
     }
 
-    func bits() -> String {
+    public func bits() -> String {
         var s = String()
         let arr: [Bit] = self.bits()
         for idx in arr.indices {

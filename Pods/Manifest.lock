@@ -1,28 +1,28 @@
 PODS:
-  - Alamofire (4.5.0)
+  - Alamofire (4.5.1)
   - BRYXBanner (0.7.3)
-  - Charts (3.0.2):
-    - Charts/Core (= 3.0.2)
-  - Charts/Core (3.0.2)
-  - CryptoSwift (0.6.9)
+  - Charts (3.0.3):
+    - Charts/Core (= 3.0.3)
+  - Charts/Core (3.0.3)
+  - CryptoSwift (0.7.1)
   - DynamicButton (4.0.0)
-  - Instabug (7.3.6)
+  - Instabug (7.3.8)
   - Kanna (2.2.1)
   - KeychainAccess (3.0.2)
   - NetUtils (3.0.2)
-  - PromiseKit (4.3.2):
-    - PromiseKit/Foundation (= 4.3.2)
-    - PromiseKit/QuartzCore (= 4.3.2)
-    - PromiseKit/UIKit (= 4.3.2)
-  - PromiseKit/CorePromise (4.3.2)
-  - PromiseKit/Foundation (4.3.2):
+  - PromiseKit (4.4.0):
+    - PromiseKit/Foundation (= 4.4.0)
+    - PromiseKit/QuartzCore (= 4.4.0)
+    - PromiseKit/UIKit (= 4.4.0)
+  - PromiseKit/CorePromise (4.4.0)
+  - PromiseKit/Foundation (4.4.0):
     - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (4.3.2):
+  - PromiseKit/QuartzCore (4.4.0):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (4.3.2):
+  - PromiseKit/UIKit (4.4.0):
     - PromiseKit/CorePromise
   - SwiftRater (0.2.3)
-  - SwiftyBeaver (1.4.0)
+  - SwiftyBeaver (1.4.1)
   - SwiftyUserDefaults (3.0.0)
   - Yaml (3.3.1)
 
@@ -52,18 +52,18 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ThomasLee969/SwiftRater
 
 SPEC CHECKSUMS:
-  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   BRYXBanner: bd26a91cb8a5826a8bc7687891043d287dd3ee53
-  Charts: 236d6ccdd0ce6feae151d89e829a7397381a21fd
-  CryptoSwift: a22f6ba238e9ce4d26ee7bf45b9ed82e7122d4a0
+  Charts: bcde37724c161958c1438dd4883971fcb2d50c06
+  CryptoSwift: c290ac8976cf28c52c8b88bfe2c58c0302a0e0c0
   DynamicButton: ddc1e8d79e37f2761ab64df0c02e89061b05d812
-  Instabug: 5ede8c13b5cee8ae36043829f5dfbcf0fad8d72d
+  Instabug: 71693d392b2c78130d1bb80149d8d1217473e9c4
   Kanna: 182789ab065e8f9a6ccc2a74ce6283d3401c0c4a
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
   NetUtils: 6ea106332c6e40e28a5ace45602fb517945a335d
-  PromiseKit: 32430ae679605b17c15d6193679cae7bf60147f7
+  PromiseKit: ecf5fe92275d57ee77c9ede858af47a162e9b97e
   SwiftRater: 9a186aab4f006d7764f7256a5aee6d155526f820
-  SwiftyBeaver: 78d9186ce7595b4400ce01e5fd750d263e72dd7b
+  SwiftyBeaver: f04f739cca6826c5fb0f575fed8fa3293f76b83e
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
   Yaml: 18b2cf7301c4132e2bbb508a6921d2637ed3046c
 

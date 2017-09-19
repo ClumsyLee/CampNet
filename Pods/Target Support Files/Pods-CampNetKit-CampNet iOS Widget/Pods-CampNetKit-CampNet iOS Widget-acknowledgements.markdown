@@ -209,7 +209,7 @@ Apache License
 
 ## Alamofire
 
-Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
+Copyright (c) 2014-2017 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -232,7 +232,7 @@ THE SOFTWARE.
 
 ## CryptoSwift
 
-Copyright (C) 2014 Marcin Krzyżanowski <marcin.krzyzanowski@gmail.com>
+Copyright (C) 2014-2017 Marcin Krzyżanowski <marcin.krzyzanowski@gmail.com>
 This software is provided 'as-is', without any express or implied warranty. 
 
 In no event will the authors be held liable for any damages arising from the use of this software. 
@@ -242,6 +242,7 @@ Permission is granted to anyone to use this software for any purpose,including c
 - The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation is required.
 - Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
 - This notice may not be removed or altered from any source or binary distribution.
+
 
 ## Kanna
 
