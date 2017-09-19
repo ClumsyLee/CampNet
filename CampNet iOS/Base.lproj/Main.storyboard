@@ -1285,7 +1285,7 @@
                                                     <rect key="frame" x="15" y="8" width="352" height="27.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                                     <connections>
                                                         <action selector="passwordEntered:" destination="lfx-1O-Dpw" eventType="primaryActionTriggered" id="7qw-GC-Epc"/>
                                                     </connections>
@@ -1534,7 +1534,7 @@
                                                     <rect key="frame" x="15" y="8" width="352" height="27.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="username"/>
                                                     <connections>
                                                         <action selector="usernameChanged:" destination="fTg-YW-PlX" eventType="editingChanged" id="2g4-m4-Tkn"/>
                                                         <action selector="usernameEntered:" destination="fTg-YW-PlX" eventType="primaryActionTriggered" id="ADQ-wj-vSO"/>
@@ -1568,7 +1568,7 @@
                                                     <rect key="frame" x="15" y="8" width="352" height="27.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                                     <connections>
                                                         <action selector="passwordEntered:" destination="fTg-YW-PlX" eventType="primaryActionTriggered" id="FS2-5p-gxj"/>
                                                     </connections>
