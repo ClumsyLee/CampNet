@@ -16,14 +16,19 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
     static let repoUrl = URL(string: "https://github.com/ThomasLee969/CampNet-Configurations")!
 
     var searchController: UISearchController!
-    
+
     var names: [(identifier: String, name: String, domain: String)] = []
     var searchResults: [(identifier: String, name: String, domain: String)] = []
 
     var githubRow: Int {
         return searchController.isActive ? searchResults.count : names.count
     }
-    
+
+    // Without it, the status bar will go dark when using searchbar.
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     func filter(for searchText: String) {
         searchResults = names.filter { (identifier, name, domain) -> Bool in
             return identifier.localizedCaseInsensitiveContains(searchText) ||
@@ -56,7 +61,14 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
             // Fallback on earlier versions
             searchController.dimsBackgroundDuringPresentation = false
         }
-        tableView.tableHeaderView = searchController.searchBar
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+            // Set text colors to white.
+            searchController.searchBar.tintColor = .white
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+        } else {
+            tableView.tableHeaderView = searchController.searchBar
+        }
         self.definesPresentationContext = true  // For navigation bar.
         
         self.names = Configuration.displayNames.map {
