@@ -292,6 +292,16 @@ class OverviewViewController: UITableViewController {
         }
     }
 
+    func reloadEstimatedFee() {
+        if let moneyString = account?.estimatedFee(profile: profile)?.moneyString {
+            estimatedFee.text = moneyString
+            estimatedFee.textColor = .white
+        } else {
+            estimatedFee.text = "-"
+            estimatedFee.textColor = .lightText
+        }
+    }
+
     func reloadProfile() {
         profile = account?.profile
         let decimalUnits = account?.configuration.decimalUnits ?? false
@@ -304,15 +314,32 @@ class OverviewViewController: UITableViewController {
         }
         accountsButton.setTitle(title, for: .normal)
 
-        usage.text = profile?.usage?.usageStringInGb(decimalUnits: decimalUnits) ?? "-"
-        balance.text = profile?.balance?.moneyString ?? "-"
-        estimatedFee.text = account?.estimatedFee(profile: profile)?.moneyString ?? "-"
+        if let usageStr = profile?.usage?.usageStringInGb(decimalUnits: decimalUnits) {
+            usage.text = usageStr
+            usage.textColor = .white
+        } else {
+            usage.text = "-"
+            usage.textColor = .lightText
+        }
+
+        if let moneyString = profile?.balance?.moneyString {
+            balance.text = moneyString
+            balance.textColor = .white
+        } else {
+            balance.text = "-"
+            balance.textColor = .lightText
+        }
+
+        reloadEstimatedFee()
+
         if let sessions = profile?.sessions {
             devices.text = String(sessions.count)
+            devices.textColor = .darkText
             devicesButton.isEnabled = true
             devicesDisclosure.isHidden = false
         } else {
             devices.text = "-"
+            devices.textColor = .lightGray
             devicesButton.isEnabled = false
             devicesDisclosure.isHidden = true
         }
@@ -377,7 +404,7 @@ class OverviewViewController: UITableViewController {
         history = account?.history
         let decimalUnits = account?.configuration.decimalUnits ?? false
 
-        estimatedFee.text = account?.estimatedFee(profile: profile)?.moneyString ?? "-"
+        reloadEstimatedFee()
 
         usageSumDataset.values = []
         if let history = history {
