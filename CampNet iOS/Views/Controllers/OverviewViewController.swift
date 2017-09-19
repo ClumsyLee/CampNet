@@ -399,11 +399,11 @@ class OverviewViewController: UITableViewController {
 
     @objc func accountAdded(_ notification: Notification) {
         guard account != nil else {
-            return // This is actually a new account, update will be performed so we do not need to valid it now.
+            return // This account will actually trigger mainChanged, update will be performed so we do not need to validdate it now.
         }
 
         if let account = notification.userInfo?["account"] as? Account {
-            _ = account.profile(autoLogout: false)  // Validate the account.
+            _ = account.update(on: DispatchQueue.global(qos: .userInitiated))  // Validate & initial update.
         }
     }
 
