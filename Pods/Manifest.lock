@@ -35,7 +35,7 @@ DEPENDENCIES:
   - Instabug
   - Kanna
   - KeychainAccess
-  - NetUtils (from `https://github.com/ThomasLee969/swift-netutils`, branch `swift4`)
+  - NetUtils (from `https://github.com/ThomasLee969/swift-netutils`)
   - PromiseKit
   - SwiftRater (from `https://github.com/ThomasLee969/SwiftRater`)
   - SwiftyBeaver
@@ -44,14 +44,13 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   NetUtils:
-    :branch: swift4
     :git: https://github.com/ThomasLee969/swift-netutils
   SwiftRater:
     :git: https://github.com/ThomasLee969/SwiftRater
 
 CHECKOUT OPTIONS:
   NetUtils:
-    :commit: 7f41e2dbd661bd2772ea545e9bc5692091089150
+    :commit: 80f7edbf0b214cec32fbfb26ef159088a2a30bff
     :git: https://github.com/ThomasLee969/swift-netutils
   SwiftRater:
     :commit: ba59abb9a4a9f1a6a0fc59d07f0cba0a8a8c02ac
@@ -66,13 +65,13 @@ SPEC CHECKSUMS:
   Instabug: 71693d392b2c78130d1bb80149d8d1217473e9c4
   Kanna: 182789ab065e8f9a6ccc2a74ce6283d3401c0c4a
   KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
-  NetUtils: 33c00509ae6bfdc16e299e1139037752007366f9
+  NetUtils: 497e1692c7aa322bbd8fa920a7781c1a8fc269b9
   PromiseKit: ecf5fe92275d57ee77c9ede858af47a162e9b97e
   SwiftRater: 9a186aab4f006d7764f7256a5aee6d155526f820
   SwiftyBeaver: f04f739cca6826c5fb0f575fed8fa3293f76b83e
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
   Yaml: 18b2cf7301c4132e2bbb508a6921d2637ed3046c
 
-PODFILE CHECKSUM: 95eefa436c84f97c031b6621862ac15595e96d1a
+PODFILE CHECKSUM: 96e3984344aea3034633302d152e17b5f43dffdf
 
 COCOAPODS: 1.3.1

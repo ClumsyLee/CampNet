@@ -19,7 +19,7 @@ target 'CampNetKit' do
   pod 'CryptoSwift'
   pod 'Kanna'
   pod 'KeychainAccess'
-  pod 'NetUtils', :git => 'https://github.com/ThomasLee969/swift-netutils', :branch => 'swift4'
+  pod 'NetUtils', :git => 'https://github.com/ThomasLee969/swift-netutils'
   pod 'PromiseKit'
   pod 'SwiftyBeaver'
   pod 'SwiftyUserDefaults'
