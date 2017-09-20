@@ -33,7 +33,7 @@ class SessionCell: UITableViewCell {
     }
     
     func update(session: Session, type: SessionType, decimalUnits: Bool) {
-        device.text = session.device ?? session.ip
+        device.text = session.device?.nonEmpty ?? session.ip
         updateStartTime(date: session.startTime)
         usage.text = session.usage?.usageString(decimalUnits: decimalUnits)
         

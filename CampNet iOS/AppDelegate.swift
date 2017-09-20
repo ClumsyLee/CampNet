@@ -257,7 +257,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
         
-        let title = L10n.Notifications.LogoutSessionError.title(session.device ?? session.ip)
+        let title = L10n.Notifications.LogoutSessionError.title(session.device?.nonEmpty ?? session.ip)
         showErrorBanner(title: title, body: error.localizedDescription)
     }
     
