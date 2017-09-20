@@ -13,6 +13,11 @@ import CampNetKit
 
 class NetworkViewController: UITableViewController {
 
+    enum Section: Int {
+        case details
+        case onCampus
+    }
+
     @IBOutlet var ipLabel: UILabel!
     @IBOutlet var bssid: UILabel!
     @IBOutlet var signalStrength: UILabel!
@@ -136,4 +141,28 @@ class NetworkViewController: UITableViewController {
     }
     */
 
+    // MARK: Cell Menu
+
+    override func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.section == Section.details.rawValue
+    }
+
+    override func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        if action == #selector(copy(_:)) {
+            if let detail = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text, detail != " " {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
+        if action == #selector(copy(_:)) {
+            let cell = tableView.cellForRow(at: indexPath)
+            UIPasteboard.general.string = cell?.detailTextLabel?.text
+        }
+    }
 }
