@@ -93,24 +93,28 @@ class SessionsViewController: UITableViewController {
         for (index, oldIp) in oldIps.enumerated() {
             let indexPath = IndexPath(row: index, section: 0)
             
-            if ips.contains(oldIp) {
-                rowsToReload.append(indexPath)
-            } else {
+            if !ips.contains(oldIp) {
                 rowsToDelete.append(indexPath)
             }
         }
 
         for (index, ip) in ips.enumerated() {
-            if !oldIps.contains(ip) {
-                rowsToInsert.append(IndexPath(row: index, section: 0))
+            let indexPath = IndexPath(row: index, section: 0)
+
+            if oldIps.contains(ip) {
+                rowsToReload.append(indexPath)
+            } else {
+                rowsToInsert.append(indexPath)
             }
         }
-        
+
         tableView.beginUpdates()
-        tableView.reloadRows(at: rowsToReload, with: .fade)
         tableView.deleteRows(at: rowsToDelete, with: .left)
         tableView.insertRows(at: rowsToInsert, with: .left)
         tableView.endUpdates()
+
+        // Do not reload in the update block, or the animation will become weird.
+        tableView.reloadRows(at: rowsToReload, with: .fade)
     }
     
     @objc func updateStartTimes() {
