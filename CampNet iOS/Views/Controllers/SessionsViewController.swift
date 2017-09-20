@@ -73,6 +73,19 @@ class SessionsViewController: UITableViewController {
         reloadSessions()
         let ips = sessions.map({ $0.ip })
 
+        if oldIps.isEmpty && ips.isEmpty {
+            // Nothing needs to be done.
+        }
+        if oldIps.isEmpty {
+            tableView.insertSections(IndexSet(integer: 0), with: .left)
+            return
+        }
+        if ips.isEmpty {
+            tableView.deleteSections(IndexSet(integer: 0), with: .left)
+            return
+        }
+        // Else manipulating rows in the section.
+
         var rowsToReload: [IndexPath] = []
         var rowsToDelete: [IndexPath] = []
         var rowsToInsert: [IndexPath] = []
@@ -95,8 +108,8 @@ class SessionsViewController: UITableViewController {
         
         tableView.beginUpdates()
         tableView.reloadRows(at: rowsToReload, with: .fade)
-        tableView.deleteRows(at: rowsToDelete, with: .automatic)
-        tableView.insertRows(at: rowsToInsert, with: .automatic)
+        tableView.deleteRows(at: rowsToDelete, with: .left)
+        tableView.insertRows(at: rowsToInsert, with: .left)
         tableView.endUpdates()
     }
     

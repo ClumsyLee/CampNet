@@ -97,12 +97,12 @@ class AccountsViewController: UITableViewController {
     
     func insertRow(section: Int, row: Int, account: Account) {
         accounts[section].accounts.insert(account, at: row)
-        tableView.insertRows(at: [IndexPath(row: row, section: section)], with: .automatic)
+        tableView.insertRows(at: [IndexPath(row: row, section: section)], with: .left)
     }
     
     func insertSection(section: Int, account: Account) {
         accounts.insert((configuration: account.configuration, accounts: [account]), at: section)
-        tableView.insertSections(IndexSet(integer: section), with: .automatic)
+        tableView.insertSections(IndexSet(integer: section), with: .left)
     }
     
     @objc func accountRemoved(_ notification: Notification) {
@@ -111,9 +111,9 @@ class AccountsViewController: UITableViewController {
             accounts[indexPath.section].accounts.remove(at: indexPath.row)
             if accounts[indexPath.section].accounts.isEmpty {
                 accounts.remove(at: indexPath.section)
-                tableView.deleteSections(IndexSet(integer: indexPath.section), with: .automatic)
+                tableView.deleteSections(IndexSet(integer: indexPath.section), with: .left)
             } else {
-                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.deleteRows(at: [indexPath], with: .left)
             }
         }
     }
