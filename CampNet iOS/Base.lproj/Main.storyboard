@@ -1244,7 +1244,7 @@
             </objects>
             <point key="canvasLocation" x="2294" y="-1012"/>
         </scene>
-        <!--Change Password-->
+        <!--Re-enter Password-->
         <scene sceneID="0at-Ug-iM1">
             <objects>
                 <tableViewController id="lfx-1O-Dpw" customClass="ChangePasswordViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -1284,7 +1284,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9DJ-2g-xJe">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9DJ-2g-xJe">
                                                     <rect key="frame" x="15" y="8" width="352" height="27.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -1310,7 +1310,7 @@
                             <outlet property="delegate" destination="lfx-1O-Dpw" id="ahV-Qj-e3h"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Change Password" id="ylZ-mi-qAg">
+                    <navigationItem key="navigationItem" title="Re-enter Password" id="ylZ-mi-qAg">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bb7-kh-XqI">
                             <connections>
                                 <segue destination="YzO-eB-hw4" kind="unwind" unwindAction="cancelChangingPasswordWithSegue:" id="mNV-qo-bVq"/>
@@ -1451,7 +1451,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BXT-zo-Kxq">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Re-enter Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BXT-zo-Kxq">
                                                     <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>

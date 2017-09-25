@@ -8,14 +8,14 @@
 /* Class = "UILabel"; text = "Auto Login"; ObjectID = "99e-tq-pnT"; */
 "99e-tq-pnT.text" = "自動登錄";
 
-/* Class = "UITextField"; placeholder = "New Password"; ObjectID = "9DJ-2g-xJe"; */
-"9DJ-2g-xJe.placeholder" = "新密碼";
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "9DJ-2g-xJe"; */
+"9DJ-2g-xJe.placeholder" = "密碼";
 
 /* Class = "UILabel"; text = "Monthly Trend"; ObjectID = "9kM-Ii-HEq"; */
 "9kM-Ii-HEq.text" = "本月趨勢";
 
-/* Class = "UILabel"; text = "Change Password"; ObjectID = "BXT-zo-Kxq"; */
-"BXT-zo-Kxq.text" = "更改密碼";
+/* Class = "UILabel"; text = "Re-enter Password"; ObjectID = "BXT-zo-Kxq"; */
+"BXT-zo-Kxq.text" = "重新輸入密碼";
 
 /* Class = "UITextField"; placeholder = "Username"; ObjectID = "BgW-cK-Tac"; */
 "BgW-cK-Tac.placeholder" = "用戶名";
@@ -128,8 +128,8 @@
 /* Class = "UILabel"; text = "Auto Logout Expired Sessions"; ObjectID = "yFG-Ic-VlG"; */
 "yFG-Ic-VlG.text" = "自動下線過期鏈接";
 
-/* Class = "UINavigationItem"; title = "Change Password"; ObjectID = "ylZ-mi-qAg"; */
-"ylZ-mi-qAg.title" = "更改密碼";
+/* Class = "UINavigationItem"; title = "Re-enter Password"; ObjectID = "ylZ-mi-qAg"; */
+"ylZ-mi-qAg.title" = "重新輸入密碼";
 
 /* Class = "UITableViewSection"; footerTitle = "You will be notified when your usage has reached a certain percentage of your maximum usage this month."; ObjectID = "ymi-FS-Axh"; */
 "ymi-FS-Axh.footerTitle" = "在當月流量達到最大可用流量一定百分比時，你會收到通知。";
