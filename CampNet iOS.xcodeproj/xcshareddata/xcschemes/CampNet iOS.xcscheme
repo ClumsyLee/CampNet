@@ -27,7 +27,8 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       language = ""
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -36,6 +37,16 @@
                BlueprintIdentifier = "0F8DBDCB1F54ECFB00879276"
                BuildableName = "CampNet iOS UITests.xctest"
                BlueprintName = "CampNet iOS UITests"
+               ReferencedContainer = "container:CampNet iOS.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "0F057AA71F8EE1F20019AC8E"
+               BuildableName = "CampNet iOS Tests.xctest"
+               BlueprintName = "CampNet iOS Tests"
                ReferencedContainer = "container:CampNet iOS.xcodeproj">
             </BuildableReference>
          </TestableReference>

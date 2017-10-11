@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F057AAB1F8EE1F20019AC8E /* CampNet_iOS_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F057AAA1F8EE1F20019AC8E /* CampNet_iOS_Tests.swift */; };
 		0F0FF1F91F5224A7000B608A /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FF1F81F5224A7000B608A /* L10n.swift */; };
 		0F0FF1FE1F524CF1000B608A /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FF1FD1F524CF1000B608A /* PrivacyViewController.swift */; };
 		0F14E7751E2E3AAC0092494B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7741E2E3AAC0092494B /* AppDelegate.swift */; };
@@ -65,6 +66,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0F057AAD1F8EE1F20019AC8E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F14E7691E2E3AAC0092494B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F14E7701E2E3AAC0092494B;
+			remoteInfo = "CampNet iOS";
+		};
 		0F1ED5D11F138832004A6C1F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0F14E7691E2E3AAC0092494B /* Project object */;
@@ -114,6 +122,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F057AA81F8EE1F20019AC8E /* CampNet iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CampNet iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F057AAA1F8EE1F20019AC8E /* CampNet_iOS_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampNet_iOS_Tests.swift; sourceTree = "<group>"; };
+		0F057AAC1F8EE1F20019AC8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F0FF1F81F5224A7000B608A /* L10n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		0F0FF1FD1F524CF1000B608A /* PrivacyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivacyViewController.swift; path = Views/Controllers/PrivacyViewController.swift; sourceTree = "<group>"; };
 		0F14E7711E2E3AAC0092494B /* CampNet iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CampNet iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +206,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0F057AA51F8EE1F20019AC8E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F14E76E1E2E3AAC0092494B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -231,6 +249,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F057AA91F8EE1F20019AC8E /* CampNet iOS Tests */ = {
+			isa = PBXGroup;
+			children = (
+				0F057AAA1F8EE1F20019AC8E /* CampNet_iOS_Tests.swift */,
+				0F057AAC1F8EE1F20019AC8E /* Info.plist */,
+			);
+			path = "CampNet iOS Tests";
+			sourceTree = "<group>";
+		};
 		0F14E7681E2E3AAC0092494B = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +265,7 @@
 				0F1ED5CD1F138832004A6C1F /* CampNetKit */,
 				0F9AAD081F535C5B00E14838 /* CampNet iOS Widget */,
 				0F8DBDCD1F54ECFB00879276 /* CampNet iOS UITests */,
+				0F057AA91F8EE1F20019AC8E /* CampNet iOS Tests */,
 				0F14E7721E2E3AAC0092494B /* Products */,
 				2EF32BE92DEB0316C46ED2BF /* Pods */,
 				298ED8C6D2DAD1B93F321972 /* Frameworks */,
@@ -251,6 +279,7 @@
 				0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */,
 				0F9AAD051F535C5B00E14838 /* CampNet iOS Widget.appex */,
 				0F8DBDCC1F54ECFB00879276 /* CampNet iOS UITests.xctest */,
+				0F057AA81F8EE1F20019AC8E /* CampNet iOS Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -431,6 +460,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0F057AA71F8EE1F20019AC8E /* CampNet iOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F057AB11F8EE1F20019AC8E /* Build configuration list for PBXNativeTarget "CampNet iOS Tests" */;
+			buildPhases = (
+				0F057AA41F8EE1F20019AC8E /* Sources */,
+				0F057AA51F8EE1F20019AC8E /* Frameworks */,
+				0F057AA61F8EE1F20019AC8E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0F057AAE1F8EE1F20019AC8E /* PBXTargetDependency */,
+			);
+			name = "CampNet iOS Tests";
+			productName = "CampNet iOS Tests";
+			productReference = 0F057AA81F8EE1F20019AC8E /* CampNet iOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		0F14E7701E2E3AAC0092494B /* CampNet iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F14E7851E2E3AAC0092494B /* Build configuration list for PBXNativeTarget "CampNet iOS" */;
@@ -519,10 +566,16 @@
 		0F14E7691E2E3AAC0092494B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Sihan Li";
 				TargetAttributes = {
+					0F057AA71F8EE1F20019AC8E = {
+						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = 7494335NRW;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0F14E7701E2E3AAC0092494B;
+					};
 					0F14E7701E2E3AAC0092494B = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 7494335NRW;
@@ -587,11 +640,19 @@
 				0F1ED5CB1F138832004A6C1F /* CampNetKit */,
 				0F9AAD041F535C5B00E14838 /* CampNet iOS Widget */,
 				0F8DBDCB1F54ECFB00879276 /* CampNet iOS UITests */,
+				0F057AA71F8EE1F20019AC8E /* CampNet iOS Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0F057AA61F8EE1F20019AC8E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F14E76F1E2E3AAC0092494B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -796,6 +857,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0F057AA41F8EE1F20019AC8E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F057AAB1F8EE1F20019AC8E /* CampNet_iOS_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0F14E76D1E2E3AAC0092494B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -865,6 +934,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0F057AAE1F8EE1F20019AC8E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F14E7701E2E3AAC0092494B /* CampNet iOS */;
+			targetProxy = 0F057AAD1F8EE1F20019AC8E /* PBXContainerItemProxy */;
+		};
 		0F1ED5D21F138832004A6C1F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0F1ED5CB1F138832004A6C1F /* CampNetKit */;
@@ -953,6 +1027,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0F057AAF1F8EE1F20019AC8E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7494335NRW;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "CampNet iOS Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CampNet iOS.app/CampNet iOS";
+			};
+			name = Debug;
+		};
+		0F057AB01F8EE1F20019AC8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7494335NRW;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "CampNet iOS Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CampNet iOS.app/CampNet iOS";
+			};
+			name = Release;
+		};
 		0F14E7831E2E3AAC0092494B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1234,6 +1352,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0F057AB11F8EE1F20019AC8E /* Build configuration list for PBXNativeTarget "CampNet iOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F057AAF1F8EE1F20019AC8E /* Debug */,
+				0F057AB01F8EE1F20019AC8E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0F14E76C1E2E3AAC0092494B /* Build configuration list for PBXProject "CampNet iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
