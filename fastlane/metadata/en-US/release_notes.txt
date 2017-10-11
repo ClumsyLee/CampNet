@@ -1,0 +1,17 @@
+• Support iOS 11
+    • Support iPhone X
+    • Support password autofill
+• Support cell copying
+
+• Off-campus networks are now shown in light gray
+• Refine UI
+
+• Fixed a crash related to the sessions animation
+• Fixed an issue where IPs were not shown for anonymous devices
+• Fixed an issue where history was not updated in the background
+• Fixed an issue where the histories of subsequent accounts were not automatically updated when adding multiple accounts
+• Fixed an issue where automatic login was triggered twice when entering offline status in the background
+• Fixed an issue where the account "lisihan13" might appear in the Today Widget
+
+• Tsinghua University: Fixed an issue where E2606 (user disabled or no network privilege) was not identified
+• Tsinghua University: Fixed an issue where the responses of login IP were not correctly parsed

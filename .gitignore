@@ -65,3 +65,7 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+fastlane/metadata/review_information
+fastlane/metadata/trade_representative_contact_information
+fastlane/metadata/app_icon.jpg
+Preview.html
