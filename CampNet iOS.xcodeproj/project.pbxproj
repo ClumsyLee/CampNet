@@ -39,7 +39,7 @@
 		0F7A93FB1F25E34C0093B3FA /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7A93FA1F25E34C0093B3FA /* DoubleExtensions.swift */; };
 		0F8650751F1F8F9400C654C4 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8650741F1F8F9400C654C4 /* IntExtensions.swift */; };
 		0F8DBDCF1F54ECFB00879276 /* CampNet_iOS_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8DBDCE1F54ECFB00879276 /* CampNet_iOS_UITests.swift */; };
-		0F8DBDD71F54EE4700879276 /* SnapshotHelperXcode8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8DBDD61F54EE4700879276 /* SnapshotHelperXcode8.swift */; };
+		0F8DBDD71F54EE4700879276 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8DBDD61F54EE4700879276 /* SnapshotHelper.swift */; };
 		0F8DBDDB1F55445300879276 /* SwiftyBeaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8DBDDA1F55445300879276 /* SwiftyBeaver.swift */; };
 		0F8F704D1F1B44A20088E2DE /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704C1F1B44A20088E2DE /* AccountCell.swift */; };
 		0F8F704F1F1B44C10088E2DE /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8F704E1F1B44C10088E2DE /* SessionCell.swift */; };
@@ -154,7 +154,7 @@
 		0F8DBDCC1F54ECFB00879276 /* CampNet iOS UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CampNet iOS UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8DBDCE1F54ECFB00879276 /* CampNet_iOS_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampNet_iOS_UITests.swift; sourceTree = "<group>"; };
 		0F8DBDD01F54ECFB00879276 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0F8DBDD61F54EE4700879276 /* SnapshotHelperXcode8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelperXcode8.swift; path = fastlane/SnapshotHelperXcode8.swift; sourceTree = SOURCE_ROOT; };
+		0F8DBDD61F54EE4700879276 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		0F8DBDDA1F55445300879276 /* SwiftyBeaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyBeaver.swift; path = Helpers/SwiftyBeaver.swift; sourceTree = "<group>"; };
 		0F8F704C1F1B44A20088E2DE /* AccountCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountCell.swift; path = Views/Cells/AccountCell.swift; sourceTree = "<group>"; };
 		0F8F704E1F1B44C10088E2DE /* SessionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionCell.swift; path = Views/Cells/SessionCell.swift; sourceTree = "<group>"; };
@@ -367,7 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				0F8DBDCE1F54ECFB00879276 /* CampNet_iOS_UITests.swift */,
-				0F8DBDD61F54EE4700879276 /* SnapshotHelperXcode8.swift */,
+				0F8DBDD61F54EE4700879276 /* SnapshotHelper.swift */,
 				0F8DBDD01F54ECFB00879276 /* Info.plist */,
 			);
 			path = "CampNet iOS UITests";
@@ -849,7 +849,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F8DBDD71F54EE4700879276 /* SnapshotHelperXcode8.swift in Sources */,
+				0F8DBDD71F54EE4700879276 /* SnapshotHelper.swift in Sources */,
 				0F8DBDCF1F54ECFB00879276 /* CampNet_iOS_UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
