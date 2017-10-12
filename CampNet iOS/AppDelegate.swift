@@ -38,9 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         setUpCampNet()
 
         // Do not request notification authorization when UI testing to prevent that system dialog from appearing.
-        if !AccountManager.inUITest {
+        #if DEBUG
+        #else
             requestNotificationAuthorization()
-        }
+        #endif
 
         addObservers()
         registerHotspotHelper(displayName: L10n.HotspotHelper.displayName)
