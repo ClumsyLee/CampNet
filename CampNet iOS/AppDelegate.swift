@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         setUpSwiftyBeaver()
         setUpSwiftRater()
         setUpCampNet()
+        addObservers()
 
         // Do not request notification authorization when UI testing to prevent that system dialog from appearing.
         #if DEBUG
@@ -43,8 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             requestNotificationAuthorization()
         #endif
 
-        addObservers()
-        registerHotspotHelper(displayName: L10n.HotspotHelper.displayName)
+        Account.registerHotspotHelper(displayName: L10n.HotspotHelper.displayName)
 
         return true
     }
@@ -158,19 +158,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     }
 
-    func registerHotspotHelper(displayName: String) {
-        let options = [kNEHotspotHelperOptionDisplayName: displayName as NSObject]
-        let queue = DispatchQueue.global(qos: .utility)
-
-        let result = NEHotspotHelper.register(options: options, queue: queue, handler: Account.handler)
-        
-        if result {
-            log.info("HotspotHelper registered.")
-        } else {
-            log.error("Unable to register HotspotHelper.")
-        }
-    }
-    
     func showErrorBanner(title: String?, body: String?, duration: Double = AppDelegate.bannerDuration) {
         let banner = Banner(title: title, subtitle: body, backgroundColor: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1))
         banner.show(duration: duration)

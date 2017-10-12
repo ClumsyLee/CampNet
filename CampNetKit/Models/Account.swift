@@ -32,204 +32,6 @@ public class Account {
         return AccountManager.shared.main
     }
 
-    public static var identifier: String? {
-        return Defaults[.mainAccount]
-    }
-
-    public static func decimalUnits(of identifier: String) -> Bool {
-        return Defaults[.accountDecimalUnits(of: identifier)]
-    }
-
-    public static func status(of identifier: String) -> Status? {
-        guard let vars = Defaults[.accountStatus(of: identifier)] else {
-            return nil
-        }
-        return Status(vars: vars)
-    }
-
-    public static func profile(of identifier: String) -> Profile? {
-        guard let vars = Defaults[.accountProfile(of: identifier)], let profile = Profile(vars: vars) else {
-            return nil
-        }
-        return (AccountManager.inUITest ||
-                Calendar.current.dateComponents([.year, .month], from: Date()) ==
-                Calendar.current.dateComponents([.year, .month], from: profile.updatedAt)) ? profile : nil
-    }
-
-    public static func history(of identifier: String) -> History? {
-        guard let vars = Defaults[.accountHistory(of: identifier)], let history = History(vars: vars) else {
-            return nil
-        }
-        let today = Date()
-        return (AccountManager.inUITest || history.year == Calendar.current.component(.year, from: today) &&
-            history.month == Calendar.current.component(.month, from: today)) ? history : nil
-    }
-
-    public static func freeUsage(of identifier: String) -> Int64? {
-        return Defaults[.accountFreeUsage(of: identifier)]
-    }
-
-    public static func maxUsage(of identifier: String) -> Int64? {
-        return Defaults[.accountMaxUsage(of: identifier)]
-    }
-
-
-    public static var handler: NEHotspotHelperHandler = { command in
-        let queue = DispatchQueue.global(qos: .utility)
-        let requestBinder: RequestBinder = { $0.bind(to: command) }
-
-        let account = main
-        let accountId = account?.description ?? "nil"
-
-        switch command.commandType {
-
-        case .filterScanList:
-            log.info("\(accountId): Received filterScanList command.")
-
-            guard let networkList = command.networkList, let account = account else {
-                let response = command.createResponse(.success)
-                response.deliver()
-                return
-            }
-
-            var knownList: [NEHotspotNetwork] = []
-            for network in networkList {
-                if account.canManage(network: network) {
-                    network.setConfidence(.low)
-                    knownList.append(network)
-                }
-            }
-            log.info("\(accountId): Known networks: \(knownList).")
-
-            let response = command.createResponse(.success)
-            response.setNetworkList(knownList)
-            response.deliver()
-
-        case .evaluate:
-            guard let network = command.network else {
-                return
-            }
-            log.info("\(accountId): Received evaluate command for \(network).")
-
-            guard let account = account, account.canManage(network: network) else {
-                log.info("\(accountId): Cannot manage \(network).")
-
-                network.setConfidence(.none)
-                let response = command.createResponse(.success)
-                response.setNetwork(network)
-                response.deliver()
-                return
-            }
-
-            account.status(on: queue, requestBinder: requestBinder).then(on: queue) { status -> Void in
-                switch status.type {
-                case .online, .offline:
-                    log.info("\(accountId): Can manage \(network).")
-                    network.setConfidence(.high)
-                case .offcampus:
-                    log.info("\(accountId): Cannot manage \(network).")
-                    network.setConfidence(.none)
-                }
-
-                let response = command.createResponse(.success)
-                response.setNetwork(network)
-                response.deliver()
-            }
-            .catch(on: queue) { _ in
-                log.info("\(accountId): Can possibly manage \(network).")
-                network.setConfidence(.low)
-
-                let response = command.createResponse(.success)
-                response.setNetwork(network)
-                response.deliver()
-            }
-
-        case .authenticate:
-            guard let network = command.network else {
-                return
-            }
-            log.info("\(accountId): Received authenticate command for \(network).")
-
-            guard let account = account, account.canManage(network: network) else {
-                log.warning("\(accountId): Cannot manage \(network).")
-                command.createResponse(.unsupportedNetwork).deliver()
-                return
-            }
-
-            account.login(on: queue, requestBinder: requestBinder).then(on: queue) { () -> Void in
-                log.info("\(accountId): Logged in on \(network).")
-                command.createResponse(.success).deliver()
-            }
-            .catch(on: queue) { error in
-                log.warning("\(accountId): Failed to login on \(network): \(error)")
-                command.createResponse(.temporaryFailure).deliver()
-            }
-
-        case .maintain:
-            guard let network = command.network else {
-                return
-            }
-            log.info("\(accountId): Received maintain command for \(network).")
-
-            guard let account = account, account.canManage(network: network) else {
-                log.warning("\(accountId): Cannot manage \(network).")
-                command.createResponse(.failure).deliver()
-                return
-            }
-
-            account.status(on: queue, requestBinder: requestBinder).then(on: queue) { status -> Void in
-                let result: NEHotspotHelperResult
-
-                switch status.type {
-                case .online:
-                    log.info("\(accountId): Still online on \(network).")
-                    result = .success
-                case .offline:
-                    log.info("\(accountId): Offline on \(network).")
-                    result = .authenticationRequired
-                case .offcampus:
-                    log.warning("\(accountId): Cannot manage \(network).")
-                    result = .failure
-                }
-
-                if result == .success, account.shouldAutoUpdateProfile {
-                    account.update(skipStatus: true, on: queue, requestBinder: requestBinder).always(on: queue) {
-                        command.createResponse(result).deliver()
-                    }
-                } else {
-                    command.createResponse(result).deliver()
-                }
-            }
-            .catch(on: queue) { error in
-                log.warning("\(accountId): Failed to maintain on \(network): \(error)")
-                command.createResponse(.failure).deliver()
-            }
-
-        case .logoff:
-            guard let network = command.network else {
-                return
-            }
-            log.info("\(accountId): Received logoff command for \(network).")
-
-            guard let account = account, account.canManage(network: network) else {
-                log.warning("\(accountId): Cannot manage \(network).")
-                command.createResponse(.failure).deliver()
-                return
-            }
-
-            account.logout(on: queue, requestBinder: requestBinder).then(on: queue) { _ -> Void in
-                log.info("\(accountId): Logged out on \(network).")
-                command.createResponse(.success).deliver()
-            }
-            .catch(on: queue) { error in
-                log.warning("\(accountId): Failed to logout on \(network): \(error)")
-                command.createResponse(.failure).deliver()
-            }
-
-        default: break
-        }
-    }
-
     public static func add(configurationIdentifier: String, username: String, password: String? = nil) {
         AccountManager.shared.add(configurationIdentifier: configurationIdentifier, username: username,
                                   password: password)
@@ -413,6 +215,274 @@ public class Account {
         Defaults[.accountDecimalUnits(of: identifier)] = configuration.decimalUnits
     }
 
+    public func canManage(network: NEHotspotNetwork) -> Bool {
+        return (configuration.ssids.contains(network.ssid) ||
+                Defaults[.onCampus(id: configuration.identifier, ssid: network.ssid)]) &&
+               Defaults[.autoLogin]
+    }
+
+    public func estimatedFee(profile: Profile?) -> Double? {
+        guard let profile = profile,
+              let usage = profile.usage,
+              let balance = profile.balance,
+              let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""],
+              let estimatedDailyUsage = estimatedDailyUsage else {
+            return nil
+        }
+
+        let today = Date()
+        guard let maxDay = Calendar.current.range(of: .day, in: .month, for: today)?.upperBound else {
+            return nil
+        }
+
+        let estimatedUsage = min(usage + estimatedDailyUsage * Int64(maxDay - Calendar.current.component(.day,
+                                                                                                         from: today)),
+                                 billingGroup.maxUsage(balance: balance, usage: usage))
+        return billingGroup.fee(from: usage, to: estimatedUsage)
+    }
+}
+
+
+extension Account: CustomStringConvertible {
+    public var description: String {
+        return identifier
+    }
+}
+
+
+extension Account: Hashable {
+    public var hashValue: Int {
+        return identifier.hashValue
+    }
+
+    public static func ==(lhs: Account, rhs: Account) -> Bool {
+        return lhs.identifier == rhs.identifier
+    }
+}
+
+
+// Add support for HotspotHelper.
+extension Account {
+
+    public static func registerHotspotHelper(displayName: String) {
+        let options = [kNEHotspotHelperOptionDisplayName: displayName as NSObject]
+        let queue = DispatchQueue.global(qos: .utility)
+
+        let result = NEHotspotHelper.register(options: options, queue: queue) { command in
+            let queue = DispatchQueue.global(qos: .utility)
+            let requestBinder: RequestBinder = { $0.bind(to: command) }
+
+            let account = main
+            let accountId = account?.description ?? "nil"
+
+            switch command.commandType {
+
+            case .filterScanList:
+                log.info("\(accountId): Received filterScanList command.")
+
+                guard let networkList = command.networkList, let account = account else {
+                    let response = command.createResponse(.success)
+                    response.deliver()
+                    return
+                }
+
+                var knownList: [NEHotspotNetwork] = []
+                for network in networkList {
+                    if account.canManage(network: network) {
+                        network.setConfidence(.low)
+                        knownList.append(network)
+                    }
+                }
+                log.info("\(accountId): Known networks: \(knownList).")
+
+                let response = command.createResponse(.success)
+                response.setNetworkList(knownList)
+                response.deliver()
+
+            case .evaluate:
+                guard let network = command.network else {
+                    return
+                }
+                log.info("\(accountId): Received evaluate command for \(network).")
+
+                guard let account = account, account.canManage(network: network) else {
+                    log.info("\(accountId): Cannot manage \(network).")
+
+                    network.setConfidence(.none)
+                    let response = command.createResponse(.success)
+                    response.setNetwork(network)
+                    response.deliver()
+                    return
+                }
+
+                account.status(on: queue, requestBinder: requestBinder).then(on: queue) { status -> Void in
+                    switch status.type {
+                    case .online, .offline:
+                        log.info("\(accountId): Can manage \(network).")
+                        network.setConfidence(.high)
+                    case .offcampus:
+                        log.info("\(accountId): Cannot manage \(network).")
+                        network.setConfidence(.none)
+                    }
+
+                    let response = command.createResponse(.success)
+                    response.setNetwork(network)
+                    response.deliver()
+                }
+                .catch(on: queue) { _ in
+                    log.info("\(accountId): Can possibly manage \(network).")
+                    network.setConfidence(.low)
+
+                    let response = command.createResponse(.success)
+                    response.setNetwork(network)
+                    response.deliver()
+                }
+
+            case .authenticate:
+                guard let network = command.network else {
+                    return
+                }
+                log.info("\(accountId): Received authenticate command for \(network).")
+
+                guard let account = account, account.canManage(network: network) else {
+                    log.warning("\(accountId): Cannot manage \(network).")
+                    command.createResponse(.unsupportedNetwork).deliver()
+                    return
+                }
+
+                account.login(on: queue, requestBinder: requestBinder).then(on: queue) { () -> Void in
+                    log.info("\(accountId): Logged in on \(network).")
+                    command.createResponse(.success).deliver()
+                }
+                .catch(on: queue) { error in
+                    log.warning("\(accountId): Failed to login on \(network): \(error)")
+                    command.createResponse(.temporaryFailure).deliver()
+                }
+
+            case .maintain:
+                guard let network = command.network else {
+                    return
+                }
+                log.info("\(accountId): Received maintain command for \(network).")
+
+                guard let account = account, account.canManage(network: network) else {
+                    log.warning("\(accountId): Cannot manage \(network).")
+                    command.createResponse(.failure).deliver()
+                    return
+                }
+
+                account.status(on: queue, requestBinder: requestBinder).then(on: queue) { status -> Void in
+                    let result: NEHotspotHelperResult
+
+                    switch status.type {
+                    case .online:
+                        log.info("\(accountId): Still online on \(network).")
+                        result = .success
+                    case .offline:
+                        log.info("\(accountId): Offline on \(network).")
+                        result = .authenticationRequired
+                    case .offcampus:
+                        log.warning("\(accountId): Cannot manage \(network).")
+                        result = .failure
+                    }
+
+                    if result == .success, account.shouldAutoUpdateProfile {
+                        account.update(skipStatus: true, on: queue, requestBinder: requestBinder).always(on: queue) {
+                            command.createResponse(result).deliver()
+                        }
+                    } else {
+                        command.createResponse(result).deliver()
+                    }
+                }
+                .catch(on: queue) { error in
+                    log.warning("\(accountId): Failed to maintain on \(network): \(error)")
+                    command.createResponse(.failure).deliver()
+                }
+
+            case .logoff:
+                guard let network = command.network else {
+                    return
+                }
+                log.info("\(accountId): Received logoff command for \(network).")
+
+                guard let account = account, account.canManage(network: network) else {
+                    log.warning("\(accountId): Cannot manage \(network).")
+                    command.createResponse(.failure).deliver()
+                    return
+                }
+
+                account.logout(on: queue, requestBinder: requestBinder).then(on: queue) { _ -> Void in
+                    log.info("\(accountId): Logged out on \(network).")
+                    command.createResponse(.success).deliver()
+                }
+                .catch(on: queue) { error in
+                    log.warning("\(accountId): Failed to logout on \(network): \(error)")
+                    command.createResponse(.failure).deliver()
+                }
+
+            default: break
+            }
+        }
+
+        if result {
+            log.info("HotspotHelper registered.")
+        } else {
+            log.error("Unable to register HotspotHelper.")
+        }
+    }
+}
+
+
+// Convenience functions to get main account's info directly from UserDefault.
+extension Account {
+
+    public static var identifier: String? {
+        return Defaults[.mainAccount]
+    }
+
+    public static func decimalUnits(of identifier: String) -> Bool {
+        return Defaults[.accountDecimalUnits(of: identifier)]
+    }
+
+    public static func status(of identifier: String) -> Status? {
+        guard let vars = Defaults[.accountStatus(of: identifier)] else {
+            return nil
+        }
+        return Status(vars: vars)
+    }
+
+    public static func profile(of identifier: String) -> Profile? {
+        guard let vars = Defaults[.accountProfile(of: identifier)], let profile = Profile(vars: vars) else {
+            return nil
+        }
+        return (AccountManager.inUITest ||
+                Calendar.current.dateComponents([.year, .month], from: Date()) ==
+                Calendar.current.dateComponents([.year, .month], from: profile.updatedAt)) ? profile : nil
+    }
+
+    public static func history(of identifier: String) -> History? {
+        guard let vars = Defaults[.accountHistory(of: identifier)], let history = History(vars: vars) else {
+            return nil
+        }
+        let today = Date()
+        return (AccountManager.inUITest ||
+                history.year == Calendar.current.component(.year, from: today) &&
+                history.month == Calendar.current.component(.month, from: today)) ? history : nil
+    }
+
+    public static func freeUsage(of identifier: String) -> Int64? {
+        return Defaults[.accountFreeUsage(of: identifier)]
+    }
+
+    public static func maxUsage(of identifier: String) -> Int64? {
+        return Defaults[.accountMaxUsage(of: identifier)]
+    }
+}
+
+
+// Network requests related functions.
+extension Account {
+
     func handle(error: Error, name: Notification.Name, extraInfo: [String: Any]? = nil) {
         if let error = error as? CampNetError {
             switch error {
@@ -445,27 +515,27 @@ public class Account {
             log.debug("\(self): Logging in.")
 
             return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder)
-        }
-        .then(on: queue) { _ -> Promise<Status> in
-            return self.status(isSubaction: true, on: queue, requestBinder: requestBinder)
-        }
-        .then(on: queue) { status -> Void in
-            guard case .online = status.type else {
-                log.warning("\(self): Login action finished successfully, but status check failed.")
-                throw CampNetError.unknown("")
             }
-
-            Defaults[.accountLastLoginErrorNotification(of: self.identifier)] = nil
-            Defaults.synchronize()
-            log.info("\(self): Logged in.")
-        }
-        .recover(on: queue) { error -> Void in
-            log.warning("\(self): Failed to login: \(error)")
-
-            if !isSubaction {
-                self.handle(error: error, name: .accountLoginError)
+            .then(on: queue) { _ -> Promise<Status> in
+                return self.status(isSubaction: true, on: queue, requestBinder: requestBinder)
             }
-            throw error
+            .then(on: queue) { status -> Void in
+                guard case .online = status.type else {
+                    log.warning("\(self): Login action finished successfully, but status check failed.")
+                    throw CampNetError.unknown("")
+                }
+
+                Defaults[.accountLastLoginErrorNotification(of: self.identifier)] = nil
+                Defaults.synchronize()
+                log.info("\(self): Logged in.")
+            }
+            .recover(on: queue) { error -> Void in
+                log.warning("\(self): Failed to login: \(error)")
+
+                if !isSubaction {
+                    self.handle(error: error, name: .accountLoginError)
+                }
+                throw error
         }
     }
 
@@ -480,30 +550,30 @@ public class Account {
             log.debug("\(self): Updating status.")
 
             return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder)
-        }
-        .then(on: queue) { vars -> Status in
-            guard let status = Status(vars: vars) else {
-                log.error("\(self): No status in vars (\(vars)).")
-                throw CampNetError.invalidConfiguration
             }
-            self.status = status
-            log.info("\(self): Status updated.")
-            return status
-        }
-        .recover(on: queue) { error -> Status in
-            if let error = error as? CampNetError, case .offcampus = error {
-                let status = Status(type: .offcampus)
+            .then(on: queue) { vars -> Status in
+                guard let status = Status(vars: vars) else {
+                    log.error("\(self): No status in vars (\(vars)).")
+                    throw CampNetError.invalidConfiguration
+                }
                 self.status = status
                 log.info("\(self): Status updated.")
                 return status
             }
+            .recover(on: queue) { error -> Status in
+                if let error = error as? CampNetError, case .offcampus = error {
+                    let status = Status(type: .offcampus)
+                    self.status = status
+                    log.info("\(self): Status updated.")
+                    return status
+                }
 
-            log.warning("\(self): Failed to update status: \(error)")
+                log.warning("\(self): Failed to update status: \(error)")
 
-            if !isSubaction {
-                self.handle(error: error, name: .accountStatusError)
-            }
-            throw error
+                if !isSubaction {
+                    self.handle(error: error, name: .accountStatusError)
+                }
+                throw error
         }
     }
 
@@ -519,29 +589,29 @@ public class Account {
             log.debug("\(self): Updating profile.")
 
             return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder)
-        }
-        .then(on: queue) { vars -> Profile in
-            guard let profile = Profile(vars: vars) else {
-                log.error("\(self): No profile in vars (\(vars)).")
-                throw CampNetError.invalidConfiguration
             }
+            .then(on: queue) { vars -> Profile in
+                guard let profile = Profile(vars: vars) else {
+                    log.error("\(self): No profile in vars (\(vars)).")
+                    throw CampNetError.invalidConfiguration
+                }
 
-            // update past IPs, logout expired sessions if needed.
-            if let sessions = profile.sessions {
-                self.updatePastIps(sessions: sessions, autoLogout: autoLogout, on: queue, requestBinder: requestBinder)
+                // update past IPs, logout expired sessions if needed.
+                if let sessions = profile.sessions {
+                    self.updatePastIps(sessions: sessions, autoLogout: autoLogout, on: queue, requestBinder: requestBinder)
+                }
+
+                self.profile = profile
+                log.debug("\(self): Profile updated.")
+                return profile
             }
+            .recover(on: queue) { error -> Profile in
+                log.warning("\(self): Failed to update profile: \(error)")
 
-            self.profile = profile
-            log.debug("\(self): Profile updated.")
-            return profile
-        }
-        .recover(on: queue) { error -> Profile in
-            log.warning("\(self): Failed to update profile: \(error)")
-
-            if !isSubaction {
-                self.handle(error: error, name: .accountProfileError)
-            }
-            throw error
+                if !isSubaction {
+                    self.handle(error: error, name: .accountProfileError)
+                }
+                throw error
         }
     }
 
@@ -558,28 +628,28 @@ public class Account {
 
             return action.commit(username: username, password: password, extraVars: ["ip": ip], on: queue,
                                  requestBinder: requestBinder)
-        }
-        .then(on: queue) { _ in
-            return self.profile(isSubaction: true, on: queue, requestBinder: requestBinder)
-        }
-        .then(on: queue) { profile -> Void in
-            // Check sessions if possible.
-            if let sessions = profile.sessions {
-                guard sessions.map({ $0.ip }).contains(ip) else {
-                    log.warning("\(self): Login IP action finished successfully, but profile check failed.")
-                    throw CampNetError.unknown("")
+            }
+            .then(on: queue) { _ in
+                return self.profile(isSubaction: true, on: queue, requestBinder: requestBinder)
+            }
+            .then(on: queue) { profile -> Void in
+                // Check sessions if possible.
+                if let sessions = profile.sessions {
+                    guard sessions.map({ $0.ip }).contains(ip) else {
+                        log.warning("\(self): Login IP action finished successfully, but profile check failed.")
+                        throw CampNetError.unknown("")
+                    }
                 }
-            }
 
-            log.info("\(self): \(ip) logged in.")
-        }
-        .recover(on: queue) { error -> Void in
-            log.warning("\(self): Failed to login \(ip): \(error)")
-
-            if !isSubaction {
-                self.handle(error: error, name: .accountLoginIpError, extraInfo: ["ip": ip])
+                log.info("\(self): \(ip) logged in.")
             }
-            throw error
+            .recover(on: queue) { error -> Void in
+                log.warning("\(self): Failed to login \(ip): \(error)")
+
+                if !isSubaction {
+                    self.handle(error: error, name: .accountLoginIpError, extraInfo: ["ip": ip])
+                }
+                throw error
         }
     }
 
@@ -597,29 +667,29 @@ public class Account {
             return action.commit(username: username, password: password,
                                  extraVars: ["ip": session.ip, "id": session.id ?? ""], on: queue,
                                  requestBinder: requestBinder)
-        }
-        .then(on: queue) { _ in
-            // Do not autoLogout to avoid recursions.
-            return self.profile(isSubaction: true, autoLogout: false, on: queue, requestBinder: requestBinder)
-        }
-        .then(on: queue) { profile -> Void in
-            // Check sessions if possible.
-            if let sessions = profile.sessions {
-                guard !sessions.map({ $0.ip }).contains(session.ip) else {
-                    log.warning("\(self): Logout session action finished successfully, but profile check failed.")
-                    throw CampNetError.unknown("")
+            }
+            .then(on: queue) { _ in
+                // Do not autoLogout to avoid recursions.
+                return self.profile(isSubaction: true, autoLogout: false, on: queue, requestBinder: requestBinder)
+            }
+            .then(on: queue) { profile -> Void in
+                // Check sessions if possible.
+                if let sessions = profile.sessions {
+                    guard !sessions.map({ $0.ip }).contains(session.ip) else {
+                        log.warning("\(self): Logout session action finished successfully, but profile check failed.")
+                        throw CampNetError.unknown("")
+                    }
                 }
-            }
 
-            log.info("\(self): \(session) logged out.")
-        }
-        .recover(on: queue) { error -> Void in
-            log.warning("\(self): Failed to logout \(session): \(error)")
-
-            if !isSubaction {
-                self.handle(error: error, name: .accountLogoutSessionError, extraInfo: ["session": session])
+                log.info("\(self): \(session) logged out.")
             }
-            throw error
+            .recover(on: queue) { error -> Void in
+                log.warning("\(self): Failed to logout \(session): \(error)")
+
+                if !isSubaction {
+                    self.handle(error: error, name: .accountLogoutSessionError, extraInfo: ["session": session])
+                }
+                throw error
         }
     }
 
@@ -634,23 +704,23 @@ public class Account {
             log.debug("\(self): Updating history.")
 
             return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder)
-        }
-        .then(on: queue) { vars -> History in
-            guard let history = History(vars: vars) else {
-                log.error("\(self): No history in vars (\(vars)).")
-                throw CampNetError.invalidConfiguration
             }
-            self.history = history
-            log.debug("\(self): History updated.")
-            return history
-        }
-        .recover(on: queue) { error -> History in
-            log.warning("\(self): Failed to update history: \(error).")
+            .then(on: queue) { vars -> History in
+                guard let history = History(vars: vars) else {
+                    log.error("\(self): No history in vars (\(vars)).")
+                    throw CampNetError.invalidConfiguration
+                }
+                self.history = history
+                log.debug("\(self): History updated.")
+                return history
+            }
+            .recover(on: queue) { error -> History in
+                log.warning("\(self): Failed to update history: \(error).")
 
-            if !isSubaction {
-                self.handle(error: error, name: .accountHistoryError)
-            }
-            throw error
+                if !isSubaction {
+                    self.handle(error: error, name: .accountHistoryError)
+                }
+                throw error
         }
     }
 
@@ -665,25 +735,25 @@ public class Account {
             log.debug("\(self): Logging out.")
 
             return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder)
-        }
-        .then(on: queue) { _ in
-            return self.status(isSubaction: true, on: queue, requestBinder: requestBinder)
-        }
-        .then(on: queue) { status -> Void in
-            guard case .offline = status.type else {
-                log.warning("\(self): Logout action finished successfully, but status check failed.")
-                throw CampNetError.unknown("")
             }
-
-            log.info("\(self): Logged out.")
-        }
-        .recover(on: queue) { error -> Void in
-            log.warning("\(self): Failed to logout: \(error).")
-
-            if !isSubaction {
-                self.handle(error: error, name: .accountLogoutError)
+            .then(on: queue) { _ in
+                return self.status(isSubaction: true, on: queue, requestBinder: requestBinder)
             }
-            throw error
+            .then(on: queue) { status -> Void in
+                guard case .offline = status.type else {
+                    log.warning("\(self): Logout action finished successfully, but status check failed.")
+                    throw CampNetError.unknown("")
+                }
+
+                log.info("\(self): Logged out.")
+            }
+            .recover(on: queue) { error -> Void in
+                log.warning("\(self): Failed to logout: \(error).")
+
+                if !isSubaction {
+                    self.handle(error: error, name: .accountLogoutError)
+                }
+                throw error
         }
     }
 
@@ -712,32 +782,6 @@ public class Account {
         return promise
     }
 
-    public func canManage(network: NEHotspotNetwork) -> Bool {
-        return (configuration.ssids.contains(network.ssid) ||
-                Defaults[.onCampus(id: configuration.identifier, ssid: network.ssid)]) &&
-               Defaults[.autoLogin]
-    }
-
-    public func estimatedFee(profile: Profile?) -> Double? {
-        guard let profile = profile,
-              let usage = profile.usage,
-              let balance = profile.balance,
-              let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""],
-              let estimatedDailyUsage = estimatedDailyUsage else {
-            return nil
-        }
-
-        let today = Date()
-        guard let maxDay = Calendar.current.range(of: .day, in: .month, for: today)?.upperBound else {
-            return nil
-        }
-
-        let estimatedUsage = min(usage + estimatedDailyUsage * Int64(maxDay - Calendar.current.component(.day,
-                                                                                                         from: today)),
-                                 billingGroup.maxUsage(balance: balance, usage: usage))
-        return billingGroup.fee(from: usage, to: estimatedUsage)
-    }
-
     fileprivate func updatePastIps(sessions: [Session], autoLogout: Bool, on queue: DispatchQueue,
                                    requestBinder: RequestBinder?) {
         let ips = sessions.map { $0.ip }
@@ -760,21 +804,5 @@ public class Account {
             ipsToLogout.append(currentIp)
         }
         pastIps = ipsToLogout
-    }
-}
-
-extension Account: CustomStringConvertible {
-    public var description: String {
-        return identifier
-    }
-}
-
-extension Account: Hashable {
-    public var hashValue: Int {
-        return identifier.hashValue
-    }
-
-    public static func ==(lhs: Account, rhs: Account) -> Bool {
-        return lhs.identifier == rhs.identifier
     }
 }
