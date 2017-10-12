@@ -18,6 +18,7 @@
 		0F1ED5D01F138832004A6C1F /* CampNetKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1ED5CE1F138832004A6C1F /* CampNetKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F1ED5D31F138832004A6C1F /* CampNetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; };
 		0F1ED5D41F138832004A6C1F /* CampNetKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0F2E0C9A1F8F265F00AEEC15 /* CampNetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; };
 		0F2F67891F223F6B004CEF44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F2F678B1F223F6B004CEF44 /* Localizable.strings */; };
 		0F3465701F34D80A008E329F /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34656F1F34D80A008E329F /* NetworkViewController.swift */; };
 		0F3685161F1A5C6B0056AED1 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3685151F1A5C6B0056AED1 /* ChangePasswordViewController.swift */; };
@@ -241,6 +242,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F2E0C9A1F8F265F00AEEC15 /* CampNetKit.framework in Frameworks */,
 				0F9AAD071F535C5B00E14838 /* NotificationCenter.framework in Frameworks */,
 				2AE0FCD5E44070AB8799BA55 /* Pods_CampNetKit_CampNet_iOS_Widget.framework in Frameworks */,
 			);
