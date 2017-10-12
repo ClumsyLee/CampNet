@@ -2,7 +2,7 @@
 //  UInt16+Extension.swift
 //  CryptoSwift
 //
-//  Copyright (C) 2014-2017 Krzyżanowski <marcin@krzyzanowskim.com>
+//  Copyright (C) 2014-2017 Marcin Krzyżanowski <marcin@krzyzanowskim.com>
 //  This software is provided 'as-is', without any express or implied warranty.
 //
 //  In no event will the authors be held liable for any damages arising from the use of this software.
@@ -17,12 +17,12 @@
 /** array of bytes */
 extension UInt16 {
 
-    @_specialize(where T == ArraySlice<UInt8>)
+    @_specialize(exported: true, where T == ArraySlice<UInt8>)
     init<T: Collection>(bytes: T) where T.Iterator.Element == UInt8, T.Index == Int {
         self = UInt16(bytes: bytes, fromIndex: bytes.startIndex)
     }
 
-    @_specialize(where T == ArraySlice<UInt8>)
+    @_specialize(exported: true, where T == ArraySlice<UInt8>)
     init<T: Collection>(bytes: T, fromIndex index: T.Index) where T.Iterator.Element == UInt8, T.Index == Int {
         let val0 = UInt16(bytes[index.advanced(by: 0)]) << 8
         let val1 = UInt16(bytes[index.advanced(by: 1)])

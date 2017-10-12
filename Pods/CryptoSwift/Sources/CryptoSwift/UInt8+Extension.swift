@@ -2,7 +2,7 @@
 //  ByteExtension.swift
 //  CryptoSwift
 //
-//  Copyright (C) 2014-2017 Krzyżanowski <marcin@krzyzanowskim.com>
+//  Copyright (C) 2014-2017 Marcin Krzyżanowski <marcin@krzyzanowskim.com>
 //  This software is provided 'as-is', without any express or implied warranty.
 //
 //  In no event will the authors be held liable for any damages arising from the use of this software.
@@ -28,17 +28,17 @@ extension UInt8 {
 
     /** cast because UInt8(<UInt32>) because std initializer crash if value is > byte */
     static func with(value: UInt64) -> UInt8 {
-        let tmp = value & 0xFF
+        let tmp = value & 0xff
         return UInt8(tmp)
     }
 
     static func with(value: UInt32) -> UInt8 {
-        let tmp = value & 0xFF
+        let tmp = value & 0xff
         return UInt8(tmp)
     }
 
     static func with(value: UInt16) -> UInt8 {
-        let tmp = value & 0xFF
+        let tmp = value & 0xff
         return UInt8(tmp)
     }
 }
@@ -56,11 +56,11 @@ extension UInt8 {
 
         var bitsArray = [Bit](repeating: Bit.zero, count: totalBitsCount)
 
-        for j in 0 ..< totalBitsCount {
+        for j in 0..<totalBitsCount {
             let bitVal: UInt8 = 1 << UInt8(totalBitsCount - 1 - j)
             let check = self & bitVal
 
-            if (check != 0) {
+            if check != 0 {
                 bitsArray[j] = Bit.one
             }
         }
@@ -69,10 +69,10 @@ extension UInt8 {
 
     public func bits() -> String {
         var s = String()
-        let arr: [Bit] = self.bits()
+        let arr: [Bit] = bits()
         for idx in arr.indices {
             s += (arr[idx] == Bit.one ? "1" : "0")
-            if (idx.advanced(by: 1) % 8 == 0) { s += " " }
+            if idx.advanced(by: 1) % 8 == 0 { s += " " }
         }
         return s
     }

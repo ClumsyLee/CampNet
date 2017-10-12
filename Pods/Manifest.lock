@@ -1,15 +1,15 @@
 PODS:
   - Alamofire (4.5.1)
-  - BRYXBanner (0.7.3)
-  - Charts (3.0.3):
-    - Charts/Core (= 3.0.3)
-  - Charts/Core (3.0.3)
-  - CryptoSwift (0.7.1)
-  - DynamicButton (4.0.0)
-  - Instabug (7.3.8)
+  - BRYXBanner (0.8.0)
+  - Charts (3.0.4):
+    - Charts/Core (= 3.0.4)
+  - Charts/Core (3.0.4)
+  - CryptoSwift (0.7.2)
+  - DynamicButton (5.0.0)
+  - Instabug (7.3.9)
   - Kanna (2.2.1)
-  - KeychainAccess (3.0.2)
-  - NetUtils (3.0.2)
+  - KeychainAccess (3.1.0)
+  - NetUtils (4.0.2)
   - PromiseKit (4.4.0):
     - PromiseKit/Foundation (= 4.4.0)
     - PromiseKit/QuartzCore (= 4.4.0)
@@ -22,7 +22,7 @@ PODS:
   - PromiseKit/UIKit (4.4.0):
     - PromiseKit/CorePromise
   - SwiftRater (0.2.3)
-  - SwiftyBeaver (1.4.1)
+  - SwiftyBeaver (1.4.2)
   - SwiftyUserDefaults (3.0.0)
   - Yaml (3.3.1)
 
@@ -35,7 +35,7 @@ DEPENDENCIES:
   - Instabug
   - Kanna
   - KeychainAccess
-  - NetUtils (from `https://github.com/ThomasLee969/swift-netutils`)
+  - NetUtils
   - PromiseKit
   - SwiftRater (from `https://github.com/ThomasLee969/SwiftRater`)
   - SwiftyBeaver
@@ -43,35 +43,30 @@ DEPENDENCIES:
   - Yaml
 
 EXTERNAL SOURCES:
-  NetUtils:
-    :git: https://github.com/ThomasLee969/swift-netutils
   SwiftRater:
     :git: https://github.com/ThomasLee969/SwiftRater
 
 CHECKOUT OPTIONS:
-  NetUtils:
-    :commit: 80f7edbf0b214cec32fbfb26ef159088a2a30bff
-    :git: https://github.com/ThomasLee969/swift-netutils
   SwiftRater:
     :commit: ba59abb9a4a9f1a6a0fc59d07f0cba0a8a8c02ac
     :git: https://github.com/ThomasLee969/SwiftRater
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  BRYXBanner: bd26a91cb8a5826a8bc7687891043d287dd3ee53
-  Charts: bcde37724c161958c1438dd4883971fcb2d50c06
-  CryptoSwift: c290ac8976cf28c52c8b88bfe2c58c0302a0e0c0
-  DynamicButton: ddc1e8d79e37f2761ab64df0c02e89061b05d812
-  Instabug: 71693d392b2c78130d1bb80149d8d1217473e9c4
+  BRYXBanner: 406c3775789136531da6f3c98058be2f16e08a34
+  Charts: 0705898046257443f0afbbc3179f4b67507b6e48
+  CryptoSwift: cd2158be2bf639aabc63ec804707c7137c90157c
+  DynamicButton: 4c2fef968e4aa0a8a6ed7ca6b8a58c8e21a36cdc
+  Instabug: 927096f3267f38bdc79a2ecdceac68ab293b5bd0
   Kanna: 182789ab065e8f9a6ccc2a74ce6283d3401c0c4a
-  KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
-  NetUtils: 497e1692c7aa322bbd8fa920a7781c1a8fc269b9
+  KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
+  NetUtils: 3ae4058586b9574f8cbfa5b5d415a287f8179620
   PromiseKit: ecf5fe92275d57ee77c9ede858af47a162e9b97e
   SwiftRater: 9a186aab4f006d7764f7256a5aee6d155526f820
-  SwiftyBeaver: f04f739cca6826c5fb0f575fed8fa3293f76b83e
+  SwiftyBeaver: 91057725648ee4980308f1650af077d04b3654a0
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
   Yaml: 18b2cf7301c4132e2bbb508a6921d2637ed3046c
 
-PODFILE CHECKSUM: 96e3984344aea3034633302d152e17b5f43dffdf
+PODFILE CHECKSUM: 8a63795bbcf30c65572bb1e964b8d70cb1282e1d
 
 COCOAPODS: 1.3.1

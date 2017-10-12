@@ -2,7 +2,7 @@
 //  _ArrayType+Extensions.swift
 //  CryptoSwift
 //
-//  Copyright (C) 2014-2017 Krzyżanowski <marcin@krzyzanowskim.com>
+//  Copyright (C) 2014-2017 Marcin Krzyżanowski <marcin@krzyzanowskim.com>
 //  This software is provided 'as-is', without any express or implied warranty.
 //
 //  In no event will the authors be held liable for any damages arising from the use of this software.
@@ -28,7 +28,7 @@ extension Array: CSArrayType {
 public extension CSArrayType where Iterator.Element == UInt8 {
 
     public func toHexString() -> String {
-        return self.lazy.reduce("") {
+        return `lazy`.reduce("") {
             var s = String($1, radix: 16)
             if s.characters.count == 1 {
                 s = "0" + s
@@ -81,11 +81,11 @@ public extension CSArrayType where Iterator.Element == UInt8 {
     }
 
     public func encrypt(cipher: Cipher) throws -> [Iterator.Element] {
-        return try cipher.encrypt(cs_arrayValue())
+        return try cipher.encrypt(cs_arrayValue().slice)
     }
 
     public func decrypt(cipher: Cipher) throws -> [Iterator.Element] {
-        return try cipher.decrypt(cs_arrayValue())
+        return try cipher.decrypt(cs_arrayValue().slice)
     }
 
     public func authenticate<A: Authenticator>(with authenticator: A) throws -> [Iterator.Element] {

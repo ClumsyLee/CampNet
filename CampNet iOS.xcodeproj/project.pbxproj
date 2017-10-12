@@ -262,10 +262,10 @@
 			isa = PBXGroup;
 			children = (
 				0F14E7731E2E3AAC0092494B /* CampNet iOS */,
-				0F1ED5CD1F138832004A6C1F /* CampNetKit */,
-				0F9AAD081F535C5B00E14838 /* CampNet iOS Widget */,
-				0F8DBDCD1F54ECFB00879276 /* CampNet iOS UITests */,
 				0F057AA91F8EE1F20019AC8E /* CampNet iOS Tests */,
+				0F8DBDCD1F54ECFB00879276 /* CampNet iOS UITests */,
+				0F9AAD081F535C5B00E14838 /* CampNet iOS Widget */,
+				0F1ED5CD1F138832004A6C1F /* CampNetKit */,
 				0F14E7721E2E3AAC0092494B /* Products */,
 				2EF32BE92DEB0316C46ED2BF /* Pods */,
 				298ED8C6D2DAD1B93F321972 /* Frameworks */,
@@ -637,10 +637,10 @@
 			projectRoot = "";
 			targets = (
 				0F14E7701E2E3AAC0092494B /* CampNet iOS */,
-				0F1ED5CB1F138832004A6C1F /* CampNetKit */,
-				0F9AAD041F535C5B00E14838 /* CampNet iOS Widget */,
-				0F8DBDCB1F54ECFB00879276 /* CampNet iOS UITests */,
 				0F057AA71F8EE1F20019AC8E /* CampNet iOS Tests */,
+				0F8DBDCB1F54ECFB00879276 /* CampNet iOS UITests */,
+				0F9AAD041F535C5B00E14838 /* CampNet iOS Widget */,
+				0F1ED5CB1F138832004A6C1F /* CampNetKit */,
 			);
 		};
 /* End PBXProject section */
@@ -1039,7 +1039,6 @@
 				DEVELOPMENT_TEAM = 7494335NRW;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "CampNet iOS Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1061,7 +1060,6 @@
 				DEVELOPMENT_TEAM = 7494335NRW;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "CampNet iOS Tests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1281,7 +1279,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "CampNet iOS UITests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1299,7 +1296,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "CampNet iOS UITests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1318,7 +1314,6 @@
 				CODE_SIGN_ENTITLEMENTS = "CampNet iOS Widget/CampNet iOS Widget.entitlements";
 				DEVELOPMENT_TEAM = 7494335NRW;
 				INFOPLIST_FILE = "CampNet iOS Widget/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS.Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1338,7 +1333,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 7494335NRW;
 				INFOPLIST_FILE = "CampNet iOS Widget/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS.Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";

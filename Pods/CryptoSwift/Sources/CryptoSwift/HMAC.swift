@@ -2,7 +2,7 @@
 //  HMAC.swift
 //  CryptoSwift
 //
-//  Copyright (C) 2014-2017 Krzyżanowski <marcin@krzyzanowskim.com>
+//  Copyright (C) 2014-2017 Marcin Krzyżanowski <marcin@krzyzanowskim.com>
 //  This software is provided 'as-is', without any express or implied warranty.
 //
 //  In no event will the authors be held liable for any damages arising from the use of this software.
@@ -25,7 +25,7 @@ public final class HMAC: Authenticator {
         case sha1, sha256, sha384, sha512, md5
 
         var digestLength: Int {
-            switch (self) {
+            switch self {
             case .sha1:
                 return SHA1.digestLength
             case .sha256:
@@ -40,7 +40,7 @@ public final class HMAC: Authenticator {
         }
 
         func calculateHash(_ bytes: Array<UInt8>) -> Array<UInt8>? {
-            switch (self) {
+            switch self {
             case .sha1:
                 return Digest.sha1(bytes)
             case .sha256:

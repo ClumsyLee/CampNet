@@ -2,7 +2,7 @@
 
 import Foundation
 #if swift(>=3.2)
-    // ifaddrs is included in Darwin, which is imported by Foundation already.
+    import Darwin
 #else
     import ifaddrs
 #endif

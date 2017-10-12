@@ -19,7 +19,7 @@ target 'CampNetKit' do
   pod 'CryptoSwift'
   pod 'Kanna'
   pod 'KeychainAccess'
-  pod 'NetUtils', :git => 'https://github.com/ThomasLee969/swift-netutils'
+  pod 'NetUtils'
   pod 'PromiseKit'
   pod 'SwiftyBeaver'
   pod 'SwiftyUserDefaults'
@@ -27,5 +27,15 @@ target 'CampNetKit' do
 
   target 'CampNet iOS Widget' do
     pod 'Charts'
+  end
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+      if ['Kanna', 'Yaml'].include? target.name
+          target.build_configurations.each do |config|
+              config.build_settings['SWIFT_VERSION'] = '3.2'
+          end
+      end
   end
 end

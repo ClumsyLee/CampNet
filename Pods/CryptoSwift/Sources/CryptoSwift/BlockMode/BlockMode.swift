@@ -2,7 +2,7 @@
 //  BlockMode.swift
 //  CryptoSwift
 //
-//  Copyright (C) 2014-2017 Krzyżanowski <marcin@krzyzanowskim.com>
+//  Copyright (C) 2014-2017 Marcin Krzyżanowski <marcin@krzyzanowskim.com>
 //  This software is provided 'as-is', without any express or implied warranty.
 //
 //  In no event will the authors be held liable for any damages arising from the use of this software.
@@ -20,7 +20,7 @@ public enum BlockMode {
     case ECB, CBC, PCBC, CFB, OFB, CTR
 
     func worker(_ iv: Array<UInt8>?, cipherOperation: @escaping CipherOperationOnBlock) -> BlockModeWorker {
-        switch (self) {
+        switch self {
         case .ECB:
             return ECBModeWorker(iv: iv ?? [], cipherOperation: cipherOperation)
         case .CBC:
@@ -37,19 +37,19 @@ public enum BlockMode {
     }
 
     var options: BlockModeOptions {
-        switch (self) {
+        switch self {
         case .ECB:
-            return .PaddingRequired
+            return .paddingRequired
         case .CBC:
-            return [.InitializationVectorRequired, .PaddingRequired]
+            return [.initializationVectorRequired, .paddingRequired]
         case .CFB:
-            return .InitializationVectorRequired
+            return .initializationVectorRequired
         case .CTR:
-            return .InitializationVectorRequired
+            return .initializationVectorRequired
         case .OFB:
-            return .InitializationVectorRequired
+            return .initializationVectorRequired
         case .PCBC:
-            return [.InitializationVectorRequired, .PaddingRequired]
+            return [.initializationVectorRequired, .paddingRequired]
         }
     }
 }
