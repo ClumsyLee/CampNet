@@ -203,7 +203,7 @@ class OverviewViewController: UITableViewController {
         reloadNetwork()
 
         // Refresh the account.
-        guard let account = account, account.shouldAutoUpdateProfile, !refreshControl!.isRefreshing,
+        guard let account = account, account.shouldAutoUpdate, !refreshControl!.isRefreshing,
               !backgroundRefreshing else {
             return
         }
