@@ -8,7 +8,7 @@ script:
   - set -o pipefail
   - xcodebuild -version
   - xcodebuild -showsdks
-  - xcodebuild -workspace "CampNet iOS.xcworkspace" -scheme "CampNet iOS" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone X,OS=11.0" build test
+  - xcodebuild -workspace "CampNet iOS.xcworkspace" -scheme "CampNet iOS" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone X,OS=11.0" build test | xcpretty
 after_success:
   - bash <(curl -s https://codecov.io/bash) -J 'CampNet iOS'
 notifications:
