@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import NetworkExtension
 
 public class AccountManager {
 
@@ -228,11 +229,11 @@ extension AccountManager {
             let requestBinder: RequestBinder = { $0.bind(to: command) }
 
             switch command.commandType {
-            case .filterScanList: filterScanList(command: command)
-            case .evaluate: evaluate(command: command, on: queue, requestBinder: requestBinder)
-            case .authenticate: authenticate(command: command, on: queue, requestBinder: requestBinder)
-            case .maintain: maintain(command: command, on: queue, requestBinder: requestBinder)
-            case .logoff: logoff(command: command, on: queue, requestBinder: requestBinder)
+            case .filterScanList: self.filterScanList(command: command)
+            case .evaluate: self.evaluate(command: command, on: queue, requestBinder: requestBinder)
+            case .authenticate: self.authenticate(command: command, on: queue, requestBinder: requestBinder)
+            case .maintain: self.maintain(command: command, on: queue, requestBinder: requestBinder)
+            case .logoff: self.logoff(command: command, on: queue, requestBinder: requestBinder)
             default: break
             }
         }
@@ -244,7 +245,7 @@ extension AccountManager {
         }
     }
 
-    private static func filterScanList(command: NEHotspotHelperCommand) {
+    private func filterScanList(command: NEHotspotHelperCommand) {
         let main = self.main
         let accountId = main?.description ?? "nil"
         log.info("\(accountId): Received filterScanList command.")
@@ -269,7 +270,7 @@ extension AccountManager {
         response.deliver()
     }
 
-    private static func evaluate(command: NEHotspotHelperCommand, on queue: DispatchQueue,
+    private func evaluate(command: NEHotspotHelperCommand, on queue: DispatchQueue,
                                  requestBinder: @escaping RequestBinder) {
         let main = self.main
         let accountId = main?.description ?? "nil"
@@ -312,7 +313,7 @@ extension AccountManager {
         }
     }
 
-    private static func authenticate(command: NEHotspotHelperCommand, on queue: DispatchQueue,
+    private func authenticate(command: NEHotspotHelperCommand, on queue: DispatchQueue,
                                      requestBinder: @escaping RequestBinder) {
         let main = self.main
         let accountId = main?.description ?? "nil"
@@ -338,7 +339,7 @@ extension AccountManager {
 
     }
 
-    private static func maintain(command: NEHotspotHelperCommand, on queue: DispatchQueue,
+    private func maintain(command: NEHotspotHelperCommand, on queue: DispatchQueue,
                                  requestBinder: @escaping RequestBinder) {
         let main = self.main
         let accountId = main?.description ?? "nil"
@@ -382,7 +383,7 @@ extension AccountManager {
         }
     }
 
-    private static func logoff(command: NEHotspotHelperCommand, on queue: DispatchQueue,
+    private func logoff(command: NEHotspotHelperCommand, on queue: DispatchQueue,
                                requestBinder: @escaping RequestBinder) {
         let main = self.main
         let accountId = main?.description ?? "nil"

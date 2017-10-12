@@ -88,7 +88,7 @@ public class Account {
     }
 
     public static func registerHotspotHelper(displayName: String) {
-        AccountManager.shared.registerHotspotHelper(displayName)
+        AccountManager.shared.registerHotspotHelper(displayName: displayName)
     }
 
     public let configuration: Configuration
