@@ -35,10 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         setUpSwiftyBeaver()
         setUpSwiftRater()
         setUpCampNet()
-        
-        requestNotificationAuthorization()
+
+        // Do not request notification authorization when UI testing to prevent that system dialog from appearing.
+        if !AccountManager.inUITest {
+            requestNotificationAuthorization()
+        }
+
         addObservers()
-        
         registerHotspotHelper(displayName: L10n.HotspotHelper.displayName)
 
         return true
