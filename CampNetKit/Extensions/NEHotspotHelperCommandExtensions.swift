@@ -1,5 +1,5 @@
 //
-//  HotspotHelperExtensions.swift
+//  NEHotspotHelperCommandExtensions.swift
 //  CampNetKit
 //
 //  Created by Thomas Lee on 2017/10/12.
@@ -9,39 +9,15 @@
 import Foundation
 import NetworkExtension
 
-extension NEHotspotHelper {
-    public class func register(displayName: String) {
-        let options = [kNEHotspotHelperOptionDisplayName: displayName as NSObject]
-        let queue = DispatchQueue.global(qos: .utility)
+extension NEHotspotHelperCommand {
 
-        let result = NEHotspotHelper.register(options: options, queue: queue) { command in
-            let queue = DispatchQueue.global(qos: .utility)
-            let requestBinder: RequestBinder = { $0.bind(to: command) }
-
-            switch command.commandType {
-            case .filterScanList: filterScanList(command: command)
-            case .evaluate: evaluate(command: command, on: queue, requestBinder: requestBinder)
-            case .authenticate: authenticate(command: command, on: queue, requestBinder: requestBinder)
-            case .maintain: maintain(command: command, on: queue, requestBinder: requestBinder)
-            case .logoff: logoff(command: command, on: queue, requestBinder: requestBinder)
-            default: break
-            }
-        }
-
-        if result {
-            log.info("HotspotHelper registered.")
-        } else {
-            log.error("Unable to register HotspotHelper.")
-        }
-    }
-
-    private class func filterScanList(command: NEHotspotHelperCommand) {
+    public func filterScanList() {
         let main = Account.main
         let accountId = main?.description ?? "nil"
-        log.info("\(accountId): Received filterScanList command.")
+        log.info("\(accountId): Received filterScanList ")
 
-        guard let networkList = command.networkList, let account = main else {
-            let response = command.createResponse(.success)
+        guard let networkList = networkList, let account = main else {
+            let response = createResponse(.success)
             response.deliver()
             return
         }
@@ -55,16 +31,15 @@ extension NEHotspotHelper {
         }
         log.info("\(accountId): Known networks: \(knownList).")
 
-        let response = command.createResponse(.success)
+        let response = createResponse(.success)
         response.setNetworkList(knownList)
         response.deliver()
     }
 
-    private class func evaluate(command: NEHotspotHelperCommand, on queue: DispatchQueue,
-                                requestBinder: @escaping RequestBinder) {
+    public func evaluate(on queue: DispatchQueue, requestBinder: @escaping RequestBinder) {
         let main = Account.main
         let accountId = main?.description ?? "nil"
-        guard let network = command.network else {
+        guard let network = network else {
             return
         }
         log.info("\(accountId): Received evaluate command for \(network).")
@@ -73,7 +48,7 @@ extension NEHotspotHelper {
             log.info("\(accountId): Cannot manage \(network).")
 
             network.setConfidence(.none)
-            let response = command.createResponse(.success)
+            let response = createResponse(.success)
             response.setNetwork(network)
             response.deliver()
             return
@@ -89,7 +64,7 @@ extension NEHotspotHelper {
                 network.setConfidence(.none)
             }
 
-            let response = command.createResponse(.success)
+            let response = self.createResponse(.success)
             response.setNetwork(network)
             response.deliver()
         }
@@ -97,50 +72,48 @@ extension NEHotspotHelper {
             log.info("\(accountId): Can possibly manage \(network).")
             network.setConfidence(.low)
 
-            let response = command.createResponse(.success)
+            let response = self.createResponse(.success)
             response.setNetwork(network)
             response.deliver()
         }
     }
 
-    private class func authenticate(command: NEHotspotHelperCommand, on queue: DispatchQueue,
-                                    requestBinder: @escaping RequestBinder) {
+    public func authenticate(on queue: DispatchQueue, requestBinder: @escaping RequestBinder) {
         let main = Account.main
         let accountId = main?.description ?? "nil"
-        guard let network = command.network else {
+        guard let network = network else {
             return
         }
         log.info("\(accountId): Received authenticate command for \(network).")
 
         guard let account = main, account.canManage(network: network) else {
             log.warning("\(accountId): Cannot manage \(network).")
-            command.createResponse(.unsupportedNetwork).deliver()
+            createResponse(.unsupportedNetwork).deliver()
             return
         }
 
         account.login(on: queue, requestBinder: requestBinder).then(on: queue) { () -> Void in
             log.info("\(accountId): Logged in on \(network).")
-            command.createResponse(.success).deliver()
+            self.createResponse(.success).deliver()
         }
         .catch(on: queue) { error in
             log.warning("\(accountId): Failed to login on \(network): \(error)")
-            command.createResponse(.temporaryFailure).deliver()
+            self.createResponse(.temporaryFailure).deliver()
         }
 
     }
 
-    private class func maintain(command: NEHotspotHelperCommand, on queue: DispatchQueue,
-                                requestBinder: @escaping RequestBinder) {
+    public func maintain(on queue: DispatchQueue, requestBinder: @escaping RequestBinder) {
         let main = Account.main
         let accountId = main?.description ?? "nil"
-        guard let network = command.network else {
+        guard let network = network else {
             return
         }
         log.info("\(accountId): Received maintain command for \(network).")
 
         guard let account = main, account.canManage(network: network) else {
             log.warning("\(accountId): Cannot manage \(network).")
-            command.createResponse(.failure).deliver()
+            createResponse(.failure).deliver()
             return
         }
 
@@ -161,40 +134,40 @@ extension NEHotspotHelper {
 
             if result == .success, account.shouldAutoUpdateProfile {
                 account.update(skipStatus: true, on: queue, requestBinder: requestBinder).always(on: queue) {
-                    command.createResponse(result).deliver()
+                    self.createResponse(result).deliver()
                 }
             } else {
-                command.createResponse(result).deliver()
+                self.createResponse(result).deliver()
             }
         }
         .catch(on: queue) { error in
             log.warning("\(accountId): Failed to maintain on \(network): \(error)")
-            command.createResponse(.failure).deliver()
+            self.createResponse(.failure).deliver()
         }
     }
 
-    private class func logoff(command: NEHotspotHelperCommand, on queue: DispatchQueue,
-                              requestBinder: @escaping RequestBinder) {
+    public func logoff(on queue: DispatchQueue, requestBinder: @escaping RequestBinder) {
         let main = Account.main
         let accountId = main?.description ?? "nil"
-        guard let network = command.network else {
+        guard let network = network else {
             return
         }
         log.info("\(accountId): Received logoff command for \(network).")
 
         guard let account = main, account.canManage(network: network) else {
             log.warning("\(accountId): Cannot manage \(network).")
-            command.createResponse(.failure).deliver()
+            createResponse(.failure).deliver()
             return
         }
 
         account.logout(on: queue, requestBinder: requestBinder).then(on: queue) { _ -> Void in
             log.info("\(accountId): Logged out on \(network).")
-            command.createResponse(.success).deliver()
+            self.createResponse(.success).deliver()
         }
         .catch(on: queue) { error in
             log.warning("\(accountId): Failed to logout on \(network): \(error)")
-            command.createResponse(.failure).deliver()
+            self.createResponse(.failure).deliver()
         }
     }
 }
+

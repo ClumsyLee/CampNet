@@ -50,7 +50,8 @@
 		0F9AAD0D1F535C5B00E14838 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F9AAD0B1F535C5B00E14838 /* MainInterface.storyboard */; };
 		0F9AAD111F535C5B00E14838 /* CampNet iOS Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0F9AAD051F535C5B00E14838 /* CampNet iOS Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0FA087FD1F8F82BA009AE962 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA087FC1F8F82BA009AE962 /* Device.swift */; };
-		0FA087FF1F8F8354009AE962 /* HotspotHelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA087FE1F8F8354009AE962 /* HotspotHelperExtensions.swift */; };
+		0FA087FF1F8F8354009AE962 /* NEHotspotHelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA087FE1F8F8354009AE962 /* NEHotspotHelperExtensions.swift */; };
+		0FA088031F8F8584009AE962 /* NEHotspotHelperCommandExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA088021F8F8584009AE962 /* NEHotspotHelperCommandExtensions.swift */; };
 		0FA85DA51F4E930C00F76A86 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */; };
 		0FBCD7B01F226F4B00333A90 /* LoginIpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */; };
 		0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A11F17593E002861F3 /* AccountManager.swift */; };
@@ -179,7 +180,8 @@
 		0F9AAD0E1F535C5B00E14838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F9AAD161F535D1100E14838 /* CampNet iOS Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CampNet iOS Widget.entitlements"; sourceTree = "<group>"; };
 		0FA087FC1F8F82BA009AE962 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Helpers/Device.swift; sourceTree = "<group>"; };
-		0FA087FE1F8F8354009AE962 /* HotspotHelperExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotspotHelperExtensions.swift; path = Extensions/HotspotHelperExtensions.swift; sourceTree = "<group>"; };
+		0FA087FE1F8F8354009AE962 /* NEHotspotHelperExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NEHotspotHelperExtensions.swift; path = Extensions/NEHotspotHelperExtensions.swift; sourceTree = "<group>"; };
+		0FA088021F8F8584009AE962 /* NEHotspotHelperCommandExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NEHotspotHelperCommandExtensions.swift; path = Extensions/NEHotspotHelperCommandExtensions.swift; sourceTree = "<group>"; };
 		0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogsViewController.swift; path = Views/Controllers/LogsViewController.swift; sourceTree = "<group>"; };
 		0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginIpViewController.swift; path = Views/Controllers/LoginIpViewController.swift; sourceTree = "<group>"; };
 		0FC6E2A11F17593E002861F3 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Models/AccountManager.swift; sourceTree = "<group>"; };
@@ -339,7 +341,8 @@
 			children = (
 				0FC6E2A31F175DE5002861F3 /* ArrayExtensions.swift */,
 				0F7A93FA1F25E34C0093B3FA /* DoubleExtensions.swift */,
-				0FA087FE1F8F8354009AE962 /* HotspotHelperExtensions.swift */,
+				0FA088021F8F8584009AE962 /* NEHotspotHelperCommandExtensions.swift */,
+				0FA087FE1F8F8354009AE962 /* NEHotspotHelperExtensions.swift */,
 				0F8650741F1F8F9400C654C4 /* IntExtensions.swift */,
 				0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */,
 				0F464C641F13ED0F00C2F58B /* StringExtensions.swift */,
@@ -915,11 +918,12 @@
 				0FC6E2A61F17694E002861F3 /* NotificationNameExtensions.swift in Sources */,
 				0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */,
 				0F8650751F1F8F9400C654C4 /* IntExtensions.swift in Sources */,
-				0FA087FF1F8F8354009AE962 /* HotspotHelperExtensions.swift in Sources */,
+				0FA087FF1F8F8354009AE962 /* NEHotspotHelperExtensions.swift in Sources */,
 				0F464C631F13DB6E00C2F58B /* YamlExtensions.swift in Sources */,
 				0F8DBDDB1F55445300879276 /* SwiftyBeaver.swift in Sources */,
 				0F464C601F13D1E800C2F58B /* CampNetError.swift in Sources */,
 				0FD239C11F415EC6006EA7F9 /* UserDefaultsExtensions.swift in Sources */,
+				0FA088031F8F8584009AE962 /* NEHotspotHelperCommandExtensions.swift in Sources */,
 				0F464C721F14093E00C2F58B /* BillingGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
