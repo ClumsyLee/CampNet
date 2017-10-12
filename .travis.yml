@@ -3,7 +3,11 @@ osx_image: xcode9
 before_install:
   - brew update
   - brew install bartycrouch swiftgen
+  - SIMULATOR_ID=$(xcrun instruments -s | grep -o "iPhone X (11.0) \[.*\]" | grep -o "\[.*\]" | sed "s/^\[\(.*\)\]$/\1/")
+
 script:
+  - echo $SIMULATOR_ID
+  - open -b com.apple.iphonesimulator --args -CurrentDeviceUDID $SIMULATOR_ID
   - set -o pipefail
   - xcodebuild -version
   - xcodebuild -showsdks
