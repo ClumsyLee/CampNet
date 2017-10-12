@@ -49,7 +49,7 @@ public class AccountManager {
 
     fileprivate init() {
         if Device.inUITest {
-            Account.addFakeDefaults()
+            Account.fillFakeDefaults()
         }
 
         var loadedIdentifiers: [String] = []
