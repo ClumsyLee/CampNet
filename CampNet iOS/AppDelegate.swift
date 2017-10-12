@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     static let loginErrorNotificationInterval: TimeInterval = 86400
 
     var window: UIWindow?
-    var logFileURL: URL? = nil
+    var logFileURL: URL?
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

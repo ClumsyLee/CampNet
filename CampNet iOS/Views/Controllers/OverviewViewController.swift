@@ -42,12 +42,12 @@ class OverviewViewController: UITableViewController {
 
     @IBOutlet var chart: LineChartView!
 
-    var account: Account? = nil
-    var status: Status? = nil
-    var profile: Profile? = nil
-    var history: History? = nil
+    var account: Account?
+    var status: Status?
+    var profile: Profile?
+    var history: History?
 
-    var network: NEHotspotNetwork? = nil
+    var network: NEHotspotNetwork?
     var ip: String = ""
 
     var usageSumDataset = LineChartDataSet(values: [], label: nil)

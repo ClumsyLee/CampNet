@@ -15,7 +15,7 @@ class AccountsViewController: UITableViewController {
     @IBAction func cancelAddingAccount(segue: UIStoryboardSegue) {}
     @IBAction func accountAdded(segue: UIStoryboardSegue) {}
     @IBAction func accountDeleted(segue: UIStoryboardSegue) {}
-    
+
     @IBAction func refreshTable(_ sender: Any) {
         var promises: [Promise<Profile>] = []
         for (_, accountArray) in accounts {
@@ -24,19 +24,19 @@ class AccountsViewController: UITableViewController {
                 promises.append(promise)
             }
         }
-        
-        when(resolved: promises).always { 
+
+        when(resolved: promises).always {
             self.refreshControl?.endRefreshing()
         }
     }
-    
+
     var accounts: [(configuration: Configuration, accounts: [Account])] = []
-    var mainAccount: Account? = nil
-    
+    var mainAccount: Account?
+
     func account(at indexPath: IndexPath) -> Account {
         return accounts[indexPath.section].accounts[indexPath.row]
     }
-    
+
     func indexPath(of account: Account?) -> IndexPath? {
         guard let account = account else {
             return nil
@@ -54,20 +54,20 @@ class AccountsViewController: UITableViewController {
         }
         return nil
     }
-    
+
     @objc func accountAdded(_ notification: Notification) {
         if let account = notification.userInfo?["account"] as? Account {
             // Insert account into the table.
             let identifier = account.configuration.identifier
             let name = account.configuration.displayName
             let username = account.username
-            
+
             for (section, tuple) in accounts.enumerated() {
                 if tuple.configuration.displayName < name ||
                    tuple.configuration.displayName == name && tuple.configuration.identifier < identifier {
                     continue
                 } else if tuple.configuration.displayName == name && tuple.configuration.identifier == identifier {
-                    
+
                     // Insert row.
                     for (row, entry) in tuple.accounts.enumerated() {
                         if entry.username < username {
@@ -94,20 +94,20 @@ class AccountsViewController: UITableViewController {
             insertSection(section: accounts.count, account: account)
         }
     }
-    
+
     func insertRow(section: Int, row: Int, account: Account) {
         accounts[section].accounts.insert(account, at: row)
         tableView.insertRows(at: [IndexPath(row: row, section: section)], with: .left)
     }
-    
+
     func insertSection(section: Int, account: Account) {
         accounts.insert((configuration: account.configuration, accounts: [account]), at: section)
         tableView.insertSections(IndexSet(integer: section), with: .left)
     }
-    
+
     @objc func accountRemoved(_ notification: Notification) {
         if let indexPath = indexPath(of: notification.userInfo?["account"] as? Account) {
-            
+
             accounts[indexPath.section].accounts.remove(at: indexPath.row)
             if accounts[indexPath.section].accounts.isEmpty {
                 accounts.remove(at: indexPath.section)
@@ -117,7 +117,7 @@ class AccountsViewController: UITableViewController {
             }
         }
     }
-    
+
     @objc func mainChanged(_ notification: Notification) {
         if let fromIndexPath = indexPath(of: notification.userInfo?["fromAccount"] as? Account) {
             if let cell = tableView.cellForRow(at: fromIndexPath) as? AccountCell {
@@ -131,7 +131,7 @@ class AccountsViewController: UITableViewController {
             }
         }
     }
-    
+
     @objc func profileUpdated(_ notification: Notification) {
         guard let account = notification.userInfo?["account"] as? Account,
               let indexPath = indexPath(of: account) else {
@@ -139,11 +139,11 @@ class AccountsViewController: UITableViewController {
         }
         tableView.reloadRows(at: [indexPath], with: .fade)
     }
-    
+
     func updateProfile(of account: Account) -> Promise<Profile> {
         return account.profile(on: DispatchQueue.global(qos: .userInitiated))
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -155,7 +155,7 @@ class AccountsViewController: UITableViewController {
 
         // Set accounts.
         var allAccounts = Account.all
-        
+
         for configuration in allAccounts.keys {
             allAccounts[configuration]!.sort { $0.username < $1.username }
         }
@@ -166,10 +166,10 @@ class AccountsViewController: UITableViewController {
         accounts.sort { $0.configuration.displayName < $1.configuration.displayName ||
                         $0.configuration.displayName == $1.configuration.displayName &&
                         $0.configuration.identifier < $1.configuration.identifier }
-        
+
         // Set mainAccount.
         self.mainAccount = Account.main
-        
+
         // Set observers.
         NotificationCenter.default.addObserver(self, selector: #selector(accountAdded(_:)),
                                                name: .accountAdded, object: nil)
@@ -180,14 +180,14 @@ class AccountsViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)),
                                                name: .accountProfileUpdated, object: nil)
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if refreshControl!.isRefreshing {
             // See https://stackoverflow.com/questions/21758892/uirefreshcontrol-stops-spinning-after-making-application-inactive
             let offset = tableView.contentOffset
@@ -225,39 +225,39 @@ class AccountsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return accounts[section].accounts.count
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return accounts[section].configuration.displayName
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "accountCell", for: indexPath) as! AccountCell
-        
+
         // Configure the cell...
         let account = self.account(at: indexPath)
         cell.update(account: account, isMain: account == mainAccount)
-        
+
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         let account = self.account(at: indexPath)
         Account.makeMain(account)
     }
-    
+
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         performSegue(withIdentifier: "accountDetail", sender: account(at: indexPath))
     }
-    
+
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
                             forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             Account.remove(self.account(at: indexPath))
         }
-        
+
         tableView.setEditing(false, animated: true)
     }
 
@@ -282,10 +282,10 @@ class AccountsViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
+
         if segue.identifier == "accountDetail" {
             let controller = segue.destination as! AccountDetailViewController
-            
+
             controller.account = sender as! Account
         }
     }

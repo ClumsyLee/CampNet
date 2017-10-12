@@ -28,9 +28,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     var freeLimitLine = ChartLimitLine(limit: 0.0)
     var maxLimitLine = ChartLimitLine(limit: 0.0)
 
-    var identifier: String? = nil
-    var profile: Profile? = nil
-    var history: History? = nil
+    var identifier: String?
+    var profile: Profile?
+    var history: History?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -158,7 +158,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             if let maxUsage = Account.maxUsage(of: identifier) {
                 maxLimitLine.limit = maxUsage.usageInGb(decimalUnits: decimalUnits)
                 chart.leftAxis.addLimitLine(maxLimitLine)
-                
+
                 maxY = maxLimitLine.limit
             }
         }
@@ -181,10 +181,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         chart.data?.notifyDataChanged()
         chart.notifyDataSetChanged()
     }
-    
+
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
-        
+
         // If an error is encountered, use NCUpdateResult.Failed
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData

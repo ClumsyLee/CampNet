@@ -15,7 +15,7 @@ public class AccountManager {
     fileprivate let accountsQueue = DispatchQueue(label: "\(Configuration.bundleIdentifier).accountsQueue",
                                                   qos: .userInitiated, attributes: .concurrent)
 
-    fileprivate var mainAccount: Account? = nil {
+    fileprivate var mainAccount: Account? {
         willSet {
             Defaults[.mainAccount] = newValue?.identifier
             Defaults.synchronize()
