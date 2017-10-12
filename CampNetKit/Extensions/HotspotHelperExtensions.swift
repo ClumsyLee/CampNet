@@ -1,5 +1,5 @@
 //
-//  HotspotHelper.swift
+//  HotspotHelperExtensions.swift
 //  CampNetKit
 //
 //  Created by Thomas Lee on 2017/10/12.
@@ -61,7 +61,7 @@ extension NEHotspotHelper {
     }
 
     private class func evaluate(command: NEHotspotHelperCommand, on queue: DispatchQueue,
-                                 requestBinder: @escaping RequestBinder) {
+                                requestBinder: @escaping RequestBinder) {
         let main = Account.main
         let accountId = main?.description ?? "nil"
         guard let network = command.network else {
@@ -104,7 +104,7 @@ extension NEHotspotHelper {
     }
 
     private class func authenticate(command: NEHotspotHelperCommand, on queue: DispatchQueue,
-                                     requestBinder: @escaping RequestBinder) {
+                                    requestBinder: @escaping RequestBinder) {
         let main = Account.main
         let accountId = main?.description ?? "nil"
         guard let network = command.network else {
@@ -130,7 +130,7 @@ extension NEHotspotHelper {
     }
 
     private class func maintain(command: NEHotspotHelperCommand, on queue: DispatchQueue,
-                                 requestBinder: @escaping RequestBinder) {
+                                requestBinder: @escaping RequestBinder) {
         let main = Account.main
         let accountId = main?.description ?? "nil"
         guard let network = command.network else {
@@ -174,7 +174,7 @@ extension NEHotspotHelper {
     }
 
     private class func logoff(command: NEHotspotHelperCommand, on queue: DispatchQueue,
-                               requestBinder: @escaping RequestBinder) {
+                              requestBinder: @escaping RequestBinder) {
         let main = Account.main
         let accountId = main?.description ?? "nil"
         guard let network = command.network else {
