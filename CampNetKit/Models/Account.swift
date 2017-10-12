@@ -241,7 +241,7 @@ public class Account {
         }
     }
 
-    public var shouldAutoUpdateProfile: Bool {
+    public var shouldAutoUpdate: Bool {
         if let profile = profile {
             return -profile.updatedAt.timeIntervalSinceNow > Account.profileAutoUpdateInterval
         } else {
