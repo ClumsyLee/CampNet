@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             requestNotificationAuthorization()
         #endif
 
-        Account.registerHotspotHelper(displayName: L10n.HotspotHelper.displayName)
+        NEHotspotHelper.register(displayName: L10n.HotspotHelper.displayName)
 
         return true
     }

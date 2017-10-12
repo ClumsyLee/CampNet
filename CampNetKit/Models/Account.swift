@@ -87,10 +87,6 @@ public class Account {
         AccountManager.shared.makeMain(account)
     }
 
-    public static func registerHotspotHelper(displayName: String) {
-        AccountManager.shared.registerHotspotHelper(displayName: displayName)
-    }
-
     public let configuration: Configuration
     public let username: String
     public let identifier: String
