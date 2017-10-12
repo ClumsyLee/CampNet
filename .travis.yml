@@ -10,3 +10,5 @@ script:
   - xcodebuild -workspace "CampNet iOS.xcworkspace" -scheme "CampNet iOS" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone X,OS=11.0" build test | xcpretty
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+notifications:
+  slack: campnet:We503kNJbkcYp8UH3UPLS3RM
