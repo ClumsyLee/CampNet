@@ -605,6 +605,12 @@ extension Account {
         return promise
     }
 
+    public func updateIfNeeded(on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+                               requestBinder: RequestBinder? = nil) -> Promise<Void> {
+        return shouldAutoUpdate ? update(skipStatus: true, on: queue, requestBinder: requestBinder)
+                                : Promise()
+    }
+
     private func updatePastIps(sessions: [Session], autoLogout: Bool, on queue: DispatchQueue,
                                    requestBinder: RequestBinder?) {
         let ips = sessions.map { $0.ip }

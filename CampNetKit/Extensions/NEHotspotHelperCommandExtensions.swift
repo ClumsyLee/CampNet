@@ -92,9 +92,7 @@ extension NEHotspotHelperCommand {
         account.status(on: queue, requestBinder: requestBinder).then(on: queue) { status -> Void in
             switch status.type {
             case .online:
-                (account.shouldAutoUpdate ?
-                 account.update(skipStatus: true, on: queue, requestBinder: requestBinder) :
-                 Promise()).always(on: queue) {
+                account.updateIfNeeded(on: queue, requestBinder: requestBinder).always(on: queue) {
                     self.reply(result: .success)
                 }
             case .offline: self.reply(result: .authenticationRequired)
