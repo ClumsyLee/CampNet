@@ -3,15 +3,12 @@ osx_image: xcode9
 before_install:
   - brew update
   - brew install bartycrouch swiftgen
-  - SIMULATOR_ID=$(xcrun instruments -s | grep -o "iPhone X (11.0) \[.*\]" | grep -o "\[.*\]" | sed "s/^\[\(.*\)\]$/\1/")
 
 script:
-  - echo $SIMULATOR_ID
-  - open -b com.apple.iphonesimulator --args -CurrentDeviceUDID $SIMULATOR_ID
   - set -o pipefail
   - xcodebuild -version
   - xcodebuild -showsdks
-  - xcodebuild -workspace "CampNet iOS.xcworkspace" -scheme "CampNet iOS" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone X,OS=11.0" build test | xcpretty
+  - xcodebuild -workspace "CampNet iOS.xcworkspace" -scheme "CampNet iOS" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone X,OS=11.0" build test
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 notifications:
