@@ -63,24 +63,12 @@ extension DefaultsKeys {
     }
 }
 
-extension Account {
-
-    public static func fillFakeDefaults() {
+extension UserDefaults {
+    public static func useFakeAccounts() {
+        Defaults[.accounts] = []
         addBasicAccount()
         addMainAccount()
         addAltAccount()
-    }
-
-    public func removeDefaults() {
-        Defaults.remove(.accountLastLoginErrorNotification(of: identifier))
-
-        Defaults.remove(.accountStatus(of: identifier))
-        Defaults.remove(.accountProfile(of: identifier))
-        Defaults.remove(.accountHistory(of: identifier))
-        Defaults.remove(.accountEstimatedDailyUsage(of: identifier))
-        Defaults.remove(.accountPastIps(of: identifier))
-
-        Defaults.synchronize()
     }
 
     private static func addBasicAccount() {
@@ -153,5 +141,19 @@ extension Account {
         Defaults[.accountMaxUsage(of: accountId)] = 40_000_000_000
 
         Defaults[.accounts].append(accountId)
+    }
+}
+
+extension Account {
+    public func removeDefaults() {
+        Defaults.remove(.accountLastLoginErrorNotification(of: identifier))
+
+        Defaults.remove(.accountStatus(of: identifier))
+        Defaults.remove(.accountProfile(of: identifier))
+        Defaults.remove(.accountHistory(of: identifier))
+        Defaults.remove(.accountEstimatedDailyUsage(of: identifier))
+        Defaults.remove(.accountPastIps(of: identifier))
+
+        Defaults.synchronize()
     }
 }
