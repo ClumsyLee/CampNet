@@ -21,7 +21,8 @@ public class Account {
     static let profileAutoUpdateInterval: TimeInterval = 600
     static let estimationLength = 7
 
-    static let passwordKeychain = Keychain(service: "\(Configuration.bundleIdentifier).password", accessGroup: Configuration.keychainAccessGroup)
+    static let passwordKeychain = Keychain(service: "\(Configuration.bundleIdentifier).password",
+                                           accessGroup: Configuration.keychainAccessGroup)
 
     public static var all: [Configuration: [Account]] {
         return AccountManager.shared.all
@@ -50,7 +51,9 @@ public class Account {
         guard let vars = Defaults[.accountProfile(of: identifier)], let profile = Profile(vars: vars) else {
             return nil
         }
-        return (AccountManager.inUITest || Calendar.current.dateComponents([.year, .month], from: Date()) == Calendar.current.dateComponents([.year, .month], from: profile.updatedAt)) ? profile : nil
+        return (AccountManager.inUITest ||
+                Calendar.current.dateComponents([.year, .month], from: Date()) ==
+                Calendar.current.dateComponents([.year, .month], from: profile.updatedAt)) ? profile : nil
     }
 
     public static func history(of identifier: String) -> History? {
@@ -228,7 +231,8 @@ public class Account {
     }
 
     public static func add(configurationIdentifier: String, username: String, password: String? = nil) {
-        AccountManager.shared.add(configurationIdentifier: configurationIdentifier, username: username, password: password)
+        AccountManager.shared.add(configurationIdentifier: configurationIdentifier, username: username,
+                                  password: password)
     }
 
     public static func remove(_ account: Account) {
@@ -311,7 +315,8 @@ public class Account {
             Defaults[.accountStatus(of: identifier)] = newValue?.vars
             Defaults.synchronize()
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: .accountStatusUpdated, object: self, userInfo: ["account": self, "status": newValue as Any])
+                NotificationCenter.default.post(name: .accountStatusUpdated, object: self,
+                                                userInfo: ["account": self, "status": newValue as Any])
             }
             log.debug("\(self): Status changed to \(newValue?.description ?? "nil").")
         }
@@ -342,7 +347,8 @@ public class Account {
             Defaults[.accountProfile(of: identifier)] = newValue?.vars
             Defaults.synchronize()
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: .accountProfileUpdated, object: self, userInfo: ["account": self, "profile": newValue as Any])
+                NotificationCenter.default.post(name: .accountProfileUpdated, object: self,
+                                                userInfo: ["account": self, "profile": newValue as Any])
             }
             log.debug("\(self): Profile changed to \(newValue?.description ?? "nil").")
 
@@ -357,7 +363,9 @@ public class Account {
                     log.info("\(self): Reached the usage alert limit (\(oldUsage) => \(newUsage), limit: \(limit)).")
 
                     DispatchQueue.main.async {
-                        NotificationCenter.default.post(name: .accountUsageAlert, object: self, userInfo: ["account": self, "usage": newUsage, "maxUsage": maxUsage])
+                        NotificationCenter.default.post(name: .accountUsageAlert, object: self,
+                                                        userInfo: ["account": self, "usage": newUsage,
+                                                                   "maxUsage": maxUsage])
                     }
                 }
             }
@@ -382,7 +390,8 @@ public class Account {
             Defaults[.accountHistory(of: identifier)] = newValue?.vars
             Defaults.synchronize()
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: .accountHistoryUpdated, object: self, userInfo: ["account": self, "history": newValue as Any])
+                NotificationCenter.default.post(name: .accountHistoryUpdated, object: self,
+                                                userInfo: ["account": self, "history": newValue as Any])
             }
             log.debug("\(self): History changed to \(newValue?.description ?? "nil").")
         }
@@ -425,7 +434,8 @@ public class Account {
         }
     }
 
-    public func login(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
+    public func login(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+                      requestBinder: RequestBinder? = nil) -> Promise<Void> {
 
         return firstly { () -> Promise<[String: Any]> in
             guard let action = configuration.actions[.login] else {
@@ -459,7 +469,8 @@ public class Account {
         }
     }
 
-    public func status(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Status> {
+    public func status(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+                       requestBinder: RequestBinder? = nil) -> Promise<Status> {
 
         return firstly { () -> Promise<[String: Any]> in
             guard let action = configuration.actions[.status] else {
@@ -496,7 +507,9 @@ public class Account {
         }
     }
 
-    public func profile(isSubaction: Bool = false, autoLogout: Bool = true, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Profile> {
+    public func profile(isSubaction: Bool = false, autoLogout: Bool = true,
+                        on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+                        requestBinder: RequestBinder? = nil) -> Promise<Profile> {
 
         return firstly { () -> Promise<[String: Any]> in
             guard let action = configuration.actions[.profile] else {
@@ -532,7 +545,9 @@ public class Account {
         }
     }
 
-    public func login(ip: String, isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
+    public func login(ip: String, isSubaction: Bool = false,
+                      on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+                      requestBinder: RequestBinder? = nil) -> Promise<Void> {
 
         return firstly { () -> Promise<[String: Any]> in
             guard let action = configuration.actions[.loginIp] else {
@@ -541,7 +556,8 @@ public class Account {
             }
             log.debug("\(self): Logging in \(ip).")
 
-            return action.commit(username: username, password: password, extraVars: ["ip": ip], on: queue, requestBinder: requestBinder)
+            return action.commit(username: username, password: password, extraVars: ["ip": ip], on: queue,
+                                 requestBinder: requestBinder)
         }
         .then(on: queue) { _ in
             return self.profile(isSubaction: true, on: queue, requestBinder: requestBinder)
@@ -567,7 +583,9 @@ public class Account {
         }
     }
 
-    public func logoutSession(session: Session, isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
+    public func logoutSession(session: Session, isSubaction: Bool = false,
+                              on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+                              requestBinder: RequestBinder? = nil) -> Promise<Void> {
 
         return firstly { () -> Promise<[String: Any]> in
             guard let action = configuration.actions[.logoutSession] else {
@@ -576,10 +594,13 @@ public class Account {
             }
             log.debug("\(self): Logging out \(session).")
 
-            return action.commit(username: username, password: password, extraVars: ["ip": session.ip, "id": session.id ?? ""], on: queue, requestBinder: requestBinder)
+            return action.commit(username: username, password: password,
+                                 extraVars: ["ip": session.ip, "id": session.id ?? ""], on: queue,
+                                 requestBinder: requestBinder)
         }
         .then(on: queue) { _ in
-            return self.profile(isSubaction: true, autoLogout: false, on: queue, requestBinder: requestBinder)  // Do not autoLogout to avoid recursions.
+            // Do not autoLogout to avoid recursions.
+            return self.profile(isSubaction: true, autoLogout: false, on: queue, requestBinder: requestBinder)
         }
         .then(on: queue) { profile -> Void in
             // Check sessions if possible.
@@ -602,7 +623,8 @@ public class Account {
         }
     }
 
-    public func history(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<History> {
+    public func history(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+                        requestBinder: RequestBinder? = nil) -> Promise<History> {
 
         return firstly { () -> Promise<[String: Any]> in
             guard let action = configuration.actions[.history] else {
@@ -632,7 +654,8 @@ public class Account {
         }
     }
 
-    public func logout(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
+    public func logout(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+                       requestBinder: RequestBinder? = nil) -> Promise<Void> {
 
         return firstly { () -> Promise<[String: Any]> in
             guard let action = configuration.actions[.logout] else {
@@ -664,7 +687,8 @@ public class Account {
         }
     }
 
-    public func update(skipStatus: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<Void> {
+    public func update(skipStatus: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+                       requestBinder: RequestBinder? = nil) -> Promise<Void> {
 
         var promise = Promise()
 
@@ -708,12 +732,14 @@ public class Account {
             return nil
         }
 
-        let estimatedUsage = min(usage + estimatedDailyUsage * Int64(maxDay - Calendar.current.component(.day, from: today)),
+        let estimatedUsage = min(usage + estimatedDailyUsage * Int64(maxDay - Calendar.current.component(.day,
+                                                                                                         from: today)),
                                  billingGroup.maxUsage(balance: balance, usage: usage))
         return billingGroup.fee(from: usage, to: estimatedUsage)
     }
 
-    fileprivate func updatePastIps(sessions: [Session], autoLogout: Bool, on queue: DispatchQueue, requestBinder: RequestBinder?) {
+    fileprivate func updatePastIps(sessions: [Session], autoLogout: Bool, on queue: DispatchQueue,
+                                   requestBinder: RequestBinder?) {
         let ips = sessions.map { $0.ip }
         let currentIp = WiFi.ip
 

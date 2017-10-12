@@ -164,16 +164,21 @@ class AccountsViewController: UITableViewController {
         }
 
         accounts.sort { $0.configuration.displayName < $1.configuration.displayName ||
-                        $0.configuration.displayName == $1.configuration.displayName && $0.configuration.identifier < $1.configuration.identifier }
+                        $0.configuration.displayName == $1.configuration.displayName &&
+                        $0.configuration.identifier < $1.configuration.identifier }
         
         // Set mainAccount.
         self.mainAccount = Account.main
         
         // Set observers.
-        NotificationCenter.default.addObserver(self, selector: #selector(accountAdded(_:)), name: .accountAdded, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(accountRemoved(_:)), name: .accountRemoved, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)), name: .mainAccountChanged, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)), name: .accountProfileUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(accountAdded(_:)),
+                                               name: .accountAdded, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(accountRemoved(_:)),
+                                               name: .accountRemoved, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)),
+                                               name: .mainAccountChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)),
+                                               name: .accountProfileUpdated, object: nil)
     }
     
     deinit {
@@ -247,7 +252,8 @@ class AccountsViewController: UITableViewController {
     }
     
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             Account.remove(self.account(at: indexPath))
         }

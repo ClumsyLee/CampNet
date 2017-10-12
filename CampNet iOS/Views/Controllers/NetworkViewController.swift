@@ -106,12 +106,14 @@ class NetworkViewController: UITableViewController {
 
     /*
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table
+            //   view
         }    
     }
     */
@@ -147,7 +149,8 @@ class NetworkViewController: UITableViewController {
         return indexPath.section == Section.details.rawValue
     }
 
-    override func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+    override func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath,
+                            withSender sender: Any?) -> Bool {
         if action == #selector(copy(_:)) {
             if let detail = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text, detail != " " {
                 return true
@@ -159,7 +162,8 @@ class NetworkViewController: UITableViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
+    override func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath,
+                            withSender sender: Any?) {
         if action == #selector(copy(_:)) {
             let cell = tableView.cellForRow(at: indexPath)
             UIPasteboard.general.string = cell?.detailTextLabel?.text

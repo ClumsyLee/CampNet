@@ -20,7 +20,8 @@ public class AccountManager {
 
     static let shared = AccountManager()
 
-    fileprivate let accountsQueue = DispatchQueue(label: "\(Configuration.bundleIdentifier).accountsQueue", qos: .userInitiated, attributes: .concurrent)
+    fileprivate let accountsQueue = DispatchQueue(label: "\(Configuration.bundleIdentifier).accountsQueue",
+                                                  qos: .userInitiated, attributes: .concurrent)
 
     fileprivate var mainAccount: Account? = nil {
         willSet {
@@ -70,7 +71,8 @@ public class AccountManager {
                     balance: 14.98,
                     usage: 18_300_000_000).vars
 
-                Defaults[.accountStatus(of: lsh)] = Status(type: .online(onlineUsername: "lisihan13", startTime: nil, usage: nil)).vars
+                Defaults[.accountStatus(of: lsh)] = Status(type: .online(onlineUsername: "lisihan13", startTime: nil,
+                                                                         usage: nil)).vars
                 Defaults[.accountProfile(of: lsh)] = Profile(
                     name: "李思涵",
                     billingGroupName: "student",
@@ -90,7 +92,12 @@ public class AccountManager {
                                 usage: 26_000_000,
                                 device: "Windows NT"),
                     ]).vars
-                Defaults[.accountHistory(of: lsh)] = History(year: 2017, month: 8, usageSums: [100_000_000, 1_000_000_000, 9_000_000_000, 11_000_000_000, 15_000_000_000, 17_000_000_000, 18_000_000_000, 20_000_000_000, 26_000_000_000, 27_000_000_000, 27_400_000_000, 28_000_000_000, 38_000_000_000, 40_000_000_000, 40_000_000_000, 42_000_000_000, 43_000_000_000, 46_000_000_000, 48_000_000_000, 49_000_000_000, 51_000_000_000, 51_000_000_000, 52_000_000_000, 52_000_000_000, 52_800_000_000]).vars
+                Defaults[.accountHistory(of: lsh)] = History(year: 2017, month: 8,usageSums: [
+                    100_000_000, 1_000_000_000, 9_000_000_000, 11_000_000_000, 15_000_000_000,
+                    17_000_000_000, 18_000_000_000, 20_000_000_000, 26_000_000_000, 27_000_000_000,
+                    27_400_000_000, 28_000_000_000, 38_000_000_000, 40_000_000_000, 40_000_000_000,
+                    42_000_000_000, 43_000_000_000, 46_000_000_000, 48_000_000_000, 49_000_000_000,
+                    51_000_000_000, 51_000_000_000, 52_000_000_000, 52_000_000_000, 52_800_000_000]).vars
                 Defaults[.accountEstimatedDailyUsage(of: lsh)] = 1_000_000_000
                 Defaults[.accountFreeUsage(of: lsh)] = 20_000_000_000
                 Defaults[.accountMaxUsage(of: lsh)] = 53_640_000_000
@@ -102,7 +109,13 @@ public class AccountManager {
                     balance: 6.19,
                     usage: 36_900_000_000,
                     sessions: []).vars
-                Defaults[.accountHistory(of: lws)] = History(year: 2017, month: 8, usageSums: [10_080_600_000, 10_146_130_000, 10_146_130_000, 10_146_130_000, 10_146_130_000, 10_146_130_000, 10_146_130_000, 10_146_130_000, 10_146_130_000, 10_146_130_000, 10_758_510_000, 13_088_940_000, 14_944_190_000, 15_477_650_000, 15_650_410_000, 15_765_220_000, 18_011_360_000, 18_387_850_000, 18_934_760_000, 19_759_700_000, 20_000_360_000, 20_463_330_000, 21_025_160_000, 35_291_340_000, 35_888_400_000, 35_902_350_000, 36_699_970_000, 37_160_280_000]).vars
+                Defaults[.accountHistory(of: lws)] = History(year: 2017, month: 8, usageSums: [
+                    10_080_600_000, 10_146_130_000, 10_146_130_000, 10_146_130_000, 10_146_130_000,
+                    10_146_130_000, 10_146_130_000, 10_146_130_000, 10_146_130_000, 10_146_130_000,
+                    10_758_510_000, 13_088_940_000, 14_944_190_000, 15_477_650_000, 15_650_410_000,
+                    15_765_220_000, 18_011_360_000, 18_387_850_000, 18_934_760_000, 19_759_700_000,
+                    20_000_360_000, 20_463_330_000, 21_025_160_000, 35_291_340_000, 35_888_400_000,
+                    35_902_350_000, 36_699_970_000, 37_160_280_000]).vars
                 Defaults[.accountEstimatedDailyUsage(of: lws)] = 2_451_417_142
                 Defaults[.accountFreeUsage(of: lws)] = 20_000_000_000
                 Defaults[.accountMaxUsage(of: lws)] = 40_000_000_000
@@ -192,7 +205,8 @@ public class AccountManager {
     public func add(configurationIdentifier: String, username: String, password: String? = nil) {
 
         accountsQueue.async(flags: .barrier) {
-            guard let account = self.addAccount(configurationIdentifier: configurationIdentifier, username: username) else {
+            guard let account = self.addAccount(configurationIdentifier: configurationIdentifier,
+                                                username: username) else {
                 return
             }
             if let password = password {
@@ -213,7 +227,8 @@ public class AccountManager {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .accountAdded, object: self, userInfo: ["account": account])
                 if mainChanged {
-                    NotificationCenter.default.post(name: .mainAccountChanged, object: self, userInfo: ["toAccount": account])
+                    NotificationCenter.default.post(name: .mainAccountChanged, object: self,
+                                                    userInfo: ["toAccount": account])
                 }
             }
         }
@@ -241,7 +256,9 @@ public class AccountManager {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .accountRemoved, object: self, userInfo: ["account": account])
                 if mainChanged {
-                    NotificationCenter.default.post(name: .mainAccountChanged, object: self, userInfo: ["fromAccount": account, "toAccount": self.mainAccount as Any])
+                    NotificationCenter.default.post(name: .mainAccountChanged, object: self,
+                                                    userInfo: ["fromAccount": account,
+                                                               "toAccount": self.mainAccount as Any])
                 }
             }
         }
@@ -261,7 +278,8 @@ public class AccountManager {
 
             // Post notification
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: .mainAccountChanged, object: self, userInfo: ["fromAccount": oldMain as Any, "toAccount": account])
+                NotificationCenter.default.post(name: .mainAccountChanged, object: self,
+                                                userInfo: ["fromAccount": oldMain as Any, "toAccount": account])
             }
         }
     }

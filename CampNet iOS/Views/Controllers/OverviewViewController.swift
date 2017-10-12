@@ -93,13 +93,16 @@ class OverviewViewController: UITableViewController {
         case let .online(onlineUsername, _, _):
             if let network = network, account.username == onlineUsername, account.canManage(network: network) {
                 // Will auto login after logging out, warn for it.
-                let menu = UIAlertController(title: L10n.Overview.LogoutWhenAutoLoginAlert.title, message: nil, preferredStyle: .actionSheet)
+                let menu = UIAlertController(title: L10n.Overview.LogoutWhenAutoLoginAlert.title, message: nil,
+                                             preferredStyle: .actionSheet)
                 menu.view.tintColor = #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1)
 
-                let logoutAction = UIAlertAction(title: L10n.Overview.LogoutWhenAutoLoginAlert.Actions.logout, style: .destructive) { action in
+                let logoutAction = UIAlertAction(title: L10n.Overview.LogoutWhenAutoLoginAlert.Actions.logout,
+                                                 style: .destructive) { action in
                     self.logout()
                 }
-                let cancelAction = UIAlertAction(title: L10n.Overview.LogoutWhenAutoLoginAlert.Actions.cancel, style: .cancel, handler: nil)
+                let cancelAction = UIAlertAction(title: L10n.Overview.LogoutWhenAutoLoginAlert.Actions.cancel,
+                                                 style: .cancel, handler: nil)
 
                 menu.addAction(logoutAction)
                 menu.addAction(cancelAction)
@@ -121,13 +124,17 @@ class OverviewViewController: UITableViewController {
                !Defaults[.onCampus(id: account.configuration.identifier, ssid: network.ssid)] {
                 // Manually logging into an unknown network.
 
-                let menu = UIAlertController(title: L10n.Overview.LoginUnknownNetworkAlert.title(network.ssid), message: L10n.Overview.LoginUnknownNetworkAlert.message, preferredStyle: .actionSheet)
+                let menu = UIAlertController(title: L10n.Overview.LoginUnknownNetworkAlert.title(network.ssid),
+                                             message: L10n.Overview.LoginUnknownNetworkAlert.message,
+                                             preferredStyle: .actionSheet)
                 menu.view.tintColor = #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1)
 
-                let markAction = UIAlertAction(title: L10n.Overview.LoginUnknownNetworkAlert.Actions.markAsOnCampus, style: .default) { action in
+                let markAction = UIAlertAction(title: L10n.Overview.LoginUnknownNetworkAlert.Actions.markAsOnCampus,
+                                               style: .default) { action in
                     Defaults[.onCampus(id: account.configuration.identifier, ssid: network.ssid)] = true
                 }
-                let laterAction = UIAlertAction(title: L10n.Overview.LoginUnknownNetworkAlert.Actions.later, style: .cancel, handler: nil)
+                let laterAction = UIAlertAction(title: L10n.Overview.LoginUnknownNetworkAlert.Actions.later,
+                                                style: .cancel, handler: nil)
 
                 menu.addAction(markAction)
                 menu.addAction(laterAction)
@@ -196,7 +203,8 @@ class OverviewViewController: UITableViewController {
         reloadNetwork()
 
         // Refresh the account.
-        guard let account = account, account.shouldAutoUpdateProfile, !refreshControl!.isRefreshing, !backgroundRefreshing else {
+        guard let account = account, account.shouldAutoUpdateProfile, !refreshControl!.isRefreshing,
+              !backgroundRefreshing else {
             return
         }
 
@@ -276,7 +284,8 @@ class OverviewViewController: UITableViewController {
 
                 loginButtonCaption.text = L10n.Overview.LoginButton.Captions.login
 
-                if let account = account, let network = network, account.canManage(network: network), autoLogin, UIApplication.shared.applicationState == .active {
+                if let account = account, let network = network, account.canManage(network: network), autoLogin,
+                   UIApplication.shared.applicationState == .active {
                     login()
                 }
 
@@ -442,11 +451,14 @@ class OverviewViewController: UITableViewController {
 
     @objc func accountAdded(_ notification: Notification) {
         guard account != nil else {
-            return // This account will actually trigger mainChanged, update will be performed so we do not need to validdate it now.
+            // This account will actually trigger mainChanged, update will be performed so we do not need to validdate
+            //   it now.
+            return
         }
 
         if let account = notification.userInfo?["account"] as? Account {
-            _ = account.update(skipStatus: true, on: DispatchQueue.global(qos: .userInitiated))  // Validate & initial update.
+            // Validate & initial update.
+            _ = account.update(skipStatus: true, on: DispatchQueue.global(qos: .userInitiated))
         }
     }
 
@@ -554,12 +566,18 @@ class OverviewViewController: UITableViewController {
 
         self.reload(Account.main)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(accountAdded(_:)), name: .accountAdded, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)), name: .mainAccountChanged, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(statusUpdated(_:)), name: .accountStatusUpdated, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)), name: .accountProfileUpdated, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(historyUpdated(_:)), name: .accountHistoryUpdated, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(_:)), name: .UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(accountAdded(_:)),
+                                               name: .accountAdded, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)),
+                                               name: .mainAccountChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(statusUpdated(_:)),
+                                               name: .accountStatusUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)),
+                                               name: .accountProfileUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(historyUpdated(_:)),
+                                               name: .accountHistoryUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(_:)),
+                                               name: .UIApplicationDidBecomeActive, object: nil)
     }
 
     deinit {
@@ -606,7 +624,8 @@ class OverviewViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        networkTimer = Timer.scheduledTimer(timeInterval: OverviewViewController.networkUpdateInterval, target: self, selector: #selector(reloadNetwork), userInfo: nil, repeats: true)
+        networkTimer = Timer.scheduledTimer(timeInterval: OverviewViewController.networkUpdateInterval, target: self,
+                                            selector: #selector(reloadNetwork), userInfo: nil, repeats: true)
 
         // We don't have many changes, so make sure we are in the foreground when rating.
         if UIApplication.shared.applicationState == .active {

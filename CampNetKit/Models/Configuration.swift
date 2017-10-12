@@ -73,7 +73,8 @@ extension Status: CustomStringConvertible {
     public var description: String {
         switch type {
         case let .online(onlineUsername: onlineUsername, startTime: startTime, usage: usage):
-            return "online(\(onlineUsername ?? "nil"), \(startTime?.description ?? "nil"), \(usage?.description ?? "nil"))"
+            return "online(\(onlineUsername ?? "nil"), \(startTime?.description ?? "nil"), " +
+                   "\(usage?.description ?? "nil"))"
         case .offline:
             return "offline"
         case .offcampus:
@@ -104,7 +105,8 @@ public struct Session {
         return vars
     }
 
-    init(ip: String, id: String? = nil, startTime: Date? = nil, usage: Int64? = nil, mac: String? = nil, device: String? = nil) {
+    init(ip: String, id: String? = nil, startTime: Date? = nil, usage: Int64? = nil, mac: String? = nil,
+         device: String? = nil) {
         self.ip = ip
         self.id = id
         self.startTime = startTime
@@ -156,7 +158,8 @@ public struct Profile {
         return vars
     }
 
-    init(name: String? = nil, billingGroupName: String? = nil, balance: Double? = nil, usage: Int64? = nil, sessions: [Session]? = nil, updatedAt: Date = Date()) {
+    init(name: String? = nil, billingGroupName: String? = nil, balance: Double? = nil, usage: Int64? = nil,
+         sessions: [Session]? = nil, updatedAt: Date = Date()) {
         self.name = name
         self.billingGroupName = billingGroupName
         self.balance = balance
@@ -272,7 +275,8 @@ public class Configuration {
     public let actions: [Action.Role: Action]
 
     public init?(_ identifier: String) {
-        guard let url = Configuration.bundle.url(forResource: identifier, withExtension: Configuration.fileExtension, subdirectory: Configuration.subdirectory) else {
+        guard let url = Configuration.bundle.url(forResource: identifier, withExtension: Configuration.fileExtension,
+                                                 subdirectory: Configuration.subdirectory) else {
             log.error("\(identifier): Failed to find.")
             return nil
         }
@@ -300,7 +304,8 @@ public class Configuration {
                     return nil
                 }
 
-                billingGroups[name] = BillingGroup(configurationIdentifier: identifier, name: name, decimalUnits: decimalUnits, yaml: value)
+                billingGroups[name] = BillingGroup(configurationIdentifier: identifier, name: name,
+                                                   decimalUnits: decimalUnits, yaml: value)
             }
         }
         self.billingGroups = billingGroups

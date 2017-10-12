@@ -18,7 +18,8 @@ import Yaml
 public typealias RequestBinder = (NSMutableURLRequest) -> Void
 
 public struct ActionEntry {
-    static let userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1"
+    static let userAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, " +
+                           "like Gecko) Version/10.0 Mobile/14A300 Safari/602.1"
     static let timeout = 30.0
     static let varsName = "vars"
     static let newVarsName = "newVars"
@@ -170,7 +171,8 @@ public struct ActionEntry {
         context.setObject(newVars, forKeyedSubscript: ActionEntry.newVarsName as (NSCopying & NSObjectProtocol))
         _ = context.evaluateScript("Object.assign(\(ActionEntry.varsName), \(ActionEntry.newVarsName));")
         if let error = context.exception {
-            log.error("\(self): Failed to send new vars: \(error). resp: \(resp.debugDescription). newVars: \(newVars.debugDescription).")
+            log.error("\(self): Failed to send new vars: \(error). " +
+                      "resp: \(resp.debugDescription). newVars: \(newVars.debugDescription).")
             throw CampNetError.internalError
         }
 
@@ -181,15 +183,18 @@ public struct ActionEntry {
             if let error = CampNetError(identifier: errorString) {
                 throw error
             } else {
-                log.error("\(self): Failed to execute script: \(errorString). resp: \(resp.debugDescription). newVars: \(newVars.debugDescription).")
+                log.error("\(self): Failed to execute script: \(errorString). " +
+                          "resp: \(resp.debugDescription). newVars: \(newVars.debugDescription).")
                 throw CampNetError.invalidConfiguration
             }
         }
     }
 
     func getResults(context: JSContext) throws -> [String: Any] {
-        guard let results = context.objectForKeyedSubscript(ActionEntry.varsName).toDictionary() as? [String: Any] else {
-            log.error("\(self): Failed to get results. Object: \(context.objectForKeyedSubscript(ActionEntry.varsName).debugDescription)")
+        guard let results = context.objectForKeyedSubscript(ActionEntry.varsName).toDictionary()
+            as? [String: Any] else {
+            log.error("\(self): Failed to get results. " +
+                      "Object: \(context.objectForKeyedSubscript(ActionEntry.varsName).debugDescription)")
             throw CampNetError.internalError
         }
 
@@ -252,7 +257,9 @@ public struct Action {
         }
     }
 
-    public func commit(username: String, password: String, extraVars: [String: Any] = [:], on queue: DispatchQueue = DispatchQueue.global(qos: .utility), requestBinder: RequestBinder? = nil) -> Promise<[String: Any]> {
+    public func commit(username: String, password: String, extraVars: [String: Any] = [:],
+                       on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+                       requestBinder: RequestBinder? = nil) -> Promise<[String: Any]> {
 
         var initialVars: [String: Any] = [
             "username": username,
@@ -275,7 +282,8 @@ public struct Action {
         var promise = Promise<[String: Any]>(value: initialVars)
         for entry in entries {
             promise = promise.then(on: queue) { vars in
-                return entry.commit(currentVars: vars, context: context, session: session, on: queue, requestBinder: requestBinder)
+                return entry.commit(currentVars: vars, context: context, session: session, on: queue,
+                                    requestBinder: requestBinder)
             }
         }
 

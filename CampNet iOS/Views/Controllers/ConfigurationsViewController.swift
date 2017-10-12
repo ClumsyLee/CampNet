@@ -65,7 +65,8 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
             navigationItem.searchController = searchController
             // Set text colors to white.
             searchController.searchBar.tintColor = .white
-            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes =
+                [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
         } else {
             tableView.tableHeaderView = searchController.searchBar
         }
@@ -102,10 +103,12 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
         if indexPath.row == githubRow {
             return tableView.dequeueReusableCell(withIdentifier: "githubCell", for: indexPath)
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "configurationCell", for: indexPath) as! ConfigurationCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "configurationCell",
+                                                     for: indexPath) as! ConfigurationCell
 
             // Configure the cell...
-            let (identifier, name, domain) = searchController.isActive ? searchResults[indexPath.row] : names[indexPath.row]
+            let (identifier, name, domain) = searchController.isActive ? searchResults[indexPath.row]
+                                                                       : names[indexPath.row]
             cell.logo.image = UIImage(named: identifier)
             cell.name.text = name
             cell.domain.text = domain
@@ -131,12 +134,14 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
 
     /*
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table
+            //   view
         }    
     }
     */
@@ -165,7 +170,8 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
         
         if segue.identifier == "showConfigurationSetup" {
             let indexPath = tableView.indexPathForSelectedRow!
-            let (configurationIdentifier, name, _) = searchController.isActive ? searchResults[indexPath.row] : names[indexPath.row]
+            let (configurationIdentifier, name, _) = searchController.isActive ? searchResults[indexPath.row]
+                                                                               : names[indexPath.row]
             
             var existedUsernames: Set<String> = []
             for (configuration, accountArray) in Account.all {

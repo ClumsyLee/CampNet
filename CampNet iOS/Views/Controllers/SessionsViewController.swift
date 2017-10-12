@@ -135,8 +135,10 @@ class SessionsViewController: UITableViewController {
         
         self.reload()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)), name: .mainAccountChanged, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)), name: .accountProfileUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)),
+                                               name: .mainAccountChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)),
+                                               name: .accountProfileUpdated, object: nil)
     }
     
     deinit {
@@ -158,7 +160,9 @@ class SessionsViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        startTimeTimer = Timer.scheduledTimer(timeInterval: SessionsViewController.startTimeUpdateInterval, target: self, selector: #selector(updateStartTimes), userInfo: nil, repeats: true)
+        startTimeTimer = Timer.scheduledTimer(timeInterval: SessionsViewController.startTimeUpdateInterval,
+                                              target: self, selector: #selector(updateStartTimes), userInfo: nil,
+                                              repeats: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -228,11 +232,13 @@ class SessionsViewController: UITableViewController {
         return canLogoutSession
     }
     
-    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+    override func tableView(_ tableView: UITableView,
+                            titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return L10n.Sessions.DeleteConfirmationButton.title
     }
  
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             logout(session: sessions[indexPath.row])
         }

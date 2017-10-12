@@ -90,13 +90,16 @@ class SessionDetailViewController: UITableViewController {
             let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             menu.view.tintColor = #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1)
             
-            let deleteAction = UIAlertAction(title: L10n.SessionDetail.LogoutAlert.Actions.logout, style: .destructive) { action in
-                _ = self.account.logoutSession(session: self.session, on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
+            let deleteAction = UIAlertAction(title: L10n.SessionDetail.LogoutAlert.Actions.logout,
+                                             style: .destructive) { action in
+                _ = self.account.logoutSession(session: self.session,
+                                               on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
                     SwiftRater.incrementSignificantUsageCount()
                 }
                 self.performSegue(withIdentifier: "sessionLoggedOut", sender: self)
             }
-            let cancelAction = UIAlertAction(title: L10n.SessionDetail.LogoutAlert.Actions.cancel, style: .cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: L10n.SessionDetail.LogoutAlert.Actions.cancel, style: .cancel,
+                                             handler: nil)
             
             menu.addAction(deleteAction)
             menu.addAction(cancelAction)
@@ -121,12 +124,14 @@ class SessionDetailViewController: UITableViewController {
 
     /*
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table
+            //   view
         }    
     }
     */
@@ -162,7 +167,8 @@ class SessionDetailViewController: UITableViewController {
         return indexPath.section == Section.details.rawValue
     }
 
-    override func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+    override func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath,
+                            withSender sender: Any?) -> Bool {
         if action == #selector(copy(_:)) {
             if let detail = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text, detail != " " {
                 return true
@@ -174,7 +180,8 @@ class SessionDetailViewController: UITableViewController {
         }
     }
 
-    override func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
+    override func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath,
+                            withSender sender: Any?) {
         if action == #selector(copy(_:)) {
             let cell = tableView.cellForRow(at: indexPath)
             UIPasteboard.general.string = cell?.detailTextLabel?.text
