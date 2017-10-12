@@ -10,14 +10,6 @@ import Foundation
 
 public class AccountManager {
 
-    public static var inUITest: Bool {
-        #if DEBUG
-            return ProcessInfo.processInfo.environment["UITest"] != nil
-        #else
-            return false
-        #endif
-    }
-
     static let shared = AccountManager()
 
     fileprivate let accountsQueue = DispatchQueue(label: "\(Configuration.bundleIdentifier).accountsQueue",
@@ -56,11 +48,9 @@ public class AccountManager {
     }
 
     fileprivate init() {
-        #if DEBUG
-            if AccountManager.inUITest {
-                Account.addFakeDefaults()
-            }
-        #endif
+        if Device.inUITest {
+            Account.addFakeDefaults()
+        }
 
         var loadedIdentifiers: [String] = []
         let mainAccountIdentifier = Defaults[.mainAccount]

@@ -455,7 +455,7 @@ extension Account {
         guard let vars = Defaults[.accountProfile(of: identifier)], let profile = Profile(vars: vars) else {
             return nil
         }
-        return (AccountManager.inUITest ||
+        return (Device.inUITest ||
                 Calendar.current.dateComponents([.year, .month], from: Date()) ==
                 Calendar.current.dateComponents([.year, .month], from: profile.updatedAt)) ? profile : nil
     }
@@ -465,7 +465,7 @@ extension Account {
             return nil
         }
         let today = Date()
-        return (AccountManager.inUITest ||
+        return (Device.inUITest ||
                 history.year == Calendar.current.component(.year, from: today) &&
                 history.month == Calendar.current.component(.month, from: today)) ? history : nil
     }

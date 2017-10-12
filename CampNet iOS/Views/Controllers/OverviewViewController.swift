@@ -195,7 +195,7 @@ class OverviewViewController: UITableViewController {
     }
 
     func refreshIfNeeded() {
-        guard UIApplication.shared.applicationState == .active, !AccountManager.inUITest else {
+        guard UIApplication.shared.applicationState == .active, !Device.inUITest else {
             return
         }
 
@@ -222,11 +222,9 @@ class OverviewViewController: UITableViewController {
         } else {
             networkName.textColor = .lightGray
 
-            #if DEBUG
-                if AccountManager.inUITest {
-                    networkName.textColor = .darkText
-                }
-            #endif
+            if Device.inUITest {
+                networkName.textColor = .darkText
+            }
         }
     }
 
@@ -242,12 +240,10 @@ class OverviewViewController: UITableViewController {
             networkButton.isEnabled = false
             networkDisclosure.isHidden = true
 
-            #if DEBUG
-                if AccountManager.inUITest {
-                    networkName.text = "Tsinghua-5G"
-                    networkDisclosure.isHidden = false
-                }
-            #endif
+            if Device.inUITest {
+                networkName.text = "Tsinghua-5G"
+                networkDisclosure.isHidden = false
+            }
         }
         reloadNetworkColor()
 
@@ -365,7 +361,7 @@ class OverviewViewController: UITableViewController {
         usageSumEndDataset.values = []
         if let profile = profile, let usage = profile.usage {
             let day: Int
-            if AccountManager.inUITest {
+            if Device.inUITest {
                 day = account?.history?.usageSums.count ?? 1
             } else {
                 day = Calendar.current.component(.day, from: profile.updatedAt)
