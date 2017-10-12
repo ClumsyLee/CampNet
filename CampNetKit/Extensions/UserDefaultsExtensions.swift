@@ -64,6 +64,70 @@ extension DefaultsKeys {
 }
 
 extension Account {
+
+    public static func addFakeDefaults() {
+        let cxy = "cn.edu.tsinghua.chenxinyao13"
+        let lsh = "cn.edu.tsinghua.lisihan13"
+        let lws = "cn.edu.tsinghua.liws13"
+
+        Defaults[.mainAccount] = lsh
+        Defaults[.accounts] = [cxy, lsh, lws]
+
+        Defaults[.accountProfile(of: cxy)] = Profile(
+            name: "呵呵姐",
+            balance: 14.98,
+            usage: 18_300_000_000).vars
+
+        Defaults[.accountStatus(of: lsh)] = Status(type: .online(onlineUsername: "lisihan13", startTime: nil,
+                                                                 usage: nil)).vars
+        Defaults[.accountProfile(of: lsh)] = Profile(
+            name: "李思涵",
+            billingGroupName: "student",
+            balance: 1.68,
+            usage: 52_800_000_000,
+            sessions: [
+                Session(ip: "59.66.141.91",
+                        startTime: Date(timeIntervalSinceNow: -70000),
+                        usage: 548_000_000,
+                        device: "iPhone"),
+                Session(ip: "59.66.141.92",
+                        startTime: Date(timeIntervalSinceNow: -160000),
+                        usage: 1_385_000_000,
+                        device: "Mac OS"),
+                Session(ip: "59.66.141.93",
+                        startTime: Date(timeIntervalSinceNow: -700),
+                        usage: 26_000_000,
+                        device: "Windows NT"),
+                ]).vars
+        Defaults[.accountHistory(of: lsh)] = History(year: 2017, month: 8,usageSums: [
+            100_000_000, 1_000_000_000, 9_000_000_000, 11_000_000_000, 15_000_000_000,
+            17_000_000_000, 18_000_000_000, 20_000_000_000, 26_000_000_000, 27_000_000_000,
+            27_400_000_000, 28_000_000_000, 38_000_000_000, 40_000_000_000, 40_000_000_000,
+            42_000_000_000, 43_000_000_000, 46_000_000_000, 48_000_000_000, 49_000_000_000,
+            51_000_000_000, 51_000_000_000, 52_000_000_000, 52_000_000_000, 52_800_000_000]).vars
+        Defaults[.accountEstimatedDailyUsage(of: lsh)] = 1_000_000_000
+        Defaults[.accountFreeUsage(of: lsh)] = 20_000_000_000
+        Defaults[.accountMaxUsage(of: lsh)] = 53_640_000_000
+
+        Defaults[.accountStatus(of: lws)] = Status(type: .offcampus).vars
+        Defaults[.accountProfile(of: lws)] = Profile(
+            name: "硕霸",
+            billingGroupName: "student",
+            balance: 6.19,
+            usage: 36_900_000_000,
+            sessions: []).vars
+        Defaults[.accountHistory(of: lws)] = History(year: 2017, month: 8, usageSums: [
+            10_080_600_000, 10_146_130_000, 10_146_130_000, 10_146_130_000, 10_146_130_000,
+            10_146_130_000, 10_146_130_000, 10_146_130_000, 10_146_130_000, 10_146_130_000,
+            10_758_510_000, 13_088_940_000, 14_944_190_000, 15_477_650_000, 15_650_410_000,
+            15_765_220_000, 18_011_360_000, 18_387_850_000, 18_934_760_000, 19_759_700_000,
+            20_000_360_000, 20_463_330_000, 21_025_160_000, 35_291_340_000, 35_888_400_000,
+            35_902_350_000, 36_699_970_000, 37_160_280_000]).vars
+        Defaults[.accountEstimatedDailyUsage(of: lws)] = 2_451_417_142
+        Defaults[.accountFreeUsage(of: lws)] = 20_000_000_000
+        Defaults[.accountMaxUsage(of: lws)] = 40_000_000_000
+    }
+
     public func removeDefaults() {
         Defaults.remove(.accountLastLoginErrorNotification(of: identifier))
         
