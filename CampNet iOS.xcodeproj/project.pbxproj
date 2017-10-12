@@ -723,7 +723,7 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /usr/local/bin/bash;
+			shellPath = /bin/bash;
 			shellScript = "if which bartycrouch > /dev/null; then\n  bartycrouch interfaces -p \"$PROJECT_DIR\"\n  swiftgen strings -t structured-swift3 \"${PROJECT_DIR}/CampNet iOS/Base.lproj/Localizable.strings\" -o \"${PROJECT_DIR}/CampNet iOS/L10n.swift\"\nelse\n  echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi";
 		};
 		2DA83DAA5E79752AB0E1FD18 /* [CP] Embed Pods Frameworks */ = {
