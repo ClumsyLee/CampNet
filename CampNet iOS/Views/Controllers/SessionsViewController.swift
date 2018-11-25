@@ -75,6 +75,7 @@ class SessionsViewController: UITableViewController {
 
         if oldIps.isEmpty && ips.isEmpty {
             // Nothing needs to be done.
+            return
         }
         if oldIps.isEmpty {
             tableView.insertSections(IndexSet(integer: 0), with: .left)
