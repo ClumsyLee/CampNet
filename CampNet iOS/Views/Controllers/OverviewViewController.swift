@@ -573,7 +573,7 @@ class OverviewViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(historyUpdated(_:)),
                                                name: .accountHistoryUpdated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(_:)),
-                                               name: .UIApplicationDidBecomeActive, object: nil)
+                                               name: UIApplication.didBecomeActiveNotification, object: nil)
     }
 
     deinit {

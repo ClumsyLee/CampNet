@@ -36,7 +36,7 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
                    domain.localizedCaseInsensitiveContains(searchText)
         }
     }
-    
+
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text {
             filter(for: searchText)
@@ -52,7 +52,7 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
+
         self.searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         if #available(iOS 9.1, *) {
@@ -66,12 +66,12 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
             // Set text colors to white.
             searchController.searchBar.tintColor = .white
             UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes =
-                [NSAttributedStringKey.foregroundColor.rawValue: UIColor.white]
+                convertToNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue: UIColor.white])
         } else {
             tableView.tableHeaderView = searchController.searchBar
         }
         self.definesPresentationContext = true  // For navigation bar.
-        
+
         self.names = Configuration.displayNames.map {
             (identifier: $0.key, name: $0.value, domain: $0.key.reverseDomained)
         }
@@ -79,7 +79,7 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
             $0.name < $1.name || $0.name == $1.name && $0.identifier < $1.identifier
         }
     }
-    
+
     deinit {
         searchController.view.removeFromSuperview()  // A bug in iOS 9. See https://stackoverflow.com/questions/32282401/attempting-to-load-the-view-of-a-view-controller-while-it-is-deallocating-uis
     }
@@ -112,7 +112,7 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
             cell.logo.image = UIImage(named: identifier)
             cell.name.text = name
             cell.domain.text = domain
-            
+
             return cell
         }
     }
@@ -142,7 +142,7 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table
             //   view
-        }    
+        }
     }
     */
 
@@ -167,12 +167,12 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
+
         if segue.identifier == "showConfigurationSetup" {
             let indexPath = tableView.indexPathForSelectedRow!
             let (configurationIdentifier, name, _) = searchController.isActive ? searchResults[indexPath.row]
                                                                                : names[indexPath.row]
-            
+
             var existedUsernames: Set<String> = []
             for (configuration, accountArray) in Account.all {
                 if configuration.identifier == configurationIdentifier {
@@ -180,11 +180,16 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
                     break
                 }
             }
-            
+
             let controller = segue.destination as! ConfigurationSetupViewController
             controller.configurationIdentifier = configurationIdentifier
             controller.configurationDisplayName = name
             controller.existedUsernames = existedUsernames
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

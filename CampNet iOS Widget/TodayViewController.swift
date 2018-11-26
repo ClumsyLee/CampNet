@@ -210,6 +210,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
 
     func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(8, 16, 8, 16)
+        return UIEdgeInsets.init(top: 8, left: 16, bottom: 8, right: 16)
     }
 }

@@ -238,7 +238,7 @@ class SessionsViewController: UITableViewController {
         return L10n.Sessions.DeleteConfirmationButton.title
     }
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
                             forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             logout(session: sessions[indexPath.row])
