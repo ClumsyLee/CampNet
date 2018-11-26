@@ -36,24 +36,30 @@ class CampNet_iOS_UITests: XCTestCase {
     func testTakeScreenshots() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
 
         let app = XCUIApplication()
 
+        sleep(1)
         app.navigationBars.buttons["accounts"].tap()
         snapshot("4-accounts")
 
+        sleep(1)
         app.cells.staticTexts["lisihan13"].tap()
         snapshot("1-overview")
 
+        sleep(1)
         app.buttons["devices"].tap()
         snapshot("5-devices")
 
+        sleep(1)
         app.navigationBars.buttons.element(boundBy: 0).tap()
+        sleep(1)
         app.navigationBars.buttons["accounts"].tap()
+        sleep(1)
         app.cells.staticTexts["liws13"].tap()
         snapshot("2-overview")
 
+        sleep(1)
         app.navigationBars.buttons["settings"].tap()
         snapshot("3-settings")
     }
