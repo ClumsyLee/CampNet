@@ -62,7 +62,7 @@ class OverviewViewController: UITableViewController {
     @IBAction func accountSwitched(segue: UIStoryboardSegue) {}
 
     @IBAction func feedbackPressed(_ sender: Any) {
-        Instabug.invoke()
+        BugReporting.invoke()
     }
 
     @IBAction func refreshTable(_ sender: Any) {
@@ -73,7 +73,7 @@ class OverviewViewController: UITableViewController {
             return
         }
 
-        account.update(on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
+        _ = account.update(on: DispatchQueue.global(qos: .userInitiated)).done { _ in
             SwiftRater.incrementSignificantUsageCount()
         }
         .ensure {
@@ -163,7 +163,7 @@ class OverviewViewController: UITableViewController {
 
         loginButtonCaption.text = L10n.Overview.LoginButton.Captions.loggingIn
 
-        account.login(on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
+        account.login(on: DispatchQueue.global(qos: .userInitiated)).done { _ in
             SwiftRater.incrementSignificantUsageCount()
 
             // Update the profile in the background if possible.
@@ -186,7 +186,7 @@ class OverviewViewController: UITableViewController {
 
         loginButtonCaption.text = L10n.Overview.LoginButton.Captions.loggingOut
 
-        account.logout(on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
+        account.logout(on: DispatchQueue.global(qos: .userInitiated)).done { _ in
             SwiftRater.incrementSignificantUsageCount()
         }
         .catch { _ in
@@ -208,7 +208,7 @@ class OverviewViewController: UITableViewController {
             return
         }
 
-        account.update().ensure {
+        _ = account.update().ensure {
             // Don't touch backgroundRefreshing if the account has been changed.
             if self.account == account {
                 self.backgroundRefreshing = false

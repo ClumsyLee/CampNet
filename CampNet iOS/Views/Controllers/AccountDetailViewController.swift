@@ -30,7 +30,7 @@ class AccountDetailViewController: UITableViewController {
     }
 
     @IBAction func refreshTable(_ sender: Any) {
-        account.profile(on: DispatchQueue.global(qos: .userInitiated)).ensure {
+        _ = account.profile(on: DispatchQueue.global(qos: .userInitiated)).ensure {
             self.refreshControl?.endRefreshing()
         }
     }

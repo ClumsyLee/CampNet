@@ -99,10 +99,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func setUpInstaBug() {
-        Instabug.start(withToken: "0df1051f1ad636fc8efd87baef010aaa", invocationEvent: .none)
-        Instabug.setPromptOptionsEnabledWithBug(false, feedback: true, chat: false)
-        Instabug.setAttachmentTypesEnabledScreenShot(false, extraScreenShot: false, galleryImage: false,
-                                                     voiceNote: false, screenRecording: false)
+        Instabug.start(withToken: "0df1051f1ad636fc8efd87baef010aaa", invocationEvents: [])
+        BugReporting.promptOptions = [.feedback]
+        BugReporting.enabledAttachmentTypes = []
     }
 
     func setUpSwiftyBeaver() {

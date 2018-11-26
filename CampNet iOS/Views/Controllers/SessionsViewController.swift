@@ -41,7 +41,7 @@ class SessionsViewController: UITableViewController {
             return
         }
 
-        account.profile(on: DispatchQueue.global(qos: .userInitiated)).ensure {
+        _ = account.profile(on: DispatchQueue.global(qos: .userInitiated)).ensure {
             self.refreshControl?.endRefreshing()
         }
     }
@@ -182,7 +182,7 @@ class SessionsViewController: UITableViewController {
             return
         }
 
-        _  = account.logoutSession(session: session, on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
+        _ = account.logoutSession(session: session, on: DispatchQueue.global(qos: .userInitiated)).done { _ in
             SwiftRater.incrementSignificantUsageCount()
         }
     }

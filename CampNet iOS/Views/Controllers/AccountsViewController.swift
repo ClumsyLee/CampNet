@@ -25,7 +25,7 @@ class AccountsViewController: UITableViewController {
             }
         }
 
-        when(resolved: promises).ensure {
+        when(resolved: promises).done { _ in
             self.refreshControl?.endRefreshing()
         }
     }
@@ -286,7 +286,7 @@ class AccountsViewController: UITableViewController {
         if segue.identifier == "accountDetail" {
             let controller = segue.destination as! AccountDetailViewController
 
-            controller.account = sender as! Account
+            controller.account = (sender as! Account)
         }
     }
 }

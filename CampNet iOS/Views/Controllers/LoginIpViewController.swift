@@ -117,7 +117,7 @@ class LoginIpViewController: UITableViewController {
         
         if segue.identifier == "ipLoggedIn" {
             if let ip = ipField.text {
-                _ = account.login(ip: ip, on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
+                _ = account.login(ip: ip, on: DispatchQueue.global(qos: .userInitiated)).done {
                     SwiftRater.incrementSignificantUsageCount()
                 }
             }

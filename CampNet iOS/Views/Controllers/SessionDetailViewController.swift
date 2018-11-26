@@ -93,7 +93,7 @@ class SessionDetailViewController: UITableViewController {
             let deleteAction = UIAlertAction(title: L10n.SessionDetail.LogoutAlert.Actions.logout,
                                              style: .destructive) { action in
                 _ = self.account.logoutSession(session: self.session,
-                                               on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
+                                               on: DispatchQueue.global(qos: .userInitiated)).done { _ in
                     SwiftRater.incrementSignificantUsageCount()
                 }
                 self.performSegue(withIdentifier: "sessionLoggedOut", sender: self)
