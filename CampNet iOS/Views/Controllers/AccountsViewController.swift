@@ -25,7 +25,7 @@ class AccountsViewController: UITableViewController {
             }
         }
 
-        when(resolved: promises).always {
+        when(resolved: promises).ensure {
             self.refreshControl?.endRefreshing()
         }
     }

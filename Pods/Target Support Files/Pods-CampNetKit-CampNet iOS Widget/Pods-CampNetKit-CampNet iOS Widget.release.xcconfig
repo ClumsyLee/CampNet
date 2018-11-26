@@ -1,15 +1,15 @@
-FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/Alamofire" "$PODS_CONFIGURATION_BUILD_DIR/Charts" "$PODS_CONFIGURATION_BUILD_DIR/CryptoSwift" "$PODS_CONFIGURATION_BUILD_DIR/Kanna" "$PODS_CONFIGURATION_BUILD_DIR/KeychainAccess" "$PODS_CONFIGURATION_BUILD_DIR/NetUtils" "$PODS_CONFIGURATION_BUILD_DIR/PromiseKit" "$PODS_CONFIGURATION_BUILD_DIR/SwiftyBeaver" "$PODS_CONFIGURATION_BUILD_DIR/SwiftyUserDefaults" "$PODS_CONFIGURATION_BUILD_DIR/Yaml"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire" "${PODS_CONFIGURATION_BUILD_DIR}/Charts" "${PODS_CONFIGURATION_BUILD_DIR}/CryptoSwift" "${PODS_CONFIGURATION_BUILD_DIR}/Kanna" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainAccess" "${PODS_CONFIGURATION_BUILD_DIR}/NetUtils" "${PODS_CONFIGURATION_BUILD_DIR}/PromiseKit" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyBeaver" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyUserDefaults" "${PODS_CONFIGURATION_BUILD_DIR}/Yaml"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(SDKROOT)/usr/include/libxml2
+HEADER_SEARCH_PATHS = $(inherited) $(SDKROOT)/usr/include/libxml2
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks' '@executable_path/../../Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/Alamofire/Alamofire.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Charts/Charts.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/CryptoSwift/CryptoSwift.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Kanna/Kanna.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/KeychainAccess/KeychainAccess.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/NetUtils/NetUtils.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/PromiseKit/PromiseKit.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/SwiftyBeaver/SwiftyBeaver.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/SwiftyUserDefaults/SwiftyUserDefaults.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/Yaml/Yaml.framework/Headers"
+OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Charts/Charts.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/CryptoSwift/CryptoSwift.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Kanna/Kanna.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/KeychainAccess/KeychainAccess.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/NetUtils/NetUtils.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/PromiseKit/PromiseKit.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyBeaver/SwiftyBeaver.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Yaml/Yaml.framework/Headers"
 OTHER_LDFLAGS = $(inherited) -framework "Alamofire" -framework "Charts" -framework "CryptoSwift" -framework "Kanna" -framework "KeychainAccess" -framework "NetUtils" -framework "PromiseKit" -framework "SwiftyBeaver" -framework "SwiftyUserDefaults" -framework "Yaml"
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
-PODS_BUILD_DIR = $BUILD_DIR
-PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
 PODS_ROOT = ${SRCROOT}/Pods
-SWIFT_INCLUDE_PATHS = $(SRCROOT)/Kanna/Modules
+SWIFT_INCLUDE_PATHS = $(inherited) $(SRCROOT)/Kanna/Modules
 SWIFT_INCLUDE_PATHS[sdk=iphoneos*] = $(SRCROOT)/NetUtils/ifaddrs/iphoneos
 SWIFT_INCLUDE_PATHS[sdk=iphonesimulator*] = $(SRCROOT)/NetUtils/ifaddrs/iphonesimulator
 SWIFT_INCLUDE_PATHS[sdk=macosx*] = $(SRCROOT)/NetUtils/ifaddrs/macosx

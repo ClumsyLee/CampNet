@@ -76,7 +76,7 @@ class OverviewViewController: UITableViewController {
         account.update(on: DispatchQueue.global(qos: .userInitiated)).then { _ -> Void in
             SwiftRater.incrementSignificantUsageCount()
         }
-        .always {
+        .ensure {
             // Don't touch refreshControl if the account has been changed.
             if self.account == account {
                 self.refreshControl?.endRefreshing()
@@ -208,7 +208,7 @@ class OverviewViewController: UITableViewController {
             return
         }
 
-        account.update().always {
+        account.update().ensure {
             // Don't touch backgroundRefreshing if the account has been changed.
             if self.account == account {
                 self.backgroundRefreshing = false

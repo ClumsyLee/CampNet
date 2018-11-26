@@ -33,7 +33,7 @@ final class AES256CBC {
     /// automatically generates and puts a random IV at first 16 chars
     /// the password must be exactly 32 chars long for AES-256
     class func encryptString(_ str: String, password: String) -> String? {
-        if !str.isEmpty && password.characters.count == 32 {
+        if !str.isEmpty && password.length == 32 {
             let iv = randomText(16)
             let key = password
 
@@ -49,7 +49,7 @@ final class AES256CBC {
     /// returns optional decrypted string via AES-256CBC
     /// IV need to be at first 16 chars, password must be 32 chars long
     class func decryptString(_ str: String, password: String) -> String? {
-        if str.characters.count > 16 && password.characters.count == 32 {
+        if str.length > 16 && password.length == 32 {
             // get AES initialization vector from first 16 chars
             #if swift(>=4.0)
             let iv = String(str[..<str.index(str.startIndex, offsetBy: 16)])
@@ -759,8 +759,13 @@ fileprivate func arrayOfBytes<T>(value: T, length: Int? = nil) -> Array<UInt8> {
         bytes[totalBytes - 1 - j] = (bytesPointer + j).pointee
     }
 
+    #if swift(>=4.1)
+    valuePointer.deinitialize(count: 1)
+    valuePointer.deallocate()
+    #else
     valuePointer.deinitialize()
     valuePointer.deallocate(capacity: 1)
+    #endif
 
     return bytes
 }

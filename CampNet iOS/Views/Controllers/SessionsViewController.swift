@@ -41,7 +41,7 @@ class SessionsViewController: UITableViewController {
             return
         }
 
-        account.profile(on: DispatchQueue.global(qos: .userInitiated)).always {
+        account.profile(on: DispatchQueue.global(qos: .userInitiated)).ensure {
             self.refreshControl?.endRefreshing()
         }
     }

@@ -1,7 +1,10 @@
+# Instabug iOS SDK
 ![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Instabug.svg)
 ![Twitter](https://img.shields.io/badge/twitter-@Instabug-blue.svg)
 
-Bug Reporting and In-App Chat for Mobile Apps
+Instabug is an in-app feedback and bug reporting tool for mobile apps. With just a simple shake, your users or beta testers can [report bugs](https://instabug.com/bug-reporting) or send in-app feedback and the SDK will capture an environment snapshot of your user's device including all console logs, [server-side network requests](https://instabug.com/network-logging) and bug reproduction steps compiling all these details in one organised dashboard to help you debug and fix bugs faster. 
+
+Instabug also provides you with a [reliable crash reporter](https://instabug.com/crash-reporting) that automatically captures a detailed report of the running environment, the different threads’ states, [the steps to reproduce the crash](https://instabug.com/user-steps), and the network request logs. All the data is captured automatically with no need for breadcrumbs, and you can always [reply back to your users](https://instabug.com/in-app-chat) and they will receive your messages within the app.
 
 For more info, visit [Instabug.com](https://www.instabug.com).
 
@@ -26,7 +29,7 @@ $ pod install
 To integrate Instabug into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), add it to your `Cartfile`:
 
 ```
-binary "https://raw.githubusercontent.com/Instabug/Instabug-iOS/master/Carthage.json"
+binary "https://raw.githubusercontent.com/Instabug/Instabug-iOS/master/Instabug.json"
 ```
 
 Then, run the following command:
@@ -46,7 +49,7 @@ Then drag Instabug.framework into your Xcode project.
 3. Create a new "Run Script Phase" in your project’s target "Build Phases" and add the following snippet
 
 ```
-bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instabug.framework/Instabug.bundle/strip-frameworks.sh"
+bash "${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instabug.framework/strip-frameworks.sh"
 ```
 
 ## Usage

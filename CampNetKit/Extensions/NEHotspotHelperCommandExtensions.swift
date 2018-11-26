@@ -46,7 +46,7 @@ extension NEHotspotHelperCommand {
             return
         }
 
-        account.status(on: queue, requestBinder: requestBinder).then(on: queue) { status -> Void in
+        account.status(on: queue, requestBinder: requestBinder).done(on: queue) { status in
             switch status.type {
             case .online, .offline: self.replyEvaluate(confidence: .high)
             case .offcampus: self.replyEvaluate(confidence: .none)
@@ -69,7 +69,7 @@ extension NEHotspotHelperCommand {
             return
         }
 
-        account.login(on: queue, requestBinder: requestBinder).then(on: queue) { () -> Void in
+        account.login(on: queue, requestBinder: requestBinder).done(on: queue) {
             self.reply(result: .success)
         }
         .catch(on: queue) { error in
@@ -89,10 +89,10 @@ extension NEHotspotHelperCommand {
             return
         }
 
-        account.status(on: queue, requestBinder: requestBinder).then(on: queue) { status -> Void in
+        account.status(on: queue, requestBinder: requestBinder).done(on: queue) { status in
             switch status.type {
             case .online:
-                account.updateIfNeeded(on: queue, requestBinder: requestBinder).always(on: queue) {
+                _ = account.updateIfNeeded(on: queue, requestBinder: requestBinder).ensure(on: queue) {
                     self.reply(result: .success)
                 }
             case .offline: self.reply(result: .authenticationRequired)
@@ -116,7 +116,7 @@ extension NEHotspotHelperCommand {
             return
         }
 
-        account.logout(on: queue, requestBinder: requestBinder).then(on: queue) { _ -> Void in
+        account.logout(on: queue, requestBinder: requestBinder).done(on: queue) {
             self.reply(result: .success)
         }
         .catch(on: queue) { error in

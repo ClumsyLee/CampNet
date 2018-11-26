@@ -1,11 +1,14 @@
-//
-//  IBGTypes.h
-//  Instabug
-//
-//  Copyright:  (c) 2013-2016 by Instabug, Inc., all rights reserved.
-//
+/*
+ File:       InstabugCore/IBGTypes.h
+ 
+ Contains:   Enums and Constants for using Instabug's SDK.
+ 
+ Copyright:  (c) 2013-2018 by Instabug, Inc., all rights reserved.
+ 
+ Version:    0.0.0
+ */
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 /// ------------------------------
 /// @name User-facing Strings Keys
@@ -18,6 +21,16 @@ extern NSString * const kIBGShakeStartAlertTextStringName;
 extern NSString * const kIBGTwoFingerSwipeStartAlertTextStringName;
 extern NSString * const kIBGEdgeSwipeStartAlertTextStringName;
 extern NSString * const kIBGScreenshotStartAlertTextStringName;
+extern NSString * const kIBGFloatingButtonStartAlertTextStringName;
+extern NSString * const kIBGBetaWelcomeMessageWelcomeStepTitle;
+extern NSString * const kIBGBetaWelcomeMessageWelcomeStepContent;
+extern NSString * const kIBGBetaWelcomeMessageHowToReportStepTitle;
+extern NSString * const kIBGBetaWelcomeMessageHowToReportStepContent;
+extern NSString * const kIBGBetaWelcomeMessageFinishStepTitle;
+extern NSString * const kIBGBetaWelcomeMessageFinishStepContent;
+extern NSString * const kIBGBetaWelcomeDoneButtonTitle;
+extern NSString * const kIBGLiveWelcomeMessageTitle;
+extern NSString * const kIBGLiveWelcomeMessageContent;
 extern NSString * const kIBGInvalidEmailMessageStringName;
 extern NSString * const kIBGInvalidEmailTitleStringName;
 extern NSString * const kIBGInvalidCommentMessageStringName;
@@ -26,6 +39,14 @@ extern NSString * const kIBGInvocationTitleStringName;
 extern NSString * const kIBGTalkToUsStringName;
 extern NSString * const kIBGReportBugStringName;
 extern NSString * const kIBGReportFeedbackStringName;
+extern NSString * const kIBGPhotoPickerTitle;
+extern NSString * const kIBGProgressViewTitle;
+extern NSString * const kIBGGalleryPermissionDeniedAlertTitle;
+extern NSString * const kIBGGalleryPermissionDeniedAlertMessage;
+extern NSString * const kIBGMaximumSizeExceededAlertTitle;
+extern NSString * const kIBGMaximumSizeExceededAlertMessage;
+extern NSString * const kIBGiCloudImportErrorAlertTitle;
+extern NSString * const kIBGiCloudImportErrorAlertMessage;
 extern NSString * const kIBGEmailFieldPlaceholderStringName;
 extern NSString * const kIBGCommentFieldPlaceholderForBugReportStringName;
 extern NSString * const kIBGCommentFieldPlaceholderForFeedbackStringName;
@@ -47,6 +68,7 @@ extern NSString * const kIBGMessagesNotificationTitleSingleMessageStringName;
 extern NSString * const kIBGMessagesNotificationTitleMultipleMessagesStringName;
 extern NSString * const kIBGScreenshotTitleStringName;
 extern NSString * const kIBGOkButtonTitleStringName;
+extern NSString * const kIBGSendButtonTitleStringName;
 extern NSString * const kIBGCancelButtonTitleStringName;
 extern NSString * const kIBGThankYouAlertTitleStringName;
 extern NSString * const kIBGThankYouAlertMessageStringName;
@@ -55,16 +77,86 @@ extern NSString * const kIBGScreenRecordingStringName;
 extern NSString * const kIBGImageStringName;
 extern NSString * const kIBGReachedMaximimNumberOfAttachmentsTitleStringName;
 extern NSString * const kIBGReachedMaximimNumberOfAttachmentsMessageStringName;
+extern NSString * const kIBGVideoRecordingFailureMessageStringName;
 extern NSString * const kIBGSurveyEnterYourAnswerTextPlaceholder;
 extern NSString * const kIBGSurveyNoAnswerTitle;
 extern NSString * const kIBGSurveyNoAnswerMessage;
-extern NSString * const kIBGSurveySubmitTitle;
 extern NSString * const kIBGVideoPressRecordTitle;
+extern NSString * const kIBGCollectingDataText;
 extern NSString * const kIBGLowDiskStorageTitle;
 extern NSString * const kIBGLowDiskStorageMessage;
-extern NSString * const kIBGCollectingDataText;
+extern NSString * const kIBGInboundByLineMessage;
 extern NSString * const kIBGExtraFieldIsRequiredText;
 extern NSString * const kIBGExtraFieldMissingDataText;
+extern NSString * const kIBGFeatureRequestsTitle;
+extern NSString * const kIBGFeatureDetailsTitle;
+extern NSString * const kIBGStringFeatureRequestsRefreshText;
+extern NSString * const kIBGFeatureRequestErrorStateTitleLabel;
+extern NSString * const kIBGFeatureRequestErrorStateDescriptionLabel;
+extern NSString * const kIBGFeatureRequestSortingByRecentlyUpdatedText;
+extern NSString * const kIBGFeatureRequestSortingByTopVotesText;
+extern NSString * const kIBGStringFeatureRequestAllFeaturesText;
+extern NSString * const kIBGAddNewFeatureRequestText;
+extern NSString * const kIBGAddNewFeatureRequestToastText;
+extern NSString * const kIBGAddNewFeatureRequestErrorToastText;
+extern NSString * const kIBGAddNewFeatureRequestLoadingHUDTitle;
+extern NSString * const kIBGAddNewFeatureRequestSuccessHUDTitle;
+extern NSString * const kIBGAddNewFeatureRequestSuccessHUDMessage;
+extern NSString * const kIBGAddNewFeatureRequestTryAgainText;
+extern NSString * const kIBGAddNewFeatureRequestCancelPromptTitle;
+extern NSString * const kIBGAddNewFeatureRequestCancelPromptYesAction;
+extern NSString * const kIBGFeatureRequestInvalidEmailText;
+extern NSString * const kIBGFeatureRequestTimelineEmptyText;
+extern NSString * const kIBGFeatureRequestTimelineErrorDescriptionLabel;
+extern NSString * const kIBGFeatureRequestStatusChangeText;
+extern NSString * const kIBGFeatureRequestAddButtonText;
+extern NSString * const kIBGFeatureRequestVoteWithCountText;
+extern NSString * const kIBGFeatureRequestVoteText;
+extern NSString * const kIBGFeatureRequestPostButtonText;
+extern NSString * const kIBGFeatureRequestCommentsText;
+extern NSString * const kIBGFeatureRequestAuthorText;
+extern NSString * const kIBGFeatureRequestEmptyViewTitle;
+extern NSString * const kIBGFeatureRequestAddYourIdeaText;
+extern NSString * const kIBGFeatureRequestAnonymousText;
+extern NSString * const kIBGFeatureRequestStatusPosted;
+extern NSString * const kIBGFeatureRequestStatusPlanned;
+extern NSString * const kIBGFeatureRequestStatusStarted;
+extern NSString * const kIBGFeatureRequestStatusCompleted;
+extern NSString * const kIBGFeatureRequestStatusMaybeLater;
+extern NSString * const kIBGFeatureRequestStatusMoreText;
+extern NSString * const kIBGFeatureRequestStatusLessText;
+extern NSString * const kIBGFeatureRequestAddYourThoughtsText;
+extern NSString * const kIBGEmailRequiredText;
+extern NSString * const kIBGNameText;
+extern NSString * const kIBGEmailText;
+extern NSString * const kIBGTitleText;
+extern NSString * const kIBGDescriptionText;
+extern NSString * const kIBGStringFeatureRequestMyFeaturesText;
+extern NSString * const kIBGSurveyIntroTitleText;
+extern NSString * const kIBGSurveyIntroDescriptionText;
+extern NSString * const kIBGSurveyIntroTakeSurveyButtonText;
+extern NSString * const kIBGSurveyIntroDismissButtonText;
+extern NSString * const kIBGSurveyThankYouTitleText;
+extern NSString * const kIBGSurveyThankYouDescriptionText;
+extern NSString * const kIBGSurveysNPSLeastLikelyStringName;
+extern NSString * const kIBGSurveysNPSMostLikelyStringName;
+extern NSString * const kIBGSurveyNextButtonTitle;
+extern NSString * const kIBGSurveySubmitButtonTitle;
+extern NSString * const kIBGSurveyAppStoreThankYouTitle;
+extern NSString * const kIBGSurveyAppStoreButtonTitle;
+extern NSString * const kIBGExpectedResultsStringName;
+extern NSString * const kIBGActualResultsStringName;
+extern NSString * const kIBGStepsToReproduceStringName;
+extern NSString * const kIBGReplyButtonTitleStringName;
+extern NSString * const kIBGAddAttachmentButtonTitleStringName;
+extern NSString * const kIBGDiscardAlertTitle;
+extern NSString * const kIBGDiscardAlertMessage;
+extern NSString * const kIBGDiscardAlertAction;
+extern NSString * const kIBGDiscardAlertCancel;
+extern NSString * const kIBGVideoGalleryErrorMessageStringName;
+extern NSString * const kIBGMaximumDurationExceededAlertTitle;
+extern NSString * const kIBGMaximumDurationExceededAlertMessage;
+
 
 /// -----------
 /// @name Enums
@@ -73,19 +165,19 @@ extern NSString * const kIBGExtraFieldMissingDataText;
 /**
  The event used to invoke the feedback form.
  */
-typedef NS_ENUM(NSInteger, IBGInvocationEvent) {
-    /** No event will be registered to show the feedback form, you'll need to code your own and call the method showFeedbackForm. */
-    IBGInvocationEventNone,
+typedef NS_OPTIONS(NSInteger, IBGInvocationEvent) {
     /** Shaking the device while in any screen to show the feedback form. */
-    IBGInvocationEventShake,
+    IBGInvocationEventShake = 1 << 0,
     /** Taking a screenshot using the Home+Lock buttons while in any screen to show the feedback form. */
-    IBGInvocationEventScreenshot,
+    IBGInvocationEventScreenshot = 1 << 1,
     /** Swiping two fingers left while in any screen to show the feedback form. */
-    IBGInvocationEventTwoFingersSwipeLeft,
+    IBGInvocationEventTwoFingersSwipeLeft = 1 << 2,
     /** Swiping one finger left from the right edge of the screen to show the feedback form, substituted with IBGInvocationEventTwoFingersSwipeLeft on iOS 6.1.3 and earlier. */
-    IBGInvocationEventRightEdgePan,
+    IBGInvocationEventRightEdgePan = 1 << 3,
     /**  Shows a floating button on top of all views, when pressed it takes a screenshot. */
-    IBGInvocationEventFloatingButton
+    IBGInvocationEventFloatingButton = 1 << 4,
+    /** No event will be registered to show the feedback form, you'll need to code your own and call the method showFeedbackForm. */
+    IBGInvocationEventNone = 1 << 5,
 };
 
 /**
@@ -107,6 +199,14 @@ typedef NS_ENUM(NSInteger, IBGInvocationMode) {
     IBGInvocationModeNewFeedback,
     IBGInvocationModeNewChat,
     IBGInvocationModeChatsList
+};
+
+typedef NS_OPTIONS(NSInteger, IBGBugReportingInvocationOption) {
+    IBGBugReportingInvocationOptionEmailFieldHidden = 1 << 0,
+    IBGBugReportingInvocationOptionEmailFieldOptional = 1 << 1,
+    IBGBugReportingInvocationOptionCommentFieldRequired = 1 << 2,
+    IBGBugReportingInvocationOptionDisablePostSendingDialog = 1 << 3,
+    IBGBugReportingInvocationOptionNone = 1 << 4,
 };
 
 /**
@@ -202,7 +302,18 @@ typedef NS_ENUM(NSInteger, IBGString) {
     IBGStringShakeHint,
     IBGStringSwipeHint,
     IBGStringEdgeSwipeStartHint,
+    IBGStringScreenshotHint,
+    IBGStringFloatingButtonHint,
     IBGStringStartAlertText,
+    IBGBetaWelcomeMessageWelcomeStepTitle,
+    IBGBetaWelcomeMessageWelcomeStepContent,
+    IBGBetaWelcomeMessageHowToReportStepTitle,
+    IBGBetaWelcomeMessageHowToReportStepMessage,
+    IBGBetaWelcomeMessageFinishStepTitle,
+    IBGBetaWelcomeMessageFinishStepContent,
+    IBGBetaWelcomeDoneButtonTitle,
+    IBGLiveWelcomeMessageTitle,
+    IBGLiveWelcomeMessageMessage,
     IBGStringInvalidEmailMessage,
     IBGStringInvalidEmailTitle,
     IBGStringInvalidCommentMessage,
@@ -211,6 +322,16 @@ typedef NS_ENUM(NSInteger, IBGString) {
     IBGStringTalkToUs,
     IBGStringReportBug,
     IBGStringReportFeedback,
+    IBGStringPhotoPickerTitle,
+    IBGStringProgressViewTitle,
+    IBGStringGalleryPermissionDeniedAlertTitle,
+    IBGStringGalleryPermissionDeniedAlertMessage,
+    IBGStringMaximumSizeExceededAlertTitle,
+    IBGStringMaximumSizeExceededAlertMessage,
+    IBGMaximumDurationExceededAlertTitle,
+    IBGMaximumDurationExceededAlertMessage,
+    IBGStringiCloudImportErrorAlertTitle,
+    IBGStringiCloudImportErrorAlertMessage,
     IBGStringEmailFieldHint,
     IBGStringCommentFieldHintForBugReport,
     IBGStringCommentFieldHintForFeedback,
@@ -238,24 +359,92 @@ typedef NS_ENUM(NSInteger, IBGString) {
     IBGStringScreenRecording,
     IBGStringImage,
     IBGStringSurveyEnterYourAnswerPlaceholder,
-    kIBGStringSurveyNoAnswerTitle,
-    kIBGStringSurveyNoAnswerMessage,
-    kIBGStringSurveySubmitTitle,
-    kIBGStringVideoPressRecordTitle,
-    kIBGStringLowDiskStorageTitle,
-    kIBGStringLowDiskStorageMessage,
-    kIBGStringCollectingDataText,
-    kIBGStringExtraFieldIsRequiredText,
-    kIBGStringExtraFieldMissingDataText
+    IBGStringVideoPressRecordTitle,
+    IBGStringCollectingDataText,
+    IBGStringLowDiskStorageTitle,
+    IBGStringLowDiskStorageMessage,
+    IBGStringExtraFieldIsRequiredText,
+    IBGStringExtraFieldMissingDataText,
+    IBGStringFeatureRequestsTitle,
+    IBGStringFeatureDetailsTitle,
+    IBGStringFeatureRequestsRefreshText,
+    IBGStringFeatureRequestSortingByRecentlyUpdatedText,
+    IBGStringFeatureRequestSortingByTopVotesText,
+    IBGStringFeatureRequestErrorStateTitleText,
+    IBGStringFeatureRequestErrorStateDescriptionText,
+    IBGStringFeatureRequestAllFeaturesText,
+    IBGStringFeatureRequestMyFeaturesText,
+    IBGStringAddNewFeatureRequestText,
+    IBGStringAddNewFeatureRequestToastText,
+    IBGStringAddNewFeatureRequestErrorToastText,
+    IBGStringAddNewFeatureRequestLoadingHUDTitle,
+    IBGStringAddNewFeatureRequestSuccessHUDTitle,
+    IBGStringAddNewFeatureRequestSuccessHUDMessage,
+    IBGStringAddNewFeatureRequestTryAgainText,
+    IBGStringAddNewFeatureRequestCancelPromptTitle,
+    IBGStringAddNewFeatureRequestCancelPromptYesAction,
+    IBGStringFeatureRequestInvalidEmailText,
+    IBGStringFeatureRequestStatusChangeText,
+    IBGStringFeatureRequestAddButtonText,
+    IBGStringFeatureRequestVoteWithCountText,
+    IBGStringFeatureRequestVoteText,
+    IBGStringFeatureRequestPostButtonText,
+    IBGStringFeatureRequestCommentsText,
+    IBGStringFeatureRequestAuthorText,
+    IBGStringFeatureRequestEmptyViewTitle,
+    IBGStringFeatureRequestAddYourIdeaText,
+    IBGStringFeatureRequestAnonymousText,
+    IBGStringFeatureRequestStatusPosted,
+    IBGStringFeatureRequestStatusPlanned,
+    IBGStringFeatureRequestStatusStarted,
+    IBGStringFeatureRequestStatusCompleted,
+    IBGStringFeatureRequestStatusMaybeLater,
+    IBGFeatureRequestTimelineEmptyCommentText,
+    IBGFeatureRequestTimelineErrorDescriptionText,
+    IBGStringFeatureRequestStatusMoreText,
+    IBGStringFeatureRequestStatusLessText,
+    IBGStringFeatureRequestAddYourThoughtsText,
+    IBGStringEmailRequiredText,
+    IBGStringNameText,
+    IBGStringEmailText,
+    IBGStringTitleText,
+    IBGStringDescriptionText,
+    IBGStringSurveyIntroTitleText,
+    IBGStringSurveyIntroDescriptionText,
+    IBGStringSurveyIntroTakeSurveyButtonText,
+    IBGStringSurveyIntroDismissButtonText,
+    IBGStringSurveyThankYouTitleText,
+    IBGStringSurveyThankYouDescriptionText,
+    IBGExpectedResultsStringName,
+    IBGActualResultsStringName,
+    IBGStepsToReproduceStringName,
+    IBGReplyButtonTitleStringName,
+    IBGAddAttachmentButtonTitleStringName,
+    IBGDiscardAlertTitleStringName,
+    IBGDiscardAlertMessageStringName,
+    IBGDiscardAlertActionStringName,
+    IBGDiscardAlertCancelStringName,
+    IBGVideoGalleryErrorMessageStringName
 };
 
 /**
  The prompt option selected in Instabug prompt.
  */
-typedef NS_ENUM(NSInteger, IBGPromptOption) {
-    IBGPromptOptionChat,
-    IBGPromptOptionBug,
-    IBGPromptOptionFeedback
+typedef NS_OPTIONS(NSInteger, IBGPromptOption) {
+    IBGPromptOptionChat = 1 << 0,
+    IBGPromptOptionBug = 1 << 1,
+    IBGPromptOptionFeedback = 1 << 2,
+    IBGPromptOptionNone = 1 << 3,
+};
+
+/**
+ Instabug floating buttons positions.
+ */
+typedef NS_ENUM(NSInteger, IBGPosition) {
+    IBGPositionBottomRight,
+    IBGPositionTopRight,
+    IBGPositionBottomLeft,
+    IBGPositionTopLeft
 };
 
 /**
@@ -270,3 +459,49 @@ typedef NS_ENUM(NSInteger, IBGLogLevel) {
     IBGLogLevelFatal
 };
 
+/**
+ The user steps option.
+ */
+typedef NS_ENUM(NSInteger, IBGUserStepsMode) {
+    IBGUserStepsModeEnable,
+    IBGUserStepsModeEnabledWithNoScreenshots,
+    IBGUserStepsModeDisable
+};
+
+ /**
+    The attachment types selected in Attachment action sheet.
+ */
+typedef NS_OPTIONS(NSInteger, IBGAttachmentType) {
+    IBGAttachmentTypeScreenShot = 1 << 1,
+    IBGAttachmentTypeExtraScreenShot = 1 << 2,
+    IBGAttachmentTypeGalleryImage = 1 << 4,
+    IBGAttachmentTypeScreenRecording = 1 << 6,
+};
+
+/**
+ The extended bug report mode.
+ */
+typedef NS_ENUM(NSInteger, IBGExtendedBugReportMode) {
+    IBGExtendedBugReportModeEnabledWithRequiredFields,
+    IBGExtendedBugReportModeEnabledWithOptionalFields,
+    IBGExtendedBugReportModeDisabled
+};
+
+typedef NS_OPTIONS(NSInteger, IBGAction) {
+    IBGActionAllActions = 1 << 0,
+    IBGActionReportBug = 1 << 1,
+    IBGActionRequestNewFeature = 1 << 2,
+    IBGActionAddCommentToFeature = 1 << 3,
+};
+
+/**
+ The welcome message mode.
+ */
+typedef NS_ENUM(NSInteger, IBGWelcomeMessageMode) {
+    IBGWelcomeMessageModeLive,
+    IBGWelcomeMessageModeBeta,
+    IBGWelcomeMessageModeDisabled
+};
+
+/* CHECK NULLABILITY! */
+typedef void (^NetworkObfuscationCompletionBlock)(NSData *data, NSURLResponse *response);

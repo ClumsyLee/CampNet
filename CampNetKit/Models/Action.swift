@@ -84,17 +84,17 @@ public struct ActionEntry {
             return Promise(error: CampNetError.invalidConfiguration)
         }
 
-        return session.dataTask(with: request).asString().recover(on: queue) { error -> Promise<String> in
+        return session.dataTask(.promise, with: request).compactMap(String.init).recover(on: queue) { error -> Promise<String> in
             throw self.offcampusIfFailed ? CampNetError.offcampus : CampNetError.networkError
         }
-        .then(on: queue) { resp in
+        .map(on: queue) { resp in
             log.verbose("\(self): Processing response.")
 
             let newVars = try self.captureNewVars(resp: resp)                   // Capture new vars from HTML if needed.
             try self.runScript(context: context, resp: resp ,newVars: newVars)  // Invoke script.
             let results = try self.getResults(context: context)                 // Get results.
 
-            return Promise(value: results)
+            return results
         }
     }
 
@@ -136,7 +136,7 @@ public struct ActionEntry {
             return [:]  // Don't parse HTML if there is nothing to capture.
         }
 
-        guard let doc = HTML(html: resp, encoding: String.Encoding.utf8) else {
+        guard let doc = try? HTML(html: resp, encoding: String.Encoding.utf8) else {
             log.error("\(self): Failed to parse HTML from \(resp.debugDescription).")
             throw CampNetError.invalidConfiguration  // Not a valid HTML doc.
         }
@@ -279,7 +279,7 @@ public struct Action {
 
         Action.setNetworkActivityIndicatorVisible(true)
 
-        var promise = Promise<[String: Any]>(value: initialVars)
+        var promise = Promise.value(initialVars)
         for entry in entries {
             promise = promise.then(on: queue) { vars in
                 return entry.commit(currentVars: vars, context: context, session: session, on: queue,
@@ -287,15 +287,15 @@ public struct Action {
             }
         }
 
-        promise = promise.then(on: queue) { vars in
+        promise = promise.map(on: queue) { vars in
             // Add timestamp if needed.
             var vars = vars
             if vars["updated_at"] == nil {
                 vars["updated_at"] = Date()
             }
-            return Promise(value: vars)
+            return vars
         }
-        .always {
+        .ensure {
             Action.setNetworkActivityIndicatorVisible(false)
         }
 

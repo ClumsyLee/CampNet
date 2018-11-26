@@ -10,14 +10,14 @@ target 'CampNet iOS' do
   pod 'Charts'
   pod 'DynamicButton'
   pod 'Instabug'
-  pod 'SwiftRater', :git => 'https://github.com/ThomasLee969/SwiftRater'
+  pod 'SwiftRater', :git => 'https://github.com/ClumsyLee/SwiftRater'
 end
 
 target 'CampNetKit' do
   # Pods for CampNetKit
   pod 'Alamofire'
   pod 'CryptoSwift'
-  pod 'Kanna'
+  pod 'Kanna', '~> 4.0.0'
   pod 'KeychainAccess'
   pod 'NetUtils'
   pod 'PromiseKit'
@@ -27,15 +27,5 @@ target 'CampNetKit' do
 
   target 'CampNet iOS Widget' do
     pod 'Charts'
-  end
-end
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-      if ['Kanna', 'Yaml'].include? target.name
-          target.build_configurations.each do |config|
-              config.build_settings['SWIFT_VERSION'] = '3.2'
-          end
-      end
   end
 end
