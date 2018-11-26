@@ -6,9 +6,58 @@ PODS:
   - Charts/Core (3.2.1)
   - CryptoSwift (0.13.0)
   - DynamicButton (6.1.0)
+  - Firebase/Core (5.13.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 5.3.0)
+  - Firebase/CoreOnly (5.13.0):
+    - FirebaseCore (= 5.1.8)
+  - FirebaseAnalytics (5.3.0):
+    - FirebaseCore (~> 5.1)
+    - FirebaseInstanceID (~> 3.3)
+    - GoogleAppMeasurement (~> 5.3)
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - FirebaseCore (5.1.8):
+    - GoogleUtilities/Logger (~> 5.2)
+  - FirebaseInstanceID (3.3.0):
+    - FirebaseCore (~> 5.1)
+    - GoogleUtilities/Environment (~> 5.3)
+    - GoogleUtilities/UserDefaults (~> 5.3)
+  - GoogleAppMeasurement (5.3.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
+    - GoogleUtilities/MethodSwizzler (~> 5.2)
+    - GoogleUtilities/Network (~> 5.2)
+    - "GoogleUtilities/NSData+zlib (~> 5.2)"
+    - nanopb (~> 0.3)
+  - GoogleUtilities/AppDelegateSwizzler (5.3.6):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (5.3.6)
+  - GoogleUtilities/Logger (5.3.6):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (5.3.6):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (5.3.6):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (5.3.6)"
+  - GoogleUtilities/Reachability (5.3.6):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (5.3.6):
+    - GoogleUtilities/Logger
   - Instabug (8.0.16)
   - Kanna (4.0.2)
   - KeychainAccess (3.1.2)
+  - nanopb (0.3.901):
+    - nanopb/decode (= 0.3.901)
+    - nanopb/encode (= 0.3.901)
+  - nanopb/decode (0.3.901)
+  - nanopb/encode (0.3.901)
   - NetUtils (4.1.0)
   - PromiseKit (6.5.3):
     - PromiseKit/CorePromise (= 6.5.3)
@@ -30,6 +79,7 @@ DEPENDENCIES:
   - Charts
   - CryptoSwift
   - DynamicButton
+  - Firebase/Core
   - Instabug
   - Kanna (~> 4.0.0)
   - KeychainAccess
@@ -47,9 +97,16 @@ SPEC REPOS:
     - Charts
     - CryptoSwift
     - DynamicButton
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseInstanceID
+    - GoogleAppMeasurement
+    - GoogleUtilities
     - Instabug
     - Kanna
     - KeychainAccess
+    - nanopb
     - NetUtils
     - PromiseKit
     - SwiftyBeaver
@@ -71,9 +128,16 @@ SPEC CHECKSUMS:
   Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
   CryptoSwift: 16e78bebf567bad1c87b2d58f6547f25b74c31aa
   DynamicButton: 5a3ae2bf26dc196fb6c85b3e1aac956add860718
+  Firebase: 6df9a6114bc9f106a98fe83d5438d4d9833c2019
+  FirebaseAnalytics: 63202d2665de4e6adcbdce189135255d8b5962ba
+  FirebaseCore: fba2bfaa691c49028309b92e4dd37cc4b5512fbe
+  FirebaseInstanceID: e2fa4cb35ef5558c200f7f0ad8a53e212215f93e
+  GoogleAppMeasurement: 5029d78f2b438bd30ffb44e6c558b57c21622727
+  GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
   Instabug: 791ad2fcb729621c175eb205d1fbd920d46f1aff
   Kanna: c60b61d72554bf04ed1ee074f9b379855cab4892
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
+  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NetUtils: 414aca786a4be7d6c87a69613bdb6a5a2640f08e
   PromiseKit: c609029bdd801f792551a504c695c7d3098b42cd
   SwiftRater: 035512c0c454c83bd4d96b483d8854606aeecccf
@@ -81,6 +145,6 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
   Yaml: 9f32854890c54304772f02380c3899c8db739800
 
-PODFILE CHECKSUM: 4fd9568bfda55c63fc9c44e022752abc9db382b2
+PODFILE CHECKSUM: af8af04338ab271478bb66cce153c05d31091173
 
 COCOAPODS: 1.5.3

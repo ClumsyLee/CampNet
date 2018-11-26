@@ -17,6 +17,7 @@ target 'CampNetKit' do
   # Pods for CampNetKit
   pod 'Alamofire'
   pod 'CryptoSwift'
+  pod 'Firebase/Core'
   pod 'Kanna', '~> 4.0.0'
   pod 'KeychainAccess'
   pod 'NetUtils'

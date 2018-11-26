@@ -11,6 +11,7 @@ import UIKit
 import UserNotifications
 
 import BRYXBanner
+import Firebase
 import Instabug
 import SwiftyBeaver
 import SwiftRater
@@ -32,18 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         setDefaultsIfNot()  // Do it first to ensure that the defaults can be read in the following setups.
 
-        setUpInstaBug()
-        setUpSwiftyBeaver()
-        setUpSwiftRater()
         setUpCampNet()
+        setUpFirebase()
+        setUpInstaBug()
+        setUpSwiftRater()
+        setUpSwiftyBeaver()
+
         addObservers()
-
-        // Do not request notification authorization when UI testing to prevent that system dialog from appearing.
-        #if DEBUG
-        #else
-            requestNotificationAuthorization()
-        #endif
-
         NEHotspotHelper.register(displayName: L10n.HotspotHelper.displayName)
 
         return true
@@ -98,10 +94,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
 
+    func setUpCampNet() {
+        Action.networkActivityIndicatorHandler = {
+            value in UIApplication.shared.isNetworkActivityIndicatorVisible = value
+        }
+
+        // Do not request notification authorization when UI testing to prevent that system dialog from appearing.
+        #if DEBUG
+        #else
+            requestNotificationAuthorization()
+        #endif
+    }
+
+    func setUpFirebase() {
+        FirebaseApp.configure()
+    }
+
     func setUpInstaBug() {
         Instabug.start(withToken: "0df1051f1ad636fc8efd87baef010aaa", invocationEvents: [])
         BugReporting.promptOptions = [.feedback]
         BugReporting.enabledAttachmentTypes = []
+    }
+
+    func setUpSwiftRater() {
+        SwiftRater.appId = "1263284287"
+        SwiftRater.daysUntilPrompt = 7
+        SwiftRater.significantUsesUntilPrompt = 3
+        SwiftRater.daysBeforeReminding = 1
+        SwiftRater.appLaunched()
     }
 
     func setUpSwiftyBeaver() {
@@ -122,20 +142,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             cloud.serverURL = URL(string: "https://swiftybeaver.campnet.io/api/entries/")
             cloud.minLevel = .info
             log.addDestination(cloud)
-        }
-    }
-
-    func setUpSwiftRater() {
-        SwiftRater.appId = "1263284287"
-        SwiftRater.daysUntilPrompt = 7
-        SwiftRater.significantUsesUntilPrompt = 3
-        SwiftRater.daysBeforeReminding = 1
-        SwiftRater.appLaunched()
-    }
-
-    func setUpCampNet() {
-        Action.networkActivityIndicatorHandler = {
-            value in UIApplication.shared.isNetworkActivityIndicatorVisible = value
         }
     }
 

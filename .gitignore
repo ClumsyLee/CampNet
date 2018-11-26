@@ -51,7 +51,6 @@ playground.xcworkspace
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
 # Carthage/Checkouts
-
 Carthage/Build
 
 # fastlane
@@ -60,7 +59,6 @@ Carthage/Build
 # screenshots whenever they are needed.
 # For more information about the recommended setup visit:
 # https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
-
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
@@ -69,3 +67,6 @@ fastlane/metadata/review_information
 fastlane/metadata/trade_representative_contact_information
 fastlane/metadata/app_icon.jpg
 Preview.html
+
+# Firebase
+GoogleService-info.plist
