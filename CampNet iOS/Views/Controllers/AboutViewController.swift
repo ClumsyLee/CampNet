@@ -16,7 +16,7 @@ class AboutViewController: UITableViewController {
         case acknowledgements
     }
 
-    static let myGithubUrl = URL(string: "https://github.com/ThomasLee969")!
+    static let myGithubUrl = URL(string: "https://github.com/ClumsyLee")!
 
     @IBOutlet var version: UILabel!
     

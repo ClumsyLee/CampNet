@@ -20,4 +20,4 @@ Main features:
 • Use configuration files to adapt campus networks
 • Currently supported:
     • Tsinghua University
-• Cannot find your school? Submit issues or pull requests at https://github.com/ThomasLee969/CampNet-Configurations !
+• Cannot find your school? Submit issues or pull requests at https://github.com/ClumsyLee/CampNet-Configurations !

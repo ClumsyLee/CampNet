@@ -20,4 +20,4 @@ CampNet 是你的校园网助手。它能在后台自动登录校园网，免去
 • 使用配置文件对校园网进行适配
 • 当前支持：
     • 清华大学
-• 没有找到你的学校？在 https://github.com/ThomasLee969/CampNet-Configurations 提交 issue 或 pull request ！
+• 没有找到你的学校？在 https://github.com/ClumsyLee/CampNet-Configurations 提交 issue 或 pull request ！

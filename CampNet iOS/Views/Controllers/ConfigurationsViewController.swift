@@ -13,7 +13,7 @@ import CampNetKit
 
 class ConfigurationsViewController: UITableViewController, UISearchResultsUpdating {
 
-    static let repoUrl = URL(string: "https://github.com/ThomasLee969/CampNet-Configurations")!
+    static let repoUrl = URL(string: "https://github.com/ClumsyLee/CampNet-Configurations")!
 
     var searchController: UISearchController!
 
