@@ -76,11 +76,11 @@ extension UserDefaults {
         }
 
         if let startDate = Defaults[.loginCountStartDate], startDate < Date(timeIntervalSince1970: 1543397692) {
-            // Old user.
-            return Defaults[.loginCount] >= 10
+            // Old user, prompt once we know that we are still working.
+            return Defaults[.loginCount] >= 1
         } else {
-            // New user.
-            return Defaults[.loginCount] >= 100
+            // New user, wait until they like us.
+            return Defaults[.loginCount] >= 50
         }
     }
 
