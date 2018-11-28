@@ -131,8 +131,8 @@
 /* Class = "UINavigationItem"; title = "Re-enter Password"; ObjectID = "ylZ-mi-qAg"; */
 "ylZ-mi-qAg.title" = "重新输入密码";
 
-/* Class = "UITableViewSection"; footerTitle = "You will be notified when your usage has reached a certain percentage of your maximum usage this month.\n\nYou have to enable \"Background App Refresh\" for CampNet to receive notifications in the background."; ObjectID = "ymi-FS-Axh"; */
-"ymi-FS-Axh.footerTitle" = "在当月流量达到最大可用流量一定百分比时，你会收到通知。\n\n你必须为 CampNet 开启“后台应用刷新”才能在后台收到通知。";
+/* Class = "UITableViewSection"; footerTitle = "You will be notified when your usage has reached a certain percentage of your maximum usage this month.\n\nYou have to enable \"Background App Refresh\" to receive usage alerts in the background."; ObjectID = "ymi-FS-Axh"; */
+"ymi-FS-Axh.footerTitle" = "在当月流量达到最大可用流量一定百分比时，你会收到通知。\n\n你必须开启“后台应用刷新”才能在后台收到流量警报。";
 
 /* Class = "UILabel"; text = "59.66.141.91"; ObjectID = "1JB-Wb-KeE"; */
 "1JB-Wb-KeE.text" = "59.66.141.91";
@@ -298,3 +298,6 @@
 
 /* Class = "UILabel"; text = "@ClumsyLee on GitHub"; ObjectID = "4hX-Ng-op9"; */
 "4hX-Ng-op9.text" = "GitHub 上的 @ClumsyLee";
+
+/* Class = "UITableViewSection"; footerTitle = "You have to enable \"Background App Refresh\" to logout expired sessions in the background."; ObjectID = "gFZ-CN-ED3"; */
+"gFZ-CN-ED3.footerTitle" = "你必须开启“后台应用刷新”才能在后台下线过期链接。";

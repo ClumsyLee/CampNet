@@ -302,7 +302,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection id="gFZ-CN-ED3">
+                            <tableViewSection footerTitle="You have to enable &quot;Background App Refresh&quot; to logout expired sessions in the background." id="gFZ-CN-ED3">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="TF1-S9-F3h">
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
@@ -373,7 +373,7 @@
                             <tableViewSection id="vr3-9b-RGV">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="vdN-Sw-6R2" detailTextLabel="cLa-y5-HzF" style="IBUITableViewCellStyleValue1" id="Yw7-Qa-nvy">
-                                        <rect key="frame" x="0.0" y="159" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="187" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yw7-Qa-nvy" id="Jpn-FB-TKP">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -404,7 +404,7 @@
                             <tableViewSection id="4ch-CP-Qt2">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Ldh-WC-BHg" style="IBUITableViewCellStyleDefault" id="ibq-WW-s0Z">
-                                        <rect key="frame" x="0.0" y="239" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="267" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ibq-WW-s0Z" id="aMI-Kc-6vd">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -424,7 +424,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="d1B-B0-i41" style="IBUITableViewCellStyleDefault" id="g8P-4y-qLS">
-                                        <rect key="frame" x="0.0" y="283" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="311" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g8P-4y-qLS" id="lRZ-WY-9yA">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -448,7 +448,7 @@
                             <tableViewSection id="UWL-Df-ckR">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="rRb-Ti-t7w" style="IBUITableViewCellStyleDefault" id="3cF-EA-q2y">
-                                        <rect key="frame" x="0.0" y="363" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="391" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3cF-EA-q2y" id="tET-7b-1Oq">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -465,7 +465,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="25S-7C-CHX" style="IBUITableViewCellStyleDefault" id="mnn-Bz-GC3">
-                                        <rect key="frame" x="0.0" y="407" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="435" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mnn-Bz-GC3" id="Mxx-7I-1gU">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -515,7 +515,7 @@
                             <tableViewSection id="ymi-FS-Axh">
                                 <string key="footerTitle">You will be notified when your usage has reached a certain percentage of your maximum usage this month.
 
-You have to enable "Background App Refresh" for CampNet to receive notifications in the background.</string>
+You have to enable "Background App Refresh" to receive usage alerts in the background.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="7SM-VC-Ke4" style="IBUITableViewCellStyleDefault" id="PGD-b3-rmL">
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
@@ -742,7 +742,7 @@ You have to enable "Background App Refresh" for CampNet to receive notifications
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Dno-7x-jNX">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="230"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="pzW-vS-gG1">
@@ -753,16 +753,16 @@ You have to enable "Background App Refresh" for CampNet to receive notifications
                                     </constraints>
                                 </imageView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fV0-io-MSZ">
-                                    <rect key="frame" x="133.5" y="146" width="108" height="47"/>
+                                    <rect key="frame" x="133.5" y="146" width="108" height="66"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CampNet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahs-cf-cfv">
-                                            <rect key="frame" x="0.0" y="0.0" width="108" height="29.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="108" height="48.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Version 1.0.7 (10)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIH-Ar-Q8L">
-                                            <rect key="frame" x="9" y="33.5" width="90.5" height="13.5"/>
+                                            <rect key="frame" x="9" y="52.5" width="90.5" height="13.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -783,7 +783,7 @@ You have to enable "Background App Refresh" for CampNet to receive notifications
                             <tableViewSection footerTitle="Copyright © 2018 Sihan Li. All rights reserved." id="5l9-LW-jLm">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="4hX-Ng-op9" style="IBUITableViewCellStyleDefault" id="XVd-lT-6Sb">
-                                        <rect key="frame" x="0.0" y="211" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="230" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XVd-lT-6Sb" id="mJG-EK-oGV">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -800,7 +800,7 @@ You have to enable "Background App Refresh" for CampNet to receive notifications
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="kJS-cc-R8f" style="IBUITableViewCellStyleDefault" id="Fd2-Gc-2Pr">
-                                        <rect key="frame" x="0.0" y="255" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="274" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fd2-Gc-2Pr" id="1SC-UO-me1">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
