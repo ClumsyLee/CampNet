@@ -512,7 +512,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="tintColor" red="0.19215686274509802" green="0.73448164530000004" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
-                            <tableViewSection footerTitle="You will be notified when your usage has reached a certain percentage of your maximum usage this month." id="ymi-FS-Axh">
+                            <tableViewSection id="ymi-FS-Axh">
+                                <string key="footerTitle">You will be notified when your usage has reached a certain percentage of your maximum usage this month.
+
+You have to enable "Background App Refresh" for CampNet to receive notifications in the background.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="7SM-VC-Ke4" style="IBUITableViewCellStyleDefault" id="PGD-b3-rmL">
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>

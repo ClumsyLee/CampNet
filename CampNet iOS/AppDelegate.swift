@@ -78,6 +78,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //   applicationDidEnterBackground:.
     }
 
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        guard let account = Account.main else {
+            completionHandler(.noData)
+            return
+        }
+
+        account.updateIfNeeded(on: DispatchQueue.global(qos: .utility)).done {
+            completionHandler(.newData)
+        }
+        .catch { _ in
+            completionHandler(.failed)
+        }
+    }
+
     func setDefaultsIfNot() {
         if !Defaults.hasKey(.autoLogin) {
             Defaults[.autoLogin] = true
@@ -142,6 +156,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         #else
         requestNotificationAuthorization()
         #endif
+
+        // Update the profile in the background every now and then.
+        application.setMinimumBackgroundFetchInterval(Account.profileAutoUpdateInterval)
 
         // Add observers for notifications.
         addObservers()

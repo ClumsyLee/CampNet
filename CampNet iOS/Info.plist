@@ -33,6 +33,7 @@
 	<string>CampNet needs access to your photo library for you to be able to attach images.</string>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>fetch</string>
 		<string>network-authentication</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

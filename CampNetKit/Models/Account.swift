@@ -18,7 +18,7 @@ import SwiftyUserDefaults
 public class Account {
 
     static let statusLifetime: TimeInterval = 86400
-    static let profileAutoUpdateInterval: TimeInterval = 600
+    public static let profileAutoUpdateInterval: TimeInterval = 600
     static let estimationLength = 7
 
     static let passwordKeychain = Keychain(service: "\(Configuration.bundleIdentifier).password",
@@ -605,9 +605,9 @@ extension Account {
         return promise
     }
 
-    public func updateIfNeeded(on queue: DispatchQueue = DispatchQueue.global(qos: .userInitiated),
+    public func updateIfNeeded(skipStatus: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .userInitiated),
                                requestBinder: RequestBinder? = nil) -> Promise<Void> {
-        return shouldAutoUpdate ? update(skipStatus: true, on: queue, requestBinder: requestBinder)
+        return shouldAutoUpdate ? update(skipStatus: skipStatus, on: queue, requestBinder: requestBinder)
                                 : Promise()
     }
 
