@@ -301,3 +301,18 @@
 
 /* Class = "UITableViewSection"; footerTitle = "You have to enable \"Background App Refresh\" to logout expired sessions in the background."; ObjectID = "gFZ-CN-ED3"; */
 "gFZ-CN-ED3.footerTitle" = "你必須開啓「後台應用刷新」才能在後台下線過期鏈接";
+
+/* Class = "UIButton"; normalTitle = "Rate Us"; ObjectID = "DAo-9F-xsD"; */
+"DAo-9F-xsD.normalTitle" = "給我們評分";
+
+/* Class = "UIButton"; normalTitle = "Donate"; ObjectID = "JGX-5i-eIq"; */
+"JGX-5i-eIq.normalTitle" = "捐贈";
+
+/* Class = "UILabel"; text = "We couldn't have done\nit without you"; ObjectID = "atV-dE-1gI"; */
+"atV-dE-1gI.text" = "沒有你，我們無法\n走到今天";
+
+/* Class = "UILabel"; text = "Everything starts small, so does CampNet.\n\nAt the very beginning, I just wanted to build something that is\n\nPowerful. Universal. Open Source.\n\nPowerful, so that everything related to campus network is included. Mostly importantly, to answer that ultimate question: How did I use so much data?\n\nUniversal, so that we don't need a new app for every campus network. If we can separate configurations from the implementation, we will be able to help as many people as possible.\n\nAnd open source, so that we can grow as a community.\n\nWe did it.\n\nThank you for your support. Your opinions and suggestions have been my motivations along the way.\n\nThank you.\n\n—— @ClumsyLee"; ObjectID = "HS0-DW-Wid"; */
+"HS0-DW-Wid.text" = "Everything starts small，CampNet 也不例外。\n\n在最初的最初，我只是想做這樣的一個東西\n\n強大。通用。開源。\n\n強大，將和校園網有關的一切都包括在內。最重要的是，回答那個終極問題：這個月流量怎麼又超了？\n\n通用，而不是給每個校園網做一個新的 app。如果能將實現與配置相分離，我們就能讓盡可能多的人享受到便利。\n\n開源，與社區一同成長。\n\n我們做到了。\n\n謝謝你們的支持，你們的意見和建議一直是我前進的動力。\n\n謝謝你們。\n\n—— @ClumsyLee";
+
+/* Class = "UILabel"; text = "P.S. This is my first iOS app, hope you like it!"; ObjectID = "yyE-st-szl"; */
+"yyE-st-szl.text" = "話說，這是我的第一個 iOS app，希望你喜歡！";

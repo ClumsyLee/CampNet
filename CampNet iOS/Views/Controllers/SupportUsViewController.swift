@@ -7,13 +7,22 @@
 //
 
 import UIKit
+import SwiftRater
+import SwiftyButton
 
 class SupportUsViewController: UIViewController {
+
+    @IBOutlet var donateButton: PressableButton!
+    @IBOutlet var rateButton: PressableButton!
+
+    @IBAction func rateButtonPressed(_ sender: Any) {
+        SwiftRater.rateApp()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        donateButton.colors = .init(button: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), shadow: #colorLiteral(red: 0.78, green: 0.4101724125, blue: 0.5513793254, alpha: 1))
     }
     
 

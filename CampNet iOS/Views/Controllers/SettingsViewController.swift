@@ -7,27 +7,9 @@
 //
 
 import UIKit
-import SwiftRater
 import CampNetKit
 
 class SettingsViewController: UITableViewController {
-    
-    enum Section: Int {
-        case auto
-        case usageAlert
-        case logs
-        case about
-    }
-    
-    enum Logs: Int {
-        case logs
-        case privacy
-    }
-    
-    enum About: Int {
-        case rate
-        case about
-    }
 
     @IBOutlet var autoLoginSwitch: UISwitch!
     @IBOutlet var autoLogoutExpiredSessionsSwitch: UISwitch!
@@ -91,12 +73,8 @@ class SettingsViewController: UITableViewController {
     }
     */
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == Section.about.rawValue, indexPath.row == About.rate.rawValue {
-            tableView.deselectRow(at: indexPath, animated: true)
-            SwiftRater.rateApp()
-        }
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//    }
 
     /*
     // Override to support conditional editing of the table view.
