@@ -15,6 +15,7 @@ import Firebase
 import Instabug
 import SwiftyBeaver
 import SwiftRater
+import SwiftyStoreKit
 
 import CampNetKit
 
@@ -165,6 +166,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         // Update the profile in the background every now and then.
         application.setMinimumBackgroundFetchInterval(Account.profileAutoUpdateInterval)
+
+        // Setup in-app purchases.
+        SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
+            for purchase in purchases {
+                switch purchase.transaction.transactionState {
+                case .purchased, .restored:
+                    if purchase.needsFinishTransaction {
+                        // We don't have contents to deliver.
+                        SwiftyStoreKit.finishTransaction(purchase.transaction)
+                    }
+                    // Unlock content.
+
+                case .failed, .purchasing, .deferred:
+                    break  // Do nothing.
+                }
+            }
+        }
 
         // Add observers for notifications.
         addObservers()

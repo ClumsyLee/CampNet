@@ -71,6 +71,7 @@ PODS:
   - SwiftRater (1.3.0)
   - SwiftyBeaver (1.6.1)
   - SwiftyButton (0.8.2)
+  - SwiftyStoreKit (0.14.1)
   - SwiftyUserDefaults (3.0.1)
   - Yaml (3.4.3)
 
@@ -89,6 +90,7 @@ DEPENDENCIES:
   - SwiftRater (from `https://github.com/ClumsyLee/SwiftRater`)
   - SwiftyBeaver
   - SwiftyButton
+  - SwiftyStoreKit
   - SwiftyUserDefaults
   - Yaml
 
@@ -113,6 +115,7 @@ SPEC REPOS:
     - PromiseKit
     - SwiftyBeaver
     - SwiftyButton
+    - SwiftyStoreKit
     - SwiftyUserDefaults
     - Yaml
 
@@ -146,9 +149,10 @@ SPEC CHECKSUMS:
   SwiftRater: 035512c0c454c83bd4d96b483d8854606aeecccf
   SwiftyBeaver: ccfcdf85a04d429f1633f668650b0ce8020bda3a
   SwiftyButton: 5b0ef314e9cf61cf8a83e456ddd1ea1f53f30598
+  SwiftyStoreKit: a5cdece4327f3943eb72fa81aebe3aa6684b5eab
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
   Yaml: 9f32854890c54304772f02380c3899c8db739800
 
-PODFILE CHECKSUM: 37281273bc88ae32174bf3b63037392b24875345
+PODFILE CHECKSUM: 3843af819b0339ea69f65c139ea6f2c5daa8b4e9
 
 COCOAPODS: 1.5.3
