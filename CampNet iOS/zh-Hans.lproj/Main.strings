@@ -122,8 +122,8 @@
 /* Class = "UILabel"; text = "Logs"; ObjectID = "Ldh-WC-BHg"; */
 "Ldh-WC-BHg.text" = "日志";
 
-/* Class = "UILabel"; text = "Rate Us"; ObjectID = "rRb-Ti-t7w"; */
-"rRb-Ti-t7w.text" = "给我们评分";
+/* Class = "UILabel"; text = "Support Us!"; ObjectID = "rRb-Ti-t7w"; */
+"rRb-Ti-t7w.text" = "支持我们！";
 
 /* Class = "UILabel"; text = "Auto Logout Expired Sessions"; ObjectID = "yFG-Ic-VlG"; */
 "yFG-Ic-VlG.text" = "自动下线过期链接";

@@ -11,6 +11,7 @@ target 'CampNet iOS' do
   pod 'DynamicButton'
   pod 'Instabug'
   pod 'SwiftRater', :git => 'https://github.com/ClumsyLee/SwiftRater'
+  pod 'SwiftyButton'
 end
 
 target 'CampNetKit' do

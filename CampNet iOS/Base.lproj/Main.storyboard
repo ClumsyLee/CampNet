@@ -447,7 +447,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Rate Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rRb-Ti-t7w">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Support Us!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rRb-Ti-t7w">
                                                     <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -456,6 +456,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="fuL-fk-47F" kind="show" id="BbA-dr-ZIp"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="25S-7C-CHX" style="IBUITableViewCellStyleDefault" id="mnn-Bz-GC3">
                                         <rect key="frame" x="0.0" y="435" width="375" height="44"/>
@@ -664,6 +667,24 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZKy-ob-r4Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3096.8000000000002" y="1797.7511244377813"/>
+        </scene>
+        <!--Support Us View Controller-->
+        <scene sceneID="4uQ-bx-rgj">
+            <objects>
+                <viewController id="fuL-fk-47F" customClass="SupportUsViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9kr-AH-P7S"/>
+                        <viewControllerLayoutGuide type="bottom" id="VWK-2n-237"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4r3-YF-jW5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cuE-Nf-lvj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2293.5999999999999" y="3222.6386806596706"/>
         </scene>
         <!--Privacy-->
         <scene sceneID="G3z-8o-BnU">
