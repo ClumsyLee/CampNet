@@ -257,14 +257,6 @@
                                 <segue destination="Ijn-r5-5Es" kind="show" id="BoE-19-QJd"/>
                             </connections>
                         </button>
-                        <barButtonItem key="rightBarButtonItem" image="settings" id="6DO-ue-7yL">
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityLabel" value="settings"/>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <segue destination="eSM-KM-bTD" kind="show" id="q2a-JP-h7L"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="bh3-3y-KJD">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -287,6 +279,7 @@
                         <outlet property="networkName" destination="3R3-Ml-Rbw" id="3eh-AU-eh0"/>
                         <outlet property="upperView" destination="bVu-CG-AHs" id="Ibx-Ei-U6T"/>
                         <outlet property="usage" destination="Ai3-mC-R1h" id="AlG-Qv-ZDt"/>
+                        <segue destination="eSM-KM-bTD" kind="show" identifier="settingsPressed" id="YHt-3Z-htq"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DkZ-Io-KdD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2034,6 +2027,5 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
         <image name="checkmark" width="20" height="20"/>
         <image name="logo" width="100" height="100"/>
         <image name="octocat" width="60" height="60"/>
-        <image name="settings" width="25" height="25"/>
     </resources>
 </document>

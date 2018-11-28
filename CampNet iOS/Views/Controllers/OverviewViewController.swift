@@ -35,6 +35,7 @@ class OverviewViewController: UITableViewController {
     var devicesDisclosure: UITableViewCell!
 
     @IBOutlet var accountsButton: UIButton!
+    var settingsBadge: UILabel!
     @IBOutlet var networkButton: UIButton!
     @IBOutlet var devicesButton: UIButton!
     @IBOutlet var loginButton: DynamicButton!
@@ -63,6 +64,10 @@ class OverviewViewController: UITableViewController {
 
     @IBAction func feedbackPressed(_ sender: Any) {
         BugReporting.invoke()
+    }
+
+    @IBAction func settingsPressed(_ sender: Any) {
+        performSegue(withIdentifier: "settingsPressed", sender: sender)
     }
 
     @IBAction func refreshTable(_ sender: Any) {
@@ -493,16 +498,35 @@ class OverviewViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
 
+        // Remove the 1 pixel line under the navbar.
         let bar = navigationController!.navigationBar
         bar.setBackgroundImage(UIImage(), for: .default)
         bar.shadowImage = UIImage()
 
+        // Setup the right bar button item with a red dot.
+        // https://stackoverflow.com/a/41250928/4154977
+        settingsBadge = UILabel(frame: CGRect(x: 16, y: 1, width: 8, height: 8))
+        settingsBadge.layer.borderColor = UIColor.clear.cgColor
+        settingsBadge.layer.borderWidth = 2
+        settingsBadge.layer.cornerRadius = settingsBadge.bounds.size.height / 2
+        settingsBadge.layer.masksToBounds = true
+        settingsBadge.backgroundColor = .clear
+
+        let rightButton = UIButton(type: .system)
+        rightButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        rightButton.setBackgroundImage(UIImage(named: "settings")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        rightButton.addTarget(self, action: #selector(settingsPressed), for: .touchUpInside)
+        rightButton.addSubview(settingsBadge)
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+
+        // Setup the upper view.
         upperBackgroundView = UIView()
         upperBackgroundView.backgroundColor = upperView.backgroundColor
         tableView.insertSubview(upperBackgroundView, at: 0)
 
+        // Setup the buttons.
         networkDisclosure = UITableViewCell()
         networkDisclosure.accessoryType = .disclosureIndicator
         networkDisclosure.isUserInteractionEnabled = false
@@ -521,6 +545,7 @@ class OverviewViewController: UITableViewController {
         loginButton.contentEdgeInsets.top = 20.0
         loginButton.contentEdgeInsets.bottom = 20.0
 
+        // Setup the chart.
         usageSumDataset.drawCirclesEnabled = false
         usageSumDataset.lineWidth = 4
         usageSumDataset.drawFilledEnabled = true
@@ -606,6 +631,8 @@ class OverviewViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        settingsBadge.backgroundColor = Defaults.potentialDonator ? .red : .clear
 
         if refreshControl!.isRefreshing {
             // See https://stackoverflow.com/questions/21758892/uirefreshcontrol-stops-spinning-after-making-application-inactive
