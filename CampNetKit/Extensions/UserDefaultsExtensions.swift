@@ -131,27 +131,27 @@ extension UserDefaults {
         20_000_360_000, 20_463_330_000, 21_025_160_000, 35_291_340_000, 35_888_400_000,
         35_902_350_000, 36_699_970_000, 37_160_280_000])
 
-    public static func useFakeAccounts() {
+    public func useFakeAccounts() {
         Defaults[.accounts] = []
         addBasicAccount()
         addMainAccount()
         addAltAccount()
     }
 
-    private static func addBasicAccount() {
+    private func addBasicAccount() {
         let accountId = "cn.edu.tsinghua.chenxinyao13"
 
-        Defaults[.accountProfile(of: accountId)] = basicProfile.vars
+        Defaults[.accountProfile(of: accountId)] = UserDefaults.basicProfile.vars
 
         Defaults[.accounts].append(accountId)
     }
 
-    private static func addMainAccount() {
+    private func addMainAccount() {
         let accountId = "cn.edu.tsinghua.lisihan13"
 
-        Defaults[.accountStatus(of: accountId)] = mainStatus.vars
-        Defaults[.accountProfile(of: accountId)] = mainProfile.vars
-        Defaults[.accountHistory(of: accountId)] = mainHistory.vars
+        Defaults[.accountStatus(of: accountId)] = UserDefaults.mainStatus.vars
+        Defaults[.accountProfile(of: accountId)] = UserDefaults.mainProfile.vars
+        Defaults[.accountHistory(of: accountId)] = UserDefaults.mainHistory.vars
         Defaults[.accountEstimatedDailyUsage(of: accountId)] = 1_000_000_000
         Defaults[.accountFreeUsage(of: accountId)] = 20_000_000_000
         Defaults[.accountMaxUsage(of: accountId)] = 53_640_000_000
@@ -159,12 +159,12 @@ extension UserDefaults {
         Defaults[.accounts].append(accountId)
     }
 
-    private static func addAltAccount() {
+    private func addAltAccount() {
         let accountId =  "cn.edu.tsinghua.liws13"
 
-        Defaults[.accountStatus(of: accountId)] = altStatus.vars
-        Defaults[.accountProfile(of: accountId)] = altProfile.vars
-        Defaults[.accountHistory(of: accountId)] = altHistory.vars
+        Defaults[.accountStatus(of: accountId)] = UserDefaults.altStatus.vars
+        Defaults[.accountProfile(of: accountId)] = UserDefaults.altProfile.vars
+        Defaults[.accountHistory(of: accountId)] = UserDefaults.altHistory.vars
         Defaults[.accountEstimatedDailyUsage(of: accountId)] = 2_451_417_142
         Defaults[.accountFreeUsage(of: accountId)] = 20_000_000_000
         Defaults[.accountMaxUsage(of: accountId)] = 40_000_000_000
