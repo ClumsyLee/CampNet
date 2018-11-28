@@ -33,13 +33,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         setDefaultsIfNot()  // Do it first to ensure that the defaults can be read in the following setups.
 
-        setUpCampNet()
         setUpFirebase()
         setUpInstaBug()
         setUpSwiftRater()
         setUpSwiftyBeaver()
 
-        addObservers()
+        setUpCampNet(application)
         NEHotspotHelper.register(displayName: L10n.HotspotHelper.displayName)
 
         return true
@@ -94,18 +93,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
 
-    func setUpCampNet() {
-        Action.networkActivityIndicatorHandler = {
-            value in UIApplication.shared.isNetworkActivityIndicatorVisible = value
-        }
-
-        // Do not request notification authorization when UI testing to prevent that system dialog from appearing.
-        #if DEBUG
-        #else
-            requestNotificationAuthorization()
-        #endif
-    }
-
     func setUpFirebase() {
         FirebaseApp.configure()
     }
@@ -143,6 +130,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             cloud.minLevel = .info
             log.addDestination(cloud)
         }
+    }
+
+    func setUpCampNet(_ application: UIApplication) {
+        Action.networkActivityIndicatorHandler = { value in
+            application.isNetworkActivityIndicatorVisible = value
+        }
+
+        // Do not request notification authorization when UI testing to prevent that system dialog from appearing.
+        #if DEBUG
+        #else
+        requestNotificationAuthorization()
+        #endif
+
+        // Add observers for notifications.
+        addObservers()
     }
 
     func requestNotificationAuthorization() {

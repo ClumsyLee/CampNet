@@ -224,9 +224,9 @@ public struct Action {
     static let jsVm = JSVirtualMachine()!
     fileprivate static var networkActivityCounter = 0
 
-    static func setNetworkActivityIndicatorVisible(_ value: Bool) {
+    static func changeNetworkActivityCount(_ delta: Int) {
         DispatchQueue.main.async {
-            Action.networkActivityCounter += value ? 1 : -1
+            Action.networkActivityCounter += delta
             networkActivityIndicatorHandler(Action.networkActivityCounter > 0)
         }
     }
@@ -276,7 +276,7 @@ public struct Action {
         sessionConfiguration.timeoutIntervalForRequest = ActionEntry.timeout
         let session = URLSession(configuration: sessionConfiguration)
 
-        Action.setNetworkActivityIndicatorVisible(true)
+        Action.changeNetworkActivityCount(1)
 
         var promise = Promise.value(initialVars)
         for entry in entries {
@@ -295,7 +295,7 @@ public struct Action {
             return vars
         }
         .ensure(on: queue) {
-            Action.setNetworkActivityIndicatorVisible(false)
+            Action.changeNetworkActivityCount(-1)
         }
 
         return promise
