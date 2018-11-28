@@ -207,6 +207,7 @@ class OverviewViewController: UITableViewController {
               !backgroundRefreshing else {
             return
         }
+        backgroundRefreshing = true
 
         _ = account.update().ensure {
             // Don't touch backgroundRefreshing if the account has been changed.
