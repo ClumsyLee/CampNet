@@ -23,6 +23,7 @@
 		0F1F3D1121ACA6EC002431B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F1F3D0E21ACA6EC002431B8 /* GoogleService-Info.plist */; };
 		0F1F3D1221ACA6EC002431B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F1F3D0E21ACA6EC002431B8 /* GoogleService-Info.plist */; };
 		0F1F3D1321ACA6EC002431B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F1F3D0E21ACA6EC002431B8 /* GoogleService-Info.plist */; };
+		0F1F3D1721ACDBBC002431B8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1F3D1621ACDBBC002431B8 /* StoreKit.framework */; };
 		0F2E0C9A1F8F265F00AEEC15 /* CampNetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; };
 		0F2F67891F223F6B004CEF44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F2F678B1F223F6B004CEF44 /* Localizable.strings */; };
 		0F3465701F34D80A008E329F /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34656F1F34D80A008E329F /* NetworkViewController.swift */; };
@@ -147,6 +148,7 @@
 		0F1ED5CE1F138832004A6C1F /* CampNetKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CampNetKit.h; sourceTree = "<group>"; };
 		0F1ED5CF1F138832004A6C1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F1F3D0E21ACA6EC002431B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0F1F3D1621ACDBBC002431B8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0F2F678A1F223F6B004CEF44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0F2F678C1F223F6C004CEF44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0F34656F1F34D80A008E329F /* NetworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkViewController.swift; path = Views/Controllers/NetworkViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F1F3D1721ACDBBC002431B8 /* StoreKit.framework in Frameworks */,
 				0F1ED5D31F138832004A6C1F /* CampNetKit.framework in Frameworks */,
 				972B7C8D28F08DBD52FAD867 /* Pods_CampNet_iOS.framework in Frameworks */,
 			);
@@ -440,6 +443,7 @@
 		298ED8C6D2DAD1B93F321972 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F1F3D1621ACDBBC002431B8 /* StoreKit.framework */,
 				0F9AAD061F535C5B00E14838 /* NotificationCenter.framework */,
 				DFFD2BA02ECA3BADA6DE6DFA /* Pods_CampNet_iOS.framework */,
 				AEC6D6476A248379EE8FA523 /* Pods_CampNetKit.framework */,
@@ -596,6 +600,9 @@
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
 							com.apple.Keychain = {
