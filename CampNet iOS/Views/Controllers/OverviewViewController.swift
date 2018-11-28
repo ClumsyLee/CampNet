@@ -73,7 +73,7 @@ class OverviewViewController: UITableViewController {
             return
         }
 
-        _ = account.update(on: DispatchQueue.global(qos: .userInitiated)).done { _ in
+        _ = account.update().done { _ in
             SwiftRater.incrementSignificantUsageCount()
         }
         .ensure {
@@ -163,7 +163,7 @@ class OverviewViewController: UITableViewController {
 
         loginButtonCaption.text = L10n.Overview.LoginButton.Captions.loggingIn
 
-        account.login(on: DispatchQueue.global(qos: .userInitiated)).done { _ in
+        account.login().done { _ in
             SwiftRater.incrementSignificantUsageCount()
 
             // Update the profile in the background if possible.
@@ -186,7 +186,7 @@ class OverviewViewController: UITableViewController {
 
         loginButtonCaption.text = L10n.Overview.LoginButton.Captions.loggingOut
 
-        account.logout(on: DispatchQueue.global(qos: .userInitiated)).done { _ in
+        account.logout().done { _ in
             SwiftRater.incrementSignificantUsageCount()
         }
         .catch { _ in
@@ -454,7 +454,7 @@ class OverviewViewController: UITableViewController {
 
         if let account = notification.userInfo?["account"] as? Account {
             // Validate & initial update.
-            _ = account.update(skipStatus: true, on: DispatchQueue.global(qos: .userInitiated))
+            _ = account.update(skipStatus: true)
         }
     }
 

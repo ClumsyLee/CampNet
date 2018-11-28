@@ -15,9 +15,9 @@ class LoginIpViewController: UITableViewController {
 
     @IBOutlet var ipField: UITextField!
     @IBOutlet var doneButton: UIBarButtonItem!
-    
+
     var account: Account!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,20 +27,20 @@ class LoginIpViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         ipField.text = ""
         doneButton.isEnabled = false
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         ipField.becomeFirstResponder()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -86,7 +86,7 @@ class LoginIpViewController: UITableViewController {
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table
             //   view
-        }    
+        }
     }
     */
 
@@ -111,24 +111,24 @@ class LoginIpViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
+
         // Resign first responder no matter what.
         ipField.resignFirstResponder()
-        
+
         if segue.identifier == "ipLoggedIn" {
             if let ip = ipField.text {
-                _ = account.login(ip: ip, on: DispatchQueue.global(qos: .userInitiated)).done {
+                _ = account.login(ip: ip).done {
                     SwiftRater.incrementSignificantUsageCount()
                 }
             }
         }
     }
-    
+
     // MARK: - UITextField
-    
+
     var ipValid: Bool {
         let components = (ipField.text ?? "").components(separatedBy: ".")
-        
+
         if components.count != 4 {
             return false
         }
@@ -137,10 +137,10 @@ class LoginIpViewController: UITableViewController {
                 return false
             }
         }
-        
+
         return true
     }
-    
+
     @IBAction func ipChanged(_ sender: Any) {
         doneButton.isEnabled = ipValid
     }

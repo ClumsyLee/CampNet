@@ -26,11 +26,11 @@ class AccountDetailViewController: UITableViewController {
 
     @IBAction func cancelChangingPassword(segue: UIStoryboardSegue) {}
     @IBAction func passwordChanged(segue: UIStoryboardSegue) {
-        _ = account.update(on: DispatchQueue.global(qos: .userInitiated))
+        _ = account.update()
     }
 
     @IBAction func refreshTable(_ sender: Any) {
-        _ = account.profile(on: DispatchQueue.global(qos: .userInitiated)).ensure {
+        _ = account.profile().ensure {
             self.refreshControl?.endRefreshing()
         }
     }

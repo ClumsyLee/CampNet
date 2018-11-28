@@ -327,7 +327,7 @@ extension Account {
         }
     }
 
-    public func login(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+    public func login(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .userInitiated),
                       requestBinder: RequestBinder? = nil) -> Promise<Void> {
 
         return firstly { () -> Promise<[String: Any]> in
@@ -362,7 +362,7 @@ extension Account {
         }
     }
 
-    public func status(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+    public func status(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .userInitiated),
                        requestBinder: RequestBinder? = nil) -> Promise<Status> {
 
         return firstly { () -> Promise<[String: Any]> in
@@ -401,7 +401,7 @@ extension Account {
     }
 
     public func profile(isSubaction: Bool = false, autoLogout: Bool = true,
-                        on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+                        on queue: DispatchQueue = DispatchQueue.global(qos: .userInitiated),
                         requestBinder: RequestBinder? = nil) -> Promise<Profile> {
 
         return firstly { () -> Promise<[String: Any]> in
@@ -439,7 +439,7 @@ extension Account {
     }
 
     public func login(ip: String, isSubaction: Bool = false,
-                      on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+                      on queue: DispatchQueue = DispatchQueue.global(qos: .userInitiated),
                       requestBinder: RequestBinder? = nil) -> Promise<Void> {
 
         return firstly { () -> Promise<[String: Any]> in
@@ -477,7 +477,7 @@ extension Account {
     }
 
     public func logoutSession(session: Session, isSubaction: Bool = false,
-                              on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+                              on queue: DispatchQueue = DispatchQueue.global(qos: .userInitiated),
                               requestBinder: RequestBinder? = nil) -> Promise<Void> {
 
         return firstly { () -> Promise<[String: Any]> in
@@ -516,7 +516,7 @@ extension Account {
         }
     }
 
-    public func history(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+    public func history(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .userInitiated),
                         requestBinder: RequestBinder? = nil) -> Promise<History> {
 
         return firstly { () -> Promise<[String: Any]> in
@@ -547,7 +547,7 @@ extension Account {
         }
     }
 
-    public func logout(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+    public func logout(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .userInitiated),
                        requestBinder: RequestBinder? = nil) -> Promise<Void> {
 
         return firstly { () -> Promise<[String: Any]> in
@@ -580,7 +580,7 @@ extension Account {
         }
     }
 
-    public func update(skipStatus: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+    public func update(skipStatus: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .userInitiated),
                        requestBinder: RequestBinder? = nil) -> Promise<Void> {
 
         var promise = Promise()
@@ -605,7 +605,7 @@ extension Account {
         return promise
     }
 
-    public func updateIfNeeded(on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+    public func updateIfNeeded(on queue: DispatchQueue = DispatchQueue.global(qos: .userInitiated),
                                requestBinder: RequestBinder? = nil) -> Promise<Void> {
         return shouldAutoUpdate ? update(skipStatus: true, on: queue, requestBinder: requestBinder)
                                 : Promise()

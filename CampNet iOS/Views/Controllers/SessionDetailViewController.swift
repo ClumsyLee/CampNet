@@ -17,18 +17,18 @@ class SessionDetailViewController: UITableViewController {
         case details
         case logoutSession
     }
-    
+
     @IBOutlet var ip: UILabel!
     @IBOutlet var id: UILabel!
     @IBOutlet var startTime: UILabel!
     @IBOutlet var usage: UILabel!
     @IBOutlet var mac: UILabel!
-    
+
     @IBOutlet var logoutDeviceRow: UITableViewCell!
-    
+
     var account: Account!
     var session: Session!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,12 +38,12 @@ class SessionDetailViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         navigationItem.title = session.device
-        
+
         ip.text = session.ip.nonEmpty ?? " "
         id.text = session.id?.nonEmpty ?? " "
         if let startTime = session.startTime {
@@ -72,7 +72,7 @@ class SessionDetailViewController: UITableViewController {
         return 0
     }
     */
-    
+
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -82,34 +82,33 @@ class SessionDetailViewController: UITableViewController {
         return cell
     }
     */
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         if indexPath.section == Section.logoutSession.rawValue {
             let menu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             menu.view.tintColor = #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1)
-            
+
             let deleteAction = UIAlertAction(title: L10n.SessionDetail.LogoutAlert.Actions.logout,
                                              style: .destructive) { action in
-                _ = self.account.logoutSession(session: self.session,
-                                               on: DispatchQueue.global(qos: .userInitiated)).done { _ in
+                _ = self.account.logoutSession(session: self.session).done { _ in
                     SwiftRater.incrementSignificantUsageCount()
                 }
                 self.performSegue(withIdentifier: "sessionLoggedOut", sender: self)
             }
             let cancelAction = UIAlertAction(title: L10n.SessionDetail.LogoutAlert.Actions.cancel, style: .cancel,
                                              handler: nil)
-            
+
             menu.addAction(deleteAction)
             menu.addAction(cancelAction)
-            
+
             // Show as a popover on iPads.
             if let popoverPresentationController = menu.popoverPresentationController {
                 popoverPresentationController.sourceView = logoutDeviceRow
                 popoverPresentationController.sourceRect = logoutDeviceRow.bounds
             }
-            
+
             present(menu, animated: true, completion: nil)
         }
     }
@@ -132,7 +131,7 @@ class SessionDetailViewController: UITableViewController {
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table
             //   view
-        }    
+        }
     }
     */
 

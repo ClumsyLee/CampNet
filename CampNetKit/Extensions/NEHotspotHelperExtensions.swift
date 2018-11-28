@@ -12,10 +12,9 @@ import NetworkExtension
 extension NEHotspotHelper {
     public class func register(displayName: String) {
         let options = [kNEHotspotHelperOptionDisplayName: displayName as NSObject]
-        let queue = DispatchQueue.global(qos: .utility)
+        let queue = DispatchQueue.global(qos: .userInitiated)
 
         let result = NEHotspotHelper.register(options: options, queue: queue) { command in
-            let queue = DispatchQueue.global(qos: .utility)
             let requestBinder: RequestBinder = { $0.bind(to: command) }
 
             switch command.commandType {

@@ -65,7 +65,7 @@ public struct ActionEntry {
     func commit(currentVars: [String: Any] = [:],
                 context: JSContext,
                 session: URLSession,
-                on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+                on queue: DispatchQueue,
                 requestBinder: RequestBinder? = nil) -> Promise<[String: Any]> {
         log.verbose("\(self): Commiting.")
 
@@ -258,8 +258,7 @@ public struct Action {
     }
 
     public func commit(username: String, password: String, extraVars: [String: Any] = [:],
-                       on queue: DispatchQueue = DispatchQueue.global(qos: .utility),
-                       requestBinder: RequestBinder? = nil) -> Promise<[String: Any]> {
+                       on queue: DispatchQueue, requestBinder: RequestBinder? = nil) -> Promise<[String: Any]> {
 
         var initialVars: [String: Any] = [
             "username": username,
@@ -295,7 +294,7 @@ public struct Action {
             }
             return vars
         }
-        .ensure {
+        .ensure(on: queue) {
             Action.setNetworkActivityIndicatorVisible(false)
         }
 

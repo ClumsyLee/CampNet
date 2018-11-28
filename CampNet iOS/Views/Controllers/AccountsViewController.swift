@@ -141,7 +141,7 @@ class AccountsViewController: UITableViewController {
     }
 
     func updateProfile(of account: Account) -> Promise<Profile> {
-        return account.profile(on: DispatchQueue.global(qos: .userInitiated))
+        return account.profile()
     }
 
     override func viewDidLoad() {
