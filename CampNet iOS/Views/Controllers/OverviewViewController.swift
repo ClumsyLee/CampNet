@@ -615,7 +615,7 @@ class OverviewViewController: UITableViewController {
             tableView.contentOffset = offset
         }
 
-        reloadNetworkColor()
+        reloadNetwork()
     }
 
     override func viewDidAppear(_ animated: Bool) {
