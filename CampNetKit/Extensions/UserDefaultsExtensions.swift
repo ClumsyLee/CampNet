@@ -24,6 +24,10 @@ extension DefaultsKeys {
     public static let usageAlertRatio = DefaultsKey<Double?>("usageAlertRatio")
     public static let sendLogs = DefaultsKey<Bool>("sendLogs")
 
+    // Statistics.
+    public static let loginCount = DefaultsKey<Int>("loginCount")
+    public static let loginCountStartDate = DefaultsKey<Date?>("loginCountStartDate")
+
     public static func onCampus(id: String, ssid: String) -> DefaultsKey<Bool> {
         return DefaultsKey<Bool>("\(id).\(ssid).onCampus")
     }

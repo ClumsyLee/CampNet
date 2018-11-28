@@ -105,6 +105,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if !Defaults.hasKey(.sendLogs) {
             Defaults[.sendLogs] = true
         }
+        if !Defaults.hasKey(.loginCount) {
+            Defaults[.loginCount] = 0
+        }
+        if !Defaults.hasKey(.loginCountStartDate) {
+            Defaults[.loginCountStartDate] = Date()
+        }
     }
 
     func setUpFirebase() {
