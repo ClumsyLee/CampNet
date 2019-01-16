@@ -119,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func setUpInstaBug() {
-        Instabug.start(withToken: "0df1051f1ad636fc8efd87baef010aaa", invocationEvents: [])
+        Instabug.start(withToken: "0df1051f1ad636fc8efd87baef010aaa", invocationEvents: [.shake])
         BugReporting.promptOptions = [.feedback]
         BugReporting.enabledAttachmentTypes = []
     }
