@@ -211,7 +211,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if #available(iOS 10.0, *) {
             let center = UNUserNotificationCenter.current()
             center.delegate = self
-            center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
                 if granted {
                     log.info("User notifications are allowed.")
                 } else {
@@ -220,7 +220,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         } else {
             // Fallback on earlier versions
-            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .sound],
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .sound, .badge],
                                                                                              categories: nil))
         }
 
@@ -393,12 +393,13 @@ func showErrorBanner(title: String?, body: String? = nil, duration: Double = App
     banner.show(duration: duration)
 }
 
-func sendNotification(title: String, body: String, identifier: String) {
+func sendNotification(title: String, body: String, identifier: String, badge: Int? = nil) {
     if #available(iOS 10.0, *) {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
         content.sound = UNNotificationSound.default
+        content.badge = badge as NSNumber?
 
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
@@ -409,6 +410,7 @@ func sendNotification(title: String, body: String, identifier: String) {
         notification.alertBody = body
         notification.soundName = UILocalNotificationDefaultSoundName
         notification.userInfo = ["identifier": identifier]
+        notification.applicationIconBadgeNumber = badge ?? 0
 
         UIApplication.shared.presentLocalNotificationNow(notification)
     }

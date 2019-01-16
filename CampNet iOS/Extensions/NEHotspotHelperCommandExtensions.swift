@@ -79,7 +79,8 @@ extension NEHotspotHelperCommand {
             if Defaults.potentialDonator && Defaults[.loginCount] % AppDelegate.donateRequestInterval == 0 {
                 sendNotification(title: L10n.Notifications.DonationRequest.title,
                                  body: L10n.Notifications.DonationRequest.body(Defaults[.loginCount]),
-                                 identifier: AppDelegate.donationRequestIdentifier)
+                                 identifier: AppDelegate.donationRequestIdentifier,
+                                 badge: 1)
                 Analytics.logEvent("donation_request", parameters: ["login_count": Defaults[.loginCount]])
             }
         }

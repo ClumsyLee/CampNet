@@ -120,6 +120,11 @@ class SupportUsViewController: UIViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIApplication.shared.applicationIconBadgeNumber = 0  // Page is shown, clear the badge.
+    }
+
     func donated() {
         Defaults[.donated] = true
         Analytics.setUserProperty(Defaults[.donated].description, forName: "donated")
