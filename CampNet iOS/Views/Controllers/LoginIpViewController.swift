@@ -8,6 +8,7 @@
 
 import UIKit
 
+import Firebase
 import SwiftRater
 import CampNetKit
 
@@ -120,6 +121,7 @@ class LoginIpViewController: UITableViewController {
                 _ = account.login(ip: ip).done {
                     SwiftRater.incrementSignificantUsageCount()
                 }
+                Analytics.logEvent("foreground_login_ip", parameters: ["account": account.identifier])
             }
         }
     }

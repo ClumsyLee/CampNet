@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import CampNetKit
 
 class AccountDetailViewController: UITableViewController {
@@ -33,6 +34,8 @@ class AccountDetailViewController: UITableViewController {
         _ = account.profile().ensure {
             self.refreshControl?.endRefreshing()
         }
+
+        Analytics.logEvent("account_detail_refresh", parameters: ["account": account.identifier])
     }
 
     var account: Account!
@@ -229,6 +232,8 @@ class AccountDetailViewController: UITableViewController {
         if action == #selector(copy(_:)) {
             let cell = tableView.cellForRow(at: indexPath)
             UIPasteboard.general.string = cell?.detailTextLabel?.text
+
+            Analytics.logEvent("account_detail_copy", parameters: ["index": indexPath.row])
         }
     }
 }

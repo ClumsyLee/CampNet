@@ -8,6 +8,7 @@
 
 import UIKit
 
+import Firebase
 import SwiftRater
 import CampNetKit
 
@@ -44,6 +45,8 @@ class SessionsViewController: UITableViewController {
         _ = account.profile().ensure {
             self.refreshControl?.endRefreshing()
         }
+
+        Analytics.logEvent("sessions_refresh", parameters: ["account": account.identifier])
     }
 
     func reloadSessions() {
@@ -185,6 +188,7 @@ class SessionsViewController: UITableViewController {
         _ = account.logoutSession(session: session).done { _ in
             SwiftRater.incrementSignificantUsageCount()
         }
+        Analytics.logEvent("foreground_logout_session", parameters: ["account": account.identifier])
     }
 
 

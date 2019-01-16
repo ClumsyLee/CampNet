@@ -9,6 +9,8 @@
 import UIKit
 import NetworkExtension
 
+import Firebase
+
 import CampNetKit
 
 class NetworkViewController: UITableViewController {
@@ -34,6 +36,8 @@ class NetworkViewController: UITableViewController {
         }
 
         Defaults[.onCampus(id: configuration.identifier, ssid: network.ssid)] = onCampusSwitch.isOn
+        Analytics.logEvent(onCampusSwitch.isOn ? "remember_network" : "forget_network",
+                           parameters: ["account": account!.identifier, "network": network.ssid])
     }
 
     override func viewDidLoad() {
@@ -167,6 +171,8 @@ class NetworkViewController: UITableViewController {
         if action == #selector(copy(_:)) {
             let cell = tableView.cellForRow(at: indexPath)
             UIPasteboard.general.string = cell?.detailTextLabel?.text
+
+            Analytics.logEvent("network_detail_copy", parameters: ["index": indexPath.row])
         }
     }
 }

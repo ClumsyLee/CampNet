@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import PromiseKit
 import CampNetKit
 
@@ -28,6 +29,8 @@ class AccountsViewController: UITableViewController {
         when(resolved: promises).done { _ in
             self.refreshControl?.endRefreshing()
         }
+
+        Analytics.logEvent("accounts_refresh", parameters: [:])
     }
 
     var accounts: [(configuration: Configuration, accounts: [Account])] = []
@@ -251,6 +254,10 @@ class AccountsViewController: UITableViewController {
 
         let account = self.account(at: indexPath)
         Account.makeMain(account)
+
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: account.identifier,
+            AnalyticsParameterContentType: "make_main"])
     }
 
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
