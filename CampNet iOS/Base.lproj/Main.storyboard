@@ -804,7 +804,7 @@ it without you</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ahZ-iN-tNC">
-                        <barButtonItem key="rightBarButtonItem" title="Restore" style="plain" id="UUh-Cp-Lg7">
+                        <barButtonItem key="rightBarButtonItem" title="Restore" id="UUh-Cp-Lg7">
                             <connections>
                                 <action selector="restoreButtonPressed:" destination="fuL-fk-47F" id="uLf-gw-Unn"/>
                             </connections>
@@ -888,7 +888,7 @@ it without you</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="Dno-7x-jNX">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Dno-7x-jNX">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
