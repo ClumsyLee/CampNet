@@ -9,6 +9,7 @@ target 'CampNet iOS' do
   pod 'BRYXBanner'
   pod 'Charts'
   pod 'DynamicButton'
+  pod 'Firebase/Core'
   pod 'Instabug'
   pod 'SwiftRater', :git => 'https://github.com/ClumsyLee/SwiftRater'
   pod 'SwiftyButton'
@@ -19,7 +20,6 @@ target 'CampNetKit' do
   # Pods for CampNetKit
   pod 'Alamofire'
   pod 'CryptoSwift'
-  pod 'Firebase/Core'
   pod 'Kanna', '~> 4.0.0'
   pod 'KeychainAccess'
   pod 'NetUtils'
