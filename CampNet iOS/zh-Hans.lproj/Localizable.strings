@@ -13,6 +13,8 @@
 "hotspot_helper.display_name" = "由 CampNet 管理的校园网";
 
 /* Notifications */
+"notifications.donation_request.body" = "CampNet 已经为您自动登录 %d 次了。要不要给这个开源项目一点爱？";
+"notifications.donation_request.title" = "我们需要你的支持！";
 "notifications.history_error.title" = "无法更新 “%@” 的历史";
 "notifications.login_error.title" = "无法上线 “%@”";
 "notifications.login_ip_error.title" = "无法上线 %@";

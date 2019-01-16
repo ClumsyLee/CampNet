@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     static let bannerDuration = 3.0
     static let loginErrorNotificationInterval: TimeInterval = 86400
+    public static let donateRequestInterval = 25  // In terms of auto-login count.
+    public static let donationRequestIdentifier = "donationRequest"
 
     var window: UIWindow?
     var logFileURL: URL?
@@ -172,10 +174,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
 
         // Do not request notification authorization when UI testing to prevent that system dialog from appearing.
-        #if DEBUG
-        #else
-        requestNotificationAuthorization()
-        #endif
+        if !Device.inUITest {
+            requestNotificationAuthorization()
+        }
 
         // Update the profile in the background every now and then.
         application.setMinimumBackgroundFetchInterval(Account.profileAutoUpdateInterval)
@@ -232,7 +233,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
-        showErrorBanner(title: notification.alertTitle, body: notification.alertBody)
+        if UIApplication.shared.applicationState == .active {
+            showErrorBanner(title: notification.alertTitle, body: notification.alertBody)
+        } else if notification.userInfo?["identifier"] as? String == AppDelegate.donationRequestIdentifier {
+            navigateToSupportUs()
+        }
+
+    }
+
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        if response.notification.request.identifier == AppDelegate.donationRequestIdentifier {
+            navigateToSupportUs()
+        }
+
+        completionHandler()
+    }
+
+    func navigateToSupportUs() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "supportUsViewController")
+        let navController = window?.rootViewController as! UINavigationController
+
+        navController.pushViewController(controller, animated: true)
     }
 
     @objc func accountLoginError(_ notification: Notification) {
@@ -385,6 +408,7 @@ func sendNotification(title: String, body: String, identifier: String) {
         notification.alertTitle = title
         notification.alertBody = body
         notification.soundName = UILocalNotificationDefaultSoundName
+        notification.userInfo = ["identifier": identifier]
 
         UIApplication.shared.presentLocalNotificationNow(notification)
     }

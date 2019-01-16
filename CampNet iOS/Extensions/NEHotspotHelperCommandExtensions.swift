@@ -73,7 +73,15 @@ extension NEHotspotHelperCommand {
             self.reply(result: .success)
             Analytics.logEvent("background_login", parameters: ["account": account.identifier, "result": "success"])
 
+            // Request for a donation if suitable.
             Defaults[.loginCount] += 1
+            Analytics.setUserProperty(Defaults[.loginCount].description, forName: "login_count")
+            if Defaults.potentialDonator && Defaults[.loginCount] % AppDelegate.donateRequestInterval == 0 {
+                sendNotification(title: L10n.Notifications.DonationRequest.title,
+                                 body: L10n.Notifications.DonationRequest.body(Defaults[.loginCount]),
+                                 identifier: AppDelegate.donationRequestIdentifier)
+                Analytics.logEvent("donation_request", parameters: ["login_count": Defaults[.loginCount]])
+            }
         }
         .catch(on: queue) { error in
             self.reply(result: .temporaryFailure)

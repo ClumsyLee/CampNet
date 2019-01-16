@@ -13,6 +13,8 @@
 "hotspot_helper.display_name" = "Campus network managed by CampNet";
 
 /* Notifications */
+"notifications.donation_request.body" = "CampNet has auto-logged in %d times for you. Would you like to show some love to this open source project?";
+"notifications.donation_request.title" = "We need your support!";
 "notifications.history_error.title" = "Unable to Update History of \"%@\"";
 "notifications.login_error.title" = "Unable to Login \"%@\"";
 "notifications.login_ip_error.title" = "Unable to Login %@";

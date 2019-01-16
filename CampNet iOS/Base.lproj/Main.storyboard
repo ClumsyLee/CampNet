@@ -676,7 +676,7 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
         <!--Support Us View Controller-->
         <scene sceneID="4uQ-bx-rgj">
             <objects>
-                <viewController id="fuL-fk-47F" customClass="SupportUsViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="supportUsViewController" id="fuL-fk-47F" customClass="SupportUsViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9kr-AH-P7S"/>
                         <viewControllerLayoutGuide type="bottom" id="VWK-2n-237"/>
