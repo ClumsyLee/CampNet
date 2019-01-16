@@ -12,10 +12,12 @@ import SafariServices
 class AboutViewController: UITableViewController {
 
     enum Row: Int {
+        case repo
         case myGithub
         case acknowledgements
     }
 
+    static let repoUrl = URL(string: "https://github.com/clumsyLee/CampNet")!
     static let myGithubUrl = URL(string: "https://github.com/ClumsyLee")!
 
     @IBOutlet var version: UILabel!
@@ -63,9 +65,11 @@ class AboutViewController: UITableViewController {
     */
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == Row.myGithub.rawValue {
-            let controller = SFSafariViewController(url: AboutViewController.myGithubUrl)
-            present(controller, animated: true)
+
+        switch Row(rawValue: indexPath.row) {
+        case .repo?: present(SFSafariViewController(url: AboutViewController.repoUrl), animated: true)
+        case .myGithub?: present(SFSafariViewController(url: AboutViewController.myGithubUrl), animated: true)
+        default: break
         }
     }
 

@@ -275,8 +275,8 @@
 /* Class = "UITableViewController"; title = "About CampNet"; ObjectID = "cgD-an-vZQ"; */
 "cgD-an-vZQ.title" = "关于 CampNet";
 
-/* Class = "UITableViewSection"; footerTitle = "Copyright © 2018 Sihan Li. All rights reserved."; ObjectID = "5l9-LW-jLm"; */
-"5l9-LW-jLm.footerTitle" = "Copyright © 2018 Sihan Li. All rights reserved.";
+/* Class = "UITableViewSection"; footerTitle = "Copyright © 2019 Sihan Li. All rights reserved."; ObjectID = "5l9-LW-jLm"; */
+"5l9-LW-jLm.footerTitle" = "Copyright © 2019 Sihan Li. All rights reserved.";
 
 /* Class = "UILabel"; text = "Acknowledgements"; ObjectID = "kJS-cc-R8f"; */
 "kJS-cc-R8f.text" = "致谢";
@@ -331,3 +331,6 @@
 
 /* Class = "UITextView"; text = "ssids:\n  - Tsinghua\n  - Tsinghua-5G"; ObjectID = "ZfJ-9A-YNS"; */
 "ZfJ-9A-YNS.text" = "";
+
+/* Class = "UILabel"; text = "Code Repository"; ObjectID = "FhX-2N-asV"; */
+"FhX-2N-asV.text" = "代码库";
