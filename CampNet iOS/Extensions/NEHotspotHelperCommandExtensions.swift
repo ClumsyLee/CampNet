@@ -9,6 +9,7 @@
 import Foundation
 import NetworkExtension
 
+import Firebase
 import PromiseKit
 
 import CampNetKit
@@ -70,9 +71,11 @@ extension NEHotspotHelperCommand {
 
         account.login(on: queue, requestBinder: requestBinder).done(on: queue) {
             self.reply(result: .success)
+            Analytics.logEvent("background_login", parameters: ["account": account.identifier, "result": "success"])
         }
         .catch(on: queue) { error in
             self.reply(result: .temporaryFailure)
+            Analytics.logEvent("background_login", parameters: ["account": account.identifier, "result": "temporary_failure"])
         }
     }
 
@@ -112,9 +115,11 @@ extension NEHotspotHelperCommand {
 
         account.logout(on: queue, requestBinder: requestBinder).done(on: queue) {
             self.reply(result: .success)
+            Analytics.logEvent("background_logout", parameters: ["account": account.identifier, "result": "success"])
         }
         .catch(on: queue) { error in
             self.reply(result: .failure)
+            Analytics.logEvent("background_logout", parameters: ["account": account.identifier, "result": "failure"])
         }
     }
 
