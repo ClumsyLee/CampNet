@@ -1,5 +1,5 @@
 //
-//  PrivacyViewController.swift
+//  AdvancedViewController.swift
 //  CampNet iOS
 //
 //  Created by Thomas Lee on 2017/8/26.
@@ -9,7 +9,7 @@
 import UIKit
 import CampNetKit
 
-class PrivacyViewController: UITableViewController {
+class AdvancedViewController: UITableViewController {
 
     @IBOutlet var sendLogsSwitch: UISwitch!
     

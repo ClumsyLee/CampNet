@@ -119,9 +119,6 @@
 /* Class = "UILabel"; text = "Usage Alert"; ObjectID = "vdN-Sw-6R2"; */
 "vdN-Sw-6R2.text" = "流量警报";
 
-/* Class = "UILabel"; text = "Logs"; ObjectID = "Ldh-WC-BHg"; */
-"Ldh-WC-BHg.text" = "日志";
-
 /* Class = "UILabel"; text = "Support Us!"; ObjectID = "rRb-Ti-t7w"; */
 "rRb-Ti-t7w.text" = "支持我们！";
 
@@ -260,11 +257,11 @@
 /* Class = "UILabel"; text = "Send Crash Data and Statistics"; ObjectID = "URK-Ii-svK"; */
 "URK-Ii-svK.text" = "发送崩溃数据和统计信息";
 
-/* Class = "UILabel"; text = "Privacy"; ObjectID = "d1B-B0-i41"; */
-"d1B-B0-i41.text" = "隐私";
+/* Class = "UILabel"; text = "Advanced"; ObjectID = "d1B-B0-i41"; */
+"d1B-B0-i41.text" = "高级";
 
-/* Class = "UITableViewController"; title = "Privacy"; ObjectID = "PSb-6u-zWB"; */
-"PSb-6u-zWB.title" = "隐私";
+/* Class = "UITableViewController"; title = "Advanced"; ObjectID = "PSb-6u-zWB"; */
+"PSb-6u-zWB.title" = "高级";
 
 /* Class = "UILabel"; text = "About CampNet"; ObjectID = "25S-7C-CHX"; */
 "25S-7C-CHX.text" = "关于 CampNet";
@@ -284,8 +281,8 @@
 /* Class = "UILabel"; text = "Acknowledgements"; ObjectID = "kJS-cc-R8f"; */
 "kJS-cc-R8f.text" = "致谢";
 
-/* Class = "UITextView"; text = "\"CampNet logo\" is a derivative of \"Network\" by riyazali, used under CC BY 3.0 US. \"CampNet logo\" is licensed under CC BY 4.0 by Sihan Li.\n\n\"Settings\" is licensed under CC BY 3.0 US by Viktor Vorobyev."; ObjectID = "gMC-pM-X3r"; */
-"gMC-pM-X3r.text" = "\"CampNet logo\" is a derivative of \"Network\" by riyazali, used under CC BY 3.0 US. \"CampNet logo\" is licensed under CC BY 4.0 by Sihan Li.\n\n\"Settings\" is licensed under CC BY 3.0 US by Viktor Vorobyev.";
+/* Class = "UITextView"; text = "\"CampNet logo\" is a derivative of \"Network\" by riyazali, used under CC BY 3.0 US. \"CampNet logo\" is licensed under CC BY 4.0 by Sihan Li.\n\n\"Settings\" is licensed under CC BY 3.0 US by Viktor Vorobyev.\n\n\"Custom\" is licensed under Flaticon Basic License by Vectors Market.\n\n\"Octocat\" is a trademark of GitHub, Inc."; ObjectID = "gMC-pM-X3r"; */
+"gMC-pM-X3r.text" = "\"CampNet logo\" is a derivative of \"Network\" by riyazali, used under CC BY 3.0 US. \"CampNet logo\" is licensed under CC BY 4.0 by Sihan Li.\n\n\"Settings\" is licensed under CC BY 3.0 US by Viktor Vorobyev.\n\n\"Custom\" is licensed under Flaticon Basic License by Vectors Market.\n\n\"Octocat\" is a trademark of GitHub, Inc.";
 
 /* Class = "UIViewController"; title = "Acknowledgements"; ObjectID = "pQx-xB-pf4"; */
 "pQx-xB-pf4.title" = "致谢";
@@ -319,3 +316,18 @@
 
 /* Class = "UIBarButtonItem"; title = "Restore"; ObjectID = "UUh-Cp-Lg7"; */
 "UUh-Cp-Lg7.title" = "恢复";
+
+/* Class = "UILabel"; text = "Logs"; ObjectID = "9Yd-Lz-pCK"; */
+"9Yd-Lz-pCK.text" = "日志";
+
+/* Class = "UITextView"; text = "22:47:18.284 INFO AppDelegate.requestNotificationAuthorization():121 - User notifications are allowed."; ObjectID = "LP9-zR-21e"; */
+"LP9-zR-21e.text" = "";
+
+/* Class = "UITableViewSection"; footerTitle = "You will have to relaunch the app for the new configuration to take effect."; ObjectID = "O4M-tr-6NY"; */
+"O4M-tr-6NY.footerTitle" = "您必须重新启动应用才能使新配置生效。";
+
+/* Class = "UILabel"; text = "Custom Configuration"; ObjectID = "PsY-vW-TCs"; */
+"PsY-vW-TCs.text" = "自定义配置";
+
+/* Class = "UITextView"; text = "ssids:\n  - Tsinghua\n  - Tsinghua-5G"; ObjectID = "ZfJ-9A-YNS"; */
+"ZfJ-9A-YNS.text" = "";

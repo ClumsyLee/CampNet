@@ -396,34 +396,14 @@
                             </tableViewSection>
                             <tableViewSection id="4ch-CP-Qt2">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Ldh-WC-BHg" style="IBUITableViewCellStyleDefault" id="ibq-WW-s0Z">
-                                        <rect key="frame" x="0.0" y="267" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ibq-WW-s0Z" id="aMI-Kc-6vd">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Logs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ldh-WC-BHg">
-                                                    <rect key="frame" x="20" y="0.0" width="356" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="eYS-u7-PWQ" kind="show" id="i1D-6P-jos"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="d1B-B0-i41" style="IBUITableViewCellStyleDefault" id="g8P-4y-qLS">
-                                        <rect key="frame" x="0.0" y="311" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="267" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g8P-4y-qLS" id="lRZ-WY-9yA">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Privacy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d1B-B0-i41">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Advanced" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d1B-B0-i41">
                                                     <rect key="frame" x="20" y="0.0" width="356" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -441,7 +421,7 @@
                             <tableViewSection id="UWL-Df-ckR">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="rRb-Ti-t7w" style="IBUITableViewCellStyleDefault" id="3cF-EA-q2y">
-                                        <rect key="frame" x="0.0" y="391" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="347" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3cF-EA-q2y" id="tET-7b-1Oq">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
@@ -461,7 +441,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="25S-7C-CHX" style="IBUITableViewCellStyleDefault" id="mnn-Bz-GC3">
-                                        <rect key="frame" x="0.0" y="435" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="391" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mnn-Bz-GC3" id="Mxx-7I-1gU">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
@@ -611,6 +591,44 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
             </objects>
             <point key="canvasLocation" x="3097" y="1107"/>
         </scene>
+        <!--Custom Configuration Controller-->
+        <scene sceneID="jdL-Rn-JF5">
+            <objects>
+                <viewController id="K1d-dN-bmg" customClass="CustomConfigurationController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qZg-Nj-gJL"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ory-8C-xy3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kMA-5g-ncy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZfJ-9A-YNS">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">ssids:
+  - Tsinghua
+  - Tsinghua-5G</string>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="10"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZfJ-9A-YNS" firstAttribute="top" secondItem="qZg-Nj-gJL" secondAttribute="bottom" id="Z7i-hp-7HZ"/>
+                            <constraint firstAttribute="trailing" secondItem="ZfJ-9A-YNS" secondAttribute="trailing" id="cpX-2K-lNL"/>
+                            <constraint firstAttribute="bottom" secondItem="ZfJ-9A-YNS" secondAttribute="bottom" id="jXg-hR-RAH"/>
+                            <constraint firstItem="ZfJ-9A-YNS" firstAttribute="leading" secondItem="kMA-5g-ncy" secondAttribute="leading" id="kOo-Nx-D0s"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="ZfJ-9A-YNS" id="wnj-WG-tnc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uc2-Kb-e6m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3888" y="1801"/>
+        </scene>
         <!--Logs-->
         <scene sceneID="Fr2-U2-7du">
             <objects>
@@ -623,31 +641,17 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LP9-zR-21e">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" editable="NO" text="22:47:18.284 INFO AppDelegate.requestNotificationAuthorization():121 - User notifications are allowed." translatesAutoresizingMaskIntoConstraints="NO" id="LP9-zR-21e">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="22:47:18.284 INFO AppDelegate.requestNotificationAuthorization():121 - User notifications are allowed.">
-                                        <attributes>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="Menlo-Regular"/>
-                                            <integer key="NSLigature" value="0"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="charWrapping" baseWritingDirection="natural" defaultTabInterval="27.149999999999999" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                <tabStops>
-                                                    <textTab alignment="left" location="27.149999618530273">
-                                                        <options/>
-                                                    </textTab>
-                                                </tabStops>
-                                            </paragraphStyle>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="10"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RiJ-Ph-xwq" firstAttribute="top" secondItem="LP9-zR-21e" secondAttribute="bottom" id="M0f-oc-FFM"/>
+                            <constraint firstAttribute="bottom" secondItem="LP9-zR-21e" secondAttribute="bottom" id="M0f-oc-FFM"/>
                             <constraint firstItem="LP9-zR-21e" firstAttribute="leading" secondItem="fIm-L4-iBh" secondAttribute="leading" id="hgA-QF-N51"/>
                             <constraint firstAttribute="trailing" secondItem="LP9-zR-21e" secondAttribute="trailing" id="rvl-oD-JTM"/>
                             <constraint firstItem="LP9-zR-21e" firstAttribute="top" secondItem="A83-oH-Tsh" secondAttribute="bottom" id="zHn-c8-luM"/>
@@ -666,7 +670,7 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZKy-ob-r4Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3096.8000000000002" y="1797.7511244377813"/>
+            <point key="canvasLocation" x="3888" y="2509"/>
         </scene>
         <!--Support Us View Controller-->
         <scene sceneID="4uQ-bx-rgj">
@@ -819,20 +823,64 @@ it without you</string>
             </objects>
             <point key="canvasLocation" x="2291.25" y="3220.7746478873241"/>
         </scene>
-        <!--Privacy-->
+        <!--Advanced-->
         <scene sceneID="G3z-8o-BnU">
             <objects>
-                <tableViewController title="Privacy" id="PSb-6u-zWB" customClass="PrivacyViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Advanced" id="PSb-6u-zWB" customClass="AdvancedViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="b8s-j8-9G0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
+                            <tableViewSection footerTitle="You will have to relaunch the app for the new configuration to take effect." id="O4M-tr-6NY">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="PsY-vW-TCs" style="IBUITableViewCellStyleDefault" id="bKG-x9-Apq">
+                                        <rect key="frame" x="0.0" y="35" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bKG-x9-Apq" id="mfs-EE-XuC">
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Custom Configuration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PsY-vW-TCs">
+                                                    <rect key="frame" x="20" y="0.0" width="356" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="K1d-dN-bmg" kind="show" id="cRI-mW-6bc"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="9cP-xt-9ba">
                                 <string key="footerTitle">Help us to improve CampNet by automatically sending crash data and anonymous usage statistics. You will have to relaunch the app for this change to take effect.</string>
                                 <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="9Yd-Lz-pCK" style="IBUITableViewCellStyleDefault" id="9AF-sv-fZX">
+                                        <rect key="frame" x="0.0" y="143" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9AF-sv-fZX" id="Igx-vx-W7O">
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Logs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Yd-Lz-pCK">
+                                                    <rect key="frame" x="20" y="0.0" width="356" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="eYS-u7-PWQ" kind="show" id="SvE-RI-O3w"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="qDx-jn-BjT">
-                                        <rect key="frame" x="0.0" y="35" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="187" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qDx-jn-BjT" id="H5o-NR-DnO">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -878,7 +926,7 @@ it without you</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BDN-as-bgv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3097" y="2508"/>
+            <point key="canvasLocation" x="3096" y="1801"/>
         </scene>
         <!--About CampNet-->
         <scene sceneID="q03-dA-AFU">
@@ -888,7 +936,7 @@ it without you</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="Dno-7x-jNX">
+                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="Dno-7x-jNX">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -991,10 +1039,14 @@ it without you</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gMC-pM-X3r">
-                                <rect key="frame" x="8" y="0.0" width="406" height="774"/>
+                                <rect key="frame" x="8" y="0.0" width="406" height="808"/>
                                 <string key="text">"CampNet logo" is a derivative of "Network" by riyazali, used under CC BY 3.0 US. "CampNet logo" is licensed under CC BY 4.0 by Sihan Li.
 
-"Settings" is licensed under CC BY 3.0 US by Viktor Vorobyev.</string>
+"Settings" is licensed under CC BY 3.0 US by Viktor Vorobyev.
+
+"Custom" is licensed under Flaticon Basic License by Vectors Market.
+
+"Octocat" is a trademark of GitHub, Inc.</string>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1002,7 +1054,7 @@ it without you</string>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="0iS-5B-2hJ" firstAttribute="top" secondItem="gMC-pM-X3r" secondAttribute="bottom" id="0zX-s6-kSK"/>
+                            <constraint firstAttribute="bottom" secondItem="gMC-pM-X3r" secondAttribute="bottom" id="0zX-s6-kSK"/>
                             <constraint firstItem="gMC-pM-X3r" firstAttribute="leading" secondItem="xD7-i9-zzU" secondAttribute="leading" constant="8" id="aO7-fn-dxA"/>
                             <constraint firstItem="gMC-pM-X3r" firstAttribute="top" secondItem="Jk0-eX-0qk" secondAttribute="bottom" id="iIx-Ti-vp8"/>
                             <constraint firstAttribute="trailing" secondItem="gMC-pM-X3r" secondAttribute="trailing" id="sJq-QI-cUS"/>

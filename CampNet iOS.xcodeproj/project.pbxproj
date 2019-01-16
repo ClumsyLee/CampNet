@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0F057AAB1F8EE1F20019AC8E /* CampNet_iOS_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F057AAA1F8EE1F20019AC8E /* CampNet_iOS_Tests.swift */; };
 		0F0FF1F91F5224A7000B608A /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FF1F81F5224A7000B608A /* L10n.swift */; };
-		0F0FF1FE1F524CF1000B608A /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FF1FD1F524CF1000B608A /* PrivacyViewController.swift */; };
+		0F0FF1FE1F524CF1000B608A /* AdvancedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FF1FD1F524CF1000B608A /* AdvancedViewController.swift */; };
 		0F14E7751E2E3AAC0092494B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7741E2E3AAC0092494B /* AppDelegate.swift */; };
 		0F14E7771E2E3AAC0092494B /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7761E2E3AAC0092494B /* OverviewViewController.swift */; };
 		0F14E77C1E2E3AAC0092494B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77A1E2E3AAC0092494B /* Main.storyboard */; };
@@ -66,6 +66,7 @@
 		0FD3A4141F158A12006DA497 /* Configurations.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A4161F158A12006DA497 /* Configurations.strings */; };
 		0FDCFC1C21EF64DA00E332DB /* NEHotspotHelperCommandExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCFC1A21EF64DA00E332DB /* NEHotspotHelperCommandExtensions.swift */; };
 		0FDCFC1D21EF64DA00E332DB /* NEHotspotHelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCFC1B21EF64DA00E332DB /* NEHotspotHelperExtensions.swift */; };
+		0FDCFC1F21EFAD6000E332DB /* CustomConfigurationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCFC1E21EFAD6000E332DB /* CustomConfigurationController.swift */; };
 		0FEA66DF1F533DC300F3867C /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEA66DE1F533DC300F3867C /* AboutViewController.swift */; };
 		0FF7563F1F2A175600B2429A /* UsageAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */; };
 		0FF756411F2BA31500B2429A /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */; };
@@ -136,7 +137,7 @@
 		0F057AAA1F8EE1F20019AC8E /* CampNet_iOS_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampNet_iOS_Tests.swift; sourceTree = "<group>"; };
 		0F057AAC1F8EE1F20019AC8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F0FF1F81F5224A7000B608A /* L10n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
-		0F0FF1FD1F524CF1000B608A /* PrivacyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrivacyViewController.swift; path = Views/Controllers/PrivacyViewController.swift; sourceTree = "<group>"; };
+		0F0FF1FD1F524CF1000B608A /* AdvancedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdvancedViewController.swift; path = Views/Controllers/AdvancedViewController.swift; sourceTree = "<group>"; };
 		0F14E7711E2E3AAC0092494B /* CampNet iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CampNet iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F14E7741E2E3AAC0092494B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F14E7761E2E3AAC0092494B /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OverviewViewController.swift; path = Views/Controllers/OverviewViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +205,7 @@
 		0FD3A4171F158A15006DA497 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Configurations.strings"; sourceTree = "<group>"; };
 		0FDCFC1A21EF64DA00E332DB /* NEHotspotHelperCommandExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NEHotspotHelperCommandExtensions.swift; sourceTree = "<group>"; };
 		0FDCFC1B21EF64DA00E332DB /* NEHotspotHelperExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NEHotspotHelperExtensions.swift; sourceTree = "<group>"; };
+		0FDCFC1E21EFAD6000E332DB /* CustomConfigurationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomConfigurationController.swift; path = Views/Controllers/CustomConfigurationController.swift; sourceTree = "<group>"; };
 		0FEA66DE1F533DC300F3867C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = Views/Controllers/AboutViewController.swift; sourceTree = "<group>"; };
 		0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsageAlertViewController.swift; path = Views/Controllers/UsageAlertViewController.swift; sourceTree = "<group>"; };
 		0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountDetailViewController.swift; path = Views/Controllers/AccountDetailViewController.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				0FEA66DE1F533DC300F3867C /* AboutViewController.swift */,
 				0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */,
 				0F46CC821F17837700AF1FC9 /* AccountsViewController.swift */,
+				0F0FF1FD1F524CF1000B608A /* AdvancedViewController.swift */,
 				0F3685151F1A5C6B0056AED1 /* ChangePasswordViewController.swift */,
 				0F5EB7281F17B06F003094DE /* ConfigurationSetupViewController.swift */,
 				0F5EB7261F17B03B003094DE /* ConfigurationsViewController.swift */,
@@ -406,8 +409,8 @@
 				0F56148D1F31A18C008A1232 /* SessionsViewController.swift */,
 				0F52FE111F29F1C800A88E90 /* SettingsViewController.swift */,
 				0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */,
-				0F0FF1FD1F524CF1000B608A /* PrivacyViewController.swift */,
 				0F1F3D1A21AEAA2F002431B8 /* SupportUsViewController.swift */,
+				0FDCFC1E21EFAD6000E332DB /* CustomConfigurationController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -895,13 +898,14 @@
 				0F8F704F1F1B44C10088E2DE /* SessionCell.swift in Sources */,
 				0F52FE121F29F1C800A88E90 /* SettingsViewController.swift in Sources */,
 				0F1F3D1B21AEAA2F002431B8 /* SupportUsViewController.swift in Sources */,
-				0F0FF1FE1F524CF1000B608A /* PrivacyViewController.swift in Sources */,
+				0F0FF1FE1F524CF1000B608A /* AdvancedViewController.swift in Sources */,
 				0F56148E1F31A18C008A1232 /* SessionsViewController.swift in Sources */,
 				0F8F704D1F1B44A20088E2DE /* AccountCell.swift in Sources */,
 				0F14E7771E2E3AAC0092494B /* OverviewViewController.swift in Sources */,
 				0F56148C1F31A167008A1232 /* SessionDetailViewController.swift in Sources */,
 				0FDCFC1D21EF64DA00E332DB /* NEHotspotHelperExtensions.swift in Sources */,
 				0FF7563F1F2A175600B2429A /* UsageAlertViewController.swift in Sources */,
+				0FDCFC1F21EFAD6000E332DB /* CustomConfigurationController.swift in Sources */,
 				0FEA66DF1F533DC300F3867C /* AboutViewController.swift in Sources */,
 				0F3465701F34D80A008E329F /* NetworkViewController.swift in Sources */,
 			);

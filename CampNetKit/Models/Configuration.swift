@@ -247,13 +247,14 @@ public class Configuration {
     public static let subdirectory = "Configurations"
     public static let fileExtension = "yaml"
     public static let bundle = Bundle(identifier: bundleIdentifier)!
+    public static let customIdentifier = "custom.self"
 
     public static var displayNames: [String: String] {
         var dict: [String: String] = [:]
+        var identifiers = bundle.urls(forResourcesWithExtension: fileExtension, subdirectory: subdirectory)?.map { url in url.deletingPathExtension().lastPathComponent } ?? []
 
-        let urls = bundle.urls(forResourcesWithExtension: fileExtension, subdirectory: subdirectory) ?? []
-        for url in urls {
-            let identifier = url.deletingPathExtension().lastPathComponent
+        identifiers.append(customIdentifier)
+        for identifier in identifiers {
             dict[identifier] = displayName(identifier)
         }
 
@@ -276,18 +277,24 @@ public class Configuration {
     public let actions: [Action.Role: Action]
 
     public init?(_ identifier: String) {
-        guard let url = Configuration.bundle.url(forResource: identifier, withExtension: Configuration.fileExtension,
-                                                 subdirectory: Configuration.subdirectory) else {
-            log.error("\(identifier): Failed to find.")
-            return nil
+        var yamlString: String
+
+        if identifier == Configuration.customIdentifier {
+            yamlString = Defaults[.customConfiguration]
+        } else {
+            guard let url = Configuration.bundle.url(forResource: identifier, withExtension: Configuration.fileExtension,
+                                                     subdirectory: Configuration.subdirectory) else {
+                                                        log.error("\(identifier): Failed to find.")
+                                                        return nil
+            }
+            guard let content = try? String(contentsOf: url) else {
+                log.error("\(identifier): Failed to read.")
+                return nil
+            }
+            yamlString = content
         }
 
-        guard let content = try? String(contentsOf: url) else {
-            log.error("\(identifier): Failed to read.")
-            return nil
-        }
-
-        guard let yaml = try? Yaml.load(content) else {
+        guard let yaml = try? Yaml.load(yamlString) else {
             log.error("\(identifier): Failed to load YAML.")
             return nil
         }

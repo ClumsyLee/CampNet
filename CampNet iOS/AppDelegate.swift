@@ -115,6 +115,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if !Defaults.hasKey(.donated) {
             Defaults[.donated] = false
         }
+        if !Defaults.hasKey(.customConfiguration) {
+            Defaults[.customConfiguration] = ""
+        }
         if !Defaults.hasKey(.loginCount) {
             Defaults[.loginCount] = 0
         }

@@ -1,4 +1,4 @@
-/* 
+/*
   Configurations.strings
   CampNet iOS
 
@@ -9,6 +9,7 @@
 /* Display name of the configuration. */
 "cn.edu.tsinghua" = "Tsinghua University";
 "cn.edu.ruc" = "Renmin University of China";
+"custom.self" = "Custom";
 
 /* Display name of the billing groups. */
 "cn.edu.tsinghua.billing_groups.student" = "Student";

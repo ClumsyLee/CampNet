@@ -81,7 +81,13 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
             (identifier: $0.key, name: $0.value, domain: $0.key.reverseDomained)
         }
         .sorted {
-            $0.name < $1.name || $0.name == $1.name && $0.identifier < $1.identifier
+            if $0.identifier == Configuration.customIdentifier {
+                return false
+            }
+            if $1.identifier == Configuration.customIdentifier {
+                return true
+            }
+            return $0.name < $1.name || ($0.name == $1.name && $0.identifier < $1.identifier)
         }
     }
 

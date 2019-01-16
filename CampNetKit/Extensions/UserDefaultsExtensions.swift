@@ -24,6 +24,7 @@ extension DefaultsKeys {
     public static let usageAlertRatio = DefaultsKey<Double?>("usageAlertRatio")
     public static let sendLogs = DefaultsKey<Bool>("sendLogs")
     public static let donated = DefaultsKey<Bool>("donated")
+    public static let customConfiguration = DefaultsKey<String>("customConfiguration")
 
     // Statistics.
     public static let loginCount = DefaultsKey<Int>("loginCount")
