@@ -15,7 +15,8 @@ class SettingsViewController: UITableViewController {
     @IBOutlet var autoLoginSwitch: UISwitch!
     @IBOutlet var autoLogoutExpiredSessionsSwitch: UISwitch!
     @IBOutlet var usageAlertPercentage: UILabel!
-    
+    @IBOutlet var supportUs: UILabel!
+
     @IBAction func autoLoginChanged(_ sender: Any) {
         Defaults[.autoLogin] = autoLoginSwitch.isOn
         Analytics.setUserProperty(Defaults[.autoLogin].description, forName: "auto_login")
@@ -44,6 +45,10 @@ class SettingsViewController: UITableViewController {
             usageAlertPercentage.text = "\(Int(ratio * 100))%"
         } else {
             usageAlertPercentage.text = L10n.Settings.UsageAlert.Values.off
+        }
+
+        if Defaults.potentialDonator {
+            supportUs.textColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         }
     }
 

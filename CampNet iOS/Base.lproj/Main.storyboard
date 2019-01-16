@@ -471,6 +471,7 @@
                     <connections>
                         <outlet property="autoLoginSwitch" destination="IL3-3K-81t" id="hoH-cg-CqL"/>
                         <outlet property="autoLogoutExpiredSessionsSwitch" destination="uwY-Kc-vxm" id="K9S-N3-7ov"/>
+                        <outlet property="supportUs" destination="rRb-Ti-t7w" id="fIQ-x1-OBO"/>
                         <outlet property="usageAlertPercentage" destination="cLa-y5-HzF" id="1x7-UK-xhz"/>
                     </connections>
                 </tableViewController>
