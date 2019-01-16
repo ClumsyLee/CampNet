@@ -10,6 +10,7 @@ import StoreKit
 import UIKit
 
 import BRYXBanner
+import SwiftyBeaver
 import SwiftRater
 import SwiftyButton
 import SwiftyStoreKit
@@ -28,14 +29,14 @@ class SupportUsViewController: UIViewController {
     @IBAction func restoreButtonPressed(_ sender: Any) {
         SwiftyStoreKit.restorePurchases(atomically: true) { results in
             if results.restoreFailedPurchases.count > 0 {
-                print("Restore Failed: \(results.restoreFailedPurchases)")
+                log.error("Restore Failed: \(results.restoreFailedPurchases)")
                 let banner = Banner(title: L10n.SupportUs.RestoreResult.failed,
                                     subtitle: (results.restoreFailedPurchases.first!.0 as NSError).localizedDescription,
                                     backgroundColor: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1))
                 banner.show(duration: 3.0)
             }
             else if results.restoredPurchases.count > 0 {
-                print("Restore Success: \(results.restoredPurchases)")
+                log.info("Restore Success: \(results.restoredPurchases)")
 
                 for purchase in results.restoredPurchases {
                     if purchase.productId == self.donateIdentifier {
@@ -48,7 +49,7 @@ class SupportUsViewController: UIViewController {
                 }
             }
             else {
-                print("Nothing to Restore")
+                log.error("Nothing to Restore")
                 let banner = Banner(title: L10n.SupportUs.RestoreResult.nothing, backgroundColor: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1))
                 banner.show(duration: 3.0)
             }
@@ -64,20 +65,20 @@ class SupportUsViewController: UIViewController {
         SwiftyStoreKit.purchaseProduct(donateProduct, quantity: 1, atomically: true) { result in
             switch result {
             case .success(let purchase):
-                print("Purchase Success: \(purchase.productId)")
+                log.info("Purchase Success: \(purchase.productId)")
                 self.donated()
             case .error(let error):
                 switch error.code {
-                case .unknown: print("Unknown error. Please contact support")
-                case .clientInvalid: print("Not allowed to make the payment")
+                case .unknown: log.error("Unknown error. Please contact support")
+                case .clientInvalid: log.error("Not allowed to make the payment")
                 case .paymentCancelled: break
-                case .paymentInvalid: print("The purchase identifier was invalid")
-                case .paymentNotAllowed: print("The device is not allowed to make the payment")
-                case .storeProductNotAvailable: print("The product is not available in the current storefront")
-                case .cloudServicePermissionDenied: print("Access to cloud service information is not allowed")
-                case .cloudServiceNetworkConnectionFailed: print("Could not connect to the network")
-                case .cloudServiceRevoked: print("User has revoked permission to use this cloud service")
-                default: print((error as NSError).localizedDescription)
+                case .paymentInvalid: log.error("The purchase identifier was invalid")
+                case .paymentNotAllowed: log.error("The device is not allowed to make the payment")
+                case .storeProductNotAvailable: log.error("The product is not available in the current storefront")
+                case .cloudServicePermissionDenied: log.error("Access to cloud service information is not allowed")
+                case .cloudServiceNetworkConnectionFailed: log.error("Could not connect to the network")
+                case .cloudServiceRevoked: log.error("User has revoked permission to use this cloud service")
+                default: log.error((error as NSError).localizedDescription)
                 }
             }
         }
@@ -106,7 +107,7 @@ class SupportUsViewController: UIViewController {
                     self.donateProduct = product
 
                     let priceString = product.localizedPrice!
-                    print("Product: \(product.localizedDescription), price: \(priceString)")
+                    log.info("Product: \(product.localizedDescription), price: \(priceString)")
                     self.donateButton.titleLabel?.text = priceString
                     self.donateButton.setTitle("\(self.donateButton.titleLabel!.text!) \(priceString)", for: .normal)
 
@@ -114,10 +115,10 @@ class SupportUsViewController: UIViewController {
                     self.donateButton.isEnabled = true
                 }
                 else if let invalidProductId = result.invalidProductIDs.first {
-                    print("Invalid product identifier: \(invalidProductId)")
+                    log.error("Invalid product identifier: \(invalidProductId)")
                 }
                 else {
-                    print("Error: \(String(describing: result.error))")
+                    log.error("Error: \(String(describing: result.error))")
                 }
             }
         }

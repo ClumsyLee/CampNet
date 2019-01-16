@@ -118,7 +118,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func setUpFirebase() {
-        FirebaseApp.configure()
+        if Defaults[.sendLogs] {
+            FirebaseApp.configure()
+        }
     }
 
     func setUpInstaBug() {
@@ -146,14 +148,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         file.format = file.format.replacingOccurrences(of: "$C", with: "")
         file.format = file.format.replacingOccurrences(of: "$c", with: "")
         log.addDestination(file)
-
-        if Defaults[.sendLogs] {
-            let cloud = SBPlatformDestination(appID: "NxnNNO", appSecret: "7tqeijmBtx2ytbwuBMspzilcow0oPwr1",
-                                              encryptionKey: "jJsbg9pj9j5u7hQDhwymWqcv2AaaoumP")
-            cloud.serverURL = URL(string: "https://swiftybeaver.campnet.io/api/entries/")
-            cloud.minLevel = .info
-            log.addDestination(cloud)
-        }
     }
 
     func setUpCampNet(_ application: UIApplication) {
