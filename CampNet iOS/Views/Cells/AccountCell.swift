@@ -17,13 +17,13 @@ class AccountCell: UITableViewCell {
     @IBOutlet var balance: UILabel!
     @IBOutlet var usage: UILabel!
     
-    var isMain = false {
+    var isDelegate = false {
         didSet {
-            checkmark.isHidden = !isMain
+            checkmark.isHidden = !isDelegate
         }
     }
     
-    func update(account: Account, isMain: Bool) {
+    func update(account: Account, isDelegate: Bool) {
         let profile = account.profile
         
         username.text = account.username
@@ -39,7 +39,7 @@ class AccountCell: UITableViewCell {
         }
         self.usage.text = profile?.usage?.usageString(decimalUnits: account.configuration.decimalUnits)
         
-        self.isMain = isMain
+        self.isDelegate = isDelegate
     }
     
     override func awakeFromNib() {

@@ -16,18 +16,17 @@ import CampNetKit
 extension NEHotspotHelperCommand {
 
     public func filterScanList() {
-        let main = Account.main
-        log.info("\(main?.description ?? "nil"): Received filterScanList ")
-
-        guard let networkList = networkList, let account = main else {
+        guard let networkList = networkList else {
             let response = createResponse(.success)
             response.deliver()
             return
         }
+        log.info("NEHotspotHelper: Received filterScanList command: \(networkList).")
 
         var knownList: [NEHotspotNetwork] = []
         for network in networkList {
-            if account.canManage(network: network) {
+            if let account = Account.delegate(for: network) {
+                log.info("NEHotspotHelper: \(account) can handle \(network).")
                 network.setConfidence(.low)
                 knownList.append(network)
             }
@@ -37,13 +36,12 @@ extension NEHotspotHelperCommand {
     }
 
     public func evaluate(on queue: DispatchQueue, requestBinder: @escaping RequestBinder) {
-        let main = Account.main
         guard let network = network else {
             return
         }
-        log.info("\(main?.description ?? "nil"): Received evaluate command for \(network).")
+        log.info("NEHotspotHelper: Received evaluate command: \(network).")
 
-        guard let account = main, account.canManage(network: network) else {
+        guard let account = Account.delegate(for: network) else {
             replyEvaluate(confidence: .none)
             return
         }
@@ -60,13 +58,12 @@ extension NEHotspotHelperCommand {
     }
 
     public func authenticate(on queue: DispatchQueue, requestBinder: @escaping RequestBinder) {
-        let main = Account.main
         guard let network = network else {
             return
         }
-        log.info("\(main?.description ?? "nil"): Received authenticate command for \(network).")
+        log.info("NEHotspotHelper: Received authenticate command: \(network).")
 
-        guard let account = main, account.canManage(network: network) else {
+        guard let account = Account.delegate(for: network) else {
             reply(result: .unsupportedNetwork)
             return
         }
@@ -80,13 +77,12 @@ extension NEHotspotHelperCommand {
     }
 
     public func maintain(on queue: DispatchQueue, requestBinder: @escaping RequestBinder) {
-        let main = Account.main
         guard let network = network else {
             return
         }
-        log.info("\(main?.description ?? "nil"): Received maintain command for \(network).")
+        log.info("NEHotspotHelper: Received maintain command: \(network).")
 
-        guard let account = main, account.canManage(network: network) else {
+        guard let account = Account.delegate(for: network) else {
             reply(result: .failure)
             return
         }
@@ -104,13 +100,12 @@ extension NEHotspotHelperCommand {
     }
 
     public func logoff(on queue: DispatchQueue, requestBinder: @escaping RequestBinder) {
-        let main = Account.main
         guard let network = network else {
             return
         }
-        log.info("\(main?.description ?? "nil"): Received logoff command for \(network).")
+        log.info("NEHotspotHelper: Received logoff command: \(network).")
 
-        guard let account = main, account.canManage(network: network) else {
+        guard let account = Account.delegate(for: network) else {
             reply(result: .failure)
             return
         }
@@ -124,7 +119,7 @@ extension NEHotspotHelperCommand {
     }
 
     private func replyFilterScanList(knownList: [NEHotspotNetwork]) {
-        log.info("Replying known networks: \(knownList).")
+        log.info("NEHotspotHelper: Replying known networks: \(knownList).")
 
         let response = createResponse(.success)
         response.setNetworkList(knownList)
@@ -135,7 +130,7 @@ extension NEHotspotHelperCommand {
         guard let network = network else {
             return
         }
-        log.info("Replying confidence: \(confidence).")
+        log.info("NEHotspotHelper: Replying confidence: \(confidence).")
 
         network.setConfidence(confidence)
         let response = createResponse(.success)
@@ -144,7 +139,7 @@ extension NEHotspotHelperCommand {
     }
 
     private func reply(result: NEHotspotHelperResult) {
-        log.info("Replying result: \(result).")
+        log.info("NEHotspotHelper: Replying result: \(result).")
         createResponse(result).deliver()
     }
 }

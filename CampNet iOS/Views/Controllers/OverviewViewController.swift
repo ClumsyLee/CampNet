@@ -96,7 +96,7 @@ class OverviewViewController: UITableViewController {
 
         switch status.type {
         case let .online(onlineUsername, _, _):
-            if let network = network, account.username == onlineUsername, account.canManage(network: network) {
+            if let network = network, account.username == onlineUsername, account.canManage(network) {
                 // Will auto login after logging out, warn for it.
                 let menu = UIAlertController(title: L10n.Overview.LogoutWhenAutoLoginAlert.title, message: nil,
                                              preferredStyle: .actionSheet)
@@ -223,7 +223,7 @@ class OverviewViewController: UITableViewController {
     }
 
     func reloadNetworkColor() {
-        if let account = account, let network = network, account.canManage(network: network) {
+        if let account = account, let network = network, account.canManage(network) {
             networkName.textColor = .darkText
         } else {
             networkName.textColor = .lightGray
@@ -286,7 +286,7 @@ class OverviewViewController: UITableViewController {
 
                 loginButtonCaption.text = L10n.Overview.LoginButton.Captions.login
 
-                if let account = account, let network = network, account.canManage(network: network), autoLogin,
+                if let account = account, let network = network, account.canManage(network), autoLogin,
                    UIApplication.shared.applicationState == .active {
                     login()
                 }

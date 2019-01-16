@@ -8,6 +8,7 @@
 
 
 import Foundation
+import NetworkExtension
 import Yaml
 
 public enum StatusType {
@@ -328,6 +329,12 @@ public class Configuration {
         self.actions = actions
 
         log.debug("\(identifier): Loaded.")
+    }
+
+    public func canManage(_ network: NEHotspotNetwork) -> Bool {
+        return (ssids.contains(network.ssid) ||
+                Defaults[.onCampus(id: identifier, ssid: network.ssid)]) &&
+               Defaults[.autoLogin]
     }
 }
 

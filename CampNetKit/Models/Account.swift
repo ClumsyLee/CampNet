@@ -74,6 +74,15 @@ public class Account {
         return AccountManager.shared.main
     }
 
+    public static func delegate(for network: NEHotspotNetwork) -> Account? {
+        for (configuration, accounts) in Account.all {
+            if accounts.count > 0 && configuration.canManage(network) {
+                return accounts[0]
+            }
+        }
+        return nil
+    }
+
     public static func add(configurationIdentifier: String, username: String, password: String? = nil) {
         AccountManager.shared.add(configurationIdentifier: configurationIdentifier, username: username,
                                   password: password)
@@ -257,10 +266,8 @@ public class Account {
         Defaults[.accountDecimalUnits(of: identifier)] = configuration.decimalUnits
     }
 
-    public func canManage(network: NEHotspotNetwork) -> Bool {
-        return (configuration.ssids.contains(network.ssid) ||
-                Defaults[.onCampus(id: configuration.identifier, ssid: network.ssid)]) &&
-               Defaults[.autoLogin]
+    public func canManage(_ network: NEHotspotNetwork) -> Bool {
+        return configuration.canManage(network)
     }
 
     public func estimatedFee(profile: Profile?) -> Double? {

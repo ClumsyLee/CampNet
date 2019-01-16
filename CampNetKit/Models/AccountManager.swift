@@ -151,6 +151,11 @@ public class AccountManager {
                 mainChanged = true
             }
 
+            var delegateChanged = false
+            if self.accounts[account.configuration]?.count == 1 {
+                delegateChanged = true
+            }
+
             log.debug("\(account): Added.")
 
             // Post notification
@@ -160,6 +165,10 @@ public class AccountManager {
                     NotificationCenter.default.post(name: .mainAccountChanged, object: self,
                                                     userInfo: ["toAccount": account])
                 }
+                if delegateChanged {
+                    NotificationCenter.default.post(name: .delegateAccountChanged, object: self,
+                                                    userInfo: ["toAccount": account])
+                }
             }
         }
     }
@@ -167,6 +176,16 @@ public class AccountManager {
     public func remove(_ account: Account) {
 
         accountsQueue.async(flags: .barrier) {
+            var delegateChanged = false
+            var newDelegate: Account? = nil
+            if let accountArray = self.accounts[account.configuration],
+                let index = accountArray.index(of: account), index == 0 {
+                delegateChanged = true
+                if accountArray.count >= 2 {
+                    newDelegate = accountArray[1]
+                }
+            }
+
             var mainChanged = false
             if self.removeAccount(account) {
                 if let index = Defaults[.accounts].index(of: account.identifier) {
@@ -189,6 +208,12 @@ public class AccountManager {
                     NotificationCenter.default.post(name: .mainAccountChanged, object: self,
                                                     userInfo: ["fromAccount": account,
                                                                "toAccount": self.mainAccount as Any])
+
+                }
+                if delegateChanged {
+                    NotificationCenter.default.post(name: .delegateAccountChanged, object: self,
+                                                    userInfo: ["fromAccount": account,
+                                                               "toAccount": newDelegate as Any])
                 }
             }
         }
@@ -204,12 +229,25 @@ public class AccountManager {
             let oldMain = self.mainAccount
             self.mainAccount = account
 
+            var oldDelegate: Account? = nil
+            if let accountArray = self.accounts[account.configuration],
+                let index = accountArray.index(of: account), index > 0 {
+                oldDelegate = accountArray[0]
+                self.accounts[account.configuration]!.remove(at: index)
+                self.accounts[account.configuration]!.insert(account, at: 0)
+            }
+
             log.debug("\(account): Became main.")
 
             // Post notification
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .mainAccountChanged, object: self,
                                                 userInfo: ["fromAccount": oldMain as Any, "toAccount": account])
+                if let oldDelegate = oldDelegate {
+                    NotificationCenter.default.post(name: .delegateAccountChanged, object: self,
+                                                    userInfo: ["fromAccount": oldDelegate,
+                                                               "toAccount": account])
+                }
             }
         }
     }

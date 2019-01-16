@@ -31,7 +31,7 @@ class AccountsViewController: UITableViewController {
     }
 
     var accounts: [(configuration: Configuration, accounts: [Account])] = []
-    var mainAccount: Account?
+    var delegateAccounts: Set<Account> = []
 
     func account(at indexPath: IndexPath) -> Account {
         return accounts[indexPath.section].accounts[indexPath.row]
@@ -118,16 +118,20 @@ class AccountsViewController: UITableViewController {
         }
     }
 
-    @objc func mainChanged(_ notification: Notification) {
-        if let fromIndexPath = indexPath(of: notification.userInfo?["fromAccount"] as? Account) {
+    @objc func delegateChanged(_ notification: Notification) {
+        let fromAccount = notification.userInfo?["fromAccount"] as? Account
+        let toAccount = notification.userInfo?["toAccount"] as? Account
+
+        if let fromIndexPath = indexPath(of: fromAccount) {
+            delegateAccounts.remove(fromAccount!)
             if let cell = tableView.cellForRow(at: fromIndexPath) as? AccountCell {
-                cell.isMain = false
+                cell.isDelegate = false
             }
         }
-        mainAccount = notification.userInfo?["toAccount"] as? Account
-        if let toIndexPath = indexPath(of: mainAccount) {
+        if let toIndexPath = indexPath(of: toAccount) {
+            delegateAccounts.insert(toAccount!)
             if let cell = tableView.cellForRow(at: toIndexPath) as? AccountCell {
-                cell.isMain = true
+                cell.isDelegate = true
             }
         }
     }
@@ -155,6 +159,11 @@ class AccountsViewController: UITableViewController {
 
         // Set accounts.
         var allAccounts = Account.all
+        for accounts in allAccounts.values {
+            if let account = accounts.first {
+                delegateAccounts.insert(account)
+            }
+        }
 
         for configuration in allAccounts.keys {
             allAccounts[configuration]!.sort { $0.username < $1.username }
@@ -167,16 +176,13 @@ class AccountsViewController: UITableViewController {
                         $0.configuration.displayName == $1.configuration.displayName &&
                         $0.configuration.identifier < $1.configuration.identifier }
 
-        // Set mainAccount.
-        self.mainAccount = Account.main
-
         // Set observers.
         NotificationCenter.default.addObserver(self, selector: #selector(accountAdded(_:)),
                                                name: .accountAdded, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(accountRemoved(_:)),
                                                name: .accountRemoved, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)),
-                                               name: .mainAccountChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(delegateChanged(_:)),
+                                               name: .delegateAccountChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)),
                                                name: .accountProfileUpdated, object: nil)
     }
@@ -235,7 +241,7 @@ class AccountsViewController: UITableViewController {
 
         // Configure the cell...
         let account = self.account(at: indexPath)
-        cell.update(account: account, isMain: account == mainAccount)
+        cell.update(account: account, isDelegate: delegateAccounts.contains(account))
 
         return cell
     }
