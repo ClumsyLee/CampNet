@@ -225,11 +225,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     }
 
-    func showErrorBanner(title: String?, body: String?, duration: Double = AppDelegate.bannerDuration) {
-        let banner = Banner(title: title, subtitle: body, backgroundColor: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1))
-        banner.show(duration: duration)
-    }
-
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification,
             withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -238,26 +233,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
         showErrorBanner(title: notification.alertTitle, body: notification.alertBody)
-    }
-
-    func sendNotification(title: String, body: String, identifier: String) {
-        if #available(iOS 10.0, *) {
-            let content = UNMutableNotificationContent()
-            content.title = title
-            content.body = body
-            content.sound = UNNotificationSound.default
-
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        } else {
-            // Fallback on earlier versions
-            let notification = UILocalNotification()
-            notification.alertTitle = title
-            notification.alertBody = body
-            notification.soundName = UILocalNotificationDefaultSoundName
-
-            UIApplication.shared.presentLocalNotificationNow(notification)
-        }
     }
 
     @objc func accountLoginError(_ notification: Notification) {
@@ -381,5 +356,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         for (name, selector) in selectors {
             NotificationCenter.default.addObserver(self, selector: selector, name: name, object: nil)
         }
+    }
+}
+
+
+func showSuccessBanner(title: String?, body: String? = nil, duration: Double = AppDelegate.bannerDuration) {
+    let banner = Banner(title: title, subtitle: body, backgroundColor: #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1))
+    banner.show(duration: duration)
+}
+
+func showErrorBanner(title: String?, body: String? = nil, duration: Double = AppDelegate.bannerDuration) {
+    let banner = Banner(title: title, subtitle: body, backgroundColor: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1))
+    banner.show(duration: duration)
+}
+
+func sendNotification(title: String, body: String, identifier: String) {
+    if #available(iOS 10.0, *) {
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        content.sound = UNNotificationSound.default
+
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    } else {
+        // Fallback on earlier versions
+        let notification = UILocalNotification()
+        notification.alertTitle = title
+        notification.alertBody = body
+        notification.soundName = UILocalNotificationDefaultSoundName
+
+        UIApplication.shared.presentLocalNotificationNow(notification)
     }
 }

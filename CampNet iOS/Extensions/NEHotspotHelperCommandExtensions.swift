@@ -72,6 +72,8 @@ extension NEHotspotHelperCommand {
         account.login(on: queue, requestBinder: requestBinder).done(on: queue) {
             self.reply(result: .success)
             Analytics.logEvent("background_login", parameters: ["account": account.identifier, "result": "success"])
+
+            Defaults[.loginCount] += 1
         }
         .catch(on: queue) { error in
             self.reply(result: .temporaryFailure)

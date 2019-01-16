@@ -31,10 +31,8 @@ class SupportUsViewController: UIViewController {
         SwiftyStoreKit.restorePurchases(atomically: true) { results in
             if results.restoreFailedPurchases.count > 0 {
                 log.error("Restore Failed: \(results.restoreFailedPurchases)")
-                let banner = Banner(title: L10n.SupportUs.RestoreResult.failed,
-                                    subtitle: (results.restoreFailedPurchases.first!.0 as NSError).localizedDescription,
-                                    backgroundColor: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1))
-                banner.show(duration: 3.0)
+                showErrorBanner(title: L10n.SupportUs.RestoreResult.failed,
+                                body: (results.restoreFailedPurchases.first!.0 as NSError).localizedDescription)
             }
             else if results.restoredPurchases.count > 0 {
                 log.info("Restore Success: \(results.restoredPurchases)")
@@ -42,17 +40,14 @@ class SupportUsViewController: UIViewController {
                 for purchase in results.restoredPurchases {
                     if purchase.productId == self.donateIdentifier {
                         self.donated()
-
-                        let banner = Banner(title: L10n.SupportUs.RestoreResult.restored, backgroundColor: #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1))
-                        banner.show(duration: 3.0)
+                        showSuccessBanner(title: L10n.SupportUs.RestoreResult.restored, duration: 0.6)
                         break
                     }
                 }
             }
             else {
                 log.error("Nothing to Restore")
-                let banner = Banner(title: L10n.SupportUs.RestoreResult.nothing, backgroundColor: #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1))
-                banner.show(duration: 3.0)
+                showErrorBanner(title: L10n.SupportUs.RestoreResult.nothing)
             }
         }
     }

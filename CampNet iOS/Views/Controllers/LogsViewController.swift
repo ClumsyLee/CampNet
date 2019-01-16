@@ -15,8 +15,7 @@ class LogsViewController: UIViewController {
     
     @IBAction func copyAll(_ sender: Any) {
         UIPasteboard.general.string = textView.text
-        let banner = Banner(title: L10n.Notifications.LogsCopied.title, backgroundColor: #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1))
-        banner.show(duration: 0.6)
+        showSuccessBanner(title: L10n.Notifications.LogsCopied.title, duration: 0.6)
     }
     
     override func viewDidLoad() {

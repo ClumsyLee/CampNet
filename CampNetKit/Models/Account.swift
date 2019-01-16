@@ -356,7 +356,6 @@ extension Account {
             }
 
             Defaults[.accountLastLoginErrorNotification(of: self.identifier)] = nil
-            Defaults[.loginCount] += 1
             Defaults.synchronize()
             log.info("\(self): Logged in.")
         }
