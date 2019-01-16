@@ -57,8 +57,6 @@
 		0F9AAD0D1F535C5B00E14838 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F9AAD0B1F535C5B00E14838 /* MainInterface.storyboard */; };
 		0F9AAD111F535C5B00E14838 /* CampNet iOS Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0F9AAD051F535C5B00E14838 /* CampNet iOS Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0FA087FD1F8F82BA009AE962 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA087FC1F8F82BA009AE962 /* Device.swift */; };
-		0FA087FF1F8F8354009AE962 /* NEHotspotHelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA087FE1F8F8354009AE962 /* NEHotspotHelperExtensions.swift */; };
-		0FA088031F8F8584009AE962 /* NEHotspotHelperCommandExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA088021F8F8584009AE962 /* NEHotspotHelperCommandExtensions.swift */; };
 		0FA85DA51F4E930C00F76A86 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */; };
 		0FBCD7B01F226F4B00333A90 /* LoginIpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */; };
 		0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A11F17593E002861F3 /* AccountManager.swift */; };
@@ -66,6 +64,8 @@
 		0FD239C11F415EC6006EA7F9 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD239C01F415EC6006EA7F9 /* UserDefaultsExtensions.swift */; };
 		0FD3A4111F1588BF006DA497 /* Configurations in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A4101F1588BF006DA497 /* Configurations */; };
 		0FD3A4141F158A12006DA497 /* Configurations.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A4161F158A12006DA497 /* Configurations.strings */; };
+		0FDCFC1C21EF64DA00E332DB /* NEHotspotHelperCommandExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCFC1A21EF64DA00E332DB /* NEHotspotHelperCommandExtensions.swift */; };
+		0FDCFC1D21EF64DA00E332DB /* NEHotspotHelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCFC1B21EF64DA00E332DB /* NEHotspotHelperExtensions.swift */; };
 		0FEA66DF1F533DC300F3867C /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEA66DE1F533DC300F3867C /* AboutViewController.swift */; };
 		0FF7563F1F2A175600B2429A /* UsageAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */; };
 		0FF756411F2BA31500B2429A /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */; };
@@ -189,8 +189,6 @@
 		0F9AAD0E1F535C5B00E14838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F9AAD161F535D1100E14838 /* CampNet iOS Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CampNet iOS Widget.entitlements"; sourceTree = "<group>"; };
 		0FA087FC1F8F82BA009AE962 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Helpers/Device.swift; sourceTree = "<group>"; };
-		0FA087FE1F8F8354009AE962 /* NEHotspotHelperExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NEHotspotHelperExtensions.swift; path = Extensions/NEHotspotHelperExtensions.swift; sourceTree = "<group>"; };
-		0FA088021F8F8584009AE962 /* NEHotspotHelperCommandExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NEHotspotHelperCommandExtensions.swift; path = Extensions/NEHotspotHelperCommandExtensions.swift; sourceTree = "<group>"; };
 		0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogsViewController.swift; path = Views/Controllers/LogsViewController.swift; sourceTree = "<group>"; };
 		0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginIpViewController.swift; path = Views/Controllers/LoginIpViewController.swift; sourceTree = "<group>"; };
 		0FC6E2A11F17593E002861F3 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Models/AccountManager.swift; sourceTree = "<group>"; };
@@ -204,6 +202,8 @@
 		0FD3A4101F1588BF006DA497 /* Configurations */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Configurations; path = Resources/Configurations; sourceTree = "<group>"; };
 		0FD3A4151F158A12006DA497 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Configurations.strings; sourceTree = "<group>"; };
 		0FD3A4171F158A15006DA497 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Configurations.strings"; sourceTree = "<group>"; };
+		0FDCFC1A21EF64DA00E332DB /* NEHotspotHelperCommandExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NEHotspotHelperCommandExtensions.swift; sourceTree = "<group>"; };
+		0FDCFC1B21EF64DA00E332DB /* NEHotspotHelperExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NEHotspotHelperExtensions.swift; sourceTree = "<group>"; };
 		0FEA66DE1F533DC300F3867C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = Views/Controllers/AboutViewController.swift; sourceTree = "<group>"; };
 		0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsageAlertViewController.swift; path = Views/Controllers/UsageAlertViewController.swift; sourceTree = "<group>"; };
 		0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountDetailViewController.swift; path = Views/Controllers/AccountDetailViewController.swift; sourceTree = "<group>"; };
@@ -305,6 +305,7 @@
 		0F14E7731E2E3AAC0092494B /* CampNet iOS */ = {
 			isa = PBXGroup;
 			children = (
+				0FDCFC1921EF64DA00E332DB /* Extensions */,
 				0F5EB7211F17AE8B003094DE /* Views */,
 				0F14E7741E2E3AAC0092494B /* AppDelegate.swift */,
 				0F0FF1F81F5224A7000B608A /* L10n.swift */,
@@ -350,8 +351,6 @@
 			isa = PBXGroup;
 			children = (
 				0F7A93FA1F25E34C0093B3FA /* DoubleExtensions.swift */,
-				0FA088021F8F8584009AE962 /* NEHotspotHelperCommandExtensions.swift */,
-				0FA087FE1F8F8354009AE962 /* NEHotspotHelperExtensions.swift */,
 				0F8650741F1F8F9400C654C4 /* IntExtensions.swift */,
 				0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */,
 				0F464C641F13ED0F00C2F58B /* StringExtensions.swift */,
@@ -441,6 +440,15 @@
 				0FD3A4161F158A12006DA497 /* Configurations.strings */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		0FDCFC1921EF64DA00E332DB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0FDCFC1A21EF64DA00E332DB /* NEHotspotHelperCommandExtensions.swift */,
+				0FDCFC1B21EF64DA00E332DB /* NEHotspotHelperExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		298ED8C6D2DAD1B93F321972 /* Frameworks */ = {
@@ -873,6 +881,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FDCFC1C21EF64DA00E332DB /* NEHotspotHelperCommandExtensions.swift in Sources */,
 				0F5EB7291F17B06F003094DE /* ConfigurationSetupViewController.swift in Sources */,
 				0F3685161F1A5C6B0056AED1 /* ChangePasswordViewController.swift in Sources */,
 				0F0FF1F91F5224A7000B608A /* L10n.swift in Sources */,
@@ -891,6 +900,7 @@
 				0F8F704D1F1B44A20088E2DE /* AccountCell.swift in Sources */,
 				0F14E7771E2E3AAC0092494B /* OverviewViewController.swift in Sources */,
 				0F56148C1F31A167008A1232 /* SessionDetailViewController.swift in Sources */,
+				0FDCFC1D21EF64DA00E332DB /* NEHotspotHelperExtensions.swift in Sources */,
 				0FF7563F1F2A175600B2429A /* UsageAlertViewController.swift in Sources */,
 				0FEA66DF1F533DC300F3867C /* AboutViewController.swift in Sources */,
 				0F3465701F34D80A008E329F /* NetworkViewController.swift in Sources */,
@@ -911,12 +921,10 @@
 				0FC6E2A61F17694E002861F3 /* NotificationNameExtensions.swift in Sources */,
 				0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */,
 				0F8650751F1F8F9400C654C4 /* IntExtensions.swift in Sources */,
-				0FA087FF1F8F8354009AE962 /* NEHotspotHelperExtensions.swift in Sources */,
 				0F464C631F13DB6E00C2F58B /* YamlExtensions.swift in Sources */,
 				0F8DBDDB1F55445300879276 /* SwiftyBeaver.swift in Sources */,
 				0F464C601F13D1E800C2F58B /* CampNetError.swift in Sources */,
 				0FD239C11F415EC6006EA7F9 /* UserDefaultsExtensions.swift in Sources */,
-				0FA088031F8F8584009AE962 /* NEHotspotHelperCommandExtensions.swift in Sources */,
 				0F464C721F14093E00C2F58B /* BillingGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

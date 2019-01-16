@@ -11,6 +11,8 @@ import NetworkExtension
 
 import PromiseKit
 
+import CampNetKit
+
 extension NEHotspotHelperCommand {
 
     public func filterScanList() {
@@ -146,4 +148,3 @@ extension NEHotspotHelperCommand {
         createResponse(result).deliver()
     }
 }
-

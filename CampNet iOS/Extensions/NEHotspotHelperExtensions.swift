@@ -9,6 +9,8 @@
 import Foundation
 import NetworkExtension
 
+import CampNetKit
+
 extension NEHotspotHelper {
     public class func register(displayName: String) {
         let options = [kNEHotspotHelperOptionDisplayName: displayName as NSObject]
