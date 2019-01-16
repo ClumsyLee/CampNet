@@ -34,13 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         setDefaultsIfNot()  // Do it first to ensure that the defaults can be read in the following setups.
 
-        setUpFirebase()
         setUpInstaBug()
         setUpSwiftRater()
         setUpSwiftyBeaver()
 
         setUpCampNet(application)
         NEHotspotHelper.register(displayName: L10n.HotspotHelper.displayName)
+
+        // Make sure it is initialized after IAP so that the IAP observer can receive
+        // all purchase notifications.
+        setUpFirebase()
 
         return true
     }
@@ -82,14 +85,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         guard let account = Account.main else {
             completionHandler(.noData)
+            Analytics.logEvent("background_fetch", parameters: ["result": "no_data"])
             return
         }
 
         account.updateIfNeeded(on: DispatchQueue.global(qos: .utility)).done {
             completionHandler(.newData)
+            Analytics.logEvent("background_fetch", parameters: ["result": "new_data"])
         }
         .catch { _ in
             completionHandler(.failed)
+            Analytics.logEvent("background_fetch", parameters: ["result": "failed"])
         }
     }
 
@@ -118,9 +124,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func setUpFirebase() {
-        if Defaults[.sendLogs] {
-            FirebaseApp.configure()
+        if !Defaults[.sendLogs] {
+            return
         }
+        FirebaseApp.configure()
+
+        Analytics.setUserProperty(Defaults[.autoLogin].description, forName: "auto_login")
+        Analytics.setUserProperty(Defaults[.autoLogoutExpiredSessions].description, forName: "auto_logout_expired_sess")
+        Analytics.setUserProperty(Defaults[.usageAlertRatio]?.description ?? "off", forName: "usage_alert_ratio")
+        Analytics.setUserProperty(Defaults[.donated].description, forName: "donated")
+        Analytics.setUserProperty(Defaults[.loginCount].description, forName: "login_count")
     }
 
     func setUpInstaBug() {
@@ -343,6 +356,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let title = L10n.Notifications.UsageAlert.title(account.username, percentage)
         let body = L10n.Notifications.UsageAlert.body(usageLeft)
         sendNotification(title: title, body: body, identifier: "\(account.identifier).accountUsageAlert")
+
+        Analytics.logEvent("usage_alert", parameters: [
+            "account": account.identifier,
+            "usage": usage.description,
+            "max_usage": maxUsage.description])
     }
 
     func addObservers() {
@@ -361,5 +379,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             NotificationCenter.default.addObserver(self, selector: selector, name: name, object: nil)
         }
     }
-
 }

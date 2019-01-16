@@ -10,6 +10,7 @@ import StoreKit
 import UIKit
 
 import BRYXBanner
+import Firebase
 import SwiftyBeaver
 import SwiftRater
 import SwiftyButton
@@ -126,6 +127,8 @@ class SupportUsViewController: UIViewController {
 
     func donated() {
         Defaults[.donated] = true
+        Analytics.setUserProperty(Defaults[.donated].description, forName: "donated")
+        
         donateButton.colors = .init(button: #colorLiteral(red: 0.5431281975, green: 0.89, blue: 0.3103589849, alpha: 1), shadow: #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1))
         donateButton.shadowHeight = 10
         donateButton.isEnabled = true

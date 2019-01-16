@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import CampNetKit
 
 class UsageAlertViewController: UITableViewController {
@@ -72,7 +73,10 @@ class UsageAlertViewController: UITableViewController {
             tableView.cellForRow(at: IndexPath(row: row, section: 0))?.accessoryType = .none
         }
         selectedRow = indexPath.row
+
         Defaults[.usageAlertRatio] = UsageAlertViewController.ratios[indexPath.row]
+        Analytics.setUserProperty(Defaults[.usageAlertRatio]?.description ?? "off", forName: "usage_alert_ratio")
+
         tableView.cellForRow(at: IndexPath(row: indexPath.row, section: 0))?.accessoryType = .checkmark
     }
 

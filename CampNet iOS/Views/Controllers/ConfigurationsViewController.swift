@@ -9,6 +9,8 @@
 import UIKit
 import SafariServices
 
+import Firebase
+
 import CampNetKit
 
 class ConfigurationsViewController: UITableViewController, UISearchResultsUpdating {
@@ -41,6 +43,9 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
         if let searchText = searchController.searchBar.text {
             filter(for: searchText)
             tableView.reloadData()
+
+            Analytics.logEvent(AnalyticsEventSearch, parameters: [
+                AnalyticsParameterSearchTerm: searchText])
         }
     }
 
@@ -172,6 +177,10 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
             let indexPath = tableView.indexPathForSelectedRow!
             let (configurationIdentifier, name, _) = searchController.isActive ? searchResults[indexPath.row]
                                                                                : names[indexPath.row]
+
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: configurationIdentifier,
+                AnalyticsParameterContentType: "new_account"])
 
             var existedUsernames: Set<String> = []
             for (configuration, accountArray) in Account.all {

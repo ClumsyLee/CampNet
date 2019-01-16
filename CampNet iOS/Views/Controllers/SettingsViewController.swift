@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import CampNetKit
 
 class SettingsViewController: UITableViewController {
@@ -17,9 +18,11 @@ class SettingsViewController: UITableViewController {
     
     @IBAction func autoLoginChanged(_ sender: Any) {
         Defaults[.autoLogin] = autoLoginSwitch.isOn
+        Analytics.setUserProperty(Defaults[.autoLogin].description, forName: "auto_login")
     }
     @IBAction func autoLogoutExpiredSessionsChanged(_ sender: Any) {
         Defaults[.autoLogoutExpiredSessions] = autoLogoutExpiredSessionsSwitch.isOn
+        Analytics.setUserProperty(Defaults[.autoLogoutExpiredSessions].description, forName: "auto_logout_expired_sess")
     }
     
     override func viewDidLoad() {
