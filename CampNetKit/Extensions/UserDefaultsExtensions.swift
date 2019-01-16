@@ -23,7 +23,7 @@ extension DefaultsKeys {
     public static let autoLogoutExpiredSessions = DefaultsKey<Bool>("autoLogoutExpiredSessions")
     public static let usageAlertRatio = DefaultsKey<Double?>("usageAlertRatio")
     public static let sendLogs = DefaultsKey<Bool>("sendLogs")
-    public static let donatePageVisited = DefaultsKey<Bool>("donatePageVisited")
+    public static let donated = DefaultsKey<Bool>("donated")
 
     // Statistics.
     public static let loginCount = DefaultsKey<Int>("loginCount")
@@ -71,17 +71,12 @@ extension DefaultsKeys {
 extension UserDefaults {
 
     public var potentialDonator: Bool {
-        if Defaults[.donatePageVisited] {
+        if Defaults[.donated] {
             return false
         }
 
-        if let startDate = Defaults[.loginCountStartDate], startDate < Date(timeIntervalSince1970: 1543397692) {
-            // Old user, prompt once we know that we are still working.
-            return Defaults[.loginCount] >= 1
-        } else {
-            // New user, wait until they like us.
-            return Defaults[.loginCount] >= 50
-        }
+        // Prompt once we know that we are working.
+        return Defaults[.loginCount] >= 1
     }
 
     private static let basicProfile = Profile(

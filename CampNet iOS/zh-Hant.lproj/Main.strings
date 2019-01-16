@@ -316,3 +316,6 @@
 
 /* Class = "UILabel"; text = "P.S. This is my first iOS app, hope you like it!"; ObjectID = "yyE-st-szl"; */
 "yyE-st-szl.text" = "話說，這是我的第一個 iOS app，希望你喜歡！";
+
+/* Class = "UIBarButtonItem"; title = "Restore"; ObjectID = "UUh-Cp-Lg7"; */
+"UUh-Cp-Lg7.title" = "恢復";

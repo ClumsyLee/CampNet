@@ -703,6 +703,9 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
                                                 <real key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="donateButtonPressed:" destination="fuL-fk-47F" eventType="touchUpInside" id="wJI-NI-V0x"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAo-9F-xsD" customClass="PressableButton" customModule="SwiftyButton">
                                         <rect key="frame" x="0.0" y="67.5" width="331" height="57.5"/>
@@ -739,7 +742,7 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HS0-DW-Wid">
                                         <rect key="frame" x="8" y="279.5" width="398" height="614.5"/>
-                                        <mutableString key="text">Everything starts small, so does CampNet.
+                                        <string key="text">Everything starts small, so does CampNet.
 
 At the very beginning, I just wanted to build something that is
 
@@ -757,7 +760,7 @@ Thank you for your support. Your opinions and suggestions have been my motivatio
 
 Thank you.
 
-—— @ClumsyLee</mutableString>
+—— @ClumsyLee</string>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -800,6 +803,13 @@ it without you</string>
                             <constraint firstItem="kLn-I1-Ehr" firstAttribute="top" secondItem="YQe-Jl-5pI" secondAttribute="bottom" constant="10" id="oKr-Ml-pjy"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="ahZ-iN-tNC">
+                        <barButtonItem key="rightBarButtonItem" title="Restore" style="plain" id="UUh-Cp-Lg7">
+                            <connections>
+                                <action selector="restoreButtonPressed:" destination="fuL-fk-47F" id="uLf-gw-Unn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="donateButton" destination="JGX-5i-eIq" id="8WS-nC-rPo"/>
                         <outlet property="rateButton" destination="DAo-9F-xsD" id="oSR-Kk-Ozc"/>
@@ -878,7 +888,7 @@ it without you</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="Dno-7x-jNX">
+                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="Dno-7x-jNX">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>

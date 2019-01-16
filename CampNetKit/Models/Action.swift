@@ -224,7 +224,7 @@ public struct Action {
     static let jsVm = JSVirtualMachine()!
     fileprivate static var networkActivityCounter = 0
 
-    static func changeNetworkActivityCount(_ delta: Int) {
+    public static func changeNetworkActivityCount(_ delta: Int) {
         DispatchQueue.main.async {
             Action.networkActivityCounter += delta
             networkActivityIndicatorHandler(Action.networkActivityCounter > 0)

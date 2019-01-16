@@ -57,3 +57,9 @@
 
 /* Settings */
 "settings.usage_alert.values.off" = "Off";
+
+/* Support Us */
+"support_us.donate_button.title.donated" = "Donated - Thank You!";
+"support_us.restore_result.failed" = "Failed to restore";
+"support_us.restore_result.nothing" = "Nothing to restore";
+"support_us.restore_result.restored" = "Restored!";

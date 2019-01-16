@@ -190,6 +190,23 @@ internal enum L10n {
       }
     }
   }
+
+  internal enum SupportUs {
+    internal enum DonateButton {
+      internal enum Title {
+        /// Donated - Thank You!
+        internal static let donated = L10n.tr("Localizable", "support_us.donate_button.title.donated")
+      }
+    }
+    internal enum RestoreResult {
+      /// Failed to restore
+      internal static let failed = L10n.tr("Localizable", "support_us.restore_result.failed")
+      /// Nothing to restore
+      internal static let nothing = L10n.tr("Localizable", "support_us.restore_result.nothing")
+      /// Restored!
+      internal static let restored = L10n.tr("Localizable", "support_us.restore_result.restored")
+    }
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name

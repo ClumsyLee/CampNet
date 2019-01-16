@@ -106,6 +106,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if !Defaults.hasKey(.sendLogs) {
             Defaults[.sendLogs] = true
         }
+        if !Defaults.hasKey(.donated) {
+            Defaults[.donated] = false
+        }
         if !Defaults.hasKey(.loginCount) {
             Defaults[.loginCount] = 0
         }
@@ -168,6 +171,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         application.setMinimumBackgroundFetchInterval(Account.profileAutoUpdateInterval)
 
         // Setup in-app purchases.
+        SwiftyStoreKit.shouldAddStorePaymentHandler = { payment, product in
+            // The content can be delivered by the app itself.
+            return true;
+        }
+
         SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
             for purchase in purchases {
                 switch purchase.transaction.transactionState {
