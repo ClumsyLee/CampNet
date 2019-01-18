@@ -3,7 +3,7 @@
 //  CampNet iOS
 //
 //  Created by Thomas Lee on 2017/1/17.
-//  Copyright © 2017年 Sihan Li. All rights reserved.
+//  Copyright © 2019年 Sihan Li. All rights reserved.
 //
 
 import NetworkExtension

@@ -3,7 +3,7 @@
 //  CampNet iOS
 //
 //  Created by Thomas Lee on 2017/7/27.
-//  Copyright © 2017年 Sihan Li. All rights reserved.
+//  Copyright © 2019年 Sihan Li. All rights reserved.
 //
 
 import UIKit
@@ -25,7 +25,7 @@ class SettingsViewController: UITableViewController {
         Defaults[.autoLogoutExpiredSessions] = autoLogoutExpiredSessionsSwitch.isOn
         Analytics.setUserProperty(Defaults[.autoLogoutExpiredSessions].description, forName: "auto_logout_expired_sess")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,10 +35,10 @@ class SettingsViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
+
         autoLoginSwitch.isOn = Defaults[.autoLogin]
         autoLogoutExpiredSessionsSwitch.isOn = Defaults[.autoLogoutExpiredSessions]
         if let ratio = Defaults[.usageAlertRatio] {
@@ -80,7 +80,7 @@ class SettingsViewController: UITableViewController {
         return cell
     }
     */
-    
+
 //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //    }
 
@@ -102,7 +102,7 @@ class SettingsViewController: UITableViewController {
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table
             //   view
-        }    
+        }
     }
     */
 

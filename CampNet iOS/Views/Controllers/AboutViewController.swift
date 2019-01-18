@@ -3,7 +3,7 @@
 //  CampNet iOS
 //
 //  Created by Thomas Lee on 2017/8/27.
-//  Copyright © 2017年 Sihan Li. All rights reserved.
+//  Copyright © 2019年 Sihan Li. All rights reserved.
 //
 
 import UIKit
@@ -21,7 +21,7 @@ class AboutViewController: UITableViewController {
     static let myGithubUrl = URL(string: "https://github.com/ClumsyLee")!
 
     @IBOutlet var version: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,7 +30,7 @@ class AboutViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
+
         let versionString = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? ""
         let buildString = (Bundle.main.infoDictionary?["CFBundleVersion"] as? String) ?? ""
         version.text = L10n.About.version(versionString, buildString)
@@ -91,7 +91,7 @@ class AboutViewController: UITableViewController {
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table
             //   view
-        }    
+        }
     }
     */
 

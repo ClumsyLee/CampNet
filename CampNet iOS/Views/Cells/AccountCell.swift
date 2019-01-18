@@ -3,7 +3,7 @@
 //  CampNet iOS
 //
 //  Created by Thomas Lee on 2017/7/13.
-//  Copyright © 2017年 Sihan Li. All rights reserved.
+//  Copyright © 2019年 Sihan Li. All rights reserved.
 //
 
 import UIKit
@@ -16,16 +16,16 @@ class AccountCell: UITableViewCell {
     @IBOutlet var name: UILabel!
     @IBOutlet var balance: UILabel!
     @IBOutlet var usage: UILabel!
-    
+
     var isDelegate = false {
         didSet {
             checkmark.isHidden = !isDelegate
         }
     }
-    
+
     func update(account: Account, isDelegate: Bool) {
         let profile = account.profile
-        
+
         username.text = account.username
         if let name = profile?.name {
             self.name.text = "(\(name))"
@@ -38,10 +38,10 @@ class AccountCell: UITableViewCell {
             self.balance.text = nil
         }
         self.usage.text = profile?.usage?.usageString(decimalUnits: account.configuration.decimalUnits)
-        
+
         self.isDelegate = isDelegate
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

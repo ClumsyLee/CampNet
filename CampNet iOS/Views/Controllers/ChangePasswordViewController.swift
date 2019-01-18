@@ -3,7 +3,7 @@
 //  CampNet iOS
 //
 //  Created by Thomas Lee on 2017/7/15.
-//  Copyright © 2017年 Sihan Li. All rights reserved.
+//  Copyright © 2019年 Sihan Li. All rights reserved.
 //
 
 import UIKit
@@ -13,9 +13,9 @@ class ChangePasswordViewController: UITableViewController {
 
     @IBOutlet var usernameField: UITextField!
     @IBOutlet var passwordField: UITextField!
-    
+
     var account: Account!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,17 +25,17 @@ class ChangePasswordViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         usernameField.text = account.username
         passwordField.text = ""
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         passwordField.becomeFirstResponder()
     }
 
@@ -84,7 +84,7 @@ class ChangePasswordViewController: UITableViewController {
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table
             //   view
-        }    
+        }
     }
     */
 
@@ -108,22 +108,22 @@ class ChangePasswordViewController: UITableViewController {
     @IBAction func doneButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "passwordChanged", sender: self)
     }
-    
+
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
+
         // Resign first responder no matter what.
         passwordField.resignFirstResponder()
-        
+
         if segue.identifier == "passwordChanged" {
             account.password = passwordField.text ?? ""
         }
     }
-    
+
     // MARK: - UITextField
-    
+
     @IBAction func passwordEntered(_ sender: Any) {
         performSegue(withIdentifier: "passwordChanged", sender: self)
     }

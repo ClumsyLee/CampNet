@@ -3,7 +3,7 @@
 //  CampNet iOS
 //
 //  Created by Thomas Lee on 2017/7/16.
-//  Copyright © 2017年 Sihan Li. All rights reserved.
+//  Copyright © 2019年 Sihan Li. All rights reserved.
 //
 
 import UIKit
@@ -19,7 +19,7 @@ class SessionCell: UITableViewCell {
     @IBOutlet var device: UILabel!
     @IBOutlet var startTime: UILabel!
     @IBOutlet var usage: UILabel!
-    
+
     var type: SessionType = .normal {
         didSet {
             let color: UIColor
@@ -31,28 +31,28 @@ class SessionCell: UITableViewCell {
             device.textColor = color
         }
     }
-    
+
     func update(session: Session, type: SessionType, decimalUnits: Bool) {
         device.text = session.device?.nonEmpty ?? session.ip
         updateStartTime(date: session.startTime)
         usage.text = session.usage?.usageString(decimalUnits: decimalUnits)
-        
+
         self.type = type
     }
-    
+
     func updateStartTime(date: Date?) {
         if let time = date {
             let formatter = DateComponentsFormatter()
             formatter.allowedUnits = [.day, .hour, .minute]
             formatter.unitsStyle = .abbreviated
             formatter.maximumUnitCount = 1
-            
+
             startTime.text = formatter.string(from: -time.timeIntervalSinceNow)
         } else {
             startTime.text = nil
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

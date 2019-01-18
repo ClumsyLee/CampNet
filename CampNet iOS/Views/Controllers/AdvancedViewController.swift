@@ -3,7 +3,7 @@
 //  CampNet iOS
 //
 //  Created by Thomas Lee on 2017/8/26.
-//  Copyright © 2017年 Sihan Li. All rights reserved.
+//  Copyright © 2019年 Sihan Li. All rights reserved.
 //
 
 import UIKit
@@ -12,11 +12,11 @@ import CampNetKit
 class AdvancedViewController: UITableViewController {
 
     @IBOutlet var sendLogsSwitch: UISwitch!
-    
+
     @IBAction func sendLogsChanged(_ sender: Any) {
         Defaults[.sendLogs] = sendLogsSwitch.isOn
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,10 +26,10 @@ class AdvancedViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         sendLogsSwitch.isOn = Defaults[.sendLogs]
     }
 
@@ -79,7 +79,7 @@ class AdvancedViewController: UITableViewController {
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table
             //   view
-        }    
+        }
     }
     */
 

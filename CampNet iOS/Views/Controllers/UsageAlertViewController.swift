@@ -3,7 +3,7 @@
 //  CampNet iOS
 //
 //  Created by Thomas Lee on 2017/7/27.
-//  Copyright © 2017年 Sihan Li. All rights reserved.
+//  Copyright © 2019年 Sihan Li. All rights reserved.
 //
 
 import UIKit
@@ -12,9 +12,9 @@ import CampNetKit
 
 class UsageAlertViewController: UITableViewController {
     static let ratios = [nil, 0.95, 0.90, 0.80, 0.70]
-    
+
     var selectedRow: Int?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,11 +23,11 @@ class UsageAlertViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
+
         let ratio = Defaults[.usageAlertRatio]
         self.selectedRow = UsageAlertViewController.ratios.index { $0 == ratio }
     }
-    
+
     override func viewDidLayoutSubviews() {
         if let row = selectedRow {
             tableView.cellForRow(at: IndexPath(row: row, section: 0))?.accessoryType = .checkmark
@@ -62,13 +62,13 @@ class UsageAlertViewController: UITableViewController {
         return cell
     }
     */
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row == selectedRow {
             return
         }
-        
+
         if let row = selectedRow {
             tableView.cellForRow(at: IndexPath(row: row, section: 0))?.accessoryType = .none
         }
@@ -98,7 +98,7 @@ class UsageAlertViewController: UITableViewController {
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table
             //   view
-        }    
+        }
     }
     */
 

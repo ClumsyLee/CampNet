@@ -3,7 +3,7 @@
 //  CampNet iOS
 //
 //  Created by Thomas Lee on 2017/7/13.
-//  Copyright © 2017年 Sihan Li. All rights reserved.
+//  Copyright © 2019年 Sihan Li. All rights reserved.
 //
 
 import UIKit
@@ -15,11 +15,11 @@ class ConfigurationSetupViewController: UITableViewController {
     @IBOutlet var accountExistedLabel: UILabel!
     @IBOutlet fileprivate var passwordField: UITextField!
     @IBOutlet fileprivate var doneButton: UIBarButtonItem!
-    
+
     var configurationIdentifier: String!
     var configurationDisplayName: String!
     var existedUsernames: Set<String>!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,23 +29,23 @@ class ConfigurationSetupViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         navigationItem.title = configurationDisplayName
         usernameField.text = ""
         accountExistedLabel.isHidden = true
         passwordField.text = ""
         doneButton.isEnabled = false
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         usernameField.becomeFirstResponder()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -91,7 +91,7 @@ class ConfigurationSetupViewController: UITableViewController {
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table
             //   view
-        }    
+        }
     }
     */
 
@@ -115,16 +115,16 @@ class ConfigurationSetupViewController: UITableViewController {
     @IBAction func doneButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "accountAdded", sender: self)
     }
-    
+
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
+
         // Resign first responder no matter what.
         usernameField.resignFirstResponder()
         passwordField.resignFirstResponder()
-        
+
         if segue.identifier == "accountAdded" {
             if let username = usernameField.text {
                 Account.add(configurationIdentifier: configurationIdentifier, username: username,
@@ -134,20 +134,20 @@ class ConfigurationSetupViewController: UITableViewController {
     }
 
     // MARK: - UITextField
-    
+
     @IBAction func usernameChanged(_ sender: Any) {
         let username = usernameField.text ?? ""
         let notExisted = !existedUsernames.contains(username)
         doneButton.isEnabled = !username.isEmpty && notExisted
         accountExistedLabel.isHidden = notExisted
     }
-    
+
     @IBAction func usernameEntered(_ sender: Any) {
         if !existedUsernames.contains(usernameField.text ?? "") {
             passwordField.becomeFirstResponder()
         }
     }
-    
+
     @IBAction func passwordEntered(_ sender: Any) {
         if doneButton.isEnabled {
             performSegue(withIdentifier: "accountAdded", sender: self)
