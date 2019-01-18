@@ -1,6 +1,7 @@
 language: objective-c
 osx_image: xcode10.1
 before_install:
+  - openssl aes-256-cbc -K $encrypted_6679cbc0abf1_key -iv $encrypted_6679cbc0abf1_iv -in GoogleService-Info.plist.enc -out GoogleService-Info.plist -d
   - brew update
   - brew install bartycrouch swiftgen
 script:
