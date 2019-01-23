@@ -253,7 +253,11 @@ public class Configuration {
         var dict: [String: String] = [:]
         var identifiers = bundle.urls(forResourcesWithExtension: fileExtension, subdirectory: subdirectory)?.map { url in url.deletingPathExtension().lastPathComponent } ?? []
 
-        identifiers.append(customIdentifier)
+        // Show custom configuration only if it is not empty.
+        if !Defaults[.customConfiguration].isEmpty {
+            identifiers.append(customIdentifier)
+        }
+
         for identifier in identifiers {
             dict[identifier] = displayName(identifier)
         }
