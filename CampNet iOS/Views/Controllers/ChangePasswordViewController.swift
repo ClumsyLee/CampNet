@@ -16,8 +16,11 @@ class ChangePasswordViewController: UITableViewController {
 
     var account: Account!
 
+    var firstAppear: Bool = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        clearStates()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,19 +32,34 @@ class ChangePasswordViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        usernameField.text = account.username
-        passwordField.text = ""
+        if firstAppear {
+            usernameField.text = account.username
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        passwordField.becomeFirstResponder()
+        if firstAppear {
+            passwordField.becomeFirstResponder()
+            firstAppear = false
+        }
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        clearStates()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func clearStates() {
+        passwordField.text = ""
+
+        firstAppear = true
     }
 
     // MARK: - Table view data source

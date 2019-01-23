@@ -20,8 +20,11 @@ class ConfigurationSetupViewController: UITableViewController {
     var configurationDisplayName: String!
     var existedUsernames: Set<String>!
 
+    var firstAppear: Bool = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        clearStates()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,22 +36,37 @@ class ConfigurationSetupViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        navigationItem.title = configurationDisplayName
-        usernameField.text = ""
-        accountExistedLabel.isHidden = true
-        passwordField.text = ""
-        doneButton.isEnabled = false
+        if firstAppear {
+            navigationItem.title = configurationDisplayName
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        usernameField.becomeFirstResponder()
+        if firstAppear {
+            usernameField.becomeFirstResponder()
+            firstAppear = false
+        }
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        clearStates()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func clearStates() {
+        usernameField.text = ""
+        accountExistedLabel.isHidden = true
+        passwordField.text = ""
+        doneButton.isEnabled = false
+
+        firstAppear = true
     }
 
     // MARK: - Table view data source

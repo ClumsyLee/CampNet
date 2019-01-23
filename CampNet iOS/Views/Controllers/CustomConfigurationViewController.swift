@@ -14,6 +14,8 @@ class CustomConfigurationViewController: UITableViewController {
     @IBOutlet var saveButton: UIBarButtonItem!
     @IBOutlet var configurationUrl: UITextField!
 
+    var firstAppear: Bool = true
+
     @IBAction func saveButtonPressed(_ sender: Any) {
 //        let url = URL(string: configurationUrl.text ?? )
     }
@@ -24,6 +26,7 @@ class CustomConfigurationViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        clearStates()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -34,12 +37,28 @@ class CustomConfigurationViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configurationUrl.text = Defaults[.customConfigurationUrl]
+
+        if firstAppear {
+            configurationUrl.text = Defaults[.customConfigurationUrl]
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        configurationUrl.becomeFirstResponder()
+
+        if firstAppear {
+            configurationUrl.becomeFirstResponder()
+            firstAppear = false
+        }
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        clearStates()
+    }
+
+    func clearStates() {
+        // Nothing to do.
     }
 
     // MARK: - Table view data source
