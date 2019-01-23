@@ -8,6 +8,7 @@
 
 /* Display name of the configuration. */
 "cn.edu.tsinghua" = "Tsinghua University";
+"cn.edu.tsinghua.auth4" = "Tsinghua University (IPv4)";
 "cn.edu.ruc" = "Renmin University of China";
 "custom.self" = "Custom";
 
