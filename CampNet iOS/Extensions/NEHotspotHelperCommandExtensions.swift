@@ -46,6 +46,7 @@ extension NEHotspotHelperCommand {
             replyEvaluate(confidence: .none)
             return
         }
+        log.info("NEHotspotHelper: \(account) can handle \(network).")
 
         account.status(on: queue, requestBinder: requestBinder).done(on: queue) { status in
             switch status.type {
@@ -68,6 +69,7 @@ extension NEHotspotHelperCommand {
             reply(result: .unsupportedNetwork)
             return
         }
+        log.info("NEHotspotHelper: \(account) can handle \(network).")
 
         account.login(on: queue, requestBinder: requestBinder).done(on: queue) {
             self.reply(result: .success)
@@ -100,6 +102,7 @@ extension NEHotspotHelperCommand {
             reply(result: .failure)
             return
         }
+        log.info("NEHotspotHelper: \(account) can handle \(network).")
 
         account.status(on: queue, requestBinder: requestBinder).done(on: queue) { status in
             switch status.type {
@@ -123,6 +126,7 @@ extension NEHotspotHelperCommand {
             reply(result: .failure)
             return
         }
+        log.info("NEHotspotHelper: \(account) can handle \(network).")
 
         account.logout(on: queue, requestBinder: requestBinder).done(on: queue) {
             self.reply(result: .success)
@@ -135,8 +139,6 @@ extension NEHotspotHelperCommand {
     }
 
     private func replyFilterScanList(knownList: [NEHotspotNetwork]) {
-        log.info("NEHotspotHelper: Replying known networks: \(knownList).")
-
         let response = createResponse(.success)
         response.setNetworkList(knownList)
         response.deliver()

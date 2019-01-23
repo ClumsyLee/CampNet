@@ -15,6 +15,8 @@
 		0F14E77C1E2E3AAC0092494B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77A1E2E3AAC0092494B /* Main.storyboard */; };
 		0F14E77E1E2E3AAC0092494B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77D1E2E3AAC0092494B /* Assets.xcassets */; };
 		0F14E7811E2E3AAC0092494B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */; };
+		0F1EADB621F7F59F00D154BD /* NEHotspotHelperConfidenceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EADB521F7F59F00D154BD /* NEHotspotHelperConfidenceExtensions.swift */; };
+		0F1EADB821F7F76500D154BD /* NEHotspotHelperResultExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EADB721F7F76500D154BD /* NEHotspotHelperResultExtensions.swift */; };
 		0F1ED5D01F138832004A6C1F /* CampNetKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1ED5CE1F138832004A6C1F /* CampNetKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F1ED5D31F138832004A6C1F /* CampNetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; };
 		0F1ED5D41F138832004A6C1F /* CampNetKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -145,6 +147,8 @@
 		0F14E77D1E2E3AAC0092494B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F14E7801E2E3AAC0092494B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F14E7821E2E3AAC0092494B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F1EADB521F7F59F00D154BD /* NEHotspotHelperConfidenceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEHotspotHelperConfidenceExtensions.swift; sourceTree = "<group>"; };
+		0F1EADB721F7F76500D154BD /* NEHotspotHelperResultExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEHotspotHelperResultExtensions.swift; sourceTree = "<group>"; };
 		0F1ED5C61F138618004A6C1F /* CampNet iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CampNet iOS.entitlements"; sourceTree = "<group>"; };
 		0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CampNetKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F1ED5CE1F138832004A6C1F /* CampNetKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CampNetKit.h; sourceTree = "<group>"; };
@@ -449,7 +453,9 @@
 			isa = PBXGroup;
 			children = (
 				0FDCFC1A21EF64DA00E332DB /* NEHotspotHelperCommandExtensions.swift */,
+				0F1EADB521F7F59F00D154BD /* NEHotspotHelperConfidenceExtensions.swift */,
 				0FDCFC1B21EF64DA00E332DB /* NEHotspotHelperExtensions.swift */,
+				0F1EADB721F7F76500D154BD /* NEHotspotHelperResultExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -884,6 +890,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F1EADB621F7F59F00D154BD /* NEHotspotHelperConfidenceExtensions.swift in Sources */,
 				0FDCFC1C21EF64DA00E332DB /* NEHotspotHelperCommandExtensions.swift in Sources */,
 				0F5EB7291F17B06F003094DE /* ConfigurationSetupViewController.swift in Sources */,
 				0F3685161F1A5C6B0056AED1 /* ChangePasswordViewController.swift in Sources */,
@@ -898,6 +905,7 @@
 				0F8F704F1F1B44C10088E2DE /* SessionCell.swift in Sources */,
 				0F52FE121F29F1C800A88E90 /* SettingsViewController.swift in Sources */,
 				0F1F3D1B21AEAA2F002431B8 /* SupportUsViewController.swift in Sources */,
+				0F1EADB821F7F76500D154BD /* NEHotspotHelperResultExtensions.swift in Sources */,
 				0F0FF1FE1F524CF1000B608A /* AdvancedViewController.swift in Sources */,
 				0F56148E1F31A18C008A1232 /* SessionsViewController.swift in Sources */,
 				0F8F704D1F1B44A20088E2DE /* AccountCell.swift in Sources */,
