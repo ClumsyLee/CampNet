@@ -280,25 +280,8 @@ public class Configuration {
     public let billingGroups: [String: BillingGroup]
     public let actions: [Action.Role: Action]
 
-    public init?(_ identifier: String) {
-        var yamlString: String
-
-        if identifier == Configuration.customIdentifier {
-            yamlString = Defaults[.customConfiguration]
-        } else {
-            guard let url = Configuration.bundle.url(forResource: identifier, withExtension: Configuration.fileExtension,
-                                                     subdirectory: Configuration.subdirectory) else {
-                                                        log.error("\(identifier): Failed to find.")
-                                                        return nil
-            }
-            guard let content = try? String(contentsOf: url) else {
-                log.error("\(identifier): Failed to read.")
-                return nil
-            }
-            yamlString = content
-        }
-
-        guard let yaml = try? Yaml.load(yamlString) else {
+    public init?(identifier: String, string: String) {
+        guard let yaml = try? Yaml.load(string) else {
             log.error("\(identifier): Failed to load YAML.")
             return nil
         }
@@ -340,6 +323,27 @@ public class Configuration {
         self.actions = actions
 
         log.debug("\(identifier): Loaded.")
+    }
+
+    public convenience init?(_ identifier: String) {
+        var yamlString: String
+
+        if identifier == Configuration.customIdentifier {
+            yamlString = Defaults[.customConfiguration]
+        } else {
+            guard let url = Configuration.bundle.url(forResource: identifier, withExtension: Configuration.fileExtension,
+                                                     subdirectory: Configuration.subdirectory) else {
+                                                        log.error("\(identifier): Failed to find.")
+                                                        return nil
+            }
+            guard let content = try? String(contentsOf: url) else {
+                log.error("\(identifier): Failed to read.")
+                return nil
+            }
+            yamlString = content
+        }
+
+        self.init(identifier: identifier, string: yamlString)
     }
 
     public func canManage(_ network: NEHotspotNetwork) -> Bool {

@@ -592,41 +592,64 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
             </objects>
             <point key="canvasLocation" x="3097" y="1107"/>
         </scene>
-        <!--Custom Configuration Controller-->
-        <scene sceneID="jdL-Rn-JF5">
+        <!--Custom Configuration-->
+        <scene sceneID="kFX-MC-QMe">
             <objects>
-                <viewController id="K1d-dN-bmg" customClass="CustomConfigurationController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qZg-Nj-gJL"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ory-8C-xy3"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kMA-5g-ncy">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y9l-jE-1f1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="WaE-jz-hhc" customClass="CustomConfigurationViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="zge-Jm-a8H">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZfJ-9A-YNS">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">ssids:
-  - Tsinghua
-  - Tsinghua-5G</string>
-                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="10"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="ZfJ-9A-YNS" firstAttribute="top" secondItem="qZg-Nj-gJL" secondAttribute="bottom" id="Z7i-hp-7HZ"/>
-                            <constraint firstAttribute="trailing" secondItem="ZfJ-9A-YNS" secondAttribute="trailing" id="cpX-2K-lNL"/>
-                            <constraint firstAttribute="bottom" secondItem="ZfJ-9A-YNS" secondAttribute="bottom" id="jXg-hR-RAH"/>
-                            <constraint firstItem="ZfJ-9A-YNS" firstAttribute="leading" secondItem="kMA-5g-ncy" secondAttribute="leading" id="kOo-Nx-D0s"/>
-                        </constraints>
-                    </view>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection footerTitle="The existing custom configuration will be overwritten." id="5sP-mU-Y4U">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5bL-Yz-wLS">
+                                        <rect key="frame" x="0.0" y="35" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5bL-Yz-wLS" id="CXg-0u-ZE6">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Configuration URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I0h-aW-Sfo">
+                                                    <rect key="frame" x="27" y="11" width="367" height="22"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="url"/>
+                                                    <connections>
+                                                        <action selector="configurationUrlChanged:" destination="WaE-jz-hhc" eventType="valueChanged" id="9kB-ix-cop"/>
+                                                        <action selector="ipChanged:" destination="AAM-nG-qvc" eventType="editingChanged" id="CdF-Xi-uge"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="I0h-aW-Sfo" firstAttribute="leading" secondItem="CXg-0u-ZE6" secondAttribute="leadingMargin" constant="7" id="JIF-Tb-tUe"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="I0h-aW-Sfo" secondAttribute="trailing" id="L88-vJ-RyF"/>
+                                                <constraint firstItem="I0h-aW-Sfo" firstAttribute="top" secondItem="CXg-0u-ZE6" secondAttribute="topMargin" id="Yew-mi-i8e"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="I0h-aW-Sfo" secondAttribute="bottom" id="fz5-zK-W9H"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="WaE-jz-hhc" id="Yqo-73-sfo"/>
+                            <outlet property="delegate" destination="WaE-jz-hhc" id="elk-O1-MR0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Custom Configuration" id="WgA-SL-wL6">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="UJZ-pv-sT0">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="WaE-jz-hhc" id="2Uc-cm-pif"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="textView" destination="ZfJ-9A-YNS" id="wnj-WG-tnc"/>
+                        <outlet property="configurationUrl" destination="I0h-aW-Sfo" id="WVL-5Z-isH"/>
+                        <outlet property="saveButton" destination="UJZ-pv-sT0" id="WrR-or-LVn"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uc2-Kb-e6m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
             </objects>
             <point key="canvasLocation" x="3888" y="1801"/>
         </scene>
@@ -833,7 +856,7 @@ it without you</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection footerTitle="You will have to relaunch the app for the new configuration to take effect." id="O4M-tr-6NY">
+                            <tableViewSection id="O4M-tr-6NY">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="PsY-vW-TCs" style="IBUITableViewCellStyleDefault" id="bKG-x9-Apq">
                                         <rect key="frame" x="0.0" y="35" width="414" height="44"/>
@@ -852,7 +875,7 @@ it without you</string>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="K1d-dN-bmg" kind="show" id="cRI-mW-6bc"/>
+                                            <segue destination="WaE-jz-hhc" kind="show" id="oMd-Im-Mqq"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -861,7 +884,7 @@ it without you</string>
                                 <string key="footerTitle">Help us to improve CampNet by automatically sending crash data and anonymous usage statistics. You will have to relaunch the app for this change to take effect.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="9Yd-Lz-pCK" style="IBUITableViewCellStyleDefault" id="9AF-sv-fZX">
-                                        <rect key="frame" x="0.0" y="143" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="115" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9AF-sv-fZX" id="Igx-vx-W7O">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
@@ -881,7 +904,7 @@ it without you</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="qDx-jn-BjT">
-                                        <rect key="frame" x="0.0" y="187" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="159" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qDx-jn-BjT" id="H5o-NR-DnO">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -937,7 +960,7 @@ it without you</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="Dno-7x-jNX">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Dno-7x-jNX">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -1739,7 +1762,7 @@ it without you</string>
                         <sections>
                             <tableViewSection id="CW5-u0-KgG">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="dV7-O8-bpy">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="dV7-O8-bpy">
                                         <rect key="frame" x="0.0" y="35" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dV7-O8-bpy" id="kgz-UG-MbT">
@@ -1773,7 +1796,7 @@ it without you</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="dVG-oX-HBF">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="dVG-oX-HBF">
                                         <rect key="frame" x="0.0" y="79" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dVG-oX-HBF" id="BJA-e3-Prh">
@@ -1980,7 +2003,7 @@ it without you</string>
                                                     <rect key="frame" x="27" y="11" width="367" height="22"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
                                                         <action selector="ipChanged:" destination="AAM-nG-qvc" eventType="editingChanged" id="LgR-eh-stl"/>
                                                     </connections>

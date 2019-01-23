@@ -120,6 +120,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if !Defaults.hasKey(.customConfiguration) {
             Defaults[.customConfiguration] = ""
         }
+        if !Defaults.hasKey(.customConfigurationUrl) {
+            Defaults[.customConfigurationUrl] = ""
+        }
         if !Defaults.hasKey(.loginCount) {
             Defaults[.loginCount] = 0
         }

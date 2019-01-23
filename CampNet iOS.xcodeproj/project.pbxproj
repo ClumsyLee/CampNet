@@ -17,6 +17,7 @@
 		0F14E7811E2E3AAC0092494B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */; };
 		0F1EADB621F7F59F00D154BD /* NEHotspotHelperConfidenceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EADB521F7F59F00D154BD /* NEHotspotHelperConfidenceExtensions.swift */; };
 		0F1EADB821F7F76500D154BD /* NEHotspotHelperResultExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EADB721F7F76500D154BD /* NEHotspotHelperResultExtensions.swift */; };
+		0F1EADBA21F801DD00D154BD /* CustomConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1EADB921F801DD00D154BD /* CustomConfigurationViewController.swift */; };
 		0F1ED5D01F138832004A6C1F /* CampNetKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F1ED5CE1F138832004A6C1F /* CampNetKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F1ED5D31F138832004A6C1F /* CampNetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; };
 		0F1ED5D41F138832004A6C1F /* CampNetKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -68,7 +69,6 @@
 		0FD3A4141F158A12006DA497 /* Configurations.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A4161F158A12006DA497 /* Configurations.strings */; };
 		0FDCFC1C21EF64DA00E332DB /* NEHotspotHelperCommandExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCFC1A21EF64DA00E332DB /* NEHotspotHelperCommandExtensions.swift */; };
 		0FDCFC1D21EF64DA00E332DB /* NEHotspotHelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCFC1B21EF64DA00E332DB /* NEHotspotHelperExtensions.swift */; };
-		0FDCFC1F21EFAD6000E332DB /* CustomConfigurationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCFC1E21EFAD6000E332DB /* CustomConfigurationController.swift */; };
 		0FEA66DF1F533DC300F3867C /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEA66DE1F533DC300F3867C /* AboutViewController.swift */; };
 		0FF7563F1F2A175600B2429A /* UsageAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */; };
 		0FF756411F2BA31500B2429A /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */; };
@@ -149,6 +149,7 @@
 		0F14E7821E2E3AAC0092494B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F1EADB521F7F59F00D154BD /* NEHotspotHelperConfidenceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEHotspotHelperConfidenceExtensions.swift; sourceTree = "<group>"; };
 		0F1EADB721F7F76500D154BD /* NEHotspotHelperResultExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NEHotspotHelperResultExtensions.swift; sourceTree = "<group>"; };
+		0F1EADB921F801DD00D154BD /* CustomConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomConfigurationViewController.swift; path = Views/Controllers/CustomConfigurationViewController.swift; sourceTree = "<group>"; };
 		0F1ED5C61F138618004A6C1F /* CampNet iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CampNet iOS.entitlements"; sourceTree = "<group>"; };
 		0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CampNetKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F1ED5CE1F138832004A6C1F /* CampNetKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CampNetKit.h; sourceTree = "<group>"; };
@@ -209,7 +210,6 @@
 		0FD3A4171F158A15006DA497 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Configurations.strings"; sourceTree = "<group>"; };
 		0FDCFC1A21EF64DA00E332DB /* NEHotspotHelperCommandExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NEHotspotHelperCommandExtensions.swift; sourceTree = "<group>"; };
 		0FDCFC1B21EF64DA00E332DB /* NEHotspotHelperExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NEHotspotHelperExtensions.swift; sourceTree = "<group>"; };
-		0FDCFC1E21EFAD6000E332DB /* CustomConfigurationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomConfigurationController.swift; path = Views/Controllers/CustomConfigurationController.swift; sourceTree = "<group>"; };
 		0FEA66DE1F533DC300F3867C /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = Views/Controllers/AboutViewController.swift; sourceTree = "<group>"; };
 		0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsageAlertViewController.swift; path = Views/Controllers/UsageAlertViewController.swift; sourceTree = "<group>"; };
 		0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountDetailViewController.swift; path = Views/Controllers/AccountDetailViewController.swift; sourceTree = "<group>"; };
@@ -405,6 +405,7 @@
 				0F3685151F1A5C6B0056AED1 /* ChangePasswordViewController.swift */,
 				0F5EB7281F17B06F003094DE /* ConfigurationSetupViewController.swift */,
 				0F5EB7261F17B03B003094DE /* ConfigurationsViewController.swift */,
+				0F1EADB921F801DD00D154BD /* CustomConfigurationViewController.swift */,
 				0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */,
 				0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */,
 				0F34656F1F34D80A008E329F /* NetworkViewController.swift */,
@@ -412,9 +413,8 @@
 				0F56148B1F31A167008A1232 /* SessionDetailViewController.swift */,
 				0F56148D1F31A18C008A1232 /* SessionsViewController.swift */,
 				0F52FE111F29F1C800A88E90 /* SettingsViewController.swift */,
-				0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */,
 				0F1F3D1A21AEAA2F002431B8 /* SupportUsViewController.swift */,
-				0FDCFC1E21EFAD6000E332DB /* CustomConfigurationController.swift */,
+				0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -893,6 +893,7 @@
 				0F1EADB621F7F59F00D154BD /* NEHotspotHelperConfidenceExtensions.swift in Sources */,
 				0FDCFC1C21EF64DA00E332DB /* NEHotspotHelperCommandExtensions.swift in Sources */,
 				0F5EB7291F17B06F003094DE /* ConfigurationSetupViewController.swift in Sources */,
+				0F1EADBA21F801DD00D154BD /* CustomConfigurationViewController.swift in Sources */,
 				0F3685161F1A5C6B0056AED1 /* ChangePasswordViewController.swift in Sources */,
 				0F0FF1F91F5224A7000B608A /* L10n.swift in Sources */,
 				0F5EB7271F17B03B003094DE /* ConfigurationsViewController.swift in Sources */,
@@ -913,7 +914,6 @@
 				0F56148C1F31A167008A1232 /* SessionDetailViewController.swift in Sources */,
 				0FDCFC1D21EF64DA00E332DB /* NEHotspotHelperExtensions.swift in Sources */,
 				0FF7563F1F2A175600B2429A /* UsageAlertViewController.swift in Sources */,
-				0FDCFC1F21EFAD6000E332DB /* CustomConfigurationController.swift in Sources */,
 				0FEA66DF1F533DC300F3867C /* AboutViewController.swift in Sources */,
 				0F3465701F34D80A008E329F /* NetworkViewController.swift in Sources */,
 			);

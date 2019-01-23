@@ -25,6 +25,7 @@ extension DefaultsKeys {
     public static let sendLogs = DefaultsKey<Bool>("sendLogs")
     public static let donated = DefaultsKey<Bool>("donated")
     public static let customConfiguration = DefaultsKey<String>("customConfiguration")
+    public static let customConfigurationUrl = DefaultsKey<String>("customConfigurationUrl")
 
     // Statistics.
     public static let loginCount = DefaultsKey<Int>("loginCount")

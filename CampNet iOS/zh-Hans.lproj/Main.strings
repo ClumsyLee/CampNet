@@ -323,14 +323,17 @@
 /* Class = "UITextView"; text = "22:47:18.284 INFO AppDelegate.requestNotificationAuthorization():121 - User notifications are allowed."; ObjectID = "LP9-zR-21e"; */
 "LP9-zR-21e.text" = "";
 
-/* Class = "UITableViewSection"; footerTitle = "You will have to relaunch the app for the new configuration to take effect."; ObjectID = "O4M-tr-6NY"; */
-"O4M-tr-6NY.footerTitle" = "您必须重新启动应用才能使新配置生效。";
-
 /* Class = "UILabel"; text = "Custom Configuration"; ObjectID = "PsY-vW-TCs"; */
 "PsY-vW-TCs.text" = "自定义配置";
 
-/* Class = "UITextView"; text = "ssids:\n  - Tsinghua\n  - Tsinghua-5G"; ObjectID = "ZfJ-9A-YNS"; */
-"ZfJ-9A-YNS.text" = "";
-
 /* Class = "UILabel"; text = "Code Repository"; ObjectID = "FhX-2N-asV"; */
 "FhX-2N-asV.text" = "代码库";
+
+/* Class = "UITableViewSection"; footerTitle = "The existing custom configuration will be overwritten."; ObjectID = "5sP-mU-Y4U"; */
+"5sP-mU-Y4U.footerTitle" = "现有的自定义配置会被覆盖。";
+
+/* Class = "UITextField"; placeholder = "Configuration URL"; ObjectID = "I0h-aW-Sfo"; */
+"I0h-aW-Sfo.placeholder" = "配置 URL";
+
+/* Class = "UINavigationItem"; title = "Custom Configuration"; ObjectID = "WgA-SL-wL6"; */
+"WgA-SL-wL6.title" = "自定义配置";
