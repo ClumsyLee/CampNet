@@ -40,12 +40,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         setUpSwiftRater()
         setUpSwiftyBeaver()
 
+        // Make sure Firebase is initialized after IAP so that the IAP observer can receive
+        // all purchase notifications.
+        setUpIAP()
+        setUpFirebase()
+
         setUpCampNet(application)
         NEHotspotHelper.register(displayName: L10n.HotspotHelper.displayName)
-
-        // Make sure it is initialized after IAP so that the IAP observer can receive
-        // all purchase notifications.
-        setUpFirebase()
 
         return true
     }
@@ -101,6 +102,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
 
+    // Notification handler for iOS 9.
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        userNotificationsAllowed(notificationSettings.types.contains(.alert))
+    }
+
+    func userNotificationsAllowed(_ allowed: Bool) {
+        if allowed {
+            log.info("User notifications are allowed.")
+        } else {
+            log.warning("User notifications are not allowed.")
+        }
+        Analytics.setUserProperty(allowed.description, forName: "user_notifications_allowed")
+    }
+
     func setDefaultsIfNot() {
         if !Defaults.hasKey(.autoLogin) {
             Defaults[.autoLogin] = true
@@ -131,19 +146,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
 
-    func setUpFirebase() {
-        if !Defaults[.sendLogs] {
-            return
-        }
-        FirebaseApp.configure()
-
-        Analytics.setUserProperty(Defaults[.autoLogin].description, forName: "auto_login")
-        Analytics.setUserProperty(Defaults[.autoLogoutExpiredSessions].description, forName: "auto_logout_expired_sess")
-        Analytics.setUserProperty(Defaults[.usageAlertRatio]?.description ?? "off", forName: "usage_alert_ratio")
-        Analytics.setUserProperty(Defaults[.donated].description, forName: "donated")
-        Analytics.setUserProperty(Defaults[.loginCount].description, forName: "login_count")
-    }
-
     func setUpInstaBug() {
         Instabug.start(withToken: "0df1051f1ad636fc8efd87baef010aaa", invocationEvents: [.shake])
         BugReporting.promptOptions = [.feedback]
@@ -171,20 +173,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         log.addDestination(file)
     }
 
-    func setUpCampNet(_ application: UIApplication) {
-        Action.networkActivityIndicatorHandler = { value in
-            application.isNetworkActivityIndicatorVisible = value
-        }
-
-        // Do not request notification authorization when UI testing to prevent that system dialog from appearing.
-        if !Device.inUITest {
-            requestNotificationAuthorization()
-        }
-
-        // Update the profile in the background every now and then.
-        application.setMinimumBackgroundFetchInterval(Account.profileAutoUpdateInterval)
-
-        // Setup in-app purchases.
+    func setUpIAP() {
         SwiftyStoreKit.shouldAddStorePaymentHandler = { payment, product in
             // The content can be delivered by the app itself.
             return true;
@@ -205,6 +194,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 }
             }
         }
+    }
+
+    func setUpFirebase() {
+        if !Defaults[.sendLogs] {
+            return
+        }
+        FirebaseApp.configure()
+
+        Analytics.setUserProperty(Defaults[.autoLogin].description, forName: "auto_login")
+        Analytics.setUserProperty(Defaults[.autoLogoutExpiredSessions].description, forName: "auto_logout_expired_sess")
+        Analytics.setUserProperty(Defaults[.usageAlertRatio]?.description ?? "off", forName: "usage_alert_ratio")
+        Analytics.setUserProperty(Defaults[.donated].description, forName: "donated")
+        Analytics.setUserProperty(Defaults[.loginCount].description, forName: "login_count")
+    }
+
+    func setUpCampNet(_ application: UIApplication) {
+        Action.networkActivityIndicatorHandler = { value in
+            application.isNetworkActivityIndicatorVisible = value
+        }
+
+        // Do not request notification authorization when UI testing to prevent that system dialog from appearing.
+        if !Device.inUITest {
+            requestNotificationAuthorization()
+        }
+
+        // Update the profile in the background every now and then.
+        application.setMinimumBackgroundFetchInterval(Account.profileAutoUpdateInterval)
 
         // Add observers for notifications.
         addObservers()
@@ -215,11 +231,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             let center = UNUserNotificationCenter.current()
             center.delegate = self
             center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
-                if granted {
-                    log.info("User notifications are allowed.")
-                } else {
-                    log.warning("User notifications are not allowed: \(error.debugDescription).")
-                }
+                self.userNotificationsAllowed(granted)
             }
         } else {
             // Fallback on earlier versions
