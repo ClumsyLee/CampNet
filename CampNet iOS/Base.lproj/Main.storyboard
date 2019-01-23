@@ -617,8 +617,7 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="url"/>
                                                     <connections>
-                                                        <action selector="configurationUrlChanged:" destination="WaE-jz-hhc" eventType="valueChanged" id="9kB-ix-cop"/>
-                                                        <action selector="ipChanged:" destination="AAM-nG-qvc" eventType="editingChanged" id="CdF-Xi-uge"/>
+                                                        <action selector="configurationUrlChanged:" destination="WaE-jz-hhc" eventType="editingChanged" id="Tll-9W-hYx"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -2006,6 +2005,7 @@ it without you</string>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
                                                         <action selector="ipChanged:" destination="AAM-nG-qvc" eventType="editingChanged" id="LgR-eh-stl"/>
+                                                        <action selector="ipEntered:" destination="AAM-nG-qvc" eventType="primaryActionTriggered" id="Q5E-T1-6g9"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>

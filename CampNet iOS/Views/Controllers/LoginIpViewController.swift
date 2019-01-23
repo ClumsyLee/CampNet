@@ -165,4 +165,8 @@ class LoginIpViewController: UITableViewController {
     @IBAction func ipChanged(_ sender: Any) {
         doneButton.isEnabled = ipValid
     }
+
+    @IBAction func ipEntered(_ sender: Any) {
+        performSegue(withIdentifier: "ipLoggedIn", sender: self)
+    }
 }
