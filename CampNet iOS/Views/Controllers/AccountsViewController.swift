@@ -175,17 +175,9 @@ class AccountsViewController: UITableViewController {
             self.accounts.append((configuration, accounts))
         }
 
-        accounts.sort {
-            if $0.configuration.identifier == Configuration.customIdentifier {
-                return false
-            }
-            if $1.configuration.identifier == Configuration.customIdentifier {
-                return true
-            }
-            return $0.configuration.displayName < $1.configuration.displayName ||
-                   ($0.configuration.displayName == $1.configuration.displayName &&
-                    $0.configuration.identifier < $1.configuration.identifier)
-        }
+        accounts.sort { $0.configuration.displayName < $1.configuration.displayName ||
+                        ($0.configuration.displayName == $1.configuration.displayName &&
+                         $0.configuration.identifier < $1.configuration.identifier) }
 
         // Set observers.
         NotificationCenter.default.addObserver(self, selector: #selector(accountAdded(_:)),
