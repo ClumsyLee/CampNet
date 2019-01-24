@@ -271,6 +271,7 @@ public struct Action {
 
         let context = JSContext(virtualMachine: Action.jsVm)!
         context.setObject(initialVars, forKeyedSubscript: ActionEntry.varsName as (NSCopying & NSObjectProtocol))
+        setHashFunctions(context)
 
         let sessionConfiguration = URLSessionConfiguration.ephemeral
         sessionConfiguration.timeoutIntervalForRequest = ActionEntry.timeout
@@ -299,6 +300,14 @@ public struct Action {
         }
 
         return promise
+    }
+
+    fileprivate func setHashFunctions(_ context: JSContext) {
+        let sha1: @convention(block) (String) -> String = { s in
+            return s.sha1()
+        }
+
+        context.setObject(unsafeBitCast(sha1, to: AnyObject.self), forKeyedSubscript: "sha1" as (NSCopying & NSObjectProtocol))
     }
 }
 

@@ -79,11 +79,16 @@ extension NEHotspotHelperCommand {
             Defaults[.loginCount] += 1
             Analytics.setUserProperty(Defaults[.loginCount].description, forName: "login_count")
             if Defaults.potentialDonator && Defaults[.loginCount] % AppDelegate.donateRequestInterval == 0 {
-                sendNotification(title: L10n.Notifications.DonationRequest.title,
-                                 body: L10n.Notifications.DonationRequest.body(Defaults[.loginCount]),
-                                 identifier: AppDelegate.donationRequestIdentifier,
-                                 badge: 1)
-                Analytics.logEvent("donation_request", parameters: ["login_count": Defaults[.loginCount]])
+                if let donationRequestDate = Defaults[.donationRequestDate], Date().timeIntervalSince(donationRequestDate) < AppDelegate.donateRequestMinInterval {
+                    // Too soon, do nothing.
+                } else {
+                    sendNotification(title: L10n.Notifications.DonationRequest.title,
+                                     body: L10n.Notifications.DonationRequest.body(Defaults[.loginCount]),
+                                     identifier: AppDelegate.donationRequestIdentifier,
+                                     badge: 1)
+                    Defaults[.donationRequestDate] = Date()
+                    Analytics.logEvent("donation_request", parameters: ["login_count": Defaults[.loginCount]])
+                }
             }
         }
         .catch(on: queue) { error in
