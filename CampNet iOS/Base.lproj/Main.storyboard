@@ -595,8 +595,6 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
         <!--Load Configuration-->
         <scene sceneID="kFX-MC-QMe">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y9l-jE-1f1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="dn1-eC-Fhg" userLabel="Exit" sceneMemberID="exit"/>
                 <tableViewController id="WaE-jz-hhc" customClass="CustomConfigurationViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="zge-Jm-a8H">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -658,6 +656,8 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
                         <segue destination="dn1-eC-Fhg" kind="unwind" identifier="customConfigurationLoaded" unwindAction="customConfigurationLoadedWithSegue:" id="Nfn-Wv-luu"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y9l-jE-1f1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dn1-eC-Fhg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4683" y="1801"/>
         </scene>
