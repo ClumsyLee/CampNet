@@ -281,8 +281,8 @@
 /* Class = "UILabel"; text = "Acknowledgements"; ObjectID = "kJS-cc-R8f"; */
 "kJS-cc-R8f.text" = "致谢";
 
-/* Class = "UITextView"; text = "\"CampNet logo\" is a derivative of \"Network\" by riyazali, used under CC BY 3.0 US. \"CampNet logo\" is licensed under CC BY 4.0 by Sihan Li.\n\n\"Settings\" is licensed under CC BY 3.0 US by Viktor Vorobyev.\n\n\"Custom\" is licensed under Flaticon Basic License by Vectors Market.\n\n\"Octocat\" is a trademark of GitHub, Inc."; ObjectID = "gMC-pM-X3r"; */
-"gMC-pM-X3r.text" = "\"CampNet logo\" is a derivative of \"Network\" by riyazali, used under CC BY 3.0 US. \"CampNet logo\" is licensed under CC BY 4.0 by Sihan Li.\n\n\"Settings\" is licensed under CC BY 3.0 US by Viktor Vorobyev.\n\n\"Custom\" is licensed under Flaticon Basic License by Vectors Market.\n\n\"Octocat\" is a trademark of GitHub, Inc.";
+/* Class = "UITextView"; text = "\"CampNet logo\" is a derivative of \"Network\" by riyazali, used under CC BY 3.0 US. \"CampNet logo\" is licensed under CC BY 4.0 by Sihan Li.\n\n\"Settings\" is licensed under CC BY 3.0 US by Viktor Vorobyev.\n\n\"Custom\" is licensed under Flaticon Basic License by Vectors Market.\n\n\"Octocat\" is a trademark of GitHub, Inc.\n\nSpeacial thanks to: Yilong Guo, Wenshuo Li, Xinyao Chen, Xingyue Liu."; ObjectID = "gMC-pM-X3r"; */
+"gMC-pM-X3r.text" = "\"CampNet logo\" is a derivative of \"Network\" by riyazali, used under CC BY 3.0 US. \"CampNet logo\" is licensed under CC BY 4.0 by Sihan Li.\n\n\"Settings\" is licensed under CC BY 3.0 US by Viktor Vorobyev.\n\n\"Custom\" is licensed under Flaticon Basic License by Vectors Market.\n\n\"Octocat\" is a trademark of GitHub, Inc.\n\nSpeacial thanks to: Yilong Guo, Wenshuo Li, Xinyao Chen, Xingyue Liu.";
 
 /* Class = "UIViewController"; title = "Acknowledgements"; ObjectID = "pQx-xB-pf4"; */
 "pQx-xB-pf4.title" = "致谢";
