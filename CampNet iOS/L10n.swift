@@ -48,13 +48,23 @@ internal enum L10n {
       internal static func body(_ p1: Int) -> String {
         return L10n.tr("Localizable", "notifications.donation_request.body", p1)
       }
-      /// We need your support!
+      /// We Need Your Support!
       internal static let title = L10n.tr("Localizable", "notifications.donation_request.title")
     }
     internal enum HistoryError {
       /// Unable to Update History of "%@"
       internal static func title(_ p1: String) -> String {
         return L10n.tr("Localizable", "notifications.history_error.title", p1)
+      }
+    }
+    internal enum LoadConfiguration {
+      internal enum FetchError {
+        /// Unable to Fetch Configuration
+        internal static let title = L10n.tr("Localizable", "notifications.load_configuration.fetch_error.title")
+      }
+      internal enum ParseError {
+        /// Unable to Parse Configuration
+        internal static let title = L10n.tr("Localizable", "notifications.load_configuration.parse_error.title")
       }
     }
     internal enum LoginError {
@@ -82,7 +92,7 @@ internal enum L10n {
       }
     }
     internal enum LogsCopied {
-      /// Logs copied
+      /// Logs Copied
       internal static let title = L10n.tr("Localizable", "notifications.logs_copied.title")
     }
     internal enum ProfileError {
@@ -102,7 +112,7 @@ internal enum L10n {
       internal static func body(_ p1: String) -> String {
         return L10n.tr("Localizable", "notifications.usage_alert.body", p1)
       }
-      /// "%@" has used %d%% of maximum usage
+      /// "%@" Has Used %d%% of Maximum Usage
       internal static func title(_ p1: String, _ p2: Int) -> String {
         return L10n.tr("Localizable", "notifications.usage_alert.title", p1, p2)
       }

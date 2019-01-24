@@ -320,6 +320,10 @@ public class Configuration {
                 actions[role] = action
             }
         }
+        if actions[.login] == nil || actions[.status] == nil || actions[.logout] == nil {
+            log.error("\(identifier): Lack mandatory actions.")
+            return nil
+        }
         self.actions = actions
 
         log.debug("\(identifier): Loaded.")

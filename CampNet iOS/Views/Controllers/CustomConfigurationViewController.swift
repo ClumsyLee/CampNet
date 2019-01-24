@@ -11,21 +11,80 @@ import CampNetKit
 
 class CustomConfigurationViewController: UITableViewController {
 
+    @IBOutlet var cancelButton: UIBarButtonItem!
     @IBOutlet var saveButton: UIBarButtonItem!
+    var activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+    var saveActivityButton: UIBarButtonItem!
     @IBOutlet var configurationUrl: UITextField!
 
     var firstAppear: Bool = true
 
     @IBAction func saveButtonPressed(_ sender: Any) {
-//        let url = URL(string: configurationUrl.text ?? )
+        guard let url = URL(string: configurationUrl.text ?? "") else {
+            return
+        }
+
+        showSaveActivityButton()
+        activityIndicator.startAnimating()
+        Action.changeNetworkActivityCount(1)
+        configurationUrl.isEnabled = false
+
+        _ = URLSession.shared.dataTask(.promise, with: URLRequest(url: url)).compactMap(String.init).done { string in
+            guard let configuration = Configuration(identifier: Configuration.customIdentifier, string: string) else {
+                showErrorBanner(title: L10n.Notifications.LoadConfiguration.ParseError.title)
+                self.clearStates()
+                self.configurationUrl.becomeFirstResponder()
+                return
+            }
+
+            // Valid configuration, save it and reload custom accounts.
+            Defaults[.customConfiguration] = string
+            Defaults[.customConfigurationUrl] = url.description
+
+            let oldAccounts = Account.all[configuration] ?? []
+            let oldMain = Account.main
+            // Remove all the accounts first to make sure the old configuration is released.
+            for account in oldAccounts {
+                Account.remove(account)
+            }
+            // Add them back.
+            for account in oldAccounts {
+                Account.add(configurationIdentifier: configuration.identifier, username: account.username, password: account.password)
+            }
+            // Recover main if needed.
+            for account in Account.all[configuration] ?? [] {
+                if account == oldMain {
+                    Account.makeMain(account)
+                    break
+                }
+            }
+
+            self.performSegue(withIdentifier: "customConfigurationLoaded", sender: self)
+        }
+        .ensure {
+            self.activityIndicator.stopAnimating()
+            Action.changeNetworkActivityCount(-1)
+        }
+        .catch { err in
+            showErrorBanner(title: L10n.Notifications.LoadConfiguration.FetchError.title,
+                            body: err.localizedDescription)
+            self.clearStates()
+            self.configurationUrl.becomeFirstResponder()
+        }
     }
 
     @IBAction func configurationUrlChanged(_ sender: Any) {
         saveButton.isEnabled = URL(string: configurationUrl.text ?? "") != nil
     }
 
+    @IBAction func configurationUrlEntered(_ sender: Any) {
+        saveButtonPressed(sender)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        saveActivityButton = UIBarButtonItem.init(customView: activityIndicator)
         clearStates()
 
         // Uncomment the following line to preserve selection between presentations
@@ -40,6 +99,7 @@ class CustomConfigurationViewController: UITableViewController {
 
         if firstAppear {
             configurationUrl.text = Defaults[.customConfigurationUrl]
+            configurationUrlChanged(self)
         }
     }
 
@@ -58,7 +118,18 @@ class CustomConfigurationViewController: UITableViewController {
     }
 
     func clearStates() {
-        // Nothing to do.
+        showSaveButton()
+        configurationUrl.isEnabled = true
+    }
+
+    func showSaveButton() {
+        navigationItem.setLeftBarButton(cancelButton, animated: true)
+        navigationItem.setRightBarButton(saveButton, animated: true)
+    }
+
+    func showSaveActivityButton() {
+        navigationItem.setLeftBarButton(nil, animated: true)
+        navigationItem.setRightBarButton(saveActivityButton, animated: true)
     }
 
     // MARK: - Table view data source
@@ -118,14 +189,15 @@ class CustomConfigurationViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+
+        // Resign first responder no matter what.
+        view.endEditing(true)
     }
-    */
 
 }

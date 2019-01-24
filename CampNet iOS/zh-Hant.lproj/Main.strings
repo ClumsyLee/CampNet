@@ -323,8 +323,8 @@
 /* Class = "UITextView"; text = "22:47:18.284 INFO AppDelegate.requestNotificationAuthorization():121 - User notifications are allowed."; ObjectID = "LP9-zR-21e"; */
 "LP9-zR-21e.text" = "";
 
-/* Class = "UILabel"; text = "Custom Configuration"; ObjectID = "PsY-vW-TCs"; */
-"PsY-vW-TCs.text" = "自定義配置";
+/* Class = "UILabel"; text = "Load Custom Configuration"; ObjectID = "PsY-vW-TCs"; */
+"PsY-vW-TCs.text" = "加載自定義配置";
 
 /* Class = "UILabel"; text = "Code Repository"; ObjectID = "FhX-2N-asV"; */
 "FhX-2N-asV.text" = "代碼庫";
@@ -335,5 +335,5 @@
 /* Class = "UITextField"; placeholder = "Configuration URL"; ObjectID = "I0h-aW-Sfo"; */
 "I0h-aW-Sfo.placeholder" = "配置 URL";
 
-/* Class = "UINavigationItem"; title = "Custom Configuration"; ObjectID = "WgA-SL-wL6"; */
-"WgA-SL-wL6.title" = "自定義配置";
+/* Class = "UINavigationItem"; title = "Load Configuration"; ObjectID = "WgA-SL-wL6"; */
+"WgA-SL-wL6.title" = "加載配置";

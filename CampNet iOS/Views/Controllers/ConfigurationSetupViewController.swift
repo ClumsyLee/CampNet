@@ -140,8 +140,7 @@ class ConfigurationSetupViewController: UITableViewController {
         // Pass the selected object to the new view controller.
 
         // Resign first responder no matter what.
-        usernameField.resignFirstResponder()
-        passwordField.resignFirstResponder()
+        view.endEditing(true)
 
         if segue.identifier == "accountAdded" {
             if let username = usernameField.text {

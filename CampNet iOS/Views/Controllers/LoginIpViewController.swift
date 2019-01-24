@@ -133,7 +133,7 @@ class LoginIpViewController: UITableViewController {
         // Pass the selected object to the new view controller.
 
         // Resign first responder no matter what.
-        ipField.resignFirstResponder()
+        view.endEditing(true)
 
         if segue.identifier == "ipLoggedIn" {
             if let ip = ipField.text {

@@ -14,17 +14,19 @@
 
 /* Notifications */
 "notifications.donation_request.body" = "CampNet has auto-logged in %d times for you. Would you like to show some love to this open source project?";
-"notifications.donation_request.title" = "We need your support!";
+"notifications.load_configuration.fetch_error.title" = "Unable to Fetch Configuration";
+"notifications.load_configuration.parse_error.title" = "Unable to Parse Configuration";
+"notifications.donation_request.title" = "We Need Your Support!";
 "notifications.history_error.title" = "Unable to Update History of \"%@\"";
 "notifications.login_error.title" = "Unable to Login \"%@\"";
 "notifications.login_ip_error.title" = "Unable to Login %@";
 "notifications.logout_error.title" = "Unable to Logout \"%@\"";
 "notifications.logout_session_error.title" = "Unable to Logout \"%@\"";
-"notifications.logs_copied.title" = "Logs copied";
+"notifications.logs_copied.title" = "Logs Copied";
 "notifications.profile_error.title" = "Unable to Update Profile of \"%@\"";
 "notifications.status_error.title" = "Unable to Update Status of \"%@\"";
 "notifications.usage_alert.body" = "Up to %@ can still be used this month.";
-"notifications.usage_alert.title" = "\"%@\" has used %d%% of maximum usage";
+"notifications.usage_alert.title" = "\"%@\" Has Used %d%% of Maximum Usage";
 
 /* Overview */
 "overview.chart.limit_lines.free" = "Free";

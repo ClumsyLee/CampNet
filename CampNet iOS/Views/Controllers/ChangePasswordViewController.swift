@@ -133,7 +133,7 @@ class ChangePasswordViewController: UITableViewController {
         // Pass the selected object to the new view controller.
 
         // Resign first responder no matter what.
-        passwordField.resignFirstResponder()
+        view.endEditing(true)
 
         if segue.identifier == "passwordChanged" {
             account.password = passwordField.text ?? ""

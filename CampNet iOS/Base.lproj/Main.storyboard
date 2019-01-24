@@ -592,13 +592,14 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
             </objects>
             <point key="canvasLocation" x="3097" y="1107"/>
         </scene>
-        <!--Custom Configuration-->
+        <!--Load Configuration-->
         <scene sceneID="kFX-MC-QMe">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y9l-jE-1f1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dn1-eC-Fhg" userLabel="Exit" sceneMemberID="exit"/>
                 <tableViewController id="WaE-jz-hhc" customClass="CustomConfigurationViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="zge-Jm-a8H">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -611,13 +612,14 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Configuration URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I0h-aW-Sfo">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Configuration URL" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="I0h-aW-Sfo">
                                                     <rect key="frame" x="27" y="11" width="367" height="22"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="url"/>
                                                     <connections>
                                                         <action selector="configurationUrlChanged:" destination="WaE-jz-hhc" eventType="editingChanged" id="Tll-9W-hYx"/>
+                                                        <action selector="configurationUrlEntered:" destination="WaE-jz-hhc" eventType="primaryActionTriggered" id="Vwm-tM-2WS"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -637,20 +639,27 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
                             <outlet property="delegate" destination="WaE-jz-hhc" id="elk-O1-MR0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Custom Configuration" id="WgA-SL-wL6">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="UJZ-pv-sT0">
+                    <navigationItem key="navigationItem" title="Load Configuration" id="WgA-SL-wL6">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qhi-KQ-c2c">
+                            <connections>
+                                <segue destination="dn1-eC-Fhg" kind="unwind" unwindAction="cancelLoadingCustomConfigurationWithSegue:" id="F9O-Ua-udp"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="UJZ-pv-sT0">
                             <connections>
                                 <action selector="saveButtonPressed:" destination="WaE-jz-hhc" id="2Uc-cm-pif"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="qhi-KQ-c2c" id="mCC-YC-vpm"/>
                         <outlet property="configurationUrl" destination="I0h-aW-Sfo" id="WVL-5Z-isH"/>
                         <outlet property="saveButton" destination="UJZ-pv-sT0" id="WrR-or-LVn"/>
+                        <segue destination="dn1-eC-Fhg" kind="unwind" identifier="customConfigurationLoaded" unwindAction="customConfigurationLoadedWithSegue:" id="Nfn-Wv-luu"/>
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="3888" y="1801"/>
+            <point key="canvasLocation" x="4683" y="1801"/>
         </scene>
         <!--Logs-->
         <scene sceneID="Fr2-U2-7du">
@@ -857,24 +866,24 @@ it without you</string>
                         <sections>
                             <tableViewSection id="O4M-tr-6NY">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="PsY-vW-TCs" style="IBUITableViewCellStyleDefault" id="bKG-x9-Apq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="PsY-vW-TCs" style="IBUITableViewCellStyleDefault" id="bKG-x9-Apq">
                                         <rect key="frame" x="0.0" y="35" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bKG-x9-Apq" id="mfs-EE-XuC">
-                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Custom Configuration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PsY-vW-TCs">
-                                                    <rect key="frame" x="20" y="0.0" width="356" height="43.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Load Custom Configuration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PsY-vW-TCs">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.19347851990000001" green="0.73448164530000004" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="WaE-jz-hhc" kind="show" id="oMd-Im-Mqq"/>
+                                            <segue destination="EFb-uk-OdW" kind="presentation" id="oMd-Im-Mqq"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -882,7 +891,7 @@ it without you</string>
                             <tableViewSection id="9cP-xt-9ba">
                                 <string key="footerTitle">Help us to improve CampNet by automatically sending crash data and anonymous usage statistics. You will have to relaunch the app for this change to take effect.</string>
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="9Yd-Lz-pCK" style="IBUITableViewCellStyleDefault" id="9AF-sv-fZX">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="9Yd-Lz-pCK" style="IBUITableViewCellStyleDefault" id="9AF-sv-fZX">
                                         <rect key="frame" x="0.0" y="115" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9AF-sv-fZX" id="Igx-vx-W7O">
@@ -2264,6 +2273,26 @@ it without you</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WLA-ry-6tS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3096.8000000000002" y="-1710.4947526236883"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="agA-sZ-nHv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EFb-uk-OdW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="zeL-38-sGb">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WaE-jz-hhc" kind="relationship" relationship="rootViewController" id="jBq-PX-1FY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="60m-KT-Bp6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3886.9565217391309" y="1800.6696428571427"/>
         </scene>
     </scenes>
     <resources>
