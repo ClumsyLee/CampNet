@@ -43,12 +43,7 @@ public struct ActionEntry {
         self.identifier = identifier
 
         self.method = yaml["method"].string ?? "GET"
-
-        guard let url = yaml["url"].string else {
-            log.error("\(identifier): url key is missing.")
-            return nil
-        }
-        self.url = url
+        self.url = yaml["url"].string ?? ""
 
         if let params = yaml["params"].stringDictionary {
             self.params = params
@@ -76,6 +71,14 @@ public struct ActionEntry {
                 placeholders[key] = value
             } else if let value = value as? Int {
                 placeholders[key] = String(value)
+            }
+        }
+
+        // Handle script-only actions.
+        if url.isEmpty {
+            return Promise().map(on: queue) { _ -> [String: Any] in
+                try self.runScript(context: context)
+                return try self.getResults(context: context)
             }
         }
 
@@ -166,18 +169,24 @@ public struct ActionEntry {
         return newVars
     }
 
-    func runScript(context: JSContext, resp: String, newVars: [String: Any]) throws {
-        // Send new vars.
-        context.setObject(newVars, forKeyedSubscript: ActionEntry.newVarsName as (NSCopying & NSObjectProtocol))
-        _ = context.evaluateScript("Object.assign(\(ActionEntry.varsName), \(ActionEntry.newVarsName));")
-        if let error = context.exception {
-            log.error("\(self): Failed to send new vars: \(error). " +
-                      "resp: \(resp.debugDescription). newVars: \(newVars.debugDescription).")
-            throw CampNetError.internalError
+    func runScript(context: JSContext, resp: String? = nil, newVars: [String: Any]? = nil) throws {
+        // Set response if needed.
+        if let resp = resp {
+            context.setObject(resp, forKeyedSubscript: ActionEntry.respName as (NSCopying & NSObjectProtocol))
+        }
+
+        // Send new vars if needed.
+        if let newVars = newVars {
+            context.setObject(newVars, forKeyedSubscript: ActionEntry.newVarsName as (NSCopying & NSObjectProtocol))
+            _ = context.evaluateScript("Object.assign(\(ActionEntry.varsName), \(ActionEntry.newVarsName));")
+            if let error = context.exception {
+                log.error("\(self): Failed to send new vars: \(error). " +
+                    "resp: \(resp.debugDescription). newVars: \(newVars.debugDescription).")
+                throw CampNetError.internalError
+            }
         }
 
         // Run script.
-        context.setObject(resp, forKeyedSubscript: ActionEntry.respName as (NSCopying & NSObjectProtocol))
         _ = context.evaluateScript(script)
         if let errorString = context.exception?.description {
             if let error = CampNetError(identifier: errorString) {
@@ -263,7 +272,6 @@ public struct Action {
         var initialVars: [String: Any] = [
             "username": username,
             "password": password,
-            "password_md5": password.md5()
         ]
         for (key, value) in extraVars {
             initialVars[key] = value
@@ -303,10 +311,14 @@ public struct Action {
     }
 
     fileprivate func setHashFunctions(_ context: JSContext) {
+        let md5: @convention(block) (String) -> String = { s in
+            return s.md5()
+        }
         let sha1: @convention(block) (String) -> String = { s in
             return s.sha1()
         }
 
+        context.setObject(unsafeBitCast(md5, to: AnyObject.self), forKeyedSubscript: "md5" as (NSCopying & NSObjectProtocol))
         context.setObject(unsafeBitCast(sha1, to: AnyObject.self), forKeyedSubscript: "sha1" as (NSCopying & NSObjectProtocol))
     }
 }
