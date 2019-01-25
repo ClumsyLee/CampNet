@@ -67,6 +67,12 @@ public class AccountManager {
             if account.identifier == mainAccountIdentifier {
                 log.debug("\(accountIdentifier): Is main.")
                 mainAccount = account
+                // Make sure it is the delegate.
+                if let accountArray = accounts[account.configuration],
+                    let index = accountArray.index(of: account), index > 0 {
+                    accounts[account.configuration]!.remove(at: index)
+                    accounts[account.configuration]!.insert(account, at: 0)
+                }
             }
             log.debug("\(accountIdentifier): Loaded.")
         }
