@@ -39,27 +39,27 @@ class CampNet_iOS_UITests: XCTestCase {
 
         let app = XCUIApplication()
 
-        sleep(1)
+        sleep(1.5)
         app.navigationBars.buttons["accounts"].tap()
         snapshot("4-accounts")
 
-        sleep(1)
+        sleep(1.5)
         app.cells.staticTexts["lisihan13"].tap()
         snapshot("1-overview")
 
-        sleep(1)
+        sleep(1.5)
         app.buttons["devices"].tap()
         snapshot("5-devices")
 
-        sleep(1)
+        sleep(1.5)
         app.navigationBars.buttons.element(boundBy: 0).tap()
-        sleep(1)
+        sleep(1.5)
         app.navigationBars.buttons["accounts"].tap()
-        sleep(1)
+        sleep(1.5)
         app.cells.staticTexts["liws13"].tap()
         snapshot("2-overview")
 
-        sleep(1)
+        sleep(1.5)
         app.navigationBars.buttons["settings"].tap()
         snapshot("3-settings")
     }
