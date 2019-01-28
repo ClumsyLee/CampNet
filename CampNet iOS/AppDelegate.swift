@@ -13,6 +13,7 @@ import UserNotifications
 import BRYXBanner
 import Firebase
 import Instabug
+import PromiseKit
 import SwiftyBeaver
 import SwiftRater
 import SwiftyStoreKit
@@ -87,19 +88,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        guard let account = Account.main else {
+        let accounts = Account.all
+        guard !accounts.isEmpty else {
             completionHandler(.noData)
             Analytics.logEvent("background_fetch", parameters: ["result": "no_data"])
             return
         }
 
-        account.updateIfNeeded(on: DispatchQueue.global(qos: .utility)).done {
-            completionHandler(.newData)
-            Analytics.logEvent("background_fetch", parameters: ["result": "new_data"])
+        var promises: [Promise<Void>] = []
+        for accountArray in accounts.values {
+            for account in accountArray {
+                promises.append(account.updateIfNeeded(on: DispatchQueue.global(qos: .utility)))
+            }
         }
-        .catch { _ in
-            completionHandler(.failed)
-            Analytics.logEvent("background_fetch", parameters: ["result": "failed"])
+
+        when(resolved: promises).done { results in
+            if results.contains(where: { $0.isFulfilled }) {
+                completionHandler(.newData)
+                Analytics.logEvent("background_fetch", parameters: ["result": "new_data"])
+            } else {
+                completionHandler(.failed)
+                Analytics.logEvent("background_fetch", parameters: ["result": "failed"])
+            }
         }
     }
 
