@@ -37,7 +37,7 @@ class NetworkViewController: UITableViewController {
 
         Defaults[.onCampus(id: configuration.identifier, ssid: network.ssid)] = onCampusSwitch.isOn
         Analytics.logEvent(onCampusSwitch.isOn ? "remember_network" : "forget_network",
-                           parameters: ["account": account!.identifier, "network": network.ssid])
+                           parameters: ["network": network.ssid])
     }
 
     override func viewDidLoad() {

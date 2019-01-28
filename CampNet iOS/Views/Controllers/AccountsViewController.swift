@@ -30,7 +30,7 @@ class AccountsViewController: UITableViewController {
             self.refreshControl?.endRefreshing()
         }
 
-        Analytics.logEvent("accounts_refresh", parameters: [:])
+        Analytics.logEvent("accounts_refresh", parameters: nil)
     }
 
     var accounts: [(configuration: Configuration, accounts: [Account])] = []

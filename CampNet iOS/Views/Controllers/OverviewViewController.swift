@@ -89,7 +89,7 @@ class OverviewViewController: UITableViewController {
             }
         }
 
-        Analytics.logEvent("overview_refresh", parameters: ["account": account.identifier])
+        Analytics.logEvent("overview_refresh", parameters: nil)
     }
 
     @IBAction func loginButtonPressed(_ sender: Any) {
@@ -140,8 +140,7 @@ class OverviewViewController: UITableViewController {
                 let markAction = UIAlertAction(title: L10n.Overview.LoginUnknownNetworkAlert.Actions.markAsOnCampus,
                                                style: .default) { action in
                     Defaults[.onCampus(id: account.configuration.identifier, ssid: network.ssid)] = true
-                    Analytics.logEvent("remember_network",
-                                       parameters: ["account": account.identifier, "network": network.ssid])
+                    Analytics.logEvent("remember_network", parameters: ["network": network.ssid])
                 }
                 let laterAction = UIAlertAction(title: L10n.Overview.LoginUnknownNetworkAlert.Actions.later,
                                                 style: .cancel, handler: nil)
@@ -185,7 +184,7 @@ class OverviewViewController: UITableViewController {
             self.reloadStatus(autoLogin: false)  // Avoid logging in forever.
         }
 
-        Analytics.logEvent("foreground_login", parameters: ["account": account.identifier])
+        Analytics.logEvent("foreground_login", parameters: nil)
     }
 
     func logout() {
@@ -205,7 +204,7 @@ class OverviewViewController: UITableViewController {
             self.reloadStatus()
         }
 
-        Analytics.logEvent("foreground_logout", parameters: ["account": account.identifier])
+        Analytics.logEvent("foreground_logout", parameters: nil)
     }
 
     func refreshIfNeeded() {

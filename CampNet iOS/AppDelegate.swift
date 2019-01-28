@@ -375,9 +375,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         sendNotification(title: title, body: body, identifier: "\(account.identifier).accountUsageAlert")
 
         Analytics.logEvent("usage_alert", parameters: [
-            "account": account.identifier,
-            "usage": usage.description,
-            "max_usage": maxUsage.description])
+            "usage": usage,
+            "max_usage": maxUsage])
     }
 
     func addObservers() {

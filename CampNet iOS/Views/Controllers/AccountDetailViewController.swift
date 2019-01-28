@@ -35,7 +35,7 @@ class AccountDetailViewController: UITableViewController {
             self.refreshControl?.endRefreshing()
         }
 
-        Analytics.logEvent("account_detail_refresh", parameters: ["account": account.identifier])
+        Analytics.logEvent("account_detail_refresh", parameters: nil)
     }
 
     var account: Account!

@@ -140,7 +140,7 @@ class LoginIpViewController: UITableViewController {
                 _ = account.login(ip: ip).done {
                     SwiftRater.incrementSignificantUsageCount()
                 }
-                Analytics.logEvent("foreground_login_ip", parameters: ["account": account.identifier])
+                Analytics.logEvent("foreground_login_ip", parameters: nil)
             }
         }
     }
