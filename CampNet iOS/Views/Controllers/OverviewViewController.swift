@@ -512,6 +512,27 @@ class OverviewViewController: UITableViewController {
         bar.setBackgroundImage(UIImage(), for: .default)
         bar.shadowImage = UIImage()
 
+        setupBarButtons()
+        setupDashboard()
+        setupChart()
+
+        self.reload(Account.main)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(accountAdded(_:)),
+                                               name: .accountAdded, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)),
+                                               name: .mainAccountChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(statusUpdated(_:)),
+                                               name: .accountStatusUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)),
+                                               name: .accountProfileUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(historyUpdated(_:)),
+                                               name: .accountHistoryUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(_:)),
+                                               name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+
+    fileprivate func setupBarButtons() {
         // Setup the right bar button item with a red dot.
         // https://stackoverflow.com/a/41250928/4154977
         settingsBadge = UILabel(frame: CGRect(x: 16, y: 1, width: 8, height: 8))
@@ -528,7 +549,9 @@ class OverviewViewController: UITableViewController {
         rightButton.addSubview(settingsBadge)
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+    }
 
+    fileprivate func setupDashboard() {
         // Setup the upper view.
         upperBackgroundView = UIView()
         upperBackgroundView.backgroundColor = upperView.backgroundColor
@@ -552,8 +575,9 @@ class OverviewViewController: UITableViewController {
         loginButton.contentEdgeInsets.right = 20.0
         loginButton.contentEdgeInsets.top = 20.0
         loginButton.contentEdgeInsets.bottom = 20.0
+    }
 
-        // Setup the chart.
+    fileprivate func setupChart() {
         usageSumDataset.drawCirclesEnabled = false
         usageSumDataset.lineWidth = 4
         usageSumDataset.drawFilledEnabled = true
@@ -593,21 +617,6 @@ class OverviewViewController: UITableViewController {
         maxLimitLine.lineColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         maxLimitLine.valueTextColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         maxLimitLine.labelPosition = .rightTop
-
-        self.reload(Account.main)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(accountAdded(_:)),
-                                               name: .accountAdded, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)),
-                                               name: .mainAccountChanged, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(statusUpdated(_:)),
-                                               name: .accountStatusUpdated, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)),
-                                               name: .accountProfileUpdated, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(historyUpdated(_:)),
-                                               name: .accountHistoryUpdated, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActive(_:)),
-                                               name: UIApplication.didBecomeActiveNotification, object: nil)
     }
 
     deinit {
