@@ -22,12 +22,12 @@ extension NEHotspotHelperCommand {
             response.deliver()
             return
         }
-        log.info("NEHotspotHelper: Received filterScanList command: \(networkList).")
+        log.info("Received filterScanList command: \(networkList).")
 
         var knownList: [NEHotspotNetwork] = []
         for network in networkList {
             if let account = Account.delegate(for: network) {
-                log.info("NEHotspotHelper: \(account) can handle \(network).")
+                log.info("\(account) can handle \(network).")
                 network.setConfidence(.low)
                 knownList.append(network)
             }
@@ -40,13 +40,13 @@ extension NEHotspotHelperCommand {
         guard let network = network else {
             return
         }
-        log.info("NEHotspotHelper: Received evaluate command: \(network).")
+        log.info("Received evaluate command: \(network).")
 
         guard let account = Account.delegate(for: network) else {
             replyEvaluate(confidence: .none)
             return
         }
-        log.info("NEHotspotHelper: \(account) can handle \(network).")
+        log.info("\(account) can handle \(network).")
 
         account.status(on: queue, requestBinder: requestBinder).done(on: queue) { status in
             switch status.type {
@@ -63,13 +63,13 @@ extension NEHotspotHelperCommand {
         guard let network = network else {
             return
         }
-        log.info("NEHotspotHelper: Received authenticate command: \(network).")
+        log.info("Received authenticate command: \(network).")
 
         guard let account = Account.delegate(for: network) else {
             reply(result: .unsupportedNetwork)
             return
         }
-        log.info("NEHotspotHelper: \(account) can handle \(network).")
+        log.info("\(account) can handle \(network).")
 
         account.login(on: queue, requestBinder: requestBinder).done(on: queue) {
             self.reply(result: .success)
@@ -101,13 +101,13 @@ extension NEHotspotHelperCommand {
         guard let network = network else {
             return
         }
-        log.info("NEHotspotHelper: Received maintain command: \(network).")
+        log.info("Received maintain command: \(network).")
 
         guard let account = Account.delegate(for: network) else {
             reply(result: .failure)
             return
         }
-        log.info("NEHotspotHelper: \(account) can handle \(network).")
+        log.info("\(account) can handle \(network).")
 
         account.status(on: queue, requestBinder: requestBinder).done(on: queue) { status in
             switch status.type {
@@ -125,13 +125,13 @@ extension NEHotspotHelperCommand {
         guard let network = network else {
             return
         }
-        log.info("NEHotspotHelper: Received logoff command: \(network).")
+        log.info("Received logoff command: \(network).")
 
         guard let account = Account.delegate(for: network) else {
             reply(result: .failure)
             return
         }
-        log.info("NEHotspotHelper: \(account) can handle \(network).")
+        log.info("\(account) can handle \(network).")
 
         account.logout(on: queue, requestBinder: requestBinder).done(on: queue) {
             self.reply(result: .success)
@@ -153,7 +153,7 @@ extension NEHotspotHelperCommand {
         guard let network = network else {
             return
         }
-        log.info("NEHotspotHelper: Replying confidence: \(confidence).")
+        log.info("Replying confidence: \(confidence).")
 
         network.setConfidence(confidence)
         let response = createResponse(.success)
@@ -162,7 +162,7 @@ extension NEHotspotHelperCommand {
     }
 
     private func reply(result: NEHotspotHelperResult) {
-        log.info("NEHotspotHelper: Replying result: \(result).")
+        log.info("Replying result: \(result).")
         createResponse(result).deliver()
     }
 }
