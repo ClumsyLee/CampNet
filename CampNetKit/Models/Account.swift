@@ -75,12 +75,21 @@ public class Account {
     }
 
     public static func delegate(for network: NEHotspotNetwork) -> Account? {
+        var delegate: Account? = nil
+
         for (configuration, accounts) in Account.all {
-            if accounts.count > 0 && configuration.canManage(network) {
+            guard !accounts.isEmpty && configuration.canManage(network) else {
+                continue
+            }
+            // Make sure the custom configuration can override the presets.
+            if configuration.identifier == Configuration.customIdentifier {
                 return accounts[0]
+            } else {
+                delegate = accounts[0]
             }
         }
-        return nil
+
+        return delegate
     }
 
     public static func add(configurationIdentifier: String, username: String, password: String? = nil) {
