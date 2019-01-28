@@ -193,11 +193,15 @@ public class Account {
             var freeUsage: Int64? = nil
             var maxUsage: Int64? = nil
 
-            if let profile = newValue, let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""] {
-                freeUsage = billingGroup.freeUsage
+            if let profile = newValue {
+                fakeHistoryIfNeeded(profile: profile)
+                
+                if let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""] {
+                    freeUsage = billingGroup.freeUsage
 
-                if let balance = profile.balance, let usage = profile.usage {
-                    maxUsage = billingGroup.maxUsage(balance: balance, usage: usage)
+                    if let balance = profile.balance, let usage = profile.usage {
+                        maxUsage = billingGroup.maxUsage(balance: balance, usage: usage)
+                    }
                 }
             }
 
@@ -232,6 +236,35 @@ public class Account {
                 }
             }
         }
+    }
+
+    fileprivate func fakeHistoryIfNeeded(profile: Profile) {
+        guard let usage = profile.usage, self.configuration.actions[.history] == nil else {
+            return
+        }
+        let year = Calendar.current.component(.year, from: profile.updatedAt)
+        let month = Calendar.current.component(.month, from: profile.updatedAt)
+        let day = Calendar.current.component(.day, from: profile.updatedAt)
+        var history = self.history ?? History(year: year, month: month, usageSums: [])
+
+        // Invalidate data points if needed.
+        if year != history.year || month != history.month {
+            history.usageSums = []
+        }
+        if history.usageSums.count >= day {
+            history.usageSums.removeSubrange((day - 1)...)
+        }
+
+        // Interpolate.
+        let usage_begin = history.usageSums.last ?? 0
+        let usage_delta = usage - usage_begin
+        let day_delta = Int64(day - history.usageSums.count)
+        for i in 1...day_delta {
+            history.usageSums.append(usage_begin + usage_delta * i / day_delta)
+        }
+
+        self.history = history
+        log.debug("\(self): History interpolated.")
     }
 
     public fileprivate(set) var history: History? {
