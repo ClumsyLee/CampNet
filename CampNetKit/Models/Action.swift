@@ -31,8 +31,11 @@ public struct ActionEntry {
 
     public var method: String
     public var url: String
-    public var params: [String: String] = [:]
-    public var vars: [String: String] = [:]
+    public var params: [String: String]
+    public var headers: [String: String]
+    public var body: String?
+
+    public var vars: [String: String]
     public var offcampusIfFailed: Bool
     public var script: String
 
@@ -44,15 +47,11 @@ public struct ActionEntry {
 
         self.method = yaml["method"].string ?? "GET"
         self.url = yaml["url"].string ?? ""
+        self.params = yaml["params"].stringDictionary ?? [:]
+        self.headers = yaml["headers"].stringDictionary ?? [:]
+        self.body = yaml["body"].string
 
-        if let params = yaml["params"].stringDictionary {
-            self.params = params
-        }
-
-        if let vars = yaml["vars"].stringDictionary {
-            self.vars = vars
-        }
-
+        self.vars = yaml["vars"].stringDictionary ?? [:]
         self.offcampusIfFailed = yaml["offcampus_if_failed"].bool ?? false
         self.script = yaml["script"].string ?? ""
     }
@@ -129,7 +128,15 @@ public struct ActionEntry {
             log.error("\(self): Failed to add \(params) to the request: \(error)")
             return nil
         }
+        // Headers.
         request.setValue(ActionEntry.userAgent, forHTTPHeaderField: "User-Agent")
+        for (key, value) in headers {
+            request.setValue(value.replace(with: placeholders), forHTTPHeaderField: key.replace(with: placeholders))
+        }
+        // Body.
+        if let body = body {
+            request.httpBody = Data(body.utf8)
+        }
 
         return request
     }
