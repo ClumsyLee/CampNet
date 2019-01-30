@@ -87,6 +87,7 @@ public struct ActionEntry {
         }
 
         return session.dataTask(.promise, with: request).compactMap(String.init).recover(on: queue) { error -> Promise<String> in
+            log.error("\(self): \(error.localizedDescription)")
             throw self.offcampusIfFailed ? CampNetError.offcampus : CampNetError.networkError
         }
         .map(on: queue) { resp in
@@ -176,14 +177,14 @@ public struct ActionEntry {
         return newVars
     }
 
-    func runScript(context: JSContext, resp: String? = nil, newVars: [String: Any]? = nil) throws {
+    func runScript(context: JSContext, resp: String = "", newVars: [String: Any] = [:]) throws {
         // Set response if needed.
-        if let resp = resp {
+        if !resp.isEmpty {
             context.setObject(resp, forKeyedSubscript: ActionEntry.respName as (NSCopying & NSObjectProtocol))
         }
 
         // Send new vars if needed.
-        if let newVars = newVars {
+        if !newVars.isEmpty {
             context.setObject(newVars, forKeyedSubscript: ActionEntry.newVarsName as (NSCopying & NSObjectProtocol))
             _ = context.evaluateScript("Object.assign(\(ActionEntry.varsName), \(ActionEntry.newVarsName));")
             if let error = context.exception {

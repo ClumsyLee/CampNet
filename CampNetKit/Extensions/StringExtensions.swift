@@ -8,6 +8,10 @@
 
 import Foundation
 
+extension String.Encoding {
+    static let gb_18030_2000 = String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(CFStringEncodings.GB_18030_2000.rawValue)))
+}
+
 extension String {
     public var reverseDomained: String {
         return self.components(separatedBy: ".").reversed().joined(separator: ".")
@@ -33,6 +37,29 @@ extension String {
         if hasPrefix(prefix) {
             return String(self[index(startIndex, offsetBy: prefix.count)...])
         } else {
+            return nil
+        }
+    }
+
+    // Based on PromiseKit.
+    init?(data: Data, urlResponse: URLResponse) {
+        var stringEncoding: String.Encoding? = nil
+
+        if let encodingName = urlResponse.textEncodingName {
+            let encoding = CFStringConvertIANACharSetNameToEncoding(encodingName as CFString)
+            if encoding != kCFStringEncodingInvalidId {
+                stringEncoding = String.Encoding(rawValue: CFStringConvertEncodingToNSStringEncoding(encoding))
+            }
+        }
+
+        if let stringEncoding = stringEncoding {
+            self.init(bytes: data, encoding: stringEncoding)
+        } else if let string = String(bytes: data, encoding: .utf8) {
+            self.init(string)
+        } else if let string = String(bytes: data, encoding: .gb_18030_2000) {
+            self.init(string)
+        } else {
+            log.error("Failed to decode data: \(data)")
             return nil
         }
     }
