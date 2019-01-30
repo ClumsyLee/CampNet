@@ -28,6 +28,9 @@ extension DefaultsKeys {
     public static let customConfiguration = DefaultsKey<String>("customConfiguration")
     public static let customConfigurationUrl = DefaultsKey<String>("customConfigurationUrl")
 
+    // One-time flags.
+    public static let tsinghuaAuth4Migrated = DefaultsKey<Bool>("tsinghuaAuth4Migrated")
+
     // Statistics.
     public static let loginCount = DefaultsKey<Int>("loginCount")
     public static let loginCountStartDate = DefaultsKey<Date?>("loginCountStartDate")

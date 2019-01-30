@@ -8,7 +8,7 @@
 
 /* Display names of configurations. */
 "cn.edu.ruc" = "中國人民大學";
-"cn.edu.tsinghua" = "清華大學";
+"cn.edu.tsinghua" = "清華大學（舊版）";
 "cn.edu.tsinghua.auth4" = "清華大學（IPv4）";
 "cn.edu.tsinghua.auth6" = "清華大學（IPv6）";
 "custom.self" = "自定義";

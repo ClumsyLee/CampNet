@@ -155,6 +155,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if !Defaults.hasKey(.loginCountStartDate) {
             Defaults[.loginCountStartDate] = Date()
         }
+
+        // One-time flags.
+        if !Defaults.hasKey(.tsinghuaAuth4Migrated) {
+            // Copy the existing Tsinghua accounts to the new configuration.
+            let oldIdentifier = "cn.edu.tsinghua"
+            let newIdentifier = "cn.edu.tsinghua.auth4"
+
+            for (configuration, accounts) in Account.all {
+                guard configuration.identifier == oldIdentifier else {
+                    continue
+                }
+
+                for account in accounts {
+                    Account.add(configurationIdentifier: newIdentifier, username: account.username, password: account.password)
+                }
+                break
+            }
+            Defaults[.tsinghuaAuth4Migrated] = true
+        }
     }
 
     func setUpInstaBug() {
