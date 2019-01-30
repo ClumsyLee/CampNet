@@ -586,7 +586,12 @@ extension Account {
             }
             log.debug("\(self): Updating history.")
 
-            return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder)
+            let today = Date()
+            return action.commit(username: username, password: password,
+                                 extraVars: ["year": Calendar.current.component(.year, from: today),
+                                             "month": Calendar.current.component(.month, from: today),
+                                             "day": Calendar.current.component(.day, from: today)],
+                                 on: queue, requestBinder: requestBinder)
         }
         .map(on: queue) { vars -> History in
             guard let history = History(vars: vars) else {
