@@ -158,21 +158,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         // One-time flags.
         if !Defaults.hasKey(.tsinghuaAuth4Migrated) {
-            // Copy the existing Tsinghua accounts to the new configuration.
-            let oldIdentifier = "cn.edu.tsinghua"
-            let newIdentifier = "cn.edu.tsinghua.auth4"
-
-            for (configuration, accounts) in Account.all {
-                guard configuration.identifier == oldIdentifier else {
-                    continue
-                }
-
-                for account in accounts {
-                    Account.add(configurationIdentifier: newIdentifier, username: account.username, password: account.password)
-                }
-                break
-            }
+            migrateTsinghuaAuth4()
             Defaults[.tsinghuaAuth4Migrated] = true
+        }
+    }
+
+    func migrateTsinghuaAuth4() {
+        let oldIdentifier = "cn.edu.tsinghua"
+        let newIdentifier = "cn.edu.tsinghua.auth4"
+
+        // Copy the existing Tsinghua accounts to the new configuration.
+        for (configuration, accounts) in Account.all {
+            guard configuration.identifier == oldIdentifier else {
+                continue
+            }
+
+            for account in accounts {
+                Account.add(configurationIdentifier: newIdentifier, username: account.username, password: account.password)
+            }
+            break
+        }
+
+        // Transfer the main account.
+        for (configuration, accounts) in Account.all {
+            guard configuration.identifier == newIdentifier else {
+                continue
+            }
+
+            if let account = accounts.first {
+                Account.makeMain(account)
+            }
+            break
         }
     }
 
