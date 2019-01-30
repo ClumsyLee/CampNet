@@ -554,7 +554,6 @@ class OverviewViewController: UITableViewController {
         tableView.insertSubview(upperBackgroundView, at: 0)
 
         // Shrink the headline for small screens.
-        print("height = \(tableView.bounds.height)")
         if tableView.bounds.height < 500 {
             usageTitle.font = UIFont.systemFont(ofSize: 15)
             usage.font = UIFont.systemFont(ofSize: 54, weight: .thin)
