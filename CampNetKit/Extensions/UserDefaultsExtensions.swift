@@ -174,12 +174,15 @@ extension UserDefaults {
 extension Account {
     public func removeDefaults() {
         Defaults.remove(.accountLastLoginErrorNotification(of: identifier))
+        Defaults.remove(.accountPastIps(of: identifier))
 
+        Defaults.remove(.accountDecimalUnits(of: identifier))
         Defaults.remove(.accountStatus(of: identifier))
         Defaults.remove(.accountProfile(of: identifier))
         Defaults.remove(.accountHistory(of: identifier))
         Defaults.remove(.accountEstimatedDailyUsage(of: identifier))
-        Defaults.remove(.accountPastIps(of: identifier))
+        Defaults.remove(.accountFreeUsage(of: identifier))
+        Defaults.remove(.accountMaxUsage(of: identifier))
 
         Defaults.synchronize()
     }
