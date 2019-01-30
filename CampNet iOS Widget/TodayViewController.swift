@@ -148,19 +148,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         var freeY: Double? = nil
         var maxY: Double? = nil
 
-        if let identifier = identifier {
-            if let freeUsage = Account.freeUsage(of: identifier) {
-                freeLimitLine.limit = freeUsage.usageInGb(decimalUnits: decimalUnits)
-                chart.leftAxis.addLimitLine(freeLimitLine)
+        if let freeUsage = profile?.freeUsage {
+            freeLimitLine.limit = freeUsage.usageInGb(decimalUnits: decimalUnits)
+            chart.leftAxis.addLimitLine(freeLimitLine)
 
-                freeY = freeLimitLine.limit
-            }
-            if let maxUsage = Account.maxUsage(of: identifier) {
-                maxLimitLine.limit = maxUsage.usageInGb(decimalUnits: decimalUnits)
-                chart.leftAxis.addLimitLine(maxLimitLine)
+            freeY = freeLimitLine.limit
+        }
+        if let maxUsage = profile?.maxUsage {
+            maxLimitLine.limit = maxUsage.usageInGb(decimalUnits: decimalUnits)
+            chart.leftAxis.addLimitLine(maxLimitLine)
 
-                maxY = maxLimitLine.limit
-            }
+            maxY = maxLimitLine.limit
         }
 
         // Calculate chart.leftAxis.axisMaximum.

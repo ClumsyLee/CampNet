@@ -30,7 +30,7 @@ class OverviewViewController: UITableViewController {
     @IBOutlet var usage: UILabel!
     @IBOutlet var usageUnit: UILabel!
     @IBOutlet var balance: UILabel!
-    @IBOutlet var estimatedFee: UILabel!
+    @IBOutlet var dataBalance: UILabel!
     @IBOutlet var networkName: UILabel!
     @IBOutlet var devices: UILabel!
 
@@ -319,16 +319,6 @@ class OverviewViewController: UITableViewController {
         }
     }
 
-    func reloadEstimatedFee() {
-        if let moneyString = account?.estimatedFee(profile: profile)?.moneyString {
-            estimatedFee.text = moneyString
-            estimatedFee.textColor = .white
-        } else {
-            estimatedFee.text = "-"
-            estimatedFee.textColor = .lightText
-        }
-    }
-
     func reloadProfile() {
         profile = account?.profile
         let decimalUnits = account?.configuration.decimalUnits ?? false
@@ -357,7 +347,13 @@ class OverviewViewController: UITableViewController {
             balance.textColor = .lightText
         }
 
-        reloadEstimatedFee()
+        if let dataBalanceStr = profile?.dataBalance?.usageStringInGb(decimalUnits: decimalUnits) {
+            dataBalance.text = dataBalanceStr
+            dataBalance.textColor = .white
+        } else {
+            dataBalance.text = "-"
+            dataBalance.textColor = .lightText
+        }
 
         if let sessions = profile?.sessions {
             devices.text = String(sessions.count)
@@ -395,13 +391,13 @@ class OverviewViewController: UITableViewController {
         var freeY: Double? = nil
         var maxY: Double? = nil
 
-        if let freeUsage = account?.freeUsage {
+        if let freeUsage = profile?.freeUsage {
             freeLimitLine.limit = freeUsage.usageInGb(decimalUnits: decimalUnits)
             chart.leftAxis.addLimitLine(freeLimitLine)
 
             freeY = freeLimitLine.limit
         }
-        if let maxUsage = account?.maxUsage {
+        if let maxUsage = profile?.maxUsage {
             maxLimitLine.limit = maxUsage.usageInGb(decimalUnits: decimalUnits)
             chart.leftAxis.addLimitLine(maxLimitLine)
 
@@ -430,8 +426,6 @@ class OverviewViewController: UITableViewController {
     func reloadHistory() {
         history = account?.history
         let decimalUnits = account?.configuration.decimalUnits ?? false
-
-        reloadEstimatedFee()
 
         usageSumDataset.values = []
         if let history = history {

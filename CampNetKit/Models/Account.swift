@@ -58,14 +58,6 @@ public class Account {
                 history.month == Calendar.current.component(.month, from: today)) ? history : nil
     }
 
-    public static func freeUsage(of identifier: String) -> Int64? {
-        return Defaults[.accountFreeUsage(of: identifier)]
-    }
-
-    public static func maxUsage(of identifier: String) -> Int64? {
-        return Defaults[.accountMaxUsage(of: identifier)]
-    }
-
     public static var all: [Configuration: [Account]] {
         return AccountManager.shared.all
     }
@@ -120,39 +112,6 @@ public class Account {
         }
     }
 
-    public fileprivate(set) var estimatedDailyUsage: Int64? {
-        get {
-            return Defaults[.accountEstimatedDailyUsage(of: identifier)]
-        }
-        set {
-            Defaults[.accountEstimatedDailyUsage(of: identifier)] = newValue
-            Defaults.synchronize()
-            log.debug("\(self): Estimated daily usage changed to \(newValue?.description ?? "nil").")
-        }
-    }
-
-    public fileprivate(set) var freeUsage: Int64? {
-        get {
-            return Defaults[.accountFreeUsage(of: identifier)]
-        }
-        set {
-            Defaults[.accountFreeUsage(of: identifier)] = newValue
-            Defaults.synchronize()
-            log.debug("\(self): Free usage changed to \(newValue?.description ?? "nil").")
-        }
-    }
-
-    public fileprivate(set) var maxUsage: Int64? {
-        get {
-            return Defaults[.accountMaxUsage(of: identifier)]
-        }
-        set {
-            Defaults[.accountMaxUsage(of: identifier)] = newValue
-            Defaults.synchronize()
-            log.debug("\(self): Max usage changed to \(newValue?.description ?? "nil").")
-        }
-    }
-
     public fileprivate(set) var pastIps: [String] {
         get {
             return Defaults[.accountPastIps(of: identifier)]
@@ -189,25 +148,9 @@ public class Account {
             return Account.profile(of: identifier)
         }
         set {
-            // Update free usage & max usage if possible.
-            var freeUsage: Int64? = nil
-            var maxUsage: Int64? = nil
-
             if let profile = newValue {
                 fakeHistoryIfNeeded(profile: profile)
-
-                if let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""] {
-                    freeUsage = billingGroup.freeUsage
-
-                    if let balance = profile.balance, let usage = profile.usage {
-                        maxUsage = billingGroup.maxUsage(balance: balance, usage: usage)
-                    }
-                }
             }
-
-            self.freeUsage = freeUsage
-            self.maxUsage = maxUsage
-
 
             let oldUsage = Profile(vars: Defaults[.accountProfile(of: identifier)] ?? [:])?.usage ?? -1
             Defaults[.accountProfile(of: identifier)] = newValue?.vars
@@ -221,7 +164,7 @@ public class Account {
             // Send usage alert if needed.
             if let newUsage = newValue?.usage,
                let ratio = Defaults[.usageAlertRatio],
-               let maxUsage = maxUsage {
+               let maxUsage = newValue?.maxUsage {
 
                 let limit = Int64(Double(maxUsage) * ratio)
                 if oldUsage < limit && newUsage >= limit {
@@ -272,16 +215,6 @@ public class Account {
             return Account.history(of: identifier)
         }
         set {
-            if let history = newValue {
-                if !history.usageSums.isEmpty && history.usageSums.count >= Account.estimationLength + 2 {
-                    let toIndex = history.usageSums.count - 2  // Avoid today.
-                    let fromIndex = toIndex - Account.estimationLength
-                    let usage = history.usageSums[toIndex] - history.usageSums[fromIndex]
-
-                    estimatedDailyUsage = usage / Int64(Account.estimationLength)
-                }
-            }
-
             Defaults[.accountHistory(of: identifier)] = newValue?.vars
             Defaults.synchronize()
             DispatchQueue.main.async {
@@ -310,26 +243,6 @@ public class Account {
 
     public func canManage(_ network: NEHotspotNetwork) -> Bool {
         return configuration.canManage(network)
-    }
-
-    public func estimatedFee(profile: Profile?) -> Double? {
-        guard let profile = profile,
-              let usage = profile.usage,
-              let balance = profile.balance,
-              let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""],
-              let estimatedDailyUsage = estimatedDailyUsage else {
-            return nil
-        }
-
-        let today = Date()
-        guard let maxDay = Calendar.current.range(of: .day, in: .month, for: today)?.upperBound else {
-            return nil
-        }
-
-        let estimatedUsage = min(usage + estimatedDailyUsage * Int64(maxDay - Calendar.current.component(.day,
-                                                                                                         from: today)),
-                                 billingGroup.maxUsage(balance: balance, usage: usage))
-        return billingGroup.fee(from: usage, to: estimatedUsage)
     }
 }
 

@@ -19,9 +19,11 @@ class AccountDetailViewController: UITableViewController {
     }
 
     @IBOutlet var name: UILabel!
-    @IBOutlet var billingGroup: UILabel!
     @IBOutlet var balance: UILabel!
+    @IBOutlet var dataBalance: UILabel!
     @IBOutlet var usage: UILabel!
+    @IBOutlet var freeUsage: UILabel!
+    @IBOutlet var maxUsage: UILabel!
 
     @IBOutlet var deleteAccountRow: UITableViewCell!
 
@@ -44,14 +46,15 @@ class AccountDetailViewController: UITableViewController {
         let profile = account.profile
 
         name.text = profile?.name?.nonEmpty ?? " "
-        billingGroup.text = account.configuration.billingGroups[profile?.billingGroupName ?? ""]?.displayName?
-            .nonEmpty ?? " "
         if let moneyString = profile?.balance?.moneyString {
             balance.text = "¥ \(moneyString)"
         } else {
             balance.text = " "
         }
+        dataBalance.text = profile?.dataBalance?.usageString(decimalUnits: account.configuration.decimalUnits).nonEmpty ?? " "
         usage.text = profile?.usage?.usageString(decimalUnits: account.configuration.decimalUnits).nonEmpty ?? " "
+        freeUsage.text = profile?.freeUsage?.usageString(decimalUnits: account.configuration.decimalUnits).nonEmpty ?? " "
+        maxUsage.text = profile?.maxUsage?.usageString(decimalUnits: account.configuration.decimalUnits).nonEmpty ?? " "
     }
 
     func reload() {

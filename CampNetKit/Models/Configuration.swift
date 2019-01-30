@@ -138,9 +138,11 @@ extension Session: CustomStringConvertible {
 
 public struct Profile {
     public var name: String?
-    public var billingGroupName: String?
     public var balance: Double?
+    public var dataBalance: Int64?
     public var usage: Int64?
+    public var freeUsage: Int64?
+    public var maxUsage: Int64?
     public var sessions: [Session]?
 
     public var updatedAt: Date
@@ -149,9 +151,11 @@ public struct Profile {
         var vars: [String: Any] = [:]
 
         vars["name"] = name
-        vars["billing_group_name"] = billingGroupName
         vars["balance"] = balance
+        vars["data_balance"] = dataBalance
         vars["usage"] = usage
+        vars["free_usage"] = freeUsage
+        vars["max_usage"] = maxUsage
         vars["sessions"] = sessions?.map { $0.vars }
 
         vars["updated_at"] = updatedAt
@@ -159,12 +163,15 @@ public struct Profile {
         return vars
     }
 
-    init(name: String? = nil, billingGroupName: String? = nil, balance: Double? = nil, usage: Int64? = nil,
+    init(name: String? = nil, balance: Double? = nil, dataBalance: Int64? = nil,
+         usage: Int64? = nil, freeUsage: Int64? = nil, maxUsage: Int64? = nil,
          sessions: [Session]? = nil, updatedAt: Date = Date()) {
         self.name = name
-        self.billingGroupName = billingGroupName
         self.balance = balance
+        self.dataBalance = dataBalance
         self.usage = usage
+        self.freeUsage = freeUsage
+        self.maxUsage = maxUsage
         self.sessions = sessions
         self.updatedAt = updatedAt
     }
@@ -175,9 +182,11 @@ public struct Profile {
         }
 
         self.name = vars["name"] as? String
-        self.billingGroupName = vars["billing_group_name"] as? String
         self.balance = vars["balance"] as? Double
+        self.dataBalance = vars["data_balance"] as? Int64
         self.usage = vars["usage"] as? Int64
+        self.freeUsage = vars["free_usage"] as? Int64
+        self.maxUsage = vars["max_usage"] as? Int64
 
         if let sessions = vars["sessions"] as? [[String: Any]] {
             self.sessions = []
@@ -277,7 +286,6 @@ public class Configuration {
 
     public let ssids: Set<String>
     public let decimalUnits: Bool
-    public let billingGroups: [String: BillingGroup]
     public let actions: [Action.Role: Action]
 
     public init?(identifier: String, string: String) {
@@ -290,20 +298,6 @@ public class Configuration {
         self.displayName = Configuration.displayName(identifier)
         self.decimalUnits = yaml["decimal_units"].bool ?? false
         self.ssids = Set(yaml["ssids"].stringArray ?? [])
-
-        var billingGroups: [String: BillingGroup] = [:]
-        if let billingGroupsYaml = yaml["billing_groups"].dictionary {
-            for (key, value) in billingGroupsYaml {
-                guard let name = key.string else {
-                    log.error("\(identifier): Billing group names must be strings.")
-                    return nil
-                }
-
-                billingGroups[name] = BillingGroup(configurationIdentifier: identifier, name: name,
-                                                   decimalUnits: decimalUnits, yaml: value)
-            }
-        }
-        self.billingGroups = billingGroups
 
         var actions: [Action.Role: Action] = [:]
         if let actionsYaml = yaml["actions"].dictionary {

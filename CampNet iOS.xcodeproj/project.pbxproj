@@ -39,7 +39,6 @@
 		0F464C601F13D1E800C2F58B /* CampNetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C5F1F13D1E800C2F58B /* CampNetError.swift */; };
 		0F464C631F13DB6E00C2F58B /* YamlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C621F13DB6E00C2F58B /* YamlExtensions.swift */; };
 		0F464C651F13ED0F00C2F58B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C641F13ED0F00C2F58B /* StringExtensions.swift */; };
-		0F464C721F14093E00C2F58B /* BillingGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C711F14093E00C2F58B /* BillingGroup.swift */; };
 		0F46CC831F17837700AF1FC9 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F46CC821F17837700AF1FC9 /* AccountsViewController.swift */; };
 		0F52FE121F29F1C800A88E90 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F52FE111F29F1C800A88E90 /* SettingsViewController.swift */; };
 		0F56148C1F31A167008A1232 /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F56148B1F31A167008A1232 /* SessionDetailViewController.swift */; };
@@ -170,7 +169,6 @@
 		0F464C5F1F13D1E800C2F58B /* CampNetError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CampNetError.swift; path = Models/CampNetError.swift; sourceTree = "<group>"; };
 		0F464C621F13DB6E00C2F58B /* YamlExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YamlExtensions.swift; path = Extensions/YamlExtensions.swift; sourceTree = "<group>"; };
 		0F464C641F13ED0F00C2F58B /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtensions.swift; path = Extensions/StringExtensions.swift; sourceTree = "<group>"; };
-		0F464C711F14093E00C2F58B /* BillingGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BillingGroup.swift; path = Models/BillingGroup.swift; sourceTree = "<group>"; };
 		0F46CC821F17837700AF1FC9 /* AccountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountsViewController.swift; path = Views/Controllers/AccountsViewController.swift; sourceTree = "<group>"; };
 		0F52FE111F29F1C800A88E90 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Views/Controllers/SettingsViewController.swift; sourceTree = "<group>"; };
 		0F56148B1F31A167008A1232 /* SessionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDetailViewController.swift; path = Views/Controllers/SessionDetailViewController.swift; sourceTree = "<group>"; };
@@ -346,7 +344,6 @@
 				0F464C591F13C50500C2F58B /* Account.swift */,
 				0FC6E2A11F17593E002861F3 /* AccountManager.swift */,
 				0F464C5B1F13CB1100C2F58B /* Action.swift */,
-				0F464C711F14093E00C2F58B /* BillingGroup.swift */,
 				0F464C5F1F13D1E800C2F58B /* CampNetError.swift */,
 				0F464C571F13AD7900C2F58B /* Configuration.swift */,
 			);
@@ -937,7 +934,6 @@
 				0F8DBDDB1F55445300879276 /* SwiftyBeaver.swift in Sources */,
 				0F464C601F13D1E800C2F58B /* CampNetError.swift in Sources */,
 				0FD239C11F415EC6006EA7F9 /* UserDefaultsExtensions.swift in Sources */,
-				0F464C721F14093E00C2F58B /* BillingGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

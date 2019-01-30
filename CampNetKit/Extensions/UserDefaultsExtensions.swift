@@ -60,15 +60,6 @@ extension DefaultsKeys {
     static func accountHistory(of id: String) -> DefaultsKey<[String: Any]?> {
         return DefaultsKey<[String: Any]?>("\(id).accountHistory")
     }
-    static func accountEstimatedDailyUsage(of id: String) -> DefaultsKey<Int64?> {
-        return DefaultsKey<Int64?>("\(id).accountEstimatedDailyUsage")
-    }
-    static func accountFreeUsage(of id: String) -> DefaultsKey<Int64?> {
-        return DefaultsKey<Int64?>("\(id).accountFreeUsage")
-    }
-    static func accountMaxUsage(of id: String) -> DefaultsKey<Int64?> {
-        return DefaultsKey<Int64?>("\(id).accountMaxUsage")
-    }
 }
 
 extension UserDefaults {
@@ -90,9 +81,10 @@ extension UserDefaults {
     private static let mainStatus = Status(type: .online(onlineUsername: "lisihan13", startTime: nil, usage: nil))
     private static let mainProfile = Profile(
         name: "李思涵",
-        billingGroupName: "student",
         balance: 1.68,
         usage: 52_800_000_000,
+        freeUsage: 20_000_000_000,
+        maxUsage: 53_640_000_000,
         sessions: [
             Session(ip: "59.66.141.91",
                     startTime: Date(timeIntervalSinceNow: -70000),
@@ -117,9 +109,11 @@ extension UserDefaults {
     private static let altStatus = Status(type: .offcampus)
     private static let altProfile = Profile(
         name: "硕霸",
-        billingGroupName: "student",
         balance: 6.19,
+        dataBalance: 732_200_000,
         usage: 36_900_000_000,
+        freeUsage: 37_632_200_000,
+        maxUsage: 40_000_000_000,
         sessions: [])
     private static let altHistory = History(year: 2017, month: 8, usageSums: [
         10_080_600_000, 10_146_130_000, 10_146_130_000, 10_146_130_000, 10_146_130_000,
@@ -150,9 +144,6 @@ extension UserDefaults {
         Defaults[.accountStatus(of: accountId)] = UserDefaults.mainStatus.vars
         Defaults[.accountProfile(of: accountId)] = UserDefaults.mainProfile.vars
         Defaults[.accountHistory(of: accountId)] = UserDefaults.mainHistory.vars
-        Defaults[.accountEstimatedDailyUsage(of: accountId)] = 1_000_000_000
-        Defaults[.accountFreeUsage(of: accountId)] = 20_000_000_000
-        Defaults[.accountMaxUsage(of: accountId)] = 53_640_000_000
 
         Defaults[.accounts].append(accountId)
     }
@@ -163,9 +154,6 @@ extension UserDefaults {
         Defaults[.accountStatus(of: accountId)] = UserDefaults.altStatus.vars
         Defaults[.accountProfile(of: accountId)] = UserDefaults.altProfile.vars
         Defaults[.accountHistory(of: accountId)] = UserDefaults.altHistory.vars
-        Defaults[.accountEstimatedDailyUsage(of: accountId)] = 2_451_417_142
-        Defaults[.accountFreeUsage(of: accountId)] = 20_000_000_000
-        Defaults[.accountMaxUsage(of: accountId)] = 40_000_000_000
 
         Defaults[.accounts].append(accountId)
     }
@@ -180,9 +168,6 @@ extension Account {
         Defaults.remove(.accountStatus(of: identifier))
         Defaults.remove(.accountProfile(of: identifier))
         Defaults.remove(.accountHistory(of: identifier))
-        Defaults.remove(.accountEstimatedDailyUsage(of: identifier))
-        Defaults.remove(.accountFreeUsage(of: identifier))
-        Defaults.remove(.accountMaxUsage(of: identifier))
 
         Defaults.synchronize()
     }

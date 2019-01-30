@@ -6,19 +6,9 @@
   Copyright © 2019年 Sihan Li. All rights reserved.
 */
 
-/* Display name of configurations and billing groups. */
-"cn.edu.tsinghua" = "清华大学";
-"cn.edu.tsinghua.billing_groups.student" = "学生";
-"cn.edu.tsinghua.billing_groups.staff" = "教工";
-
-"cn.edu.tsinghua.auth4" = "清华大学（IPv4）";
-"cn.edu.tsinghua.auth4.billing_groups.student" = "学生";
-"cn.edu.tsinghua.auth4.billing_groups.staff" = "教工";
-
-"cn.edu.tsinghua.auth6" = "清华大学（IPv6）";
-"cn.edu.tsinghua.auth6.billing_groups.student" = "学生";
-"cn.edu.tsinghua.auth6.billing_groups.staff" = "教工";
-
+/* Display names of configurations. */
 "cn.edu.ruc" = "中国人民大学";
-
+"cn.edu.tsinghua" = "清华大学";
+"cn.edu.tsinghua.auth4" = "清华大学（IPv4）";
+"cn.edu.tsinghua.auth6" = "清华大学（IPv6）";
 "custom.self" = "自定义";
