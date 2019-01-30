@@ -514,6 +514,11 @@ extension Account {
                 }
             }
 
+            // Trigger a status check if the IP belongs to this device.
+            if WiFi.ip == ip {
+                _ = self.status(isSubaction: true, on: queue, requestBinder: requestBinder)
+            }
+
             log.info("\(self): \(ip) logged in.")
         }
         .recover(on: queue) { error in
@@ -552,6 +557,11 @@ extension Account {
                     log.warning("\(self): Logout session action finished successfully, but profile check failed.")
                     throw CampNetError.unknown("")
                 }
+            }
+
+            // Trigger a status check if the IP belongs to this device.
+            if WiFi.ip == session.ip {
+                _ = self.status(isSubaction: true, on: queue, requestBinder: requestBinder)
             }
 
             log.info("\(self): \(session) logged out.")
