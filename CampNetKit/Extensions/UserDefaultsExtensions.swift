@@ -81,7 +81,7 @@ extension UserDefaults {
         balance: 14.98,
         usage: 18_300_000_000)
 
-    private static let mainStatus = Status(type: .online(onlineUsername: "lisihan13", startTime: nil, usage: nil))
+    private static let mainStatus = Status(type: .online(onlineUsername: "lisihan13"))
     private static let mainProfile = Profile(
         name: "李思涵",
         balance: 1.68,

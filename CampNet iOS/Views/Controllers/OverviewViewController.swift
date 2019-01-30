@@ -100,7 +100,7 @@ class OverviewViewController: UITableViewController {
         }
 
         switch status.type {
-        case let .online(onlineUsername, _, _):
+        case let .online(onlineUsername):
             if let network = network, account.username == onlineUsername, account.canManage(network) {
                 // Will auto login after logging out, warn for it.
                 let menu = UIAlertController(title: L10n.Overview.LogoutWhenAutoLoginAlert.title, message: nil,
@@ -271,7 +271,7 @@ class OverviewViewController: UITableViewController {
 
         if let type = status?.type {
             switch type {
-            case let .online(onlineUsername: onlineUsername, _, _):
+            case let .online(onlineUsername):
                 if let username = account?.username, let onlineUsername = onlineUsername, username != onlineUsername {
                     loginButton.isEnabled = true
                     loginButton.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)

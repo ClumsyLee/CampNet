@@ -12,7 +12,7 @@ import NetworkExtension
 import Yaml
 
 public enum StatusType {
-    case online(onlineUsername: String?, startTime: Date?, usage: Int?)
+    case online(onlineUsername: String?)
     case offline
     case offcampus
 }
@@ -25,11 +25,9 @@ public struct Status {
         var vars: [String: Any] = [:]
 
         switch type {
-        case let .online(onlineUsername: onlineUsername, startTime: startTime, usage: usage):
+        case let .online(onlineUsername: onlineUsername):
             vars["status"] = "online"
             vars["online_username"] = onlineUsername
-            vars["start_time"] = startTime
-            vars["usage"] = usage
         case .offline:
             vars["status"] = "offline"
         case .offcampus:
@@ -55,9 +53,7 @@ public struct Status {
         switch statusString {
         case "online":
             let onlineUsername = vars["online_username"] as? String
-            let startTime = vars["start_time"] as? Date
-            let usage = vars["usage"] as? Int
-            self.type = .online(onlineUsername: onlineUsername, startTime: startTime, usage: usage)
+            self.type = .online(onlineUsername: onlineUsername)
         case "offline":
             self.type = .offline
         case "offcampus":
@@ -73,9 +69,8 @@ public struct Status {
 extension Status: CustomStringConvertible {
     public var description: String {
         switch type {
-        case let .online(onlineUsername: onlineUsername, startTime: startTime, usage: usage):
-            return "online(\(onlineUsername ?? "nil"), \(startTime?.description ?? "nil"), " +
-                   "\(usage?.description ?? "nil"))"
+        case let .online(onlineUsername: onlineUsername):
+            return "online(\(onlineUsername ?? ""))"
         case .offline:
             return "offline"
         case .offcampus:
