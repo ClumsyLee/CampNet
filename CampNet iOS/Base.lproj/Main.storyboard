@@ -33,7 +33,7 @@
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Current Usage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOX-7d-QAT">
                                                     <rect key="frame" x="144" y="13.5" width="126.5" height="24"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -279,6 +279,8 @@
                         <outlet property="networkName" destination="3R3-Ml-Rbw" id="3eh-AU-eh0"/>
                         <outlet property="upperView" destination="bVu-CG-AHs" id="Ibx-Ei-U6T"/>
                         <outlet property="usage" destination="Ai3-mC-R1h" id="AlG-Qv-ZDt"/>
+                        <outlet property="usageTitle" destination="gOX-7d-QAT" id="0xm-pJ-BwS"/>
+                        <outlet property="usageUnit" destination="8EY-LW-m2J" id="AEU-ox-rJH"/>
                         <segue destination="eSM-KM-bTD" kind="show" identifier="settingsPressed" id="YHt-3Z-htq"/>
                     </connections>
                 </tableViewController>

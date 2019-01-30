@@ -26,7 +26,9 @@ class OverviewViewController: UITableViewController {
 
     var upperBackgroundView: UIView!
 
+    @IBOutlet var usageTitle: UILabel!
     @IBOutlet var usage: UILabel!
+    @IBOutlet var usageUnit: UILabel!
     @IBOutlet var balance: UILabel!
     @IBOutlet var estimatedFee: UILabel!
     @IBOutlet var networkName: UILabel!
@@ -556,6 +558,14 @@ class OverviewViewController: UITableViewController {
         upperBackgroundView = UIView()
         upperBackgroundView.backgroundColor = upperView.backgroundColor
         tableView.insertSubview(upperBackgroundView, at: 0)
+
+        // Shrink the headline for small screens.
+        print("height = \(tableView.bounds.height)")
+        if tableView.bounds.height < 500 {
+            usageTitle.font = UIFont.systemFont(ofSize: 15)
+            usage.font = UIFont.systemFont(ofSize: 54, weight: .thin)
+            usageUnit.font = UIFont.systemFont(ofSize: 27, weight: .light)
+        }
 
         // Setup the buttons.
         networkDisclosure = UITableViewCell()
