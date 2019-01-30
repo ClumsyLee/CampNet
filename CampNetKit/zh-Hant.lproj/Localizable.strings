@@ -8,6 +8,7 @@
 
 /* Localized descriptions for CampNetError */
 "offcampus" = "未連接到校園網。";
+"offline" = "請先登錄。";
 "unauthorized" = "用戶名或密碼錯誤，請在 “賬戶” 中重新輸入密碼。";
 "arrears" = "賬戶已欠費。";
 "networkError" = "網絡錯誤，請稍後再試。";

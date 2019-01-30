@@ -10,6 +10,7 @@ import Foundation
 
 public enum CampNetError: Error {
     case offcampus
+    case offline
     case unauthorized
     case arrears
 
@@ -24,6 +25,7 @@ public enum CampNetError: Error {
 
         switch self {
         case .offcampus: key = "offcampus"
+        case .offline: key = "offline"
         case .unauthorized: key = "unauthorized"
         case .arrears: key = "arrears"
 
@@ -47,6 +49,7 @@ public enum CampNetError: Error {
     init?(identifier: String) {
         switch identifier {
         case "offcampus": self = .offcampus
+        case "offline": self = .offline
         case "unauthorized": self = .unauthorized
         case "arrears": self = .arrears
 

@@ -8,6 +8,7 @@
 
 /* Localized descriptions for CampNetError */
 "offcampus" = "Not connected to the campus network.";
+"offline" = "Please login first.";
 "unauthorized" = "Invalid username or password, please re-enter password in \"Accounts\".";
 "arrears" = "The account is in arrears.";
 "networkError" = "Network error, please try again later.";

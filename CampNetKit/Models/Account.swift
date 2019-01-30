@@ -195,7 +195,7 @@ public class Account {
 
             if let profile = newValue {
                 fakeHistoryIfNeeded(profile: profile)
-                
+
                 if let billingGroup = configuration.billingGroups[profile.billingGroupName ?? ""] {
                     freeUsage = billingGroup.freeUsage
 
@@ -359,6 +359,7 @@ extension Account {
         if let error = error as? CampNetError {
             switch error {
             case .offcampus: self.status = Status(type: .offcampus)
+            case .offline: self.status = Status(type: .offline)
             default: break
             }
         }
