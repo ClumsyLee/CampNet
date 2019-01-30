@@ -34,6 +34,7 @@ class AccountsViewController: UITableViewController {
     }
 
     var accounts: [(configuration: Configuration, accounts: [Account])] = []
+    var main: Account? = nil
     var delegateAccounts: Set<Account> = []
 
     func account(at indexPath: IndexPath) -> Account {
@@ -121,6 +122,23 @@ class AccountsViewController: UITableViewController {
         }
     }
 
+    @objc func mainChanged(_ notification: Notification) {
+        let fromAccount = notification.userInfo?["fromAccount"] as? Account
+        let toAccount = notification.userInfo?["toAccount"] as? Account
+        main = toAccount
+
+        if let fromIndexPath = indexPath(of: fromAccount) {
+            if let cell = tableView.cellForRow(at: fromIndexPath) as? AccountCell {
+                cell.isMain = false
+            }
+        }
+        if let toIndexPath = indexPath(of: toAccount) {
+            if let cell = tableView.cellForRow(at: toIndexPath) as? AccountCell {
+                cell.isMain = true
+            }
+        }
+    }
+
     @objc func delegateChanged(_ notification: Notification) {
         let fromAccount = notification.userInfo?["fromAccount"] as? Account
         let toAccount = notification.userInfo?["toAccount"] as? Account
@@ -162,6 +180,8 @@ class AccountsViewController: UITableViewController {
 
         // Set accounts.
         var allAccounts = Account.all
+        main = Account.main
+
         for accounts in allAccounts.values {
             if let account = accounts.first {
                 delegateAccounts.insert(account)
@@ -184,6 +204,8 @@ class AccountsViewController: UITableViewController {
                                                name: .accountAdded, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(accountRemoved(_:)),
                                                name: .accountRemoved, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(mainChanged(_:)),
+                                               name: .mainAccountChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(delegateChanged(_:)),
                                                name: .delegateAccountChanged, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(profileUpdated(_:)),
@@ -244,7 +266,7 @@ class AccountsViewController: UITableViewController {
 
         // Configure the cell...
         let account = self.account(at: indexPath)
-        cell.update(account: account, isDelegate: delegateAccounts.contains(account))
+        cell.update(account: account, isMain: account == main, isDelegate: delegateAccounts.contains(account))
 
         return cell
     }

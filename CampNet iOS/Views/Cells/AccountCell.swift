@@ -17,13 +17,21 @@ class AccountCell: UITableViewCell {
     @IBOutlet var balance: UILabel!
     @IBOutlet var usage: UILabel!
 
+    var isMain = false {
+        didSet {
+            let color = isMain ? #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1) : .darkText
+            username.textColor = color
+            name.textColor = color
+        }
+    }
+
     var isDelegate = false {
         didSet {
             checkmark.isHidden = !isDelegate
         }
     }
 
-    func update(account: Account, isDelegate: Bool) {
+    func update(account: Account, isMain: Bool, isDelegate: Bool) {
         let profile = account.profile
 
         username.text = account.username
@@ -39,6 +47,7 @@ class AccountCell: UITableViewCell {
         }
         self.usage.text = profile?.usage?.usageString(decimalUnits: account.configuration.decimalUnits)
 
+        self.isMain = isMain
         self.isDelegate = isDelegate
     }
 
