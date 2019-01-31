@@ -339,7 +339,7 @@ extension Account {
         }
         .map(on: queue) { vars -> Status in
             guard let status = Status(vars: vars) else {
-                log.error("\(self): No status in vars (\(vars)).")
+                log.error("\(self): No status in vars (\(vars.keys)).")
                 throw CampNetError.invalidConfiguration
             }
             self.status = status
@@ -378,7 +378,7 @@ extension Account {
         }
         .map(on: queue) { vars -> Profile in
             guard let profile = Profile(vars: vars) else {
-                log.error("\(self): No profile in vars (\(vars)).")
+                log.error("\(self): No profile in vars (\(vars.keys)).")
                 throw CampNetError.invalidConfiguration
             }
 
@@ -508,7 +508,7 @@ extension Account {
         }
         .map(on: queue) { vars -> History in
             guard let history = History(vars: vars) else {
-                log.error("\(self): No history in vars (\(vars)).")
+                log.error("\(self): No history in vars (\(vars.keys)).")
                 throw CampNetError.invalidConfiguration
             }
             self.history = history

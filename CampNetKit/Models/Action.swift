@@ -94,7 +94,7 @@ public struct ActionEntry {
             log.verbose("\(self): Processing response.")
 
             let newVars = try self.captureNewVars(resp: resp)                   // Capture new vars from HTML if needed.
-            try self.runScript(context: context, resp: resp ,newVars: newVars)  // Invoke script.
+            try self.runScript(context: context, resp: resp, newVars: newVars)  // Invoke script.
             let results = try self.getResults(context: context)                 // Get results.
 
             return results
@@ -208,8 +208,7 @@ public struct ActionEntry {
     func getResults(context: JSContext) throws -> [String: Any] {
         guard let results = context.objectForKeyedSubscript(ActionEntry.varsName).toDictionary()
             as? [String: Any] else {
-            log.error("\(self): Failed to get results. " +
-                      "Object: \(context.objectForKeyedSubscript(ActionEntry.varsName).debugDescription)")
+            log.error("\(self): Failed to get results from JS.")
             throw CampNetError.internalError
         }
 
