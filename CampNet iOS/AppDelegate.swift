@@ -157,7 +157,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
 
         // One-time flags.
-        if !Defaults.hasKey(.tsinghuaAuth4Migrated) {
+        if !Defaults.hasKey(.tsinghuaAuth4Migrated) && !Device.inUITest {
             migrateTsinghuaAuth4()
             Defaults[.tsinghuaAuth4Migrated] = true
         }
