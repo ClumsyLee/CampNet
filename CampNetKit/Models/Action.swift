@@ -178,10 +178,8 @@ public struct ActionEntry {
     }
 
     func runScript(context: JSContext, resp: String = "", newVars: [String: Any] = [:]) throws {
-        // Set response if needed.
-        if !resp.isEmpty {
-            context.setObject(resp, forKeyedSubscript: ActionEntry.respName as (NSCopying & NSObjectProtocol))
-        }
+        // Set response.
+        context.setObject(resp, forKeyedSubscript: ActionEntry.respName as (NSCopying & NSObjectProtocol))
 
         // Send new vars if needed.
         if !newVars.isEmpty {
