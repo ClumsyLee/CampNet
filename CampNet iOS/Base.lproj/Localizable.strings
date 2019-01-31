@@ -10,7 +10,7 @@
 "accounts.empty_view.title" = "No Accounts";
 
 /* Hotspot Helper */
-"hotspot_helper.display_name" = "Campus network managed by CampNet";
+"hotspot_helper.display_name" = "CampNet managed network";
 
 /* Notifications */
 "notifications.donation_request.body" = "CampNet has auto-logged in %d times for you. Would you like to show some love to this open source project?";
