@@ -5,6 +5,7 @@
 [![codecov](https://codecov.io/gh/ThomasLee969/CampNet/branch/master/graph/badge.svg)](https://codecov.io/gh/ThomasLee969/CampNet)
 [![Slack Badge](https://img.shields.io/badge/Slack-join-orange.svg?logo=slack)](https://join.slack.com/t/campnet/shared_invite/enQtMjU0NTA5MTk4Mjc3LTQyN2ZmMThiYzg2MzkyOGRkNjViOGIwOWM5ZDZiMTYwNmZlYjQ4NDQ5MzdlZDdlMjVkMWY1NmMxMGFkMTNkN2E)
 
-
+```bash
 agvtool new-marketing-version 1.3.0
 agvtool next-version -all
+```
