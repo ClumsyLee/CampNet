@@ -44,7 +44,7 @@ class CampNet_iOS_UITests: XCTestCase {
         snapshot("4-accounts")
 
         sleep(2)
-        app.cells.staticTexts["lisihan13"].tap()
+        app.cells.staticTexts["lisihan13 (李思涵)"].tap()
         snapshot("1-overview")
 
         sleep(2)
@@ -56,9 +56,13 @@ class CampNet_iOS_UITests: XCTestCase {
         sleep(2)
         app.navigationBars.buttons["accounts"].tap()
         sleep(2)
-        app.cells.staticTexts["liws13"].tap()
+        app.navigationBars.buttons.element(boundBy: 1).tap()
         snapshot("2-overview")
 
+        sleep(2)
+        app.navigationBars.buttons.element(boundBy: 0).tap()
+        sleep(2)
+        app.navigationBars.buttons.element(boundBy: 0).tap()
         sleep(2)
         app.navigationBars.buttons["settings"].tap()
         snapshot("3-settings")

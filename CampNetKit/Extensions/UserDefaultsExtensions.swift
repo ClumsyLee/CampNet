@@ -107,10 +107,10 @@ extension UserDefaults {
         ])
     private static let mainHistory = History(year: 2017, month: 8,usageSums: [
         100_000_000, 1_000_000_000, 9_000_000_000, 11_000_000_000, 15_000_000_000,
-        17_000_000_000, 18_000_000_000, 20_000_000_000, 26_000_000_000, 27_000_000_000,
-        27_400_000_000, 28_000_000_000, 38_000_000_000, 40_000_000_000, 40_000_000_000,
-        42_000_000_000, 43_000_000_000, 46_000_000_000, 48_000_000_000, 49_000_000_000,
-        51_000_000_000, 51_000_000_000, 52_000_000_000, 52_000_000_000, 52_800_000_000])
+        17_000_000_000, 18_000_000_000, 20_000_000_000, 20_000_000_000, 20_500_000_000,
+        27_400_000_000, 28_000_000_000, 29_300_000_000, 30_000_000_000, 40_000_000_000,
+        42_000_000_000, 43_000_000_000, 46_000_000_000, 48_200_000_000, 49_600_000_000,
+        49_700_000_000, 49_800_000_000, 50_300_000_000, 50_800_000_000, 52_800_000_000])
 
     private static let altStatus = Status(type: .offcampus)
     private static let altProfile = Profile(
@@ -137,7 +137,7 @@ extension UserDefaults {
     }
 
     private func addBasicAccount() {
-        let accountId = "cn.edu.tsinghua.chenxinyao13"
+        let accountId = "cn.edu.tsinghua.auth4.chenxinyao13"
 
         Defaults[.accountProfile(of: accountId)] = UserDefaults.basicProfile.vars
 
@@ -145,7 +145,7 @@ extension UserDefaults {
     }
 
     private func addMainAccount() {
-        let accountId = "cn.edu.tsinghua.lisihan13"
+        let accountId = "cn.edu.tsinghua.auth4.lisihan13"
 
         Defaults[.accountStatus(of: accountId)] = UserDefaults.mainStatus.vars
         Defaults[.accountProfile(of: accountId)] = UserDefaults.mainProfile.vars
@@ -155,7 +155,7 @@ extension UserDefaults {
     }
 
     private func addAltAccount() {
-        let accountId =  "cn.edu.tsinghua.liws13"
+        let accountId =  "cn.edu.tsinghua.auth4.liws13"
 
         Defaults[.accountStatus(of: accountId)] = UserDefaults.altStatus.vars
         Defaults[.accountProfile(of: accountId)] = UserDefaults.altProfile.vars
