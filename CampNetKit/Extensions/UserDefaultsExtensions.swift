@@ -50,6 +50,9 @@ extension DefaultsKeys {
     static func accountPastIps(of id: String) -> DefaultsKey<[String]> {
         return DefaultsKey<[String]>("\(id).accountPastIps")
     }
+    static func accountLoginAttemptAt(of id: String) -> DefaultsKey<Date?> {
+        return DefaultsKey<Date?>("\(id).accountLoginAttemptAt")
+    }
     // Sync with the widget.
     static func accountDecimalUnits(of id: String) -> DefaultsKey<Bool> {
         return DefaultsKey<Bool>("\(id).accountDecimalUnits")

@@ -18,6 +18,7 @@ import SwiftyUserDefaults
 public class Account {
 
     static let statusLifetime: TimeInterval = 86400
+    public static let autoLoginInterval: TimeInterval = 10
     public static let profileAutoUpdateInterval: TimeInterval = 600
     static let estimationLength = 7
 
@@ -225,6 +226,24 @@ public class Account {
         }
     }
 
+    public fileprivate(set) var loginAttemptAt: Date? {
+        get {
+            return Defaults[.accountLoginAttemptAt(of: identifier)]
+        }
+        set {
+            Defaults[.accountLoginAttemptAt(of: identifier)] = newValue
+            Defaults.synchronize()
+        }
+    }
+
+    public var shouldAutoLogin: Bool {
+        if let loginAttemptAt = loginAttemptAt {
+            return -loginAttemptAt.timeIntervalSinceNow > Account.autoLoginInterval
+        } else {
+            return true
+        }
+    }
+
     public var shouldAutoUpdate: Bool {
         if let profile = profile {
             return -profile.updatedAt.timeIntervalSinceNow > Account.profileAutoUpdateInterval
@@ -292,6 +311,7 @@ extension Account {
 
     public func login(isSubaction: Bool = false, on queue: DispatchQueue = DispatchQueue.global(qos: .userInitiated),
                       requestBinder: RequestBinder? = nil) -> Promise<Void> {
+        loginAttemptAt = Date()
 
         return firstly { () -> Promise<[String: Any]> in
             guard let action = configuration.actions[.login] else {

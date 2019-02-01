@@ -101,7 +101,8 @@ class OverviewViewController: UITableViewController {
 
         switch status.type {
         case let .online(onlineUsername):
-            if let network = network, account.username == onlineUsername, account.canManage(network) {
+            if let network = network, onlineUsername == nil || account.username == onlineUsername!,
+                account.canManage(network), account.shouldAutoLogin {
                 // Will auto login after logging out, warn for it.
                 let menu = UIAlertController(title: L10n.Overview.LogoutWhenAutoLoginAlert.title, message: nil,
                                              preferredStyle: .actionSheet)
@@ -183,7 +184,7 @@ class OverviewViewController: UITableViewController {
             }
         }
         .catch { _ in
-            self.reloadStatus(autoLogin: false)  // Avoid logging in forever.
+            self.reloadStatus()  // Reset the button.
         }
 
         Analytics.logEvent("foreground_login", parameters: nil)
@@ -203,7 +204,7 @@ class OverviewViewController: UITableViewController {
             SwiftRater.incrementSignificantUsageCount()
         }
         .catch { _ in
-            self.reloadStatus()
+            self.reloadStatus()  // Reset the button.
         }
 
         Analytics.logEvent("foreground_logout", parameters: nil)
@@ -266,7 +267,7 @@ class OverviewViewController: UITableViewController {
         ip = WiFi.ip ?? ""
     }
 
-    func reloadStatus(autoLogin: Bool = true) {
+    func reloadStatus() {
         status = account?.status
 
         if let type = status?.type {
@@ -296,7 +297,7 @@ class OverviewViewController: UITableViewController {
 
                 loginButtonCaption.text = L10n.Overview.LoginButton.Captions.login
 
-                if let account = account, let network = network, account.canManage(network), autoLogin,
+                if let account = account, let network = network, account.canManage(network), account.shouldAutoLogin,
                    UIApplication.shared.applicationState == .active {
                     login()
                 }
