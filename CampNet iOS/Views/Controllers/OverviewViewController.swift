@@ -464,7 +464,7 @@ class OverviewViewController: UITableViewController {
 
         if let account = notification.userInfo?["account"] as? Account {
             // Validate & initial update.
-            _ = account.update(skipStatus: true)
+            _ = account.update()
         }
     }
 
