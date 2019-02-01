@@ -38,7 +38,7 @@ internal enum L10n {
   }
 
   internal enum HotspotHelper {
-    /// Campus network managed by CampNet
+    /// CampNet managed network
     internal static let displayName = L10n.tr("Localizable", "hotspot_helper.display_name")
   }
 

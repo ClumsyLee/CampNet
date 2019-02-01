@@ -603,7 +603,8 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection footerTitle="The existing custom configuration will be overwritten." id="5sP-mU-Y4U">
+                            <tableViewSection id="5sP-mU-Y4U">
+                                <string key="footerTitle">The existing custom configuration will be overwritten. When a SSID is claimed by multiple accounts, custom accounts have higher priorities than the others.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5bL-Yz-wLS">
                                         <rect key="frame" x="0.0" y="35" width="414" height="44"/>

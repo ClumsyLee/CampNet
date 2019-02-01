@@ -329,8 +329,8 @@
 /* Class = "UILabel"; text = "Code Repository"; ObjectID = "FhX-2N-asV"; */
 "FhX-2N-asV.text" = "代码库";
 
-/* Class = "UITableViewSection"; footerTitle = "The existing custom configuration will be overwritten."; ObjectID = "5sP-mU-Y4U"; */
-"5sP-mU-Y4U.footerTitle" = "现有的自定义配置会被覆盖。";
+/* Class = "UITableViewSection"; footerTitle = "The existing custom configuration will be overwritten. When a SSID is claimed by multiple accounts, custom accounts have higher priorities than the others."; ObjectID = "5sP-mU-Y4U"; */
+"5sP-mU-Y4U.footerTitle" = "现有的自定义配置会被覆盖。当多个账户试图接管同一 SSID 时，自定义账户的优先级更高。";
 
 /* Class = "UITextField"; placeholder = "Configuration URL"; ObjectID = "I0h-aW-Sfo"; */
 "I0h-aW-Sfo.placeholder" = "配置 URL";
