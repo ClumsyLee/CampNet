@@ -7,6 +7,7 @@
 */
 
 /* Display names of configurations. */
+"cn.ac.ucas" = "University of Chinese Academy of Sciences";
 "cn.edu.ruc" = "Renmin University of China";
 "cn.edu.tsinghua" = "Tsinghua University (Legacy)";
 "cn.edu.tsinghua.auth4" = "Tsinghua University (IPv4)";
