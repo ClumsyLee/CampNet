@@ -14,10 +14,10 @@
 
 /* Notifications */
 "notifications.donation_request.body" = "CampNet has auto-logged in %d times for you. Would you like to show some love to this open source project?";
-"notifications.load_configuration.fetch_error.title" = "Unable to Fetch Configuration";
-"notifications.load_configuration.parse_error.title" = "Unable to Parse Configuration";
 "notifications.donation_request.title" = "We Need Your Support!";
 "notifications.history_error.title" = "Unable to Update History of \"%@\"";
+"notifications.load_configuration.fetch_error.title" = "Unable to Fetch Configuration";
+"notifications.load_configuration.parse_error.title" = "Unable to Parse Configuration";
 "notifications.login_error.title" = "Unable to Login \"%@\"";
 "notifications.login_ip_error.title" = "Unable to Login %@";
 "notifications.logout_error.title" = "Unable to Logout \"%@\"";

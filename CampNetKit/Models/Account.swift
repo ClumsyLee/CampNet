@@ -328,7 +328,7 @@ extension Account {
         .done(on: queue) { status in
             guard case .online = status.type else {
                 log.warning("\(self): Login action finished successfully, but status check failed.")
-                throw CampNetError.unknown("")
+                throw CampNetError.networkError
             }
 
             Defaults[.accountLastLoginErrorNotification(of: self.identifier)] = nil
@@ -443,7 +443,7 @@ extension Account {
             if let sessions = profile.sessions {
                 guard sessions.map({ $0.ip }).contains(ip) else {
                     log.warning("\(self): Login IP action finished successfully, but profile check failed.")
-                    throw CampNetError.unknown("")
+                    throw CampNetError.networkError
                 }
             }
 
@@ -488,7 +488,7 @@ extension Account {
             if let sessions = profile.sessions {
                 guard !sessions.map({ $0.ip }).contains(session.ip) else {
                     log.warning("\(self): Logout session action finished successfully, but profile check failed.")
-                    throw CampNetError.unknown("")
+                    throw CampNetError.networkError
                 }
             }
 
@@ -563,7 +563,7 @@ extension Account {
         .done(on: queue) { status in
             guard case .offline = status.type else {
                 log.warning("\(self): Logout action finished successfully, but status check failed.")
-                throw CampNetError.unknown("")
+                throw CampNetError.networkError
             }
 
             log.info("\(self): Logged out.")
