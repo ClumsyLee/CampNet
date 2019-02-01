@@ -326,7 +326,7 @@ class OverviewViewController: UITableViewController {
 
         let title: String
         if let account = account {
-            title = "\(account.username) ▸"
+            title = "\(profile?.name ?? account.username) ▸"
         } else {
             title = "\(L10n.Overview.Titles.noAccounts) ▸"
         }
