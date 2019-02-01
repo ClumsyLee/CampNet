@@ -13,15 +13,12 @@ class AccountCell: UITableViewCell {
 
     @IBOutlet var checkmark: UIImageView!
     @IBOutlet var username: UILabel!
-    @IBOutlet var name: UILabel!
     @IBOutlet var balance: UILabel!
     @IBOutlet var usage: UILabel!
 
     var isMain = false {
         didSet {
-            let color = isMain ? #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1) : .darkText
-            username.textColor = color
-            name.textColor = color
+            username.textColor = isMain ? #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1) : .darkText
         }
     }
 
@@ -34,11 +31,10 @@ class AccountCell: UITableViewCell {
     func update(account: Account, isMain: Bool, isDelegate: Bool) {
         let profile = account.profile
 
-        username.text = account.username
         if let name = profile?.name {
-            self.name.text = "(\(name))"
+            self.username.text = "\(account.username) (\(name))"
         } else {
-            self.name.text = nil
+            self.username.text = account.username
         }
         if let moneyString = profile?.balance?.moneyString {
             self.balance.text = "¥ \(moneyString)"

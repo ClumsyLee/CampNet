@@ -1405,23 +1405,12 @@ Speacial thanks to: Yilong Guo, Wenshuo Li, Xinyao Chen, Xingyue Liu.</string>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="yam-5S-7y8">
                                                     <rect key="frame" x="0.0" y="0.0" width="233.5" height="35"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" alignment="lastBaseline" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Yz0-dj-XFJ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="146" height="20.5"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="lisihan13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dg3-U4-UEY">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="65.5" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Sihan Li)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hu4-PL-hKr">
-                                                                    <rect key="frame" x="73.5" y="0.0" width="72.5" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="lisihan13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dg3-U4-UEY">
+                                                            <rect key="frame" x="0.0" y="0.0" width="65.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 12.58" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpJ-Md-TQ4">
                                                             <rect key="frame" x="0.0" y="20.5" width="42.5" height="14.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
@@ -1458,7 +1447,6 @@ Speacial thanks to: Yilong Guo, Wenshuo Li, Xinyao Chen, Xingyue Liu.</string>
                                 <connections>
                                     <outlet property="balance" destination="KpJ-Md-TQ4" id="bZD-LE-wDF"/>
                                     <outlet property="checkmark" destination="BXQ-39-n1c" id="ipZ-KG-C8G"/>
-                                    <outlet property="name" destination="hu4-PL-hKr" id="clr-vr-68Q"/>
                                     <outlet property="usage" destination="wYs-sX-oe8" id="cgr-u7-a98"/>
                                     <outlet property="username" destination="dg3-U4-UEY" id="A6Z-kY-fgg"/>
                                     <segue destination="EhV-Ab-cbe" kind="unwind" unwindAction="accountSwitchedWithSegue:" id="GA4-TT-rrc"/>
