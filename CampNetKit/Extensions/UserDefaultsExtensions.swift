@@ -130,6 +130,8 @@ extension UserDefaults {
         35_902_350_000, 36_699_970_000, 37_160_280_000])
 
     public func useFakeAccounts() {
+        Defaults[.customConfiguration] = ""  // Remove custom configuration.
+
         Defaults[.accounts] = []
         addBasicAccount()
         addMainAccount()
