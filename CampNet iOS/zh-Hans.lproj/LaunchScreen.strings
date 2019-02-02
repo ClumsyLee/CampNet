@@ -11,14 +11,14 @@
 /* Class = "UILabel"; text = " "; ObjectID = "MQs-MM-g9f"; */
 "MQs-MM-g9f.text" = " ";
 
-/* Class = "UILabel"; text = "¥"; ObjectID = "O2G-Mo-yZl"; */
-"O2G-Mo-yZl.text" = "¥";
+/* Class = "UILabel"; text = "GB"; ObjectID = "O2G-Mo-yZl"; */
+"O2G-Mo-yZl.text" = "GB";
 
 /* Class = "UILabel"; text = " "; ObjectID = "OH1-6j-66d"; */
 "OH1-6j-66d.text" = " ";
 
-/* Class = "UILabel"; text = "        "; ObjectID = "PQ3-BN-jAg"; */
-"PQ3-BN-jAg.text" = "        ";
+/* Class = "UILabel"; text = "     "; ObjectID = "PQ3-BN-jAg"; */
+"PQ3-BN-jAg.text" = "     ";
 
 /* Class = "UILabel"; text = " "; ObjectID = "QnC-xN-SQK"; */
 "QnC-xN-SQK.text" = " ";
@@ -26,8 +26,8 @@
 /* Class = "UILabel"; text = " "; ObjectID = "Ruh-dc-2hP"; */
 "Ruh-dc-2hP.text" = " ";
 
-/* Class = "UILabel"; text = "          "; ObjectID = "X9F-Jm-e5C"; */
-"X9F-Jm-e5C.text" = "          ";
+/* Class = "UILabel"; text = "         "; ObjectID = "X9F-Jm-e5C"; */
+"X9F-Jm-e5C.text" = "         ";
 
 /* Class = "UILabel"; text = "GB"; ObjectID = "exb-et-0qV"; */
 "exb-et-0qV.text" = "GB";
