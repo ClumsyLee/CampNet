@@ -16,7 +16,7 @@ The terms used in this Privacy Policy have the same meanings as in our Terms and
 
 ## Information Collection and Use
 
-In order to login to your campus network for you, while using our Service, I may require you to provide us with certain personally identifiable information, including but not limited to account IDs, passwords, SSIDs and custom configurations. The information that I request will be retained on your device and is not collected by me in any way.
+In order to login to your campus network for you, while using our Service, I may require you to provide us with certain personally identifiable information, including but not limited to usernames, passwords, SSIDs and custom configurations. **The information that I request will be retained on your device and is not collected by me in any way.**
 
 The app does use third party services that may collect information used to identify you.
 
@@ -53,6 +53,10 @@ I value your trust in providing us your Personal Information, thus we are strivi
 ## Links to Other Sites
 
 This Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by me. Therefore, I strongly advise you to review the Privacy Policy of these websites. I have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
+
+## Custom Configurations
+
+You are able to load custom configurations from external sites. If you create a custom account, the custom configuration will be able to access the username and password of that account, and will be able to send them to any extern sites. Therefore, **I strongly advise you to load custom configurations only from reliable sites.** I have no control over and assume no responsibility for the behaviors of any third-party custom configurations.
 
 ## Children’s Privacy
 
