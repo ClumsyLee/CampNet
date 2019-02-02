@@ -27,6 +27,11 @@ class SupportUsViewController: UIViewController {
     @IBOutlet var rateButton: PressableButton!
     var donateProduct: SKProduct!
 
+    @available(iOS 10.0, *)
+    lazy var lightImpact = UIImpactFeedbackGenerator(style: .light)
+    @available(iOS 10.0, *)
+    lazy var mediumImpact = UIImpactFeedbackGenerator(style: .medium)
+
     @IBAction func restoreButtonPressed(_ sender: Any) {
         SwiftyStoreKit.restorePurchases(atomically: true) { results in
             if results.restoreFailedPurchases.count > 0 {
@@ -52,7 +57,19 @@ class SupportUsViewController: UIViewController {
         }
     }
 
+    @available(iOS 10.0, *)
+    @IBAction func buttonDown(_ sender: Any) {
+        mediumImpact.impactOccurred()
+    }
+
+    @available(iOS 10.0, *)
+    @IBAction func buttonUp(_ sender: Any) {
+        lightImpact.impactOccurred()
+    }
+
     @IBAction func donateButtonPressed(_ sender: Any) {
+        Analytics.logEvent("donate_button_pressed", parameters: ["donated": Defaults[.donated] ? 1 : 0])
+
         if Defaults[.donated] {
             donated()
             return

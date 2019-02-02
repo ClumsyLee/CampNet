@@ -743,6 +743,10 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="buttonDown:" destination="fuL-fk-47F" eventType="touchDragEnter" id="OIA-SW-i6G"/>
+                                            <action selector="buttonDown:" destination="fuL-fk-47F" eventType="touchDown" id="qKG-RR-398"/>
+                                            <action selector="buttonUp:" destination="fuL-fk-47F" eventType="touchDragExit" id="5sc-Va-6sl"/>
+                                            <action selector="buttonUp:" destination="fuL-fk-47F" eventType="touchUpInside" id="cfs-Jk-0Cs"/>
                                             <action selector="donateButtonPressed:" destination="fuL-fk-47F" eventType="touchUpInside" id="wJI-NI-V0x"/>
                                         </connections>
                                     </button>
@@ -761,6 +765,10 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="buttonDown:" destination="fuL-fk-47F" eventType="touchDown" id="3AF-4O-ClQ"/>
+                                            <action selector="buttonDown:" destination="fuL-fk-47F" eventType="touchDragEnter" id="4IE-ww-Zxu"/>
+                                            <action selector="buttonUp:" destination="fuL-fk-47F" eventType="touchUpInside" id="9pf-kI-QU3"/>
+                                            <action selector="buttonUp:" destination="fuL-fk-47F" eventType="touchDragExit" id="dcF-tY-91B"/>
                                             <action selector="rateButtonPressed:" destination="fuL-fk-47F" eventType="touchUpInside" id="fIi-8t-ALu"/>
                                         </connections>
                                     </button>
