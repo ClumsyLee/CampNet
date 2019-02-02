@@ -321,7 +321,7 @@
 "LP9-zR-21e.text" = "";
 
 /* Class = "UILabel"; text = "Load Custom Configuration"; ObjectID = "PsY-vW-TCs"; */
-"PsY-vW-TCs.text" = "加載自定义配置";
+"PsY-vW-TCs.text" = "加载自定义配置";
 
 /* Class = "UILabel"; text = "Code Repository"; ObjectID = "FhX-2N-asV"; */
 "FhX-2N-asV.text" = "代码库";
@@ -333,7 +333,7 @@
 "I0h-aW-Sfo.placeholder" = "配置 URL";
 
 /* Class = "UINavigationItem"; title = "Load Configuration"; ObjectID = "WgA-SL-wL6"; */
-"WgA-SL-wL6.title" = "加載配置";
+"WgA-SL-wL6.title" = "加载配置";
 
 /* Class = "UILabel"; text = "40.0 GB"; ObjectID = "NDB-72-yNb"; */
 "NDB-72-yNb.text" = "";
