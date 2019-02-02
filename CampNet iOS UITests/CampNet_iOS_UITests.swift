@@ -39,31 +39,27 @@ class CampNet_iOS_UITests: XCTestCase {
 
         let app = XCUIApplication()
 
-        sleep(2)
         app.navigationBars.buttons["accounts"].tap()
         snapshot("4-accounts")
 
-        sleep(2)
         app.cells.staticTexts["lisihan13 (李思涵)"].tap()
         snapshot("1-overview")
 
-        sleep(2)
         app.buttons["devices"].tap()
         snapshot("5-devices")
 
-        sleep(2)
         app.navigationBars.buttons.element(boundBy: 0).tap()
-        sleep(2)
         app.navigationBars.buttons["accounts"].tap()
-        sleep(2)
-        app.navigationBars.buttons.element(boundBy: 1).tap()
-        snapshot("2-overview")
+        // On some devices, there are two back buttons.
+        var addButton = app.navigationBars.buttons.element(boundBy: 2)
+        if !addButton.exists {
+            addButton = app.navigationBars.buttons.element(boundBy: 1)
+        }
+        addButton.tap()
+        snapshot("2-configurations")
 
-        sleep(2)
         app.navigationBars.buttons.element(boundBy: 0).tap()
-        sleep(2)
         app.navigationBars.buttons.element(boundBy: 0).tap()
-        sleep(2)
         app.navigationBars.buttons["settings"].tap()
         snapshot("3-settings")
     }

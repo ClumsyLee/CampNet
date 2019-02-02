@@ -258,7 +258,7 @@ class OverviewViewController: UITableViewController {
             networkDisclosure.isHidden = true
 
             if Device.inUITest {
-                networkName.text = "Tsinghua-5G"
+                networkName.text = "Tsinghua-IPv4"
                 networkDisclosure.isHidden = false
             }
         }

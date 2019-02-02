@@ -134,6 +134,7 @@ extension UserDefaults {
         addBasicAccount()
         addMainAccount()
         addAltAccount()
+        addFillerAccounts()
     }
 
     private func addBasicAccount() {
@@ -161,6 +162,16 @@ extension UserDefaults {
         Defaults[.accountProfile(of: accountId)] = UserDefaults.altProfile.vars
         Defaults[.accountHistory(of: accountId)] = UserDefaults.altHistory.vars
 
+        Defaults[.accounts].append(accountId)
+    }
+
+    private func addFillerAccounts() {
+        var accountId = "cn.ac.ucas.201317000913620"
+        Defaults[.accountProfile(of: accountId)] = Profile(name: "熊哥", balance: 6.15).vars
+        Defaults[.accounts].append(accountId)
+
+        accountId = "cn.edu.ruc.2013101106"
+        Defaults[.accountProfile(of: accountId)] = Profile(name: "典神", balance: 0.98).vars
         Defaults[.accounts].append(accountId)
     }
 }
