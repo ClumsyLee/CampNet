@@ -9,4 +9,5 @@
 agvtool new-marketing-version 1.3.0
 agvtool next-version -all
 fastlane snapshot
+fastlane deliver
 ```

@@ -70,3 +70,8 @@ Preview.html
 
 # Firebase
 GoogleService-info.plist
+
+# Jekyll
+_site
+.sass-cache
+.jekyll-metadata
