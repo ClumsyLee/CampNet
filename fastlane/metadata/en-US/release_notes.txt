@@ -1,17 +1,29 @@
-• Support iOS 11
-    • Support iPhone X
-    • Support password autofill
-• Support cell copying
+• New campuses
+    • Tsinghua University (IPv4)
+    • Renmin University of China
+    • University of Chinese Academy of Sciences
 
-• Off-campus networks are now shown in light gray
-• Refine UI
+• Custom configuration
+    • Load your own configuration by URL
 
-• Fixed a crash related to the sessions animation
-• Fixed an issue where IPs were not shown for anonymous devices
-• Fixed an issue where history was not updated in the background
-• Fixed an issue where the histories of subsequent accounts were not automatically updated when adding multiple accounts
-• Fixed an issue where automatic login was triggered twice when entering offline status in the background
-• Fixed an issue where the account "lisihan13" might appear in the Today Widget
+• Full multi-account support
+    • One main account for every campus
+    • Usage alert for all the accounts
 
-• Tsinghua University: Fixed an issue where E2606 (user disabled or no network privilege) was not identified
-• Tsinghua University: Fixed an issue where the responses of login IP were not correctly parsed
+• Optimized authentication logic
+    • Reduced time to re-connect Wi-Fi when waking up
+    • Put auth-related jobs in high-priority queues
+
+• Show name instead of username whenever possible
+• Shake to invoke the feedback page
+• Refined UI
+
+• Fixed a crash when refreshing the "Device" page without having online devices
+• Fixed a bug where text inputs will be cleared even if the user stopped leaving the page
+• Fixed a bug where free/max usages from the last month could appear in the next month
+• Fixed a bug where foreground login could be triggered repeatedly in a short period of time
+• Fixed a bug where updates could be triggered unexpectedly in the "Overview" page
+• Fixed a bug where the enter key did not work when logging in IPs
+• Fixed the long English helper text in the system Wi-Fi page?
+• Fixed overlapping texts in the "Overview" page on iPhone 4/4s
+• Fixed blurry screens on iPhone XR/XS/XS Max

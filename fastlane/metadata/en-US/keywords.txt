@@ -1,1 +1,1 @@
-Campus network,Tsinghua,Tsinghua network,Auto,Login,Logon,Connect,Tunet,iTunet,labmu,attsinghua
+campus,wifi,network,tsinghua,auto,login,logon,connect,tunet,itunet,labmu,attsinghua,thu,ruc,ucas

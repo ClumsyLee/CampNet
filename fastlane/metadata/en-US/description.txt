@@ -1,23 +1,25 @@
-CampNet is your campus network assistant. It can auto-login to your campus network in the background, so you don’t have to open your browser to login every now and then.
+CampNet is your full-auto campus network assistant. It can auto-login to your campus network in the background, so you don’t have to open your browser to login every now and then.
 
 Main features:
 
 ====== Auto Management ======
 • Auto login
-• Auto logout expired connections
+• Auto logout expired sessions
 
 ====== Usage Monitoring ======
 • View usage trends visually
-• Estimate monthly fee
+• Today widget
 • Usage alert
 
 ====== Advanced Features ======
 • Online devices management
 • Multi-account management
-• Login other IP
+• Login other IPs
 
 ====== General Framework ======
 • Use configuration files to adapt campus networks
 • Currently supported:
     • Tsinghua University
-• Cannot find your school? Submit issues or pull requests at https://github.com/ClumsyLee/CampNet-Configurations !
+    • Renmin University of China
+    • University of Chinese Academy of Sciences
+• Cannot find your school? Load your own configuration files!
