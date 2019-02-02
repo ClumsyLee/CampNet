@@ -85,25 +85,25 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         maxLimitLine.valueTextColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
 
         if #available(iOS 10.0, *) {
-            chart.xAxis.axisLineColor = .darkGray
-            chart.leftAxis.labelTextColor = .darkGray
-            chart.leftAxis.gridColor = .lightGray
+            chart.xAxis.axisLineColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
+            chart.leftAxis.labelTextColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
+            chart.leftAxis.gridColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1)
 
-            username.textColor = .darkGray
+            username.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
             usage.textColor = .darkText
             gb.textColor = .darkText
-            rmb.textColor = .darkGray
-            balance.textColor = .darkGray
+            rmb.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
+            balance.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
         } else {
-            chart.xAxis.axisLineColor = .lightGray
-            chart.leftAxis.labelTextColor = .lightGray
-            chart.leftAxis.gridColor = .darkGray
+            chart.xAxis.axisLineColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
+            chart.leftAxis.labelTextColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
+            chart.leftAxis.gridColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.1)
 
-            username.textColor = .lightGray
+            username.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
             usage.textColor = .white
             gb.textColor = .white
-            rmb.textColor = .lightGray
-            balance.textColor = .lightGray
+            rmb.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
+            balance.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
         }
     }
 
@@ -118,7 +118,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             decimalUnits = Account.decimalUnits(of: identifier)
         }
 
-        username.text = identifier?.components(separatedBy: ".").last ?? "-"
+        username.text = profile?.name ?? identifier?.components(separatedBy: ".").last ?? "-"
         usage.text = profile?.usage?.usageStringInGb(decimalUnits: decimalUnits) ?? "-"
         balance.text = profile?.balance?.moneyString ?? "-"
 
