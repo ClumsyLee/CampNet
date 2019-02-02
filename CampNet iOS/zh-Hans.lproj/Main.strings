@@ -346,3 +346,6 @@
 
 /* Class = "UILabel"; text = "Free Usage"; ObjectID = "njk-FJ-8Ok"; */
 "njk-FJ-8Ok.text" = "免费可用流量";
+
+/* Class = "UILabel"; text = "Privacy Policy"; ObjectID = "4Vo-8e-S8L"; */
+"4Vo-8e-S8L.text" = "隐私政策";

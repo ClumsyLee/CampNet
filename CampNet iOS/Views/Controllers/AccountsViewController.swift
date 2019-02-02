@@ -278,7 +278,7 @@ class AccountsViewController: UITableViewController {
         Account.makeMain(account)
 
         Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
-            AnalyticsParameterItemID: account.identifier,
+            AnalyticsParameterItemID: account.configuration.identifier,
             AnalyticsParameterContentType: "make_main"])
     }
 

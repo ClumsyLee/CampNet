@@ -14,11 +14,13 @@ class AboutViewController: UITableViewController {
     enum Row: Int {
         case repo
         case myGithub
+        case privacy
         case acknowledgements
     }
 
     static let repoUrl = URL(string: "https://github.com/clumsyLee/CampNet")!
     static let myGithubUrl = URL(string: "https://github.com/ClumsyLee")!
+    static let privacyUrl = URL(string: "https://campnet.clumsy.li/privacy")!
 
     @IBOutlet var version: UILabel!
 
@@ -69,6 +71,7 @@ class AboutViewController: UITableViewController {
         switch Row(rawValue: indexPath.row) {
         case .repo?: present(SFSafariViewController(url: AboutViewController.repoUrl), animated: true)
         case .myGithub?: present(SFSafariViewController(url: AboutViewController.myGithubUrl), animated: true)
+        case .privacy?: present(SFSafariViewController(url: AboutViewController.privacyUrl), animated: true)
         default: break
         }
     }
