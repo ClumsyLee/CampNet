@@ -62,7 +62,7 @@
 /* Class = "UILabel"; text = "MAC Address"; ObjectID = "REZ-rf-euA"; */
 "REZ-rf-euA.text" = "MAC 地址";
 
-/* Class = "UINavigationItem"; title = "Account"; ObjectID = "SPV-m8-ZsX"; */
+/* Class = "UINavigationItem"; title = "Accounts"; ObjectID = "SPV-m8-ZsX"; */
 "SPV-m8-ZsX.title" = "賬戶";
 
 /* Class = "UITableViewSection"; footerTitle = "\"Auto Login\" will only be effective in networks marked as \"On Campus\"."; ObjectID = "Tm8-iG-baP"; */

@@ -1383,7 +1383,7 @@ Speacial thanks to: Yilong Guo, Wenshuo Li, Xinyao Chen, Xingyue Liu, Zuozhen Li
             </objects>
             <point key="canvasLocation" x="3097" y="-322"/>
         </scene>
-        <!--Account-->
+        <!--Accounts-->
         <scene sceneID="IXa-EZ-vGi">
             <objects>
                 <tableViewController id="Ijn-r5-5Es" customClass="AccountsViewController" customModule="CampNet_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -1458,7 +1458,7 @@ Speacial thanks to: Yilong Guo, Wenshuo Li, Xinyao Chen, Xingyue Liu, Zuozhen Li
                             <outlet property="delegate" destination="Ijn-r5-5Es" id="oOR-62-o7x"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Account" id="SPV-m8-ZsX">
+                    <navigationItem key="navigationItem" title="Accounts" id="SPV-m8-ZsX">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xZJ-ee-7mW">
                             <connections>
                                 <segue destination="Ivf-RU-hO9" kind="presentation" id="SAg-Sx-jBT"/>
