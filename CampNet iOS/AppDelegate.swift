@@ -268,6 +268,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             requestNotificationAuthorization()
         }
 
+        // Setup notification categories.
+        if #available(iOS 10.0, *) {
+            let usageAlert = UNNotificationCategory(identifier: "usageAlert", actions: [], intentIdentifiers: [], options: [])
+            UNUserNotificationCenter.current().setNotificationCategories([usageAlert])
+        }
+
         // Update the profile in the background every now and then.
         application.setMinimumBackgroundFetchInterval(Account.profileAutoUpdateInterval)
 
@@ -339,7 +345,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 switch error {
                 case .arrears, .unauthorized:
                     sendNotification(title: title, body: error.localizedDescription,
-                                     identifier: "\(account.identifier).accountLoginError")
+                                     identifier: "\(account.identifier).accountLoginError",
+                                     userInfo: ["account": account.identifier])
                     Defaults[.accountLastLoginErrorNotification(of: account.identifier)] = Date()
                 default:
                     break  // Do not send notifications for other types because the user cannot fix them.
@@ -420,7 +427,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         let title = L10n.Notifications.UsageAlert.title(account.displayName, percentage)
         let body = L10n.Notifications.UsageAlert.body(usageLeft)
-        sendNotification(title: title, body: body, identifier: "\(account.identifier).accountUsageAlert")
+        sendNotification(title: title, body: body, identifier: "\(account.identifier).accountUsageAlert",
+                         categoryIdentifier: "usageAlert", userInfo: ["account": account.identifier])
 
         Analytics.logEvent("usage_alert", parameters: [
             "usage": usage,
@@ -456,13 +464,21 @@ func showErrorBanner(title: String?, body: String? = nil, duration: Double = App
     banner.show(duration: duration)
 }
 
-func sendNotification(title: String, body: String, identifier: String, badge: Int? = nil) {
+func sendNotification(title: String, body: String, identifier: String, badge: Int? = nil,
+                      categoryIdentifier: String? = nil, userInfo: [AnyHashable: Any]? = nil) {
+    var userInfo = userInfo ?? [:]
+    userInfo["identifier"] = identifier
+
     if #available(iOS 10.0, *) {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
         content.sound = UNNotificationSound.default
         content.badge = badge as NSNumber?
+        if let categoryIdentifier = categoryIdentifier {
+            content.categoryIdentifier = categoryIdentifier
+        }
+        content.userInfo = userInfo
 
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
@@ -472,8 +488,8 @@ func sendNotification(title: String, body: String, identifier: String, badge: In
         notification.alertTitle = title
         notification.alertBody = body
         notification.soundName = UILocalNotificationDefaultSoundName
-        notification.userInfo = ["identifier": identifier]
         notification.applicationIconBadgeNumber = badge ?? 0
+        notification.userInfo = userInfo
 
         UIApplication.shared.presentLocalNotificationNow(notification)
     }

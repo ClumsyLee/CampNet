@@ -48,7 +48,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
         chart.xAxis.drawLabelsEnabled = false
         chart.leftAxis.setLabelCount(4, force: false)
-        chart.maxLimitLine.labelPosition = .rightBottom
+        chart.freeLimitLine.drawLabelEnabled = false
+        chart.maxLimitLine.drawLabelEnabled = false
 
         if #available(iOS 10.0, *) {
             chart.xAxis.axisLineColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)

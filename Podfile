@@ -30,4 +30,7 @@ target 'CampNetKit' do
 
   target 'CampNet iOS Widget' do
   end
+
+  target 'CampNet iOS Usage Alert Content Extension' do
+  end
 end

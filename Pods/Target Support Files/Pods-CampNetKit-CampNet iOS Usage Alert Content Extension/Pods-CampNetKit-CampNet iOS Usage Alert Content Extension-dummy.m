@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_CampNetKit_CampNet_iOS_Usage_Alert_Content_Extension : NSObject
+@end
+@implementation PodsDummy_Pods_CampNetKit_CampNet_iOS_Usage_Alert_Content_Extension
+@end

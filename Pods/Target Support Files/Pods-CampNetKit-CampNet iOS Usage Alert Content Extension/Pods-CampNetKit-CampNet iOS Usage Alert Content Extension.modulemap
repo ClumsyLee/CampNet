@@ -1,0 +1,6 @@
+framework module Pods_CampNetKit_CampNet_iOS_Usage_Alert_Content_Extension {
+  umbrella header "Pods-CampNetKit-CampNet iOS Usage Alert Content Extension-umbrella.h"
+
+  export *
+  module * { export * }
+}

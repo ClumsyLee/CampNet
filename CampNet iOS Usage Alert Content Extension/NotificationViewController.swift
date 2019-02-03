@@ -9,10 +9,11 @@
 import UIKit
 import UserNotifications
 import UserNotificationsUI
+import CampNetKit
 
 class NotificationViewController: UIViewController, UNNotificationContentExtension {
 
-    @IBOutlet var label: UILabel?
+    @IBOutlet var chart: UsageChartView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,13 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
     }
     
     func didReceive(_ notification: UNNotification) {
-        self.label?.text = notification.request.content.body
+        guard let identifier = notification.request.content.userInfo["account"] as? String else {
+            return
+        }
+
+        let decimalUnits = Account.decimalUnits(of: identifier)
+        chart.reloadProfile(profile: Account.profile(of: identifier), decimalUnits: decimalUnits)
+        chart.reloadHistory(history: Account.history(of: identifier), decimalUnits: decimalUnits)
     }
 
 }

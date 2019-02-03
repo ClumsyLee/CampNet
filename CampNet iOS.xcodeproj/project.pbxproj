@@ -27,7 +27,6 @@
 		0F1F3D1321ACA6EC002431B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F1F3D0E21ACA6EC002431B8 /* GoogleService-Info.plist */; };
 		0F1F3D1721ACDBBC002431B8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1F3D1621ACDBBC002431B8 /* StoreKit.framework */; };
 		0F1F3D1B21AEAA2F002431B8 /* SupportUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1F3D1A21AEAA2F002431B8 /* SupportUsViewController.swift */; };
-		0F2E0C9A1F8F265F00AEEC15 /* CampNetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; };
 		0F3465701F34D80A008E329F /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34656F1F34D80A008E329F /* NetworkViewController.swift */; };
 		0F3685161F1A5C6B0056AED1 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3685151F1A5C6B0056AED1 /* ChangePasswordViewController.swift */; };
 		0F464C581F13AD7900C2F58B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C571F13AD7900C2F58B /* Configuration.swift */; };
@@ -67,6 +66,7 @@
 		0FA4D49A22076F6900698A97 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4D49922076F6900698A97 /* NotificationViewController.swift */; };
 		0FA4D49D22076F6900698A97 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FA4D49B22076F6900698A97 /* MainInterface.storyboard */; };
 		0FA4D4A122076F6900698A97 /* CampNet iOS Usage Alert Content Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0FA4D49322076F6900698A97 /* CampNet iOS Usage Alert Content Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0FA4D4A52207862E00698A97 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FA4D485220753EA00698A97 /* Localizable.strings */; };
 		0FA85DA51F4E930C00F76A86 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */; };
 		0FBCD7B01F226F4B00333A90 /* LoginIpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */; };
 		0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A11F17593E002861F3 /* AccountManager.swift */; };
@@ -80,6 +80,7 @@
 		0FF7563F1F2A175600B2429A /* UsageAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */; };
 		0FF756411F2BA31500B2429A /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */; };
 		0FF756481F2CE02100B2429A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FF7564A1F2CE02100B2429A /* InfoPlist.strings */; };
+		2AA27A94E80742870B17C1E6 /* Pods_CampNetKit_CampNet_iOS_Usage_Alert_Content_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12655C576A1F1838772BA764 /* Pods_CampNetKit_CampNet_iOS_Usage_Alert_Content_Extension.framework */; };
 		4DC0B6912C2E6B23F22C8C4B /* Pods_CampNetKit_CampNet_iOS_Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D399FDE21D5ECF8C371365F8 /* Pods_CampNetKit_CampNet_iOS_Widget.framework */; };
 		972B7C8D28F08DBD52FAD867 /* Pods_CampNet_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFFD2BA02ECA3BADA6DE6DFA /* Pods_CampNet_iOS.framework */; };
 		CAD07C4429A08CC28E944B70 /* Pods_CampNetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEC6D6476A248379EE8FA523 /* Pods_CampNetKit.framework */; };
@@ -119,7 +120,7 @@
 			containerPortal = 0F14E7691E2E3AAC0092494B /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 0FA4D49222076F6900698A97;
-			remoteInfo = "CampNet iOS Notification Content Extension";
+			remoteInfo = "CampNet iOS Usage Alert Content Extension";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -215,6 +216,7 @@
 		0FA4D49922076F6900698A97 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		0FA4D49C22076F6900698A97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		0FA4D49E22076F6900698A97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FA4D4A722078CC500698A97 /* CampNet iOS Usage Alert Content Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CampNet iOS Usage Alert Content Extension.entitlements"; sourceTree = "<group>"; };
 		0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogsViewController.swift; path = Views/Controllers/LogsViewController.swift; sourceTree = "<group>"; };
 		0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginIpViewController.swift; path = Views/Controllers/LoginIpViewController.swift; sourceTree = "<group>"; };
 		0FC6E2A11F17593E002861F3 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Models/AccountManager.swift; sourceTree = "<group>"; };
@@ -233,6 +235,8 @@
 		0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountDetailViewController.swift; path = Views/Controllers/AccountDetailViewController.swift; sourceTree = "<group>"; };
 		0FF756491F2CE02100B2429A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0FF7564B1F2CE02300B2429A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		12655C576A1F1838772BA764 /* Pods_CampNetKit_CampNet_iOS_Usage_Alert_Content_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNetKit_CampNet_iOS_Usage_Alert_Content_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43EE2738701C9ED62206BD64 /* Pods-CampNetKit-CampNet iOS Usage Alert Content Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNetKit-CampNet iOS Usage Alert Content Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CampNetKit-CampNet iOS Usage Alert Content Extension/Pods-CampNetKit-CampNet iOS Usage Alert Content Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		7BCCA4E5D13C0BA32C05D659 /* Pods-CampNet iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNet iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A2A2A1465894D51C6F97187C /* Pods-CampNetKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNetKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CampNetKit/Pods-CampNetKit.debug.xcconfig"; sourceTree = "<group>"; };
 		AA8D83A5F1476F9A5F91E33E /* Pods-CampNetKit-CampNet iOS Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNetKit-CampNet iOS Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CampNetKit-CampNet iOS Widget/Pods-CampNetKit-CampNet iOS Widget.debug.xcconfig"; sourceTree = "<group>"; };
@@ -241,6 +245,7 @@
 		B7FAFB799771C99B3D08AF8A /* Pods-CampNet iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNet iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-CampNet iOS/Pods-CampNet iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D399FDE21D5ECF8C371365F8 /* Pods_CampNetKit_CampNet_iOS_Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNetKit_CampNet_iOS_Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFFD2BA02ECA3BADA6DE6DFA /* Pods_CampNet_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampNet_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1B982F6C734D6AACDA7E881 /* Pods-CampNetKit-CampNet iOS Usage Alert Content Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNetKit-CampNet iOS Usage Alert Content Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-CampNetKit-CampNet iOS Usage Alert Content Extension/Pods-CampNetKit-CampNet iOS Usage Alert Content Extension.release.xcconfig"; sourceTree = "<group>"; };
 		EFB0412582A8F0ED645CBF2B /* Pods-CampNetKit-CampNet iOS Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampNetKit-CampNet iOS Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-CampNetKit-CampNet iOS Widget/Pods-CampNetKit-CampNet iOS Widget.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -281,7 +286,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F2E0C9A1F8F265F00AEEC15 /* CampNetKit.framework in Frameworks */,
 				0F9AAD071F535C5B00E14838 /* NotificationCenter.framework in Frameworks */,
 				4DC0B6912C2E6B23F22C8C4B /* Pods_CampNetKit_CampNet_iOS_Widget.framework in Frameworks */,
 			);
@@ -293,6 +297,7 @@
 			files = (
 				0FA4D49722076F6900698A97 /* UserNotificationsUI.framework in Frameworks */,
 				0FA4D49522076F6900698A97 /* UserNotifications.framework in Frameworks */,
+				2AA27A94E80742870B17C1E6 /* Pods_CampNetKit_CampNet_iOS_Usage_Alert_Content_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +484,7 @@
 		0FA4D49822076F6900698A97 /* CampNet iOS Usage Alert Content Extension */ = {
 			isa = PBXGroup;
 			children = (
+				0FA4D4A722078CC500698A97 /* CampNet iOS Usage Alert Content Extension.entitlements */,
 				0FA4D49922076F6900698A97 /* NotificationViewController.swift */,
 				0FA4D49B22076F6900698A97 /* MainInterface.storyboard */,
 				0FA4D49E22076F6900698A97 /* Info.plist */,
@@ -516,6 +522,7 @@
 				D399FDE21D5ECF8C371365F8 /* Pods_CampNetKit_CampNet_iOS_Widget.framework */,
 				0FA4D49422076F6900698A97 /* UserNotifications.framework */,
 				0FA4D49622076F6900698A97 /* UserNotificationsUI.framework */,
+				12655C576A1F1838772BA764 /* Pods_CampNetKit_CampNet_iOS_Usage_Alert_Content_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -529,6 +536,8 @@
 				AB48969D12BE75804E515FD1 /* Pods-CampNetKit.release.xcconfig */,
 				AA8D83A5F1476F9A5F91E33E /* Pods-CampNetKit-CampNet iOS Widget.debug.xcconfig */,
 				EFB0412582A8F0ED645CBF2B /* Pods-CampNetKit-CampNet iOS Widget.release.xcconfig */,
+				43EE2738701C9ED62206BD64 /* Pods-CampNetKit-CampNet iOS Usage Alert Content Extension.debug.xcconfig */,
+				E1B982F6C734D6AACDA7E881 /* Pods-CampNetKit-CampNet iOS Usage Alert Content Extension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -649,6 +658,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FA4D4A222076F6900698A97 /* Build configuration list for PBXNativeTarget "CampNet iOS Usage Alert Content Extension" */;
 			buildPhases = (
+				BF339576D2AEA93A887F0446 /* [CP] Check Pods Manifest.lock */,
 				0FA4D48F22076F6900698A97 /* Sources */,
 				0FA4D49022076F6900698A97 /* Frameworks */,
 				0FA4D49122076F6900698A97 /* Resources */,
@@ -658,7 +668,7 @@
 			dependencies = (
 			);
 			name = "CampNet iOS Usage Alert Content Extension";
-			productName = "CampNet iOS Notification Content Extension";
+			productName = "CampNet iOS Usage Alert Content Extension";
 			productReference = 0FA4D49322076F6900698A97 /* CampNet iOS Usage Alert Content Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
@@ -729,6 +739,11 @@
 						CreatedOnToolsVersion = 10.1;
 						DevelopmentTeam = 7494335NRW;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -813,6 +828,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FA4D49D22076F6900698A97 /* MainInterface.storyboard in Resources */,
+				0FA4D4A52207862E00698A97 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,6 +966,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-CampNetKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF339576D2AEA93A887F0446 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CampNetKit-CampNet iOS Usage Alert Content Extension-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1473,17 +1511,19 @@
 		};
 		0FA4D4A322076F6900698A97 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43EE2738701C9ED62206BD64 /* Pods-CampNetKit-CampNet iOS Usage Alert Content Extension.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "CampNet iOS Usage Alert Content Extension/CampNet iOS Usage Alert Content Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7494335NRW;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "CampNet iOS Notification Content Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				INFOPLIST_FILE = "CampNet iOS Usage Alert Content Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1497,17 +1537,19 @@
 		};
 		0FA4D4A422076F6900698A97 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1B982F6C734D6AACDA7E881 /* Pods-CampNetKit-CampNet iOS Usage Alert Content Extension.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "CampNet iOS Usage Alert Content Extension/CampNet iOS Usage Alert Content Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7494335NRW;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = "CampNet iOS Notification Content Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				INFOPLIST_FILE = "CampNet iOS Usage Alert Content Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.clumsylee.CampNet-iOS.Usage-Alert-Content-Extension";
