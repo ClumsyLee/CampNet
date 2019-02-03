@@ -105,7 +105,7 @@ extension UserDefaults {
                     usage: 26_000_000,
                     device: "Windows NT"),
         ])
-    private static let mainHistory = History(year: 2017, month: 8,usageSums: [
+    private static let mainHistory = History(year: 2019, month: 2,usageSums: [
         100_000_000, 1_000_000_000, 9_000_000_000, 11_000_000_000, 15_000_000_000,
         17_000_000_000, 18_000_000_000, 20_000_000_000, 20_000_000_000, 20_500_000_000,
         27_400_000_000, 28_000_000_000, 29_300_000_000, 30_000_000_000, 40_000_000_000,
@@ -121,7 +121,7 @@ extension UserDefaults {
         freeUsage: 37_632_200_000,
         maxUsage: 40_000_000_000,
         sessions: [])
-    private static let altHistory = History(year: 2017, month: 8, usageSums: [
+    private static let altHistory = History(year: 2019, month: 2, usageSums: [
         10_080_600_000, 10_146_130_000, 10_146_130_000, 10_146_130_000, 10_146_130_000,
         10_146_130_000, 10_146_130_000, 10_146_130_000, 10_146_130_000, 10_146_130_000,
         10_758_510_000, 13_088_940_000, 14_944_190_000, 15_477_650_000, 18_011_360_000,
