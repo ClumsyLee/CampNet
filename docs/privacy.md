@@ -56,7 +56,7 @@ This Service may contain links to other sites. If you click on a third-party lin
 
 ## Custom Configurations
 
-You are able to load custom configurations from external sites. If you create a custom account, the custom configuration will be able to access the username and password of that account, and will be able to send them to any extern sites. Therefore, **I strongly advise you to load custom configurations only from reliable sites.** I have no control over and assume no responsibility for the behaviors of any third-party custom configurations.
+You are able to load custom configurations from external sites. If you create a custom account, the custom configuration will be able to access the username and password of that account, and will be able to send them to any external sites. Therefore, **I strongly advise you to load custom configurations only from reliable sites.** I have no control over and assume no responsibility for the behaviors of any third-party custom configurations.
 
 ## Children’s Privacy
 
