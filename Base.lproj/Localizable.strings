@@ -8,6 +8,10 @@
 "CampNet_error.internalError" = "Internal error, please contact the developer.";
 "CampNet_error.unknown" = "Unknown error: %@";
 
+/* Chart */
+"chart.limit_lines.free" = "Free";
+"chart.limit_lines.max" = "Max";
+
 /* About */
 "about.version" = "Version %@ (%@)";
 
@@ -38,9 +42,6 @@
 "notifications.usage_alert.title" = "\"%@\" Has Used %d%% of Maximum Usage";
 
 /* Overview */
-"overview.chart.limit_lines.free" = "Free";
-"overview.chart.limit_lines.max" = "Max";
-
 "overview.login_button.captions.logging_in" = "Logging In…";
 "overview.login_button.captions.logging_out" = "Logging Out…";
 "overview.login_button.captions.login" = "Login";

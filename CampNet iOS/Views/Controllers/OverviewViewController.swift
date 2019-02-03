@@ -44,7 +44,7 @@ class OverviewViewController: UITableViewController {
     @IBOutlet var loginButton: DynamicButton!
     @IBOutlet var loginButtonCaption: UILabel!
 
-    @IBOutlet var chart: LineChartView!
+    @IBOutlet var chart: UsageChartView!
 
     var account: Account?
     var status: Status?
@@ -53,11 +53,6 @@ class OverviewViewController: UITableViewController {
 
     var network: NEHotspotNetwork?
     var ip: String = ""
-
-    var usageSumDataset = LineChartDataSet(values: [], label: nil)
-    var usageSumEndDataset = LineChartDataSet(values: [], label: nil)
-    var freeLimitLine = ChartLimitLine(limit: 0.0, label: L10n.Overview.Chart.LimitLines.free)
-    var maxLimitLine = ChartLimitLine(limit: 0.0, label: L10n.Overview.Chart.LimitLines.max)
 
     var backgroundRefreshing = false
     var networkTimer = Timer()
@@ -368,76 +363,14 @@ class OverviewViewController: UITableViewController {
             devicesDisclosure.isHidden = true
         }
 
-        // Chart end point.
-        var usageY: Double? = nil
-
-        usageSumEndDataset.values = []
-        if let profile = profile, let usage = profile.usage {
-            let day: Int
-            if Device.inUITest {
-                day = account?.history?.usageSums.count ?? 1
-            } else {
-                day = Calendar.current.component(.day, from: profile.updatedAt)
-            }
-
-            let entry = ChartDataEntry(x: Double(day), y: usage.usageInGb(decimalUnits: decimalUnits))
-            usageSumEndDataset.values.append(entry)
-
-            usageY = entry.y
-        }
-
-        // Limit lines.
-        chart.leftAxis.removeAllLimitLines()
-
-        var freeY: Double? = nil
-        var maxY: Double? = nil
-
-        if let freeUsage = profile?.freeUsage {
-            freeLimitLine.limit = freeUsage.usageInGb(decimalUnits: decimalUnits)
-            chart.leftAxis.addLimitLine(freeLimitLine)
-
-            freeY = freeLimitLine.limit
-        }
-        if let maxUsage = profile?.maxUsage {
-            maxLimitLine.limit = maxUsage.usageInGb(decimalUnits: decimalUnits)
-            chart.leftAxis.addLimitLine(maxLimitLine)
-
-            maxY = maxLimitLine.limit
-        }
-
-        // Calculate chart.leftAxis.axisMaximum.
-        let y: Double
-        if let usageY = usageY {
-            if let maxY = maxY {
-                y = maxY
-            } else if let freeY = freeY {
-                y = max(usageY, freeY)
-            } else {
-                y = usageY
-            }
-        } else {
-            y = maxY ?? freeY ?? 10.0
-        }
-        chart.leftAxis.axisMaximum = y * 1.1
-
-        chart.data?.notifyDataChanged()
-        chart.notifyDataSetChanged()
+        chart.reloadProfile(profile: profile, decimalUnits: decimalUnits)
     }
 
     func reloadHistory() {
         history = account?.history
         let decimalUnits = account?.configuration.decimalUnits ?? false
 
-        usageSumDataset.values = []
-        if let history = history {
-            for (index, usageSum) in history.usageSums.enumerated() {
-                let entry = ChartDataEntry(x: Double(index + 1), y: usageSum.usageInGb(decimalUnits: decimalUnits))
-                usageSumDataset.values.append(entry)
-            }
-        }
-
-        chart.data?.notifyDataChanged()
-        chart.notifyDataSetChanged()
+        chart.reloadHistory(history: history ,decimalUnits: decimalUnits)
     }
 
     func reload(_ account: Account?) {
@@ -511,7 +444,6 @@ class OverviewViewController: UITableViewController {
 
         setupBarButtons()
         setupDashboard()
-        setupChart()
 
         self.reload(Account.main)
 
@@ -579,48 +511,6 @@ class OverviewViewController: UITableViewController {
         loginButton.contentEdgeInsets.right = 20.0
         loginButton.contentEdgeInsets.top = 20.0
         loginButton.contentEdgeInsets.bottom = 20.0
-    }
-
-    fileprivate func setupChart() {
-        usageSumDataset.drawCirclesEnabled = false
-        usageSumDataset.lineWidth = 4
-        usageSumDataset.drawFilledEnabled = true
-        usageSumDataset.drawValuesEnabled = false
-
-        usageSumEndDataset.drawValuesEnabled = false
-
-        chart.data = LineChartData(dataSets: [usageSumDataset, usageSumEndDataset])
-
-        chart.isUserInteractionEnabled = false
-        chart.legend.enabled = false
-        chart.chartDescription?.enabled = false
-
-        chart.xAxis.labelTextColor = .lightGray
-        chart.xAxis.labelPosition = .bottom
-        chart.xAxis.drawGridLinesEnabled = false
-        chart.xAxis.axisMinimum = 1.0
-        chart.xAxis.axisMaximum = 31.0
-
-        chart.leftAxis.labelTextColor = .lightGray
-        chart.leftAxis.gridColor = #colorLiteral(red: 0.9372541904, green: 0.9372367859, blue: 0.9563211799, alpha: 1)
-        chart.leftAxis.drawAxisLineEnabled = false
-        chart.leftAxis.axisMinimum = 0
-        chart.leftAxis.drawLimitLinesBehindDataEnabled = true
-        chart.rightAxis.enabled = false
-
-        freeLimitLine.lineWidth = 1
-        freeLimitLine.xOffset = 1
-        freeLimitLine.yOffset = 1
-        freeLimitLine.lineColor = #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1)
-        freeLimitLine.valueTextColor = #colorLiteral(red: 1, green: 0.5843137255, blue: 0, alpha: 1)
-        freeLimitLine.labelPosition = .leftTop
-
-        maxLimitLine.lineWidth = 1
-        maxLimitLine.xOffset = 1
-        maxLimitLine.yOffset = 1
-        maxLimitLine.lineColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-        maxLimitLine.valueTextColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-        maxLimitLine.labelPosition = .rightTop
     }
 
     deinit {

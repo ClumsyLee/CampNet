@@ -58,6 +58,15 @@ internal enum L10n {
     }
   }
 
+  internal enum Chart {
+    internal enum LimitLines {
+      /// Free
+      internal static let free = L10n.tr("Localizable", "chart.limit_lines.free")
+      /// Max
+      internal static let max = L10n.tr("Localizable", "chart.limit_lines.max")
+    }
+  }
+
   internal enum HotspotHelper {
     /// CampNet managed network
     internal static let displayName = L10n.tr("Localizable", "hotspot_helper.display_name")
@@ -141,14 +150,6 @@ internal enum L10n {
   }
 
   internal enum Overview {
-    internal enum Chart {
-      internal enum LimitLines {
-        /// Free
-        internal static let free = L10n.tr("Localizable", "overview.chart.limit_lines.free")
-        /// Max
-        internal static let max = L10n.tr("Localizable", "overview.chart.limit_lines.max")
-      }
-    }
     internal enum LoginButton {
       internal enum Captions {
         /// Logging In…

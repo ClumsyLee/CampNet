@@ -8,6 +8,10 @@
 "internalError" = "内部错误，请联系开发者。";
 "unknown" = "未知错误：%@";
 
+/* Chart */
+"chart.limit_lines.free" = "免费";
+"chart.limit_lines.max" = "最大";
+
 /* About */
 "about.version" = "版本 %@ (%@)";
 
@@ -38,9 +42,6 @@
 "notifications.usage_alert.title" = "“%@” 已使用最大流量的 %d%%";
 
 /* Overview */
-"overview.chart.limit_lines.free" = "免费";
-"overview.chart.limit_lines.max" = "最大";
-
 "overview.login_button.captions.logging_in" = "上线中…";
 "overview.login_button.captions.logging_out" = "下线中…";
 "overview.login_button.captions.login" = "上线";
