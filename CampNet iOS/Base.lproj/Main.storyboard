@@ -617,7 +617,7 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
                                                     <rect key="frame" x="27" y="11" width="367" height="22"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="url"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="done" textContentType="url"/>
                                                     <connections>
                                                         <action selector="configurationUrlChanged:" destination="WaE-jz-hhc" eventType="editingChanged" id="Tll-9W-hYx"/>
                                                         <action selector="configurationUrlEntered:" destination="WaE-jz-hhc" eventType="primaryActionTriggered" id="Vwm-tM-2WS"/>
@@ -657,6 +657,7 @@ You have to enable "Background App Refresh" to receive usage alerts in the backg
                         <outlet property="configurationUrl" destination="I0h-aW-Sfo" id="WVL-5Z-isH"/>
                         <outlet property="saveButton" destination="UJZ-pv-sT0" id="WrR-or-LVn"/>
                         <segue destination="dn1-eC-Fhg" kind="unwind" identifier="customConfigurationLoaded" unwindAction="customConfigurationLoadedWithSegue:" id="Nfn-Wv-luu"/>
+                        <segue destination="dn1-eC-Fhg" kind="unwind" identifier="customConfigurationRemoved" unwindAction="customConfigurationRemovedWithSegue:" id="50j-cd-pG5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y9l-jE-1f1" userLabel="First Responder" sceneMemberID="firstResponder"/>

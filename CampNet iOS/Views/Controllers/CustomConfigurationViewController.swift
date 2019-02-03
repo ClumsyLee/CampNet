@@ -20,7 +20,17 @@ class CustomConfigurationViewController: UITableViewController {
     var firstAppear: Bool = true
 
     @IBAction func saveButtonPressed(_ sender: Any) {
-        guard let url = URL(string: configurationUrl.text ?? "") else {
+        let urlString = configurationUrl.text ?? ""
+
+        // Remove the custom configuration if empty.
+        if urlString.isEmpty {
+            removeCustomConfiguration()
+            self.performSegue(withIdentifier: "customConfigurationRemoved", sender: self)
+            return
+        }
+
+        // Otherwise, load the new custom configuration.
+        guard let url = URL(string: urlString) else {
             return
         }
 
@@ -38,27 +48,7 @@ class CustomConfigurationViewController: UITableViewController {
             }
 
             // Valid configuration, save it and reload custom accounts.
-            Defaults[.customConfiguration] = string
-            Defaults[.customConfigurationUrl] = url.description
-
-            let oldAccounts = Account.all[configuration] ?? []
-            let oldMain = Account.main
-            // Remove all the accounts first to make sure the old configuration is released.
-            for account in oldAccounts {
-                Account.remove(account)
-            }
-            // Add them back.
-            for account in oldAccounts {
-                Account.add(configurationIdentifier: configuration.identifier, username: account.username, password: account.password)
-            }
-            // Recover main if needed.
-            for account in Account.all[configuration] ?? [] {
-                if account == oldMain {
-                    Account.makeMain(account)
-                    break
-                }
-            }
-
+            self.saveCustomConfiguration(url: url.description, string: string, configuration: configuration)
             self.performSegue(withIdentifier: "customConfigurationLoaded", sender: self)
         }
         .ensure {
@@ -73,8 +63,48 @@ class CustomConfigurationViewController: UITableViewController {
         }
     }
 
+    func removeCustomConfiguration() {
+        Defaults[.customConfiguration] = ""
+        Defaults[.customConfigurationUrl] = ""
+
+        for (configuration, accounts) in Account.all {
+            guard configuration.identifier == Configuration.customIdentifier else {
+                continue
+            }
+
+            for account in accounts {
+                Account.remove(account)
+            }
+            break
+        }
+    }
+
+    func saveCustomConfiguration(url: String, string: String, configuration: Configuration) {
+        Defaults[.customConfiguration] = string
+        Defaults[.customConfigurationUrl] = url
+
+        let oldAccounts = Account.all[configuration] ?? []
+        let oldMain = Account.main
+        // Remove all the accounts first to make sure the old configuration is released.
+        for account in oldAccounts {
+            Account.remove(account)
+        }
+        // Add them back.
+        for account in oldAccounts {
+            Account.add(configurationIdentifier: configuration.identifier, username: account.username, password: account.password)
+        }
+        // Recover main if needed.
+        for account in Account.all[configuration] ?? [] {
+            if account == oldMain {
+                Account.makeMain(account)
+                break
+            }
+        }
+    }
+
     @IBAction func configurationUrlChanged(_ sender: Any) {
-        saveButton.isEnabled = URL(string: configurationUrl.text ?? "") != nil
+        let urlString = configurationUrl.text ?? ""
+        saveButton.isEnabled = urlString.isEmpty || URL(string: urlString) != nil
     }
 
     @IBAction func configurationUrlEntered(_ sender: Any) {

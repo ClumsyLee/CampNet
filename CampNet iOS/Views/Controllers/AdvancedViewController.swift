@@ -15,6 +15,7 @@ class AdvancedViewController: UITableViewController {
 
     @IBAction func cancelLoadingCustomConfiguration(segue: UIStoryboardSegue) {}
     @IBAction func customConfigurationLoaded(segue: UIStoryboardSegue) {}
+    @IBAction func customConfigurationRemoved(segue: UIStoryboardSegue) {}
 
     @IBAction func sendLogsChanged(_ sender: Any) {
         Defaults[.sendLogs] = sendLogsSwitch.isOn
