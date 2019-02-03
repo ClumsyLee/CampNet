@@ -328,7 +328,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
 
-        let title = L10n.Notifications.LoginError.title(account.username)
+        let title = L10n.Notifications.LoginError.title(account.displayName)
         if UIApplication.shared.applicationState == .active {
             showErrorBanner(title: title, body: error.localizedDescription)
         } else {
@@ -354,7 +354,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
 
-        let title = L10n.Notifications.LogoutError.title(account.username)
+        let title = L10n.Notifications.LogoutError.title(account.displayName)
         showErrorBanner(title: title, body: error.localizedDescription)
     }
 
@@ -364,7 +364,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
 
-        let title = L10n.Notifications.StatusError.title(account.username)
+        let title = L10n.Notifications.StatusError.title(account.displayName)
         showErrorBanner(title: title, body: error.localizedDescription)
     }
 
@@ -374,7 +374,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
 
-        let title = L10n.Notifications.ProfileError.title(account.username)
+        let title = L10n.Notifications.ProfileError.title(account.displayName)
         showErrorBanner(title: title, body: error.localizedDescription)
     }
 
@@ -404,7 +404,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
 
-        let title = L10n.Notifications.HistoryError.title(account.username)
+        let title = L10n.Notifications.HistoryError.title(account.displayName)
         showErrorBanner(title: title, body: error.localizedDescription)
     }
 
@@ -418,7 +418,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let percentage = Int((Double(usage) / Double(maxUsage)) * 100.0)
         let usageLeft = (maxUsage - usage).usageString(decimalUnits: account.configuration.decimalUnits)
 
-        let title = L10n.Notifications.UsageAlert.title(account.username, percentage)
+        let title = L10n.Notifications.UsageAlert.title(account.displayName, percentage)
         let body = L10n.Notifications.UsageAlert.body(usageLeft)
         sendNotification(title: title, body: body, identifier: "\(account.identifier).accountUsageAlert")
 

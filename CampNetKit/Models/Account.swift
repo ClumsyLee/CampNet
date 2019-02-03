@@ -102,6 +102,10 @@ public class Account {
     public let username: String
     public let identifier: String
 
+    public var displayName: String {
+        return profile?.name ?? username
+    }
+
     public var password: String {
         get {
             return Account.passwordKeychain[identifier] ?? ""
