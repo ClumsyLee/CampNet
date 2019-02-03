@@ -7,7 +7,6 @@ use_frameworks!
 target 'CampNet iOS' do
   # Pods for CampNet iOS
   pod 'BRYXBanner'
-  pod 'Charts'
   pod 'DynamicButton'
   pod 'Firebase/Core'
   pod 'Instabug'
@@ -19,6 +18,7 @@ end
 target 'CampNetKit' do
   # Pods for CampNetKit
   pod 'Alamofire'
+  pod 'Charts'
   pod 'CryptoSwift'
   pod 'Kanna', '~> 4.0.0'
   pod 'KeychainAccess'
@@ -29,6 +29,5 @@ target 'CampNetKit' do
   pod 'Yaml'
 
   target 'CampNet iOS Widget' do
-    pod 'Charts'
   end
 end
