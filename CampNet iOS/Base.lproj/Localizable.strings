@@ -64,6 +64,7 @@
 
 /* Support Us */
 "support_us.donate_button.title.donated" = "Donated - Thank You!";
-"support_us.restore_result.failed" = "Failed to restore";
-"support_us.restore_result.nothing" = "Nothing to restore";
+"support_us.donate_error.title" = "Failed to Donate";
+"support_us.restore_result.failed" = "Failed to Restore";
+"support_us.restore_result.nothing" = "Nothing to Restore";
 "support_us.restore_result.restored" = "Restored!";

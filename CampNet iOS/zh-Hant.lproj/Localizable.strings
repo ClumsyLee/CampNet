@@ -64,6 +64,7 @@
 
 /* Support Us */
 "support_us.donate_button.title.donated" = "已捐贈 - 謝謝！";
+"support_us.donate_error.title" = "捐贈失敗";
 "support_us.restore_result.failed" = "恢復失敗";
 "support_us.restore_result.nothing" = "無法恢復";
 "support_us.restore_result.restored" = "已恢復！";

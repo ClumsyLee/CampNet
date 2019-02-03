@@ -81,17 +81,9 @@ class SupportUsViewController: UIViewController {
                 log.info("Purchase Success: \(purchase.productId)")
                 self.donated()
             case .error(let error):
-                switch error.code {
-                case .unknown: log.error("Unknown error. Please contact support")
-                case .clientInvalid: log.error("Not allowed to make the payment")
-                case .paymentCancelled: break
-                case .paymentInvalid: log.error("The purchase identifier was invalid")
-                case .paymentNotAllowed: log.error("The device is not allowed to make the payment")
-                case .storeProductNotAvailable: log.error("The product is not available in the current storefront")
-                case .cloudServicePermissionDenied: log.error("Access to cloud service information is not allowed")
-                case .cloudServiceNetworkConnectionFailed: log.error("Could not connect to the network")
-                case .cloudServiceRevoked: log.error("User has revoked permission to use this cloud service")
-                default: log.error((error as NSError).localizedDescription)
+                log.error("Failed to donate: \(error.localizedDescription)")
+                if error.code != .paymentCancelled {
+                    showErrorBanner(title: L10n.SupportUs.DonateError.title, body: error.localizedDescription)
                 }
             }
         }

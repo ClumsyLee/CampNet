@@ -216,10 +216,14 @@ internal enum L10n {
         internal static let donated = L10n.tr("Localizable", "support_us.donate_button.title.donated")
       }
     }
+    internal enum DonateError {
+      /// Failed to Donate
+      internal static let title = L10n.tr("Localizable", "support_us.donate_error.title")
+    }
     internal enum RestoreResult {
-      /// Failed to restore
+      /// Failed to Restore
       internal static let failed = L10n.tr("Localizable", "support_us.restore_result.failed")
-      /// Nothing to restore
+      /// Nothing to Restore
       internal static let nothing = L10n.tr("Localizable", "support_us.restore_result.nothing")
       /// Restored!
       internal static let restored = L10n.tr("Localizable", "support_us.restore_result.restored")
