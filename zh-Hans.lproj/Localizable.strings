@@ -1,12 +1,12 @@
 /* CampNetError */
-"offcampus" = "未连接到校园网。";
-"offline" = "请先登录。";
-"unauthorized" = "用户名或密码错误，请在 “账户” 中重新输入密码。";
-"arrears" = "账户已欠费。";
-"networkError" = "网络错误，请稍后再试。";
-"invalidConfiguration" = "无效的配置文件，请联系开发者。";
-"internalError" = "内部错误，请联系开发者。";
-"unknown" = "未知错误：%@";
+"CampNet_error.offcampus" = "未连接到校园网。";
+"CampNet_error.offline" = "请先登录。";
+"CampNet_error.unauthorized" = "用户名或密码错误，请在 “账户” 中重新输入密码。";
+"CampNet_error.arrears" = "账户已欠费。";
+"CampNet_error.networkError" = "网络错误，请稍后再试。";
+"CampNet_error.invalidConfiguration" = "无效的配置文件，请联系开发者。";
+"CampNet_error.internalError" = "内部错误，请联系开发者。";
+"CampNet_error.unknown" = "未知错误：%@";
 
 /* Chart */
 "chart.limit_lines.free" = "免费";
