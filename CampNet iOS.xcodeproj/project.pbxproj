@@ -61,6 +61,7 @@
 		0FA4D488220753EA00698A97 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FA4D485220753EA00698A97 /* Localizable.strings */; };
 		0FA4D48C2207544C00698A97 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4D48B2207544C00698A97 /* L10n.swift */; };
 		0FA4D48D2207544C00698A97 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4D48B2207544C00698A97 /* L10n.swift */; };
+		0FA4D48E22076D0B00698A97 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FA4D485220753EA00698A97 /* Localizable.strings */; };
 		0FA85DA51F4E930C00F76A86 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */; };
 		0FBCD7B01F226F4B00333A90 /* LoginIpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */; };
 		0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A11F17593E002861F3 /* AccountManager.swift */; };
@@ -736,6 +737,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F9AAD0D1F535C5B00E14838 /* MainInterface.storyboard in Resources */,
+				0FA4D48E22076D0B00698A97 /* Localizable.strings in Resources */,
 				0F1F3D1221ACA6EC002431B8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
