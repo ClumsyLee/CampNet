@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0F057AAB1F8EE1F20019AC8E /* CampNet_iOS_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F057AAA1F8EE1F20019AC8E /* CampNet_iOS_Tests.swift */; };
-		0F0FF1F91F5224A7000B608A /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FF1F81F5224A7000B608A /* L10n.swift */; };
 		0F0FF1FE1F524CF1000B608A /* AdvancedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0FF1FD1F524CF1000B608A /* AdvancedViewController.swift */; };
 		0F14E7751E2E3AAC0092494B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7741E2E3AAC0092494B /* AppDelegate.swift */; };
 		0F14E7771E2E3AAC0092494B /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F14E7761E2E3AAC0092494B /* OverviewViewController.swift */; };
@@ -29,10 +28,8 @@
 		0F1F3D1721ACDBBC002431B8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1F3D1621ACDBBC002431B8 /* StoreKit.framework */; };
 		0F1F3D1B21AEAA2F002431B8 /* SupportUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1F3D1A21AEAA2F002431B8 /* SupportUsViewController.swift */; };
 		0F2E0C9A1F8F265F00AEEC15 /* CampNetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; };
-		0F2F67891F223F6B004CEF44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F2F678B1F223F6B004CEF44 /* Localizable.strings */; };
 		0F3465701F34D80A008E329F /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F34656F1F34D80A008E329F /* NetworkViewController.swift */; };
 		0F3685161F1A5C6B0056AED1 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3685151F1A5C6B0056AED1 /* ChangePasswordViewController.swift */; };
-		0F3685191F1A7B290056AED1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0F36851B1F1A7B290056AED1 /* Localizable.strings */; };
 		0F464C581F13AD7900C2F58B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C571F13AD7900C2F58B /* Configuration.swift */; };
 		0F464C5A1F13C50500C2F58B /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C591F13C50500C2F58B /* Account.swift */; };
 		0F464C5C1F13CB1100C2F58B /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F464C5B1F13CB1100C2F58B /* Action.swift */; };
@@ -59,6 +56,11 @@
 		0F9AAD0D1F535C5B00E14838 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F9AAD0B1F535C5B00E14838 /* MainInterface.storyboard */; };
 		0F9AAD111F535C5B00E14838 /* CampNet iOS Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0F9AAD051F535C5B00E14838 /* CampNet iOS Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0FA087FD1F8F82BA009AE962 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA087FC1F8F82BA009AE962 /* Device.swift */; };
+		0FA4D4752207444200698A97 /* UsageChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4D4742207444200698A97 /* UsageChartView.swift */; };
+		0FA4D487220753EA00698A97 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FA4D485220753EA00698A97 /* Localizable.strings */; };
+		0FA4D488220753EA00698A97 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FA4D485220753EA00698A97 /* Localizable.strings */; };
+		0FA4D48C2207544C00698A97 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4D48B2207544C00698A97 /* L10n.swift */; };
+		0FA4D48D2207544C00698A97 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA4D48B2207544C00698A97 /* L10n.swift */; };
 		0FA85DA51F4E930C00F76A86 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */; };
 		0FBCD7B01F226F4B00333A90 /* LoginIpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */; };
 		0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A11F17593E002861F3 /* AccountManager.swift */; };
@@ -137,7 +139,6 @@
 		0F057AA81F8EE1F20019AC8E /* CampNet iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CampNet iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F057AAA1F8EE1F20019AC8E /* CampNet_iOS_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampNet_iOS_Tests.swift; sourceTree = "<group>"; };
 		0F057AAC1F8EE1F20019AC8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0F0FF1F81F5224A7000B608A /* L10n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		0F0FF1FD1F524CF1000B608A /* AdvancedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdvancedViewController.swift; path = Views/Controllers/AdvancedViewController.swift; sourceTree = "<group>"; };
 		0F14E7711E2E3AAC0092494B /* CampNet iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CampNet iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F14E7741E2E3AAC0092494B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,13 +157,9 @@
 		0F1F3D0E21ACA6EC002431B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0F1F3D1621ACDBBC002431B8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0F1F3D1A21AEAA2F002431B8 /* SupportUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SupportUsViewController.swift; path = Views/Controllers/SupportUsViewController.swift; sourceTree = "<group>"; };
-		0F2F678A1F223F6B004CEF44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		0F2F678C1F223F6C004CEF44 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0F34656F1F34D80A008E329F /* NetworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkViewController.swift; path = Views/Controllers/NetworkViewController.swift; sourceTree = "<group>"; };
 		0F3465721F35DCF4008E329F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		0F3685151F1A5C6B0056AED1 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = Views/Controllers/ChangePasswordViewController.swift; sourceTree = "<group>"; };
-		0F36851A1F1A7B290056AED1 /* Base */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		0F36851C1F1A7B3F0056AED1 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0F464C571F13AD7900C2F58B /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Models/Configuration.swift; sourceTree = "<group>"; };
 		0F464C591F13C50500C2F58B /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Models/Account.swift; sourceTree = "<group>"; };
 		0F464C5B1F13CB1100C2F58B /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = Models/Action.swift; sourceTree = "<group>"; };
@@ -193,16 +190,19 @@
 		0F9AAD0E1F535C5B00E14838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F9AAD161F535D1100E14838 /* CampNet iOS Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CampNet iOS Widget.entitlements"; sourceTree = "<group>"; };
 		0FA087FC1F8F82BA009AE962 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Helpers/Device.swift; sourceTree = "<group>"; };
+		0FA4D4742207444200698A97 /* UsageChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageChartView.swift; sourceTree = "<group>"; };
+		0FA4D486220753EA00698A97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0FA4D489220753F900698A97 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		0FA4D48A220753FD00698A97 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		0FA4D48B2207544C00698A97 /* L10n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogsViewController.swift; path = Views/Controllers/LogsViewController.swift; sourceTree = "<group>"; };
 		0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginIpViewController.swift; path = Views/Controllers/LoginIpViewController.swift; sourceTree = "<group>"; };
 		0FC6E2A11F17593E002861F3 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Models/AccountManager.swift; sourceTree = "<group>"; };
 		0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationNameExtensions.swift; path = Extensions/NotificationNameExtensions.swift; sourceTree = "<group>"; };
 		0FD239C01F415EC6006EA7F9 /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsExtensions.swift; path = Extensions/UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		0FD239C21F419585006EA7F9 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
-		0FD239C41F419585006EA7F9 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0FD239C51F419585006EA7F9 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		0FD239C61F419585006EA7F9 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Configurations.strings"; sourceTree = "<group>"; };
-		0FD239C71F419585006EA7F9 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0FD3A4101F1588BF006DA497 /* Configurations */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Configurations; path = Resources/Configurations; sourceTree = "<group>"; };
 		0FD3A4151F158A12006DA497 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Configurations.strings; sourceTree = "<group>"; };
 		0FD3A4171F158A15006DA497 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Configurations.strings"; sourceTree = "<group>"; };
@@ -290,7 +290,9 @@
 				0F14E7721E2E3AAC0092494B /* Products */,
 				298ED8C6D2DAD1B93F321972 /* Frameworks */,
 				F9FE1C584EA480CEA42C52D9 /* Pods */,
+				0FA4D48B2207544C00698A97 /* L10n.swift */,
 				0F1F3D0E21ACA6EC002431B8 /* GoogleService-Info.plist */,
+				0FA4D485220753EA00698A97 /* Localizable.strings */,
 			);
 			sourceTree = "<group>";
 		};
@@ -312,14 +314,12 @@
 				0FDCFC1921EF64DA00E332DB /* Extensions */,
 				0F5EB7211F17AE8B003094DE /* Views */,
 				0F14E7741E2E3AAC0092494B /* AppDelegate.swift */,
-				0F0FF1F81F5224A7000B608A /* L10n.swift */,
 				0F14E77A1E2E3AAC0092494B /* Main.storyboard */,
 				0F14E77F1E2E3AAC0092494B /* LaunchScreen.storyboard */,
 				0F1ED5C61F138618004A6C1F /* CampNet iOS.entitlements */,
 				0F14E77D1E2E3AAC0092494B /* Assets.xcassets */,
 				0F14E7821E2E3AAC0092494B /* Info.plist */,
 				0FF7564A1F2CE02100B2429A /* InfoPlist.strings */,
-				0F36851B1F1A7B290056AED1 /* Localizable.strings */,
 			);
 			path = "CampNet iOS";
 			sourceTree = "<group>";
@@ -327,13 +327,13 @@
 		0F1ED5CD1F138832004A6C1F /* CampNetKit */ = {
 			isa = PBXGroup;
 			children = (
-				0FD3A40F1F1588A3006DA497 /* Resources */,
-				0F464C751F14A5DA00C2F58B /* Helpers */,
 				0F464C611F13DB2F00C2F58B /* Extensions */,
+				0F464C751F14A5DA00C2F58B /* Helpers */,
 				0F464C561F13AD4900C2F58B /* Models */,
+				0FD3A40F1F1588A3006DA497 /* Resources */,
+				0FA4D473220743C800698A97 /* Views */,
 				0F1ED5CE1F138832004A6C1F /* CampNetKit.h */,
 				0F1ED5CF1F138832004A6C1F /* Info.plist */,
-				0F2F678B1F223F6B004CEF44 /* Localizable.strings */,
 			);
 			path = CampNetKit;
 			sourceTree = "<group>";
@@ -435,6 +435,14 @@
 				0F9AAD0E1F535C5B00E14838 /* Info.plist */,
 			);
 			path = "CampNet iOS Widget";
+			sourceTree = "<group>";
+		};
+		0FA4D473220743C800698A97 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0FA4D4742207444200698A97 /* UsageChartView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		0FD3A40F1F1588A3006DA497 /* Resources */ = {
@@ -696,7 +704,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F14E7811E2E3AAC0092494B /* LaunchScreen.storyboard in Resources */,
-				0F3685191F1A7B290056AED1 /* Localizable.strings in Resources */,
+				0FA4D487220753EA00698A97 /* Localizable.strings in Resources */,
 				0F14E77E1E2E3AAC0092494B /* Assets.xcassets in Resources */,
 				0F14E77C1E2E3AAC0092494B /* Main.storyboard in Resources */,
 				0FF756481F2CE02100B2429A /* InfoPlist.strings in Resources */,
@@ -709,8 +717,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FD3A4111F1588BF006DA497 /* Configurations in Resources */,
+				0FA4D488220753EA00698A97 /* Localizable.strings in Resources */,
 				0F1F3D1321ACA6EC002431B8 /* GoogleService-Info.plist in Resources */,
-				0F2F67891F223F6B004CEF44 /* Localizable.strings in Resources */,
 				0FD3A4141F158A12006DA497 /* Configurations.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -804,7 +812,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "if which bartycrouch > /dev/null; then\n  bartycrouch interfaces -p \"$PROJECT_DIR\"\n  swiftgen strings -t structured-swift3 \"${PROJECT_DIR}/CampNet iOS/Base.lproj/Localizable.strings\" -o \"${PROJECT_DIR}/CampNet iOS/L10n.swift\"\nelse\n  echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi";
+			shellScript = "if which bartycrouch > /dev/null; then\n  bartycrouch interfaces -p \"$PROJECT_DIR\"\n  swiftgen\nelse\n  echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi\n";
 		};
 		348563828BF34D9E7A47A6DE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -892,12 +900,12 @@
 				0F5EB7291F17B06F003094DE /* ConfigurationSetupViewController.swift in Sources */,
 				0F1EADBA21F801DD00D154BD /* CustomConfigurationViewController.swift in Sources */,
 				0F3685161F1A5C6B0056AED1 /* ChangePasswordViewController.swift in Sources */,
-				0F0FF1F91F5224A7000B608A /* L10n.swift in Sources */,
 				0F5EB7271F17B03B003094DE /* ConfigurationsViewController.swift in Sources */,
 				0F14E7751E2E3AAC0092494B /* AppDelegate.swift in Sources */,
 				0F46CC831F17837700AF1FC9 /* AccountsViewController.swift in Sources */,
 				0FF756411F2BA31500B2429A /* AccountDetailViewController.swift in Sources */,
 				0FBCD7B01F226F4B00333A90 /* LoginIpViewController.swift in Sources */,
+				0FA4D48C2207544C00698A97 /* L10n.swift in Sources */,
 				0FA85DA51F4E930C00F76A86 /* LogsViewController.swift in Sources */,
 				0F5EB7251F17AF0F003094DE /* ConfigurationCell.swift in Sources */,
 				0F8F704F1F1B44C10088E2DE /* SessionCell.swift in Sources */,
@@ -920,6 +928,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FA4D48D2207544C00698A97 /* L10n.swift in Sources */,
 				0F464C651F13ED0F00C2F58B /* StringExtensions.swift in Sources */,
 				0F464C581F13AD7900C2F58B /* Configuration.swift in Sources */,
 				0F5614951F31DEA2008A1232 /* WifiAddress.swift in Sources */,
@@ -928,6 +937,7 @@
 				0F7A93FB1F25E34C0093B3FA /* DoubleExtensions.swift in Sources */,
 				0F464C5A1F13C50500C2F58B /* Account.swift in Sources */,
 				0FC6E2A61F17694E002861F3 /* NotificationNameExtensions.swift in Sources */,
+				0FA4D4752207444200698A97 /* UsageChartView.swift in Sources */,
 				0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */,
 				0F8650751F1F8F9400C654C4 /* IntExtensions.swift in Sources */,
 				0F464C631F13DB6E00C2F58B /* YamlExtensions.swift in Sources */,
@@ -998,32 +1008,22 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		0F2F678B1F223F6B004CEF44 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F2F678A1F223F6B004CEF44 /* Base */,
-				0F2F678C1F223F6C004CEF44 /* zh-Hans */,
-				0FD239C71F419585006EA7F9 /* zh-Hant */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		0F36851B1F1A7B290056AED1 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0F36851A1F1A7B290056AED1 /* Base */,
-				0F36851C1F1A7B3F0056AED1 /* zh-Hans */,
-				0FD239C41F419585006EA7F9 /* zh-Hant */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
 		0F9AAD0B1F535C5B00E14838 /* MainInterface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				0F9AAD0C1F535C5B00E14838 /* Base */,
 			);
 			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		0FA4D485220753EA00698A97 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0FA4D486220753EA00698A97 /* Base */,
+				0FA4D489220753F900698A97 /* zh-Hans */,
+				0FA4D48A220753FD00698A97 /* zh-Hant */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		0FD3A4161F158A12006DA497 /* Configurations.strings */ = {

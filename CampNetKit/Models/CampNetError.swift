@@ -20,29 +20,16 @@ public enum CampNetError: Error {
     case unknown(String)
 
     public var localizedDescription: String {
-        let key: String
-        var argument: String?
-
         switch self {
-        case .offcampus: key = "offcampus"
-        case .offline: key = "offline"
-        case .unauthorized: key = "unauthorized"
-        case .arrears: key = "arrears"
+        case .offcampus: return L10n.CampNetError.offcampus
+        case .offline: return L10n.CampNetError.offline
+        case .unauthorized: return L10n.CampNetError.unauthorized
+        case .arrears: return L10n.CampNetError.arrears
 
-        case .networkError: key = "networkError"
-        case .invalidConfiguration: key = "invalidConfiguration"
-        case .internalError: key = "internalError"
-
-        case let .unknown(detail):
-            key = "unknown"
-            argument = detail
-        }
-
-        let formatString = Configuration.bundle.localizedString(forKey: key, value: nil, table: nil)
-        if let argument = argument {
-            return String.localizedStringWithFormat(formatString, argument)
-        } else {
-            return formatString
+        case .networkError: return L10n.CampNetError.networkError
+        case .invalidConfiguration: return L10n.CampNetError.invalidConfiguration
+        case .internalError: return L10n.CampNetError.internalError
+        case let .unknown(detail): return L10n.CampNetError.unknown(detail)
         }
     }
 

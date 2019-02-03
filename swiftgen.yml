@@ -1,0 +1,5 @@
+strings:
+  inputs: Base.lproj/Localizable.strings
+  outputs:
+    - templateName: structured-swift4
+      output: L10n.swift

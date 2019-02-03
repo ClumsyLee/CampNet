@@ -12,6 +12,27 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name
 internal enum L10n {
 
+  internal enum CampNetError {
+    /// The account is in arrears.
+    internal static let arrears = L10n.tr("Localizable", "CampNet_error.arrears")
+    /// Internal error, please contact the developer.
+    internal static let internalError = L10n.tr("Localizable", "CampNet_error.internalError")
+    /// Invalid configuration file, please contact the developer.
+    internal static let invalidConfiguration = L10n.tr("Localizable", "CampNet_error.invalidConfiguration")
+    /// Network error, please try again later.
+    internal static let networkError = L10n.tr("Localizable", "CampNet_error.networkError")
+    /// Not connected to the campus network.
+    internal static let offcampus = L10n.tr("Localizable", "CampNet_error.offcampus")
+    /// Please login first.
+    internal static let offline = L10n.tr("Localizable", "CampNet_error.offline")
+    /// Invalid username or password, please re-enter password in "Accounts".
+    internal static let unauthorized = L10n.tr("Localizable", "CampNet_error.unauthorized")
+    /// Unknown error: %@
+    internal static func unknown(_ p1: String) -> String {
+      return L10n.tr("Localizable", "CampNet_error.unknown", p1)
+    }
+  }
+
   internal enum About {
     /// Version %@ (%@)
     internal static func version(_ p1: String, _ p2: String) -> String {
@@ -236,11 +257,11 @@ internal enum L10n {
 // MARK: - Implementation Details
 
 extension L10n {
-  fileprivate static func tr(_ table: String, _ key: String) -> String {
+  private static func tr(_ table: String, _ key: String) -> String {
     return NSLocalizedString(key, tableName: table, bundle: Bundle(for: BundleToken.self), comment: "")
   }
 
-  fileprivate static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
+  private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
     let format = NSLocalizedString(key, tableName: table, bundle: Bundle(for: BundleToken.self), comment: "")
     return String(format: format, locale: Locale.current, arguments: args)
   }
