@@ -24,6 +24,7 @@ public struct ActionEntry {
     static let varsName = "vars"
     static let newVarsName = "newVars"
     static let respName = "resp"
+    static let urlName = "url"
 
     public var actionIdentifier: String
     public var index: Int
@@ -56,6 +57,16 @@ public struct ActionEntry {
         self.script = yaml["script"].string ?? ""
     }
 
+    // Based on String.init in PromiseKit.
+    static func decoder(data: Data, response: URLResponse) throws -> (String, String) {
+        guard let string = String(data: data, urlResponse: response) else {
+            log.error("Failed to decode data: \(data)")
+            throw CampNetError.internalError
+        }
+
+        return (string, response.url?.description ?? "")
+    }
+
     func commit(currentVars: [String: Any] = [:],
                 context: JSContext,
                 session: URLSession,
@@ -86,15 +97,15 @@ public struct ActionEntry {
             return Promise(error: CampNetError.invalidConfiguration)
         }
 
-        return session.dataTask(.promise, with: request).compactMap(String.init).recover(on: queue) { error -> Promise<String> in
+        return session.dataTask(.promise, with: request).map(on: queue, ActionEntry.decoder).recover(on: queue) { error -> Promise<(String, String)> in
             log.error("\(self): \(error.localizedDescription)")
             throw self.offcampusIfFailed ? CampNetError.offcampus : CampNetError.networkError
         }
-        .map(on: queue) { resp in
+        .map(on: queue) { resp, url in
             log.verbose("\(self): Processing response.")
 
             let newVars = try self.captureNewVars(resp: resp)                   // Capture new vars from HTML if needed.
-            try self.runScript(context: context, resp: resp, newVars: newVars)  // Invoke script.
+            try self.runScript(context: context, resp: resp, url: url, newVars: newVars)  // Invoke script.
             let results = try self.getResults(context: context)                 // Get results.
 
             return results
@@ -177,9 +188,10 @@ public struct ActionEntry {
         return newVars
     }
 
-    func runScript(context: JSContext, resp: String = "", newVars: [String: Any] = [:]) throws {
-        // Set response.
+    func runScript(context: JSContext, resp: String = "", url: String = "", newVars: [String: Any] = [:]) throws {
+        // Set response and URL.
         context.setObject(resp, forKeyedSubscript: ActionEntry.respName as (NSCopying & NSObjectProtocol))
+        context.setObject(url, forKeyedSubscript: ActionEntry.urlName as (NSCopying & NSObjectProtocol))
 
         // Send new vars if needed.
         if !newVars.isEmpty {
@@ -187,7 +199,9 @@ public struct ActionEntry {
             _ = context.evaluateScript("Object.assign(\(ActionEntry.varsName), \(ActionEntry.newVarsName));")
             if let error = context.exception {
                 log.error("\(self): Failed to send new vars: \(error). " +
-                    "resp: \(resp.debugDescription). newVars: \(newVars.debugDescription).")
+                    "resp: \(resp.debugDescription). " +
+                    "url: \(url.debugDescription). " +
+                    "newVars: \(newVars.debugDescription).")
                 throw CampNetError.internalError
             }
         }
@@ -199,7 +213,9 @@ public struct ActionEntry {
                 throw error
             } else {
                 log.error("\(self): Failed to execute script: \(errorString). " +
-                          "resp: \(resp.debugDescription). newVars: \(newVars.debugDescription).")
+                          "resp: \(resp.debugDescription). " +
+                          "url: \(url.debugDescription). " +
+                          "newVars: \(newVars.debugDescription).")
                 throw CampNetError.invalidConfiguration
             }
         }

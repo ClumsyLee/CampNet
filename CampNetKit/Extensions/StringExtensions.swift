@@ -59,7 +59,6 @@ extension String {
         } else if let string = String(bytes: data, encoding: .gb_18030_2000) {
             self.init(string)
         } else {
-            log.error("Failed to decode data: \(data)")
             return nil
         }
     }
