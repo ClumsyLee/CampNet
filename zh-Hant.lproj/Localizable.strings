@@ -1,7 +1,9 @@
+"quoted" = "「%@」";
+
 /* CampNetError */
 "CampNet_error.offcampus" = "未連接到校園網。";
 "CampNet_error.offline" = "請先登錄。";
-"CampNet_error.unauthorized" = "用戶名或密碼錯誤，請在 “賬戶” 中重新輸入密碼。";
+"CampNet_error.unauthorized" = "用戶名或密碼錯誤，請在「賬戶」中重新輸入密碼。";
 "CampNet_error.arrears" = "賬戶已欠費。";
 "CampNet_error.networkError" = "網絡錯誤，請稍後再試。";
 "CampNet_error.invalidConfiguration" = "無效的配置文件，請聯繫開發者。";
@@ -28,32 +30,32 @@
 /* Notifications */
 "notifications.donation_request.body" = "CampNet 已經為您自動登錄 %d 次了。要不要給這個開源項目一點愛？";
 "notifications.donation_request.title" = "我們需要你的支持！";
-"notifications.history_error.title" = "無法更新 “%@” 的歷史";
+"notifications.history_error.title" = "無法更新「%@」的歷史";
 "notifications.load_configuration.fetch_error.title" = "無法獲取配置";
 "notifications.load_configuration.parse_error.title" = "無法解析配置";
-"notifications.login_error.title" = "無法上線 “%@”";
+"notifications.login_error.title" = "無法上線「%@」";
 "notifications.login_ip_error.title" = "無法上線 %@";
-"notifications.logout_error.title" = "無法下線 “%@”";
-"notifications.logout_session_error.title" = "無法下線 “%@”";
+"notifications.logout_error.title" = "無法下線「%@」";
+"notifications.logout_session_error.title" = "無法下線「%@」";
 "notifications.logs_copied.title" = "已復制日誌";
-"notifications.profile_error.title" = "無法更新 “%@” 的賬戶信息";
-"notifications.status_error.title" = "無法更新 “%@” 的狀態";
+"notifications.profile_error.title" = "無法更新「%@」的賬戶信息";
+"notifications.status_error.title" = "無法更新「%@」的狀態";
 "notifications.usage_alert.body" = "本月最多還可使用 %@。";
-"notifications.usage_alert.title" = "“%@” 已使用最大流量的 %d%%";
+"notifications.usage_alert.title" = "「%@」已使用最大流量的 %d%%";
 
 /* Overview */
 "overview.login_button.captions.logging_in" = "上線中…";
 "overview.login_button.captions.logging_out" = "下線中…";
 "overview.login_button.captions.login" = "上線";
 "overview.login_button.captions.logout" = "下線";
-"overview.login_button.captions.logout_others" = "下線 “%@”";
+"overview.login_button.captions.logout_others" = "下線「%@」";
 "overview.login_button.captions.offcampus" = "非校園網";
 "overview.login_button.captions.unknown" = "未知";
 
 "overview.login_unknown_network_alert.actions.later" = "以後";
-"overview.login_unknown_network_alert.actions.mark_as_on_campus" = "標記為 “校園內”";
-"overview.login_unknown_network_alert.message" = "“自動登錄” 只會在標記為 “校園內” 的網絡中生效。";
-"overview.login_unknown_network_alert.title" = "您要將 “%@” 標記為 “校園內” 嗎？";
+"overview.login_unknown_network_alert.actions.mark_as_on_campus" = "標記為「校園內」";
+"overview.login_unknown_network_alert.message" = "「自動登錄」只會在標記為「校園內」的網絡中生效。";
+"overview.login_unknown_network_alert.title" = "您要將「%@」標記為「校園內」嗎？";
 
 "overview.logout_when_auto_login_alert.actions.cancel" = "取消";
 "overview.logout_when_auto_login_alert.actions.logout" = "下線";

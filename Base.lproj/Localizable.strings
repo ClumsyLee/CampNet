@@ -1,3 +1,5 @@
+"quoted" = "\"%@\"";
+
 /* CampNetError */
 "CampNet_error.offcampus" = "Not connected to the campus network.";
 "CampNet_error.offline" = "Please login first.";

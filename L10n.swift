@@ -11,6 +11,10 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name
 internal enum L10n {
+  /// "%@"
+  internal static func quoted(_ p1: String) -> String {
+    return L10n.tr("Localizable", "quoted", p1)
+  }
 
   internal enum CampNetError {
     /// The account is in arrears.

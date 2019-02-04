@@ -67,6 +67,10 @@
 		0FA4D49D22076F6900698A97 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FA4D49B22076F6900698A97 /* MainInterface.storyboard */; };
 		0FA4D4A122076F6900698A97 /* CampNet iOS Usage Alert Content Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0FA4D49322076F6900698A97 /* CampNet iOS Usage Alert Content Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0FA4D4A52207862E00698A97 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FA4D485220753EA00698A97 /* Localizable.strings */; };
+		0FA4D4AA220792F500698A97 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 0FA4D4A8220792F500698A97 /* Localizable.stringsdict */; };
+		0FA4D4AB220792F500698A97 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 0FA4D4A8220792F500698A97 /* Localizable.stringsdict */; };
+		0FA4D4AC220792F500698A97 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 0FA4D4A8220792F500698A97 /* Localizable.stringsdict */; };
+		0FA4D4AD220792F600698A97 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 0FA4D4A8220792F500698A97 /* Localizable.stringsdict */; };
 		0FA85DA51F4E930C00F76A86 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */; };
 		0FBCD7B01F226F4B00333A90 /* LoginIpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */; };
 		0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A11F17593E002861F3 /* AccountManager.swift */; };
@@ -217,6 +221,9 @@
 		0FA4D49C22076F6900698A97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		0FA4D49E22076F6900698A97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FA4D4A722078CC500698A97 /* CampNet iOS Usage Alert Content Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CampNet iOS Usage Alert Content Extension.entitlements"; sourceTree = "<group>"; };
+		0FA4D4A9220792F500698A97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Base; path = Base.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		0FA4D4B0220815B500698A97 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
+		0FA4D4B12208246000698A97 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogsViewController.swift; path = Views/Controllers/LogsViewController.swift; sourceTree = "<group>"; };
 		0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginIpViewController.swift; path = Views/Controllers/LoginIpViewController.swift; sourceTree = "<group>"; };
 		0FC6E2A11F17593E002861F3 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Models/AccountManager.swift; sourceTree = "<group>"; };
@@ -328,6 +335,7 @@
 				0FA4D48B2207544C00698A97 /* L10n.swift */,
 				0F1F3D0E21ACA6EC002431B8 /* GoogleService-Info.plist */,
 				0FA4D485220753EA00698A97 /* Localizable.strings */,
+				0FA4D4A8220792F500698A97 /* Localizable.stringsdict */,
 			);
 			sourceTree = "<group>";
 		};
@@ -791,6 +799,7 @@
 				0F14E77C1E2E3AAC0092494B /* Main.storyboard in Resources */,
 				0FF756481F2CE02100B2429A /* InfoPlist.strings in Resources */,
 				0F1F3D0F21ACA6EC002431B8 /* GoogleService-Info.plist in Resources */,
+				0FA4D4AA220792F500698A97 /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -801,6 +810,7 @@
 				0FD3A4111F1588BF006DA497 /* Configurations in Resources */,
 				0FA4D488220753EA00698A97 /* Localizable.strings in Resources */,
 				0F1F3D1321ACA6EC002431B8 /* GoogleService-Info.plist in Resources */,
+				0FA4D4AD220792F600698A97 /* Localizable.stringsdict in Resources */,
 				0FD3A4141F158A12006DA497 /* Configurations.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -818,6 +828,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F9AAD0D1F535C5B00E14838 /* MainInterface.storyboard in Resources */,
+				0FA4D4AB220792F500698A97 /* Localizable.stringsdict in Resources */,
 				0FA4D48E22076D0B00698A97 /* Localizable.strings in Resources */,
 				0F1F3D1221ACA6EC002431B8 /* GoogleService-Info.plist in Resources */,
 			);
@@ -829,6 +840,7 @@
 			files = (
 				0FA4D49D22076F6900698A97 /* MainInterface.storyboard in Resources */,
 				0FA4D4A52207862E00698A97 /* Localizable.strings in Resources */,
+				0FA4D4AC220792F500698A97 /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1159,6 +1171,16 @@
 				0FA4D49C22076F6900698A97 /* Base */,
 			);
 			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		0FA4D4A8220792F500698A97 /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0FA4D4A9220792F500698A97 /* Base */,
+				0FA4D4B0220815B500698A97 /* zh-Hans */,
+				0FA4D4B12208246000698A97 /* zh-Hant */,
+			);
+			name = Localizable.stringsdict;
 			sourceTree = "<group>";
 		};
 		0FD3A4161F158A12006DA497 /* Configurations.strings */ = {

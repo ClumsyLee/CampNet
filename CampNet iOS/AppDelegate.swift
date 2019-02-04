@@ -270,7 +270,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         // Setup notification categories.
         if #available(iOS 10.0, *) {
-            let usageAlert = UNNotificationCategory(identifier: "usageAlert", actions: [], intentIdentifiers: [], options: [])
+            var usageAlert: UNNotificationCategory
+            let identifier = "usageAlert"
+            let hidden = NSString.localizedUserNotificationString(forKey: "notifications.usage_alert.hidden", arguments: nil)
+            let summary = NSString.localizedUserNotificationString(forKey: "notifications.usage_alert.summary", arguments: nil)
+
+            if #available(iOS 12.0, *) {
+                usageAlert = UNNotificationCategory(identifier: identifier, actions: [], intentIdentifiers: [],
+                                                    hiddenPreviewsBodyPlaceholder: hidden,
+                                                    categorySummaryFormat: summary)
+            } else if #available(iOS 11.0, *) {
+                usageAlert = UNNotificationCategory(identifier: identifier, actions: [], intentIdentifiers: [],
+                                                    hiddenPreviewsBodyPlaceholder: hidden)
+            } else {
+                usageAlert = UNNotificationCategory(identifier: identifier, actions: [], intentIdentifiers: [])
+            }
+
             UNUserNotificationCenter.current().setNotificationCategories([usageAlert])
         }
 
@@ -424,11 +439,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
         let percentage = Int((Double(usage) / Double(maxUsage)) * 100.0)
         let usageLeft = (maxUsage - usage).usageString(decimalUnits: account.configuration.decimalUnits)
+        let name = account.displayName
 
-        let title = L10n.Notifications.UsageAlert.title(account.displayName, percentage)
+        let title = L10n.Notifications.UsageAlert.title(name, percentage)
         let body = L10n.Notifications.UsageAlert.body(usageLeft)
         sendNotification(title: title, body: body, identifier: "\(account.identifier).accountUsageAlert",
-                         categoryIdentifier: "usageAlert", userInfo: ["account": account.identifier])
+                         categoryIdentifier: "usageAlert", userInfo: ["account": account.identifier],
+                         summaryArgument: L10n.quoted(name))
 
         Analytics.logEvent("usage_alert", parameters: [
             "usage": usage,
@@ -465,7 +482,8 @@ func showErrorBanner(title: String?, body: String? = nil, duration: Double = App
 }
 
 func sendNotification(title: String, body: String, identifier: String, badge: Int? = nil,
-                      categoryIdentifier: String? = nil, userInfo: [AnyHashable: Any]? = nil) {
+                      categoryIdentifier: String? = nil, userInfo: [AnyHashable: Any]? = nil,
+                      summaryArgument: String? = nil) {
     var userInfo = userInfo ?? [:]
     userInfo["identifier"] = identifier
 
@@ -479,6 +497,11 @@ func sendNotification(title: String, body: String, identifier: String, badge: In
             content.categoryIdentifier = categoryIdentifier
         }
         content.userInfo = userInfo
+        if #available(iOS 12.0, *) {
+            if let summaryArgument = summaryArgument {
+                content.summaryArgument = summaryArgument
+            }
+        }
 
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
