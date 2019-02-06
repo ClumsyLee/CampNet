@@ -80,6 +80,8 @@
 		0FD3A4141F158A12006DA497 /* Configurations.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FD3A4161F158A12006DA497 /* Configurations.strings */; };
 		0FDCFC1C21EF64DA00E332DB /* NEHotspotHelperCommandExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCFC1A21EF64DA00E332DB /* NEHotspotHelperCommandExtensions.swift */; };
 		0FDCFC1D21EF64DA00E332DB /* NEHotspotHelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCFC1B21EF64DA00E332DB /* NEHotspotHelperExtensions.swift */; };
+		0FE10490220B066900D36E60 /* CampNetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; };
+		0FE10491220B067200D36E60 /* CampNetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1ED5CC1F138832004A6C1F /* CampNetKit.framework */; };
 		0FEA66DF1F533DC300F3867C /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEA66DE1F533DC300F3867C /* AboutViewController.swift */; };
 		0FF7563F1F2A175600B2429A /* UsageAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF7563E1F2A175600B2429A /* UsageAlertViewController.swift */; };
 		0FF756411F2BA31500B2429A /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF756401F2BA31500B2429A /* AccountDetailViewController.swift */; };
@@ -293,6 +295,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FE10490220B066900D36E60 /* CampNetKit.framework in Frameworks */,
 				0F9AAD071F535C5B00E14838 /* NotificationCenter.framework in Frameworks */,
 				4DC0B6912C2E6B23F22C8C4B /* Pods_CampNetKit_CampNet_iOS_Widget.framework in Frameworks */,
 			);
@@ -302,6 +305,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FE10491220B067200D36E60 /* CampNetKit.framework in Frameworks */,
 				0FA4D49722076F6900698A97 /* UserNotificationsUI.framework in Frameworks */,
 				0FA4D49522076F6900698A97 /* UserNotifications.framework in Frameworks */,
 				2AA27A94E80742870B17C1E6 /* Pods_CampNetKit_CampNet_iOS_Usage_Alert_Content_Extension.framework in Frameworks */,
