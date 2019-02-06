@@ -154,6 +154,7 @@ extension UserDefaults {
         Defaults[.accountHistory(of: accountId)] = UserDefaults.mainHistory.vars
 
         Defaults[.accounts].append(accountId)
+        Defaults[.mainAccount] = accountId
     }
 
     private func addAltAccount() {
