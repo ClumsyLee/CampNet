@@ -147,7 +147,7 @@ public struct ActionEntry {
         }
         // Body.
         if let body = body {
-            request.httpBody = Data(body.utf8)
+            request.httpBody = Data(body.replace(with: placeholders).utf8)
         }
 
         return request
