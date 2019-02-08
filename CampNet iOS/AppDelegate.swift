@@ -102,7 +102,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
         }
 
-        when(resolved: promises).done { results in
+        // Wait at most 25 seconds to avoid being killed before replying.
+        let timeout = after(seconds: 25).map{ _ in [Result<Void>]() }
+        race(when(resolved: promises), timeout).done { results in
             if results.contains(where: { $0.isFulfilled }) {
                 completionHandler(.newData)
                 Analytics.logEvent("background_fetch", parameters: ["result": "new_data"])
