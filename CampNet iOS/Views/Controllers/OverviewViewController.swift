@@ -61,7 +61,7 @@ class OverviewViewController: UITableViewController {
     var ip: String = ""
 
     var foregroundStatuses: [String: ForegroundStatus] = [:]
-    var backgroundRefreshing = false
+    var backgroundRefreshings: [String: Bool] = [:]
     var networkTimer = Timer()
 
 
@@ -229,15 +229,15 @@ class OverviewViewController: UITableViewController {
 
         // Refresh the account.
         guard let account = account, account.shouldAutoUpdate, !refreshControl!.isRefreshing,
-              !backgroundRefreshing else {
+              !(backgroundRefreshings[account.identifier] ?? false) else {
             return
         }
-        backgroundRefreshing = true
+        backgroundRefreshings[account.identifier] = true
 
         _ = account.update().ensure {
-            // Don't touch backgroundRefreshing if the account has been changed.
+            // Don't touch backgroundRefreshings if the account has been changed.
             if self.account == account {
-                self.backgroundRefreshing = false
+                self.backgroundRefreshings[account.identifier] = nil
             }
         }
     }
@@ -411,7 +411,6 @@ class OverviewViewController: UITableViewController {
         if refreshControl!.isRefreshing {
             refreshControl!.endRefreshing()  // Doing it alone will cause a bug on iOS 9.
         }
-        backgroundRefreshing = false
 
         reloadNetwork()
         reloadStatus()
