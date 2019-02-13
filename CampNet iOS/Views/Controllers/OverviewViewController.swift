@@ -20,6 +20,12 @@ import CampNetKit
 
 class OverviewViewController: UITableViewController {
 
+    enum ForegroundStatus {
+        case loggingIn
+        case loggingOut
+        case loggingOutOthers
+    }
+
     static let networkUpdateInterval: TimeInterval = 10
 
     @IBOutlet var upperView: UIView!
@@ -54,7 +60,7 @@ class OverviewViewController: UITableViewController {
     var network: NEHotspotNetwork?
     var ip: String = ""
 
-    var statusBusy = false
+    var foregroundStatuses: [String: ForegroundStatus] = [:]
     var backgroundRefreshing = false
     var networkTimer = Timer()
 
@@ -166,11 +172,8 @@ class OverviewViewController: UITableViewController {
         }
 
         // Lock the button.
-        statusBusy = true
-        loginButton.isEnabled = false
-        loginButton.setStyle(.horizontalMoreOptions, animated: true)
-
-        loginButtonCaption.text = L10n.Overview.LoginButton.Captions.loggingIn
+        foregroundStatuses[account.identifier] = .loggingIn
+        reloadStatus(autoLogin: false)
 
         _ = account.login().done {
             SwiftRater.incrementSignificantUsageCount()
@@ -181,7 +184,7 @@ class OverviewViewController: UITableViewController {
             }
         }.ensure {
             // Unlock the button.
-            self.statusBusy = false
+            self.foregroundStatuses[account.identifier] = nil
             self.reloadStatus(autoLogin: false)
         }
 
@@ -194,17 +197,18 @@ class OverviewViewController: UITableViewController {
         }
 
         // Lock the button.
-        statusBusy = true
-        loginButton.isEnabled = false
-        loginButton.setStyle(.horizontalMoreOptions, animated: true)
-
-        loginButtonCaption.text = L10n.Overview.LoginButton.Captions.loggingOut
+        if case let .online(onlineUsername)? = status?.type, onlineUsername != account.username {
+            foregroundStatuses[account.identifier] = .loggingOutOthers
+        } else {
+            foregroundStatuses[account.identifier] = .loggingOut
+        }
+        reloadStatus(autoLogin: false)
 
         _ = account.logout().done {
             SwiftRater.incrementSignificantUsageCount()
         }.ensure {
             // Unlock the button.
-            self.statusBusy = false
+            self.foregroundStatuses[account.identifier] = nil
             self.reloadStatus(autoLogin: false)
         }
 
@@ -269,10 +273,27 @@ class OverviewViewController: UITableViewController {
     }
 
     func reloadStatus(autoLogin: Bool = true) {
-        guard !statusBusy else { return }
         status = account?.status
 
-        if let type = status?.type {
+        if let foregroundStatus = foregroundStatuses[account?.identifier ?? ""] {
+            loginButton.isEnabled = false
+            loginButton.setStyle(.horizontalMoreOptions, animated: true)
+
+            switch foregroundStatus {
+            case .loggingIn:
+                loginButton.backgroundColor = .white
+                loginButton.strokeColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+                loginButtonCaption.text = L10n.Overview.LoginButton.Captions.loggingIn
+            case .loggingOut:
+                loginButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+                loginButton.strokeColor = .white
+                loginButtonCaption.text = L10n.Overview.LoginButton.Captions.loggingOut
+            case .loggingOutOthers:
+                loginButton.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
+                loginButton.strokeColor = .white
+                loginButtonCaption.text = L10n.Overview.LoginButton.Captions.loggingOut
+            }
+        } else if let type = status?.type {
             switch type {
             case let .online(onlineUsername):
                 if let username = account?.username, let onlineUsername = onlineUsername, username != onlineUsername {
@@ -386,7 +407,6 @@ class OverviewViewController: UITableViewController {
         if refreshControl!.isRefreshing {
             refreshControl!.endRefreshing()  // Doing it alone will cause a bug on iOS 9.
         }
-        statusBusy = false
         backgroundRefreshing = false
 
         reloadNetwork()
