@@ -54,6 +54,7 @@ class OverviewViewController: UITableViewController {
     var network: NEHotspotNetwork?
     var ip: String = ""
 
+    var statusBusy = false
     var backgroundRefreshing = false
     var networkTimer = Timer()
 
@@ -76,10 +77,9 @@ class OverviewViewController: UITableViewController {
             return
         }
 
-        _ = account.update().done { _ in
+        _ = account.update().done {
             SwiftRater.incrementSignificantUsageCount()
-        }
-        .ensure {
+        }.ensure {
             // Don't touch refreshControl if the account has been changed.
             if self.account == account {
                 self.refreshControl?.endRefreshing()
@@ -165,21 +165,24 @@ class OverviewViewController: UITableViewController {
             return
         }
 
+        // Lock the button.
+        statusBusy = true
         loginButton.isEnabled = false
         loginButton.setStyle(.horizontalMoreOptions, animated: true)
 
         loginButtonCaption.text = L10n.Overview.LoginButton.Captions.loggingIn
 
-        account.login().done { _ in
+        _ = account.login().done {
             SwiftRater.incrementSignificantUsageCount()
 
             // Update the profile in the background if possible.
             if account.configuration.actions[.profile] != nil {
                 _ = account.profile()
             }
-        }
-        .catch { _ in
-            self.reloadStatus(autoLogin: false)  // Reset the button.
+        }.ensure {
+            // Unlock the button.
+            self.statusBusy = false
+            self.reloadStatus(autoLogin: false)
         }
 
         Analytics.logEvent("foreground_login", parameters: nil)
@@ -190,16 +193,19 @@ class OverviewViewController: UITableViewController {
             return
         }
 
+        // Lock the button.
+        statusBusy = true
         loginButton.isEnabled = false
         loginButton.setStyle(.horizontalMoreOptions, animated: true)
 
         loginButtonCaption.text = L10n.Overview.LoginButton.Captions.loggingOut
 
-        account.logout().done { _ in
+        _ = account.logout().done {
             SwiftRater.incrementSignificantUsageCount()
-        }
-        .catch { _ in
-            self.reloadStatus(autoLogin: false)  // Reset the button.
+        }.ensure {
+            // Unlock the button.
+            self.statusBusy = false
+            self.reloadStatus(autoLogin: false)
         }
 
         Analytics.logEvent("foreground_logout", parameters: nil)
@@ -263,6 +269,7 @@ class OverviewViewController: UITableViewController {
     }
 
     func reloadStatus(autoLogin: Bool = true) {
+        guard !statusBusy else { return }
         status = account?.status
 
         if let type = status?.type {
@@ -379,6 +386,7 @@ class OverviewViewController: UITableViewController {
         if refreshControl!.isRefreshing {
             refreshControl!.endRefreshing()  // Doing it alone will cause a bug on iOS 9.
         }
+        statusBusy = false
         backgroundRefreshing = false
 
         reloadNetwork()
