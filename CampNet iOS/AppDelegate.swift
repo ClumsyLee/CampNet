@@ -379,7 +379,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
 
         let title = L10n.Notifications.LogoutError.title(account.displayName)
-        showErrorBanner(title: title, body: error.localizedDescription)
+        if UIApplication.shared.applicationState == .active {
+            showErrorBanner(title: title, body: error.localizedDescription)
+        }
     }
 
     @objc func accountStatusError(_ notification: Notification) {
@@ -389,7 +391,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
 
         let title = L10n.Notifications.StatusError.title(account.displayName)
-        showErrorBanner(title: title, body: error.localizedDescription)
+        if UIApplication.shared.applicationState == .active {
+            showErrorBanner(title: title, body: error.localizedDescription)
+        }
     }
 
     @objc func accountProfileError(_ notification: Notification) {
@@ -399,7 +403,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
 
         let title = L10n.Notifications.ProfileError.title(account.displayName)
-        showErrorBanner(title: title, body: error.localizedDescription)
+        if UIApplication.shared.applicationState == .active {
+            showErrorBanner(title: title, body: error.localizedDescription)
+        }
     }
 
     @objc func accountLoginIpError(_ notification: Notification) {
@@ -409,7 +415,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
 
         let title = L10n.Notifications.LoginIpError.title(ip)
-        showErrorBanner(title: title, body: error.localizedDescription)
+        if UIApplication.shared.applicationState == .active {
+            showErrorBanner(title: title, body: error.localizedDescription)
+        }
     }
 
     @objc func accountLogoutSessionError(_ notification: Notification) {
@@ -419,7 +427,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
 
         let title = L10n.Notifications.LogoutSessionError.title(session.device?.nonEmpty ?? session.ip)
-        showErrorBanner(title: title, body: error.localizedDescription)
+        if UIApplication.shared.applicationState == .active {
+            showErrorBanner(title: title, body: error.localizedDescription)
+        }
     }
 
     @objc func accountHistoryError(_ notification: Notification) {
@@ -429,7 +439,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
 
         let title = L10n.Notifications.HistoryError.title(account.displayName)
-        showErrorBanner(title: title, body: error.localizedDescription)
+        if UIApplication.shared.applicationState == .active {
+            showErrorBanner(title: title, body: error.localizedDescription)
+        }
     }
 
     @objc func accountUsageAlert(_ notification: Notification) {
