@@ -179,7 +179,7 @@ class OverviewViewController: UITableViewController {
             }
         }
         .catch { _ in
-            self.reloadStatus()  // Reset the button.
+            self.reloadStatus(autoLogin: false)  // Reset the button.
         }
 
         Analytics.logEvent("foreground_login", parameters: nil)
@@ -199,7 +199,7 @@ class OverviewViewController: UITableViewController {
             SwiftRater.incrementSignificantUsageCount()
         }
         .catch { _ in
-            self.reloadStatus()  // Reset the button.
+            self.reloadStatus(autoLogin: false)  // Reset the button.
         }
 
         Analytics.logEvent("foreground_logout", parameters: nil)
@@ -262,7 +262,7 @@ class OverviewViewController: UITableViewController {
         ip = WiFi.ip ?? ""
     }
 
-    func reloadStatus() {
+    func reloadStatus(autoLogin: Bool = true) {
         status = account?.status
 
         if let type = status?.type {
@@ -293,7 +293,7 @@ class OverviewViewController: UITableViewController {
                 loginButtonCaption.text = L10n.Overview.LoginButton.Captions.login
 
                 if let account = account, let network = network, account.canManage(network), account.shouldAutoLogin,
-                   UIApplication.shared.applicationState == .active {
+                   UIApplication.shared.applicationState == .active, autoLogin {
                     login()
                 }
 
