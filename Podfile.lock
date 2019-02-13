@@ -1,10 +1,10 @@
 PODS:
   - Alamofire (4.8.1)
   - BRYXBanner (0.8.3)
-  - Charts (3.2.1):
-    - Charts/Core (= 3.2.1)
-  - Charts/Core (3.2.1)
-  - CryptoSwift (0.13.1)
+  - Charts (3.2.2):
+    - Charts/Core (= 3.2.2)
+  - Charts/Core (3.2.2)
+  - CryptoSwift (0.14.0)
   - DynamicButton (6.1.0)
   - Firebase/Core (5.16.0):
     - Firebase/CoreOnly
@@ -50,7 +50,7 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (5.3.7):
     - GoogleUtilities/Logger
-  - Instabug (8.0.17)
+  - Instabug (8.0.20)
   - Kanna (4.0.3)
   - KeychainAccess (3.1.2)
   - nanopb (0.3.901):
@@ -59,17 +59,17 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - NetUtils (4.1.0)
-  - PromiseKit (6.8.2):
-    - PromiseKit/CorePromise (= 6.8.2)
-    - PromiseKit/Foundation (= 6.8.2)
-    - PromiseKit/UIKit (= 6.8.2)
-  - PromiseKit/CorePromise (6.8.2)
-  - PromiseKit/Foundation (6.8.2):
+  - PromiseKit (6.8.3):
+    - PromiseKit/CorePromise (= 6.8.3)
+    - PromiseKit/Foundation (= 6.8.3)
+    - PromiseKit/UIKit (= 6.8.3)
+  - PromiseKit/CorePromise (6.8.3)
+  - PromiseKit/Foundation (6.8.3):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.8.2):
+  - PromiseKit/UIKit (6.8.3):
     - PromiseKit/CorePromise
   - SwiftRater (1.3.0)
-  - SwiftyBeaver (1.6.1)
+  - SwiftyBeaver (1.6.2)
   - SwiftyButton (0.8.2)
   - SwiftyStoreKit (0.14.2)
   - SwiftyUserDefaults (3.0.1)
@@ -131,8 +131,8 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   BRYXBanner: 8cf1b119792e1cee8d7ba107297ef89f7409bc53
-  Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
-  CryptoSwift: ff68c35a53e03177d31aaa2c1e8b3e010aeed6cb
+  Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
+  CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
   DynamicButton: 5a3ae2bf26dc196fb6c85b3e1aac956add860718
   Firebase: 749a8ff4962f9d8c79dda1966de20f6f77583d67
   FirebaseAnalytics: d35d47c03c50c73c14a7fd31463c5775843e78a9
@@ -140,14 +140,14 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 97ea7a5dca9afd72c79bfcdddb7a44aa1cbb42a1
   GoogleAppMeasurement: 621f3bc6211d5ba548debe01fafad30cf5ab6859
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
-  Instabug: 399f0ce0ac407adcd157c4a0693918442b13d9c3
+  Instabug: 8b759fb4d9ecdbd224aa83b719baf18b962f974e
   Kanna: 0ebbdd0e7e3308f0aafbd569e79c8cadc5eb877c
   KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NetUtils: 414aca786a4be7d6c87a69613bdb6a5a2640f08e
-  PromiseKit: 8200c4555a5b433ac26f5143093cb792ee2c3426
+  PromiseKit: 94c6e781838c5bf4717677d0d882b0e7250c80fc
   SwiftRater: 035512c0c454c83bd4d96b483d8854606aeecccf
-  SwiftyBeaver: ccfcdf85a04d429f1633f668650b0ce8020bda3a
+  SwiftyBeaver: 8e67ab3cd94389cbbb7a9c7cc02748d98bfee68e
   SwiftyButton: 5b0ef314e9cf61cf8a83e456ddd1ea1f53f30598
   SwiftyStoreKit: cc399645796b094022fb650c148a0aed25995873
   SwiftyUserDefaults: 3d273b1739b68ada3145dc754a70ec775bc5c8be
