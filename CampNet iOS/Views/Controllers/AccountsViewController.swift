@@ -142,15 +142,15 @@ class AccountsViewController: UITableViewController {
     @objc func delegateChanged(_ notification: Notification) {
         let fromAccount = notification.userInfo?["fromAccount"] as? Account
         let toAccount = notification.userInfo?["toAccount"] as? Account
+        if let fromAccount = fromAccount { delegateAccounts.remove(fromAccount) }
+        if let toAccount = toAccount { delegateAccounts.insert(toAccount) }
 
         if let fromIndexPath = indexPath(of: fromAccount) {
-            delegateAccounts.remove(fromAccount!)
             if let cell = tableView.cellForRow(at: fromIndexPath) as? AccountCell {
                 cell.isDelegate = false
             }
         }
         if let toIndexPath = indexPath(of: toAccount) {
-            delegateAccounts.insert(toAccount!)
             if let cell = tableView.cellForRow(at: toIndexPath) as? AccountCell {
                 cell.isDelegate = true
             }
