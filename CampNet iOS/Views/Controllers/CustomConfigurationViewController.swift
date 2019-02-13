@@ -50,12 +50,10 @@ class CustomConfigurationViewController: UITableViewController {
             // Valid configuration, save it and reload custom accounts.
             self.saveCustomConfiguration(url: url.description, string: string, configuration: configuration)
             self.performSegue(withIdentifier: "customConfigurationLoaded", sender: self)
-        }
-        .ensure {
+        }.ensure {
             self.activityIndicator.stopAnimating()
             Action.changeNetworkActivityCount(-1)
-        }
-        .catch { err in
+        }.catch { err in
             showErrorBanner(title: L10n.Notifications.LoadConfiguration.FetchError.title,
                             body: err.localizedDescription)
             self.clearStates()

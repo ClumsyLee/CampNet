@@ -325,11 +325,9 @@ extension Account {
             log.debug("\(self): Logging in.")
 
             return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder)
-        }
-        .then(on: queue) { _ -> Promise<Status> in
+        }.then(on: queue) { _ -> Promise<Status> in
             return self.status(isSubaction: true, on: queue, requestBinder: requestBinder)
-        }
-        .done(on: queue) { status in
+        }.done(on: queue) { status in
             guard case .online = status.type else {
                 log.warning("\(self): Login action finished successfully, but status check failed.")
                 throw CampNetError.networkError
@@ -338,8 +336,7 @@ extension Account {
             Defaults[.accountLastLoginErrorNotification(of: self.identifier)] = nil
             Defaults.synchronize()
             log.info("\(self): Logged in.")
-        }
-        .recover(on: queue) { error in
+        }.recover(on: queue) { error in
             log.warning("\(self): Failed to login: \(error)")
 
             if !isSubaction {
@@ -360,8 +357,7 @@ extension Account {
             log.debug("\(self): Updating status.")
 
             return action.commit(username: self.username, password: self.password, on: queue, requestBinder: requestBinder)
-        }
-        .map(on: queue) { vars -> Status in
+        }.map(on: queue) { vars -> Status in
             guard let status = Status(vars: vars) else {
                 log.error("\(self): No status in vars (\(vars.keys)).")
                 throw CampNetError.invalidConfiguration
@@ -369,8 +365,7 @@ extension Account {
             self.status = status
             log.info("\(self): Status updated.")
             return status
-        }
-        .recover(on: queue) { error -> Promise<Status> in
+        }.recover(on: queue) { error -> Promise<Status> in
             if let error = error as? CampNetError, case .offcampus = error {
                 let status = Status(type: .offcampus)
                 self.status = status
@@ -399,8 +394,7 @@ extension Account {
             log.debug("\(self): Updating profile.")
 
             return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder)
-        }
-        .map(on: queue) { vars -> Profile in
+        }.map(on: queue) { vars -> Profile in
             guard let profile = Profile(vars: vars) else {
                 log.error("\(self): No profile in vars (\(vars.keys)).")
                 throw CampNetError.invalidConfiguration
@@ -414,8 +408,7 @@ extension Account {
             self.profile = profile
             log.debug("\(self): Profile updated.")
             return profile
-        }
-        .recover(on: queue) { error -> Promise<Profile> in
+        }.recover(on: queue) { error -> Promise<Profile> in
             log.warning("\(self): Failed to update profile: \(error)")
 
             if !isSubaction {
@@ -438,11 +431,9 @@ extension Account {
 
             return action.commit(username: username, password: password, extraVars: ["ip": ip], on: queue,
                                  requestBinder: requestBinder)
-        }
-        .then(on: queue) { _ in
+        }.then(on: queue) { _ in
             return self.profile(isSubaction: true, on: queue, requestBinder: requestBinder)
-        }
-        .done(on: queue) { profile in
+        }.done(on: queue) { profile in
             // Check sessions if possible.
             if let sessions = profile.sessions {
                 guard sessions.map({ $0.ip }).contains(ip) else {
@@ -457,8 +448,7 @@ extension Account {
             }
 
             log.info("\(self): \(ip) logged in.")
-        }
-        .recover(on: queue) { error in
+        }.recover(on: queue) { error in
             log.warning("\(self): Failed to login \(ip): \(error)")
 
             if !isSubaction {
@@ -482,12 +472,10 @@ extension Account {
             return action.commit(username: username, password: password,
                                  extraVars: ["ip": session.ip, "id": session.id ?? ""], on: queue,
                                  requestBinder: requestBinder)
-        }
-        .then(on: queue) { _ in
+        }.then(on: queue) { _ in
             // Do not autoLogout to avoid recursions.
             return self.profile(isSubaction: true, autoLogout: false, on: queue, requestBinder: requestBinder)
-        }
-        .map(on: queue) { profile -> Void in
+        }.map(on: queue) { profile -> Void in
             // Check sessions if possible.
             if let sessions = profile.sessions {
                 guard !sessions.map({ $0.ip }).contains(session.ip) else {
@@ -502,8 +490,7 @@ extension Account {
             }
 
             log.info("\(self): \(session) logged out.")
-        }
-        .recover(on: queue) { error in
+        }.recover(on: queue) { error in
             log.warning("\(self): Failed to logout \(session): \(error)")
 
             if !isSubaction {
@@ -529,8 +516,7 @@ extension Account {
                                              "month": Calendar.current.component(.month, from: today),
                                              "day": Calendar.current.component(.day, from: today)],
                                  on: queue, requestBinder: requestBinder)
-        }
-        .map(on: queue) { vars -> History in
+        }.map(on: queue) { vars -> History in
             guard let history = History(vars: vars) else {
                 log.error("\(self): No history in vars (\(vars.keys)).")
                 throw CampNetError.invalidConfiguration
@@ -538,8 +524,7 @@ extension Account {
             self.history = history
             log.debug("\(self): History updated.")
             return history
-        }
-        .recover(on: queue) { error -> Promise<History> in
+        }.recover(on: queue) { error -> Promise<History> in
             log.warning("\(self): Failed to update history: \(error).")
 
             if !isSubaction {
@@ -560,19 +545,16 @@ extension Account {
             log.debug("\(self): Logging out.")
 
             return action.commit(username: username, password: password, on: queue, requestBinder: requestBinder)
-        }
-        .then(on: queue) { _ in
+        }.then(on: queue) { _ in
             return self.status(isSubaction: true, on: queue, requestBinder: requestBinder)
-        }
-        .done(on: queue) { status in
+        }.done(on: queue) { status in
             guard case .offline = status.type else {
                 log.warning("\(self): Logout action finished successfully, but status check failed.")
                 throw CampNetError.networkError
             }
 
             log.info("\(self): Logged out.")
-        }
-        .recover(on: queue) { error in
+        }.recover(on: queue) { error in
             log.warning("\(self): Failed to logout: \(error).")
 
             if !isSubaction {

@@ -185,7 +185,7 @@ class SessionsViewController: UITableViewController {
             return
         }
 
-        _ = account.logoutSession(session: session).done { _ in
+        _ = account.logoutSession(session: session).done {
             SwiftRater.incrementSignificantUsageCount()
         }
         Analytics.logEvent("foreground_logout_session", parameters: nil)

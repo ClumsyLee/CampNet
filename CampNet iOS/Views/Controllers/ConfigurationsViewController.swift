@@ -79,8 +79,7 @@ class ConfigurationsViewController: UITableViewController, UISearchResultsUpdati
 
         self.names = Configuration.displayNames.map {
             (identifier: $0.key, name: $0.value, domain: $0.key.reverseDomained)
-        }
-        .sorted { $0.name < $1.name || ($0.name == $1.name && $0.identifier < $1.identifier) }
+        }.sorted { $0.name < $1.name || ($0.name == $1.name && $0.identifier < $1.identifier) }
     }
 
     deinit {

@@ -53,8 +53,7 @@ extension NEHotspotHelperCommand {
             case .online, .offline: self.replyEvaluate(confidence: .high)
             case .offcampus: self.replyEvaluate(confidence: .none)
             }
-        }
-        .catch(on: queue) { _ in
+        }.catch(on: queue) { _ in
             self.replyEvaluate(confidence: .low)
         }
     }
@@ -90,8 +89,7 @@ extension NEHotspotHelperCommand {
                     Analytics.logEvent("donation_request", parameters: ["login_count": Defaults[.loginCount]])
                 }
             }
-        }
-        .catch(on: queue) { error in
+        }.catch(on: queue) { error in
             self.reply(result: .temporaryFailure)
             Analytics.logEvent("background_login", parameters: ["result": "temporary_failure"])
         }
@@ -115,8 +113,7 @@ extension NEHotspotHelperCommand {
             case .offline: self.reply(result: .authenticationRequired)
             case .offcampus: self.reply(result: .failure)
             }
-        }
-        .catch(on: queue) { error in
+        }.catch(on: queue) { error in
             self.reply(result: .failure)
         }
     }
@@ -136,8 +133,7 @@ extension NEHotspotHelperCommand {
         account.logout(on: queue, requestBinder: requestBinder).done(on: queue) {
             self.reply(result: .success)
             Analytics.logEvent("background_logout", parameters: ["result": "success"])
-        }
-        .catch(on: queue) { error in
+        }.catch(on: queue) { error in
             self.reply(result: .failure)
             Analytics.logEvent("background_logout", parameters: ["result": "failure"])
         }

@@ -100,8 +100,7 @@ public struct ActionEntry {
         return session.dataTask(.promise, with: request).map(on: queue, ActionEntry.decoder).recover(on: queue) { error -> Promise<(String, String)> in
             log.error("\(self): \(error.localizedDescription)")
             throw self.offcampusIfFailed ? CampNetError.offcampus : CampNetError.networkError
-        }
-        .map(on: queue) { resp, url in
+        }.map(on: queue) { resp, url in
             log.verbose("\(self): Processing response.")
 
             let newVars = try self.captureNewVars(resp: resp)                   // Capture new vars from HTML if needed.
@@ -323,8 +322,7 @@ public struct Action {
                 vars["updated_at"] = Date()
             }
             return vars
-        }
-        .ensure(on: queue) {
+        }.ensure(on: queue) {
             Action.changeNetworkActivityCount(-1)
         }
 
