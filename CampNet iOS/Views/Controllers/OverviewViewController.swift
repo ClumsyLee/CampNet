@@ -185,7 +185,9 @@ class OverviewViewController: UITableViewController {
         }.ensure {
             // Unlock the button.
             self.foregroundStatuses[account.identifier] = nil
-            self.reloadStatus(autoLogin: false)
+            if account == self.account {
+                self.reloadStatus(autoLogin: false)
+            }
         }
 
         Analytics.logEvent("foreground_login", parameters: nil)
@@ -209,7 +211,9 @@ class OverviewViewController: UITableViewController {
         }.ensure {
             // Unlock the button.
             self.foregroundStatuses[account.identifier] = nil
-            self.reloadStatus(autoLogin: false)
+            if account == self.account {
+                self.reloadStatus(autoLogin: false)
+            }
         }
 
         Analytics.logEvent("foreground_logout", parameters: nil)
@@ -447,14 +451,23 @@ class OverviewViewController: UITableViewController {
     }
 
     @objc func statusUpdated(_ notification: Notification) {
+        guard let account = notification.userInfo?["account"] as? Account, account == self.account else {
+            return
+        }
         reloadStatus()
     }
 
     @objc func profileUpdated(_ notification: Notification) {
+        guard let account = notification.userInfo?["account"] as? Account, account == self.account else {
+            return
+        }
         reloadProfile()
     }
 
     @objc func historyUpdated(_ notification: Notification) {
+        guard let account = notification.userInfo?["account"] as? Account, account == self.account else {
+            return
+        }
         reloadHistory()
     }
 
