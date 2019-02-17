@@ -14,22 +14,27 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: CampNet
+author: Sihan Li
 email: lisihan969@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   iOS 全自动校园网助手
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://campnet.clumsy.li" # the base hostname & protocol for your site, e.g. http://example.com
+
 twitter_username: null
 github_username:  ClumsyLee
 google_analytics: UA-49504108-7
-header_pages:
-  - about.md
 
 # Build settings
-markdown: kramdown
 theme: minima
+header_pages:
+  - release-notes.md
+markdown: kramdown
+kramdown:
+  parse_block_html: true
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

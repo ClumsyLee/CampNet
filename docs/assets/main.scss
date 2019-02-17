@@ -1,0 +1,183 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import "minima";
+
+// https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Mixins
+@mixin flexbox {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin flex-direction($value) {
+  @if $value == row-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+    -moz-box-direction: reverse;
+    -moz-box-orient: horizontal;
+  } @else if $value == column {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-box-direction: normal;
+    -moz-box-orient: vertical;
+  } @else if $value == column-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+    -moz-box-direction: reverse;
+    -moz-box-orient: vertical;
+  } @else {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -moz-box-orient: horizontal;
+  }
+  -webkit-flex-direction: $value;
+  -ms-flex-direction: $value;
+  flex-direction: $value;
+}
+
+@mixin flex($fg) {
+  -webkit-box: $fg;
+  -moz-box: $fg;
+  -webkit-flex: $fg;
+  -ms-flex: $fg;
+  flex: $fg;
+}
+
+@mixin align-items($value) {
+  @if $value == flex-start {
+    -webkit-box-align: start;
+    -moz-box-align: start;
+    -ms-flex-align: start;
+  } @else if $value == flex-end {
+    -webkit-box-align: end;
+    -moz-box-align: end;
+    -ms-flex-align: end;
+  } @else {
+    -webkit-box-align: $value;
+    -moz-box-align: $value;
+    -ms-flex-align: $value;
+  }
+  -webkit-align-items: $value;
+  align-items: $value;
+}
+
+
+.title-section {
+  text-align: center;
+
+  h1 {
+    margin-bottom: 0em;
+    font-size: 3em;
+    color: #222;
+    @include media-query($on-palm) {
+      font-size: 2.2em;
+    }
+  }
+
+  h2 {
+    font-size: 1.2em;
+    color: #A3ABB3;
+    @include media-query($on-palm) {
+      font-size: 1em;
+    }
+  }
+
+  .app-store-button {
+    height: 52px;
+    @include media-query($on-palm) {
+      height: 45px;
+    }
+  }
+}
+
+.feature-section {
+  width: 100vw;
+  margin-left: -50vw;
+  left: 50%;
+  position: relative;
+
+  padding-top: $spacing-unit;
+  padding-bottom: $spacing-unit;
+  p {
+    color: $grey-color;
+  }
+}
+
+.section-row {
+  @include flexbox;
+  @include align-items(center);
+  @include media-query($on-laptop) {
+    display: block;
+  }
+}
+
+.section-col {
+  @include flex(1);
+}
+
+.section-col-image {
+  p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+}
+
+.feature-section:nth-child(odd) {
+  background-color: #f0f2f6;
+
+  .section-row {
+    @include flex-direction(row-reverse);
+  }
+
+  .section-col-image {
+    margin-left: -30px;
+    text-align: left;
+    @include media-query($on-laptop) {
+      margin-left: inherit;
+      text-align: center;
+    }
+  }
+}
+
+.feature-section:nth-child(even) {
+  .section-row {
+    @include flex-direction(row);
+  }
+
+  .section-col-image {
+    margin-right: -30px;
+    text-align: right;
+    @include media-query($on-laptop) {
+      margin-right: inherit;
+      text-align: center;
+    }
+  }
+}
+
+.campus-request-input {
+  height: 3em;
+  font-size: 1em;
+}
+
+.campus-request-submit {
+  height: 3em;
+  font-size: 1em;
+  padding: 0.75rem 1.5rem;
+  background-color: #5AC8FA;
+  color: white;
+  border: none;
+}
+
+
+.release-note-version {
+  margin-bottom: 0px;
+}
+
+.release-note-date {
+  color: $grey-color;
+}
