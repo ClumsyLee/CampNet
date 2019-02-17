@@ -1,10 +1,10 @@
 PODS:
   - Alamofire (4.8.1)
   - BRYXBanner (0.8.3)
-  - Charts (3.2.2):
-    - Charts/Core (= 3.2.2)
-  - Charts/Core (3.2.2)
   - CryptoSwift (0.14.0)
+  - Charts (3.2.1):
+    - Charts/Core (= 3.2.1)
+  - Charts/Core (3.2.1)
   - DynamicButton (6.1.0)
   - Firebase/Core (5.16.0):
     - Firebase/CoreOnly
@@ -131,8 +131,8 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   BRYXBanner: 8cf1b119792e1cee8d7ba107297ef89f7409bc53
-  Charts: f69cf0518b6d1d62608ca504248f1bbe0b6ae77e
   CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
+  Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
   DynamicButton: 5a3ae2bf26dc196fb6c85b3e1aac956add860718
   Firebase: 749a8ff4962f9d8c79dda1966de20f6f77583d67
   FirebaseAnalytics: d35d47c03c50c73c14a7fd31463c5775843e78a9

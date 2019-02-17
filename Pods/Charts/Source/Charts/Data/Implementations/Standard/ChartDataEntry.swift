@@ -11,7 +11,7 @@
 
 import Foundation
 
-open class ChartDataEntry: ChartDataEntryBase, NSCopying
+open class ChartDataEntry: ChartDataEntryBase
 {
     /// the x value
     @objc open var x = Double(0.0)
@@ -22,10 +22,8 @@ open class ChartDataEntry: ChartDataEntryBase, NSCopying
     }
     
     /// An Entry represents one single entry in the chart.
-    ///
-    /// - Parameters:
-    ///   - x: the x value
-    ///   - y: the y value (the actual value of the entry)
+    /// - parameter x: the x value
+    /// - parameter y: the y value (the actual value of the entry)
     @objc public init(x: Double, y: Double)
     {
         super.init(y: y)
@@ -34,11 +32,9 @@ open class ChartDataEntry: ChartDataEntryBase, NSCopying
     }
     
     /// An Entry represents one single entry in the chart.
-    ///
-    /// - Parameters:
-    ///   - x: the x value
-    ///   - y: the y value (the actual value of the entry)
-    ///   - data: Space for additional data this Entry represents.
+    /// - parameter x: the x value
+    /// - parameter y: the y value (the actual value of the entry)
+    /// - parameter data: Space for additional data this Entry represents.
     
     @objc public init(x: Double, y: Double, data: AnyObject?)
     {
@@ -50,11 +46,9 @@ open class ChartDataEntry: ChartDataEntryBase, NSCopying
     }
     
     /// An Entry represents one single entry in the chart.
-    ///
-    /// - Parameters:
-    ///   - x: the x value
-    ///   - y: the y value (the actual value of the entry)
-    ///   - icon: icon image
+    /// - parameter x: the x value
+    /// - parameter y: the y value (the actual value of the entry)
+    /// - parameter icon: icon image
     
     @objc public init(x: Double, y: Double, icon: NSUIImage?)
     {
@@ -64,12 +58,10 @@ open class ChartDataEntry: ChartDataEntryBase, NSCopying
     }
     
     /// An Entry represents one single entry in the chart.
-    ///
-    /// - Parameters:
-    ///   - x: the x value
-    ///   - y: the y value (the actual value of the entry)
-    ///   - icon: icon image
-    ///   - data: Space for additional data this Entry represents.
+    /// - parameter x: the x value
+    /// - parameter y: the y value (the actual value of the entry)
+    /// - parameter icon: icon image
+    /// - parameter data: Space for additional data this Entry represents.
     
     @objc public init(x: Double, y: Double, icon: NSUIImage?, data: AnyObject?)
     {
@@ -87,7 +79,7 @@ open class ChartDataEntry: ChartDataEntryBase, NSCopying
     
     // MARK: NSCopying
     
-    open func copy(with zone: NSZone? = nil) -> Any
+    @objc open func copyWithZone(_ zone: NSZone?) -> AnyObject
     {
         let copy = type(of: self).init()
         
