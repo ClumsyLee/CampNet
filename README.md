@@ -10,6 +10,7 @@ agvtool new-marketing-version 1.3.1
 agvtool next-version -all
 fastlane snapshot
 fastlane deliver
+bundle exec jekyll serve
 ```
 
 `#5AC8FA`

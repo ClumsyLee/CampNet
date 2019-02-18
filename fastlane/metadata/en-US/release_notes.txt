@@ -1,29 +1,11 @@
-• New campuses
-    • Tsinghua University (IPv4)
-    • Renmin University of China
-    • University of Chinese Academy of Sciences
+• Show usage charts in usage alert notifications
+• Allow removing custom configuration
 
-• Custom configuration
-    • Load your own configuration by URL
-
-• Full multi-account support
-    • One main account for every campus
-    • Usage alert for all the accounts
-
-• Optimized authentication logic
-    • Reduced time to re-connect Wi-Fi when waking up
-    • Put auth-related jobs in high-priority queues
-
-• Show name instead of username whenever possible
-• Shake to invoke the feedback page
-• Refined UI
-
-• Fixed a crash when refreshing the "Device" page without having online devices
-• Fixed a bug where text inputs will be cleared even if the user stopped leaving the page
-• Fixed a bug where free/max usages from the last month could appear in the next month
-• Fixed a bug where foreground login could be triggered repeatedly in a short period of time
-• Fixed a bug where updates could be triggered unexpectedly in the "Overview" page
-• Fixed a bug where the enter key did not work when logging in IPs
-• Fixed the long English helper text in the system Wi-Fi page?
-• Fixed overlapping texts in the "Overview" page on iPhone 4/4s
-• Fixed blurry screens on iPhone XR/XS/XS Max
+• Fixed a bug where donation errors were not shown
+• Fixed a bug where names were not preferred in notifications
+• Fixed a bug where background fetches could be blocked by an off-campus account
+• Fixed a bug where foreground auto-logins could be triggered recursively
+• Fixed a bug where foreground statuses were not retained after switching the main account
+• Fixed a bug where the "Overview" page could be updated unnecessarily
+• Fixed a bug where delegates were not shown correctly after adding a deleted account
+• Fixed a bug where error banners could stack up when opening the app
