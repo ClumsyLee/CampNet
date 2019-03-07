@@ -96,7 +96,7 @@ body {
   .app-store-button {
     height: 52px;
     @include media-query($on-palm) {
-      height: 45px;
+      height: 48px;
     }
   }
 }
