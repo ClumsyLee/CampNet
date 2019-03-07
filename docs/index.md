@@ -8,7 +8,7 @@ layout: home
 <section class="title-section">
 # 全自动校园网助手
 ## 为更多人设计的校园网 iOS 客户端。
-[![在 App Store 下载 CampNet](/imgs/Download_on_the_App_Store_Badge_CNSC_RGB_blk_092917.svg){:class="app-store-button"}](https://itunes.apple.com/cn/app/campnet/id1263284287?mt=8)
+[![在 App Store 下载 CampNet](/imgs/Download_on_the_App_Store_Badge_CNSC_RGB_blk_092917.svg){:class="app-store-button"}](https://itunes.apple.com/app/campnet/id1263284287?mt=8)
 
 ![总览页面](/imgs/overview-zh-hans@1x.jpg){:srcset="/imgs/overview-zh-hans@2x.jpg 2x, /imgs/overview-zh-hans@3x.jpg 3x"}
 </section>
