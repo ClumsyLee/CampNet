@@ -16,7 +16,7 @@ layout: home
 <section class="feature-section">
 <div class="wrapper">
 ## 全自动
-连上 Wi-Fi 自动登录校园网，真正做到全自动联网。
+连上 Wi-Fi 就会自动登录，真正做到全自动。
 
 无论是从宿舍到教室，还是从图书馆到食堂，无论网络环境如何变化，你都不需要手动打开网页上线。再也不需要因为校园网而分心了，它一直都在。
 </div>
@@ -27,7 +27,7 @@ layout: home
 <div class="section-row">
 <div class="section-col section-col-text">
 ## 流量警报
-到最后一刻才发现流量没了？让这种事成为历史吧。
+最后一刻才发现流量没了？让这种事成为历史。
 
 CampNet 会在后台监控你的流量。一旦你的剩余流量小于特定百分比，CampNet 就会给你发送流量警报，让你提前做好规划和准备。
 </div>
@@ -59,7 +59,7 @@ CampNet 会在后台监控你的流量。一旦你的剩余流量小于特定百
 <div class="section-row">
 <div class="section-col section-col-text">
 ## 多账户支持
-同时管理多个账户，就算它们来自……不同学校。
+同时管理多个账户，多个学校也没问题。
 
 想和舍友共享账号？想监控实验室上网账户的余额？CampNet 统统能做到。还记得刚刚说的流量警报吗？你猜对了，所有账户的流量都在监控之中。
 </div>
