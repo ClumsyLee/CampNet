@@ -67,8 +67,14 @@
 }
 
 
+body {
+  overflow-x: hidden;
+}
+
 .title-section {
   text-align: center;
+  padding-top: $spacing-unit;
+  padding-bottom: $spacing-unit;
 
   h1 {
     margin-bottom: 0em;
@@ -100,9 +106,9 @@
   margin-left: -50vw;
   left: 50%;
   position: relative;
-
   padding-top: $spacing-unit;
   padding-bottom: $spacing-unit;
+
   p {
     color: $grey-color;
   }
@@ -159,15 +165,31 @@
   }
 }
 
+.campus-request-section {
+  text-align: center;
+  padding-top: $spacing-unit / 2;
+
+  img {
+    padding-bottom: $spacing-unit / 2;
+  }
+}
+
 .campus-request-input {
   height: 3em;
+  width: 18em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   font-size: 1em;
+  text-indent: 1em;
 }
 
 .campus-request-submit {
   height: 3em;
-  font-size: 1em;
+  width: 8em;
   padding: 0.75rem 1.5rem;
+  margin-top: $spacing-unit / 3;
+  font-size: 1em;
   background-color: #5AC8FA;
   color: white;
   border: none;

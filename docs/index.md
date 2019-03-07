@@ -16,9 +16,9 @@ layout: home
 <section class="feature-section">
 <div class="wrapper">
 ## 全自动
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+连上 Wi-Fi 自动登录校园网，真正做到全自动联网。
+
+无论是从宿舍到教室，还是从图书馆到食堂，无论网络环境如何变化，你都不需要手动打开网页上线。再也不需要因为校园网而分心了，它一直都在。
 </div>
 </section>
 
@@ -27,9 +27,9 @@ quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 <div class="section-row">
 <div class="section-col section-col-text">
 ## 流量警报
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+到最后一刻才发现流量没了？让这种事成为历史吧。
+
+CampNet 会在后台监控你的流量。一旦你的剩余流量小于特定百分比，CampNet 就会给你发送流量警报，让你提前做好规划和准备。
 </div>
 <div class="section-col section-col-image">
 ![流量警报](/imgs/usage-alert-zh-hans@1x.jpg){:srcset="/imgs/usage-alert-zh-hans@2x.jpg 2x, /imgs/usage-alert-zh-hans@3x.jpg 3x"}
@@ -43,9 +43,9 @@ quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 <div class="section-row">
 <div class="section-col section-col-text">
 ## 设备管理
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+轻松管理你的在线设备。
+
+管理你的所有在线设备，下线其他设备，抑或是上线特定 IP。只要你的学校网络支持，CampNet 都能做到。忘掉某难用的学校网站吧。
 </div>
 <div class="section-col section-col-image">
 ![在线设备页面](/imgs/devices-zh-hans@1x.jpg){:srcset="/imgs/devices-zh-hans@2x.jpg 2x, /imgs/devices-zh-hans@3x.jpg 3x"}
@@ -59,9 +59,9 @@ quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 <div class="section-row">
 <div class="section-col section-col-text">
 ## 多账户支持
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+同时管理多个账户，就算它们来自……不同学校。
+
+想和舍友共享账号？想监控实验室上网账户的余额？CampNet 统统能做到。还记得刚刚说的流量警报吗？你猜对了，所有账户的流量都在监控之中。
 </div>
 <div class="section-col section-col-image">
 ![账户页面](/imgs/accounts-zh-hans@1x.jpg){:srcset="/imgs/accounts-zh-hans@2x.jpg 2x, /imgs/accounts-zh-hans@3x.jpg 3x"}
@@ -75,9 +75,9 @@ quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 <div class="section-row">
 <div class="section-col section-col-text">
 ## 小组件
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+不需要打开 app，就能查看当月流量趋势。
+
+CampNet 的目标之一是，让用户感受不到自己的存在。但我们还想更进一步。我们希望让流量监控成为习惯，而不是负担。
 </div>
 <div class="section-col section-col-image">
 ![小组件](/imgs/widget-zh-hans@1x.jpg){:srcset="/imgs/widget-zh-hans@2x.jpg 2x, /imgs/widget-zh-hans@3x.jpg 3x"}
@@ -91,9 +91,11 @@ quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 <div class="section-row">
 <div class="section-col section-col-text">
 ## 可扩展
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+千千万万的校园网，我们支持……全部。
+
+通用，而不是给每个校园网做一个新 app，这是 CampNet 的终极目标。我们设计了一套配置文件来描述校园网。只要添加新的配置，就能支持新的网络。
+
+你可以加载自定义配置，但若将配置提交到 [GitHub 仓库](https://github.com/ClumsyLee/CampNet-Configurations)，你就可以让 CampNet 正式支持你的学校，让你的同学们享受你的成果。
 </div>
 <div class="section-col section-col-image">
 ![配置文件](/imgs/config-file@1x.png){:srcset="/imgs/config-file@2x.png 2x, /imgs/config-file@3x.png 3x"}
@@ -103,7 +105,7 @@ quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 </section>
 
 
-<section class="title-section">
+<section class="campus-request-section">
 <div class="section-row">
 <div class="section-col">
 清华大学
@@ -125,12 +127,44 @@ quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 </div>
 
 <div>
-<form>
-<input type="text" class="campus-request-input">
-<button class="campus-request-submit">提交请求</button>
+<form id="campus-request-form">
+<input id="campus-request-name" type="text" class="campus-request-input" placeholder="没有你的学校？告诉我们！">
+<button id="campus-request-button" class="campus-request-submit">提交请求</button>
 </form>
 </div>
 
+<script>
+window.onload = function () {
+  document.getElementById('campus-request-form').onsubmit = function (event) {
+    event.preventDefault();
+    var name = document.getElementById('campus-request-name').value;
+    if (!name) return false;
+
+    var button = document.getElementById('campus-request-button');
+    var content = button.textContent;
+    button.disabled = true;
+    button.textContent = '提交中…';
+
+    var request = new XMLHttpRequest();
+    request.open('POST', 'https://campnet-campus-request.clumsy.li/requests', true);
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.onload = function () {
+      if (request.status == 201) {
+        button.textContent = '已提交！';
+      } else {
+        button.textContent = content;
+        button.disabled = false;
+      }
+    };
+    request.onerror = function () {
+      button.textContent = content;
+      button.disabled = false;
+    };
+
+    request.send(JSON.stringify({ name: name }));
+    return false;
+  };
+};
+</script>
+
 </section>
-
-
