@@ -180,6 +180,10 @@ body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  margin-right: 0.5em;
+  border: solid 1px #DEDEDE;
+  border-left: solid 3px #5AC8FA;
+  outline: none;
   font-size: 1em;
   text-indent: 1em;
 }
