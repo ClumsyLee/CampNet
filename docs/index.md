@@ -141,7 +141,7 @@ window.onload = function () {
     if (!content) return false;
 
     var button = document.getElementById('campus-request-button');
-    var oldTitle = button.textContent;
+    if (button.disabled) return false;
     button.disabled = true;
     button.textContent = '提交中…';
 
@@ -152,12 +152,12 @@ window.onload = function () {
       if (request.status == 201) {
         button.textContent = '已提交！';
       } else {
-        button.textContent = oldTitle;
-        button.disabled = false;
+        button.textContent = '提交失败';
       }
+      button.disabled = false;
     };
     request.onerror = function () {
-      button.textContent = oldTitle;
+      button.textContent = '提交失败';
       button.disabled = false;
     };
 
