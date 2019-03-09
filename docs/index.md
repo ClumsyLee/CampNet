@@ -128,7 +128,7 @@ CampNet 的目标之一是，让用户感受不到自己的存在。但我们还
 
 <div>
 <form id="campus-request-form">
-<input id="campus-request-name" type="text" class="campus-request-input" placeholder="没有你的学校？告诉我们！">
+<input id="campus-request-content" type="text" class="campus-request-input" placeholder="没有你的学校？告诉我们！">
 <button id="campus-request-button" class="campus-request-submit">提交请求</button>
 </form>
 </div>
@@ -137,8 +137,8 @@ CampNet 的目标之一是，让用户感受不到自己的存在。但我们还
 window.onload = function () {
   document.getElementById('campus-request-form').onsubmit = function (event) {
     event.preventDefault();
-    var name = document.getElementById('campus-request-name').value;
-    if (!name) return false;
+    var content = document.getElementById('campus-request-content').value;
+    if (!content) return false;
 
     var button = document.getElementById('campus-request-button');
     var content = button.textContent;
@@ -161,7 +161,7 @@ window.onload = function () {
       button.disabled = false;
     };
 
-    request.send(JSON.stringify({ name: name }));
+    request.send(JSON.stringify({ content: content }));
     return false;
   };
 };
