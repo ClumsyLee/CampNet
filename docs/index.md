@@ -149,10 +149,10 @@ window.onload = function () {
     request.open('POST', 'https://campnet-campus-request.clumsy.li/requests', true);
     request.setRequestHeader('Content-Type', 'application/json');
     request.onload = function () {
-      if (request.status == 201) {
-        button.textContent = '已提交！';
-      } else {
-        button.textContent = '提交失败';
+      switch (request.status) {
+        case 201: button.textContent = '已提交！'; break;
+        case 429: button.textContent = '请求过多'; break;
+        default: button.textContent = '提交失败';
       }
       button.disabled = false;
     };
