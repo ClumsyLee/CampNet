@@ -19,6 +19,6 @@ fastlane deliver  # Upload metadata.
 ```
 
 * Blue: `#5AC8FA`
-* Pink: `E87AA4`678
+* Pink: `#E87AA4`
 
 ![CampNet 开发群](https://user-images.githubusercontent.com/7030671/53952560-e8148e00-4085-11e9-927b-29a50fdf124a.jpg)

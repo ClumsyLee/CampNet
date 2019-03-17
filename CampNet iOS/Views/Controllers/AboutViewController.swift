@@ -12,12 +12,14 @@ import SafariServices
 class AboutViewController: UITableViewController {
 
     enum Row: Int {
+        case index
         case repo
         case myGithub
         case privacy
         case acknowledgements
     }
 
+    static let indexUrl = URL(string: "https://campnet.clumsy.li")!
     static let repoUrl = URL(string: "https://github.com/clumsyLee/CampNet")!
     static let myGithubUrl = URL(string: "https://github.com/ClumsyLee")!
     static let privacyUrl = URL(string: "https://campnet.clumsy.li/privacy")!
@@ -69,6 +71,7 @@ class AboutViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         switch Row(rawValue: indexPath.row) {
+        case .index?: present(SFSafariViewController(url: AboutViewController.indexUrl), animated: true)
         case .repo?: present(SFSafariViewController(url: AboutViewController.repoUrl), animated: true)
         case .myGithub?: present(SFSafariViewController(url: AboutViewController.myGithubUrl), animated: true)
         case .privacy?: present(SFSafariViewController(url: AboutViewController.privacyUrl), animated: true)

@@ -349,3 +349,6 @@
 
 /* Class = "UILabel"; text = "Privacy Policy"; ObjectID = "4Vo-8e-S8L"; */
 "4Vo-8e-S8L.text" = "隐私政策";
+
+/* Class = "UILabel"; text = "Home Page"; ObjectID = "vtV-Og-V1n"; */
+"vtV-Og-V1n.text" = "主页";
