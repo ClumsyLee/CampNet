@@ -28,8 +28,8 @@
 "hotspot_helper.display_name" = "CampNet managed network";
 
 /* Notifications */
-"notifications.donation_request.body" = "CampNet has auto-logged in %d times for you. Would you like to show some love to this open source project?";
-"notifications.donation_request.title" = "We Need Your Support!";
+"notifications.donation_request.body" = "In order to stay on the App Store, I have to pay 688 RMB a year. I need your love to keep this open source project alive.";
+"notifications.donation_request.title" = "Campnet Has Auto-logged in %d times for You";
 "notifications.history_error.title" = "Unable to Update History of \"%@\"";
 "notifications.load_configuration.fetch_error.title" = "Unable to Fetch Configuration";
 "notifications.load_configuration.parse_error.title" = "Unable to Parse Configuration";

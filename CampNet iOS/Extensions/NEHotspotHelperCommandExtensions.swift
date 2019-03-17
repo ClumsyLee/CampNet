@@ -81,8 +81,8 @@ extension NEHotspotHelperCommand {
                 if let donationRequestDate = Defaults[.donationRequestDate], Date().timeIntervalSince(donationRequestDate) < AppDelegate.donateRequestMinInterval {
                     // Too soon, do nothing.
                 } else {
-                    sendNotification(title: L10n.Notifications.DonationRequest.title,
-                                     body: L10n.Notifications.DonationRequest.body(Defaults[.loginCount]),
+                    sendNotification(title: L10n.Notifications.DonationRequest.title(Defaults[.loginCount]),
+                                     body: L10n.Notifications.DonationRequest.body,
                                      identifier: AppDelegate.donationRequestIdentifier,
                                      badge: 1)
                     Defaults[.donationRequestDate] = Date()

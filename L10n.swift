@@ -78,12 +78,12 @@ internal enum L10n {
 
   internal enum Notifications {
     internal enum DonationRequest {
-      /// CampNet has auto-logged in %d times for you. Would you like to show some love to this open source project?
-      internal static func body(_ p1: Int) -> String {
-        return L10n.tr("Localizable", "notifications.donation_request.body", p1)
+      /// In order to stay on the App Store, I have to pay 688 RMB a year. I need your love to keep this open source project alive.
+      internal static let body = L10n.tr("Localizable", "notifications.donation_request.body")
+      /// Campnet Has Auto-logged in %d times for You
+      internal static func title(_ p1: Int) -> String {
+        return L10n.tr("Localizable", "notifications.donation_request.title", p1)
       }
-      /// We Need Your Support!
-      internal static let title = L10n.tr("Localizable", "notifications.donation_request.title")
     }
     internal enum HistoryError {
       /// Unable to Update History of "%@"

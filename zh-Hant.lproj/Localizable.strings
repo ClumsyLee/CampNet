@@ -28,8 +28,8 @@
 "hotspot_helper.display_name" = "由 CampNet 管理的校園網";
 
 /* Notifications */
-"notifications.donation_request.body" = "CampNet 已經為您自動登錄 %d 次了。要不要給這個開源項目一點愛？";
-"notifications.donation_request.title" = "我們需要你的支持！";
+"notifications.donation_request.body" = "為了不被 App Store 下架，我每年需要支付 688 人民幣。為了讓這個開源項目活下去，我需要你們的愛。";
+"notifications.donation_request.title" = "CampNet 已經為你自動登錄了 %d 次";
 "notifications.history_error.title" = "無法更新「%@」的歷史";
 "notifications.load_configuration.fetch_error.title" = "無法獲取配置";
 "notifications.load_configuration.parse_error.title" = "無法解析配置";
