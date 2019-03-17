@@ -232,13 +232,10 @@ class OverviewViewController: UITableViewController {
               !(backgroundRefreshings[account.identifier] ?? false) else {
             return
         }
-        backgroundRefreshings[account.identifier] = true
 
+        backgroundRefreshings[account.identifier] = true
         _ = account.update().ensure {
-            // Don't touch backgroundRefreshings if the account has been changed.
-            if self.account == account {
-                self.backgroundRefreshings[account.identifier] = nil
-            }
+            self.backgroundRefreshings[account.identifier] = nil
         }
     }
 
