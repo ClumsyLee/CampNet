@@ -35,6 +35,7 @@ kramdown:
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -47,3 +48,13 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+defaults:
+  - scope:
+      path: baidu_verify_*.html
+    values:
+      sitemap: false
+  - scope:
+      path: google*.html
+    values:
+      sitemap: false
