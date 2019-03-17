@@ -65,8 +65,8 @@
 /* Class = "UINavigationItem"; title = "Accounts"; ObjectID = "SPV-m8-ZsX"; */
 "SPV-m8-ZsX.title" = "賬戶";
 
-/* Class = "UITableViewSection"; footerTitle = "\"Auto Login\" will only be effective in networks marked as \"On Campus\"."; ObjectID = "Tm8-iG-baP"; */
-"Tm8-iG-baP.footerTitle" = "“自動登錄” 只會在標記為 “校園內” 的網絡中生效。";
+/* Class = "UITableViewSection"; footerTitle = "For accounts of this campus, \"Auto Login\" will only be effective in networks marked as \"On Campus\"."; ObjectID = "Tm8-iG-baP"; */
+"Tm8-iG-baP.footerTitle" = "本校賬戶的「自動登錄」只會在標記為「校園內」的網絡中生效。";
 
 /* Class = "UILabel"; text = "Network"; ObjectID = "UOf-dt-v27"; */
 "UOf-dt-v27.text" = "網絡";
