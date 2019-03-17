@@ -1,11 +1,4 @@
-• Show usage charts in usage alert notifications
-• Allow removing custom configuration
+• Decreased the frequency of donation requests
+• Eliminated duplicated foreground updates
 
-• Fixed a bug where donation errors were not shown
-• Fixed a bug where names were not preferred in notifications
-• Fixed a bug where background fetches could be blocked by an off-campus account
-• Fixed a bug where foreground auto-logins could be triggered recursively
-• Fixed a bug where foreground statuses were not retained after switching the main account
-• Fixed a bug where the "Overview" page could be updated unnecessarily
-• Fixed a bug where delegates were not shown correctly after adding a deleted account
-• Fixed a bug where error banners could stack up when opening the app
+• Fixed a bug where foreground updating could be disabled sometimes
