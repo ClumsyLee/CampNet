@@ -83,13 +83,8 @@ class OverviewViewController: UITableViewController {
             return
         }
 
-        _ = account.update().done {
+        _ = refresh(account: account).done {
             SwiftRater.incrementSignificantUsageCount()
-        }.ensure {
-            // Don't touch refreshControl if the account has been changed.
-            if self.account == account {
-                self.refreshControl?.endRefreshing()
-            }
         }
 
         Analytics.logEvent("overview_refresh", parameters: nil)
@@ -228,14 +223,24 @@ class OverviewViewController: UITableViewController {
         reloadNetwork()
 
         // Refresh the account.
-        guard let account = account, account.shouldAutoUpdate, !refreshControl!.isRefreshing,
-              !(backgroundRefreshings[account.identifier] ?? false) else {
+        guard let account = account, account.shouldAutoUpdate, !refreshControl!.isRefreshing else {
             return
         }
+        _ = refresh(account: account)
+    }
 
+    func refresh(account: Account) -> Promise<Void> {
+        guard !(backgroundRefreshings[account.identifier] ?? false) else {
+            return Promise()
+        }
         backgroundRefreshings[account.identifier] = true
-        _ = account.update().ensure {
+
+        return account.update().ensure {
             self.backgroundRefreshings[account.identifier] = nil
+            // Don't touch refreshControl if the account has been changed.
+            if self.account == account {
+                self.refreshControl?.endRefreshing()
+            }
         }
     }
 
@@ -426,7 +431,7 @@ class OverviewViewController: UITableViewController {
 
         if let account = notification.userInfo?["account"] as? Account {
             // Validate & initial update.
-            _ = account.update()
+            _ = refresh(account: account)
         }
     }
 
