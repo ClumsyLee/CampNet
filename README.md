@@ -16,6 +16,7 @@ agvtool new-marketing-version 1.3.2  # New version.
 fastlane snapshot  # Take screenshots.
 fastlane deliver  # Upload metadata.
 ( cd docs; bundle exec jekyll serve )  # Serve the website locally.
+( cd docs; bundle exec jekyll build -d ../../campnet.clumsy.li/ )  # Build the files into the coding.net repo.
 ```
 
 * Blue: `#5AC8FA`
