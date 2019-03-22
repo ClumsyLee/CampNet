@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     static let bannerDuration = 3.0
     static let loginErrorNotificationInterval: TimeInterval = 86400
-    public static let donateRequestInterval = 30  // In terms of auto-login count.
-    public static let donateRequestMinInterval: TimeInterval = 7 * 86400
+    public static let donateRequestInterval = 50  // In terms of auto-login count.
+    public static let donateRequestMinInterval: TimeInterval = 14 * 86400
     public static let donationRequestIdentifier = "donationRequest"
 
     var window: UIWindow?

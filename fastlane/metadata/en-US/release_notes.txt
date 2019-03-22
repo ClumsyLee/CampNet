@@ -1,4 +1,1 @@
-• Decreased the frequency of donation requests
-• Eliminated duplicated foreground updates
-
-• Fixed a bug where foreground updating could be disabled sometimes
+• Decreased the frequency of donation requests (at most once per 14 days)
