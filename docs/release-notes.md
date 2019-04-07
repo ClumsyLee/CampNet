@@ -4,6 +4,13 @@ title: 版本记录
 permalink: /release-notes
 ---
 
+## 1.3.3
+{:class="release-note-version"}
+2019年3月23日
+{:class="release-note-date"}
+
+* 减少了捐赠请求的频率（最多每 14 天一次）
+
 ## 1.3.2
 {:class="release-note-version"}
 2019年3月19日
