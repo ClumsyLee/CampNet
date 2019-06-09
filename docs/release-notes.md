@@ -4,6 +4,13 @@ title: 版本记录
 permalink: /release-notes
 ---
 
+## 1.3.4
+{:class="release-note-version"}
+2019年6月10日
+{:class="release-note-date"}
+
+* 将“改进建议”的触发方式由“晃动设备”改为“两指左划”
+
 ## 1.3.3
 {:class="release-note-version"}
 2019年3月23日

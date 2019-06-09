@@ -12,7 +12,7 @@ https://github.com/ClumsyLee/CampNet-Configurations
 
 ```bash
 agvtool next-version -all  # New build.
-agvtool new-marketing-version 1.3.3  # New version.
+agvtool new-marketing-version 1.3.4  # New version.
 fastlane snapshot  # Take screenshots.
 fastlane deliver  # Upload metadata.
 ( cd docs; bundle exec jekyll serve )  # Serve the website locally.

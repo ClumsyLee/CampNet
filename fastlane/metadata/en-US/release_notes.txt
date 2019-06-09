@@ -1,1 +1,1 @@
-• Decreased the frequency of donation requests (at most once per 14 days)
+• Change the invocation method of “Suggest an improvement” from “Shake” to “Two finger swipe left”
