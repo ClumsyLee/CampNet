@@ -130,36 +130,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func setDefaultsIfNot() {
-        if !Defaults.hasKey(.autoLogin) {
-            Defaults[.autoLogin] = true
-        }
-        if !Defaults.hasKey(.autoLogoutExpiredSessions) {
-            Defaults[.autoLogoutExpiredSessions] = true
-        }
-        if !Defaults.hasKey(.usageAlertRatio) {
-            Defaults[.usageAlertRatio] = 0.90
-        }
-        if !Defaults.hasKey(.sendLogs) {
-            Defaults[.sendLogs] = true
-        }
-        if !Defaults.hasKey(.donated) {
-            Defaults[.donated] = false
-        }
-        if !Defaults.hasKey(.customConfiguration) {
-            Defaults[.customConfiguration] = ""
-        }
-        if !Defaults.hasKey(.customConfigurationUrl) {
-            Defaults[.customConfigurationUrl] = ""
-        }
-        if !Defaults.hasKey(.loginCount) {
-            Defaults[.loginCount] = 0
-        }
-        if !Defaults.hasKey(.loginCountStartDate) {
-            Defaults[.loginCountStartDate] = Date()
-        }
-
         // One-time flags.
-        if !Defaults.hasKey(.tsinghuaAuth4Migrated) && !Device.inUITest {
+        if !Defaults[.tsinghuaAuth4Migrated] && !Device.inUITest {
             migrateTsinghuaAuth4()
             Defaults[.tsinghuaAuth4Migrated] = true
         }
@@ -195,11 +167,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func setUpInstaBug() {
-        Instabug.start(withToken: "0df1051f1ad636fc8efd87baef010aaa", invocationEvents: [.shake])
+        Instabug.start(withToken: "0df1051f1ad636fc8efd87baef010aaa", invocationEvents: [.twoFingersSwipeLeft])
         if Device.inUITest {
             Instabug.welcomeMessageMode = .disabled
         }
-        BugReporting.promptOptions = [.feedback]
+        BugReporting.promptOptionsEnabledReportTypes = [.feedback]
+        Chats.enabled = false
+        Replies.enabled = false
         BugReporting.enabledAttachmentTypes = []
     }
 

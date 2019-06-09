@@ -278,8 +278,8 @@ extension Account: CustomStringConvertible {
 
 
 extension Account: Hashable {
-    public var hashValue: Int {
-        return identifier.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(identifier)
     }
 
     public static func ==(lhs: Account, rhs: Account) -> Bool {

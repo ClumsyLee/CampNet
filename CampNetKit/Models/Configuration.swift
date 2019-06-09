@@ -347,8 +347,8 @@ public class Configuration {
 }
 
 extension Configuration: Hashable {
-    public var hashValue: Int {
-        return identifier.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(identifier)
     }
 
     public static func ==(lhs: Configuration, rhs: Configuration) -> Bool {

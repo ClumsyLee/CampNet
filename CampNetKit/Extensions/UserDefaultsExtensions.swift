@@ -11,51 +11,46 @@ import SwiftyUserDefaults
 
 public let Defaults = UserDefaults(suiteName: Configuration.appGroup)!
 
-extension UserDefaults {
-    subscript(key: DefaultsKey<Int64?>) -> Int64? {
-        get { return object(forKey: key._key) as? Int64 }
-        set { set(key, newValue) }
-    }
-}
+extension Int64 : DefaultsSerializable {}
 
 extension DefaultsKeys {
-    public static let autoLogin = DefaultsKey<Bool>("autoLogin")
-    public static let autoLogoutExpiredSessions = DefaultsKey<Bool>("autoLogoutExpiredSessions")
-    public static let usageAlertRatio = DefaultsKey<Double?>("usageAlertRatio")
-    public static let sendLogs = DefaultsKey<Bool>("sendLogs")
-    public static let donated = DefaultsKey<Bool>("donated")
+    public static let autoLogin = DefaultsKey<Bool>("autoLogin", defaultValue: true)
+    public static let autoLogoutExpiredSessions = DefaultsKey<Bool>("autoLogoutExpiredSessions", defaultValue: true)
+    public static let usageAlertRatio = DefaultsKey<Double?>("usageAlertRatio", defaultValue: 0.9)
+    public static let sendLogs = DefaultsKey<Bool>("sendLogs", defaultValue: true)
+    public static let donated = DefaultsKey<Bool>("donated", defaultValue: false)
     public static let donationRequestDate = DefaultsKey<Date?>("donationRequestDate")
-    public static let customConfiguration = DefaultsKey<String>("customConfiguration")
-    public static let customConfigurationUrl = DefaultsKey<String>("customConfigurationUrl")
+    public static let customConfiguration = DefaultsKey<String>("customConfiguration", defaultValue: "")
+    public static let customConfigurationUrl = DefaultsKey<String>("customConfigurationUrl", defaultValue: "")
 
     // One-time flags.
-    public static let tsinghuaAuth4Migrated = DefaultsKey<Bool>("tsinghuaAuth4Migrated")
+    public static let tsinghuaAuth4Migrated = DefaultsKey<Bool>("tsinghuaAuth4Migrated", defaultValue: false)
 
     // Statistics.
-    public static let loginCount = DefaultsKey<Int>("loginCount")
-    public static let loginCountStartDate = DefaultsKey<Date?>("loginCountStartDate")
+    public static let loginCount = DefaultsKey<Int>("loginCount", defaultValue: 0)
+    public static let loginCountStartDate = DefaultsKey<Date>("loginCountStartDate", defaultValue: Date())
 
     public static func onCampus(id: String, ssid: String) -> DefaultsKey<Bool> {
-        return DefaultsKey<Bool>("\(id).\(ssid).onCampus")
+        return DefaultsKey<Bool>("\(id).\(ssid).onCampus", defaultValue: false)
     }
 
     // Sync with the widget.
     static let mainAccount = DefaultsKey<String?>("mainAccount")
-    static let accounts = DefaultsKey<[String]>("accounts")
+    static let accounts = DefaultsKey<[String]>("accounts", defaultValue: [])
 
     // Account related.
     public static func accountLastLoginErrorNotification(of id: String) -> DefaultsKey<Date?> {
         return DefaultsKey<Date?>("\(id).accountLastLoginErrorNotification")
     }
     static func accountPastIps(of id: String) -> DefaultsKey<[String]> {
-        return DefaultsKey<[String]>("\(id).accountPastIps")
+        return DefaultsKey<[String]>("\(id).accountPastIps", defaultValue: [])
     }
     static func accountLoginAttemptAt(of id: String) -> DefaultsKey<Date?> {
         return DefaultsKey<Date?>("\(id).accountLoginAttemptAt")
     }
     // Sync with the widget.
     static func accountDecimalUnits(of id: String) -> DefaultsKey<Bool> {
-        return DefaultsKey<Bool>("\(id).accountDecimalUnits")
+        return DefaultsKey<Bool>("\(id).accountDecimalUnits", defaultValue: false)
     }
     static func accountStatus(of id: String) -> DefaultsKey<[String: Any]?> {
         return DefaultsKey<[String: Any]?>("\(id).accountStatus")

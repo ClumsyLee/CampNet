@@ -68,7 +68,7 @@ class OverviewViewController: UITableViewController {
     @IBAction func accountSwitched(segue: UIStoryboardSegue) {}
 
     @IBAction func feedbackPressed(_ sender: Any) {
-        BugReporting.invoke()
+        BugReporting.show(with: .feedback, options: [])
     }
 
     @IBAction func settingsPressed(_ sender: Any) {
