@@ -69,7 +69,7 @@ public class AccountManager {
                 mainAccount = account
                 // Make sure it is the delegate.
                 if let accountArray = accounts[account.configuration],
-                    let index = accountArray.index(of: account), index > 0 {
+                    let index = accountArray.firstIndex(of: account), index > 0 {
                     accounts[account.configuration]!.remove(at: index)
                     accounts[account.configuration]!.insert(account, at: 0)
                 }
@@ -116,7 +116,7 @@ public class AccountManager {
     fileprivate func removeAccount(_ account: Account) -> Bool {
 
         guard let accountArray = accounts[account.configuration],
-              let index = accountArray.index(of: account) else {
+              let index = accountArray.firstIndex(of: account) else {
             return false
         }
 
@@ -185,7 +185,7 @@ public class AccountManager {
             var delegateChanged = false
             var newDelegate: Account? = nil
             if let accountArray = self.accounts[account.configuration],
-                let index = accountArray.index(of: account), index == 0 {
+                let index = accountArray.firstIndex(of: account), index == 0 {
                 delegateChanged = true
                 if accountArray.count >= 2 {
                     newDelegate = accountArray[1]
@@ -194,7 +194,7 @@ public class AccountManager {
 
             var mainChanged = false
             if self.removeAccount(account) {
-                if let index = Defaults[.accounts].index(of: account.identifier) {
+                if let index = Defaults[.accounts].firstIndex(of: account.identifier) {
                     Defaults[.accounts].remove(at: index)
                     Defaults.synchronize()
                 }
@@ -237,7 +237,7 @@ public class AccountManager {
 
             var oldDelegate: Account? = nil
             if let accountArray = self.accounts[account.configuration],
-                let index = accountArray.index(of: account), index > 0 {
+                let index = accountArray.firstIndex(of: account), index > 0 {
                 oldDelegate = accountArray[0]
                 self.accounts[account.configuration]!.remove(at: index)
                 self.accounts[account.configuration]!.insert(account, at: 0)

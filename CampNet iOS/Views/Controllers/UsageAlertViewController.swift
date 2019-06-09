@@ -25,7 +25,7 @@ class UsageAlertViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 
         let ratio = Defaults[.usageAlertRatio]
-        self.selectedRow = UsageAlertViewController.ratios.index { $0 == ratio }
+        self.selectedRow = UsageAlertViewController.ratios.firstIndex { $0 == ratio }
     }
 
     override func viewDidLayoutSubviews() {
