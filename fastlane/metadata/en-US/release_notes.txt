@@ -1,1 +1,3 @@
-• Change the invocation method of “Suggest an improvement” from “Shake” to “Two finger swipe left”
+• Support iOS 13
+    • Improved readability in Dark Mode
+• Tsinghua University: Updated pricing

@@ -4,6 +4,15 @@ title: 版本记录
 permalink: /release-notes
 ---
 
+## 1.3.5
+{:class="release-note-version"}
+2020年1月1日
+{:class="release-note-date"}
+
+* 支持 iOS 13
+    * 提升了深色模式下的可读性
+* 清华大学：更新了资费标准
+
 ## 1.3.4
 {:class="release-note-version"}
 2019年6月10日
