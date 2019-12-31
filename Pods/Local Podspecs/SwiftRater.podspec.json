@@ -16,10 +16,11 @@
     "tag": "1.3.0"
   },
   "social_media_url": "https://twitter.com/takecian",
-  "swift_version": "4.2",
+  "swift_versions": "4.2",
   "platforms": {
     "ios": "8.0"
   },
   "source_files": "SwiftRater/**/*",
-  "exclude_files": "SwiftRater/**/*.{plist}"
+  "exclude_files": "SwiftRater/**/*.{plist}",
+  "swift_version": "4.2"
 }

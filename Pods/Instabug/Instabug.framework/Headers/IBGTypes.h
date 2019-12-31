@@ -5,12 +5,10 @@
  
  Copyright:  (c) 2013-2018 by Instabug, Inc., all rights reserved.
  
- Version:    8.4.1
+ Version:    9.0
  */
 
 #import <UIKit/UIKit.h>
-
-#define IBG_DEPRECATED_ATTRIBUTE DEPRECATED_MSG_ATTRIBUTE("See https://docs.instabug.com/docs/ios-sdk-8-1-migration-guide for instructions on migrating to SDK v8.1 APIs.")
 
 /// ------------------------------
 /// @name User-facing Strings Keys
@@ -38,11 +36,14 @@ extern NSString * const kIBGInvalidEmailTitleStringName;
 extern NSString * const kIBGInvalidCommentMessageStringName;
 extern NSString * const kIBGInvalidCommentTitleStringName;
 extern NSString * const kIBGInvocationTitleStringName;
-extern NSString * const kIBGTalkToUsStringName DEPRECATED_MSG_ATTRIBUTE("See https://docs.instabug.com/docs/ios-sdk-8-1-migration-guide#section-setvalue-string-forstringwithkey-kibgtalktousstringname for instructions on migrating to SDK v8.1 APIs.");
 extern NSString * const kIBGFeatureRequetsPromptName;
 extern NSString * const kIBGAskAQuestionStringName;
 extern NSString * const kIBGReportBugStringName;
 extern NSString * const kIBGReportFeedbackStringName;
+extern NSString * const kIBGReportBugDescriptionStringName;
+extern NSString * const kIBGReportFeedbackDescriptionStringName;
+extern NSString * const kIBGReportQuestionDescriptionStringName;
+extern NSString * const kIBGRequestFeatureDescriptionStringName;
 extern NSString * const kIBGPhotoPickerTitle;
 extern NSString * const kIBGProgressViewTitle;
 extern NSString * const kIBGGalleryPermissionDeniedAlertTitle;
@@ -54,6 +55,7 @@ extern NSString * const kIBGiCloudImportErrorAlertMessage;
 extern NSString * const kIBGEmailFieldPlaceholderStringName;
 extern NSString * const kIBGCommentFieldPlaceholderForBugReportStringName;
 extern NSString * const kIBGCommentFieldPlaceholderForFeedbackStringName;
+extern NSString * const kIBGCommentFieldPlaceholderForQuestionStringName;
 extern NSString * const kIBGChatReplyFieldPlaceholderStringName;
 extern NSString * const kIBGAddScreenRecordingMessageStringName;
 extern NSString * const kIBGAddVoiceMessageStringName;
@@ -144,8 +146,8 @@ extern NSString * const kIBGSurveyThankYouTitleText DEPRECATED_MSG_ATTRIBUTE("kI
 extern NSString * const kIBGSurveyThankYouDescriptionText DEPRECATED_MSG_ATTRIBUTE("kIBGSurveyThankYouDescriptionText is deprecated. You can edit this string from the dashboard, and use kIBGCustomSurveyThankYouDescriptionText for Custom surveys.");
 extern NSString * const kIBGStoreRatingThankYouTitleText;
 extern NSString * const kIBGStoreRatingThankYouDescriptionText;
-extern NSString * const kIBGCustomSurveyThankYouTitleText;
-extern NSString * const kIBGCustomSurveyThankYouDescriptionText;
+extern NSString * const kIBGCustomSurveyThankYouTitleText DEPRECATED_MSG_ATTRIBUTE("This key kIBGCustomSurveyThankYouTitleText and <kIBGCustomSurveyThankYouDescriptionText> will be deprecated with the next release. You will be able to edit this message from the dashboard from this point on.");
+extern NSString * const kIBGCustomSurveyThankYouDescriptionText DEPRECATED_MSG_ATTRIBUTE("This key kIBGCustomSurveyThankYouDescriptionText and <kIBGCustomSurveyThankYouTitleText> will be deprecated with the next release. You will be able to edit this message from the dashboard from this point on.");
 extern NSString * const kIBGSurveysNPSLeastLikelyStringName;
 extern NSString * const kIBGSurveysNPSMostLikelyStringName;
 extern NSString * const kIBGSurveyNextButtonTitle;
@@ -213,8 +215,10 @@ typedef NS_ENUM(NSInteger, IBGInvocationMode) {
     IBGInvocationModeNA,
     IBGInvocationModeNewBug,
     IBGInvocationModeNewFeedback,
+    IBGInvocationModeNewQuestion,
     IBGInvocationModeNewChat,
-    IBGInvocationModeChatsList
+    IBGInvocationModeChatsList,
+    IBGInvocationModeNewQuestionManually        //Only when you call Chats.show()
 };
 
 /**
@@ -235,6 +239,7 @@ typedef NS_OPTIONS(NSInteger, IBGBugReportingInvocationOption) {
 typedef NS_OPTIONS(NSInteger, IBGBugReportingReportType) {
     IBGBugReportingReportTypeBug = 1 << 0,
     IBGBugReportingReportTypeFeedback = 1 << 1,
+    IBGBugReportingReportTypeQuestion = 1 << 2,
 };
 
 
@@ -248,7 +253,8 @@ typedef NS_OPTIONS(NSInteger, IBGBugReportingOption) {
 
 typedef NS_ENUM(NSInteger, IBGReportType) {
     IBGReportTypeBug,
-    IBGReportTypeFeedback
+    IBGReportTypeFeedback,
+    IBGReportTypeQuestion
 };
 
 /**
@@ -282,7 +288,8 @@ typedef NS_ENUM(NSInteger, IBGLocale) {
     IBGLocaleKorean,
     IBGLocaleNorwegian,
     IBGLocalePolish,
-    IBGLocalePortugese,
+    IBGLocalePortugese DEPRECATED_MSG_ATTRIBUTE("Please use IBGLocalePortuguese"), // Fixing typo https://instabug.atlassian.net/browse/INSD-2731
+    IBGLocalePortuguese,
     IBGLocalePortugueseBrazil,
     IBGLocaleRussian,
     IBGLocaleSlovak,
@@ -290,20 +297,6 @@ typedef NS_ENUM(NSInteger, IBGLocale) {
     IBGLocaleSwedish,
     IBGLocaleTurkish,
     IBGLocaleHungarian
-};
-
-/**
- Verbosity level of the SDK debug logs. This has nothing to do with IBGLog, and only affect the logs used to debug the
- SDK itself.
- 
- Defaults to IBGSDKDebugLogsLevelError. Make sure you only use IBGSDKDebugLogsLevelError or IBGSDKDebugLogsLevelNone in
- production builds.
- */
-typedef NS_ENUM(NSInteger, IBGSDKDebugLogsLevel) {
-    IBGSDKDebugLogsLevelVerbose,
-    IBGSDKDebugLogsLevelDebug,
-    IBGSDKDebugLogsLevelError,
-    IBGSDKDebugLogsLevelNone
 };
 
 /**
@@ -336,6 +329,20 @@ typedef NS_ENUM(NSInteger, IBGLogLevel) {
     IBGLogLevelWarning,
     IBGLogLevelError,
     IBGLogLevelFatal
+};
+
+/**
+ Verbosity level of the SDK debug logs. This has nothing to do with IBGLog, and only affect the logs used to debug the
+ SDK itself.
+ 
+ Defaults to IBGSDKDebugLogsLevelError. Make sure you only use IBGSDKDebugLogsLevelError or IBGSDKDebugLogsLevelNone in
+ production builds.
+ */
+typedef NS_ENUM(NSInteger, IBGSDKDebugLogsLevel) {
+    IBGSDKDebugLogsLevelVerbose = 1,
+    IBGSDKDebugLogsLevelDebug = 2,
+    IBGSDKDebugLogsLevelError = 3,
+    IBGSDKDebugLogsLevelNone = 4
 };
 
 /**
