@@ -1176,10 +1176,10 @@ Speacial thanks to: Yilong Guo, Wenshuo Li, Xinyao Chen, Xingyue Liu, Zuozhen Li
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pek-MK-jp4">
-                                            <rect key="frame" x="27" y="7.5" width="354" height="35"/>
+                                            <rect key="frame" x="27" y="7.5" width="348" height="35"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="c6k-DE-7NI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="292.5" height="35"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="286.5" height="35"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="iPhone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJb-da-vHM">
                                                             <rect key="frame" x="0.0" y="0.0" width="52.5" height="20.5"/>
@@ -1196,7 +1196,7 @@ Speacial thanks to: Yilong Guo, Wenshuo Li, Xinyao Chen, Xingyue Liu, Zuozhen Li
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" horizontalCompressionResistancePriority="760" text="25.8 GB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEY-nF-qMF">
-                                                    <rect key="frame" x="292.5" y="7.5" width="61.5" height="20.5"/>
+                                                    <rect key="frame" x="286.5" y="7.5" width="61.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1207,7 +1207,7 @@ Speacial thanks to: Yilong Guo, Wenshuo Li, Xinyao Chen, Xingyue Liu, Zuozhen Li
                                     <constraints>
                                         <constraint firstItem="pek-MK-jp4" firstAttribute="leading" secondItem="G1T-QF-agM" secondAttribute="leadingMargin" constant="7" id="SIQ-9k-epT"/>
                                         <constraint firstItem="pek-MK-jp4" firstAttribute="centerY" secondItem="G1T-QF-agM" secondAttribute="centerY" id="btU-sl-d2K"/>
-                                        <constraint firstAttribute="trailing" secondItem="pek-MK-jp4" secondAttribute="trailing" constant="2" id="ygv-Dd-CZh"/>
+                                        <constraint firstAttribute="trailing" secondItem="pek-MK-jp4" secondAttribute="trailing" constant="8" id="ygv-Dd-CZh"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -1439,11 +1439,11 @@ Speacial thanks to: Yilong Guo, Wenshuo Li, Xinyao Chen, Xingyue Liu, Zuozhen Li
                                     <rect key="frame" x="0.0" y="0.0" width="370" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vn2-Av-xIT">
-                                            <rect key="frame" x="57" y="7.5" width="311" height="35"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Vn2-Av-xIT">
+                                            <rect key="frame" x="57" y="7.5" width="305" height="35"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="yam-5S-7y8">
-                                                    <rect key="frame" x="0.0" y="0.0" width="241.5" height="35"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="242.5" height="35"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="lisihan13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dg3-U4-UEY">
                                                             <rect key="frame" x="0.0" y="0.0" width="65.5" height="20.5"/>
@@ -1460,7 +1460,7 @@ Speacial thanks to: Yilong Guo, Wenshuo Li, Xinyao Chen, Xingyue Liu, Zuozhen Li
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="260" verticalHuggingPriority="251" horizontalCompressionResistancePriority="760" text="25.8 GB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wYs-sX-oe8">
-                                                    <rect key="frame" x="249.5" y="7.5" width="61.5" height="20.5"/>
+                                                    <rect key="frame" x="243.5" y="7.5" width="61.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1477,7 +1477,7 @@ Speacial thanks to: Yilong Guo, Wenshuo Li, Xinyao Chen, Xingyue Liu, Zuozhen Li
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Vn2-Av-xIT" firstAttribute="centerY" secondItem="VVA-EL-FAo" secondAttribute="centerY" id="JPB-Iy-o2P"/>
-                                        <constraint firstAttribute="trailing" secondItem="Vn2-Av-xIT" secondAttribute="trailing" constant="2" id="Piw-P9-eoQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="Vn2-Av-xIT" secondAttribute="trailing" constant="8" id="Piw-P9-eoQ"/>
                                         <constraint firstItem="Vn2-Av-xIT" firstAttribute="leading" secondItem="VVA-EL-FAo" secondAttribute="leadingMargin" constant="37" id="VYy-MH-pNV"/>
                                         <constraint firstItem="BXQ-39-n1c" firstAttribute="leading" secondItem="VVA-EL-FAo" secondAttribute="leadingMargin" constant="4" id="eST-ny-Zv2"/>
                                         <constraint firstItem="BXQ-39-n1c" firstAttribute="centerY" secondItem="VVA-EL-FAo" secondAttribute="centerY" id="rRk-pV-Nbv"/>
@@ -1519,7 +1519,7 @@ Speacial thanks to: Yilong Guo, Wenshuo Li, Xinyao Chen, Xingyue Liu, Zuozhen Li
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Lz-Sz-muK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="EhV-Ab-cbe" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2294" y="-1012"/>
+            <point key="canvasLocation" x="2292.753623188406" y="-1012.5"/>
         </scene>
         <!--Re-enter Password-->
         <scene sceneID="0at-Ug-iM1">
