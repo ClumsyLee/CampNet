@@ -52,15 +52,15 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         chart.maxLimitLine.drawLabelEnabled = false
 
         if #available(iOS 10.0, *) {
-            chart.xAxis.axisLineColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
-            chart.leftAxis.labelTextColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
-            chart.leftAxis.gridColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1)
+            chart.xAxis.axisLineColor = .secondaryLabelOrColor
+            chart.leftAxis.labelTextColor = .secondaryLabelOrColor
+            chart.leftAxis.gridColor = .systemFillOrColor
 
-            username.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
-            usage.textColor = .darkText
-            gb.textColor = .darkText
-            rmb.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
-            balance.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.5)
+            username.textColor = .secondaryLabelOrColor
+            usage.textColor = .labelOrColor
+            gb.textColor = .labelOrColor
+            rmb.textColor = .secondaryLabelOrColor
+            balance.textColor = .secondaryLabelOrColor
         } else {
             chart.xAxis.axisLineColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
             chart.leftAxis.labelTextColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)

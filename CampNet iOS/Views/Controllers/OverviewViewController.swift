@@ -246,12 +246,12 @@ class OverviewViewController: UITableViewController {
 
     func reloadNetworkColor() {
         if let account = account, let network = network, account.canManage(network) {
-            networkName.textColor = .darkText
+            networkName.textColor = .labelOrColor
         } else {
             networkName.textColor = .lightGray
 
             if Device.inUITest {
-                networkName.textColor = .darkText
+                networkName.textColor = .labelOrColor
             }
         }
     }
@@ -387,7 +387,7 @@ class OverviewViewController: UITableViewController {
 
         if let sessions = profile?.sessions {
             devices.text = String(sessions.count)
-            devices.textColor = .darkText
+            devices.textColor = .labelOrColor
             devicesButton.isEnabled = true
             devicesDisclosure.isHidden = false
         } else {

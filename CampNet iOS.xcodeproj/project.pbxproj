@@ -72,6 +72,7 @@
 		0FA4D4AC220792F500698A97 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 0FA4D4A8220792F500698A97 /* Localizable.stringsdict */; };
 		0FA4D4AD220792F600698A97 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 0FA4D4A8220792F500698A97 /* Localizable.stringsdict */; };
 		0FA85DA51F4E930C00F76A86 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */; };
+		0FBCB5D423BB752A00DA15D5 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCB5D323BB752A00DA15D5 /* UIColorExtensions.swift */; };
 		0FBCD7B01F226F4B00333A90 /* LoginIpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */; };
 		0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A11F17593E002861F3 /* AccountManager.swift */; };
 		0FC6E2A61F17694E002861F3 /* NotificationNameExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */; };
@@ -227,6 +228,7 @@
 		0FA4D4B0220815B500698A97 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		0FA4D4B12208246000698A97 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.stringsdict"; sourceTree = "<group>"; };
 		0FA85DA41F4E930C00F76A86 /* LogsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogsViewController.swift; path = Views/Controllers/LogsViewController.swift; sourceTree = "<group>"; };
+		0FBCB5D323BB752A00DA15D5 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = Extensions/UIColorExtensions.swift; sourceTree = "<group>"; };
 		0FBCD7AF1F226F4B00333A90 /* LoginIpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginIpViewController.swift; path = Views/Controllers/LoginIpViewController.swift; sourceTree = "<group>"; };
 		0FC6E2A11F17593E002861F3 /* AccountManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountManager.swift; path = Models/AccountManager.swift; sourceTree = "<group>"; };
 		0FC6E2A51F17694E002861F3 /* NotificationNameExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationNameExtensions.swift; path = Extensions/NotificationNameExtensions.swift; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 				0F464C641F13ED0F00C2F58B /* StringExtensions.swift */,
 				0FD239C01F415EC6006EA7F9 /* UserDefaultsExtensions.swift */,
 				0F464C621F13DB6E00C2F58B /* YamlExtensions.swift */,
+				0FBCB5D323BB752A00DA15D5 /* UIColorExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1063,6 +1066,7 @@
 				0F464C5C1F13CB1100C2F58B /* Action.swift in Sources */,
 				0F7A93FB1F25E34C0093B3FA /* DoubleExtensions.swift in Sources */,
 				0F464C5A1F13C50500C2F58B /* Account.swift in Sources */,
+				0FBCB5D423BB752A00DA15D5 /* UIColorExtensions.swift in Sources */,
 				0FC6E2A61F17694E002861F3 /* NotificationNameExtensions.swift in Sources */,
 				0FA4D4752207444200698A97 /* UsageChartView.swift in Sources */,
 				0FC6E2A21F17593E002861F3 /* AccountManager.swift in Sources */,

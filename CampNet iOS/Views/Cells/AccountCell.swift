@@ -18,7 +18,7 @@ class AccountCell: UITableViewCell {
 
     var isMain = false {
         didSet {
-            username.textColor = isMain ? #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1) : .darkText
+            username.textColor = isMain ? #colorLiteral(red: 0.1934785199, green: 0.7344816453, blue: 0.9803921569, alpha: 1) : .labelOrColor
         }
     }
 
