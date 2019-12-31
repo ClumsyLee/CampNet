@@ -34,4 +34,12 @@ extension UIColor {
              return #colorLiteral(red: 120, green: 120, blue: 128, alpha: 0.2)
          }
     }
+
+    public class var systemGray5OrColor: UIColor {
+        if #available(iOS 13.0, *) {
+             return .systemGray5
+         } else {
+             return #colorLiteral(red: 229, green: 229, blue: 234, alpha: 1.0)
+         }
+    }
 }

@@ -49,7 +49,7 @@ public class UsageChartView: LineChartView {
         xAxis.axisMaximum = 31.0
 
         leftAxis.labelTextColor = .lightGray
-        leftAxis.gridColor = #colorLiteral(red: 0.9372541904, green: 0.9372367859, blue: 0.9563211799, alpha: 1)
+        leftAxis.gridColor = .systemGray5OrColor
         leftAxis.drawAxisLineEnabled = false
         leftAxis.axisMinimum = 0
         leftAxis.drawLimitLinesBehindDataEnabled = true
