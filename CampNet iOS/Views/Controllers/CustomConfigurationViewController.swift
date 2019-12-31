@@ -3,7 +3,7 @@
 //  CampNet iOS
 //
 //  Created by Thomas Lee on 1/22/19.
-//  Copyright © 2019 Sihan Li. All rights reserved.
+//  Copyright © 2020 Sihan Li. All rights reserved.
 //
 
 import UIKit
@@ -198,7 +198,7 @@ class CustomConfigurationViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 

@@ -3,7 +3,7 @@
 //  CampNet iOS Usage Alert Content Extension
 //
 //  Created by Thomas Lee on 2/4/19.
-//  Copyright © 2019 Sihan Li. All rights reserved.
+//  Copyright © 2020 Sihan Li. All rights reserved.
 //
 
 import UIKit
@@ -14,12 +14,12 @@ import CampNetKit
 class NotificationViewController: UIViewController, UNNotificationContentExtension {
 
     @IBOutlet var chart: UsageChartView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any required interface initialization here.
     }
-    
+
     func didReceive(_ notification: UNNotification) {
         guard let identifier = notification.request.content.userInfo["account"] as? String else {
             return
