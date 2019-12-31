@@ -172,7 +172,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             Instabug.welcomeMessageMode = .disabled
         }
         BugReporting.promptOptionsEnabledReportTypes = [.feedback]
-        Chats.enabled = false
         Replies.enabled = false
         BugReporting.enabledAttachmentTypes = []
     }
@@ -214,8 +213,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     }
                     // Unlock content.
 
-                case .failed, .purchasing, .deferred:
-                    break  // Do nothing.
+                case .failed, .purchasing, .deferred: break  // Do nothing.
+                @unknown default: break
                 }
             }
         }

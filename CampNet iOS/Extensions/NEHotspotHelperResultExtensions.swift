@@ -19,6 +19,7 @@ extension NEHotspotHelperResult: CustomStringConvertible {
         case .authenticationRequired: return "authenticationRequired"
         case .unsupportedNetwork: return "unsupportedNetwork"
         case .temporaryFailure: return "temporaryFailure"
+        @unknown default: return "unknown"
         }
     }
 }

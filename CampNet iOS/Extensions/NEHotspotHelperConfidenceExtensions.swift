@@ -15,6 +15,7 @@ extension NEHotspotHelperConfidence: CustomStringConvertible {
         case .none: return "none"
         case .low: return "low"
         case .high: return "high"
+        @unknown default: return "unknown"
         }
     }
 }
