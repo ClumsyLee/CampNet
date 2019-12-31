@@ -272,8 +272,8 @@
 /* Class = "UITableViewController"; title = "About CampNet"; ObjectID = "cgD-an-vZQ"; */
 "cgD-an-vZQ.title" = "關於 CampNet";
 
-/* Class = "UITableViewSection"; footerTitle = "Copyright © 2019 Sihan Li. All rights reserved."; ObjectID = "5l9-LW-jLm"; */
-"5l9-LW-jLm.footerTitle" = "Copyright © 2019 Sihan Li. All rights reserved.";
+/* Class = "UITableViewSection"; footerTitle = "Copyright © 2020 Sihan Li. All rights reserved."; ObjectID = "5l9-LW-jLm"; */
+"5l9-LW-jLm.footerTitle" = "Copyright © 2020 Sihan Li. All rights reserved.";
 
 /* Class = "UILabel"; text = "Acknowledgements"; ObjectID = "kJS-cc-R8f"; */
 "kJS-cc-R8f.text" = "致謝";
