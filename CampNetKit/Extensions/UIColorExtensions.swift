@@ -3,7 +3,7 @@
 //  CampNetKit
 //
 //  Created by Thomas Lee on 12/31/19.
-//  Copyright © 2019 Sihan Li. All rights reserved.
+//  Copyright © 2020 Sihan Li. All rights reserved.
 //
 
 import Foundation
