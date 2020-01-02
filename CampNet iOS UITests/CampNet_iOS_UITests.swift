@@ -8,6 +8,21 @@
 
 import XCTest
 
+// To fix the "Failed to scroll to visible" problem. See
+// https://stackoverflow.com/questions/33422681/xcode-ui-test-ui-testing-failure-failed-to-scroll-to-visible-by-ax-action/39898733
+// for the details.
+extension XCUIElement {
+    func forceTapElement() {
+        if self.isHittable {
+            self.tap()
+        }
+        else {
+            let coordinate: XCUICoordinate = self.coordinate(withNormalizedOffset: CGVector(dx: 0.0, dy: 0.0))
+            coordinate.tap()
+        }
+    }
+}
+
 class CampNet_iOS_UITests: XCTestCase {
 
     override func setUp() {
@@ -58,7 +73,7 @@ class CampNet_iOS_UITests: XCTestCase {
         addButton.tap()
         snapshot("2-configurations")
 
-        app.navigationBars.buttons.element(boundBy: 0).tap()
+        app.navigationBars.buttons.element(boundBy: 0).forceTapElement()
         app.navigationBars.buttons.element(boundBy: 0).tap()
         app.navigationBars.buttons["settings"].tap()
         snapshot("3-settings")
